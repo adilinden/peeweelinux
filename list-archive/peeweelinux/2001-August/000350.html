@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> DiskOnChip Problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000349.html">
+   <LINK REL="Next"  HREF="000351.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>DiskOnChip Problem
+   </H1>
+    <B>Tim Westbrook
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="DiskOnChip Problem">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 21 Aug 2001 00:21:38 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000349.html">DiskOnChip Problem
+</A></li>
+        <LI> Next message: <A HREF="000351.html">Telnet problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#350">[ date ]</a>
+              <a href="thread.html#350">[ thread ]</a>
+              <a href="subject.html#350">[ subject ]</a>
+              <a href="author.html#350">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Guillaume,
+    Oddly enough, I found myself in your exact same
+situation tonight. I am using a doc system as well,
+with the target being an uncompressed ext2 partion on
+ramdisk. 
+
+    I was able to get around your particular problem
+by creating an msys subdirectory in my
+/project/minimal/mnt/dev directory.
+
+    It seems that the portion of the script that
+creates the boot device directory structure does not
+create multi-level /dev entries. So you may be seeing
+cp error messages when your run &quot;load target&quot;
+
+   You may be able to do this with the custom files
+option I did it by editing the script file that
+creates these directory entries.
+
+   Also make sure that the doc driver is loaded, i am
+using a modular driver so i had to modify the linuxrc
+in the initrd to load the driver before attempting to
+mount the root partition.
+
+   I myself am having trouble with finding init. My
+root partition seems to boot fine , but i get 
+&quot;Kernel Panic: No INIT found&quot; I suppose for some
+reason, the system can't read my root partition.
+   
+   A curious item, I noticed that for uncompressed
+ext2 partitions booting from lilo, the linuxrc script
+in the initrd copies the root partition from the
+source partion on the flash to /dev/ram2, but the
+fstab entry created points / to /dev/ram0. I don't
+think this is my problem , but it seems sort of odd.
+   
+- Tim
+
+
+
+--- Guillaume Sisteron &lt;<A HREF="mailto:gsistero@com1.fr">gsistero@com1.fr</A>&gt; wrote:
+&gt;<i> Hi,
+</I>&gt;<i>  
+</I>&gt;<i> I'm trying to develop a Linux-based system on a Disk
+</I>&gt;<i> On Chip (8Mb).
+</I>&gt;<i>  
+</I>&gt;<i> I've got several problems, and although I've read
+</I>&gt;<i> your mailing list
+</I>&gt;<i> archive, I didn't find a great solution.
+</I>&gt;<i>  
+</I>&gt;<i> I'm using PeeWeeLinux 0.61.0 distribution.
+</I>&gt;<i> I build my file system (with DOC driver included as
+</I>&gt;<i> module or as static
+</I>&gt;<i> in the kernel : both don't work) and put it on the
+</I>&gt;<i> DiskOnChip (by
+</I>&gt;<i> replacing lilo with doc-lilo in the pwl-target-load
+</I>&gt;<i> script).
+</I>&gt;<i> I manage to boot on the DOC, but the system is then
+</I>&gt;<i> bloked while trying
+</I>&gt;<i> to mount the root partition.
+</I>&gt;<i>  
+</I>&gt;<i> It says something like: VFS unable to mount root
+</I>&gt;<i> partition on device
+</I>&gt;<i> 03:02.
+</I>&gt;<i>  
+</I>&gt;<i>  
+</I>&gt;<i> Do you know the problem or at least could you answer
+</I>&gt;<i> to the following
+</I>&gt;<i> questions:
+</I>&gt;<i>  
+</I>&gt;<i> 1)       Is it possible to put all the file system
+</I>&gt;<i> directly on the Disk
+</I>&gt;<i> On Chip target ?
+</I>&gt;<i> 2)       Is it necessary to use doc-lilo (and a
+</I>&gt;<i> special lilo.conf file)
+</I>&gt;<i> instead of lilo in the pwl_target_load script ?
+</I>&gt;<i> 3)       In the mailing list archive, some say it is
+</I>&gt;<i> necessary to first
+</I>&gt;<i> put everything on ide partition and then put
+</I>&gt;<i> everything on DOC ?
+</I>&gt;<i> 4)       On the web site, it is written: &quot; Currently
+</I>&gt;<i> the loading of
+</I>&gt;<i> target devices directly attached to the development
+</I>&gt;<i> system are
+</I>&gt;<i> supported. These include floppy drives, IDE hard
+</I>&gt;<i> drives, scsi hard
+</I>&gt;<i> drives, M-Systems Disk-On-Chip and CompactFlash
+</I>&gt;<i> devices.&quot;.
+</I>&gt;<i> So what's the best method to load the file system on
+</I>&gt;<i> the DiskOnChip
+</I>&gt;<i> target ?
+</I>&gt;<i>  
+</I>&gt;<i>  
+</I>&gt;<i> Thanks very much for your answer !
+</I>&gt;<i>  
+</I>&gt;<i>  
+</I>&gt;<i> ---
+</I>&gt;<i> Guillaume SISTERON
+</I>&gt;<i> COM One
+</I>&gt;<i>  
+</I>&gt;<i> 
+</I>
+
+__________________________________________________
+Do You Yahoo!?
+Make international calls for as low as $.04/minute with Yahoo! Messenger
+<A HREF="http://phonecard.yahoo.com/">http://phonecard.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000349.html">DiskOnChip Problem
+</A></li>
+	<LI> Next message: <A HREF="000351.html">Telnet problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#350">[ date ]</a>
+              <a href="thread.html#350">[ thread ]</a>
+              <a href="subject.html#350">[ subject ]</a>
+              <a href="author.html#350">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

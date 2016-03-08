@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> PeeWeeLinux question...
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000324.html">
+   <LINK REL="Next"  HREF="000326.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>PeeWeeLinux question...
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="PeeWeeLinux question...">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 11 May 2001 09:53:00 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000324.html">i815 video support with PeeWeeLinux?
+</A></li>
+        <LI> Next message: <A HREF="000326.html">PeeWeeLinux question...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#325">[ date ]</a>
+              <a href="thread.html#325">[ thread ]</a>
+              <a href="subject.html#325">[ subject ]</a>
+              <a href="author.html#325">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Thank you for sharing the solution you found regarding RedHat 7.0. I
+forwarded your email to the PWL list as well for reference.
+
+I am currently spending what little spare time I have left at building a
+secure webserver to replace my aging server in place now. Once that has
+been accomplished I will be looking at more PeeWeeLinux development.
+Unfortunately I am left with very little time these days...
+
+TTYL,
+Adi 
+
+On Wed, 18 Apr 2001 <A HREF="mailto:Randy_Howard@Dell.com">Randy_Howard@Dell.com</A> wrote:
+
+&gt;<i> 
+</I>&gt;<i> Thanks, but I found a solution by brute force...  I was looking through
+</I>&gt;<i> the RedHat 7 image, and found /usr/bin/kgcc, which is of a different
+</I>&gt;<i> size than the normal /usr/bin/gcc.  I replaced gcc with kgcc in the
+</I>&gt;<i> Makefile, and the build was successful.  Digging around later on the
+</I>&gt;<i> RedHat website I found a &quot;gotcha&quot; entry describing the problem as:
+</I>&gt;<i> 
+</I>&gt;<i> &quot;For various reasons, gcc is no longer able to compile the kernel from 
+</I>&gt;<i> source because it uses the 2.96 version of the GNU C Compiler. However, 
+</I>&gt;<i> it is still easy to compile your kernel, as version 2.91.66 of the egcs 
+</I>&gt;<i> C compiler has been included with the distribution&quot;.
+</I>&gt;<i> 
+</I>&gt;<i> that explains kgcc's purpose, although they don't bother to give
+</I>&gt;<i> specifics on what changed in gcc 2.96 that broke the kernel build.
+</I>&gt;<i> 
+</I>&gt;<i> Thanks for getting back to me anyway, I am really enjoying working
+</I>&gt;<i> with the PWL distribution so far.  If I could figure out what I am 
+</I>&gt;<i> doing wrong trying to get pump to work properly in my image (works
+</I>&gt;<i> fine for dhcp on the RedHat host) I'd be basically done.  I'm sure
+</I>&gt;<i> it's something minor.
+</I>&gt;<i> 
+</I>&gt;<i> It would be nice if the package included the newer XFree86 4.0.3 build 
+</I>&gt;<i> for support of the newer video devices.  Also, I noticed that the ICA 
+</I>&gt;<i> client including is an older one, Citrix has a 6.0.908 release, and PWL 
+</I>&gt;<i> has 3.00.77 in it.  
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Randy Howard
+</I>&gt;<i> 
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: Adi Linden [mailto:<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>]
+</I>&gt;<i> Sent: Wednesday, April 18, 2001 04:49 AM
+</I>&gt;<i> To: <A HREF="mailto:Randy_Howard@exchange.dell.com">Randy_Howard@exchange.dell.com</A>
+</I>&gt;<i> Subject: Re: PeeWeeLinux question...
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Haven't came across this yet. Can you send me the kernel config file? That
+</I>&gt;<i> would allow me to recreate your build and see if it bombs on my system as
+</I>&gt;<i> well...
+</I>&gt;<i> 
+</I>&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> On Thu, 12 Apr 2001 <A HREF="mailto:Randy_Howard@Dell.com">Randy_Howard@Dell.com</A> wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I am working on building up a very small image using the ISO CD image
+</I>&gt;<i> which
+</I>&gt;<i> &gt; I downloaded yesterday.  It looks pretty good so far, but I do have a few
+</I>&gt;<i> &gt; questions.  I suspect I'm missing something obvious and hopefully you have
+</I>&gt;<i> &gt; seen this before...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; First of all, I have been able to get an image installed onto a drive and
+</I>&gt;<i> &gt; boot the kernel, so the basics seem to be working fine.  I am having
+</I>&gt;<i> trouble
+</I>&gt;<i> &gt; building a custom kernel, which when done from within pwlconfig reports it
+</I>&gt;<i> &gt; was successful, but I do not get a bzImage file in the custom kernel
+</I>&gt;<i> package
+</I>&gt;<i> &gt; when it completes.  The package (in this case kernel-Target_64-2.2.17)
+</I>&gt;<i> &gt; contains /boot, but no kernel.  I saw from the PeeWee website that
+</I>&gt;<i> building
+</I>&gt;<i> &gt; the kernel from inside the tool is fairly new, so I decided to try it by
+</I>&gt;<i> &gt; hand instead.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Building it manually from kernelbuild/usr/src/linux (2.2.17-13) under the
+</I>&gt;<i> &gt; Embedded_Build tree fails on arch/i386/usr/lib/checksum.S.  That is quite
+</I>&gt;<i> &gt; strange, since a diff of it and the same file on the host /usr/src/....
+</I>&gt;<i> &gt; shows they are identical.  It fails on the #define definitions for SRC()
+</I>&gt;<i> and
+</I>&gt;<i> &gt; DST().  The specific error messages are:
+</I>&gt;<i> &gt; checksum.S:231: badly punctuated parameter list in #define
+</I>&gt;<i> &gt; checksum.S:237: badly punctuated parameter list in #define
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Of course, that blows up the kernel build.    I suspect something is wrong
+</I>&gt;<i> &gt; in the build environment, but haven't been able to track it down yet.  The
+</I>&gt;<i> &gt; host machine is RedHat 7.0 (2.2.17-8) from Dell.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Any hints you might have would be very much appreciated...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000324.html">i815 video support with PeeWeeLinux?
+</A></li>
+	<LI> Next message: <A HREF="000326.html">PeeWeeLinux question...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#325">[ date ]</a>
+              <a href="thread.html#325">[ thread ]</a>
+              <a href="subject.html#325">[ subject ]</a>
+              <a href="author.html#325">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

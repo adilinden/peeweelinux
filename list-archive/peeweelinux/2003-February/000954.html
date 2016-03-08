@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] DOC
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000946.html">
+   <LINK REL="Next"  HREF="000955.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] DOC
+   </H1>
+    <B>Jim Graham
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] DOC">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 17 Feb 2003 09:16:17 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000946.html">[Peeweelinux] SBC mediaGX
+</A></li>
+        <LI> Next message: <A HREF="000955.html">[Peeweelinux] HowTo: OpenSSH on PWL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#954">[ date ]</a>
+              <a href="thread.html#954">[ thread ]</a>
+              <a href="subject.html#954">[ subject ]</a>
+              <a href="author.html#954">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a multi-part message in MIME format.
+--------------0C21943FE726B4E0FD4DC861
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Hi
+
+    I am trying to use a 512 MB DOC (NFTL) on a RTD Geode processor with
+the 5530 companion chip.  I have updated the DOC driver to version 5.1.4
+and am loading the DOC module as part of initrd (just prior to the copy
+from the boot device to ram).
+
+    Currently I am booting from an attached hard drive.  When the DOC
+module is loaded partition information is displayed.  On successive
+boots the same DOC partition information is not always displayed.  dmesg
+after boot displays error messages of the type
+
+   fl: _init:registerd device at major:100
+   fl: Error FlMount-&gt;flAbsMountVolumn:26
+
+I am not linking in the PCI UDMA code in the kernel per the RTD
+application note.
+I am using the M-Systems lilo compiled with the switch LARGE_EDBA which
+pushes the application down in memory.
+
+Any ideas on the meaning of the erorr or recommendations?
+
+Any suggestions would be appreciated.
+
+-- thanks
+    jim
+
+--------------0C21943FE726B4E0FD4DC861
+Content-Type: text/x-vcard; charset=us-ascii;
+ name=&quot;graham.vcf&quot;
+Content-Transfer-Encoding: 7bit
+Content-Description: Card for Jim Graham
+Content-Disposition: attachment;
+ filename=&quot;graham.vcf&quot;
+
+begin:vcard 
+n:Graham;Jim
+tel;fax:(315) 798-8950
+tel;work:(315) 798-1377
+x-mozilla-html:FALSE
+url:www.sensors.com
+org:Integrated Sensors Inc.
+adr:;;502 Court Street;Utica;NY;13502;
+version:2.1
+email;internet:<A HREF="mailto:graham@sensors.com">graham@sensors.com</A>
+title:Senior Software Engineer
+end:vcard
+
+--------------0C21943FE726B4E0FD4DC861--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000946.html">[Peeweelinux] SBC mediaGX
+</A></li>
+	<LI> Next message: <A HREF="000955.html">[Peeweelinux] HowTo: OpenSSH on PWL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#954">[ date ]</a>
+              <a href="thread.html#954">[ thread ]</a>
+              <a href="subject.html#954">[ subject ]</a>
+              <a href="author.html#954">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

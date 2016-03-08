@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: RH8, plus no lilo.conf?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001106.html">
+   <LINK REL="Next"  HREF="001108.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: RH8, plus no lilo.conf?
+   </H1>
+    <B>Scott MacKay
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: RH8, plus no lilo.conf?">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 2 Jul 2003 04:51:45 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001106.html">[Peeweelinux] About inittab .. failed
+</A></li>
+        <LI> Next message: <A HREF="001108.html">[Peeweelinux] About inittab .. failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1107">[ date ]</a>
+              <a href="thread.html#1107">[ thread ]</a>
+              <a href="subject.html#1107">[ subject ]</a>
+              <a href="author.html#1107">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hiyas,
+    Well, after upgrading all the packages to ones
+from the RH8 CD, I believe my problem with loading
+them was that the distributed rpm does not work with
+em.  Changing it to use the /bin/rpm extracted all the
+package info properly.
+
+On a different note, I am building the 'ro + multiple
+ramdisk' option and seem to have a problem.  It all
+pulls the ramdisks and the filesystem properly (onto a
+IDEish flash card), but dies during boot.  It says I
+need to specify an 'init='.  I mounted up the
+ramdisk.etc from boot and noticed there was no
+lilo.conf in that ramdisk.  Should there be a
+lilo.conf there auto-generated?  I tried adding one to
+my base 'mnt/' image and it showed up in the ramdisk
+after rebuilding, but it still would not boot.  Seems
+to uncompress and mount the filesystems OK, though. 
+Any thoughts?
+
+-Scott
+
+__________________________________
+Do you Yahoo!?
+SBC Yahoo! DSL - Now only $29.95 per month!
+<A HREF="http://sbc.yahoo.com">http://sbc.yahoo.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001106.html">[Peeweelinux] About inittab .. failed
+</A></li>
+	<LI> Next message: <A HREF="001108.html">[Peeweelinux] About inittab .. failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1107">[ date ]</a>
+              <a href="thread.html#1107">[ thread ]</a>
+              <a href="subject.html#1107">[ subject ]</a>
+              <a href="author.html#1107">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

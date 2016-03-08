@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Upgrading XFree86 in peewee
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001251.html">
+   <LINK REL="Next"  HREF="001253.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Upgrading XFree86 in peewee
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Upgrading XFree86 in peewee">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 02 Mar 2004 12:08:46 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001251.html">[Peeweelinux] Upgrading XFree86 in peewee
+</A></li>
+        <LI> Next message: <A HREF="001253.html">[Peeweelinux] ulimit: not found - error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1252">[ date ]</a>
+              <a href="thread.html#1252">[ thread ]</a>
+              <a href="subject.html#1252">[ subject ]</a>
+              <a href="author.html#1252">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ashley,
+
+My personal approach would be to grab a set of stock Redhat SRPMS that 
+contain the driver necessary for your chipset, and then rpm --rebuild 
+them on a Redhat 6.2 machine. Preferrably RH7.3 (as it's pretty 
+compatible with 6.2), but it appears XFree 4.2.1 is the latest ever made 
+for 7.3.
+
+It's probably possible to rebuild the 9.0 SRPM on a 6.2 machine, but you 
+may have to tweak it a little. If nothing else, you could extract the 
+.spec file from a 9.0 SRPM, and use the compile logic to hand compile 
+the 4.3.0 on a Redhat 6.2 box then. I've done this for various packages 
+to backport to old servers, tends to work fine. XFree86 is a beast, 
+however - may require some handholding.
+
+Then all you need to do is tar it all up to look exactly like the stock 
+PWL stuff, add as a custom package and select it. One would think it'd 
+be a drop in replacement at that point.
+
+-te
+
+Ashley Rolleston wrote:
+&gt;<i> I think maybe I should elaborate slightly as my last post seems quite
+</I>&gt;<i> vague... Sorry for the double post.
+</I>&gt;<i> 
+</I>&gt;<i> I am familiar with peeweelinux and the stock XFree86 that is supplied 'Out
+</I>&gt;<i> of the Box'. I have had these working with previous versions of hardware.
+</I>&gt;<i> Now I am using new embedded hardware (the vortex-6047 www.vortex86.com)
+</I>&gt;<i> which uses a SiS550 chip and need to upgrade XFree86 to get the drivers
+</I>&gt;<i> working.
+</I>&gt;<i> 
+</I>&gt;<i> Specifically I am not sure about the best way to install the Xfree86
+</I>&gt;<i> glibc2.1 precompiled binaries that I have with the peeweelinux setup? Should
+</I>&gt;<i> I use a method similar to creating a custom_kernel package? If so are there
+</I>&gt;<i> any issues disabling the supplied XFree86?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks, again
+</I>&gt;<i> 
+</I>&gt;<i> Ashley Rolleston
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Hi all,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Does anyone have experience with upgrading the XFree86 package that comes
+</I>&gt;&gt;<i>with peewee? I would like to upgrade it to 4.3.0. I have already upgraded
+</I>&gt;<i> 
+</I>&gt;<i> my
+</I>&gt;<i> 
+</I>&gt;&gt;<i>kernel to 2.4.18. What are the main steps towards accomplishing the
+</I>&gt;<i> 
+</I>&gt;<i> XFree86
+</I>&gt;<i> 
+</I>&gt;&gt;<i>upgrade?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Any help would be appreciated, I have searched through the archives, but I
+</I>&gt;&gt;<i>cannot find much of relevance.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Thanks,
+</I>&gt;&gt;<i>Ashley Rolleston
+</I>&gt;&gt;<i>Software Engineer
+</I>&gt;&gt;<i>ashley AT smartsw DOT co DOT uk
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | <A HREF="http://www.fluid.com">http://www.fluid.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001251.html">[Peeweelinux] Upgrading XFree86 in peewee
+</A></li>
+	<LI> Next message: <A HREF="001253.html">[Peeweelinux] ulimit: not found - error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1252">[ date ]</a>
+              <a href="thread.html#1252">[ thread ]</a>
+              <a href="subject.html#1252">[ subject ]</a>
+              <a href="author.html#1252">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> pwlinux and busybox
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000045.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>pwlinux and busybox
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="pwlinux and busybox">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Sun, 23 Jul 2000 12:44:56 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000045.html">BusyBox for peeweelinux
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Which version of pwl are you using? PeeWeeLinux is currently at version 
+0.46. Unfortunately, because of problems with a router at my server site,
+I haven't been able to upload a new version of PeeWeeLinux to sourceforge
+or metalab. The latest version does not yet have busybox or tinylogin
+included.
+
+You're correct, the syntax between the busybox mount command and the
+generic Linux mount command differ. Some of the command line switches are
+not supported. This is noticeable when booting using the default supplied
+rc.sysinit script and on shutdown or reboot.
+
+I will be creating packages for busybox and tinylogin soon. Those
+packages will include modified system scripts that work properly.
+
+Another aspect of rc.sysinit is that it runs ldconfig. On a system that
+has to be small it is advisable to not include ldconfig since it simply
+wastes space. ldconfig can be run with a chroot like switch that processes
+the libs and generates an ld.so.cache in the temporary mount location of
+your build system....
+
+TTYL,
+Adi
+
+
+
+
+On Sun, 23 Jul 2000, Ronald Jeninga wrote:
+
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> I just managed to finish an installation of your marvellous pwl :-)
+</I>&gt;<i> I did have some problems though, especialliy with the rc.sysinit script in
+</I>&gt;<i> combination with busybox.
+</I>&gt;<i> The main problem was, that the busybox did not understand
+</I>&gt;<i> 
+</I>&gt;<i>   mount -n -o remount,rw /
+</I>&gt;<i> 
+</I>&gt;<i> because of the device name missing.
+</I>&gt;<i> I did solve the problem by enhancing busybox. It's only a hack now, I'll have to
+</I>&gt;<i> clean it up a bit.
+</I>&gt;<i> If you are interested just drop me an email.
+</I>&gt;<i> 
+</I>&gt;<i> Thanks for the fine work!
+</I>&gt;<i> 
+</I>&gt;<i> Ronald Jeninga
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="mailto:rj@topit.de">rj@topit.de</A>
+</I>&gt;<i> 
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000045.html">BusyBox for peeweelinux
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#46">[ date ]</a>
+              <a href="thread.html#46">[ thread ]</a>
+              <a href="subject.html#46">[ subject ]</a>
+              <a href="author.html#46">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] how about read-write root on a single partition
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000383.html">
+   <LINK REL="Next"  HREF="000384.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] how about read-write root on a single partition
+   </H1>
+    <B>Vladimir Petrov
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] how about read-write root on a single partition">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 5 Nov 2001 09:02:59 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000383.html">[Peeweelinux] how about read-write root on a single partition
+</A></li>
+        <LI> Next message: <A HREF="000384.html">[Peeweelinux] Kernel Compile failure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#395">[ date ]</a>
+              <a href="thread.html#395">[ thread ]</a>
+              <a href="subject.html#395">[ subject ]</a>
+              <a href="author.html#395">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hm... for me it seems your kernel has no module for ide-disk so it can't
+find any root partition. The one solution is to create initial ramdisk with
+ide-disk kernel module. On Linuxes like RH 7 you can make it after kernel
+compiling with command mkinitrd /boot/initrd-2.2.19.img 2.2.19 and add
+statement in lilo.conf under stanza for kernel image. That should be
+something like initrd=/boot/initrd-2.2.19.img. The other option is to create
+monolithic kernel with all neccessary drivers compiled in...
+
+
+
+-----Original Message-----
+From: helen [mailto:<A HREF="mailto:lostsun2001@yahoo.com.cn">lostsun2001@yahoo.com.cn</A>]
+Sent: 2. november 2001 06:21
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: [Peeweelinux] how about read-write root on a single partition
+
+
+hello,
+   I select the
+&quot;Target: Read-write root on a single partition-----&quot;
+on the option of Configure Tartet Hardware.but,I
+reboot it ,is died when display:
+
+Partition check:
+request_module[ide-disk]:root fs not mounted
+hda:driver not present
+vfs:cannot open root device 03:01
+kernel panic:VFS:Unable to mount root fs on 03:01
+
+can someone tell me how to solve this problem??
+thanks.
+
+_________________________________________________________
+Do You Yahoo!? 登录免费雅虎电邮! <A HREF="http://mail.yahoo.com.cn">http://mail.yahoo.com.cn</A>
+
+&lt;font color=#6666FF&gt;无聊？郁闷？高兴？没理由？都来聊天吧！&lt;/font&gt;—— 
+雅虎全新聊天室! <A HREF="http://cn.chat.yahoo.com/c/roomlist.html">http://cn.chat.yahoo.com/c/roomlist.html</A>
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000383.html">[Peeweelinux] how about read-write root on a single partition
+</A></li>
+	<LI> Next message: <A HREF="000384.html">[Peeweelinux] Kernel Compile failure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#395">[ date ]</a>
+              <a href="thread.html#395">[ thread ]</a>
+              <a href="subject.html#395">[ subject ]</a>
+              <a href="author.html#395">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

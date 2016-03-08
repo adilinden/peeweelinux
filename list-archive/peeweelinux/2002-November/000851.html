@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Newbie question: vmlinux or zImage instead of bzImage?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000852.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Newbie question: vmlinux or zImage instead of bzImage?
+   </H1>
+    <B>C Nagappa
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Newbie question: vmlinux or zImage instead of bzImage?">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 28 Nov 2002 14:29:51 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000852.html">[Peeweelinux] General Information for Project
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#851">[ date ]</a>
+              <a href="thread.html#851">[ thread ]</a>
+              <a href="subject.html#851">[ subject ]</a>
+              <a href="author.html#851">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a multi-part message in MIME format.
+
+--Boundary_(ID_W9agGyBezoStpAMTk6Yu2Q)
+Content-type: text/plain; charset=iso-8859-1
+Content-transfer-encoding: 7BIT
+
+OK, I got it to work.  Here's how:
+
+1. I ran ./pwlconfig to create and extract a linux filesystem onto a CF card on my SanDisk SDDR-75 CF reader (I chose the target configuration option which extracts the whole file system)
+2. Then I took the config file from peeweelinux &quot;kernelbuild/usr/src/linux/config&quot; directory which I copied to /usr/src/linux-2.4  on my Desktop (I am using RH7.3) 
+3. I then ran make xconfig, loaded the config file from step 2, added spcefic changes for my processor (NS Geode 233MHz, which uses the x586 processor type)
+4. Then ran make clean, make dep and make bzImage
+5. I then copied the created &quot;vmlinux&quot; file onto the CF card. Also copiled /lib/modules/2.4.18.x directory to the CF card (/mnt/flash/lib/modules/2.4.18.x)
+6. Then configured the built-in boot loader via the BIOS on my Netvista Thin Client to use the vmlinux file (the boot loader is built into the flash of this machine and lilo will not work)
+7. Installed the CF card into the CF slot of the Thin Client, and voila - it worked! (I had to make minor changes to /etc/inittab.)
+
+(Note: I had problems when I tried to buid the kernel from the peeweelinux/kernelbuild/usr/src/linux directory. It compiled, but complained at the end and did not create the kernel images. This is why I decided to build the kernel under the RH7.3 Desktop /usr/src/linux-2.4 directory)
+
+Surprisingly, the kernel 2.4.18.x seems to run OK (so far) with the 2.2.x peeweelinux-created filesystem on the CF card. 
+
+Cheers,
+C Nagappa
+
+
+&gt;<i>Hi all,
+</I>&gt;<i>Is there an easy way to get an uncompressed kernel output (vmlinux or zImage) 
+</I>&gt;<i>instead of bzImage from pwlconfig?
+</I>&gt;<i>
+</I>&gt;<i>I am running an IBM Netvista 2200 Thin Client which runs a Geode processor. 
+</I>&gt;<i>Apparently, it cannot boot from bzImage.
+</I>&gt;<i>
+</I>&gt;<i>Thanks,
+</I>&gt;<i>C Nagappa
+</I>
+
+--Boundary_(ID_W9agGyBezoStpAMTk6Yu2Q)
+Content-type: text/html; charset=iso-8859-1
+Content-transfer-encoding: 7BIT
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;
+&lt;META http-equiv=Content-Type content=&quot;text/html; charset=iso-8859-1&quot;&gt;
+&lt;META content=&quot;MSHTML 6.00.2600.0&quot; name=GENERATOR&gt;
+&lt;STYLE&gt;&lt;/STYLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgColor=#ffffff&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;OK, I got it to work.&amp;nbsp; Here's how:&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;&lt;/FONT&gt;&amp;nbsp;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;1. I ran ./pwlconfig to create and extract a linux 
+filesystem onto a CF card on my SanDisk SDDR-75 CF reader (I chose the target 
+configuration option which extracts the whole file system)&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;2. Then &lt;/FONT&gt;&lt;FONT face=Arial&gt;I&amp;nbsp;took the config 
+file from peeweelinux &quot;kernelbuild/usr/src/linux/config&quot; directory which I 
+copied to /usr/src/linux-2.4&amp;nbsp; on my Desktop (I am using RH7.3) 
+&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;3. I then ran make xconfig, loaded the config file from 
+step 2, added spcefic changes for my processor (NS Geode 233MHz, which uses the 
+x586 processor type)&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;4. Then ran make clean, make dep and make 
+bzImage&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;5. I then copied the created &quot;vmlinux&quot; file onto the CF 
+card. Also copiled /lib/modules/2.4.18.x directory to the CF card 
+(/mnt/flash/lib/modules/2.4.18.x)&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;6. Then configured the built-in boot loader via the BIOS 
+on my Netvista Thin Client&amp;nbsp;to use the vmlinux file (the boot loader is 
+built into the flash of this machine and lilo will not work)&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;7. Installed the CF card into the CF slot of the Thin 
+Client, and voila - it worked! (I had to make minor changes to 
+/etc/inittab.)&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;&lt;/FONT&gt;&amp;nbsp;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;(Note: I had problems when I tried to buid the kernel from 
+the peeweelinux/kernelbuild/usr/src/linux directory. It compiled, but complained 
+at the end and did not create the kernel images. This is why&amp;nbsp;I decided 
+to&amp;nbsp;build the kernel&amp;nbsp;under the RH7.3 Desktop /usr/src/linux-2.4 
+directory)&lt;/FONT&gt;&lt;/DIV&gt;&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;&lt;/FONT&gt;&amp;nbsp;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;Surprisingly, the kernel 2.4.18.x seems to run OK (so far) 
+with the&amp;nbsp;2.2.x&amp;nbsp;peeweelinux-created filesystem on the CF card. 
+&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;&lt;/FONT&gt;&amp;nbsp;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;Cheers,&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;C Nagappa&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;&lt;/FONT&gt;&amp;nbsp;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;&lt;/FONT&gt;&amp;nbsp;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=Arial&gt;&amp;gt;Hi all,&lt;BR&gt;&amp;gt;I&lt;/FONT&gt;&lt;FONT face=Arial&gt;s there an 
+easy way to get an uncompressed kernel output (vmlinux or zImage) 
+&lt;BR&gt;&amp;gt;instead of bzImage from pwlconfig?&lt;BR&gt;&lt;FONT 
+size=2&gt;&amp;gt;&lt;/FONT&gt;&lt;BR&gt;&lt;/FONT&gt;&lt;FONT face=Arial&gt;&amp;gt;I am running an IBM Netvista 
+2200 Thin Client which runs a Geode processor. &lt;BR&gt;&lt;/FONT&gt;&lt;FONT 
+face=Arial&gt;&amp;gt;Apparently, it cannot boot from bzImage.&lt;BR&gt;&lt;FONT 
+size=2&gt;&amp;gt;&lt;/FONT&gt;&lt;BR&gt;&lt;/FONT&gt;&lt;FONT face=Arial&gt;&amp;gt;Thanks,&lt;BR&gt;&amp;gt;C 
+Nagappa&lt;BR&gt;&lt;/DIV&gt;&lt;/FONT&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+
+--Boundary_(ID_W9agGyBezoStpAMTk6Yu2Q)--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000852.html">[Peeweelinux] General Information for Project
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#851">[ date ]</a>
+              <a href="thread.html#851">[ thread ]</a>
+              <a href="subject.html#851">[ subject ]</a>
+              <a href="author.html#851">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

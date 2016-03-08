@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: Peewee on Rocky 328E
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000500.html">
+   <LINK REL="Next"  HREF="000502.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Peewee on Rocky 328E
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Peewee on Rocky 328E">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 5 Mar 2002 09:00:46 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000500.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+        <LI> Next message: <A HREF="000502.html">[Peeweelinux] PeeWee for Aranym VM
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#501">[ date ]</a>
+              <a href="thread.html#501">[ thread ]</a>
+              <a href="subject.html#501">[ subject ]</a>
+              <a href="author.html#501">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 5 March 2002, Guillaume PREVOST wrote:
+
+&gt;<i> Great ! Peewee ask me for a loggin and a password. But I do not know
+</I>&gt;<i> what to enter :-( Thus, I can not log on... (What is the default logon and pwd)
+</I>
+root, redhat
+
+&gt;<i> Ramdisk compressed image found at block 0
+</I>&gt;<i> VFS mounted root (ext2 filesystem)
+</I>&gt;<i> Copying system file from /dev/hda2 to /dev/ram2 ...
+</I>&gt;<i>
+</I>&gt;<i> And then starts the nightmare : an endless loop of :
+</I>&gt;<i>
+</I>&gt;<i> VM : do_try_to_free_pages failed for linuxrc
+</I>&gt;<i>
+</I>&gt;<i> that flows up with sometimes a different line :
+</I>&gt;<i>
+</I>&gt;<i> VM : do_try_to_free_pages failed for kswapd
+</I>&gt;<i>
+</I>&gt;<i> What is the problem with my embedded PC ? A lack of RAM ?
+</I>&gt;<i>
+</I>&gt;<i> Is there any parameter to change in pwlconfig ? Maybe &quot;Free space on ramdisk :
+</I>&gt;<i> 2000&quot;. Do I have to try with less than 2000 ? Anybody have any idea ?
+</I>&gt;<i>
+</I>
+With only 3712 kB, you're definitely not going to want a ramdisk with 2000 kB free.  Try
+changing it to 500 kB.
+
+If that doesn't work you may want to try changing your target to &quot;Read-write root on a
+single partition&quot;.  This option will not use any ramdisks -- your root filesystem will be
+on the hard drive, rather than in RAM.
+
+Regards,
+
+Mark
+
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000500.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+	<LI> Next message: <A HREF="000502.html">[Peeweelinux] PeeWee for Aranym VM
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#501">[ date ]</a>
+              <a href="thread.html#501">[ thread ]</a>
+              <a href="subject.html#501">[ subject ]</a>
+              <a href="author.html#501">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

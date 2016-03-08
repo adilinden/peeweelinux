@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Greetings--may I be of service?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000058.html">
+   <LINK REL="Next"  HREF="000060.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Greetings--may I be of service?
+   </H1>
+    <B>Dennis W. Tokarski
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Greetings--may I be of service?">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 08 Mar 2000 15:06:24 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000058.html">PeeWeeLinux Ideas
+</A></li>
+        <LI> Next message: <A HREF="000060.html">Greetings--may I be of service?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Adi, Hi Ralph.
+
+My name is Dennis Tokarski. I run a little one-man consulting shop in
+Ann Arbor, Michigan, USA. Mostly my work is software development for
+real time and embedded systems, much of that driver writing, and almost
+all of it for QNX (at least for the past 6 years or so).
+
+However, I am finding Linux a compelling alternative for some
+applications. The learning curve has been a bit steep, and have found
+Beck &amp; Co's book &quot;Linux Kernel Internals&quot; very helpful. I am now
+part way through Rubini's very excellent &quot;Linux Device Drivers&quot;.
+
+Recently a client approached me about putting together a small footprint
+Linux package for use in their embedded product. The hardware isn't
+really constrained (Pentium/133 at least, 64MB RAM, all the usual PC
+desktop facilities like SVGA, etc), but they do have a peculiar
+requirement in they aren't allowed to use a hard drive, or any kind
+of alterable media for program storage.
+
+In a previous incarnation of this project, we've booted QNX4 from ROM,
+with all the ancillary applications loaded from a ROM disk. I'd like to
+work my way toward a similar capability using Linux.
+
+PeeWeeLinux seems to be the best starting point. I've spent a couple of
+days looking for small-footprint distributions. There are lots out
+there, but as Ralph noted in a January 26 post about YASL, some have
+just sort of faded away. I didn't find anyone else using the 2.2 kernel,
+it's all 2.0 as far as I could tell. Nor does anyone appear to have
+their project as cleanly organized as yours, or set up to use as current
+a development platform as current as RH 6.1, which is what I'm running
+in my office. By the way, while I've downloaded your latest (0.20) I've
+not taken it for a test drive. I expect to have that pleasure later
+today or tomorrow.
+
+The one common thread amongst all the small Linices seems to be that
+they boot from floppy, or more rarely as in your case, Disk On Chip.
+I've used the DOC parts before with QNX. They're OK, but in my current
+project the fact that they behave like writeable disks is a problem.
+
+Adi, I think you mentioned in a readme file somewhere something about
+writing an open source file system driver. Have you done anything with
+that idea yet?
+
+If not, perhaps this is where I can make a contribution in the near
+future. I was thinking of using the existing dos/fat file system as a
+starting point, then seeing what I could carve out and otherwise modify
+to suit my customer's requirements. The result would have to be
+suitable for use with a disk image on ROM (hopefully using compression
+to save space), and could probably be used with battery backed SRAM
+(which we also have on our hardware).
+
+The other thing I'm looking to do is solve the boot-from-ROM problem.
+Nobody has done this so far as I can tell. My current thought is to
+locate a modified version of lilo in one of our user bios ROMs. It would
+have hard-wired knowledge of a ROM address where it would find an
+essentially conventional Linux boot image which it would relocate to low
+RAM and start up. After that it would be business as usual. This is
+basically what we did with QNX, so the idea is at least workable.
+Ultimately what we'd like to achieve is an execute-from-ROM ability, but
+I'm most definitely not knowledgeable enough about Lines yet to tackle
+that one.
+
+So, do think these sorts of things would be useful additions to your
+project? Of course, any advice and moral support you can provide while I
+do the dog work will be greatly appreciated.
+
+You've put together a nice package. I look forward to using it and
+giving something back.
+
+   Regards,
+
+   Dennis Tokarski
+   PolTec Electronics
+   921 S. Seventh St.
+   Ann Arbor, MI  48103
+   (734) 994-0212
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000058.html">PeeWeeLinux Ideas
+</A></li>
+	<LI> Next message: <A HREF="000060.html">Greetings--may I be of service?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#59">[ date ]</a>
+              <a href="thread.html#59">[ thread ]</a>
+              <a href="subject.html#59">[ subject ]</a>
+              <a href="author.html#59">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

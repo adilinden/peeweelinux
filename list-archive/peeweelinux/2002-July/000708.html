@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Filesystem Issues
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000704.html">
+   <LINK REL="Next"  HREF="000714.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Filesystem Issues
+   </H1>
+    <B>Ed Anuff
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Filesystem Issues">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 24 Jul 2002 10:59:49 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000704.html">[Peeweelinux] Filesystem Issues
+</A></li>
+        <LI> Next message: <A HREF="000714.html">[Peeweelinux] Filesystem Issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#708">[ date ]</a>
+              <a href="thread.html#708">[ thread ]</a>
+              <a href="subject.html#708">[ subject ]</a>
+              <a href="author.html#708">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I sounds like a lot of people are using Advantech systems with this.  I've
+been using the Advantech PCM-5822.  In regards to the issue of Advantech
+supporting Linux, although their website has minimal info regarding Linux, I
+was quite surprised to find that the CD-ROM that comes with product has a
+lot of Linux info including both the binary and source for the elusive
+official &quot;Durango&quot; XFree86 driver written by National Semi which is
+virtually impossible to find online.  I've had the 5822 for about a month
+now and could have saved quite a bit of time for myself if I'd actually
+looked on the Advantech CD-ROM first, but I'm used to vendor-supplied
+drivers being useless.  Note that this is a an Xfree86 3.x driver - Xfree86
+4.x users should probably stick to the standard VESA driver for best
+results.
+
+Ed
+
+----- Original Message -----
+From: &quot;Stefan Willmert&quot; &lt;<A HREF="mailto:stefanw@ns.intellanet.com">stefanw@ns.intellanet.com</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Sent: Tuesday, July 23, 2002 6:00 PM
+Subject: Re: [Peeweelinux] Filesystem Issues
+
+
+&gt;<i> Thanks everyone for your wonderful input. I've been digging into PWL and
+</I>learning
+&gt;<i> how things work. I've already managed to configure my embedded system,
+</I>loaded my
+&gt;<i> custom application, and it runs! YEAH!!!!!! (minus a few configuration
+</I>issues)
+&gt;<i>
+</I>&gt;<i> With that, and all your suggestions, I'll have this thing flying in no
+</I>time. In case
+&gt;<i> anyone cares, for those doing research, I'm using an Advantech PCM-5820
+</I>Biscuit
+&gt;<i> board with a CompactFlash disk. Advantech doesn't support linux, but the
+</I>hardware is
+&gt;<i> generic, and so far everything is working great.
+</I>&gt;<i>
+</I>&gt;<i> On a side note...before discovering PWL, I attempted to create my own
+</I>distribution.
+&gt;<i> While possible...all i can really say about the experience is
+</I>AAARRRRGGGHHHHH!!! A
+&gt;<i> few more months and I may have had it. PWL saved me tons of time.
+</I>&gt;<i>
+</I>&gt;<i> A Big Thanks to the creators of PWL!!!!
+</I>&gt;<i>
+</I>&gt;<i> Thanks again for all your help.
+</I>&gt;<i>
+</I>&gt;<i> -stefan
+</I>&gt;<i>
+</I>&gt;<i> ---- Original Message ----
+</I>&gt;<i> From: Troy Engel
+</I>&gt;<i> Date: Tue 7/23/02 19:16
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: [Peeweelinux] Filesystem Issues
+</I>&gt;<i>
+</I>&gt;<i> Stefan Willmert wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Now, for my questions:
+</I>&gt;<i> &gt; 1. I would like a read-only root filesystem on one partition, and a
+</I>read-write
+&gt;<i> &gt; 1a. Does anyone have any suggestions on the best way to use a read-write
+</I>&gt;<i> partition?
+</I>&gt;<i>
+</I>&gt;<i> I solved this one by upgrading to kernel 2.4.18 (see my howto in
+</I>&gt;<i> previous list archives), and then using ext3 as the filesystem for the
+</I>&gt;<i> 3rd &quot;leftover&quot; partition as (mounted as /opt on boot).  Here's a small
+</I>&gt;<i> script I use that makes/populates /dev/sda3 after PWL rebuilds the flash
+</I>&gt;<i> card:
+</I>&gt;<i>
+</I>&gt;<i>    #!/bin/sh
+</I>&gt;<i>
+</I>&gt;<i>    echo &quot;Creating filesystem...&quot;
+</I>&gt;<i>    mke2fs -j -b 1024 -m0 /dev/sda3
+</I>&gt;<i>
+</I>&gt;<i>    echo &quot;Populating filesystem...&quot;
+</I>&gt;<i>    mount -t ext3 /dev/sda3 /mnt/usbdev
+</I>&gt;<i>    cp -a /usr/local/pwl/Embedded_Build/opt_tree/* /mnt/usbdev/
+</I>&gt;<i>
+</I>&gt;<i>    echo &quot;Syncing and unmounting...&quot;
+</I>&gt;<i>    sync
+</I>&gt;<i>    umount /mnt/usbdev
+</I>&gt;<i>
+</I>&gt;<i> So, of course, this requires you keep the &quot;master&quot; /opt tree on your
+</I>&gt;<i> build machine.  Couple this ext3 filesystem with a SanDisk industrial
+</I>&gt;<i> grade CF disk, and you're set.  I've had nothing but good luck with ext3
+</I>&gt;<i> recovers.
+</I>&gt;<i>
+</I>&gt;<i> &gt; 2. Is there any documentation on how to use the custom features of
+</I>PeeWeeLinux? I
+&gt;<i>
+</I>&gt;<i> Besides my /opt dealio above, I just make custom .tar files that mimic
+</I>&gt;<i> the PWL shipped ones, and throw them right into the mix.  They then show
+</I>&gt;<i> up nicely in ./pwlconfig and you can just select them.  See the 2.4.18
+</I>&gt;<i> howto, once again, for how I did this. Your mileage may vary. ;)
+</I>&gt;<i>
+</I>&gt;<i> &gt; 3. In the same regard, certain config files need to be updated during
+</I>operation of
+&gt;<i>
+</I>&gt;<i> Make them symlinks to the files loaded on /opt (or just copy them over
+</I>&gt;<i> from /opt on boot) and you're set.  Of course, make sure /opt is mounted
+</I>&gt;<i> before doing anything fun. ;)
+</I>&gt;<i>
+</I>&gt;<i> -te
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Troy Engel, Systems Engineer
+</I>&gt;<i> &quot;That's what the Internet is for, slandering others anonymously.&quot;
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000704.html">[Peeweelinux] Filesystem Issues
+</A></li>
+	<LI> Next message: <A HREF="000714.html">[Peeweelinux] Filesystem Issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#708">[ date ]</a>
+              <a href="thread.html#708">[ thread ]</a>
+              <a href="subject.html#708">[ subject ]</a>
+              <a href="author.html#708">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

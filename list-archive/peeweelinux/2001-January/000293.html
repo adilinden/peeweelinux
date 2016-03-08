@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> PeeWee : Lilo/SysLinux.....Episode II
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000292.html">
+   <LINK REL="Next"  HREF="000294.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>PeeWee : Lilo/SysLinux.....Episode II
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="PeeWee : Lilo/SysLinux.....Episode II">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 12 Jan 2001 09:33:54 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000292.html">PeeWee : Lilo/SysLinux.....Episode II
+</A></li>
+        <LI> Next message: <A HREF="000294.html">PeeWee : Lilo/SysLinux.....Episode II
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#293">[ date ]</a>
+              <a href="thread.html#293">[ thread ]</a>
+              <a href="subject.html#293">[ subject ]</a>
+              <a href="author.html#293">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+If I understand correctly the different firmware versions simply use
+different addresses on the Disk-On-Chip device. So the patched lilo lives
+in a different address space than the original lilo. Making things
+compatible.
+
+I have not used Disk-On-Chip as an attached drive at all. My way of
+loading a Disk-On-Chip system is somewhat of a workarround. I build my
+filesystem and load it onto a CompactFlash card. My board with the
+Disk-On-CHip also has an IDE port. With the CompactFlash plugged into the
+IDE port I can now run fdisk, syslinx manually and copy the files to the
+Disk-On-Chip device.
+
+I am looking at different ways of getting a PeeWeeLinux system onto target
+devices. It could be possible to run an tftp server and use netboot to
+load a target. Or have a floppy (if a drive is availabel on the target) to
+boot and make the target available to PeeWeeLinux. But I haven't been able
+to wrap my head around this just yet. No real idea how to integrate
+something like that into PeeWeeLinux.
+
+TTYL,
+Adi
+
+&gt;<i> Hi !
+</I>&gt;<i> Me again...
+</I>&gt;<i> Thanks Ralph for your tips about lilo.... I've fixed the eroors returned by Lilo.... now Lilo ends well but
+</I>&gt;<i> when I run &quot;load File System Onto Target&quot; the Installing Lilo Boot Loader step......... failed.....:-(
+</I>&gt;<i> 
+</I>&gt;<i> Anyway.... I've excuted Lilo form the command line.... and reboot my embedded card....
+</I>&gt;<i> Displayed :
+</I>&gt;<i> LILO :
+</I>&gt;<i> Loading DOC.......................
+</I>&gt;<i> ...And nothing else....
+</I>&gt;<i> Damned
+</I>&gt;<i> 
+</I>&gt;<i> Any idea....
+</I>&gt;<i> please
+</I>&gt;<i> 
+</I>&gt;<i> Thank's
+</I>&gt;<i> 
+</I>&gt;<i> NT : I haven't understood the difference beetween the different firmware version (for the Disk On Chip)
+</I>&gt;<i> provide by M-System...
+</I>&gt;<i> I must use the default one, the alternative one makes the Disk On Chip invisble from the Bios...so it
+</I>&gt;<i> can't boot....
+</I>&gt;<i> 
+</I>&gt;<i> NT2 : I've tried SysLinux with a FAT16 file System.... Same problem....
+</I>&gt;<i> Displayed :
+</I>&gt;<i> SYSLINUX ver.....
+</I>&gt;<i> And nothing else...
+</I>&gt;<i> 
+</I>&gt;<i> Thank's again
+</I>&gt;<i> Pierre Yves
+</I>&gt;<i> ______________________________________________________
+</I>&gt;<i> Boîte aux lettres - Caramail - <A HREF="http://www.caramail.com">http://www.caramail.com</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000292.html">PeeWee : Lilo/SysLinux.....Episode II
+</A></li>
+	<LI> Next message: <A HREF="000294.html">PeeWee : Lilo/SysLinux.....Episode II
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#293">[ date ]</a>
+              <a href="thread.html#293">[ thread ]</a>
+              <a href="subject.html#293">[ subject ]</a>
+              <a href="author.html#293">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

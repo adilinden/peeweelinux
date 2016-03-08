@@ -1,0 +1,104 @@
+From PeeWeeLinux-devel@adis.on.ca  Thu Jun 21 03:59:19 2001
+From: PeeWeeLinux-devel@adis.on.ca (Dennis W. Tokarski)
+Date: Wed, 20 Jun 2001 22:59:19 -0400
+Subject: cramfs for 2.2 kernel
+Message-ID: <3B316307.A6DA804E@PolTec.COM>
+
+Hi all,
+
+I've been following pwl fairly silently for a while now. The
+project I've been working on for the last year or so took
+a slightly different turn so I wasn't able to use pwl. A shame,
+really, as I had been looking forward to making some contribution
+here.
+
+But, there may be some fallout from my work that the folks here
+find useful. We wound up needing the compressed read-only file
+system that Linus did for 2.4, but we were using 2.2. A fellow
+named Pavel Dudkin was kind enough to share the work he did
+on a backport to 2.2, and I cleaned it up just a bit, mostly
+to support multiple partitions.
+
+Adi, I can supply a patch for 2.2.16 and later kernel source. It
+would probably work on just about any 2.2 release. 
+
+How should I pass along the patch? Would you like it tar/gzipped
+and attached to another email (about 50k), inline (about 190k), or
+some other way?
+
+   Regards,
+
+   Dennis Tokarski
+   PolTec Electronics
+   921 S. Seventh St.
+   Ann Arbor, MI  48103
+   (734) 994-0212
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Thu Jun 21 06:30:06 2001
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Thu, 21 Jun 2001 00:30:06 -0500 (CDT)
+Subject: cramfs for 2.2 kernel
+In-Reply-To: <3B316307.A6DA804E@PolTec.COM>
+Message-ID: <Pine.LNX.4.33.0106210028440.7327-100000@big.adis.on.ca>
+
+Hi,
+
+Thank you for offering this kernel patch. Attached to an email will do
+just fine...
+
+TTYL,
+Adi
+
+
+On Wed, 20 Jun 2001, Dennis W. Tokarski wrote:
+
+> Hi all,
+>
+> I've been following pwl fairly silently for a while now. The
+> project I've been working on for the last year or so took
+> a slightly different turn so I wasn't able to use pwl. A shame,
+> really, as I had been looking forward to making some contribution
+> here.
+>
+> But, there may be some fallout from my work that the folks here
+> find useful. We wound up needing the compressed read-only file
+> system that Linus did for 2.4, but we were using 2.2. A fellow
+> named Pavel Dudkin was kind enough to share the work he did
+> on a backport to 2.2, and I cleaned it up just a bit, mostly
+> to support multiple partitions.
+>
+> Adi, I can supply a patch for 2.2.16 and later kernel source. It
+> would probably work on just about any 2.2 release.
+>
+> How should I pass along the patch? Would you like it tar/gzipped
+> and attached to another email (about 50k), inline (about 190k), or
+> some other way?
+>
+>    Regards,
+>
+>    Dennis Tokarski
+>    PolTec Electronics
+>    921 S. Seventh St.
+>    Ann Arbor, MI  48103
+>    (734) 994-0212
+>
+>
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+>
+
+-- 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

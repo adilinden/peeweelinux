@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] newbie question
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001168.html">
+   <LINK REL="Next"  HREF="001170.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] newbie question
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] newbie question">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 15 Aug 2003 18:05:20 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001168.html">[Peeweelinux] newbie question
+</A></li>
+        <LI> Next message: <A HREF="001170.html">[Peeweelinux] PeeweeLinux + Xwindows booting from Compact Flash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1169">[ date ]</a>
+              <a href="thread.html#1169">[ thread ]</a>
+              <a href="subject.html#1169">[ subject ]</a>
+              <a href="author.html#1169">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>Does my development machine have to be 6.2?  
+</I>
+The short answer is &quot;yes&quot;.  A slightly longer answer is, &quot;no, if
+you do not need to modify anything&quot;.
+
+&gt;<i>Any conflicts in going with a newer version of Linux (8.0 
+</I>&gt;<i>in particular).  The USB support under 6.2 is a real PITA.
+</I>
+Well, here's the long story.  Assuming you don't run afoul
+of rpm (I've seen messages to this effect), you can set up
+and use a PeeWee system on a newer distro.  My own dev
+environment is run under RH 7.3
+
+Everything is fine until you want to add your own programs
+or build a new kernel.  You clearly want USB so you are
+going to need a version 2.4 kernel.   We do have a sort
+of HowTo in the archives for doing that.  As usual, you
+have to use the older version of gcc to build it.  Then
+you maneuver the resulting kernel into the right place
+so PWL will build it into your system.
+
+That's reasonably cool because the kernel is in effect a
+statically linked program.
+
+But I bet you will need some other utilities to use with
+the USB.  When you compile new programs, you have these
+choices:
+ - Statically link everthing so it doesn't care what
+   version libraries are present on the target. 
+ - Build them dynamic and arrange to also install the
+   necessary libraries along with the programs.  And
+   hope the two lib versions don't get confused.
+ - Get a RH6.2 system, build them there, then bring
+   the results over to your normal development system
+   and turn PWL loose on them.
+
+I did that last one in order to build the latest PHP engine.
+
+My experience is that you can start by building targets, and
+&quot;grow into&quot; the more involved stuff as you go along and need
+to do more special things.
+
+Hope this provides some elightenment.
+
+Barry
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001168.html">[Peeweelinux] newbie question
+</A></li>
+	<LI> Next message: <A HREF="001170.html">[Peeweelinux] PeeweeLinux + Xwindows booting from Compact Flash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1169">[ date ]</a>
+              <a href="thread.html#1169">[ thread ]</a>
+              <a href="subject.html#1169">[ subject ]</a>
+              <a href="author.html#1169">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

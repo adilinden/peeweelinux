@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] system initialization
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000759.html">
+   <LINK REL="Next"  HREF="000756.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] system initialization
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] system initialization">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 22 Aug 2002 11:23:26 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000759.html">[Peeweelinux] system initialization
+</A></li>
+        <LI> Next message: <A HREF="000756.html">[Peeweelinux] system initialization
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#755">[ date ]</a>
+              <a href="thread.html#755">[ thread ]</a>
+              <a href="subject.html#755">[ subject ]</a>
+              <a href="author.html#755">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>There is no automatic way to run depmod since the intend was to run insmod 
+</I>&gt;<i>instead. So you would create an /etc/rc.modules containing something like:
+</I>&gt;<i>
+</I>&gt;<i>  insmod ne2k-pci
+</I>
+That's what I did.  You might think it's bad that something's
+lacking in the system but it's exactly what I wanted to hear.  That
+way I can stop looking for it and get on with configuring it myself!
+
+
+&gt;<i>I usually use insmod and have it load the required modules in the 
+</I>&gt;<i>proper sequence. This eliminates the need for depmod and /etc/modules.conf 
+</I>&gt;<i>amongst things.
+</I>
+I think you meant &quot;modules.dep&quot; ; or do you put your insmod 
+in something other than /etc/rc.modules as you described above?
+
+&gt;<i>  DEVICE=eth0
+</I>&gt;<i>  IPADDR=192.168.1.1
+</I>&gt;<i>  NETMASK=255.255.255.0
+</I>
+Yes, I intended to explain that I had figured all this out by
+way of reading the network script and such.  Also a lot of 
+RedHat experience.
+
+Thanks for the the help.
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000759.html">[Peeweelinux] system initialization
+</A></li>
+	<LI> Next message: <A HREF="000756.html">[Peeweelinux] system initialization
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#755">[ date ]</a>
+              <a href="thread.html#755">[ thread ]</a>
+              <a href="subject.html#755">[ subject ]</a>
+              <a href="author.html#755">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

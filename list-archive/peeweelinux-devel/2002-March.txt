@@ -1,0 +1,228 @@
+From peeweelinux-devel@adis.on.ca  Mon Mar 11 23:16:52 2002
+From: peeweelinux-devel@adis.on.ca (Adi Linden)
+Date: Mon, 11 Mar 2002 17:16:52 -0600 (CST)
+Subject: [Peeweelinux-devel] Re: DOC Docs
+In-Reply-To: <001101c1c6b3$aa0f7570$0101a8c0@dellc800>
+Message-ID: <Pine.LNX.4.33.0203111636280.2704-100000@adibox.knet.ca>
+
+Hi Mark,
+
+I am documenting all the steps I take to create the development 
+environment. This means it will be possible to actually PeeWeeLinux from 
+scratch using a bunch of scripts. This would include downloading the 
+sources from the original sites (I.e. gcc from gnu.org).
+
+I am thinking about a directory structure similar to what's below. This 
+might seem awkward at first, but it will allow for chroot to /peeweelinux 
+and building of packages within the chrooted environment. Now it won't 
+mater any longer what underling Linux distribution is used for 
+PeeWeeLinux.
+
+When RPMS are build, a <packagename>-devel rpm would be build for the sole 
+purpose of installing in the chrooted environment. This will make it easy 
+to link against just the libs that are part of PeeWeeLinux.
+
+Any thoughts on this? 
+
+/peeweelinux
+  |
+  +---- /tools
+  |       |
+  |       +---- /pwlconfig -  directory containing the pwlconfig scripts
+  |       |
+  |       +---- /backups   -  directory to store project backups
+  |       | 
+  |       +---- /examples  -  directory to store provided example projects
+  |       |
+  |       +---- /docs      -  directory for PeeWeeLinux documentation
+  |       |
+  |       +---- /specs     -  spec files for PeeWeeLinux RPMS
+  |       |
+  |       +---- /scratch   -  directory containing scripts
+  |       |                   to build environment from scratch and
+  |       |                   patches necessary for static build tools
+  |       |
+  |       +---- /lxdialog  -  the lxdialog sources
+  |
+  +---- /bin
+  |
+  +---- /dev
+  |
+  +---- /home
+  |
+  +---- /lib
+  |
+  +---- /usr
+  |       |
+  |       +---- /src
+  |       |       |
+  |       |       +---- /peeweelinux
+  |       |       |       |
+  |       |       |       +---- SPECS (symlink to ../../../../tools/specs)
+  |       |       |       |
+  |       |       |       +----> BUILD, SOURCES, RPMS, SRPMS ...
+  |       |       |
+  |       |       +---- /scratch  - directory for non-rpm sources for
+  |       |                         building static tools
+  |       |
+  |       +----> /bin, /sbin, /share, etc ...
+  |
+  +---- /etc, /mnt, /sbin, /tmp, etc ...
+
+Regards,
+Adi
+
+
+> I kind of like the way the Linux Router Project guys do things like this.  They have
+> something called a "LRP" package, and it's fairly easy for a novice user to grab
+> additional LRP packages, and integrate them into their project.  For the power users,
+> there's good documentation on how to build LRP packages from scratch, and contribute them.
+>
+> It seems like they have "core" distributions, containing the basic required packages, and
+> then the user can expand on the basic system by using as many LRP packages as space
+> permits.  Each of these additional LRP packages aren't necessarily part of the core
+> distribution; users simply download individual packages as needed.  I don't know if these
+> LRP concepts are relevant to Peewee, but I thought I'd pass it along.
+> 
+> Regardless of the implementation, coming up with an easy way for people to contribute
+> additional packages is a great idea!  You've really got a great thing going here, and I'm
+> among the many people who want to help make it better.  Whatever you come up with, I'd be
+> glad to help develop, test, and document it.
+> 
+> We probably should take this discussion to the list.  I've already seen a number of really
+> good suggestions and ideas out there.
+> 
+> Regards,
+> 
+> Mark
+> 
+> P.S.  I've (temporarily) posted my DiskOnChip/Peewee instructions to my website.  I've
+> been corresponding with a board vendor (http://www.c2central.com/page514613.htm) that is
+> interesting in using Peewee.
+> 
+> I used their UIB product for one of my clients, and I have another project where I might
+> end up using it again.  Their 8MB DoC comes with preinstalled Redhat 6.2, but was more
+> aimed at a specific application, rather than a "generic" Linux distribution.  I used
+> Peewee to start over from scratch -- worked great!
+> 
+
+
+From peeweelinux-devel@adis.on.ca  Wed Mar 13 16:14:25 2002
+From: peeweelinux-devel@adis.on.ca (Mark Meade)
+Date: Wed, 13 Mar 2002 11:14:25 -0500
+Subject: [Peeweelinux-devel] Re: DOC Docs
+References: <Pine.LNX.4.33.0203111636280.2704-100000@adibox.knet.ca>
+Message-ID: <002501c1caaa$40187400$0101a8c0@dellc800>
+
+Adi Linden wrote:
+
+> I am thinking about a directory structure similar to what's below. This
+> might seem awkward at first, but it will allow for chroot to /peeweelinux
+> and building of packages within the chrooted environment. Now it won't
+> mater any longer what underling Linux distribution is used for
+> PeeWeeLinux.
+
+Being able to rebuild Peewee from scratch would be great.  I assume that this would allow
+the user to easily rebuild with any version of gcc, glibc, etc.  Would this scheme greatly
+increase the size of the Peewee distribution -- and would the "binary" only version still
+be available?
+
+> When RPMS are build, a <packagename>-devel rpm would be build for the sole
+> purpose of installing in the chrooted environment. This will make it easy
+> to link against just the libs that are part of PeeWeeLinux.
+
+What would be the process of adding new packages to the pwlconfig menus?  Is this
+something that could be automated, or would any new packages added end up as "custom"
+files?
+
+Also, the ability for people to easily contribute Peewee packages would be nice.  I
+envision the Peewee website having an area for user contributed packages, and other users
+could simply download a given package (binary only, or complete source), and add it to
+their already installed base.  Again, this is similar to LRP packages; for an example, see
+http://lrp.steinkuehler.net/Packages.htm.
+
+Regards,
+
+Mark
+
+
+
+
+From peeweelinux-devel@adis.on.ca  Wed Mar 13 16:41:22 2002
+From: peeweelinux-devel@adis.on.ca (Adi Linden)
+Date: Wed, 13 Mar 2002 10:41:22 -0600 (CST)
+Subject: [Peeweelinux-devel] Re: DOC Docs
+In-Reply-To: <002501c1caaa$40187400$0101a8c0@dellc800>
+Message-ID: <Pine.LNX.4.33.0203131020270.23981-100000@adibox.knet.ca>
+
+On Wed, 13 Mar 2002, Mark Meade wrote:
+
+> Adi Linden wrote:
+> 
+> > I am thinking about a directory structure similar to what's below. This
+> > might seem awkward at first, but it will allow for chroot to /peeweelinux
+> > and building of packages within the chrooted environment. Now it won't
+> > mater any longer what underling Linux distribution is used for
+> > PeeWeeLinux.
+> 
+> Being able to rebuild Peewee from scratch would be great.  I assume that this would allow
+> the user to easily rebuild with any version of gcc, glibc, etc.  Would this scheme greatly
+> increase the size of the Peewee distribution -- and would the "binary" only version still
+> be available?
+
+Yes, the binary distribution would still be available. I think my 
+packaging of choice would be an iso image or tar.gz archive containing the 
+scripts and binary rpms. However, it should also be possible to download 
+the build scripts only, from cvs or as an archive. Then it would be 
+possible to download the individual binary (or source) rpms only as 
+needed. Changing any of the libs other packages rely on (like glibc) would 
+certainly require all rpms to be rebuild from the source rpms.
+
+To create the build environment, additional binary rpms will be required 
+to install on the host system for building PeeWeeLinux packages. I am not 
+sure yet how to do this. I am envisioning that a special rpm is build with 
+every source rpm that has a distinguishable name, such as <package>-devel. 
+The sole purpose of this rpm would be to create the environment to build 
+rpms. 
+
+For someone wanting to create the current development environment to build 
+a rpm to be contributerd, all the rpms would have to be installed under 
+the /peeweelinux directory. To actually create a rpm from a srpm, one 
+would have to chroot to the /peeweelinux directory.
+
+If a major portion of PeeWeeLinux is changed, such as glibc, all binary 
+rpms will have to be rebuild. Because of dependencies, this would have to 
+be done in a well defined order.  
+
+> > When RPMS are build, a <packagename>-devel rpm would be build for the sole
+> > purpose of installing in the chrooted environment. This will make it easy
+> > to link against just the libs that are part of PeeWeeLinux.
+> 
+> What would be the process of adding new packages to the pwlconfig menus?  Is this
+> something that could be automated, or would any new packages added end up as "custom"
+> files?
+
+pwlconfig actually processes all the packages in the RPMS directory. It 
+uses the tags in the rpm file to categorize the content. If a custom rpm 
+is contributed it is as simple as dropping the rpm into the RPMS directory 
+and then using pwlconfig to convert rpms to tar files.
+
+> Also, the ability for people to easily contribute Peewee packages would be nice.  I
+> envision the Peewee website having an area for user contributed packages, and other users
+> could simply download a given package (binary only, or complete source), and add it to
+> their already installed base.  Again, this is similar to LRP packages; for an example, see
+> http://lrp.steinkuehler.net/Packages.htm.
+
+Yes, this is easily possible. In fact, this can be done now. I think the 
+big stumbling block now is that there is no documentation on how to create 
+a rpm to contribute to PeeWeeLinux. Also, without having a dedicated build 
+environment, it is difficult to ensure proper dependencies. 
+
+I am also looking to keep the PeeWeeLinux scripts seperated from the 
+packages. This should make it possible to start using CVS to maintain the 
+pwlconfig files and other scripts and sources.
+
+Regards,
+Adi
+
+

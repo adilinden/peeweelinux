@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Out of space, the 2003 remake
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001147.html">
+   <LINK REL="Next"  HREF="001149.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Out of space, the 2003 remake
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Out of space, the 2003 remake">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 30 Jul 2003 13:11:28 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001147.html">[Peeweelinux] AutoBoot and X windows
+</A></li>
+        <LI> Next message: <A HREF="001149.html">[Peeweelinux] Watching it run out of space
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1148">[ date ]</a>
+              <a href="thread.html#1148">[ thread ]</a>
+              <a href="subject.html#1148">[ subject ]</a>
+              <a href="author.html#1148">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Trying to copy a 13 MB ramdisk into memory simply runs out of
+room on my 32 MB target.  So I switched the target model to:
+
+   Read-only root fs with multiple ramdisks
+
+This actually looks like a more efficient scheme.  In fact, I
+already had plans to make another disk partition to stick 
+all the static stuff into.  This does it for me.  But 
+there's a problem.  Peewee runs out of space while copying 
+to the initialized flash disk partition.  (This device is
+64 MB so the problem's in the size calculations.)
+
+I spent nearly a week trying to ascertain where the problem
+is.  I didn't know anything about the scripts but I'm somewhat
+familiar with the &quot;target load&quot; scripts now!  I have all the
+calculations traced, but not all the logic.  I also searched
+the archives, and the core of this adventure can be found
+around 12/2000 and 01/2001, there was lots of messing with it
+then.  There have been a few messages since then from other
+people bumping into this.  Mostly, they find a way and move
+on.
+
+Here is my latest take:  The total filesystem size may be
+calculated properly, but since the disk partition size
+resolution is in Megabytes, attempting to add 10K here 
+or 32k there just doesn't affect the final outcome.  
+Furthermore, none of the &quot;reserve space&quot; options have any 
+effect because they are only for the relocated ramdisk 
+portions and not the root fs.  I am not sure
+those calculations are correct either but I haven't worked
+through them all.  The etc and dev sizes are subtracted
+out but they are still contained in that root filesystem.
+Anyway, it doesn't miss by much!
+
+So, for archive purposes, I am passing along a reference 
+on how I made it work for now.  Open the file pwl_target_load,
+locate the function  func_rd_build_ro_root_rd () , then
+find where the MB sizes are calculated.  Find this line:
+
+    rd_size_fs=$((rd_size_fs / 1024 + 1))
+
+That +1 will do it most of the time but if you run out of
+space while copying, make the 1 a 2, or else add this 
+line under it:
+
+    # add one more
+    rd_size_fs=$((rd_size_fs + 1 ))
+
+And now, I, too, move on. :)
+
+Barry
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001147.html">[Peeweelinux] AutoBoot and X windows
+</A></li>
+	<LI> Next message: <A HREF="001149.html">[Peeweelinux] Watching it run out of space
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1148">[ date ]</a>
+              <a href="thread.html#1148">[ thread ]</a>
+              <a href="subject.html#1148">[ subject ]</a>
+              <a href="author.html#1148">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,3857 @@
+From peeweelinux@adis.on.ca  Fri Dec  1 00:26:26 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 30 Nov 2000 18:26:26 -0600 (CST)
+Subject: Kernel configuration files
+In-Reply-To: <3A26DFA0.1E2830A8@amiga.com>
+Message-ID: <Pine.LNX.4.10.10011301812240.1049-100000@big.adis.on.ca>
+
+Hi,
+
+The 2.2.17-basic kernel in 0.53.18 and up has framebuffer support. 
+
+To answer your question: There is a kernel source binary rpm. It contains
+the patched kernel sources. The 'configs' directory contains various
+kernel configurations including the 2.2.17-basic and 2.2.17-full builds.
+
+Be careful when installing the binary rpm as it might do nasty things to
+you kernel sources and header on your development system.
+
+You need to install the rpm in a temporary location similar to these
+steps:
+
+    mkdir tmp_root
+    cd tmp_root
+    rpm -i --root `pwd` --force --noscripts --nodeps --notriggers \
+        --dbpath /.rpm_db  --ignorearch \
+        --ignoreos /path/to/kernel-source-2.2.17-8.i386.rpm
+
+Somewhere in this directory should be the kernel sources; usr/src/linux?
+cd into the top dir of the kernel sources. Now copy the desired config
+file like:
+
+    cp configs/<kernel.config> arch/i386/defconfig
+
+Run make oldconfig to build a valid .config file:
+
+    make oldconfig
+
+Now you can configure the kernel as desired:
+
+    make menuconfig (or whatever configuration tool you like to use)
+
+Be careful as I haven't tried this recently!
+
+There is a Embedded_Build/scripts/pwl_kernel script which is the
+beginnings of a script that will eventually allow a kernel to be build
+from within the pwlconfig environment. I don't think I will be getting
+much time into this part before Christmas, though.
+
+TTYL,
+Adi
+
+On Thu, 30 Nov 2000, Dean Brown wrote:
+
+> Adi,
+> Are the configuration files you use to build the kernel images available
+> anywhere? I'd like to use your 2.2.17-basic build as a starting point
+> and add framebuffer support. 
+> 
+> -- 
+> Dean Brown
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Dec  7 17:16:56 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Thu,  7 Dec 2000 12:16:56 -0500 (EST)
+Subject: test dont read
+Message-ID: <20001207171656.6AC7E61204@russian-caravan.cloud9.net>
+
+hello
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Dec  7 18:05:42 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Thu,  7 Dec 2000 13:05:42 -0500 (EST)
+Subject: peewee on floppy
+Message-ID: <20001207180542.9039A611F4@russian-caravan.cloud9.net>
+
+I tried to install the minimal + some networking stuff on a superformated floppy of 1722M.
+I guess pwlconfig doesn't see the floppy is bigger, does it?
+
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Dec  7 19:18:17 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 7 Dec 2000 13:18:17 -0600 (CST)
+Subject: peewee on floppy
+In-Reply-To: <20001207180542.9039A611F4@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012071317171.8603-100000@develop.knet.on.ca>
+
+Hi,
+
+Nope, the script that installs the system on the target floppy formats the
+floppy as 1.44MB regardless of what the previous format was.
+
+TTYL,
+Adi 
+
+On Thu, 7 Dec 2000, andu wrote:
+
+> I tried to install the minimal + some networking stuff on a superformated floppy of 1722M.
+> I guess pwlconfig doesn't see the floppy is bigger, does it?
+> 
+> 
+> Regards, Andu 
+> _______________________
+> undo@cloud9.net
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Dec  7 19:21:19 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 7 Dec 2000 13:21:19 -0600 (CST)
+Subject: kernel versions in PeeWeeLinux
+In-Reply-To: <20001207180542.9039A611F4@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012071320010.8603-100000@develop.knet.on.ca>
+
+Hi,
+
+Is anyone using the 2.2.14 kernel binaries included in PeeWeeLinux? I
+thought of removing the 2.2.14 kernel in the next release...
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 01:35:38 2000
+From: peeweelinux@adis.on.ca (Robert Heezeman)
+Date: Fri, 8 Dec 2000 12:35:38 +1100
+Subject: peewee
+Message-ID: <918BB3173DC2D3118D920090274ED200011D9A@thycon01.internal.thycon.com.au>
+
+Just try it ?
+I have installed the CD just supplied (binaries) and tried to make a
+"minimal" configuration using pwlconfig.
+
+
+My system consists of a 686 PC with peewee installed on
+/hdb/root/Embedded_Build
+
+with hda as a 32 MB Dos formatted SanDisk. 
+Althugh I have a fd0 I do not want to use it as a transfer media
+
+
+firstly I cannot get "/root/custom"  to get and alter packages it says guess
+again.
+The only custom directory seems to be in
+/root/Embedded_Build/projects/minimal/custom
+
+
+Then I tried to load to target and faithfully changed the references to
+/dev/sda and /dev/fd0 to /dev/hda
+and selected DOS12 and pressed the majic button. 
+After confirming that I did want to proceed it told me that I was
+unsucesfull ????  "YES" to see why but a blank results screen, nothing...
+
+I looked on my SanDisk /dev/hda and it too had no contents.  
+
+So to test the SanDisk accessI tried to cp /bin/* to /dev/hda and it worked
+so I could access the hda
+
+
+
+What am I doing wrong
+
+
+
+
+
+
+
+
+
+
+
+Robert
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+This communication is intended for use of the addressee(s) and may contain legally privileged and confidential information.
+Any views or opinions presented are solely those of the author and do not necessarily represent those of Thycon.
+If you are not the addressee you are notified that any transmission, distribution or replication of this message is strictly prohibited.
+The legal privilege and confidentiality attached to this email and its contents is not waived, lost or destroyed by reason of
+mistaken delivery to you. 
+If you have received this message in error, please notify Thycon immediately by E-mail to thycon@thycon.com.au and
+permanently delete the email from your system.
+
+Email transmission cannot be guaranteed to be secure or error-free as information could be intercepted, corrupted,
+lost, destroyed, arrive late or incomplete, or contain viruses. The sender therefore does not accept liability for any errors 
+or omissions in the contents of this message, which arise as a result of email transmission. If verification is required please
+request a hard-copy version.
+
+Copyright 2000 Thycon. All rights reserved.
+
+PHONE : 61 3 9319 9000
+FAX : 61 3 9319 9001
+
+
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 02:01:07 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Thu,  7 Dec 2000 21:01:07 -0500 (EST)
+Subject: kernel versions in PeeWeeLinux
+Message-ID: <20001208020107.A8E9F6122C@russian-caravan.cloud9.net>
+
+>
+>Hi,
+>
+>Is anyone using the 2.2.14 kernel binaries included in PeeWeeLinux? I
+>thought of removing the 2.2.14 kernel in the next release...
+
+Keep it simple...
+
+>
+>TTYL,
+>Adi
+>
+>
+>---------------------------------------------------
+>See the list archives at http://adis.on.ca/archives/
+>See the PWL homepage at  http://peeweelinux.com
+>---------------------------------------------------
+>.
+
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 02:12:27 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 7 Dec 2000 20:12:27 -0600 (CST)
+Subject: peewee
+In-Reply-To: <918BB3173DC2D3118D920090274ED200011D9A@thycon01.internal.thycon.com.au>
+Message-ID: <Pine.LNX.4.10.10012072005040.11295-100000@big.adis.on.ca>
+
+Hi,
+
+> with hda as a 32 MB Dos formatted SanDisk. 
+> Althugh I have a fd0 I do not want to use it as a transfer media
+
+What physical size is your /dev/hda?
+
+> firstly I cannot get "/root/custom"  to get and alter packages it says guess
+> again.
+> The only custom directory seems to be in
+> /root/Embedded_Build/projects/minimal/custom
+
+/root/custom is a directory you will need to create yourself. In it you
+place files you need to add to the sytem after all the packages were
+extracted. Custom files will overwrite package files.
+
+So if you would like etc/config/ifcfg-eth0 to contain your ip numbers
+rather than samples in the packages create the
+/root/custom/etc/config/ifcfg-eth0 file with the proper permissions and it
+will be copied into the target filesystem during the extraction process.
+
+> Then I tried to load to target and faithfully changed the references to
+> /dev/sda and /dev/fd0 to /dev/hda
+
+The /dev/fd0 reference is for floppy based systems only. Changing it to
+/dev/hda won't do anything until you try to build a floppy based sytem.
+
+Changing /dev/sda to /dev/hda is the right thing to do (as you did).
+
+> and selected DOS12 and pressed the majic button. 
+> After confirming that I did want to proceed it told me that I was
+> unsucesfull ????  "YES" to see why but a blank results screen, nothing...
+
+There should be a screen with a list of items and their results...
+
+> I looked on my SanDisk /dev/hda and it too had no contents.  
+
+Did you make sure to extract the filesystem prior to selecting the
+installation step?
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 02:14:42 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Thu,  7 Dec 2000 21:14:42 -0500 (EST)
+Subject: peewee on floppy
+Message-ID: <20001208021442.BF5156126A@russian-caravan.cloud9.net>
+
+>
+>Hi,
+>
+>Nope, the script that installs the system on the target floppy formats the
+>floppy as 1.44MB regardless of what the previous format was.
+
+Could the script be hacked to do a superformat instead? If yes where should I look for
+that part?
+
+>
+>TTYL,
+>Adi 
+>
+>On Thu, 7 Dec 2000, andu wrote:
+>
+>> I tried to install the minimal + some networking stuff on a superformated floppy of
+1722M.
+>> I guess pwlconfig doesn't see the floppy is bigger, does it?
+>> 
+
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 03:09:22 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 7 Dec 2000 21:09:22 -0600 (CST)
+Subject: peewee on floppy
+In-Reply-To: <20001208021442.BF5156126A@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012072045530.11295-100000@big.adis.on.ca>
+
+Hi,
+
+Ooops, I was wrong! pwlconfig requires a pre-formatted floppy. Having said
+that it defaults to using /dev/fd0 as floppy device. The Linux kernel
+driver sees /dev/fd0 as a 1.44MB floppy. 
+
+You need to create a device for a 1722M floppy like 'mknod /dev/fd0u1722'
+if you don't have it already.
+
+Next change the target floppy device in pwlconfig from /dev/fd0 to
+/dev/fd0u1722.
+
+pwlconfig uses sfdisk to determine the size of the target device. This
+works just fine with a 1722MB floppy.
+
+I just tried it and here's what my df looks like:
+
+Filesystem           1k-blocks      Used Available Use% Mounted on
+/dev/hde6              3225252   1366776   1694628  45% /
+/dev/hde1                 7776      4228      3147  57% /boot
+/dev/hde7              8265220   2470312   5375056  31% /home
+/dev/hda1              5146980   2980920   1904604  61% /home/stuff
+/dev/hda2              2972748   1483688   1338052  53% /home/backup
+/dev/fd0                  1704      1401       303  82% /root/PeeWee/Embedded_Build/mnt
+                          ^^^^
+
+It does work. And it proves my theory that my floppy drive doesn't support
+1722M wrong.
+
+Having said all that I noticed a bug in pwlconfig! It doesn't convert
+config files properly between versions and confuses variable names. So
+there'll be a fix (peeweelinux 0.53.22) shortly. Details will be posted
+seperately.
+
+Hope this helps!
+
+TTYL,
+Adi
+
+
+On Thu, 7 Dec 2000, andu wrote:
+
+> >
+> >Hi,
+> >
+> >Nope, the script that installs the system on the target floppy formats the
+> >floppy as 1.44MB regardless of what the previous format was.
+> 
+> Could the script be hacked to do a superformat instead? If yes where should I look for
+> that part?
+> 
+> >
+> >TTYL,
+> >Adi 
+> >
+> >On Thu, 7 Dec 2000, andu wrote:
+> >
+> >> I tried to install the minimal + some networking stuff on a superformated floppy of
+> 1722M.
+> >> I guess pwlconfig doesn't see the floppy is bigger, does it?
+> >> 
+> 
+> 
+> Regards, Andu 
+> _______________________
+> undo@cloud9.net
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 03:23:41 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 7 Dec 2000 21:23:41 -0600 (CST)
+Subject: peewee on floppy
+Message-ID: <Pine.LNX.4.10.10012072122460.11295-100000@big.adis.on.ca>
+
+Hi,
+
+The proper complete mknod command is 'mknod /dev/fd0u1722 b 2 60'...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 05:43:33 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 7 Dec 2000 23:43:33 -0600 (CST)
+Subject: peewee on floppy
+In-Reply-To: <20001208035938.114AE61248@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012072335270.793-100000@big.adis.on.ca>
+
+Hi Andu, 
+
+> >You need to create a device for a 1722M floppy like 'mknod /dev/fd0u1722'
+> >if you don't have it already.
+> 
+> That is, on my system, right? I have it.
+
+It wasn't on my RedHat 6.1 system and I had to create it.
+
+> >Next change the target floppy device in pwlconfig from /dev/fd0 to
+> >/dev/fd0u1722.
+> 
+> Is that in pwlconfig script or in one of the scripts in the /scripts directory?
+
+It is in the configuration menu of pwlconfig. The configuration parameter
+is indicated below.
+
+        Reset Project Configuration
+        Save Project Configuration
+        ----
+        Target: Compressed ramdisk on FAT12 floppy disk w/syslinux -->
+        --- Global configuration parameters ---
+        Project Mount Point: "mnt"
+        Project Custom Source File path: "/root/custom"
+        Device Mount Point: "./mnt"
+        Boot Image Name: "bzImage"
+        Ramdisk File Name: "ramdisk"
+        Initrd File Name: "initrd" 
+        --- Boot loader options ---
+        Boot Label: "linux"
+        Boot Prompt Timeout: "2"
+        VGA Mode: "normal"
+        Append Options: ""
+        --- floppy target configuration parameters ---
+ ===>   Floppy Device: "/dev/fd0u1722"                      <===
+        Free Space on Ramdisk: "500"
+        --- ide flash target (or HD) configuration parameters ---
+        Target Device: "/dev/sda"
+        Boot Device on Target System: "/dev/hda"
+        --- single ramdisk target configuration parameters ---
+        Free Space on Ramdisk: "2000"
+        --- multiple ramdisk target configuration parameters ---
+        Free Space on /dev Ramdisk: "1000"
+        Free Space on /etc Ramdisk: "100"
+        Free Space on /home Ramdisk: "500"                                 
+
+So no script to hack :)
+
+> Yes, this size actually can take a minimal router system as opposed to 1.44M which is
+> strictly a demo. Maybe it would be a good idea to add this option to pwlconfig.
+
+Absolutely. In addition it would be an idea to build a system using
+busybox and tinylogin. Both are included with PeeWeeLinux but I haven't
+had any hands on configuring a system with busybox and tinylogin using
+PeeWeeLinux in a long time.
+
+Thank you for pointing this 1722M thing out! It's certainly something to
+note for the documentation. I think perhaps at a minimum it might be an
+idea to start a FAQ document...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 15:39:06 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Fri, 08 Dec 2000 07:39:06 -0800
+Subject: busybox issue Was: peewee on floppy
+References: <Pine.LNX.4.10.10012072335270.793-100000@big.adis.on.ca>
+Message-ID: <3A31009A.62E7C40A@amiga.com>
+
+Adi Linden wrote:
+> 
+> Hi Andu,
+> 
+<snip>
+> 
+> Absolutely. In addition it would be an idea to build a system using
+> busybox and tinylogin. Both are included with PeeWeeLinux but I haven't
+> had any hands on configuring a system with busybox and tinylogin using
+> PeeWeeLinux in a long time.
+
+The mount command in busybox does not work properly with the current
+startup scripts. In particular, the -n option on mount is not
+implemented in busybox which causes the rc.init script to fail. You need
+to use the standalone mount to make things work.
+
+There also seems to be an issue with lash beyond it's inability to
+handle if-then-else statements in scripts, but I haven't had the time to
+figure that out yet.
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 15:40:13 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Fri, 08 Dec 2000 07:40:13 -0800
+Subject: kernel versions in PeeWeeLinux
+References: <Pine.LNX.4.10.10012071320010.8603-100000@develop.knet.on.ca>
+Message-ID: <3A3100DD.2D9CC6F9@amiga.com>
+
+I'm only using the 2.2.17 kernels.
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> Is anyone using the 2.2.14 kernel binaries included in PeeWeeLinux? I
+> thought of removing the 2.2.14 kernel in the next release...
+> 
+> TTYL,
+> Adi
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 15:52:12 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 8 Dec 2000 09:52:12 -0600 (CST)
+Subject: busybox issue Was: peewee on floppy
+In-Reply-To: <3A31009A.62E7C40A@amiga.com>
+Message-ID: <Pine.LNX.4.10.10012080945500.9722-100000@develop.knet.on.ca>
+
+Hi,
+
+I have a patch for busybox to make mount more compatible. But I haven't
+applied it yet to the busybox package.
+
+Busybox includes a shell now. It seems to be severly limited but is quite
+ideal for simple things like an initrd. For an embedded system I would
+install the 'real' ash shell and use the busybox shell.
+
+I am trying to tune busybox and tinylogin for PeeWeeLinux sometime soon. I
+am also thinking about creating a busybox centric initscripts package
+(placed under minial). No promises when this happens.
+
+If anyone has a working basic PeeWeeLinux busybox system and would like to
+share the files it would make this task much easier :)
+
+TTYL,
+Adi
+
+ 
+
+On Fri, 8 Dec 2000, Dean Brown wrote:
+
+> Adi Linden wrote:
+> > 
+> > Hi Andu,
+> > 
+> <snip>
+> > 
+> > Absolutely. In addition it would be an idea to build a system using
+> > busybox and tinylogin. Both are included with PeeWeeLinux but I haven't
+> > had any hands on configuring a system with busybox and tinylogin using
+> > PeeWeeLinux in a long time.
+> 
+> The mount command in busybox does not work properly with the current
+> startup scripts. In particular, the -n option on mount is not
+> implemented in busybox which causes the rc.init script to fail. You need
+> to use the standalone mount to make things work.
+> 
+> There also seems to be an issue with lash beyond it's inability to
+> handle if-then-else statements in scripts, but I haven't had the time to
+> figure that out yet.
+> 
+> -- 
+> Dean Brown
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 16:10:35 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Fri,  8 Dec 2000 11:10:35 -0500 (EST)
+Subject: peewee on floppy
+Message-ID: <20001208161035.1DCED612DA@russian-caravan.cloud9.net>
+
+>> Yes, this size actually can take a minimal router system as opposed to 1.44M which
+is
+>> strictly a demo. Maybe it would be a good idea to add this option to pwlconfig.
+>
+>Absolutely. In addition it would be an idea to build a system using
+>busybox and tinylogin. Both are included with PeeWeeLinux but I haven't
+>had any hands on configuring a system with busybox and tinylogin using
+>PeeWeeLinux in a long time.
+
+Couldn't get it to work :-(. It starts but right after "SYSLINUX..." I get "boot failed".
+I'm pretty sure it's a geometry problem but that's something I have no idea how to fix.
+Maybe a more "educated" than me list member is willing to take a look at this problem
+and post a solution.
+
+>
+>Thank you for pointing this 1722M thing out! It's certainly something to
+>note for the documentation. I think perhaps at a minimum it might be an
+>idea to start a FAQ document...
+>
+>TTYL,
+>Adi
+>
+>---------------------------------------------------
+>See the list archives at http://adis.on.ca/archives/
+>See the PWL homepage at  http://peeweelinux.com
+>---------------------------------------------------
+>.
+
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 16:16:55 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Fri, 08 Dec 2000 08:16:55 -0800
+Subject: busybox issue Was: peewee on floppy
+References: <Pine.LNX.4.10.10012080945500.9722-100000@develop.knet.on.ca>
+Message-ID: <3A310977.229FC28@amiga.com>
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> I have a patch for busybox to make mount more compatible. But I haven't
+> applied it yet to the busybox package.
+> 
+> Busybox includes a shell now. It seems to be severly limited but is quite
+> ideal for simple things like an initrd. For an embedded system I would
+> install the 'real' ash shell and use the busybox shell.
+
+I assume you meant _not_ use the busybox shell!! That is what I am
+currently doing.
+
+> I am trying to tune busybox and tinylogin for PeeWeeLinux sometime soon. I
+> am also thinking about creating a busybox centric initscripts package
+> (placed under minial). No promises when this happens.
+
+Part of the problem with that is some of the initscripts are generated
+by the pwl scripts. Most of my recent changes the system I am working on
+has been accomplished by hacking the pwl scripts. Most of the changes
+are not very elegant, but they get the job done. When I get some time,
+I'd be happy to share what I've done and why. That isn't likely to
+happen before the holidays though.
+ 
+> If anyone has a working basic PeeWeeLinux busybox system and would like to
+> share the files it would make this task much easier :)
+
+I am using busybox for most everything except mount and (la)sh.  
+
+> TTYL,
+> Adi
+> 
+> 
+> 
+> On Fri, 8 Dec 2000, Dean Brown wrote:
+> 
+> > Adi Linden wrote:
+> > >
+> > > Hi Andu,
+> > >
+> > <snip>
+> > >
+> > > Absolutely. In addition it would be an idea to build a system using
+> > > busybox and tinylogin. Both are included with PeeWeeLinux but I haven't
+> > > had any hands on configuring a system with busybox and tinylogin using
+> > > PeeWeeLinux in a long time.
+> >
+> > The mount command in busybox does not work properly with the current
+> > startup scripts. In particular, the -n option on mount is not
+> > implemented in busybox which causes the rc.init script to fail. You need
+> > to use the standalone mount to make things work.
+> >
+> > There also seems to be an issue with lash beyond it's inability to
+> > handle if-then-else statements in scripts, but I haven't had the time to
+> > figure that out yet.
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 16:31:48 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 8 Dec 2000 10:31:48 -0600 (CST)
+Subject: busybox issue Was: peewee on floppy
+In-Reply-To: <3A310977.229FC28@amiga.com>
+Message-ID: <Pine.LNX.4.10.10012081027290.9722-100000@develop.knet.on.ca>
+
+Hi,
+
+> I assume you meant _not_ use the busybox shell!! That is what I am
+> currently doing.
+
+You're right, darn typos!
+
+> Part of the problem with that is some of the initscripts are generated
+> by the pwl scripts. Most of my recent changes the system I am working on
+> has been accomplished by hacking the pwl scripts. Most of the changes
+> are not very elegant, but they get the job done. When I get some time,
+> I'd be happy to share what I've done and why. That isn't likely to
+> happen before the holidays though.
+
+rc.init and fstab are generated by PeeWeeLinux (pwlconfig and company).
+The rest of the scripts come from the initscripts package. It 'should' be
+possible to create a busybox centric initscripts package. I think...
+
+I provided for a way to disable the automatic generation of the initfiles
+and install the package supplied or custom files instead. It's in the
+script. But I see I missed it in the configuration section.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 16:35:24 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 8 Dec 2000 10:35:24 -0600 (CST)
+Subject: peewee on floppy
+In-Reply-To: <20001208161035.1DCED612DA@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012081032291.9722-100000@develop.knet.on.ca>
+
+Hi,
+
+> Couldn't get it to work :-(. It starts but right after "SYSLINUX..." I get "boot failed".
+> I'm pretty sure it's a geometry problem but that's something I have no idea how to fix.
+> Maybe a more "educated" than me list member is willing to take a look at this problem
+> and post a solution.
+
+Hmmm... the one I created booted fine. I found I had to run 'fdformat
+/dev/fd0u1722' several times before a verify didn't report any errors.
+
+I'll play some more with it. Perhaps including a fdformat step in the
+pwl_target_load script would fix things?
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 16:38:15 2000
+From: peeweelinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 8 Dec 2000 08:38:15 -0800 (PST)
+Subject: kernel versions in PeeWeeLinux
+Message-ID: <20001208163815.27073.qmail@web9105.mail.yahoo.com>
+
+Adi,
+We are still shipping with this kernel, however we want to switch to the latest
+pwl version "real soon now".  
+Cool feature for the 1.7M floppies :)
+
+Thanks,
+Ralph
+
+
+--- andu <undo@cloud9.net> wrote:
+> >
+> >Hi,
+> >
+> >Is anyone using the 2.2.14 kernel binaries included in PeeWeeLinux? I
+> >thought of removing the 2.2.14 kernel in the next release...
+> 
+> Keep it simple...
+> 
+> >
+> >TTYL,
+> >Adi
+> >
+> >
+> >---------------------------------------------------
+> >See the list archives at http://adis.on.ca/archives/
+> >See the PWL homepage at  http://peeweelinux.com
+> >---------------------------------------------------
+> >.
+> 
+> 
+> Regards, Andu 
+> _______________________
+> undo@cloud9.net
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Shopping - Thousands of Stores. Millions of Products.
+http://shopping.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 18:58:42 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Fri,  8 Dec 2000 13:58:42 -0500 (EST)
+Subject: peewee on floppy
+Message-ID: <20001208185842.A1EDD612FF@russian-caravan.cloud9.net>
+
+>
+>Hi,
+>
+>> Couldn't get it to work :-(. It starts but right after "SYSLINUX..." I get "boot failed".
+>> I'm pretty sure it's a geometry problem but that's something I have no idea how to fix.
+>> Maybe a more "educated" than me list member is willing to take a look at this
+problem
+>> and post a solution.
+>
+>Hmmm... the one I created booted fine. I found I had to run 'fdformat
+>/dev/fd0u1722' several times before a verify didn't report any errors.
+>
+>I'll play some more with it. Perhaps including a fdformat step in the
+>pwl_target_load script would fix things?
+
+Actually the problem was with syslinux. I did syslinux -s /dev/fd0u1722 and set the kernel
+to LINUX and it worked so it's somewhere in there.
+>
+>TTYL,
+>Adi
+>
+>---------------------------------------------------
+>See the list archives at http://adis.on.ca/archives/
+>See the PWL homepage at  http://peeweelinux.com
+>---------------------------------------------------
+>.
+
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec  8 19:13:45 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 8 Dec 2000 13:13:45 -0600 (CST)
+Subject: peewee on floppy
+In-Reply-To: <20001208185842.A1EDD612FF@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012081304420.1067-100000@develop.knet.on.ca>
+
+Hi,
+
+> Actually the problem was with syslinux. I did syslinux -s /dev/fd0u1722
+> and set the kernel
+> to LINUX and it worked so it's somewhere in there.
+
+I wonder if the -s switch might be required in certain situations? The
+load script does pass /dev/fd0u1722 to syslinux as target but without the
+-s switch.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Dec  9 02:00:38 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Fri,  8 Dec 2000 21:00:38 -0500 (EST)
+Subject: compactFlash info
+Message-ID: <20001209020038.17A2D613F8@russian-caravan.cloud9.net>
+
+I bought a usb sandisk reader and am ready to load my compactflash card with Peewee.
+On the dev machine I have 2.4.0 something kernel, I need to know what usb device to
+enable. Also if I need other drivers and such.
+TIA
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Dec  9 18:04:34 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Sat,  9 Dec 2000 13:04:34 -0500 (EST)
+Subject: compactFlash info
+Message-ID: <20001209180434.B339861455@russian-caravan.cloud9.net>
+
+>
+>I bought a usb sandisk reader and am ready to load my compactflash card with
+Peewee.
+>On the dev machine I have 2.4.0 something kernel, I need to know what usb device to
+>enable. Also if I need other drivers and such.
+
+Never mind the above, the main problem is that although the device is recognized as
+SCSI0 I can't do anything with it. I tried to mount it, fdisk it as /dev/sda but nothing works.
+On the other hand I know the device works because it mounts on my mac without
+problems. Any hints will be appreciated.
+
+
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Dec  9 20:02:35 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Sat, 09 Dec 2000 12:02:35 -0800
+Subject: Read only filesystem size issues.
+Message-ID: <3A328FDB.45ADBD8E@amiga.com>
+
+Adi,
+I've been hacking at the pwl_target scripts with the intent to target
+them for a specific application. In the process of doing so, I noticed a
+couple of potential problems with the partition sizing calculations for
+the read only fs with multiple ramdisks.
+
+1) When calculating the size of the / filesystem, the /home and /root
+directories are included. These directories are then separated out and
+placed in the second partition. The size of the /home and /root
+directories are not subtracted from the / filesystem. This overestimates
+the size of the / filesystem by the size of the /home and /root
+directories.
+
+2) Partition sizes are calculated by using du -s -k command. This bases
+file size on the cluster size of the development systems filesystem. In
+my case this cluster size is 4K, while the cluster size of the flash
+device is set to 1K. This also tends to overestimate the required size
+of the flash device.
+
+The result of these issues is that if your build is approaching the size
+of your flash device, chances are very good that the pwl_target_load
+functions will fail to load the device. In my case, an extracted 13
+MByte filesystem fails to load on a 16 MByte compact flash because there
+supposedly wasn't enough room.
+
+This is no longer an issue for me as I've eliminated the separate /home
+partition on the target device, but your other users may benefit from
+this information.
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Dec  9 21:10:04 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 9 Dec 2000 15:10:04 -0600 (CST)
+Subject: compactFlash info
+In-Reply-To: <20001209020038.17A2D613F8@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012091509120.2038-100000@develop.knet.on.ca>
+
+Hi,
+
+I am not sure. I run a 2.2.17 kernel with the USB back port. The modules I
+am loading with an Asus P2B-F board are: usbcore, usb-uhci and
+usb-storage.
+
+TTYL,
+Adi
+
+On Fri, 8 Dec 2000, andu wrote:
+
+> I bought a usb sandisk reader and am ready to load my compactflash card with Peewee.
+> On the dev machine I have 2.4.0 something kernel, I need to know what usb device to
+> enable. Also if I need other drivers and such.
+> TIA
+> 
+> Regards, Andu 
+> _______________________
+> undo@cloud9.net
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Dec  9 22:05:33 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Sat,  9 Dec 2000 17:05:33 -0500 (EST)
+Subject: peewee on floppy
+Message-ID: <20001209220533.DBF1260E26@russian-caravan.cloud9.net>
+
+I'm finally getting some results with the 1722M floppy.  Like I said, Syslinux needs -s
+option and I don't know if it matters but syslinux.cfg has bzImage but the name of the
+kernel on the floppy is bzimage. In any case I changed it to the default (LINUX).
+The only thing I couldn't figure out for this router is bind; is it part of bash?
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Dec 10 19:11:39 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Sun, 10 Dec 2000 14:11:39 -0500 (EST)
+Subject: imagemate help
+Message-ID: <20001210191139.6700460E37@russian-caravan.cloud9.net>
+
+Maybe my previous message on this subject got lost so here I am again.
+Dmesg shows the imagemate as scsi0 but  trying to mount it as /dev/sda1 returns
+"wrong major or minor number". Basically the question is how can I access the disk?
+BTW, the disk is a 64MB.
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Dec 10 21:36:18 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sun, 10 Dec 2000 15:36:18 -0600 (CST)
+Subject: Read only filesystem size issues.
+In-Reply-To: <3A328FDB.45ADBD8E@amiga.com>
+Message-ID: <Pine.LNX.4.10.10012101527250.3895-100000@big.adis.on.ca>
+
+Hi Dean,
+
+> 1) When calculating the size of the / filesystem, the /home and /root
+> directories are included. These directories are then separated out and
+> placed in the second partition. The size of the /home and /root
+> directories are not subtracted from the / filesystem. This overestimates
+> the size of the / filesystem by the size of the /home and /root
+> directories.
+ 
+I will look into that. I would think this applies to the 'Read-only root
+fs with multiple ramdisks' target? This one was created on request and
+hasn't been tested exhaustively by myself. Almost all my systems are
+router type applications at the moment. So I usually use the uncompressed
+ramdisk for development and the compressed ramdisk for production
+purposes.
+
+> 2) Partition sizes are calculated by using du -s -k command. This bases
+> file size on the cluster size of the development systems filesystem. In
+> my case this cluster size is 4K, while the cluster size of the flash
+> device is set to 1K. This also tends to overestimate the required size
+> of the flash device.
+> 
+> The result of these issues is that if your build is approaching the size
+> of your flash device, chances are very good that the pwl_target_load
+> functions will fail to load the device. In my case, an extracted 13
+> MByte filesystem fails to load on a 16 MByte compact flash because there
+> supposedly wasn't enough room.
+
+This is odd. Are there differences between different 'du' incarnations? I
+uderstood the -k switch is supposed to calculate filesystem size as
+if the filesystem was  1024 byte block size. From the man page:
+
+       --block-size=SIZE
+              use SIZE-byte blocks
+
+       -k, --kilobytes
+              like --block-size=1024
+
+Hmmm, I thought I tested that assumption. I think I will replace the 'du'
+commands with a variable (if it's possible) so the command line parameters
+can be adjusted on a script wide basis.
+
+Thank you for pointing all this out!
+
+TTYL,
+Adi 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Dec 10 21:39:19 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sun, 10 Dec 2000 15:39:19 -0600 (CST)
+Subject: peewee on floppy
+In-Reply-To: <20001209220533.DBF1260E26@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012101537200.3895-100000@big.adis.on.ca>
+
+Hi Andu,
+
+The naming issue shouldn't be a problem. The target 'should' be named in
+proper upper and lower case. In any case syslinux on a fat filesystem is
+not case sensitive.
+
+> The only thing I couldn't figure out for this router is bind;
+
+bind as in name server?
+
+TTYL,
+Adi
+
+
+On Sat, 9 Dec 2000, andu wrote:
+
+> I'm finally getting some results with the 1722M floppy.  Like I said, Syslinux needs -s
+> option and I don't know if it matters but syslinux.cfg has bzImage but the name of the
+> kernel on the floppy is bzimage. In any case I changed it to the default (LINUX).
+> The only thing I couldn't figure out for this router is bind; is it part of bash?
+> 
+> Regards, Andu 
+> _______________________
+> undo@cloud9.net
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Dec 10 21:44:40 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sun, 10 Dec 2000 15:44:40 -0600 (CST)
+Subject: imagemate help
+In-Reply-To: <20001210191139.6700460E37@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012101542330.3895-100000@big.adis.on.ca>
+
+Hi Andu,
+
+How about 'fdisk -l /dev/sda'? This should list the partition table of the
+device. You were running a 2.4 kernel, correct? Unfortunatly I don't have
+any experience with it. On my 2.2.17 kernel it actually tells me the
+device a flash disk is found as, i.e. /dev/sda.
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Dec 10 22:42:40 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Sun, 10 Dec 2000 17:42:40 -0500 (EST)
+Subject: imagemate help
+Message-ID: <20001210224240.02E6760E06@russian-caravan.cloud9.net>
+
+>
+>Hi Andu,
+>
+>How about 'fdisk -l /dev/sda'? This should list the partition table of the
+>device. You were running a 2.4 kernel, correct? Unfortunatly I don't have
+>any experience with it. On my 2.2.17 kernel it actually tells me the
+>device a flash disk is found as, i.e. /dev/sda.
+
+Stupid me, didn't have scsi disk support in the kernel, it works now with my 2.4 kernel.
+
+>
+>TTYL,
+>Adi
+
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Dec 10 23:21:42 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sun, 10 Dec 2000 17:21:42 -0600 (CST)
+Subject: imagemate help
+In-Reply-To: <20001210224240.02E6760E06@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012101721200.4635-100000@big.adis.on.ca>
+
+Hi Andu,
+
+> Stupid me, didn't have scsi disk support in the kernel, it works now with my 2.4 kernel.
+
+Yup, that'll make a difference.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Dec 11 05:46:18 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Mon, 11 Dec 2000 00:46:18 -0500 (EST)
+Subject: modules
+Message-ID: <20001211054618.1989060EF7@russian-caravan.cloud9.net>
+
+How are modules loaded, didn't find a etc/rc.modules or similar although it is called by
+rc.sysinit.
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Dec 11 15:11:35 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 11 Dec 2000 09:11:35 -0600 (CST)
+Subject: modules
+In-Reply-To: <20001211054618.1989060EF7@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012110910390.3453-100000@develop.knet.on.ca>
+
+Hi, 
+
+You have to create a custom file /etc/rc.modules which contains insmod
+statements to load your modules. Alce /etc/rc.modules needs to be
+executeable.
+
+TTYL,
+Adi
+
+On Mon, 11 Dec 2000, andu wrote:
+
+> How are modules loaded, didn't find a etc/rc.modules or similar although it is called by
+> rc.sysinit.
+> 
+> Regards, Andu 
+> _______________________
+> undo@cloud9.net
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Dec 11 16:27:34 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Mon, 11 Dec 2000 11:27:34 -0500 (EST)
+Subject: modules
+Message-ID: <20001211162734.071BB60F91@russian-caravan.cloud9.net>
+
+>
+>Hi, 
+>
+>You have to create a custom file /etc/rc.modules which contains insmod
+>statements to load your modules. Alce /etc/rc.modules needs to be
+>executeable.
+
+Done.
+
+>
+>TTYL,
+>Adi
+>
+>On Mon, 11 Dec 2000, andu wrote:
+>
+>> How are modules loaded, didn't find a etc/rc.modules or similar although it is called
+by
+>> rc.sysinit.
+
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Dec 11 17:33:30 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Mon, 11 Dec 2000 09:33:30 -0800
+Subject: Read only filesystem size issues.
+References: <Pine.LNX.4.10.10012101527250.3895-100000@big.adis.on.ca>
+Message-ID: <3A350FEA.CCC34377@amiga.com>
+
+Adi Linden wrote:
+> 
+> Hi Dean,
+> 
+> > 1) When calculating the size of the / filesystem, the /home and /root
+> > directories are included. These directories are then separated out and
+> > placed in the second partition. The size of the /home and /root
+> > directories are not subtracted from the / filesystem. This overestimates
+> > the size of the / filesystem by the size of the /home and /root
+> > directories.
+> 
+> I will look into that. I would think this applies to the 'Read-only root
+> fs with multiple ramdisks' target? This one was created on request and
+> hasn't been tested exhaustively by myself. Almost all my systems are
+> router type applications at the moment. So I usually use the uncompressed
+> ramdisk for development and the compressed ramdisk for production
+> purposes.
+
+Yes this is a 'Read-only root fs with multiple ramdisks'. I believe I
+said that in the portion you snipped.. ;^) If the devices that I am
+trying to work on weren't so resource limited, I'd be tempted to use the
+compressed ramdisk target.
+
+> > 2) Partition sizes are calculated by using du -s -k command. This bases
+> > file size on the cluster size of the development systems filesystem. In
+> > my case this cluster size is 4K, while the cluster size of the flash
+> > device is set to 1K. This also tends to overestimate the required size
+> > of the flash device.
+> >
+> > The result of these issues is that if your build is approaching the size
+> > of your flash device, chances are very good that the pwl_target_load
+> > functions will fail to load the device. In my case, an extracted 13
+> > MByte filesystem fails to load on a 16 MByte compact flash because there
+> > supposedly wasn't enough room.
+> 
+> This is odd. Are there differences between different 'du' incarnations? I
+> uderstood the -k switch is supposed to calculate filesystem size as
+> if the filesystem was  1024 byte block size. From the man page:
+> 
+>        --block-size=SIZE
+>               use SIZE-byte blocks
+> 
+>        -k, --kilobytes
+>               like --block-size=1024
+
+I read that documentation to mean that the -k option reported the size
+of files as nnnK where K=1024. Try a du -b at a shell, this reports
+sizes in bytes. What I see is all files being reported in multiples of
+the cluster size of the fs.
+ 
+> Hmmm, I thought I tested that assumption. I think I will replace the 'du'
+> commands with a variable (if it's possible) so the command line parameters
+> can be adjusted on a script wide basis.
+> 
+> Thank you for pointing all this out!
+
+Not a problem. I appreciate the fact that PWL is available. I will be
+feeding some more comments as time permits.
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Dec 12 19:00:32 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Tue, 12 Dec 2000 14:00:32 -0500 (EST)
+Subject: using My kernel
+Message-ID: <20001212190032.A7FCA610F8@russian-caravan.cloud9.net>
+
+I'm looking for a way to use a kernel compiled on my machine with no modules or very
+few (RH 6.2). The reason is that if I start with kernel-full, first of all it takes forever to edit
+all modules and second, I don't know what the modules are by their name (I'm used with
+xconfig or menuconfig;-). I wander if an option in pwlconfig for choosing a kernel and
+modules from the dev system wouldn't be a time saving good idea. That could also
+allow for generating on-the-fly modules.conf (?).
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Dec 12 19:16:12 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 12 Dec 2000 13:16:12 -0600 (CST)
+Subject: using My kernel
+In-Reply-To: <20001212190032.A7FCA610F8@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012121305230.19184-100000@develop.knet.on.ca>
+
+Hi Andu,
+
+Your best bet is include a kernel you build yourself as custom kernel. By
+default the location for custom files is /root/custom. Create
+/root/custom/boot and place the bzImage in it. If you reconsider and want
+to use modules place the modules in
+/root/custom/lib/modules/<kernelversion>
+
+Next you need to select:
+Configure Project File System -->
+    Configure Custom files for "minimal" -->
+        Add custom files to "minimal" -->
+
+That will include those files in your project. Now extract the filesystem
+and you'rte in business.
+
+I am working on a pwlconfig feature that will allow you to create custom
+kernels. This will allow you to go into the kernel 'make menuconfig' and
+build a custom kernel from the PeeWeeLinux patched kernel sources right
+from within the pwlconfig environment.
+
+I don't expect to be doing much about it until the new year, though. I've
+been fixing bugs in PeeWeeLinux and adding some features needed for my own
+development projects. I hope to get what's there now stable and reasonably
+bug free first. And then there's documentation to do...
+
+Hope this helps!
+
+TTYL,
+Adi 
+
+On Tue, 12 Dec 2000, andu wrote:
+
+> I'm looking for a way to use a kernel compiled on my machine with no modules or very
+> few (RH 6.2). The reason is that if I start with kernel-full, first of all it takes forever to edit
+> all modules and second, I don't know what the modules are by their name (I'm used with
+> xconfig or menuconfig;-). I wander if an option in pwlconfig for choosing a kernel and
+> modules from the dev system wouldn't be a time saving good idea. That could also
+> allow for generating on-the-fly modules.conf (?).
+> 
+> Regards, Andu 
+> _______________________
+> undo@cloud9.net
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Dec 13 00:59:06 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 12 Dec 2000 18:59:06 -0600 (CST)
+Subject: Read only filesystem size issues.
+Message-ID: <Pine.LNX.4.10.10012121856230.8639-100000@big.adis.on.ca>
+
+Hi Dean,
+
+> 2) Partition sizes are calculated by using du -s -k command. This bases 
+> file size on the cluster size of the development systems filesystem. In 
+> my case this cluster size is 4K, while the cluster size of the flash 
+> device is set to 1K. This also tends to overestimate the required size 
+> of the flash device.
+
+Yup, this is most certainly a problem! I was under the impression the -k
+switch would calculate sizes assuming 1024 byte blocks. Not so...
+
+Do you know of any alternative way to calculate filesizes?
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Dec 13 01:17:31 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 12 Dec 2000 19:17:31 -0600 (CST)
+Subject: Read only filesystem size issues.
+In-Reply-To: <3A350FEA.CCC34377@amiga.com>
+Message-ID: <Pine.LNX.4.10.10012121914540.8639-100000@big.adis.on.ca>
+
+Hi Andu,
+
+> I'm finally getting some results with the 1722M floppy. Like I said,
+> Syslinux needs -s option and I don't know if it matters but syslinux.cfg
+> has bzImage but the name of the kernel on the floppy is bzimage.
+
+Thank you for pointing this out. I tested the floppy build with -s and it
+works flawless with 1.44MB and 1.72MB floppies. I did find however, that
+the naming of the kernel and ramdisk seems irrelevant. I incorporated
+this change in 0.53.23.
+
+TTYL,
+Adi 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Dec 13 01:29:43 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 12 Dec 2000 19:29:43 -0600 (CST)
+Subject: Read only filesystem size issues.
+In-Reply-To: <3A350FEA.CCC34377@amiga.com>
+Message-ID: <Pine.LNX.4.10.10012121923080.8639-100000@big.adis.on.ca>
+
+Hi Dean,
+
+I am just looking at bugfixes for PeeWeeLinux.
+
+> > > 1) When calculating the size of the / filesystem, the /home and /root
+> > > directories are included. These directories are then separated out and
+> > > placed in the second partition. The size of the /home and /root
+> > > directories are not subtracted from the / filesystem. This overestimates
+> > > the size of the / filesystem by the size of the /home and /root
+> > > directories.
+
+I looked at the pwl_target_load script. The filesystem size calculated is
+compared to the total device space available. Since both /root and /home
+are placed on the target device both need to be considered when
+calculating if the extracted system will fit onto the target device.
+
+I did however miss to deduct the sizes of /etc, /var and /dev from the
+root partition. Those three directories are placed in a ramdisk and the
+size of the compressed ramdisk is already taken into consideration when
+calculating the root filesystem sizes.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Dec 13 01:51:44 2000
+From: peeweelinux@adis.on.ca (Robert Heezeman)
+Date: Wed, 13 Dec 2000 12:51:44 +1100
+Subject: Help - errors in script,  3rd req
+Message-ID: <918BB3173DC2D3118D920090274ED200011DA3@thycon01.internal.thycon.com.au>
+
+
+Any luck with my problem making a peewee downloadable ???   Remember script
+failed  .....
+
+I downloaded the peeweelinux-0.53.21-bin.tar.gz binaries and the
+peeweelinux-0.53.22-cfg.tar.gz and tried it again
+
+SAME story,  
+
+I also used a different PC with 6.1 RedHat and
+/root/Embedded_Build/pwlconfig on hda and a standard 200 MB HDD as hdb
+
+Same errors, where do i go from here ?
+
+
+As usual I extracted the binaries from the RPM's built up a sample
+"including minimal" file system created in 
+/root/Embedded_Build/projects/mnt is there including some 2.5 MB of files it
+says.
+
+
+leave and configure Target as hdb  and boot hdb 
+
+
+Load to Target    AND AGAIN exactly the same errors as listed below
+(*)*&^^%$@%^$@*&@#)(*&   (frustrated)
+
+
+Suerly if no one else is having this problem it must be something I am doing
+wrong ?
+
+
+I am really keen to try peewee and don't think it's ti me to give up.
+
+Anything you can think of to try.
+
+
+
+
+
+
+
+Robert  in Australia
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> still get the errors as listed below. There is nothing on my hda drive.
+It
+> is accessible when mounted, 
+> (as mount -a /dev/hda1 /mnt/xyz)
+> 
+> Even if I write stuff to it it does not get erased..  I don't think I am
+> getting through the scripts far enough
+> 
+> 
+> Any hope of getting a fix on my problem from the error line numbers below
+> ???  (re syntax error line no. ####)
+> 
+> 
+> Thank you 
+> 
+> 
+> Robert in Australia
+> 
+> 
+> 
+> -----Original Message-----
+> From: Adi Linden [mailto:adi@adis.on.ca]
+> Sent: Monday, December 11, 2000 4:17 PM
+> To: Robert Heezeman
+> Subject: RE: Help - errors in script OR me?
+> 
+> 
+> Hi,
+> 
+> You are using /dev/hda1 as target? Is there anything else on the harddisk
+> drive?
+> 
+> pwlconfig takes over the whole drive. It does fdisk, format, etc for you.
+> So the target has to be the drive itself, i.e. /dev/hda and not /dev/hda1.
+> The only disadvantage of this approach is you will loose everything on
+> /dev/hda everythime you load the drive using pwlconfig.
+> 
+> TTYL,
+> Adi
+> 
+> 
+> 
+> On Mon, 11 Dec 2000, Robert Heezeman wrote:
+> 
+> > 
+> > Downloaded new peeweelinux-0.53.22-cfg.tar.gz and installed in directory
+> > tree (using tar -xvzf) and all went well main screen said I was running
+> > 0.53.22.  
+> > 
+> > 
+> > 
+> > started ./pwlconfig
+> > Extracted "minimal" configuration and found it @ mnt t be 4.1 MB No
+> errors,
+> >  /projects/minimal/mnt has file structure and files in it.
+> > 
+> > Went to Load into Target (default setting,except hda1 as load point (dos
+> > fs).
+> > 
+> > 
+> > 
+> > and recorded the same script errors:::
+> > 
+> > "./pwlconfig ./.script/pwl_target_functions: line 1145: Syntax error
+> > Unexpected End of File"
+> > 
+> > and
+> > 
+> > "./pwlconfig ./.script/pwl_target_load: line 1646: Syntax error
+Unexpected
+> > End of File"
+> > 
+> > and
+> > 
+> > "./pwlconfig : func_rd_build_fd_fat   command not found"
+> > 
+> > 
+> > Target build script failed to load onto target
+> > 
+> > View of results screen "was blank" no errors ?
+> > 
+> > 
+> > I am running Linux 2.2.xx RedHat 6.5 release (it's a 6.1 I believe) on
+> hdb1
+> > and am using hda1 as Target f.s Hda1 is DOS 200 MB HDD. I can write to
+it
+> ok
+> > when mounted from Linux.
+> > 
+> > 
+> > 
+> > Is there anything that you can recommend I do to get some insight as to
+> why
+> > my "Target build script failed to load onto target"
+> > 
+> > 
+> > I'm sure it must be my set-up but I don't understand where ???   
+> > 
+> > Robert
+
+This communication is intended for use of the addressee(s) and may contain legally privileged and confidential information.
+Any views or opinions presented are solely those of the author and do not necessarily represent those of Thycon.
+If you are not the addressee you are notified that any transmission, distribution or replication of this message is strictly prohibited.
+The legal privilege and confidentiality attached to this email and its contents is not waived, lost or destroyed by reason of
+mistaken delivery to you. 
+If you have received this message in error, please notify Thycon immediately by E-mail to thycon@thycon.com.au and
+permanently delete the email from your system.
+
+Email transmission cannot be guaranteed to be secure or error-free as information could be intercepted, corrupted,
+lost, destroyed, arrive late or incomplete, or contain viruses. The sender therefore does not accept liability for any errors 
+or omissions in the contents of this message, which arise as a result of email transmission. If verification is required please
+request a hard-copy version.
+
+Copyright 2000 Thycon. All rights reserved.
+
+PHONE : 61 3 9319 9000
+FAX : 61 3 9319 9001
+
+
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Dec 13 02:04:26 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 12 Dec 2000 20:04:26 -0600 (CST)
+Subject: Help - errors in script,  3rd req
+In-Reply-To: <918BB3173DC2D3118D920090274ED200011DA3@thycon01.internal.thycon.com.au>
+Message-ID: <Pine.LNX.4.10.10012121955040.8639-100000@big.adis.on.ca>
+
+Hi,
+
+Your pwlconfig screen says you're running 0.53.22 so the files extracted
+properly. I am running 0.53.22 here without any problems. The error you
+indicated is typical if there's an syntax error in the script.
+
+Did you make sure to select:
+
+Configure Target Hardware -->
+    Reset Project Configuration
+
+And set the setting to your liking? There is a problem with pwlconfig that
+causes errors with the:
+
+                         Old Configuration File                 
+               The configuration file is version 0.53.10. You are    
+               using PeeWeeLinux 0.53.22. Do you wish to convert     
+               your configuration file to the current version        
+               now?      
+
+on anything prior to 0.53.22.
+
+Also, there is a problem with the "Uncompressed ramdisk, boot from FAT 16
+partition" target I introduced a bit back by deleting a file that's still
+needed. This will be fixed in 0.53.23. All the other targets should work.
+
+Is the log file ./tmp/rd.log generated? If so please attach the file to an
+email to me and I have a look at it.
+
+No matter what I do, I cannot recreate the problem you describe. Perhaps
+run 
+  ./scripts/distribute cfg
+
+This will create a ../peeweelinux-0.53.xx-cfg.tar.gz file. Email me the
+file and I will compare it to the original archive.
+
+TTYL,
+Adi
+
+
+
+
+On Wed, 13 Dec 2000, Robert Heezeman wrote:
+
+> 
+> Any luck with my problem making a peewee downloadable ???   Remember script
+> failed  .....
+> 
+> I downloaded the peeweelinux-0.53.21-bin.tar.gz binaries and the
+> peeweelinux-0.53.22-cfg.tar.gz and tried it again
+> 
+> SAME story,  
+> 
+> I also used a different PC with 6.1 RedHat and
+> /root/Embedded_Build/pwlconfig on hda and a standard 200 MB HDD as hdb
+> 
+> Same errors, where do i go from here ?
+> 
+> 
+> As usual I extracted the binaries from the RPM's built up a sample
+> "including minimal" file system created in 
+> /root/Embedded_Build/projects/mnt is there including some 2.5 MB of files it
+> says.
+> 
+> 
+> leave and configure Target as hdb  and boot hdb 
+> 
+> 
+> Load to Target    AND AGAIN exactly the same errors as listed below
+> (*)*&^^%$@%^$@*&@#)(*&   (frustrated)
+> 
+> 
+> Suerly if no one else is having this problem it must be something I am doing
+> wrong ?
+> 
+> 
+> I am really keen to try peewee and don't think it's ti me to give up.
+> 
+> Anything you can think of to try.
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> Robert  in Australia
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> > still get the errors as listed below. There is nothing on my hda drive.
+> It
+> > is accessible when mounted, 
+> > (as mount -a /dev/hda1 /mnt/xyz)
+> > 
+> > Even if I write stuff to it it does not get erased..  I don't think I am
+> > getting through the scripts far enough
+> > 
+> > 
+> > Any hope of getting a fix on my problem from the error line numbers below
+> > ???  (re syntax error line no. ####)
+> > 
+> > 
+> > Thank you 
+> > 
+> > 
+> > Robert in Australia
+> > 
+> > 
+> > 
+> > -----Original Message-----
+> > From: Adi Linden [mailto:adi@adis.on.ca]
+> > Sent: Monday, December 11, 2000 4:17 PM
+> > To: Robert Heezeman
+> > Subject: RE: Help - errors in script OR me?
+> > 
+> > 
+> > Hi,
+> > 
+> > You are using /dev/hda1 as target? Is there anything else on the harddisk
+> > drive?
+> > 
+> > pwlconfig takes over the whole drive. It does fdisk, format, etc for you.
+> > So the target has to be the drive itself, i.e. /dev/hda and not /dev/hda1.
+> > The only disadvantage of this approach is you will loose everything on
+> > /dev/hda everythime you load the drive using pwlconfig.
+> > 
+> > TTYL,
+> > Adi
+> > 
+> > 
+> > 
+> > On Mon, 11 Dec 2000, Robert Heezeman wrote:
+> > 
+> > > 
+> > > Downloaded new peeweelinux-0.53.22-cfg.tar.gz and installed in directory
+> > > tree (using tar -xvzf) and all went well main screen said I was running
+> > > 0.53.22.  
+> > > 
+> > > 
+> > > 
+> > > started ./pwlconfig
+> > > Extracted "minimal" configuration and found it @ mnt t be 4.1 MB No
+> > errors,
+> > >  /projects/minimal/mnt has file structure and files in it.
+> > > 
+> > > Went to Load into Target (default setting,except hda1 as load point (dos
+> > > fs).
+> > > 
+> > > 
+> > > 
+> > > and recorded the same script errors:::
+> > > 
+> > > "./pwlconfig ./.script/pwl_target_functions: line 1145: Syntax error
+> > > Unexpected End of File"
+> > > 
+> > > and
+> > > 
+> > > "./pwlconfig ./.script/pwl_target_load: line 1646: Syntax error
+> Unexpected
+> > > End of File"
+> > > 
+> > > and
+> > > 
+> > > "./pwlconfig : func_rd_build_fd_fat   command not found"
+> > > 
+> > > 
+> > > Target build script failed to load onto target
+> > > 
+> > > View of results screen "was blank" no errors ?
+> > > 
+> > > 
+> > > I am running Linux 2.2.xx RedHat 6.5 release (it's a 6.1 I believe) on
+> > hdb1
+> > > and am using hda1 as Target f.s Hda1 is DOS 200 MB HDD. I can write to
+> it
+> > ok
+> > > when mounted from Linux.
+> > > 
+> > > 
+> > > 
+> > > Is there anything that you can recommend I do to get some insight as to
+> > why
+> > > my "Target build script failed to load onto target"
+> > > 
+> > > 
+> > > I'm sure it must be my set-up but I don't understand where ???   
+> > > 
+> > > Robert
+> 
+> This communication is intended for use of the addressee(s) and may contain legally privileged and confidential information.
+> Any views or opinions presented are solely those of the author and do not necessarily represent those of Thycon.
+> If you are not the addressee you are notified that any transmission, distribution or replication of this message is strictly prohibited.
+> The legal privilege and confidentiality attached to this email and its contents is not waived, lost or destroyed by reason of
+> mistaken delivery to you. 
+> If you have received this message in error, please notify Thycon immediately by E-mail to thycon@thycon.com.au and
+> permanently delete the email from your system.
+> 
+> Email transmission cannot be guaranteed to be secure or error-free as information could be intercepted, corrupted,
+> lost, destroyed, arrive late or incomplete, or contain viruses. The sender therefore does not accept liability for any errors 
+> or omissions in the contents of this message, which arise as a result of email transmission. If verification is required please
+> request a hard-copy version.
+> 
+> Copyright 2000 Thycon. All rights reserved.
+> 
+> PHONE : 61 3 9319 9000
+> FAX : 61 3 9319 9001
+> 
+> 
+> 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Dec 13 06:00:17 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Tue, 12 Dec 2000 22:00:17 -0800
+Subject: Read only filesystem size issues.
+References: <Pine.LNX.4.10.10012121923080.8639-100000@big.adis.on.ca>
+Message-ID: <3A371071.350EE014@amiga.com>
+
+This is a multi-part message in MIME format.
+--------------606A77B606D468CCCDA4194C
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Adi,
+I've attached the portion of the pwl_target_load script that I've
+studied in detail with comments starting in the first column. I believe
+I noted all the issues that I found. Feel free to question any
+assumptions I have made.
+
+Adi Linden wrote:
+> 
+> Hi Dean,
+> 
+> I am just looking at bugfixes for PeeWeeLinux.
+> 
+> > > > 1) When calculating the size of the / filesystem, the /home and /root
+> > > > directories are included. These directories are then separated out and
+> > > > placed in the second partition. The size of the /home and /root
+> > > > directories are not subtracted from the / filesystem. This overestimates
+> > > > the size of the / filesystem by the size of the /home and /root
+> > > > directories.
+> 
+> I looked at the pwl_target_load script. The filesystem size calculated is
+> compared to the total device space available. Since both /root and /home
+> are placed on the target device both need to be considered when
+> calculating if the extracted system will fit onto the target device.
+
+I agree, though I believe they are being considered twice.
+ 
+> I did however miss to deduct the sizes of /etc, /var and /dev from the
+> root partition. Those three directories are placed in a ramdisk and the
+> size of the compressed ramdisk is already taken into consideration when
+> calculating the root filesystem sizes.
+
+-- 
+Dean Brown
+--------------606A77B606D468CCCDA4194C
+Content-Type: text/plain; charset=us-ascii;
+ name="pwl_target_load_backup"
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline;
+ filename="pwl_target_load_backup"
+
+######################################################################
+#
+# func_rd_build_ro_root_rd
+#
+# This function will create a target device with a large root
+# partition. The /etc, /dev and /home aprtitions are stored
+# in compressed ramdisks. 
+#
+# The /root directory is linked to /home/root. The /tmp and /var
+# directories are linked to /dev/var and /dev/var/tmp respectively.
+#
+# Chain of events:
+# ================
+#
+# 1.  Sanity Checks
+#   a.  Check for binaries and files
+#   b.  Make sure we have a flash device
+#   c.  Make sure no flash partition is mounted
+# 2.  Create initrd
+# 3.  Calculate
+#   a.  /dev filesystem size
+#   b.  /etc filesystem size
+# 4.  Create /dev ramdisk
+#   a.  Create loopback device
+#   b.  Mount loop device
+#   c.  Copy files
+#   d.  Unmount loop device
+#   e.  Compress loop device into a ramdisk
+#   f.  Decomission loop device
+# 5.  Create /etc ramdisk
+#       Just like the /dev ramdisk
+#       Except relocate ld.so.cache
+# 7.  Calculate
+#   a.  Available space
+#   b.  Root partition including kernel, boot.b and ramdisks
+#   c.  Home partition
+#   d.  See if things fit
+# 8.  Partition target device
+#   a.  /
+#   b.  /home
+#   c.  /mnt/flash
+# 9.  Create filesystems on target partitions
+# 10. Mount partitions
+#   a.  Mount /
+#   b.  Create /dev, /etc, /home and /mnt/flash
+#   c.  Create /tmp and /var symlinks
+#   d.  Mount /home
+#   e.  Mount /mnt/flash
+# 11. Copy files except for /dev, /etc, /tmp, /var
+# 12. Copy files necessary for booting in /dev, /etc, /var
+# 13. Run ldconfig
+# 14. Bootloader
+#   a.  copy boot.b
+#   b.  create lilo.conf
+#   c.  run lilo
+# 15. Unmount all partitions
+# 16. Remove temporary files
+
+
+func_rd_build_ro_root_rd () {
+
+    # sanity check
+    func_rd_sanity || return 1
+
+    # create the linuxrc script that initrd needs
+    func_rd_action m "Creating linuxrc..."
+    func_rd_linuxrc_ro_root_rd > $rd_tmp/linuxrc
+    func_rd_action test
+
+    # build the initrd and store temporarily
+    func_rd_boot_initrd || return 1
+
+    # calculate the /dev filesystem size
+    rd_size_fs_var=`du -s -k --exclude=$rd_kernel $rd_projectroot/var | cut -f 1`
+    rd_size_fs_dev=`du -s -k --exclude=$rd_kernel $rd_projectroot/dev | cut -f 1`
+    rd_size_fs_dev=$((rd_size_fs_dev + rd_size_fs_var))
+    rd_size_fs_dev=$((rd_size_fs_dev + rd_dev_free))
+
+    # calculate the /etc filesystem size
+    rd_size_fs_etc=`du -s -k --exclude=$rd_kernel $rd_projectroot/etc | cut -f 1`
+    rd_size_fs_etc=$((rd_size_fs_etc + rd_etc_free))
+
+    # create the dev ramdisk
+    # create loopback device
+    func_rd_make_loopback $rd_size_fs_dev 1024
+
+    # mount loop device
+    func_rd_action m "Mounting loopback device for /dev filesystem..."
+    mount -t ext2 $rd_loop_dev $rd_mount
+    func_rd_action test
+
+    # remove lost+found
+    rm -rf $rd_mount/lost+found
+
+    # copy files nothing to exclude might as well use cp -a
+    func_rd_action m "Copying files..."
+    cp -a $rd_projectroot/dev/* $rd_mount
+
+    # remember we need to copy /var here too!
+    mkdir -p $rd_mount/var
+    cp -a $rd_projectroot/var/* $rd_mount/var
+    func_rd_action test
+
+    # unmount loop device
+    func_rd_action m "Unmounting loopback device..."
+    umount $rd_loop_dev
+    func_rd_action test
+
+    # compress the loop device into a ramdisk
+    func_rd_action m "Compressing loopback device into ramdisk.dev..."
+    { dd if=$rd_loop_dev bs=1k count=$rd_size_fs_dev | gzip -v9 > $rd_tmp/ramdisk.dev } >>$rd_log 2>&1
+    func_rd_action test
+
+    # decomission ramdisk
+    func_rd_break_loopback
+
+    # create the etc ramdisk
+    # create loopback device
+    func_rd_make_loopback $rd_size_fs_etc 1024
+
+    # mount loop device
+    func_rd_action m "Mounting loopback device for /etc filesystem..."
+    mount -t ext2 $rd_loop_dev $rd_mount
+    func_rd_action test
+
+    # remove lost+found
+    rm -rf $rd_mount/lost+found
+
+    # copy files nothing to exclude might as well use cp -a
+    func_rd_action m "Copying files..."
+    cp -a $rd_projectroot/etc/* $rd_mount
+
+    # relocate the ld.so.cahe to /lib/ld.so.cache
+    rm -f $rd_mount/etc/ld.so.cache
+    ln -sf /lib/ld.so.cache $rd_mount/ld.so.cache
+    func_rd_action test
+
+    # add fstab
+
+    # make some noise
+    func_rd_action m "Creating fstab..."
+
+    # see if we're allowed to
+    if [ "$rd_initscripts" = "y" ]; then
+
+        # lets do it!
+        func_rd_fstab_ro_root_rd > $rd_mount/fstab
+
+        # send the ok
+        func_rd_action s
+    else
+
+        # duh we're not configured print a warning
+        func_rd_action w
+    fi
+
+    # fix inittab
+    func_rd_fix_inittab
+
+    # unmount loop device
+    func_rd_action m "Unmounting loopback device..."
+    umount $rd_loop_dev
+    func_rd_action test
+
+    # compress the loop device into a ramdisk
+    func_rd_action m "Compressing loopback device into ramdisk.etc..."
+    { dd if=$rd_loop_dev bs=1k count=$rd_size_fs_etc | gzip -v9 > $rd_tmp/ramdisk.etc } >>$rd_log 2>&1
+    func_rd_action test
+
+    # decomission ramdisk
+    func_rd_break_loopback
+
+    # get flash size
+    func_rd_action m "Determining space on target device..."
+    rd_size_avail=`sfdisk -s $rd_target`
+
+# here you calculate the size of the entire filesystem including /home, /root, /dev, and /etc
+    # calculate the required root fs space
+    rd_size_fs=`du -s -k $rd_projectroot | cut -f 1`
+# these are the compressed images of the /dev and /etc directories
+    # add the ramdisk sizes
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.dev | cut -f 1`))
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.etc | cut -f 1`))
+    # add the bootloader
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_bootb | cut -f 1`))
+    # add a few kB for a margin
+    rd_size_fs=$((rd_size_fs + rd_size_boot_margin))
+
+# this block calculates the size of the /hom and /root directories that are also a part of 
+# the above calculations.
+    # calculate the home partition size
+    rd_size_home=`du -s -k $rd_projectroot/home | cut -f 1`
+    # add /root
+    rd_size_home=$((rd_size_home + `du -s -k $rd_projectroot/root | cut -f 1`))
+    # add the desired free space
+    rd_size_home=$((rd_size_home + rd_home_free))
+
+    ##########
+    #
+    # Note:  sfdisk is screwy when it comes to creating partitions
+    #        based on blocks. Specifying in MB seems to work alright.
+    #
+    #        The solution... calculate sizes in MB. Since bash truncates
+    #        floating point numbers at we add 1 to round up at all times.
+    #        Except for the available space... we don't want to oversize!
+    #
+    #        The rd_size_boot_margin is taken off sinze we're rounding
+    #        up anyways. Hopefully there'll be a fix for this soon!
+    #
+
+    rd_size_fs=$((rd_size_fs - rd_size_boot_margin))
+# from above
+#  this is the entire ./projects/<proj_name>/mnt directory
+    rd_size_fs=$((rd_size_fs / 1024 + 1))
+#  this is the /home and /root included in the rd_size_fs number above
+    rd_size_home=$((rd_size_home / 1024 + 1))
+#  this is the available size of the Compact Flash as reported by sfdisk.
+#  NOTE that this does not match the actual device size as there appears
+#  to be space reserved for bad block mapping (I assume)
+#  The effective result of this is that the value that rd_size_avail contains
+#  is essentially rounded down to the next lowest MByte.
+    rd_size_avail=$((rd_size_avail / 1024))
+
+    #
+    ##########
+
+    # check if things will fit
+    # also take our /home partition into consideration
+# Here is where your calculation double includes the /home and /root directories.
+    if [ $((rd_size_fs + rd_size_home)) -gt $rd_size_avail ]
+    then
+        func_rd_action f
+        echo "  +Available Space: $rd_size_avail"
+        echo "  +Required Space:  $((rd_size_fs + rd_size_home))"
+        return 1
+    else
+        func_rd_action s
+    fi
+
+    # partition our target device
+    func_rd_action m "Partitioning target davice $rd_target..."
+    # /dev/hda1 will be a ext2 partition
+    # /dev/hda2 will be a ext2 partition
+    # /dev/hda3 will be a ext2 partition
+    # both partitions sized per previous calculations
+    # /dev/hda3 will be what's left
+    sfdisk -uM $rd_target >>$rd_log 2>&1 <<-EOF
+,${rd_size_fs},83,*
+,${rd_size_home},83
+,,83
+;
+EOF
+    func_rd_action test
+
+    # create filesystems
+    func_rd_action m "Creating ext2 filesystem on ${rd_target}1..."
+    mke2fs -b 1024 -m0 ${rd_target}1 >>$rd_log 2>&1
+    func_rd_action test
+    func_rd_action m "Creating ext2 filesystem on ${rd_target}2..."
+    mke2fs -b 1024 -m0 ${rd_target}2 >>$rd_log 2>&1
+    func_rd_action test
+    func_rd_action m "Creating ext2 filesystem on ${rd_target}3..."
+    mke2fs -b 1024 -m0 ${rd_target}3 >>$rd_log 2>&1
+    func_rd_action test
+
+    # mount /
+    func_rd_action m "Mounting root partition ${rd_target}1..."
+    mount -t ext2 ${rd_target}1 $rd_mount
+    func_rd_action test
+
+    # create mount points for partitions
+    mkdir -p $rd_mount/home
+    mkdir -p $rd_mount/mnt/flash
+
+    # create mount points for ramdisks
+    mkdir -p $rd_mount/dev
+    mkdir -p $rd_mount/etc
+
+    # mount remaining partitions
+    func_rd_action m "Mounting /home partition ${rd_target}2..."
+    mount -t ext2 ${rd_target}2 $rd_mount/home
+    func_rd_action test
+    func_rd_action m "Mounting /mnt/flash partition ${rd_target}3..."
+    mount -t ext2 ${rd_target}3 $rd_mount/mnt/flash
+    func_rd_action test
+
+    func_rd_action m "Copying files..."
+    # copy files
+    for i in $rd_projectroot/*; do
+
+        # clear the flag
+        rd_status=
+
+# you are not copying /root here, but you are copying /home, but by mounting /home
+# the space taken by this copy is wasted.
+
+        # mark any directories we don't want to copy
+        for j in dev etc root tmp var; do
+            if [ `basename $i` = $j ]; then
+                rd_status=no
+            fi
+        done
+
+        # copy if we're clear
+        if [ ! $rd_status ]; then
+            cp -a $i $rd_mount 
+        fi
+    done
+
+    # copy whatever is in /root to /home/root
+    cp -a $rd_projectroot/root $rd_mount/home
+        
+    # create symlinks for our new file locations
+    ln -sf /dev/var $rd_mount/var
+    ln -sf /dev/var/tmp $rd_mount/tmp
+    ln -sf /home/root $rd_mount/root
+
+    # copy ramdisk, initrd, boot.b
+    cp -f $rd_tmp/ramdisk.dev $rd_mount/boot/ramdisk.dev
+    cp -f $rd_tmp/ramdisk.etc $rd_mount/boot/ramdisk.etc
+    cp -f $rd_tmp/$rd_initrd $rd_mount/boot/$rd_initrd
+    cp -f $rd_bootb $rd_mount/boot/boot.b
+
+    # create devices required before anything is mounted
+    cp -a $rd_projectroot/dev/console $rd_mount/dev/console
+    cp -a $rd_projectroot/dev/systty $rd_mount/dev/systty
+    cp -a $rd_projectroot/dev/null $rd_mount/dev/null
+    cp -a $rd_projectroot/dev/ram $rd_mount/dev/ram
+    cp -a $rd_projectroot/dev/ram0 $rd_mount/dev/ram0
+# can this be modified to only copy the devices actually in rd_projectroot/dev?
+    for i in 1 2 3 4 5 6 7 8 9; do
+        cp -a $rd_projectroot${rd_boot}${i} ${rd_mount}${rd_boot}${i}
+        cp -a $rd_projectroot/dev/ram$i ${rd_mount}/dev/ram$i
+    done
+    for i in 0 1 2 3 4; do
+        cp -a $rd_projectroot/dev/tty$i $rd_mount/dev/tty$i
+    done
+
+    # copy our modified inittab to the root directory
+    cp -f $rd_tmp/inittab $rd_mount/etc/inittab
+    func_rd_action test
+
+    # add rc.init
+
+    # make some noise
+    func_rd_action m "Creating fstab and rc.init..."
+
+# There is no way that I can see to modify this flag in pwl
+    # see if we're allowed to
+    if [ "$rd_initscripts" = "y" ]; then
+
+        # lets do it!
+        func_rd_fstab_ro_root_rd > $rd_mount/etc/fstab
+        func_rd_init_ro_root_rd > $rd_mount/rc.init
+
+        # make sure rc.init is executable
+        chmod 755 $rd_mount/rc.init
+
+        # send the ok
+        func_rd_action s
+    else
+
+        # duh we're not configured print a warning
+        func_rd_action w
+    fi
+
+# in the XFree86 package there is a ld.so.conf file that accomplishes the
+# the linking of /usr/X11R6/lib. Is there a reason you have it hard coded here as well?
+    # run library loader and include XFree86 lib directory
+    # remember it's been relocated to /lib/ld.so.cache
+    func_rd_action m "Creating ld.so.cache..."
+    ldconfig -v -C /lib/ld.so.cache -r $rd_mount /usr/X11R6/lib >>$rd_log 2>&1
+    func_rd_action test
+    
+    # create lilo.conf
+    func_rd_action m "Creating lilo.conf..."
+    # lets amend the ramdisk size and make sure the kernel
+    # will boot the ramdisk without complaining
+    rd_bp_map=$rd_mount/boot/map
+    rd_bp_bootb=$rd_mount/boot/boot.b
+    rd_bp_kernel=$rd_mount/boot/$rd_kernel
+    rd_bp_initrd=$rd_mount/boot/$rd_initrd
+    rd_bp_root=${rd_boot}1
+    rd_bp_rd=20000
+    func_rd_boot_lilo > $rd_tmp/lilo.conf
+    func_rd_action test
+
+    # run lilo
+    func_rd_action m "Installing lilo bootloader..."
+    lilo -v -C $rd_tmp/lilo.conf >>$rd_log 2>&1
+    func_rd_action test
+
+    # umount partitions
+    func_rd_action m "Unmounting the /mnt/flash partition ${rd_target}3..."
+    umount ${rd_target}3
+    func_rd_action test
+
+    func_rd_action m "Unmounting the /home partition ${rd_target}2..."     
+    umount ${rd_target}2
+    func_rd_action test
+ 
+    func_rd_action m "Unmounting the / partition ${rd_target}1..."
+    umount ${rd_target}1
+    func_rd_action test
+
+}
+
+
+--------------606A77B606D468CCCDA4194C--
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Dec 14 04:53:55 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 13 Dec 2000 22:53:55 -0600 (CST)
+Subject: Read only filesystem size issues.
+In-Reply-To: <3A371071.350EE014@amiga.com>
+Message-ID: <Pine.LNX.4.10.10012132225330.24040-100000@big.adis.on.ca>
+
+Hi Dean,
+
+Here are some notes to your comments... I am cutting away all the
+irrelevant parts of the script...
+
+# here you calculate the size of the entire filesystem including /home, /root, /dev, and /etc
+    # calculate the required root fs space
+    rd_size_fs=`du -s -k $rd_projectroot | cut -f 1`
+
+-> Correct!
+
+# these are the compressed images of the /dev and /etc directories
+    # add the ramdisk sizes
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.dev | cut -f 1`))
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.etc | cut -f 1`))
+    # add the bootloader
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_bootb | cut -f 1`))
+    # add a few kB for a margin
+    rd_size_fs=$((rd_size_fs + rd_size_boot_margin))
+
+-> Correct!
+
+# this block calculates the size of the /hom and /root directories that are also a part of 
+# the above calculations.
+    # calculate the home partition size
+    rd_size_home=`du -s -k $rd_projectroot/home | cut -f 1`
+    # add /root
+    rd_size_home=$((rd_size_home + `du -s -k $rd_projectroot/root | cut -f 1`))
+    # add the desired free space
+    rd_size_home=$((rd_size_home + rd_home_free))
+
+-> Correct. This is needed to determine the size of the partition
+containing the /home (and /root) directory
+
+    # check if things will fit
+    # also take our /home partition into consideration
+# Here is where your calculation double includes the /home and /root directories.
+    if [ $((rd_size_fs + rd_size_home)) -gt $rd_size_avail ]
+
+-> Yup, I missed the fact that $rd_size_fs already includes the file
+system size included in $rd_size_home. So essentially I could rewrite the
+above to simply state:
+
+    if [ $rd_size_fs -gt $rd_size_avail ]
+
+-> This should eliminate this error.
+
+    # mount remaining partitions
+    func_rd_action m "Mounting /home partition ${rd_target}2..."
+    mount -t ext2 ${rd_target}2 $rd_mount/home
+
+-> We're mounting the /home partition up above
+
+    func_rd_action test
+    func_rd_action m "Mounting /mnt/flash partition ${rd_target}3..."
+    mount -t ext2 ${rd_target}3 $rd_mount/mnt/flash
+    func_rd_action test
+
+    func_rd_action m "Copying files..."
+    # copy files
+    for i in $rd_projectroot/*; do
+
+        # clear the flag
+        rd_status=
+
+# you are not copying /root here, but you are copying /home, but by mounting /home
+# the space taken by this copy is wasted.
+
+-> Not quite true. At this point /home is mounted. The subsequent copy
+command will copy the contents of /home into the mounted partition instead
+of the root partition. The intend was to have the /home directory
+uncompressed so one could save the contents of /home or even eliminate the
+building and mounting of a /home ramdisk and mount the filesystem
+directly. Perhaps adding reiserfs would allow for that with little risk of
+corruption?
+
+        # mark any directories we don't want to copy
+        for j in dev etc root tmp var; do
+            if [ `basename $i` = $j ]; then
+                rd_status=no
+            fi
+        done
+
+        # copy if we're clear
+        if [ ! $rd_status ]; then
+            cp -a $i $rd_mount 
+        fi
+    done
+
+    # copy whatever is in /root to /home/root
+    cp -a $rd_projectroot/root $rd_mount/home
+        
+    # create symlinks for our new file locations
+    ln -sf /dev/var $rd_mount/var
+    ln -sf /dev/var/tmp $rd_mount/tmp
+    ln -sf /home/root $rd_mount/root
+
+    # copy ramdisk, initrd, boot.b
+    cp -f $rd_tmp/ramdisk.dev $rd_mount/boot/ramdisk.dev
+    cp -f $rd_tmp/ramdisk.etc $rd_mount/boot/ramdisk.etc
+    cp -f $rd_tmp/$rd_initrd $rd_mount/boot/$rd_initrd
+    cp -f $rd_bootb $rd_mount/boot/boot.b
+
+    # create devices required before anything is mounted
+    cp -a $rd_projectroot/dev/console $rd_mount/dev/console
+    cp -a $rd_projectroot/dev/systty $rd_mount/dev/systty
+    cp -a $rd_projectroot/dev/null $rd_mount/dev/null
+    cp -a $rd_projectroot/dev/ram $rd_mount/dev/ram
+    cp -a $rd_projectroot/dev/ram0 $rd_mount/dev/ram0
+# can this be modified to only copy the devices actually in rd_projectroot/dev?
+
+-> This is a poor way of doing this. At least by using the ${rd_boot}
+variable only the devices relevant to the boot device are created.
+
+    for i in 1 2 3 4 5 6 7 8 9; do
+        cp -a $rd_projectroot${rd_boot}${i} ${rd_mount}${rd_boot}${i}
+        cp -a $rd_projectroot/dev/ram$i ${rd_mount}/dev/ram$i
+    done
+    for i in 0 1 2 3 4; do
+        cp -a $rd_projectroot/dev/tty$i $rd_mount/dev/tty$i
+    done
+
+    # copy our modified inittab to the root directory
+    cp -f $rd_tmp/inittab $rd_mount/etc/inittab
+    func_rd_action test
+
+    # add rc.init
+
+    # make some noise
+    func_rd_action m "Creating fstab and rc.init..."
+
+# There is no way that I can see to modify this flag in pwl
+
+-> I missed to add this flag to the projects.defaults file. This could be
+important for instance where you want to include your own fstab and
+rc.init file.
+
+    # see if we're allowed to
+    if [ "$rd_initscripts" = "y" ]; then
+
+        # lets do it!
+        func_rd_fstab_ro_root_rd > $rd_mount/etc/fstab
+        func_rd_init_ro_root_rd > $rd_mount/rc.init
+
+        # make sure rc.init is executable
+        chmod 755 $rd_mount/rc.init
+
+        # send the ok
+        func_rd_action s
+    else
+
+        # duh we're not configured print a warning
+        func_rd_action w
+    fi
+
+# in the XFree86 package there is a ld.so.conf file that accomplishes the
+# the linking of /usr/X11R6/lib. Is there a reason you have it hard coded here as well?
+
+-> Yes. My idea is that an embedded system shouldn't change. so you
+wouldn't need the ldconfig binary. On a small system this is quite
+significant. I don't expect any ld.so.conf to be on the target filesystem.
+So just in case X is included it will be linked. Perhaps the list of
+library paths at this stage could be configurable in a projects.default
+variable, too?  
+
+    # run library loader and include XFree86 lib directory
+    # remember it's been relocated to /lib/ld.so.cache
+    func_rd_action m "Creating ld.so.cache..."
+    ldconfig -v -C /lib/ld.so.cache -r $rd_mount /usr/X11R6/lib >>$rd_log 2>&1
+    func_rd_action test
+    
+-> Thank you for your suggestions! The above was created for a particular
+project but never really tested thoroughly. It does work, though. If you
+have ideas for a different partitioning method I'd be quite happy to
+either modify this target or even create a new one.
+
+With the 2.4.x kernels we should have a devfs which should allow for the
+/dev ramdisk to disappear. It is defenitely something with a lot of waste.
+Especially with fairly little devices it still is rather large since each
+device entry requires an inode. devfs works similar to the /proc
+filesystem where it's a kernel generated filesystem.
+
+having the /etc files in  compressed ramdisk makes them rather difficult
+to change. So a different solution might be an idea. Perhaps keep it in a
+partition just as /home but copy the partition into a ramdisk on boot?
+
+Note that I added the following in 0.53.23 to correct some calcualtions:
+
+    # deduct the /dev and /etc filesystems
+    # reverse addition of free space to ramdisks!
+    rd_size_fs=$((rd_size_fs - (rd_size_fs_dev - rd_dev_free)))
+    rd_size_fs=$((rd_size_fs - (rd_size_fs_etc - rd_etc_free)))
+
+It works and I think it makes sense...
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Dec 14 05:28:23 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 13 Dec 2000 23:28:23 -0600 (CST)
+Subject: PeeWeeLinux 0.53.23
+Message-ID: <Pine.LNX.4.10.10012132323490.24040-100000@big.adis.on.ca>
+
+Hi,
+
+I am just in the processing of uploading 0.53.23 to sourceforge and
+metalab. Here's a list of changes:
+
+  v0.53.23 -- December 12, 2000
+  -----------------------------
+   o Added bin/ldlinux.sys for pwl_target_load to function properly
+   o Upgraded thttpd-2.15 to thttpd-2.20b, solves problems with cgi
+   o Added zebra routing daemon
+
+  v0.53.22 -- December 7, 2000
+  ----------------------------
+   o Updated wireless-isa example
+   o Fixed bug in pwl_defaults as outlined in CHANGES.pwlconfig
+
+This should fix a major problem with the "Uncompressed ramdisk, boot from
+FAT 16 partition" target.
+
+There are still some issues with the "Read-only root fs with multiple
+ramdisks" target relating to the calculation of file sizes. This should be
+fixed for the next release.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Dec 14 19:24:53 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Thu, 14 Dec 2000 11:24:53 -0800
+Subject: Read only filesystem size issues.
+References: <Pine.LNX.4.10.10012132225330.24040-100000@big.adis.on.ca>
+Message-ID: <3A391E85.3FCAFFCC@amiga.com>
+
+Adi,
+I've snipped most of the scripts except where I have additional
+comments.
+
+Adi Linden wrote:
+> 
+> Hi Dean,
+> 
+> Here are some notes to your comments... I am cutting away all the
+> irrelevant parts of the script...
+> 
+
+>     # check if things will fit
+>     # also take our /home partition into consideration
+> # Here is where your calculation double includes the /home and /root directories.
+>     if [ $((rd_size_fs + rd_size_home)) -gt $rd_size_avail ]
+> 
+> -> Yup, I missed the fact that $rd_size_fs already includes the file
+> system size included in $rd_size_home. So essentially I could rewrite the
+> above to simply state:
+> 
+>     if [ $rd_size_fs -gt $rd_size_avail ]
+> 
+> -> This should eliminate this error.
+
+Well, yes. That would be better, though not yet quite correct. What you
+need to do is to subtract rd_size_home from rd_size_fs before adding the
+margins in and before rounding to the next highest MByte. Then you can
+leave the original calculation from above. At issue here is that this is
+actually implemented as two partitions, each with it's own upward
+rounding. The way your modified calculation works is to only account for
+one round up.
+
+I've re-included the pertinent portion of the script here with what I
+would do the correct the issue.
+
+    # calculate the required root fs space
+    rd_size_fs=`du -s -k $rd_projectroot | cut -f 1`
+    # add the ramdisk sizes
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.dev | cut -f
+1`))
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.etc | cut -f
+1`))
+    # add the bootloader
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_bootb | cut -f 1`))
+    # add a few kB for a margin
+    rd_size_fs=$((rd_size_fs + rd_size_boot_margin))
+
+    # calculate the home partition size
+    rd_size_home=`du -s -k $rd_projectroot/home | cut -f 1`
+    # add /root
+    rd_size_home=$((rd_size_home + `du -s -k $rd_projectroot/root | cut
+-f 1`))
+    # add the desired free space
+    rd_size_home=$((rd_size_home + rd_home_free))
+
+*** My changes start here ***
+    # remove home and root from main fs
+    rd_size_fs=$((rd_size_fs -  rd_size_home)
+    # remove dev from main fs
+    rd_size_fs-$((rd_size_fs - 'du -s -k $rd_projectroot/dev | cut -f
+1'))
+    # remove etc from main fs
+    rd_size_fs-$((rd_size_fs - 'du -s -k $rd_projectroot/etc | cut -f
+1'))
+*** Now rd_size_fs contains an accurate number (based on the development
+system's block size) of the real contents of the first partition
+*** including the boot margin.
+
+The rest of the script can remain as is.
+
+
+> 
+> # you are not copying /root here, but you are copying /home, but by mounting /home
+> # the space taken by this copy is wasted.
+> 
+> -> Not quite true. At this point /home is mounted. The subsequent copy
+> command will copy the contents of /home into the mounted partition instead
+> of the root partition. The intend was to have the /home directory
+> uncompressed so one could save the contents of /home or even eliminate the
+> building and mounting of a /home ramdisk and mount the filesystem
+> directly. Perhaps adding reiserfs would allow for that with little risk of
+> corruption?
+
+Yep, you are correct. I didn't notice the mount above. 
+Reiserfs looks interesting for the entire filesystem as there are many
+small files in my application that each eat up 1K worth of storage. If
+ext2fs supported fragments, I'd probably be able to reduce storage
+requirements by about 30%. It appears that reiserfs may be able to make
+a similar savings. Have you any experience with reiserfs?
+
+> # can this be modified to only copy the devices actually in rd_projectroot/dev?
+> 
+> -> This is a poor way of doing this. At least by using the ${rd_boot}
+> variable only the devices relevant to the boot device are created.
+
+My comment was actually referring to the code below. My application
+doesn't require all the hda's or tty's so I remove them from the
+configuration. Doing so causes errors to display during the target load
+function. I realize that they can be safely ignored, but others may not
+know this.
+
+>     for i in 1 2 3 4 5 6 7 8 9; do
+>         cp -a $rd_projectroot${rd_boot}${i} ${rd_mount}${rd_boot}${i}
+>         cp -a $rd_projectroot/dev/ram$i ${rd_mount}/dev/ram$i
+>     done
+>     for i in 0 1 2 3 4; do
+>         cp -a $rd_projectroot/dev/tty$i $rd_mount/dev/tty$i
+>     done
+> 
+> # There is no way that I can see to modify this flag in pwl
+> 
+> -> I missed to add this flag to the projects.defaults file. This could be
+> important for instance where you want to include your own fstab and
+> rc.init file.
+> 
+
+Being able to override the creation of the init scripts would allow me
+to return much closer to the standard pwl package. Most of the recent
+changes to my build have been accomplished by modifying the pwl_target*
+scripts.
+
+> # in the XFree86 package there is a ld.so.conf file that accomplishes the
+> # the linking of /usr/X11R6/lib. Is there a reason you have it hard coded here as well?
+> 
+> -> Yes. My idea is that an embedded system shouldn't change. so you
+> wouldn't need the ldconfig binary. On a small system this is quite
+> significant. I don't expect any ld.so.conf to be on the target filesystem.
+> So just in case X is included it will be linked. Perhaps the list of
+> library paths at this stage could be configurable in a projects.default
+> variable, too?
+
+Your default init scripts run ldconfig, if it exists, on every target
+boot. That is what prompted my comment. You are correct that the
+ldconfig binary should not be included in the target fs for most
+embedded systems. You can leave it as is and it certainly wouldn't
+bother me. Making it configurable would cover a lot of possible
+applications though.
+
+> -> Thank you for your suggestions! The above was created for a particular
+> project but never really tested thoroughly. It does work, though. If you
+> have ideas for a different partitioning method I'd be quite happy to
+> either modify this target or even create a new one.
+
+ 
+> With the 2.4.x kernels we should have a devfs which should allow for the
+> /dev ramdisk to disappear. It is defenitely something with a lot of waste.
+> Especially with fairly little devices it still is rather large since each
+> device entry requires an inode. devfs works similar to the /proc
+> filesystem where it's a kernel generated filesystem.
+
+This would be wonderful!! I'm attempting every trick I can think of to
+conserve system resources. RAM is where I am currently focusing on.
+ 
+> having the /etc files in  compressed ramdisk makes them rather difficult
+> to change. So a different solution might be an idea. Perhaps keep it in a
+> partition just as /home but copy the partition into a ramdisk on boot?
+
+ 
+> Note that I added the following in 0.53.23 to correct some calcualtions:
+> 
+>     # deduct the /dev and /etc filesystems
+>     # reverse addition of free space to ramdisks!
+>     rd_size_fs=$((rd_size_fs - (rd_size_fs_dev - rd_dev_free)))
+>     rd_size_fs=$((rd_size_fs - (rd_size_fs_etc - rd_etc_free)))
+> 
+> It works and I think it makes sense...
+
+Yes it does. I provide something similar in my example above. Choose the
+one that makes the most sense to you.
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec 15 06:57:14 2000
+From: peeweelinux@adis.on.ca (andu)
+Date: Fri, 15 Dec 2000 01:57:14 -0500 (EST)
+Subject: disk size
+Message-ID: <20001215065714.A042260E79@russian-caravan.cloud9.net>
+
+Trying to put a system on a flashdisk of 64MB with write/read root on single partition.
+Pwlconfig tells me I have a 61MB disk with 125185 sectors, cfdisk says I have 64.06MB
+with 125116 sectors. Whoever is right, I can't get the disk to boot. What to do?
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec 15 16:45:48 2000
+From: peeweelinux@adis.on.ca (Terri L. Fischer)
+Date: Fri, 15 Dec 00 11:45:48 EST
+Subject: Newbie and X
+Message-ID: <10012151645.AA07815@ner.com>
+
+
+Hello, 
+
+I'm new to PeeWee Linux. Using 0.53.21 with the 22.cfg update, I've
+successfully gotten the "minimal" example to work.  I'm now trying to
+build up from the minimal example to get X windows to work.
+
+I've looked thru the archives, but it seems that others doing X got
+farther than I have before having trouble. I'm having trouble getting
+the server to come up.  Presumably I'm still missing some pieces,
+either from the X packages or files that I need to add to custom.
+
+I would greatly appreciate it if someone that has gotten X working
+could send me a package/file list that I might crib from or any
+suggestions about getting X up in general.
+
+My circumstances so far:
+
+I've (naively) copied into custom my XF86Config file from the RH6.2
+development system that's running on the same hardware and video
+card/monitor setup.
+
+After logging in to my minimal+X system, when I run 'startx' the
+first problem I encounter is "Can't open /dev/mouse".  /dev/mouse
+exists and is a symlink to /dev/psaux.
+
+
+When I change XF86Config's /dev/mouse entry to /dev/null just to move
+things along, the server gets a little farther - changes the video
+mode, at least - but hangs or dies in such a way that a reboot is the
+only option.  Ctl-Alt-Backspace doesn't seem to help.
+
+Thank you for any help and thanks very much to the developers for
+making this all available!
+
+Terri Fischer
+
+-- 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Terri L. Fischer			terri@ner.com
+New England Research, Inc.		
+White River Jct., Vermont
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Dec 15 17:29:16 2000
+From: peeweelinux@adis.on.ca (Terri L. Fischer)
+Date: Fri, 15 Dec 00 12:29:16 EST
+Subject: Newbie and X
+In-Reply-To: Newbie and X [from: Terri L. Fischer]
+References: <10012151645.AA07815@ner.com>
+Message-ID: <10012151729.AA07889@ner.com>
+
+
+After rereading the XF86Config man page, I discovered the server
+setting 'AllowMouseOpenFail' which lets the server keep going even if
+it can't find the mouse (which it still can't).  Now, the server
+complains with error messages about a font server and font paths and
+dies with a 'could not open default font 'fixed'', but at least I get
+a prompt back now....
+
+Terri.
+
+
+Terri L Fischer writes on Fri, 15 Dec 00 11:45:48 EST:
+
+TF> Hello, 
+
+TF> I'm new to PeeWee Linux. Using 0.53.21 with the 22.cfg update, I've
+TF> successfully gotten the "minimal" example to work.  I'm now trying to
+TF> build up from the minimal example to get X windows to work.
+
+TF> I've looked thru the archives, but it seems that others doing X got
+TF> farther than I have before having trouble. I'm having trouble getting
+TF> the server to come up.  Presumably I'm still missing some pieces,
+TF> either from the X packages or files that I need to add to custom.
+
+TF> I would greatly appreciate it if someone that has gotten X working
+TF> could send me a package/file list that I might crib from or any
+TF> suggestions about getting X up in general.
+
+TF> My circumstances so far:
+
+TF> I've (naively) copied into custom my XF86Config file from the RH6.2
+TF> development system that's running on the same hardware and video
+TF> card/monitor setup.
+
+TF> After logging in to my minimal+X system, when I run 'startx' the
+TF> first problem I encounter is "Can't open /dev/mouse".  /dev/mouse
+TF> exists and is a symlink to /dev/psaux.
+
+
+TF> When I change XF86Config's /dev/mouse entry to /dev/null just to move
+TF> things along, the server gets a little farther - changes the video
+TF> mode, at least - but hangs or dies in such a way that a reboot is the
+TF> only option.  Ctl-Alt-Backspace doesn't seem to help.
+
+TF> Thank you for any help and thanks very much to the developers for
+TF> making this all available!
+
+TF> Terri Fischer
+
+TF> -- 
+TF> =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+TF> Terri L. Fischer			terri@ner.com
+TF> New England Research, Inc.		
+TF> White River Jct., Vermont
+TF> ---------------------------------------------------
+TF> See the list archives at http://adis.on.ca/archives/
+TF> See the PWL homepage at  http://peeweelinux.com
+TF> ---------------------------------------------------
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Dec 17 18:26:46 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sun, 17 Dec 2000 12:26:46 -0600 (CST)
+Subject: Read only filesystem size issues.
+In-Reply-To: <3A391E85.3FCAFFCC@amiga.com>
+Message-ID: <Pine.LNX.4.10.10012171212410.567-100000@big.adis.on.ca>
+
+Hi Dean,
+
+I went with your suggestions and edited pwl_target_load accordingly.
+
+> Yep, you are correct. I didn't notice the mount above. 
+> Reiserfs looks interesting for the entire filesystem as there are many
+> small files in my application that each eat up 1K worth of storage. If
+> ext2fs supported fragments, I'd probably be able to reduce storage
+> requirements by about 30%. It appears that reiserfs may be able to make
+> a similar savings. Have you any experience with reiserfs?
+
+I've been looking at reiserfs primarily for it's ability to be shutdown
+without corruption. I must say I don't know much about filesystems. I've
+read that a journalling filesystems keeps a history record of some sort
+that allows system boot without filesystem check, risk of corruption, etc.
+If I understand right reiserfs doesn't need any additional tools to like
+fsck if a filesystem is used read/write.
+
+I want to include reiserfs. But it will require several things:
+
+- Embedded kernel with reiserfs support
+- Development machine with reiserfs enabled kernel
+- Modifications of the pwl_target_load functions, i.e. additional targets
+  with reiserfs.
+
+This is a planned addition but without any guarantee or deadline at this
+point.
+
+> Being able to override the creation of the init scripts would allow me
+> to return much closer to the standard pwl package. Most of the recent
+> changes to my build have been accomplished by modifying the pwl_target*
+> scripts.
+
+I am working on some pwlconfig changes today. I hope to add the initscript
+flag to pwl_defaults.
+
+Another issue I want to resolve is the many questions I get from newcomers
+about missing packages. I will check for packages and if none exist I want
+to give a prompt with an option to extract all rpms to packages when
+pwlconfig is initially run.
+
+> Your default init scripts run ldconfig, if it exists, on every target
+> boot. That is what prompted my comment. You are correct that the
+
+This is correct. Leftovers from when PeeWeeLinux started to take shape. I
+left it just because there might be circumstances when an embedded system
+contains ldconfig is is required to use it for whatever mysterious reason.
+I.e. development without using pwl_target_load to build a target drive.
+
+> This would be wonderful!! I'm attempting every trick I can think of to
+> conserve system resources. RAM is where I am currently focusing on.
+
+There's a devfs backport I am looking at adding to the 2.2.18 kernel.
+
+So once these changes to pwlconfig are done I will release 0.53.24.
+Hopefully there'll be only minor changes if any and it will turn into 0.60
+to reflect a stable distribution.
+
+Then I can start adding packages, etc. I still have to come to grips with
+version numbering. Some way of distinguishing between beta releases and
+stable releases. I'd also like the version number to reflect when packages
+have changed rather than pwlconfig changes. Any suggestions are welcome
+here!
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Dec 17 20:24:17 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sun, 17 Dec 2000 14:24:17 -0600 (CST)
+Subject: 0.53.24
+Message-ID: <Pine.LNX.4.10.10012171415290.567-100000@big.adis.on.ca>
+
+Hi,
+
+I am in the process of uploading PeeWeeLinux 0.53.24. It includes the
+latest bug fixes and added features to pwlconfig that have come up.
+
+Issues resolved:
+
+- Filesystem sizes should be calculated properly now for the 
+  "Read-only root fs with multiple ramdisks", thanks to Dean Brown
+  for pointing this out and providing the fix.
+
+- Added a check for the ./packages directory when pwlconfig is run
+  and prompt for a choice to extract rpms immediately.
+
+- Added rd_initscripts variable to project.defaults. Now the automatic
+  modification of rc.init and etc/fstab by the target load scripts can
+  be turned off.
+
+- Cosmetic fixes, typos and help screen updates.
+
+Please post any experiences with 0.53.24. I hope to turn this into the
+0.60 stable release soon.
+
+Only the peeweelinux-0.53.24-cfg.tar.gz file is required to upgrade an
+existing PeeWeeLinux install to 0.53.24!
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Dec 18 17:43:12 2000
+From: peeweelinux@adis.on.ca (Bill Paulson)
+Date: Mon, 18 Dec 2000 11:43:12 -0600
+Subject: 2.3/2.4 Kernels?
+Message-ID: <3A3E4CB0.ED1A473E@lucent.com>
+
+Is anyone using 2.3/2.4 series kernels with PeeWee? Any hints would be
+helpful.
+The box I'm working on needs the latest kernel to support ATM and a
+specific ATM
+driver.
+	Bill Paulson
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Dec 19 15:26:58 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 19 Dec 2000 09:26:58 -0600 (CST)
+Subject: Bugs using PeeWee on Mandrake 7.2
+In-Reply-To: <sa3f829a.001@smtp.csir.co.za>
+Message-ID: <Pine.LNX.4.10.10012190925000.1451-100000@develop.knet.on.ca>
+
+Hi,
+
+What version of bash does Mandrake 7.2 include? I've had several reports
+of the 
+
+> pwl_target_functions-> syntax error :unexpected end of file
+
+type error but have npt been able to recreate the problem at all! I am
+cc'ing this to the PeeWeeLinux@adis.on.ca list for reference.
+
+TTYL,
+Adi
+
+
+
+On Tue, 19 Dec 2000, Herman Theron wrote:
+
+> Hi Adi
+> 
+> Must congratulate you on a very nice embedded environment!!
+> 
+> I've had trouble using the binaries on a Mandrake 7.2 system (Version 0.53.24). I think it might be a bash problem.
+> 
+> Bug report:
+> Everything works fine until I want to create a bootable floppy.
+> 
+> The script pwl_target complains:
+> pwl_target_functions-> syntax error :unexpected end of file
+> pwl_target_load-> syntax error: unexpected end of file
+> (Not real error messages)
+> 
+> I fixed the problem (after some hunting). It has to do when you use
+> something like the following:
+> { dd if ..... } >>$rd_log 2>&1
+> 
+> I had to add {} to the above line->
+> {{ dd if ..... } >>$rd_log 2>&1}
+> 
+> This helped in both files. 
+> 
+> Hope this helps.
+> 
+> Cheers
+> Herman
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Dec 19 18:33:18 2000
+From: peeweelinux@adis.on.ca (Ralph Stickley)
+Date: Tue, 19 Dec 2000 10:33:18 -0800 (PST)
+Subject: Bugs using PeeWee on Mandrake 7.2
+Message-ID: <20001219183318.53876.qmail@web9107.mail.yahoo.com>
+
+Adi,
+This usually happens if the end of one of the files is cut off...
+Run the script with verbose stuff just to test the file:
+
+sh -x pwl_target_functions
+
+which should indicate where the thing is dying.  Chances are, the file
+has been corrupted (or one of the include files has been corrupted - 
+dang near all them bits are important :)
+
+Just a guess - Good luck,
+Ralph
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> What version of bash does Mandrake 7.2 include? I've had several reports
+> of the 
+> 
+> > pwl_target_functions-> syntax error :unexpected end of file
+> 
+> type error but have npt been able to recreate the problem at all! I am
+> cc'ing this to the PeeWeeLinux@adis.on.ca list for reference.
+> 
+> TTYL,
+> Adi
+> 
+> 
+> 
+> On Tue, 19 Dec 2000, Herman Theron wrote:
+> 
+> > Hi Adi
+> > 
+> > Must congratulate you on a very nice embedded environment!!
+> > 
+> > I've had trouble using the binaries on a Mandrake 7.2 system (Version
+> 0.53.24). I think it might be a bash problem.
+> > 
+> > Bug report:
+> > Everything works fine until I want to create a bootable floppy.
+> > 
+> > The script pwl_target complains:
+> > pwl_target_functions-> syntax error :unexpected end of file
+> > pwl_target_load-> syntax error: unexpected end of file
+> > (Not real error messages)
+> > 
+> > I fixed the problem (after some hunting). It has to do when you use
+> > something like the following:
+> > { dd if ..... } >>$rd_log 2>&1
+> > 
+> > I had to add {} to the above line->
+> > {{ dd if ..... } >>$rd_log 2>&1}
+> > 
+> > This helped in both files. 
+> > 
+> > Hope this helps.
+> > 
+> > Cheers
+> > Herman
+> > 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Photos - 35mm Quality Prints, Now Get 15 Free!
+http://photos.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Dec 19 19:29:36 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 19 Dec 2000 13:29:36 -0600 (CST)
+Subject: Bugs using PeeWee on Mandrake 7.2
+In-Reply-To: <20001219183318.53876.qmail@web9107.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10012191327040.916-100000@develop.knet.on.ca>
+
+Hi Ralph,
+
+I've had several reports of this happening. The files are fine since I had
+a the tarred up scripts emailed to me. They run just fine on my system. So
+the bash isue is certainly something to consider. I installed bash2 a
+while ago and made sure I reinstalled and use the regular bash version
+included and installed with RedHat 6.2. 
+
+TTYL,
+Adi
+
+On Tue, 19 Dec 2000, Ralph Stickley wrote:
+
+> Adi,
+> This usually happens if the end of one of the files is cut off...
+> Run the script with verbose stuff just to test the file:
+> 
+> sh -x pwl_target_functions
+> 
+> which should indicate where the thing is dying.  Chances are, the file
+> has been corrupted (or one of the include files has been corrupted - 
+> dang near all them bits are important :)
+> 
+> Just a guess - Good luck,
+> Ralph
+> 
+> --- Adi Linden <adi@adis.on.ca> wrote:
+> > Hi,
+> > 
+> > What version of bash does Mandrake 7.2 include? I've had several reports
+> > of the 
+> > 
+> > > pwl_target_functions-> syntax error :unexpected end of file
+> > 
+> > type error but have npt been able to recreate the problem at all! I am
+> > cc'ing this to the PeeWeeLinux@adis.on.ca list for reference.
+> > 
+> > TTYL,
+> > Adi
+> > 
+> > 
+> > 
+> > On Tue, 19 Dec 2000, Herman Theron wrote:
+> > 
+> > > Hi Adi
+> > > 
+> > > Must congratulate you on a very nice embedded environment!!
+> > > 
+> > > I've had trouble using the binaries on a Mandrake 7.2 system (Version
+> > 0.53.24). I think it might be a bash problem.
+> > > 
+> > > Bug report:
+> > > Everything works fine until I want to create a bootable floppy.
+> > > 
+> > > The script pwl_target complains:
+> > > pwl_target_functions-> syntax error :unexpected end of file
+> > > pwl_target_load-> syntax error: unexpected end of file
+> > > (Not real error messages)
+> > > 
+> > > I fixed the problem (after some hunting). It has to do when you use
+> > > something like the following:
+> > > { dd if ..... } >>$rd_log 2>&1
+> > > 
+> > > I had to add {} to the above line->
+> > > {{ dd if ..... } >>$rd_log 2>&1}
+> > > 
+> > > This helped in both files. 
+> > > 
+> > > Hope this helps.
+> > > 
+> > > Cheers
+> > > Herman
+> > > 
+> > 
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+> 
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Yahoo! Photos - 35mm Quality Prints, Now Get 15 Free!
+> http://photos.yahoo.com/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Dec 19 20:10:31 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Tue, 19 Dec 2000 12:10:31 -0800
+Subject: Error message during boot.
+Message-ID: <3A3FC0B7.61D751AD@amiga.com>
+
+I have been trying for some time to completely hide the output of linux
+on an embedded application. I have succeeded except for a single error
+message that appears between the end of the linuxrc script and the
+beginning of the init.rc script. The error message produced is
+"tcsetpgrp: Inappropriate ioctl for device".
+
+Has anyone else seen this message? Is it unique to my setup, or is it
+something more generic? Does anyone have a way to suppress it? 
+
+Thanks in advance!!!
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Dec 19 20:49:51 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 19 Dec 2000 14:49:51 -0600 (CST)
+Subject: Error message during boot.
+In-Reply-To: <3A3FC0B7.61D751AD@amiga.com>
+Message-ID: <Pine.LNX.4.10.10012191448420.916-100000@develop.knet.on.ca>
+
+Hi,
+
+No, haven't seen it before. I know init will output a line when it is
+fired up by the kernel. But I've been able to accomplish a totally silent
+boot otherwise.
+
+TTYL,
+Adi
+
+On Tue, 19 Dec 2000, Dean Brown wrote:
+
+> I have been trying for some time to completely hide the output of linux
+> on an embedded application. I have succeeded except for a single error
+> message that appears between the end of the linuxrc script and the
+> beginning of the init.rc script. The error message produced is
+> "tcsetpgrp: Inappropriate ioctl for device".
+> 
+> Has anyone else seen this message? Is it unique to my setup, or is it
+> something more generic? Does anyone have a way to suppress it? 
+> 
+> Thanks in advance!!!
+> 
+> -- 
+> Dean Brown
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Dec 20 05:52:13 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 19 Dec 2000 23:52:13 -0600 (CST)
+Subject: Help - bash & script errors
+In-Reply-To: <918BB3173DC2D3118D920090274ED200011DB1@thycon01.internal.thycon.com.au>
+Message-ID: <Pine.LNX.4.10.10012192346060.32526-100000@big.adis.on.ca>
+
+Hi Robert,
+
+We're getting closer. If I run the pwl_target_load script through the
+stock bash (bash-1.14.7) on my RedHat system I get:
+
+    [root@big scripts]# bash -x pwl_target_load 
+    + [ -f /etc/bashrc ]
+    + . /etc/bashrc
+    ++ [  ]
+
+Now the same using bash2 (bash2-2.03) I just installed:
+
+    [root@big scripts]# bash2 -x pwl_target_load 
+    + '[' -f /etc/bashrc ']'
+    + . /etc/bashrc
+    ++ '[' '' ']'
+    pwl_target_load: line 1656: syntax error: unexpected end of file
+
+This meand the pwl_target_load and pwl_target_functions scripts do not
+work with bash-2.x versions.
+
+I will look fixing this shortly. Alternately you could try installing
+bash-1.14 for now.
+
+TTYL,
+Adi
+
+
+
+On Wed, 20 Dec 2000, Robert Heezeman wrote:
+
+> 
+> My rpm -qa |grep bash reports
+> 
+> 
+> bash-2.03-16mdk
+> 
+> 
+> The errors reported Ralph have a strong degree of familiarity although
+> playing with the scripts is beyond my current capability. Perhaps you can do
+> me a new version ?
+> 
+> 
+> Robert in Australia
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> This communication is intended for use of the addressee(s) and may contain legally privileged and confidential information.
+> Any views or opinions presented are solely those of the author and do not necessarily represent those of Thycon.
+> If you are not the addressee you are notified that any transmission, distribution or replication of this message is strictly prohibited.
+> The legal privilege and confidentiality attached to this email and its contents is not waived, lost or destroyed by reason of
+> mistaken delivery to you. 
+> If you have received this message in error, please notify Thycon immediately by E-mail to thycon@thycon.com.au and
+> permanently delete the email from your system.
+> 
+> Email transmission cannot be guaranteed to be secure or error-free as information could be intercepted, corrupted,
+> lost, destroyed, arrive late or incomplete, or contain viruses. The sender therefore does not accept liability for any errors 
+> or omissions in the contents of this message, which arise as a result of email transmission. If verification is required please
+> request a hard-copy version.
+> 
+> Copyright 2000 Thycon. All rights reserved.
+> 
+> PHONE : 61 3 9319 9000
+> FAX : 61 3 9319 9001
+> 
+> 
+> 
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Dec 20 06:27:20 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 20 Dec 2000 00:27:20 -0600 (CST)
+Subject: pwl_target_load: line 1656: syntax error: unexpected end of file
+Message-ID: <Pine.LNX.4.10.10012200018510.32526-100000@big.adis.on.ca>
+
+Hi,
+
+Fixed the pwl_target_load and pwl_target_functions script to work properly
+with bash-2.x. The cause of the problem is a documented incomatability
+between bash-1.14 and bash-2.03. 
+
+So version 0.53.25 will be uploaded shortly...
+
+Below find the 'technical' explanation...
+
+TTYL,
+Adi
+
+
+
+ 
+
+In those scripts I redirect output from certain commands to $rd_log or
+/dev/null depending on the circumstances. Here is an offending line
+example:
+
+{ dd if=$rd_loop_dev bs=1k count=$rd_size_fs | gzip -v9 > $rd_tmp/$rd_ramdisk } >>$rd_log 2>&1
+
+Things are working after adding a semicolon just before the closing
+bracket, like so:
+
+{ dd if=$rd_loop_dev bs=1k count=$rd_size_fs | gzip -v9 > $rd_tmp/$rd_ramdisk; } >>$rd_log 2>&1
+
+Here is the excerpt from the bash2 COMPAT file for reference:
+
+--- Quote ---
+
+2.  One of the bugs fixed in the YACC grammar tightens up the rules
+    concerning group commands ( {...} ).  The `list' that composes the
+    body of the group command must be terminated by a newline or
+    semicolon.  That's because the braces are reserved words, and are
+    recognized as such only when a reserved word is legal.  This means
+    that while bash-1.14 accepted shell function definitions like this:
+
+        foo() { : }
+
+    bash-2.0 requires this:
+
+        foo() { :; }
+
+    This is also an issue for commands like this:
+
+        mkdir dir || { echo 'could not mkdir' ; exit 1; }
+
+    The syntax required by bash-2.0 is also accepted by bash-1.14.
+
+--- Unquote ---
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Dec 28 17:10:47 2000
+From: peeweelinux@adis.on.ca (Marc Wiz)
+Date: Thu, 28 Dec 2000 11:10:47 -0600 (CST)
+Subject: Doc questions
+Message-ID: <200012281710.eBSHAmf18012@frshaire.wiz.com>
+
+Last month Matt answered a query in regards to using the DOC:
+
+> The way I ended up doing this over all was to use pwlconfig to
+> setup a system on a 16M hdd partition (the size of my DOC). I then
+> 'tweeked' it get to get my moduals and everything else up and
+> running the way I wanted.  Then out side of pwl I just copied
+> everything to the DOC
+> 
+> mount /dev/msys/fla1 /mnt/flash 
+> cp -dpR /<insert pwl partion name here> /mnt/flash 
+> 
+> I then put doc.b in /mtn/flash/boot and doc-lilo in /mnt/flash/etc 
+> 
+> I then had to reboot into dos to run there dos utils (dupdate) to
+> update the firmware for the last time, and rebooted.
+> 
+> I understand that this is doing things outside of plwconfig which
+> is probably to be avoided, but it did work.  All of what I've just
+> talked about is fairly well listed in the docs for the 4.2 version
+> of the firmware on the M-Sys site. I typed all of this up from
+> memory so I wouldn't follow it as a step by step but rather a guide
+> to looking through the offical docs.
+> 
+> If I can be of any more help let me know.
+> 
+> M@ 
+
+I have successfully built a kernel for outside of PeeWeeLinux that is
+running on my system (GCT-ALLWell settop) that has an 8MB DOC.
+
+I am using the 4.21 software from M-Sys.
+
+I am able to successfully access the DOC as a DOS type file system.
+
+I have some questions in regards to what Matt typed above.
+
+The current PeeWeeLinux documentation which I understand is outdated
+states to remove the DOC firmware.  Why does this have to be done?
+
+What about formatting the device?  It mentions fdisk but nothing about
+doing a newfs.  
+
+Can we use the DOC with an EXT2 file system?
+
+Matt mentions about running M-Sys' dupate to update the firmware for
+the last time.  Why does this need to be done?
+
+The M-Sys documentation mentions their own version of lilo and that
+it has to be installed.  I have no problem with this it is just I
+want to understand if anyone has gone beyond the M-Sys documentation.
+
+Thanks!
+Marc
+-- 
+Marc Wiz
+marc@wiz.com
+Yes, that really is my last name.
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Dec 28 18:37:34 2000
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Thu, 28 Dec 2000 12:37:34 -0600
+Subject: Doc questions
+In-Reply-To: <200012281710.eBSHAmf18012@frshaire.wiz.com>; from marc@wiz.com on Thu, Dec 28, 2000 at 11:10:47AM -0600
+References: <200012281710.eBSHAmf18012@frshaire.wiz.com>
+Message-ID: <20001228123734.B7575@inetnebr.com>
+
+On Thu, Dec 28, 2000 at 11:10:47AM -0600, Marc Wiz wrote:
+> The M-Sys documentation mentions their own version of lilo and that
+> it has to be installed.  I have no problem with this it is just I
+> want to understand if anyone has gone beyond the M-Sys documentation.
+>
+Actualy I used the M-Sys documentation compleatly.
+Make sure to get the absolute newest version of the firmware, tools, and docs
+from the M-sys page and follow them and you should be fine.  And if you do run
+into troubles they are VERY responsive with support emails. (They got back to
+me in less than a day when I messed up)
+
+As far as PWL and the DiskOnChip are concerned, I don't really know the current
+state of things, and I probably used the tools incorectly :)
+I used PWL to make a custom install that had what I wanted in the size that I
+wanted it (less than 16meg)
+
+I didn't used PWL's install tools though.  I did all of that buy hand (probably
+out of ignorance more than anything).
+What you are really asking isn't so much a PWL question as it is an M-Sys 
+support question, but I'm asnwering here becuase others will/do have the same
+question.
+
+Again, go to the M-Sys web page.  Get the latest version of everything, and
+read the documentation they provide.  It is mostly a step by step, and doesn't
+always tell you 'why' but if you follow the directions you will get everything
+up and running.
+
+Good luck!
+M@
+ 
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

@@ -1,0 +1,754 @@
+From peeweelinux@adis.on.ca  Mon Mar  1 14:16:09 2004
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: Mon, 1 Mar 2004 14:16:09 -0000
+Subject: [Peeweelinux] Upgrading XFree86 in peewee
+Message-ID: <00b101c3ff97$c0f6a500$2101a8c0@SATPRO>
+
+Hi all,
+
+Does anyone have experience with upgrading the XFree86 package that comes
+with peewee? I would like to upgrade it to 4.3.0. I have already upgraded my
+kernel to 2.4.18. What are the main steps towards accomplishing the XFree86
+upgrade?
+
+Any help would be appreciated, I have searched through the archives, but I
+cannot find much of relevance.
+
+Thanks,
+Ashley Rolleston
+Software Engineer
+ashley AT smartsw DOT co DOT uk
+
+
+
+From peeweelinux@adis.on.ca  Mon Mar  1 17:06:14 2004
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: Mon, 1 Mar 2004 17:06:14 -0000
+Subject: [Peeweelinux] Upgrading XFree86 in peewee
+References: <00b101c3ff97$c0f6a500$2101a8c0@SATPRO>
+Message-ID: <000901c3ffaf$8409cba0$2101a8c0@SATPRO>
+
+I think maybe I should elaborate slightly as my last post seems quite
+vague... Sorry for the double post.
+
+I am familiar with peeweelinux and the stock XFree86 that is supplied 'Out
+of the Box'. I have had these working with previous versions of hardware.
+Now I am using new embedded hardware (the vortex-6047 www.vortex86.com)
+which uses a SiS550 chip and need to upgrade XFree86 to get the drivers
+working.
+
+Specifically I am not sure about the best way to install the Xfree86
+glibc2.1 precompiled binaries that I have with the peeweelinux setup? Should
+I use a method similar to creating a custom_kernel package? If so are there
+any issues disabling the supplied XFree86?
+
+Thanks, again
+
+Ashley Rolleston
+
+> Hi all,
+>
+> Does anyone have experience with upgrading the XFree86 package that comes
+> with peewee? I would like to upgrade it to 4.3.0. I have already upgraded
+my
+> kernel to 2.4.18. What are the main steps towards accomplishing the
+XFree86
+> upgrade?
+>
+> Any help would be appreciated, I have searched through the archives, but I
+> cannot find much of relevance.
+>
+> Thanks,
+> Ashley Rolleston
+> Software Engineer
+> ashley AT smartsw DOT co DOT uk
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+
+From peeweelinux@adis.on.ca  Tue Mar  2 20:08:46 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 02 Mar 2004 12:08:46 -0800
+Subject: [Peeweelinux] Upgrading XFree86 in peewee
+In-Reply-To: <000901c3ffaf$8409cba0$2101a8c0@SATPRO>
+References: <00b101c3ff97$c0f6a500$2101a8c0@SATPRO> <000901c3ffaf$8409cba0$2101a8c0@SATPRO>
+Message-ID: <4044E9CE.9060603@fluid.com>
+
+Hi Ashley,
+
+My personal approach would be to grab a set of stock Redhat SRPMS that 
+contain the driver necessary for your chipset, and then rpm --rebuild 
+them on a Redhat 6.2 machine. Preferrably RH7.3 (as it's pretty 
+compatible with 6.2), but it appears XFree 4.2.1 is the latest ever made 
+for 7.3.
+
+It's probably possible to rebuild the 9.0 SRPM on a 6.2 machine, but you 
+may have to tweak it a little. If nothing else, you could extract the 
+.spec file from a 9.0 SRPM, and use the compile logic to hand compile 
+the 4.3.0 on a Redhat 6.2 box then. I've done this for various packages 
+to backport to old servers, tends to work fine. XFree86 is a beast, 
+however - may require some handholding.
+
+Then all you need to do is tar it all up to look exactly like the stock 
+PWL stuff, add as a custom package and select it. One would think it'd 
+be a drop in replacement at that point.
+
+-te
+
+Ashley Rolleston wrote:
+> I think maybe I should elaborate slightly as my last post seems quite
+> vague... Sorry for the double post.
+> 
+> I am familiar with peeweelinux and the stock XFree86 that is supplied 'Out
+> of the Box'. I have had these working with previous versions of hardware.
+> Now I am using new embedded hardware (the vortex-6047 www.vortex86.com)
+> which uses a SiS550 chip and need to upgrade XFree86 to get the drivers
+> working.
+> 
+> Specifically I am not sure about the best way to install the Xfree86
+> glibc2.1 precompiled binaries that I have with the peeweelinux setup? Should
+> I use a method similar to creating a custom_kernel package? If so are there
+> any issues disabling the supplied XFree86?
+> 
+> Thanks, again
+> 
+> Ashley Rolleston
+> 
+> 
+>>Hi all,
+>>
+>>Does anyone have experience with upgrading the XFree86 package that comes
+>>with peewee? I would like to upgrade it to 4.3.0. I have already upgraded
+> 
+> my
+> 
+>>kernel to 2.4.18. What are the main steps towards accomplishing the
+> 
+> XFree86
+> 
+>>upgrade?
+>>
+>>Any help would be appreciated, I have searched through the archives, but I
+>>cannot find much of relevance.
+>>
+>>Thanks,
+>>Ashley Rolleston
+>>Software Engineer
+>>ashley AT smartsw DOT co DOT uk
+>>
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+> 
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | http://www.fluid.com
+
+From peeweelinux@adis.on.ca  Thu Mar  4 22:01:29 2004
+From: peeweelinux@adis.on.ca (Angel Lopez)
+Date: Thu, 4 Mar 2004 17:01:29 -0500
+Subject: [Peeweelinux] ulimit: not found - error
+Message-ID: <OFB69D77F3.72557307-ON85256E4D.0078FC1C-85256E4D.0078FC5E@itwfeg.com>
+
+
+
+
+Hi guys, I've already installed in a 256MB CF peewee linux and it is
+booting fine, nevertheless when I'm loggin in ir appears (ulimit: not
+found). Is there missing any library or something???
+- How can I set the pwlconfig in order to make a full install of pee wee
+linux?
+
+any help will be great
+
+regards
+
+
+From peeweelinux@adis.on.ca  Mon Mar  8 10:48:33 2004
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Mon, 8 Mar 2004 10:48:33 -0000
+Subject: [Peeweelinux] block size and compact flash
+Message-ID: <PPEJJDOIBFJHGGGEELNNOEABGCAA.ricardo.trindade@emation.pt>
+
+Hi,
+
+I was wondering about the possible implications of setting -b 4096 or -b
+1024 on the target load scripts.
+
+Specifically, I'm worried about compact flash usage.
+
+thanks
+Ricardo
+
+
+From peeweelinux@adis.on.ca  Mon Mar  8 17:39:30 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Mon, 08 Mar 2004 09:39:30 -0800
+Subject: [Peeweelinux] block size and compact flash
+In-Reply-To: <PPEJJDOIBFJHGGGEELNNOEABGCAA.ricardo.trindade@emation.pt>
+References: <PPEJJDOIBFJHGGGEELNNOEABGCAA.ricardo.trindade@emation.pt>
+Message-ID: <404CAFD2.7040806@fluid.com>
+
+Hmmm, I was intrigued as well -- we use 1024 on the 'extra' ext3 
+partition on purpose, as the system records a lot of tiny files. I found 
+an interesting thread that would seem to indicate 4096 or 8192 would 
+work just fine -- faster, but waste space.
+
+http://lists.freebsd.org/pipermail/freebsd-questions/2003-April/003746.html
+
+-te
+
+Ricardo Trindade wrote:
+> Hi,
+> 
+> I was wondering about the possible implications of setting -b 4096 or -b
+> 1024 on the target load scripts.
+> 
+> Specifically, I'm worried about compact flash usage.
+> 
+> thanks
+> Ricardo
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | http://www.fluid.com
+
+From peeweelinux@adis.on.ca  Tue Mar 16 13:01:23 2004
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: Tue, 16 Mar 2004 13:01:23 -0000
+Subject: [Peeweelinux] success! thanks all
+Message-ID: <00b401c40b56$c91b7790$0601a8c0@SATPRO>
+
+Hi,
+
+Well my peeweelinux project is now all but finished. It's looking great,
+using peeweelinux with bootx and an updated kernel, an 800x600 TFT +
+touchscreen on a SBC. All my net drivers and touchscreen drivers are
+working, although I had to revert to standard vesa framebuffer drivers
+together with the XF86_FBDev X server because of a problem with my hardware
+configuration and the SiS drivers for my particular graphics/lcd setup.
+
+Together with Netscape and the Flash 5 plug-in this will be used as an easy
+to use interface for other hardware (flash still leaves a bad taste in my
+mouth though...)
+
+I have one last question on my configuration. I need a driver program in
+/usr/bin to run automatically on startup before startx is called. This
+driver creates some custom devices in /dev and it appears to need to be ran
+as root. I have tried adding the program to .bashrc in /home/autologin but
+this doesn't work. I have also tried creating /etc/rc.local , and trying
+rc.sysinit.
+
+At the moment the only way is to stop autologin running startx, and manually
+'su root' then run the driver program and then exit the root shell and run
+startx manually...
+
+Where can I specify in the startup scripts to run this process ?
+
+Thanks for all your help, I will remain subscribed to this list in case I
+can help anyone else with the experience I have had.
+
+Ashley Rolleston
+Software Engineer
+ashley AT smartsw DOT co DOT uk
+
+
+
+From peeweelinux@adis.on.ca  Tue Mar 16 14:31:30 2004
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Tue, 16 Mar 2004 09:31:30 -0500
+Subject: [Peeweelinux] success! thanks all
+Message-ID: <02BEBC25B1C59E438F3ECB8342F50F5B044B70@qafs2.qatech.com>
+
+Hello,
+
+Use the rc.init scripts, they get run as root before running the login stuff. I'm using this to create some devices and load some driver modules, and it works great. I don't know why the scripts you tried didn't work, but in my "custom/etc/rcS.d" folder, I have a script called "99init_sys" that gets run fine. Make sure to have #!/bin/sh at the top of your script and all that fun stuff, and it should work out nicely. 
+
+~Ken
+
+
+
+> -----Original Message-----
+> From: Ashley Rolleston [mailto:ashley@smartsw.co.uk]
+> Sent: Tuesday, March 16, 2004 8:01 AM
+> To: peeweelinux@adis.on.ca
+> Subject: [Peeweelinux] success! thanks all
+> 
+> 
+> Hi,
+> 
+> Well my peeweelinux project is now all but finished. It's 
+> looking great,
+> using peeweelinux with bootx and an updated kernel, an 800x600 TFT +
+> touchscreen on a SBC. All my net drivers and touchscreen drivers are
+> working, although I had to revert to standard vesa framebuffer drivers
+> together with the XF86_FBDev X server because of a problem 
+> with my hardware
+> configuration and the SiS drivers for my particular 
+> graphics/lcd setup.
+> 
+> Together with Netscape and the Flash 5 plug-in this will be 
+> used as an easy
+> to use interface for other hardware (flash still leaves a bad 
+> taste in my
+> mouth though...)
+> 
+> I have one last question on my configuration. I need a driver 
+> program in
+> /usr/bin to run automatically on startup before startx is called. This
+> driver creates some custom devices in /dev and it appears to 
+> need to be ran
+> as root. I have tried adding the program to .bashrc in 
+> /home/autologin but
+> this doesn't work. I have also tried creating /etc/rc.local , 
+> and trying
+> rc.sysinit.
+> 
+> At the moment the only way is to stop autologin running 
+> startx, and manually
+> 'su root' then run the driver program and then exit the root 
+> shell and run
+> startx manually...
+> 
+> Where can I specify in the startup scripts to run this process ?
+> 
+> Thanks for all your help, I will remain subscribed to this 
+> list in case I
+> can help anyone else with the experience I have had.
+> 
+> Ashley Rolleston
+> Software Engineer
+> ashley AT smartsw DOT co DOT uk
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Wed Mar 17 23:59:04 2004
+From: peeweelinux@adis.on.ca (Asfe e)
+Date: Wed, 17 Mar 2004 23:59:04 +0000
+Subject: [Peeweelinux] success! thanks all
+Message-ID: <Sea1-F74CFj2AhGwEUJ0005043b@hotmail.com>
+
+Hi Ashley,
+
+I just read your letter and I'm wondering if you happen to know what 
+embedded platform it's possible to install the pee-wee on ?
+
+I'm talking about boards like 8051 and such...
+
+Thanks in advance,
+
+Seth.
+
+
+>From: "Ashley Rolleston" <ashley@smartsw.co.uk>
+>Reply-To: peeweelinux@adis.on.ca
+>To: <peeweelinux@adis.on.ca>
+>Subject: [Peeweelinux] success! thanks all
+>Date: Tue, 16 Mar 2004 13:01:23 -0000
+>
+>Hi,
+>
+>Well my peeweelinux project is now all but finished. It's looking great,
+>using peeweelinux with bootx and an updated kernel, an 800x600 TFT +
+>touchscreen on a SBC. All my net drivers and touchscreen drivers are
+>working, although I had to revert to standard vesa framebuffer drivers
+>together with the XF86_FBDev X server because of a problem with my hardware
+>configuration and the SiS drivers for my particular graphics/lcd setup.
+>
+>Together with Netscape and the Flash 5 plug-in this will be used as an easy
+>to use interface for other hardware (flash still leaves a bad taste in my
+>mouth though...)
+>
+>I have one last question on my configuration. I need a driver program in
+>/usr/bin to run automatically on startup before startx is called. This
+>driver creates some custom devices in /dev and it appears to need to be ran
+>as root. I have tried adding the program to .bashrc in /home/autologin but
+>this doesn't work. I have also tried creating /etc/rc.local , and trying
+>rc.sysinit.
+>
+>At the moment the only way is to stop autologin running startx, and 
+>manually
+>'su root' then run the driver program and then exit the root shell and run
+>startx manually...
+>
+>Where can I specify in the startup scripts to run this process ?
+>
+>Thanks for all your help, I will remain subscribed to this list in case I
+>can help anyone else with the experience I have had.
+>
+>Ashley Rolleston
+>Software Engineer
+>ashley AT smartsw DOT co DOT uk
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+_________________________________________________________________
+Help STOP SPAM with the new MSN 8 and get 2 months FREE*  
+http://join.msn.com/?page=features/junkmail
+
+
+From peeweelinux@adis.on.ca  Thu Mar 18 01:49:57 2004
+From: peeweelinux@adis.on.ca (Asfe e)
+Date: Thu, 18 Mar 2004 01:49:57 +0000
+Subject: FW: RE: [Peeweelinux] success! thanks all
+Message-ID: <Sea1-F93UVhjNIjmMPq00053b9c@hotmail.com>
+
+
+>
+>Hi Ashley,
+>
+>I just read your letter and I'm wondering if you happen to know what 
+>embedded platform it's possible to install the pee-wee on ?
+>
+>I'm talking about boards like 8051 and such...
+>
+>Thanks in advance,
+>
+>Seth.
+>
+>
+>>From: "Ashley Rolleston" <ashley@smartsw.co.uk>
+>>Reply-To: peeweelinux@adis.on.ca
+>>To: <peeweelinux@adis.on.ca>
+>>Subject: [Peeweelinux] success! thanks all
+>>Date: Tue, 16 Mar 2004 13:01:23 -0000
+>>
+>>Hi,
+>>
+>>Well my peeweelinux project is now all but finished. It's looking great,
+>>using peeweelinux with bootx and an updated kernel, an 800x600 TFT +
+>>touchscreen on a SBC. All my net drivers and touchscreen drivers are
+>>working, although I had to revert to standard vesa framebuffer drivers
+>>together with the XF86_FBDev X server because of a problem with my 
+>>hardware
+>>configuration and the SiS drivers for my particular graphics/lcd setup.
+>>
+>>Together with Netscape and the Flash 5 plug-in this will be used as an 
+>>easy
+>>to use interface for other hardware (flash still leaves a bad taste in my
+>>mouth though...)
+>>
+>>I have one last question on my configuration. I need a driver program in
+>>/usr/bin to run automatically on startup before startx is called. This
+>>driver creates some custom devices in /dev and it appears to need to be 
+>>ran
+>>as root. I have tried adding the program to .bashrc in /home/autologin but
+>>this doesn't work. I have also tried creating /etc/rc.local , and trying
+>>rc.sysinit.
+>>
+>>At the moment the only way is to stop autologin running startx, and 
+>>manually
+>>'su root' then run the driver program and then exit the root shell and run
+>>startx manually...
+>>
+>>Where can I specify in the startup scripts to run this process ?
+>>
+>>Thanks for all your help, I will remain subscribed to this list in case I
+>>can help anyone else with the experience I have had.
+>>
+>>Ashley Rolleston
+>>Software Engineer
+>>ashley AT smartsw DOT co DOT uk
+>>
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>_________________________________________________________________
+>Help STOP SPAM with the new MSN 8 and get 2 months FREE*  
+>http://join.msn.com/?page=features/junkmail
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+_________________________________________________________________
+MSN 8 with e-mail virus protection service: 2 months FREE* 
+http://join.msn.com/?page=features/virus
+
+
+From peeweelinux@adis.on.ca  Fri Mar 19 11:16:11 2004
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: Fri, 19 Mar 2004 11:16:11 -0000
+Subject: [Peeweelinux] success! thanks all
+References: <Sea1-F74CFj2AhGwEUJ0005043b@hotmail.com>
+Message-ID: <007301c40da3$961efca0$0601a8c0@SATPRO>
+
+I used a vortex-6047 (ICOPtech) single board computer, and before that on
+the prototype I was using Advantech hardware. Although they were specified
+quite similarly, I encountered very unique problems, mostly driver related.
+Therefore if you are looking at possible hardware to use I would go for as
+generic a setup as you can (vesa compliant vga, ne2000 compliant net card
+etc).
+
+Good luck,
+
+Ashley
+
+> Hi Ashley,
+>
+> I just read your letter and I'm wondering if you happen to know what
+> embedded platform it's possible to install the pee-wee on ?
+>
+> I'm talking about boards like 8051 and such...
+>
+> Thanks in advance,
+>
+> Seth.
+>
+>
+> >From: "Ashley Rolleston" <ashley@smartsw.co.uk>
+> >Reply-To: peeweelinux@adis.on.ca
+> >To: <peeweelinux@adis.on.ca>
+> >Subject: [Peeweelinux] success! thanks all
+> >Date: Tue, 16 Mar 2004 13:01:23 -0000
+> >
+> >Hi,
+> >
+> >Well my peeweelinux project is now all but finished. It's looking great,
+> >using peeweelinux with bootx and an updated kernel, an 800x600 TFT +
+> >touchscreen on a SBC. All my net drivers and touchscreen drivers are
+> >working, although I had to revert to standard vesa framebuffer drivers
+> >together with the XF86_FBDev X server because of a problem with my
+hardware
+> >configuration and the SiS drivers for my particular graphics/lcd setup.
+> >
+> >Together with Netscape and the Flash 5 plug-in this will be used as an
+easy
+> >to use interface for other hardware (flash still leaves a bad taste in my
+> >mouth though...)
+> >
+> >I have one last question on my configuration. I need a driver program in
+> >/usr/bin to run automatically on startup before startx is called. This
+> >driver creates some custom devices in /dev and it appears to need to be
+ran
+> >as root. I have tried adding the program to .bashrc in /home/autologin
+but
+> >this doesn't work. I have also tried creating /etc/rc.local , and trying
+> >rc.sysinit.
+> >
+> >At the moment the only way is to stop autologin running startx, and
+> >manually
+> >'su root' then run the driver program and then exit the root shell and
+run
+> >startx manually...
+> >
+> >Where can I specify in the startup scripts to run this process ?
+> >
+> >Thanks for all your help, I will remain subscribed to this list in case I
+> >can help anyone else with the experience I have had.
+> >
+> >Ashley Rolleston
+> >Software Engineer
+> >ashley AT smartsw DOT co DOT uk
+> >
+> >
+> >_______________________________________________
+> >Peeweelinux mailing list
+> >Peeweelinux@adis.on.ca
+> >http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _________________________________________________________________
+> Help STOP SPAM with the new MSN 8 and get 2 months FREE*
+> http://join.msn.com/?page=features/junkmail
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+From peeweelinux@adis.on.ca  Fri Mar 19 17:20:17 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Fri, 19 Mar 2004 09:20:17 -0800
+Subject: [Peeweelinux] success! thanks all
+In-Reply-To: <007301c40da3$961efca0$0601a8c0@SATPRO>
+References: <Sea1-F74CFj2AhGwEUJ0005043b@hotmail.com> <007301c40da3$961efca0$0601a8c0@SATPRO>
+Message-ID: <405B2BD1.7080105@fluid.com>
+
+ From my end (to maybe help), we use the Advantech PCM-3350 and it works 
+"out of the box" with a 2.2/2.4 kernel, no crazy driver issues encountered.
+
+http://www.advantech.com/products/Model_Detail.asp?model_id=1-D6LUW&bu=
+
+NIC: OEM i82557/i82558 10/100 Ethernet (eepro100)
+IDE: CS5530 (SanDisk CF chip used as /dev/hdc)
+
+We don't use X, textmode VGA works fine though. A couple other Advantech 
+modules are stacked on it (multiport serial, modem, etc) and all are 
+100% operational. I will note that very specific DIP switch settings are 
+required.
+
+-te
+
+Ashley Rolleston wrote:
+> I used a vortex-6047 (ICOPtech) single board computer, and before that on
+> the prototype I was using Advantech hardware. Although they were specified
+> quite similarly, I encountered very unique problems, mostly driver related.
+> Therefore if you are looking at possible hardware to use I would go for as
+> generic a setup as you can (vesa compliant vga, ne2000 compliant net card
+> etc).
+> 
+> Good luck,
+> 
+> Ashley
+> 
+> 
+>>Hi Ashley,
+>>
+>>I just read your letter and I'm wondering if you happen to know what
+>>embedded platform it's possible to install the pee-wee on ?
+>>
+>>I'm talking about boards like 8051 and such...
+>>
+>>Thanks in advance,
+>>
+>>Seth.
+>>
+>>
+>>
+>>>From: "Ashley Rolleston" <ashley@smartsw.co.uk>
+>>>Reply-To: peeweelinux@adis.on.ca
+>>>To: <peeweelinux@adis.on.ca>
+>>>Subject: [Peeweelinux] success! thanks all
+>>>Date: Tue, 16 Mar 2004 13:01:23 -0000
+>>>
+>>>Hi,
+>>>
+>>>Well my peeweelinux project is now all but finished. It's looking great,
+>>>using peeweelinux with bootx and an updated kernel, an 800x600 TFT +
+>>>touchscreen on a SBC. All my net drivers and touchscreen drivers are
+>>>working, although I had to revert to standard vesa framebuffer drivers
+>>>together with the XF86_FBDev X server because of a problem with my
+> 
+> hardware
+> 
+>>>configuration and the SiS drivers for my particular graphics/lcd setup.
+>>>
+>>>Together with Netscape and the Flash 5 plug-in this will be used as an
+> 
+> easy
+> 
+>>>to use interface for other hardware (flash still leaves a bad taste in my
+>>>mouth though...)
+>>>
+>>>I have one last question on my configuration. I need a driver program in
+>>>/usr/bin to run automatically on startup before startx is called. This
+>>>driver creates some custom devices in /dev and it appears to need to be
+> 
+> ran
+> 
+>>>as root. I have tried adding the program to .bashrc in /home/autologin
+> 
+> but
+> 
+>>>this doesn't work. I have also tried creating /etc/rc.local , and trying
+>>>rc.sysinit.
+>>>
+>>>At the moment the only way is to stop autologin running startx, and
+>>>manually
+>>>'su root' then run the driver program and then exit the root shell and
+> 
+> run
+> 
+>>>startx manually...
+>>>
+>>>Where can I specify in the startup scripts to run this process ?
+>>>
+>>>Thanks for all your help, I will remain subscribed to this list in case I
+>>>can help anyone else with the experience I have had.
+>>>
+>>>Ashley Rolleston
+>>>Software Engineer
+>>>ashley AT smartsw DOT co DOT uk
+>>>
+>>>
+>>>_______________________________________________
+>>>Peeweelinux mailing list
+>>>Peeweelinux@adis.on.ca
+>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+>>_________________________________________________________________
+>>Help STOP SPAM with the new MSN 8 and get 2 months FREE*
+>>http://join.msn.com/?page=features/junkmail
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | http://www.fluid.com
+
+From peeweelinux@adis.on.ca  Tue Mar 30 01:09:06 2004
+From: peeweelinux@adis.on.ca (=?big5?q?=20=20=20?=)
+Date: Tue, 30 Mar 2004 09:09:06 +0800 (CST)
+Subject: [Peeweelinux] No files to be included
+Message-ID: <20040330010906.71779.qmail@web17013.mail.tpe.yahoo.com>
+
+--0-1182007246-1080608946=:44836
+Content-Type: text/plain; charset=big5
+Content-Transfer-Encoding: 8bit
+
+i use peeweelinux-0.61.1but i can't select the files i want because each selection has "include all packages" and "exclude all packages" onlyhoweverif i select the firstit still include nothingand the total selected files are always 0could someone has any option, t    hanks very much !
+                                               Peter
+
+
+
+---------------------------------
+–ぱ常 Yahoo!集 
+肅︹稲放荷獺┏瓜
+獺┏瓜
+--0-1182007246-1080608946=:44836
+Content-Type: text/html; charset=big5
+Content-Transfer-Encoding: 8bit
+
+<DIV>i use peeweelinux-0.61.1but i can't select the files i want because&nbsp;each selection&nbsp;has "include all packages" and "exclude all packages" onlyhoweverif i select the firstit still include nothingand the total selected files are always 0could someone has any option, t&nbsp;&nbsp;&nbsp; hanks very much !</DIV>
+<DIV>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Peter</DIV><p><br><hr size=1>
+–ぱ常 Yahoo!集 <br>
+肅︹稲放荷獺┏瓜<br>
+<a href="http://tw.promo.yahoo.com/mail_premium/stationery.html">獺┏瓜</a>
+--0-1182007246-1080608946=:44836--
+

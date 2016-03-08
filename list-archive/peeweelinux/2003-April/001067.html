@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Kernel Panic
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001066.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Kernel Panic
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Kernel Panic">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 29 Apr 2003 15:00:48 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001066.html">[Peeweelinux] Kernel Panic
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1067">[ date ]</a>
+              <a href="thread.html#1067">[ thread ]</a>
+              <a href="subject.html#1067">[ subject ]</a>
+              <a href="author.html#1067">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Correy Edmed wrote:
+&gt;<i> 
+</I>&gt;<i> I don't have a Compact Flash to ide adapter so I have installed Redhat 
+</I>&gt;<i> 6.2 on a hard disk connected to the PCM-3350.
+</I>&gt;<i> which means that my target system is hdc I am assuming ithat sda would 
+</I>&gt;<i> be the default when using this adapter.
+</I>
+Sorry, not what I meant -- the PCM-3350 has a CF slot built right in, on 
+the underside of the board (flipside of where the power connector is). 
+This slot is recognized by the BIOS as &quot;hdc&quot; (secondary master). The 
+sda/sdb usage in my case is because my dev machine recognizes the CF 
+reader (on the USB port) as a SCSI device.
+
+Looks like in your case you'll have hda (RH 6.2 harddrive) and hdc (CF 
+slot). Even easier. ;)
+
+&gt;<i> to change any of the files what I do since everything is running in 
+</I>&gt;<i> ramdisk I mount the partitions.
+</I>&gt;<i> mount -t ext2 /dev/hdc2 /mnt/cf2
+</I>&gt;<i> mount -t ext2 /dev/hdc3 /mnt/cf3
+</I>&gt;<i> And do all my changes this way that way when I boot up next time 
+</I>&gt;<i> everything will have taken place.
+</I>
+For hdc2, you should really work on using PWL's built in &quot;custom&quot; files 
+ability; look at the PWL archives, and you'll see many examples how we 
+use the custom/ folder features to make core changes to the subsystem.
+
+&gt;<i> Is there a command to flush everything in ramdisk to the CF card? 
+</I>&gt;<i> Because all the changes are only
+</I>&gt;<i> made to ramdisk at the time so when I reboot the ramdisk is of course 
+</I>&gt;<i> rebooted and none of my
+</I>&gt;<i> changes have taken place.
+</I>
+No -- a ramdisk is a compressed image which is loaded from disk into 
+ram; once loaded it's no longer tied to the disk in any way, shape, or 
+form. You best bet is to:
+
+a) use the custom/ features of PWL to make core changes
+b) keep editable things on hdc3 (/opt).
+
+For instance, for my project I'll never know how the device will connect 
+to the internet until it makes it to a client site. As such, I rewrote 
+the networking subsytem to completely live in /opt/, and support PPP, 
+DHCP, static, CDMA and CDPD (GPRS coming) which can be flipped by the 
+end client at runtime, and &quot;stick&quot;.
+
+Another handy use is to edit the core PWL to include a simple 
+/etc/rcS.d/07local script like this:
+
+   #!/bin/sh
+   # run any per-unit customs
+   if [ -f /opt/etc/rc.custom ]; then
+     /opt/etc/rc.custom
+   fi
+   exit 0
+
+Then, because this is run right at boot, you can have a sticky 
+/opt/etc/rc.custom script which does neat things (links in a new 
+/etc/localtime, sets the time/date, enables debug syslogs, whatever you 
+can dream up!). Handy for online remote field debugging, that's for sure.
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+&quot;Now, Beakie, we'll just flip this switch and 60,000 refreshing
+  volts of electricity will surge through your body. Ready?&quot;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001066.html">[Peeweelinux] Kernel Panic
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1067">[ date ]</a>
+              <a href="thread.html#1067">[ thread ]</a>
+              <a href="subject.html#1067">[ subject ]</a>
+              <a href="author.html#1067">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,255 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: Peewee on Rocky 328E
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000477.html">
+   <LINK REL="Next"  HREF="000483.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Peewee on Rocky 328E
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Peewee on Rocky 328E">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 22 Feb 2002 10:39:43 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000477.html">[Peeweelinux] wireless_isa
+</A></li>
+        <LI> Next message: <A HREF="000483.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#478">[ date ]</a>
+              <a href="thread.html#478">[ thread ]</a>
+              <a href="subject.html#478">[ subject ]</a>
+              <a href="author.html#478">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--0__=9htovtQXt7mKc2xBKU1WQ2jhm0i0IxbGcqn7bo6plV6vEnBeCPnla4Fe
+Content-type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-transfer-encoding: quoted-printable
+
+
+
+
+Hi,
+
+Mark, I would like to thank you very much.
+
+I did not realy anderstood why it works with /dev/fd0 instead of /mnt/f=
+loppy but
+it works ...
+
+Thus, pwlconfig creates a floppy :
+
+bzimage   597 988 bytes
+ldlinux.sys    5860 bytes
+ramdisk   835247    bytes
+syslinux  .cfg 82   bytes
+
+(Hu, only 17 kbytes free on my floppy ...)
+
+But the loading process failed :-(
+
+During the process, I can quickly read everthing is ok except this mess=
+age (or
+something close to this) :
+
+***********
+Editing inittab sed : can't read .mnt/etc/inittab : Aucun fichier ou r=E9=
+pertoire
+de ce type
+./pwlconfig : .mnt/etc/inittab : Aucun fichier ou r=E9pertoire de ce ty=
+pe
+***********
+
+If you don't read french, &quot;Aucun fichier ou r=E9pertoire de ce type&quot; me=
+ans &quot;no
+such file or directory&quot;
+
+At the end of le loading process, pwlconfig tell me :
+
+&quot;The target build script failed to load the filesystem onto the configu=
+red
+target&quot;
+
+And when I ask for the result, all seems to be ok except :
+
+&quot;Editing inittab : failed&quot;
+
+and later
+
+&quot;ldconfig : warning : can't open /usr/lib (no such file or directory)&quot;
+
+I look for /usr/lib. This directory exists with many subdirectories.
+I look for inittab with &quot;find / inittab&quot;, and it does not find it. I do=
+ not have
+any &quot;etc&quot; subdirectory in my &quot;mnt&quot; directory.
+
+I try to boot my embedded PC with this floppy nevertheless.
+
+It starts well after the Bios :
+
+&quot;Syslinux 1.48 1999-09-26 copyright ...&quot; etc
+&quot;loading Ramdisk&quot;
+&quot;loading bzimage&quot;
+
+And then, rapidly a lot of things that looks right until something that=
+ seems to
+be an endless loop :
+
+A linux logo at the left top and a screen cover by the same message tha=
+t flows
+up :
+
+&quot;VM : do-try-to-free-pages failed for swapper&quot;
+
+And sometimes, a different message runs up among those : (It is not eas=
+y to
+read, it could be something a little bit close to this)
+
+&quot;VM : do-try-to-free-pages failed for kswaped&quot;
+
+This process stops after a &quot;ctrl-alt-suppr&quot;. And I can reboot my embedd=
+ed PC
+without the floppy, DOS restarts well (DOS was installed on the HD befo=
+re, but I
+would like to crush it with peewee).
+
+Does the process try to install peewee on my HD ? (my floppy driver is =
+noisier
+than my HD driver)
+
+Does anybody have any idea ?
+
+The lack of inittab may be the cause ? What is inittab and how to make =
+it appear
+? Why my /mnt/etc/ directory does not existe ?
+
+Many thanks.
+
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+&quot;Mark Meade&quot; &lt;<A HREF="mailto:mark@lakeshoremicro.com">mark@lakeshoremicro.com</A>&gt; on 20/02/2002 14:35:12
+
+Veuillez r=E9pondre =E0 <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+
+Pour :    <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   [Peeweelinux] Re: [Peeweelinux] R=E9f. : Re: [Peeweelinux] Pe=
+ewee on
+      Rocky 328E
+
+
+=
+
+--0__=9htovtQXt7mKc2xBKU1WQ2jhm0i0IxbGcqn7bo6plV6vEnBeCPnla4Fe
+Content-type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+Hi Guillaume,
+
+&gt;<i> Testing for target device /mnt/floppy ........ failed
+</I>&gt;<i> Testing that target /mnt/floppy is not mounted ....... Ok
+</I>&gt;<i>
+</I>&gt;<i> Nevertheless my floppy seems to be ok. Before &quot;umount&quot; it, I was able to copy
+</I>a
+&gt;<i> file (cp &quot;file&quot; /mnt/floppy/ , and &quot;file&quot; appears in my red hat browser.)
+</I>
+Try changing the target to &quot;/dev/fd0&quot; instead of &quot;/mnt/floppy&quot;.
+
+&gt;<i> Is there anybody who could explain me the difference between those 3 parameter
+</I>&gt;<i> of the config menu :
+</I>&gt;<i>
+</I>&gt;<i> Project Mount Point : &quot;mnt&quot;
+</I>&gt;<i>
+</I>&gt;<i> Device Mount point : &quot;./mnt&quot;
+</I>&gt;<i>
+</I>&gt;<i> Floppy Device : &quot;/mnt/floppy&quot;
+</I>
+I made an attempt to explain these parameters in a previous message to this
+group:
+
+<A HREF="http://mail.adis.on.ca/pipermail/peeweelinux/2002-January/000464.html">http://mail.adis.on.ca/pipermail/peeweelinux/2002-January/000464.html</A>
+
+Hopefully this will help explain those parameters.
+
+If anybody notices any errors in these descriptions, let me know.
+Eventually, I'd like to help put together a FAQ for Peewee, and these
+questions come up fairly frequently.
+
+&gt;<i> And what is the mean of this parameter :
+</I>&gt;<i>
+</I>&gt;<i> Initrd File Name : &quot;initrd&quot;
+</I>
+&quot;Initrd&quot; is the &quot;initial ram disk image&quot;.  Initrd may be used as a
+&quot;preliminary root file system image&quot;; this image is mounted by the kernel
+prior to mounting the &quot;real&quot; root file system.  This is done is cases where
+you need a special device driver to access the root file system, but it is
+not compiled as part of the kernel.
+
+A really good reference on this subject (and many others) is the &quot;Linux Rute
+User's Tutorial and Exposition&quot;, by Paul Sheer.  This book is available
+online at: <A HREF="http://rute.sourceforge.net/.">http://rute.sourceforge.net/.</A>
+
+Regards,
+
+Mark
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+
+
+
+
+
+
+
+
+
+
+--0__=9htovtQXt7mKc2xBKU1WQ2jhm0i0IxbGcqn7bo6plV6vEnBeCPnla4Fe--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000477.html">[Peeweelinux] wireless_isa
+</A></li>
+	<LI> Next message: <A HREF="000483.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#478">[ date ]</a>
+              <a href="thread.html#478">[ thread ]</a>
+              <a href="subject.html#478">[ subject ]</a>
+              <a href="author.html#478">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] How to properly add packages?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000789.html">
+   <LINK REL="Next"  HREF="000791.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] How to properly add packages?
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] How to properly add packages?">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 18 Sep 2002 12:45:16 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000789.html">[Peeweelinux] How to properly add packages?
+</A></li>
+        <LI> Next message: <A HREF="000791.html">[Peeweelinux] Can't successfully boot off CF
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#790">[ date ]</a>
+              <a href="thread.html#790">[ thread ]</a>
+              <a href="subject.html#790">[ subject ]</a>
+              <a href="author.html#790">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>That problem was caused by rpm. I think there were some changes in later 
+versions of rpm. The quick fix at the time was to use the specific rpm 
+version that was known to work. This is the solution for RedHat 6.x
+
+Having said that, I don't think the RedHat 7.x binary rpms work with 
+older rpm versions. Not sure about that, though. Never tried RedHat 7.x 
+rpms myself just because of the issues involved with different glibc 
+versions.
+
+Adi 
+
+On Wed, 18 Sep 2002, Ricardo Trindade wrote:
+
+&gt;<i> I have had that same problem, and it was the version of the rpm binary.
+</I>&gt;<i> peewee uses it's own rpm binary (from rh 6.2).
+</I>&gt;<i> 
+</I>&gt;<i> test your rpm file with that rpm binary and find out if it can open it. if
+</I>&gt;<i> not, get your own rpm binary. I also once replaced peewees rpm binary with a
+</I>&gt;<i> simlink to my normal rpm binary, and everything worked, but that's probably
+</I>&gt;<i> not such a good idea... adi ?
+</I>&gt;<i> 
+</I>&gt;<i> ricardo
+</I>&gt;<i> 
+</I>&gt;<i>    -----Original Message-----
+</I>&gt;<i>   From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On
+</I>&gt;<i> Behalf Of Bob O'Connor
+</I>&gt;<i>   Sent: quarta-feira, 18 de Setembro de 2002 16:49
+</I>&gt;<i>   To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i>   Subject: [Peeweelinux] How to properly add packages?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>   Hello,
+</I>&gt;<i>   I am new to pwl and am trying to shrink down an existing RH 7.2 project to
+</I>&gt;<i> run on a CF.  I am able to create basic distros on the CF and boot from them
+</I>&gt;<i> fine. Problem is I am trying to add apache (apache-1.3.20-16.i386.rpm) and
+</I>&gt;<i> others to my project. This is what I have done:
+</I>&gt;<i> 
+</I>&gt;<i>   - log in as root
+</I>&gt;<i>   - copied the apache rpm file into RPMS directory.
+</I>&gt;<i>   - run pwlconfig-&gt;Manage Package Files
+</I>&gt;<i> 
+</I>&gt;<i>   When I try to extract a binary, I see the rpm in the list and I select it.
+</I>&gt;<i> It comes back saying package was extracted. However there are no *.tar or
+</I>&gt;<i> *.list files created anywhere for apache.
+</I>&gt;<i> 
+</I>&gt;<i>   When I try to extract ALL binaries, it runs thru them all (including
+</I>&gt;<i> apache) and does create a *.tar and *.list file in the Deamons directory,
+</I>&gt;<i> but &quot;tar tvf&quot; is empty and the list file is zero size.
+</I>&gt;<i> 
+</I>&gt;<i>   What am I doing wrong?
+</I>&gt;<i>   Thanks,
+</I>&gt;<i>   Bob
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000789.html">[Peeweelinux] How to properly add packages?
+</A></li>
+	<LI> Next message: <A HREF="000791.html">[Peeweelinux] Can't successfully boot off CF
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#790">[ date ]</a>
+              <a href="thread.html#790">[ thread ]</a>
+              <a href="subject.html#790">[ subject ]</a>
+              <a href="author.html#790">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> PeeWeeLinux - pwlconfig behavior (fwd)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000055.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>PeeWeeLinux - pwlconfig behavior (fwd)
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="PeeWeeLinux - pwlconfig behavior (fwd)">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Sun, 13 Feb 2000 11:39:45 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000055.html">List File Search Utility
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#56">[ date ]</a>
+              <a href="thread.html#56">[ thread ]</a>
+              <a href="subject.html#56">[ subject ]</a>
+              <a href="author.html#56">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Gary,
+Thanks for trying PWL ! I hope its a help for your project.
+Some answers your questions below:
+
+--- Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Got this email and figured I'd better forward it to you...
+</I>&gt;<i> 
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> ---------- Forwarded message ----------
+</I>&gt;<i> Date: Thu, 10 Feb 2000 15:59:46 -0800
+</I>&gt;<i> From: Gary Haussmann &lt;<A HREF="mailto:g.haussmann@worldnet.att.net">g.haussmann@worldnet.att.net</A>&gt;
+</I>&gt;<i> To: <A HREF="mailto:alinden@users.sourceforge.net">alinden@users.sourceforge.net</A>
+</I>&gt;<i> Subject: PeeWeeLinux - pwlconfig behavior
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hi Adi,
+</I>&gt;<i> 
+</I>&gt;<i> First let me say that PeeWee Linux is pretty useful for me.  I have tried
+</I>&gt;<i> other mini-distributions like the Linux Router Project but the integrated
+</I>&gt;<i> project/package management via pwlconfig is very convenient.  I am mailing
+</I>&gt;<i> you since I see some odd behavior in pwlconfig itself.
+</I>&gt;<i> 
+</I>&gt;<i> The problem I find is mainly when I don't want a specific file from a certain
+</I>&gt;<i> package.  For instance, I don't want that huge /etc/termcap from the 
+</I>&gt;<i> base_filesystem package.  If I disable that file, exit from pwlconfig, and
+</I>&gt;<i> enter again, the /etc/termcap will be enabled again?
+</I>&gt;<i> 
+</I>I'm guessing here that you need to save your project before you exit.
+
+When you start configuring a package, a temporary &quot;.package.list&quot; file is
+created from either 1) the projects last &quot;package.list&quot; file or 2) from
+the &quot;Embedded_Build/../package.list&quot; file.
+
+As you make changes, the &quot;.package.list&quot; file is modified.  This file
+remains until you save the project.  If you exit without saving, a
+(verbose but highly clear :-?) message asks if you want to continue with
+the changes you made previously, or revert to your last saved project.
+
+If you revert, your changes will be lost and &quot;build_files_verify&quot; will
+create an new &quot;.package.file&quot; when you start to re-configure that package
+again.
+
+If you continue, your &quot;.package.file&quot; remains and is updated until you 
+save your project.
+
+Anyhow, thats the way its supposed to work.  Programmers are the worst 
+testers, so I *Know* there is some testing to do here :-)
+
+If this is not the case for the problem you are seeing, please let me 
+know 1) what version of pwlconfig you are using and 2) any short list 
+of inputs that cause the problem to occur.  
+
+&gt;<i> 
+</I>&gt;<i> Also, I have written up a short script to pack up the project mount point and
+</I>&gt;<i> generate a root disk image suitable for making a root floppy.  If I clean it
+</I>&gt;<i> up a bit, would you like me to send you a copy?  I noticed that the &quot;put
+</I>&gt;<i> PWL on a floppy&quot; documentation is missing at the moment and not supported
+</I>&gt;<i> in pwlconfig.
+</I>&gt;<i> 
+</I>
+Yes!! that would be great. I'm currently concentrating on getting the script
+features in that I want (I don't even have a marketing dept. to blame for
+scope creep here!) and trying to get our companys' thin client out the door...
+Thus, the Floppy and CD rom are sorely neglected...Any other features you
+think might be handy, just let us know!
+
+BTW, I guess I'll have to post my latest upgrade, V0.85.  I have a new script,
+
+pwl_template
+
+that will build a file that has the framework for PWL scripts.  The result
+is a program that parses the command line and has a working dialog box
+built in....just add the good stuff in the middle :-)
+
+&gt;<i> thanks,
+</I>&gt;<i>   Gary
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>Thank you too for helping to test this...if enough people help here, maybe
+the number of HOW-TO's everyone needs to read will continue to shrink!
+
+Later, 
+Ralph Stickley
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000055.html">List File Search Utility
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#56">[ date ]</a>
+              <a href="thread.html#56">[ thread ]</a>
+              <a href="subject.html#56">[ subject ]</a>
+              <a href="author.html#56">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

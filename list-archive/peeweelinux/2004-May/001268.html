@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Couldn't find valid ramdisk image
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001267.html">
+   <LINK REL="Next"  HREF="001269.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Couldn't find valid ramdisk image
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Couldn't find valid ramdisk image">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 04 May 2004 09:29:19 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001267.html">[Peeweelinux] Couldn't find valid ramdisk image
+</A></li>
+        <LI> Next message: <A HREF="001269.html">[Peeweelinux] peeweelinux &amp; redhat 9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1268">[ date ]</a>
+              <a href="thread.html#1268">[ thread ]</a>
+              <a href="subject.html#1268">[ subject ]</a>
+              <a href="author.html#1268">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ashley Rolleston wrote:
+&gt;<i> 
+</I>&gt;<i> On another note, I am adding an ftp server to my system. What is the best
+</I>&gt;<i> way of creating a partition on my compact flash card that will be
+</I>&gt;<i> *persistant* for files that users upload using the ftp server?
+</I>
+(Can't help with the RAMDISK, sorry - knowledge on that area is minimal)
+
+I use ext3 fs for my persistant partition on 128m CF card. The initial 
+build target is &quot;Uncompressed ramdisk, boot from ext2 partition&quot;. This 
+makes a sdb1 and sdb2, leaving the rest of the CF card blank. (Note that 
+it will *erase* the card when building, so you want to post-populate the 
+ext3 partition with stock data)
+
+Then, after that build I have another script which formats the extra 
+portion as ext3 (I have upgraded to 2.4 kernel) like so:
+
+   echo &quot;Creating filesystem...&quot;
+   mke2fs -j -b 1024 -m0 /dev/sdb3
+   mount -t ext3 /dev/sdb3 /mnt/usbdev
+
+...and then populate it with some precocked data. Then, I do a little 
+trickery to mount it on boot -- first, extract and copy rc.modules to 
+your custom/ folder, then add the lines:
+
+   # this is so we can mount our ext3 /opt
+   mkdir /opt
+   echo &quot;/dev/hdc3 /opt ext3 defaults 1 2&quot; &gt;&gt; /etc/fstab
+
+at the end. Add it as a custom script, and the boot order of PWL will 
+ensure that it's mounted before the rc scripts run (ie, your FTP server) 
+so it'll be ready to go.
+
+hth!
+-te
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | <A HREF="http://www.fluid.com">http://www.fluid.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001267.html">[Peeweelinux] Couldn't find valid ramdisk image
+</A></li>
+	<LI> Next message: <A HREF="001269.html">[Peeweelinux] peeweelinux &amp; redhat 9
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1268">[ date ]</a>
+              <a href="thread.html#1268">[ thread ]</a>
+              <a href="subject.html#1268">[ subject ]</a>
+              <a href="author.html#1268">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

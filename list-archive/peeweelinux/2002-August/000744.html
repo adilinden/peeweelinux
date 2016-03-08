@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] thttpd web server Q+A, net-pf-10
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000743.html">
+   <LINK REL="Next"  HREF="000745.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] thttpd web server Q+A, net-pf-10
+   </H1>
+    <B>Stefan Willmert
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] thttpd web server Q+A, net-pf-10">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 14 Aug 2002 14:58:09 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000743.html">[Peeweelinux] PeeWeeLinux Documentation
+</A></li>
+        <LI> Next message: <A HREF="000745.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#744">[ date ]</a>
+              <a href="thread.html#744">[ thread ]</a>
+              <a href="subject.html#744">[ subject ]</a>
+              <a href="author.html#744">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm not exactly sure what loads modules.conf. One of the system startup
+scripts catches it, which is then used by modprobe to start up kernel
+modules. The &quot;alias&quot; command, I believe..is just simply that. another name
+for which to call a module. Modprobe seems to use some standard naming when
+trying to figure out which modules to load. Especially for sound modules.
+
+In PWL, you don't need to use the alias command. What I did, was to put the
+insmod commands directly in rc.modules since rc.modules gets executed like a
+shell script. You can ignore modules.conf unless you are going to have one
+of your startup scripts use modprobe to determine what modules to load. Not
+as elegant as a full-blown system...but then if i wanted a full blown
+system, i'd just install from the cd.
+
+-stefan
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Barry Gershenfeld
+Sent: Wednesday, August 14, 2002 1:20 PM
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: Re: [Peeweelinux] thttpd web server Q+A, net-pf-10
+
+
+&gt;<i>I don't know much about thttpd IPv6 or peeweelinux for that matter,
+</I>&gt;<i>but when referring to kernel modules...
+</I>&gt;<i>
+</I>&gt;&gt;<i> to &quot;alias net-pf-10 off&quot;.
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>usually means adding the line to the /etc/modules.conf directory rather
+</I>&gt;<i>than using a shell alias
+</I>&gt;<i>
+</I>&gt;<i>-Tim
+</I>
+Thanks for the response.  I don't need ipv6 and thttpd turned up
+working, but I still am trying to find all the loose ends of
+the startup scripts.
+
+How does that &quot;alias&quot; think work?  I have &quot;made up&quot; explanations
+for many things and while they often turn out to be right I am
+always watching for that clue that I've got it wrong.  So I need
+to know who reads modules.conf, and how the alias is handled.  I'm
+thinking that it may well be a shell script, maybe it sources the
+modules.conf file, but that would point back to the shell needing
+to keep aliases....I think I will do some digging around in my host
+system for this.
+
+Barry
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000743.html">[Peeweelinux] PeeWeeLinux Documentation
+</A></li>
+	<LI> Next message: <A HREF="000745.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#744">[ date ]</a>
+              <a href="thread.html#744">[ thread ]</a>
+              <a href="subject.html#744">[ subject ]</a>
+              <a href="author.html#744">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

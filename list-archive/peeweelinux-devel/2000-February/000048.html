@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> RPM Loader Script - V0.1
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000047.html">
+   <LINK REL="Next"  HREF="000049.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>RPM Loader Script - V0.1
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="RPM Loader Script - V0.1">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 2 Feb 2000 22:02:28 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000047.html">X11-Package works!-  w/attachments
+</A></li>
+        <LI> Next message: <A HREF="000049.html">RPM Loader Script - V0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--0-1804289383-949557748=:9715
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+Hey,
+Just thought I'd update you on my latest script.
+I wrote this today so I could build my fvwm2 package.
+So far...
+
+pwl_rpmload EXE fvwm2
+
+copies the RPM file from the RH disk, installs it
+and copies the files into:
+
+Embedded_Build/sources/fvwm2
+
+Files created here include:
+
+fvwm2-3.0.5-15.i386.rpm
+-- the rpm copied from Red Hat (if the package is not installed)
+fvwm2-3.0.5-15.pkg_list
+-- list of files from the package (without man/doc/info files)
+fvwm2-3.0.5-15.pkg_dep_list
+-- not created yet, piped to the screen - list of dependencies reported
+   by rpm
+fvwm2.pkg_files
+-- directory containg the files to be tarred for the package.
+
+
+Note: the xxx.pkg.list file is not changed if it already exists.
+Thus, when you figure out which other files don't belong in the
+package, you can edit this file.  THIS FILE IS ALL YOU NEED if you
+have RH install disk!
+
+To Do: find each of the dependent files on your system and copy them
+into the dependencies directory. (HOW DO YOU FIND FILES ?? Locate??)
+Package the dependencies as  xxx.libs or something and install that 
+as another package, i.e.
+
+X11/fvwm2.tar
+X11/fvwm2-libs.tar
+
+To Do: load the source rpm, install it, copy the source files
+and compile everything.  Then copy the binaries from the SRC 
+directory into the pkg.files directory.....
+
+To Do: 
+I need to integrate this script, with the &quot;package&quot; script (should we
+change this to pwl_package?? ) under the &quot;Package Management&quot; Main
+menu Item.
+
+Let me know if you have any suggestions on how this should work.
+or any bugs you might find.
+
+Thanks,
+Ralph
+
+=========
+Example:
+
+As a quick way to test this I can do the following with expected results:
+
+rpm -e zsh          # remove Z shell previously installed
+rm -rf sources      # for testing only!!!
+
+and any of the following:
+
+pwl_rpmload EXE zsh           # finds first version on RH disk
+pwl_rpmload EXE zsh 3.0.5-15  # specify a version
+pwl_rpmload Exe zsh 3.0.99    # version not found
+
+Theses all work if zsh is installed or not, or if the RPM has been
+previously copied or if the files list has been changed manually.
+=============
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+--0-1804289383-949557748=:9715
+Content-Type: application/x-unknown; name=&quot;pwl_rpmload.tgz&quot;
+Content-Transfer-Encoding: base64
+Content-Description: pwl_rpmload.tgz
+Content-Disposition: attachment; filename=&quot;pwl_rpmload.tgz&quot;
+
+H4sIALIUmTgAA+0aa2/b1tWf9StOKHVxAr3d1YM3BUgtpzXmpobdpB2WTqbJ
+K4uQ+Cgv5UdT//edc9+XpJ1gabENCIEkFHnueb+Z4mazKIt0k4fxzh91jSfj
+8f7+n3fG8qr9O9nf35vsjPfHX341nUyn032En46/HO/A+A/jyLm2vApLgJ0y
+z6vH4D70/v/06j4ZXSbZ6DLkq0630+3iH4A3PLxiB1BY32Al/BPOzw7hNzj6
+6Qh+hr/hi6cxFGV+VYbpC3x7zUqe5Bn83BE4DvMiYRzCzQaWyQbvlmWeAi9Y
+lCwTFgOe16chyaqcqAHPt2WEsHFSsqjKyzvCRH9e5xUydLyEasX8oxyyvEIM
+aMbNhsUEbK6kovfqnWQAz2cSQRitUUrBXDsFB0CTWebbrI1ERMLGhgKc4Y9v
+wwrl4GvYFX93J5CX8kF3+kxp+tuEaykB3o6HEzgsWViRGJ3u7Pe8Om+Pzhan
+P54szk6/O/n+5fzobIbkpKnmWtvAq3IbVduSQZjFUvIsTBnEbBluNxVHeGmi
+r0POZsFwpAwWCETaamT3mxUjLKj2jCEADxG79IObBB+WjCcx6r2DPrWYH5/N
+eBl1Tv/+zWJ+dCp+F+urRcwK8ezV8cnRuXkqsAh6pOkNalAhjvKsCpMsya4c
+r0PHukTzZdFmG6NRkgxCbVlF/eT4/AciPyRUgp54gqTsE+JKPEWW5FOkH7No
+lc/or468Pfj9bCbk23LJ5XKbRRWFlniw+6zzvoPuQiQhCMwtXGAQM2Gu3vgC
+BvBWBWSvYXo60xV/oS5KziRiSMlO5PHCjfMC8qUMDw3OUYODDEb/Qu8d9eU/
+BVLDrECvOD55PhpdOej5Kr9BX7oDVpbo/ooCvUuWmDOewOBXCHqTADPKX0Vs
+dmRYOcLpX73n9GuZCIFvMe7GnfuO0BNGn3KuXZVBTtBEffRaXlnffuZqko5I
+T9LqFPxobga5vJ02GJOawoTFyizcOHikhJZFiS+G3rSOokxhUC7xhQVO1xg7
++gnqaZmRp15EmEJ6kws8HuegTkcFDMLbU+ghjDwQ5xnTqsDEtVD5bpd+vKIQ
+plz5mvzCU4EL+kk6cBDVlaC8gN1WZRhVOrWaN5RmB2+uVyikA42FJFneITAm
+1pu8XGM29A78Qjp9AUPMIZiTYPriTxPF/FXJCnofeCUhMKBSCvDEOBKOqYAp
+dxANyQ/KgGr1FHbFqsXhXOtLsyXYDjGzk+1Q2wWWy8P52fff1YC2KdaPCkZp
+Vo2imKJs+kLzpm9qR4RJhD1mEGC6ahhDhwfG5dPjjLOyMtVHV9O5qEJYdTAp
+FEiFi4hcszvKjtT+VE91oG04+zDeY2VshXfyYbzSG8iALIzhVv1Q2ojZtdLG
+44qp2yJasWjtW8NNKuT1mALbFKbBMAgREaaIUU/HShNYGHeLCnCaF9Xr9JWT
+hm534B5UPhZg5tUdy0j3SeaE8BrNQGDPG6X5VumCe5/lpvEy7PVBqEbgzVGY
+UoNw56S93XCrBp0qntsAa6qNm4Bq1ZaU2RG5Lqom0iIqgM5aswsRzcTZ0W1l
+KP4mg9zguGiyR8bX2mzn0JAwFdOeuGjnqusqXaqXnJwxIisapVVILUhJ5YYS
+HstI460IrPsFdf97gGHHjWRT1q7Q4XCo9NXmRg+kM0JIOvCKwGMZR1KYBdQz
+4X1gH6MkMxvDI8wXmC5G58j2uaja1o81jmTvL199FBKNw6srl9tkE8sOlfRA
+5UWoRzQwxvnwdd8ECfW1nnV0XREO0Xs/vR/03u/dB8NAe55bWmkUEnX1h7vC
+qasq1VB9lWKgXrkZJEwb3ZedCirYmSV8gwgCn1yNCcsDpRg5E4wJpeVLn0n0
+aDrqqsVzEayLVHt7e26HJ0PghgLgmhkbGAjKLqSfZnqpUuylORVwUQKyLZYU
+OuHHvYby8pFVjcnygxAeyUy2TGtGQ8FmH4xnZNv0Em1IpnEyKc8p98s8T32W
+j+4/y1XN9KPD/8Lai1zlNWM4tMxkH+xmDaPQh9KGlbdkv2yxDxaOL/PW4VxF
+C4okdUAdZ5KZslbDIdoAkc7dibit6Pldu+2XnAe6aOtu1pFyEjS8lTzzlaYm
+KKFF0IO1zVQoGXuZoy0OojUEYHRjbtqrKFGq7Bs1DXkSax0pKphAlEW6XWP2
+d4P7BpS6++ILm2jurZbolAKiW0pJ6sA9SPZdLTlJ26pTZO+PmquCQzxEja+p
+Lv5rEOn0AH83mqU6IKC6BKDyz6Bjh5bGYQ3k4lB7FAOD2q+B2QZSljOdmcnR
+sCAt9BhYRjQDamU2Jx8fXmVc5XUiS1ODKxtou0nAn85qytO97CYnLbWSBpLB
+Rs4s7lzhcm72GruAt8T5KxGYxTqes0LePyqKReCLIgIE8qJK0uRX1KxYl+D0
+zCve11sdkqxkaX5NTkD5Ow0zjPUr2t5hUojziLfI6k3tUAsHXZpDSRAjx2xk
++sQQUtiGG4kff2oS4GVWrbg9nUgH1xC8G+HZd6PAf4YIGs+SbJnTQ0frVi9f
+t7AXs4JlMcsi2l+ZDKmTXpu5m6O94vqMuJYlbs5E/dI9mD/cOwD+lK8DYi54
+otJDA/9DQwBnYRmtxJAiUzrwO16xVHdFXPmwdwZ9WKXyIqxW0hReU65MEauy
+p/Wnly5pvMB5mS3EBsnbrfhvhDv2YpkjxFRYgwgcuxyKChXlaUr8EAxtqJCt
+ikQbQHWTi4qGQdiW7D+iUbKiNBtdPKt/H/101Nb4Ut83wzCXWdhpaFWH/iZb
+Z/lNBhXC9VUtuROLc7QE4Wx4IkRi42stMRIdwXVYJuGlspkA1dVgRrLpB9Qs
+9+xKduQUDQ1CBSfo7VktK1sQi7S77rntrFqpm9oFtIFShMA5rHeLGhZ/920f
+qbCKGU+5Sxqizw/kVgBoN9zpNvzCsug7iFr9KYWl4Rr9m3bUbs9p0rITuVKe
+RuDGVqKageUablDUi47iUloqdmi5cJ5VzQ4L9acziP0UQc2F3pjJFsZtucUG
+y1gg+JRVV1snV6v+VPWtueufU4ZBDcVD+g+jaiunD9tTymmnvtEyA4pxPEte
++1KDKAaV1ViFkZVkkdgxnEOInLw8+fHlP/D2kuebbaUy2sFgt4W0xtLoof29
+RJs1a5MClg2jJ2Kl4WiPbaEe7/IsEO3aKIIv9OqzPkyoLGZBA3gykw+k+7Rs
+FGSyOnaZBweD9gI1Oth914ENa4lIbeO9uV6I1c6uo1Qd+D4TTuJwq4Iwv55c
+TSWzujae9EDidnqqmWd3QQg7cP3Vx8KrtuthcP1JqDbsmEYMRbdUxQ+Fsq5D
+6+QiXkhEu2h0y7YGdL451GjUx2zNq/mA5pFycGjWHsGhPszV7K367Jqq3LP6
+E1tNT6b3hp6Do64bL+26gFon3j7ZFcqFdaRSnxsbEU6JWn2szmkHcDMcDpXv
+4d1lktnvlxnOV+qzIhYt7EPkaC0nFxxT7fdFc96bI5zz2OcUCfl+X3bRCon4
+HE6zBlpGIcHLVh0B69BW9FRD1AXsGIed//Z/LPh8fb4+X5+vz9f/9PVvX7eK
+lQAoAAA=
+
+--0-1804289383-949557748=:9715--
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000047.html">X11-Package works!-  w/attachments
+</A></li>
+	<LI> Next message: <A HREF="000049.html">RPM Loader Script - V0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#48">[ date ]</a>
+              <a href="thread.html#48">[ thread ]</a>
+              <a href="subject.html#48">[ subject ]</a>
+              <a href="author.html#48">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

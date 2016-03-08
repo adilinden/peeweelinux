@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> termcap
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000011.html">
+   <LINK REL="Next"  HREF="000009.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>termcap
+   </H1>
+    <B>Frank Van Uffelen
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="termcap">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 3 Feb 2000 23:18:47 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000011.html">termcap
+</A></li>
+        <LI> Next message: <A HREF="000009.html">termcap
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#12">[ date ]</a>
+              <a href="thread.html#12">[ thread ]</a>
+              <a href="subject.html#12">[ subject ]</a>
+              <a href="author.html#12">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> There is a small termcap included in the minimal.tar package. However,
+</I>&gt;<i> I found that the terminal descriptions in it are too minimal for a
+</I>&gt;<i> system administered via telnet from a variety of systems.
+</I>
+telnet uses vt100 emulation, so adding that one and maybe a vt220 
+in the minimal termcap will solve most problems.  I'll send you a 
+suggested replacement for the minimal termcap.
+But the size of termcap is a symptom of the real problem : it really 
+looks like the creators of terminals considered it a status symbol 
+to design a new command set, thereby forcing those maintaing 
+termcap to let the terminal description database grow with each 
+released product.
+ 
+&gt;<i> I tried ncurses but found it much harder to shrink in size then
+</I>&gt;<i> termcap. One of the future plans for PeeWeeLinux is to include means
+</I>&gt;<i> to create all the packages from the sources by using patch files.
+</I>&gt;<i> Perhaps at that point it might be an idea to give a choice of
+</I>&gt;<i> compiling with termcap or ncurses? Still got to checkout this upx
+</I>&gt;<i> thing, though...
+</I>
+I'm afraid it goes a lot deeper than that. As termcap does not 
+support color and other advanced features you'll have a hard time 
+compiling stuff that can use eg color with another, termcap-based 
+curses.  On the other hand it's much easier to borrow the terminfo 
+definitions of those few terminals you're interested in (just find them 
+in the correct /usr/lib/terminfo subdir and copy it over to the target 
+file system) than with termcap (where you take the full file and edit 
+it down to the required subset).  The former makes much more 
+sense to me.
+
+
+
+
+Frank Van Uffelen
+<A HREF="mailto:fvu@nfe.be">fvu@nfe.be</A>
+Please note : my @tornado.be address ceased to exist end of '98!
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000011.html">termcap
+</A></li>
+	<LI> Next message: <A HREF="000009.html">termcap
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#12">[ date ]</a>
+              <a href="thread.html#12">[ thread ]</a>
+              <a href="subject.html#12">[ subject ]</a>
+              <a href="author.html#12">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

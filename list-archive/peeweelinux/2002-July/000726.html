@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] problems, show up in ldconfig
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000725.html">
+   <LINK REL="Next"  HREF="000727.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] problems, show up in ldconfig
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] problems, show up in ldconfig">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 30 Jul 2002 16:05:35 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000725.html">[Peeweelinux] Uncompressed fail.
+</A></li>
+        <LI> Next message: <A HREF="000727.html">[Peeweelinux] Uncompressed fail.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#726">[ date ]</a>
+              <a href="thread.html#726">[ thread ]</a>
+              <a href="subject.html#726">[ subject ]</a>
+              <a href="author.html#726">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I managed to reproduce an eariler problem I had, which looks
+like a problem with ldconfig, but it isn't really.  When I see:
+
+  Editing inittab...failed                                                
+  Building ld.so.cache...ldconfig: Can't stat /lib: No such file or direc 
+  ldconfig: Can't stat /usr/lib: No such file or directory                
+  ldconfig: Can't open configuration file /etc/ld.so.conf: No such file o 
+  ldconfig: Can't create temporary cache file /etc/ld.so.cache~: No such  
+   
+it means I have forgotten to &quot;Extract File System for Project&quot;.  It's 
+easy to forget, and pwlconfig doesn't check to see if mnt is empty.
+
+Okay, good FAQ entry.   BUT!  (here's part 2)
+
+I've attempted to add some packages to my system.  Building the
+target system says that it _succeeded_, yet in the log, I see:
+
+  .
+  .
+  Editing inittab...ok 
+  Building ld.so.cache...ldconfig: Can't open configuration file /etc/ld.
+  /lib:
+         libtermcap.so.2 -&gt; libtermcap.so.2.0.8 
+         libnss_files.so.2 -&gt; libnss_files-2.1.3.so 
+         libcrypt.so.1 -&gt; libcrypt-2.1.3.so 
+         libc.so.6 -&gt; libc-2.1.3.so 
+         ld-linux.so.2 -&gt; ld-2.1.3.so 
+  /usr/lib: 
+  ok 
+  Unmounting loopback device...ok 
+  Compressing /dev/loop0 into ramdisk...3416+0 records in
+  3416+0 records out  
+  .
+  .
+
+Is that one of those &quot;nuisance errors&quot; as in &quot;nothing to do&quot; ?
+The target system comes up but I don't know enough about it
+yet to know if it's all there.
+
+Other times I get actual failures in that area.  Usually when 
+I've modified a project and build it for the first time.  It
+fails a few times and then when I come back later it succeeds
+without my having changed it.  It seems to be connected with
+the setting of some variables, but I haven't been able to 
+&quot;trick it&quot; just by quitting pwlconfig and re-entering.  But
+I do log out a lot and restart the system frequently, so, I'll \
+keep observing.
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000725.html">[Peeweelinux] Uncompressed fail.
+</A></li>
+	<LI> Next message: <A HREF="000727.html">[Peeweelinux] Uncompressed fail.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#726">[ date ]</a>
+              <a href="thread.html#726">[ thread ]</a>
+              <a href="subject.html#726">[ subject ]</a>
+              <a href="author.html#726">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

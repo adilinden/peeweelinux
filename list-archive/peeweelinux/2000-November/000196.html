@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> DOC quandry
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000195.html">
+   <LINK REL="Next"  HREF="000197.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>DOC quandry
+   </H1>
+    <B>David Hamm
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="DOC quandry">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 28 Nov 2000 15:14:21 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000195.html">DOC quandry
+</A></li>
+        <LI> Next message: <A HREF="000197.html">DOC quandry
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#196">[ date ]</a>
+              <a href="thread.html#196">[ thread ]</a>
+              <a href="subject.html#196">[ subject ]</a>
+              <a href="author.html#196">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm having problems with doc-lilo.  It hangs after printing dLI on the
+console.   I followed the steps you suggested.  Any ideas?
+
+
+ On Tue, 21 Nov 2000, you wrote:
+&gt;<i> On Tue, Nov 21, 2000 at 01:58:11PM -0500, David Hamm wrote:
+</I>&gt;<i> &gt; Following the PeeWeeLinux-3.html doc I have the DOC mountable.  But pwlconfig
+</I>&gt;<i> &gt; doesn't seem to see it.  I've added links in /dev/ for the devices listed in
+</I>&gt;<i> &gt; /dev/msys/* and still don't have a main menu choice of Erase-Disk-On-Chip.  Any
+</I>&gt;<i> &gt; suggestions?
+</I>&gt;<i> &gt;
+</I>&gt;<i> I just got done doing this last weekend.
+</I>&gt;<i> 1) do you have version 4.2 of the drivers from M-Sys?
+</I>&gt;<i> This is kind of important
+</I>&gt;<i> 2) Did you compile support into the kernel or are you using a modual?
+</I>&gt;<i> You need to have one of these going before the system can see the DOC
+</I>&gt;<i> 
+</I>&gt;<i> The way I ended up doing this over all was to use pwlconfig to setup a system
+</I>&gt;<i> on a 16M hdd partition (the size of my DOC).  I then 'tweeked' it get to get
+</I>&gt;<i> my moduals and everything else up and running the way I wanted.
+</I>&gt;<i> Then out side of pwl I just copied everything to the DOC
+</I>&gt;<i> mount /dev/msys/fla1 /mnt/flash
+</I>&gt;<i> cp -dpR /&lt;insert pwl partion name here&gt; /mnt/flash
+</I>&gt;<i> 
+</I>&gt;<i> I then put doc.b in /mtn/flash/boot and doc-lilo in /mnt/flash/etc
+</I>&gt;<i> 
+</I>&gt;<i> I then had to reboot into dos to run there dos utils (dupdate) to update the
+</I>&gt;<i> firmware for the last time, and rebooted.
+</I>&gt;<i> 
+</I>&gt;<i> I understand that this is doing things outside of plwconfig which is probably
+</I>&gt;<i> to be avoided, but it did work.
+</I>&gt;<i> All of what I've just talked about is fairly well listed in the docs for the 
+</I>&gt;<i> 4.2 version of the firmware on the M-Sys site.  I typed all of this up from 
+</I>&gt;<i> memory so I wouldn't follow it as a step by step but rather a guide to looking
+</I>&gt;<i> through the offical docs.
+</I>&gt;<i> 
+</I>&gt;<i> If I can be of any more help let me know.
+</I>&gt;<i> 
+</I>&gt;<i> M@
+</I>&gt;<i>  
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>--
+---------------------------------
+David Hamm
+Systems Analyst
+Imaging Technologies Services Inc.
+email: <A HREF="mailto:dhamm@itrepro.com">dhamm@itrepro.com</A>
+voice: 404-870-6663
+---------------------------------
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000195.html">DOC quandry
+</A></li>
+	<LI> Next message: <A HREF="000197.html">DOC quandry
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#196">[ date ]</a>
+              <a href="thread.html#196">[ thread ]</a>
+              <a href="subject.html#196">[ subject ]</a>
+              <a href="author.html#196">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

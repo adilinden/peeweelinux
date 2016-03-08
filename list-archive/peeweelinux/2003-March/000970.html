@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] problems getting rcS.d/10network to run
+ dhcpcd
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000969.html">
+   <LINK REL="Next"  HREF="000971.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] problems getting rcS.d/10network to run
+ dhcpcd
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] problems getting rcS.d/10network to run
+ dhcpcd">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 19 Mar 2003 16:09:33 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000969.html">[Peeweelinux] problems getting rcS.d/10network to run dhcpcd
+</A></li>
+        <LI> Next message: <A HREF="000971.html">[Peeweelinux] AutoBoot and X windows project release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#970">[ date ]</a>
+              <a href="thread.html#970">[ thread ]</a>
+              <a href="subject.html#970">[ subject ]</a>
+              <a href="author.html#970">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks Adi,
+
+putting this in my &quot;custom/etc/config/ifcfg-eth0&quot; file solved it:
+
+DEVICE=eth0
+BOOTPROTO=dhcp
+
+~Ken
+
+&gt;&gt;&gt;<i> Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; 03/19 3:21 PM &gt;&gt;&gt;
+</I>BOOTPROTO is set or configured in the /etc/config/ifcfg-eth? file(s)...
+
+Adi
+
+On Wed, 19 Mar 2003, Ken Emmons, Jr. wrote:
+
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> I am trying to get dhcpcd to manage my interface at bootup. 
+</I>&gt;<i> 
+</I>&gt;<i> The network script in rcS.d has a function like this:
+</I>&gt;<i> 
+</I>&gt;<i> ###start of snippet ###
+</I>&gt;<i> 
+</I>&gt;<i> ifup ()
+</I>&gt;<i> {
+</I>&gt;<i>     if [ &quot;$BOOTPROTO&quot; = &quot;dhcp&quot; ]; then
+</I>&gt;<i>         if [ -f /sbin/pump ]; then
+</I>&gt;<i>             # If we have pump we prefer it to get an ip number
+</I>&gt;<i>             echo -n &quot;Determining IP information for $DEVICE....&quot;
+</I>&gt;<i>             if /sbin/pump -i $DEVICE ; then
+</I>&gt;<i>                 echo &quot; done....&quot;
+</I>&gt;<i>             else
+</I>&gt;<i>                 echo &quot; failed....&quot;
+</I>&gt;<i>             fi
+</I>&gt;<i>         elif [ -f /sbin/dhcpcd ]; then
+</I>&gt;<i>             # Try to use dhcpcd
+</I>&gt;<i>             echo -n &quot;Determining IP information for $DEVICE....&quot;
+</I>&gt;<i>             if /sbin/dhcpcd $DEVICE ; then
+</I>&gt;<i>                 echo &quot; done....&quot;
+</I>&gt;<i>             else
+</I>&gt;<i>                 echo &quot;failed....&quot;
+</I>&gt;<i>             fi
+</I>&gt;<i>         else
+</I>&gt;<i> 
+</I>&gt;<i> ###end of snippet
+</I>&gt;<i> 
+</I>&gt;<i> I can't seem to find where BOOTPROTO is set or configured. I could edit this script, but why do it if I can remain vanilla? 
+</I>&gt;<i> 
+</I>&gt;<i> ~Ken
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A> 
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A> 
+</I>&gt;<i> 
+</I>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000969.html">[Peeweelinux] problems getting rcS.d/10network to run dhcpcd
+</A></li>
+	<LI> Next message: <A HREF="000971.html">[Peeweelinux] AutoBoot and X windows project release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#970">[ date ]</a>
+              <a href="thread.html#970">[ thread ]</a>
+              <a href="subject.html#970">[ subject ]</a>
+              <a href="author.html#970">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

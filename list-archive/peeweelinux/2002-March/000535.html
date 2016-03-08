@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] woo's with diskonchip 2000 16M and 0.61 peewee
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000534.html">
+   <LINK REL="Next"  HREF="000536.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] woo's with diskonchip 2000 16M and 0.61 peewee
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] woo's with diskonchip 2000 16M and 0.61 peewee">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sun, 24 Mar 2002 15:35:17 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000534.html">[Peeweelinux] woo's with diskonchip 2000 16M and 0.61 peewee
+</A></li>
+        <LI> Next message: <A HREF="000536.html">[Peeweelinux] sorry I post again cause I was on digest mode
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#535">[ date ]</a>
+              <a href="thread.html#535">[ thread ]</a>
+              <a href="subject.html#535">[ subject ]</a>
+              <a href="author.html#535">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Bob,
+
+I believe that the lilo version included with Peewee (found in the Embedded_Build/bin
+directory) does not support DiskOnChip devices.  It sounds like you have already tried the
+&quot;doc_lilo&quot; -- I'm assuming this is the one provided by M-Sys?
+
+What are the error messages that Peewee reports when it fails?  The messages in
+Embedded_Build/tmp/rd.log might help.
+
+I had similar problems with the DoC Millennium, and I ended up using the open-source MTD
+drivers, and a patched LILO, rather than the M-Sys drivers.  If you're interested, I have
+written up some instructions on how to do this.
+
+Regards,
+
+Mark
+
+&gt;<i> My problem is when I tell the pw to send it to /dev/msys/fla it sends it all
+</I>&gt;<i> untill it gets to the lilo part and then it fails. I have tried copying all
+</I>&gt;<i> the file and changing the doc.b and doc-lilo but it still does not work.
+</I>
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000534.html">[Peeweelinux] woo's with diskonchip 2000 16M and 0.61 peewee
+</A></li>
+	<LI> Next message: <A HREF="000536.html">[Peeweelinux] sorry I post again cause I was on digest mode
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#535">[ date ]</a>
+              <a href="thread.html#535">[ thread ]</a>
+              <a href="subject.html#535">[ subject ]</a>
+              <a href="author.html#535">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

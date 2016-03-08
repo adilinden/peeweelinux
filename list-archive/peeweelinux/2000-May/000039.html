@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Uncompressed root fs to ramdisk.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000038.html">
+   <LINK REL="Next"  HREF="000040.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Uncompressed root fs to ramdisk.
+   </H1>
+    <B>Kyle Harris
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Uncompressed root fs to ramdisk.">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 23 May 2000 21:22:27 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000038.html">Uncompressed root fs to ramdisk.
+</A></li>
+        <LI> Next message: <A HREF="000040.html">Uncompressed root fs to ramdisk.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#39">[ date ]</a>
+              <a href="thread.html#39">[ thread ]</a>
+              <a href="subject.html#39">[ subject ]</a>
+              <a href="author.html#39">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ralph,
+
+Please see below.
+
+Ralph Stickley wrote:
+
+&gt;<i> Not sure about the minigetty thing.  I think the /dev/tty things (are they
+</I>&gt;<i> files , pipes ? does anybody know ?? ) have to be in R/W partition. I just
+</I>&gt;<i> linked to my ram disk:
+</I>
+/dev/xxx are special &quot;files&quot; called nodes. It provides a mechanism for
+accessing devices through a major and minor number.
+
+&gt;<i> 
+</I>&gt;<i> mount /dev/ram /var
+</I>&gt;<i> /tmp -&gt; /var
+</I>&gt;<i> /dev/tty0 -&gt; /tmp/tty0
+</I>&gt;<i> ...
+</I>&gt;<i>
+</I>
+I like this idea of having /dev in the ramdisk. But how does this work
+since you need /dev/ram in order to create and mount /var? And the
+kernel wants a console early in the boot sequence.
+
+&gt;<i> Where /tmp is a link to the /var mount point for the ram disk. That might help
+</I>&gt;<i> ?
+</I>&gt;<i> 
+</I>&gt;<i> Do you create more than one ramdisk ? How do you specify the size of your ram
+</I>&gt;<i> disk ?
+</I>
+for a 2 MB disk, I use mke2fs -m0 /dev/ram0 2048
+
+Kyle.
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000038.html">Uncompressed root fs to ramdisk.
+</A></li>
+	<LI> Next message: <A HREF="000040.html">Uncompressed root fs to ramdisk.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#39">[ date ]</a>
+              <a href="thread.html#39">[ thread ]</a>
+              <a href="subject.html#39">[ subject ]</a>
+              <a href="author.html#39">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

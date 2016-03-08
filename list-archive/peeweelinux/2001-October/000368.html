@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Audo login.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000366.html">
+   <LINK REL="Next"  HREF="000369.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Audo login.
+   </H1>
+    <B>Terri Fischer
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Audo login.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 10 Oct 2001 09:41:17 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000366.html">Audo login.
+</A></li>
+        <LI> Next message: <A HREF="000369.html">Auto login.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#368">[ date ]</a>
+              <a href="thread.html#368">[ thread ]</a>
+              <a href="subject.html#368">[ subject ]</a>
+              <a href="author.html#368">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+David Aitken writes on Wed, 10 Oct 2001 10:14:36 +1000:
+
+DA&gt; Is it possible to make PeeWeeLinux boot into a XWindows without having to
+DA&gt; make the user login?  All I need is the user to be able to interact with my
+DA&gt; graphical XWindows based program on a touch screen computer.
+
+DA&gt; Thank You,
+DA&gt; David Aitken.
+
+On mine, I created a shell script file:
+   /etc/rcS.d/95local
+
+to be the last thing run at boot time (so, the '95' is higher than any
+other file in rcS.d), containing as the final entry:
+
+  #!/bin/bash
+  echo starting X as root
+  su - root -c /root/my.autostart &amp;
+
+Then, in the file /root/my.autostart:
+
+  #! /bin/bash
+  # Source /etc/profile since don't seem to automatically be getting the PATH
+  source /etc/profile
+  # /etc/X11/xinit/xinitrc has the startup for X and my program
+  startx
+
+Where /etc/X11/xinit/xinitrc launches the program I want to take over
+the screen as well as the window manager.
+
+I wouldn't be surprised if there's an easier way (like just running
+'startx' on the su line).  I did this a year or so ago and haven't
+changed it since.  I do mine as root, but you may not have to.
+
+Good luck,
+Terri
+
+-- 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Terri L. Fischer			<A HREF="mailto:terri@ner.com">terri@ner.com</A>
+New England Research, Inc.		
+White River Jct., VT
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000366.html">Audo login.
+</A></li>
+	<LI> Next message: <A HREF="000369.html">Auto login.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#368">[ date ]</a>
+              <a href="thread.html#368">[ thread ]</a>
+              <a href="subject.html#368">[ subject ]</a>
+              <a href="author.html#368">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

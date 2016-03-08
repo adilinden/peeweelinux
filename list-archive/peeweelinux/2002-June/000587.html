@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] newbie questions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000586.html">
+   <LINK REL="Next"  HREF="000588.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] newbie questions
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] newbie questions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 04 Jun 2002 09:38:04 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000586.html">[Peeweelinux] newbie questions
+</A></li>
+        <LI> Next message: <A HREF="000588.html">[Peeweelinux] bug in libstdc++ tarball
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#587">[ date ]</a>
+              <a href="thread.html#587">[ thread ]</a>
+              <a href="subject.html#587">[ subject ]</a>
+              <a href="author.html#587">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ricardo Trindade wrote:
+&gt;<i> 
+</I>&gt;<i> 	Why IBM instead of sun ? speed ?
+</I>
+Mainly because they have this nifty serial package that would support 
+all kinds of stuff -- our particular project requires reading from 5-7 
+serial ports to gather data, and spit it back out (upstream) via PPP or 
+ethernet.  So, the initial research made them stick out (and, a much 
+smaller footprint?)
+
+&gt;<i> 	what's emlog ?
+</I>
+It's this &quot;fake&quot; /var/log/messages subsystem.  Basically, 
+/var/log/messages is actually a device node, and you insmod emlog.o on 
+bootup (you have to build it into your kernel, the options for emlog are 
+present in the &quot;stock&quot; 2.2.17 kernel provided by PWL).  What happens is 
+that it uses some sort of buffered, circular &quot;last process only&quot; stuff 
+(I'm not sure 100% the details), so that /var/log/messages is never a 
+real file, and therefore can't fill up your ram filesystem! tada. ;) 
+Very cool....
+
+<A HREF="http://www.circlemud.org/~jelson/software/emlog/">http://www.circlemud.org/~jelson/software/emlog/</A>
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000586.html">[Peeweelinux] newbie questions
+</A></li>
+	<LI> Next message: <A HREF="000588.html">[Peeweelinux] bug in libstdc++ tarball
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#587">[ date ]</a>
+              <a href="thread.html#587">[ thread ]</a>
+              <a href="subject.html#587">[ subject ]</a>
+              <a href="author.html#587">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

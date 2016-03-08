@@ -1,0 +1,489 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> DiskOnChip Problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000348.html">
+   <LINK REL="Next"  HREF="000350.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>DiskOnChip Problem
+   </H1>
+    <B>Guillaume Sisteron
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="DiskOnChip Problem">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 20 Aug 2001 23:04:11 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000348.html">Telnet problem
+</A></li>
+        <LI> Next message: <A HREF="000350.html">DiskOnChip Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#349">[ date ]</a>
+              <a href="thread.html#349">[ thread ]</a>
+              <a href="subject.html#349">[ subject ]</a>
+              <a href="author.html#349">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a multi-part message in MIME format.
+
+------=_NextPart_000_0027_01C129CC.6CDD8A90
+Content-Type: text/plain;
+	charset=&quot;us-ascii&quot;
+Content-Transfer-Encoding: 7bit
+
+Hi,
+ 
+I'm trying to develop a Linux-based system on a Disk On Chip (8Mb).
+ 
+I've got several problems, and although I've read your mailing list
+archive, I didn't find a great solution.
+ 
+I'm using PeeWeeLinux 0.61.0 distribution.
+I build my file system (with DOC driver included as module or as static
+in the kernel : both don't work) and put it on the DiskOnChip (by
+replacing lilo with doc-lilo in the pwl-target-load script).
+I manage to boot on the DOC, but the system is then bloked while trying
+to mount the root partition.
+ 
+It says something like: VFS unable to mount root partition on device
+03:02.
+ 
+ 
+Do you know the problem or at least could you answer to the following
+questions:
+ 
+1)       Is it possible to put all the file system directly on the Disk
+On Chip target ?
+2)       Is it necessary to use doc-lilo (and a special lilo.conf file)
+instead of lilo in the pwl_target_load script ?
+3)       In the mailing list archive, some say it is necessary to first
+put everything on ide partition and then put everything on DOC ?
+4)       On the web site, it is written: &quot; Currently the loading of
+target devices directly attached to the development system are
+supported. These include floppy drives, IDE hard drives, scsi hard
+drives, M-Systems Disk-On-Chip and CompactFlash devices.&quot;.
+So what's the best method to load the file system on the DiskOnChip
+target ?
+ 
+ 
+Thanks very much for your answer !
+ 
+ 
+---
+Guillaume SISTERON
+COM One
+ 
+
+------=_NextPart_000_0027_01C129CC.6CDD8A90
+Content-Type: text/html;
+	charset=&quot;us-ascii&quot;
+Content-Transfer-Encoding: quoted-printable
+
+&lt;html xmlns:o=3D&quot;urn:schemas-microsoft-com:office:office&quot; =
+xmlns:w=3D&quot;urn:schemas-microsoft-com:office:word&quot; =
+xmlns=3D&quot;<A HREF="http://www.w3.org/TR/REC-html40"">http://www.w3.org/TR/REC-html40&quot;</A>&gt;
+
+&lt;head&gt;
+&lt;META HTTP-EQUIV=3D&quot;Content-Type&quot; CONTENT=3D&quot;text/html; =
+charset=3Dus-ascii&quot;&gt;
+
+
+&lt;meta name=3DProgId content=3DWord.Document&gt;
+&lt;meta name=3DGenerator content=3D&quot;Microsoft Word 10&quot;&gt;
+&lt;meta name=3DOriginator content=3D&quot;Microsoft Word 10&quot;&gt;
+&lt;link rel=3DFile-List href=3D&quot;cid:<A HREF="mailto:filelist.xml@01C129CC.6C911840">filelist.xml@01C129CC.6C911840</A>&quot;&gt;
+&lt;!--[if gte mso 9]&gt;&lt;xml&gt;
+ &lt;o:OfficeDocumentSettings&gt;
+  &lt;o:DoNotRelyOnCSS/&gt;
+ &lt;/o:OfficeDocumentSettings&gt;
+&lt;/xml&gt;&lt;![endif]--&gt;&lt;!--[if gte mso 9]&gt;&lt;xml&gt;
+ &lt;w:WordDocument&gt;
+  &lt;w:SpellingState&gt;Clean&lt;/w:SpellingState&gt;
+  &lt;w:GrammarState&gt;Clean&lt;/w:GrammarState&gt;
+  &lt;w:DocumentKind&gt;DocumentEmail&lt;/w:DocumentKind&gt;
+  &lt;w:HyphenationZone&gt;21&lt;/w:HyphenationZone&gt;
+  &lt;w:EnvelopeVis/&gt;
+  &lt;w:Compatibility&gt;
+   &lt;w:BreakWrappedTables/&gt;
+   &lt;w:SnapToGridInCell/&gt;
+   &lt;w:WrapTextWithPunct/&gt;
+   &lt;w:UseAsianBreakRules/&gt;
+  &lt;/w:Compatibility&gt;
+  &lt;w:BrowserLevel&gt;MicrosoftInternetExplorer4&lt;/w:BrowserLevel&gt;
+ &lt;/w:WordDocument&gt;
+&lt;/xml&gt;&lt;![endif]--&gt;
+&lt;style&gt;
+&lt;!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:&quot;&quot;;
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:&quot;Times New Roman&quot;;
+	mso-fareast-font-family:&quot;Times New Roman&quot;;}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+span.StyleCourrierlectronique17
+	{mso-style-type:personal-compose;
+	mso-style-noshow:yes;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	color:windowtext;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:1879277224;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1397397194 67895313 67895321 67895323 67895311 =
+67895321 67895323 67895311 67895321 67895323;}
+@list l0:level1
+	{mso-level-text:&quot;%1\)&quot;;
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level2
+	{mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level3
+	{mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level5
+	{mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level6
+	{mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level8
+	{mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level9
+	{mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+--&gt;
+&lt;/style&gt;
+&lt;!--[if gte mso 10]&gt;
+&lt;style&gt;
+ /* Style Definitions */=20
+ table.MsoNormalTable
+	{mso-style-name:&quot;Tableau Normal&quot;;
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:&quot;&quot;;
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:&quot;Times New Roman&quot;;}
+&lt;/style&gt;
+&lt;![endif]--&gt;
+&lt;/head&gt;
+
+&lt;body lang=3DFR link=3Dblue vlink=3Dpurple =
+style=3D'tab-interval:35.4pt'&gt;
+
+&lt;div class=3DSection1&gt;
+
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;Hi,&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/=
+font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span=
+&gt;<i>&lt;/font&gt;&lt;/p&gt;
+</I>
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;I&amp;#8217;m trying to =
+develop a
+Linux-based system on a Disk On Chip (8Mb).&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span=
+&gt;<i>&lt;/font&gt;&lt;/p&gt;
+</I>
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;I&amp;#8217;ve got several
+problems, and although I&amp;#8217;ve read your mailing list archive, I
+didn&amp;#8217;t find a great solution.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span=
+&gt;<i>&lt;/font&gt;&lt;/p&gt;
+</I>
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;I&amp;#8217;m using =
+&lt;/span&gt;&lt;/font&gt;&lt;span
+lang=3DEN-GB style=3D'mso-ansi-language:EN-GB'&gt;PeeWeeLinux 0.61.0 =
+distribution.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;I build my file system =
+(with
+DOC driver included as module or as static in the kernel : both =
+don&amp;#8217;t
+work) and put it on the DiskOnChip (by replacing lilo with doc-lilo in =
+the
+pwl-target-load script).&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;I manage to boot on =
+the DOC,
+but the system is then bloked while trying to mount the root =
+partition.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span=
+&gt;<i>&lt;/font&gt;&lt;/p&gt;
+</I>
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;It says something =
+like: VFS
+unable to mount root partition on device =
+03:02.&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span=
+&gt;<i>&lt;/font&gt;&lt;/p&gt;
+</I>
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span=
+&gt;<i>&lt;/font&gt;&lt;/p&gt;
+</I>
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;Do you know the =
+problem or at
+least could you answer to the following =
+questions:&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span=
+&gt;<i>&lt;/font&gt;&lt;/p&gt;
+</I>
+&lt;p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1;
+tab-stops:list 36.0pt'&gt;&lt;![if !supportLists]&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'&gt;&lt;span style=3D'mso-list:Ignore'&gt;1)&lt;font =
+size=3D1
+face=3D&quot;Times New Roman&quot;&gt;&lt;span style=3D'font:7.0pt &quot;Times New =
+Roman&quot;'&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;&lt;![endif]&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;Is
+it possible to put all the file system directly on the Disk On Chip =
+target ?&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1;
+tab-stops:list 36.0pt'&gt;&lt;![if !supportLists]&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'&gt;&lt;span style=3D'mso-list:Ignore'&gt;2)&lt;font =
+size=3D1
+face=3D&quot;Times New Roman&quot;&gt;&lt;span style=3D'font:7.0pt &quot;Times New =
+Roman&quot;'&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;&lt;![endif]&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;Is
+it necessary to use doc-lilo (and a special lilo.conf file) instead of =
+lilo in
+the pwl_target_load script ?&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1;
+tab-stops:list 36.0pt'&gt;&lt;![if !supportLists]&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'&gt;&lt;span style=3D'mso-list:Ignore'&gt;3)&lt;font =
+size=3D1
+face=3D&quot;Times New Roman&quot;&gt;&lt;span style=3D'font:7.0pt &quot;Times New =
+Roman&quot;'&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;&lt;![endif]&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;In
+the mailing list archive, some say it is necessary to first put =
+everything on
+ide partition and then put everything on DOC =
+?&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1;
+tab-stops:list 36.0pt'&gt;&lt;![if !supportLists]&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'&gt;&lt;span style=3D'mso-list:Ignore'&gt;4)&lt;font =
+size=3D1
+face=3D&quot;Times New Roman&quot;&gt;&lt;span style=3D'font:7.0pt &quot;Times New =
+Roman&quot;'&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;&lt;/span&gt;&lt;/font&gt;&lt;![endif]&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;On
+the web site, it is written: &amp;#8220; C&lt;/span&gt;&lt;/font&gt;&lt;span lang=3DEN-GB
+style=3D'mso-ansi-language:EN-GB'&gt;urrently the loading of target devices =
+directly
+attached to the development system are supported. These include floppy =
+drives,
+IDE hard drives, scsi hard drives, M-Systems Disk-On-Chip and =
+CompactFlash
+devices.&amp;#8221;.&lt;/span&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span lang=3DEN-GB
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;&lt;o:p=
+&gt;<i>&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+</I>
+&lt;p class=3DMsoNormal style=3D'margin-left:18.0pt'&gt;&lt;font size=3D3
+face=3D&quot;Times New Roman&quot;&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:12.0pt;mso-ansi-language:
+EN-GB'&gt;So what&amp;#8217;s the best method to load the file system on the
+DiskOnChip target ?&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal style=3D'margin-left:18.0pt'&gt;&lt;font size=3D3
+face=3D&quot;Times New Roman&quot;&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:12.0pt;mso-ansi-language:
+EN-GB'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal style=3D'margin-left:18.0pt'&gt;&lt;font size=3D3
+face=3D&quot;Times New Roman&quot;&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:12.0pt;mso-ansi-language:
+EN-GB'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal style=3D'margin-left:18.0pt'&gt;&lt;font size=3D3
+face=3D&quot;Times New Roman&quot;&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:12.0pt;mso-ansi-language:
+EN-GB'&gt;Thanks very much for your answer !&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal style=3D'margin-left:18.0pt'&gt;&lt;font size=3D3
+face=3D&quot;Times New Roman&quot;&gt;&lt;span lang=3DEN-GB =
+style=3D'font-size:12.0pt;mso-ansi-language:
+EN-GB'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal style=3D'margin-left:18.0pt'&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;&lt;o:p=
+&gt;<i>&amp;nbsp;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+</I>
+&lt;p class=3DMsoNormal style=3D'margin-left:18.0pt'&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;---&lt;=
+o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal style=3D'margin-left:18.0pt'&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;Guil=
+laume
+SISTERON&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal style=3D'margin-left:18.0pt'&gt;&lt;font size=3D2 =
+face=3DArial&gt;&lt;span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'&gt;COM
+One&lt;o:p&gt;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;p class=3DMsoNormal&gt;&lt;font size=3D2 face=3DArial&gt;&lt;span =
+style=3D'font-size:10.0pt;
+font-family:Arial'&gt;&lt;o:p&gt;&amp;nbsp;&lt;/o:p&gt;&lt;/span&gt;&lt;/font&gt;&lt;/p&gt;
+
+&lt;/div&gt;
+
+&lt;/body&gt;
+
+&lt;/html&gt;
+
+------=_NextPart_000_0027_01C129CC.6CDD8A90--
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000348.html">Telnet problem
+</A></li>
+	<LI> Next message: <A HREF="000350.html">DiskOnChip Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#349">[ date ]</a>
+              <a href="thread.html#349">[ thread ]</a>
+              <a href="subject.html#349">[ subject ]</a>
+              <a href="author.html#349">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux-devel] Re: DOC Docs
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="000170.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux-devel] Re: DOC Docs
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux-devel%40adis.on.ca"
+       TITLE="[Peeweelinux-devel] Re: DOC Docs">peeweelinux-devel@adis.on.ca
+       </A><BR>
+    <I>Mon, 11 Mar 2002 17:16:52 -0600 (CST)</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="000170.html">[Peeweelinux-devel] Re: DOC Docs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#169">[ date ]</a>
+              <a href="thread.html#169">[ thread ]</a>
+              <a href="subject.html#169">[ subject ]</a>
+              <a href="author.html#169">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Mark,
+
+I am documenting all the steps I take to create the development 
+environment. This means it will be possible to actually PeeWeeLinux from 
+scratch using a bunch of scripts. This would include downloading the 
+sources from the original sites (I.e. gcc from gnu.org).
+
+I am thinking about a directory structure similar to what's below. This 
+might seem awkward at first, but it will allow for chroot to /peeweelinux 
+and building of packages within the chrooted environment. Now it won't 
+mater any longer what underling Linux distribution is used for 
+PeeWeeLinux.
+
+When RPMS are build, a &lt;packagename&gt;-devel rpm would be build for the sole 
+purpose of installing in the chrooted environment. This will make it easy 
+to link against just the libs that are part of PeeWeeLinux.
+
+Any thoughts on this? 
+
+/peeweelinux
+  |
+  +---- /tools
+  |       |
+  |       +---- /pwlconfig -  directory containing the pwlconfig scripts
+  |       |
+  |       +---- /backups   -  directory to store project backups
+  |       | 
+  |       +---- /examples  -  directory to store provided example projects
+  |       |
+  |       +---- /docs      -  directory for PeeWeeLinux documentation
+  |       |
+  |       +---- /specs     -  spec files for PeeWeeLinux RPMS
+  |       |
+  |       +---- /scratch   -  directory containing scripts
+  |       |                   to build environment from scratch and
+  |       |                   patches necessary for static build tools
+  |       |
+  |       +---- /lxdialog  -  the lxdialog sources
+  |
+  +---- /bin
+  |
+  +---- /dev
+  |
+  +---- /home
+  |
+  +---- /lib
+  |
+  +---- /usr
+  |       |
+  |       +---- /src
+  |       |       |
+  |       |       +---- /peeweelinux
+  |       |       |       |
+  |       |       |       +---- SPECS (symlink to ../../../../tools/specs)
+  |       |       |       |
+  |       |       |       +----&gt; BUILD, SOURCES, RPMS, SRPMS ...
+  |       |       |
+  |       |       +---- /scratch  - directory for non-rpm sources for
+  |       |                         building static tools
+  |       |
+  |       +----&gt; /bin, /sbin, /share, etc ...
+  |
+  +---- /etc, /mnt, /sbin, /tmp, etc ...
+
+Regards,
+Adi
+
+
+&gt;<i> I kind of like the way the Linux Router Project guys do things like this.  They have
+</I>&gt;<i> something called a &quot;LRP&quot; package, and it's fairly easy for a novice user to grab
+</I>&gt;<i> additional LRP packages, and integrate them into their project.  For the power users,
+</I>&gt;<i> there's good documentation on how to build LRP packages from scratch, and contribute them.
+</I>&gt;<i>
+</I>&gt;<i> It seems like they have &quot;core&quot; distributions, containing the basic required packages, and
+</I>&gt;<i> then the user can expand on the basic system by using as many LRP packages as space
+</I>&gt;<i> permits.  Each of these additional LRP packages aren't necessarily part of the core
+</I>&gt;<i> distribution; users simply download individual packages as needed.  I don't know if these
+</I>&gt;<i> LRP concepts are relevant to Peewee, but I thought I'd pass it along.
+</I>&gt;<i> 
+</I>&gt;<i> Regardless of the implementation, coming up with an easy way for people to contribute
+</I>&gt;<i> additional packages is a great idea!  You've really got a great thing going here, and I'm
+</I>&gt;<i> among the many people who want to help make it better.  Whatever you come up with, I'd be
+</I>&gt;<i> glad to help develop, test, and document it.
+</I>&gt;<i> 
+</I>&gt;<i> We probably should take this discussion to the list.  I've already seen a number of really
+</I>&gt;<i> good suggestions and ideas out there.
+</I>&gt;<i> 
+</I>&gt;<i> Regards,
+</I>&gt;<i> 
+</I>&gt;<i> Mark
+</I>&gt;<i> 
+</I>&gt;<i> P.S.  I've (temporarily) posted my DiskOnChip/Peewee instructions to my website.  I've
+</I>&gt;<i> been corresponding with a board vendor (<A HREF="http://www.c2central.com/page514613.htm">http://www.c2central.com/page514613.htm</A>) that is
+</I>&gt;<i> interesting in using Peewee.
+</I>&gt;<i> 
+</I>&gt;<i> I used their UIB product for one of my clients, and I have another project where I might
+</I>&gt;<i> end up using it again.  Their 8MB DoC comes with preinstalled Redhat 6.2, but was more
+</I>&gt;<i> aimed at a specific application, rather than a &quot;generic&quot; Linux distribution.  I used
+</I>&gt;<i> Peewee to start over from scratch -- worked great!
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="000170.html">[Peeweelinux-devel] Re: DOC Docs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#169">[ date ]</a>
+              <a href="thread.html#169">[ thread ]</a>
+              <a href="subject.html#169">[ subject ]</a>
+              <a href="author.html#169">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

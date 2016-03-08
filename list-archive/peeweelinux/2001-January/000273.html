@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> FlashDisk vs RamDisk+FlashDisk partitions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000272.html">
+   <LINK REL="Next"  HREF="000274.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>FlashDisk vs RamDisk+FlashDisk partitions
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="FlashDisk vs RamDisk+FlashDisk partitions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 5 Jan 2001 17:58:06 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000272.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+        <LI> Next message: <A HREF="000274.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#273">[ date ]</a>
+              <a href="thread.html#273">[ thread ]</a>
+              <a href="subject.html#273">[ subject ]</a>
+              <a href="author.html#273">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Andrei,
+
+PeeWeeLinux supports different ways of loading a target device. This
+includes having a single large partition on the flash drive (ext2 or FAT)
+that contains the kernel and ramdisk image (compressed filesystem). In
+this arrangement there is no easy way to save anything, though.
+
+Another alternative (already in PeeWeeLinux) is to have an uncompressed
+filesystem on flash which is loaded into memory and run from a ramdisk.
+This allows for the flash to be mounted (read-write) and changes to be
+made that will take effect once the system is rebooted.
+
+Lastly there is a mixed approach. Quite close to your #1 suggestion. Have
+a read-only root partition on flash. Load /etc, /dev/ and /var into 
+ramdisks. The reason for /etc is that the system needs write access to
+some files in /etc, the reason for /dev is that in order to write to
+devices the partition the node is created on needs to be writable. And
+/var you've explained already. Depending on how the /etc branch is created
+it could be saved to flash by mounting the appropriate partition
+read/write.
+
+Future kernel releases will include devfs and reiserfs or ext3. devfs
+allows for a virtual device filesystem, similar to how /proc works. This
+would eliminate the need for a /dev ramdisk and preserve a moderate amount
+of memory and flash since each device currently consumes one inode on the
+filesystem it resides on.
+
+You can corrupt flash if you remove power during a write operation.
+Apparently ext3 and reiserfs would automatically recover and fall back to
+a last known good state. Now that's my understanding based on rumours
+rather than research on my part.
+
+The read-only root filesystem with ramdisks for /etc, /var and /dev
+that's implementedin PeeWeeLinux works but it could use some more fine
+tuning, I think.
+
+TTYL,
+Adi
+
+  
+
+On Fri, 5 Jan 2001, Andrei Bulucea wrote:
+
+&gt;<i> Happy New Year everybody! 
+</I>&gt;<i> 
+</I>&gt;<i> While reading your postings I noticed  some
+</I>&gt;<i> messges related to fsck/journaling filesystem
+</I>&gt;<i> implementations for PeeWeeLinux. 
+</I>&gt;<i> 
+</I>&gt;<i> How about having the folowing ramdisk/flashdisk arrangement
+</I>&gt;<i> thus avoiding running fsck based on the assumption that
+</I>&gt;<i> fsck gets invoked due to a *modified* filesystem, not corruption,
+</I>&gt;<i> (CF doesn't get corrupted on power off)
+</I>&gt;<i> 
+</I>&gt;<i> 1) I think it is quite possible to have your / partition
+</I>&gt;<i> ,read only, mounted on the FlashDisk and something like
+</I>&gt;<i> /var mounted on a ramdisk. So your endless logging and 
+</I>&gt;<i> 'scratchpad area' will be volatile, therefore each time the 
+</I>&gt;<i> machine crashes or is powered off, /var will be lost, but no 
+</I>&gt;<i> changes will be recorded on &quot;/&quot; filesystem, therefore fsck 
+</I>&gt;<i> will not be invoked.
+</I>&gt;<i> 
+</I>&gt;<i> 2) Compress the entire filesystem into the FlashDisk and
+</I>&gt;<i> then load it into RamDisk. This consumes more RAM, but it 
+</I>&gt;<i> seems to be the fastest, however costly due to the fact 
+</I>&gt;<i> that the compression radio is 1:3 and CF/RAM price ratio 
+</I>&gt;<i> is only 1:2...  
+</I>&gt;<i> 
+</I>&gt;<i> Am I missing something? I prefer #1, Which one would you choose?
+</I>&gt;<i> 
+</I>&gt;<i> Best Regards and thank you in advance,
+</I>&gt;<i> Andrei
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> 
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000272.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+	<LI> Next message: <A HREF="000274.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#273">[ date ]</a>
+              <a href="thread.html#273">[ thread ]</a>
+              <a href="subject.html#273">[ subject ]</a>
+              <a href="author.html#273">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

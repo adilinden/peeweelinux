@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> making floppy systems
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000063.html">
+   <LINK REL="Next"  HREF="000066.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>making floppy systems
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="making floppy systems">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Sat, 2 Sep 2000 11:38:20 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000063.html">making floppy systems
+</A></li>
+        <LI> Next message: <A HREF="000066.html">PeeWeeLinux 0.51
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> So, assuming I have a bootable floppy and some means of transferring a
+</I>&gt;<i> tarred-up filesystem image to the embedded system's harddrive, how do I go
+</I>&gt;<i> about getting that image out of PWL?  Simply tar up the
+</I>&gt;<i> ./Embedded_Build/projects/blah/mnt directory?  Then once I partition and
+</I>&gt;<i> format the embedded system's hard drive, I untar the file system on to it,
+</I>&gt;<i> but how do I get a boot loader installed (lilo)?  Would I make the
+</I>&gt;<i> appropriate changes to the ramdisked /etc/lilo.conf and run lilo, or would
+</I>&gt;<i> I have to make a lilo boot disk to boot from the newly-created hard-drive
+</I>&gt;<i> filesystem first?
+</I>&gt;<i> 
+</I>&gt;<i> -fa
+</I>
+Ok, first off all of pwlconfig assumes and will assume in the future that
+you intalled the target drive as a drive on your development system. 
+
+In some instances you might be developing right on your target device. I.e
+/dev/hda is your flash, hd, whatever and /dev/hdb is your development
+system attached to your target platform. This arrangement is suitable for
+dualbooting. However, the current scripts I am working on do not support
+dualbooting at this time.
+
+Assuming the first instance, a drive mounted on your development system is
+what I find easiest. I now settled on using a USB flash reader (Sandisk
+SDDR-31) which treats an inserted CF card like a SCSI hard disk drive. A
+PentiumII 333 box with RedHat 6.2 is the development platform. Once the
+flash has been loaded it is simply removed from the flash reader and
+inserted in the CompactFlash-IDE adaptor on the target machine.
+
+Another option I used with a target system that contains a floppy drive
+(even if it's just temporarily) is to use a DOS floppy with a TCP/IP stack
+for the network card used to copy the contents from the development system
+(running SAMBA for filesharing with non-Linux machines) to the target. In
+this case I use syslinux for a bootloader, a system that runs entirely in
+ram and a fat12 or fat16 filesystem on the drive on the target machine.
+
+An option I pursued briefly is to use a Linux bootfloppy with network
+support and use nfs or ftp to copy the filesystem onto the target drive.
+This allows a lot of flexibility depending on the tools available on the
+floppy since you can implement almost any conceivable scheme to boot from
+the target drive.
+
+The disadvantage of not having your actual target drive mounted on the
+development system to be loaded is that you need to build a special floppy
+be it either DOS or Linux for every different platform you're working
+with. Since the floppy is very likely a ramdisk based design this doen't
+work well if your intended target machine has limited ram available. You
+end up loading a kernel with approx 500k and a 3MB ramdisk on average.
+Then you still need RAM to actually run things.
+
+Anyways, got to go!
+
+TTYL,
+Adi
+
+
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000063.html">making floppy systems
+</A></li>
+	<LI> Next message: <A HREF="000066.html">PeeWeeLinux 0.51
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

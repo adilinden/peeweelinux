@@ -1,0 +1,180 @@
+From peeweelinux@adis.on.ca  Tue Oct 21 09:22:09 2003
+From: peeweelinux@adis.on.ca (Michael McCallum)
+Date: Tue, 21 Oct 2003 18:22:09 +1000
+Subject: [Peeweelinux] Help request booting  IBM Netvista thin client
+Message-ID: <3F94ECB1.8020502@forge.com.au>
+
+This is a multi-part message in MIME format.
+--------------000701030405030006030101
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+
+Hi!
+
+I've got an IBM NetVista 8364 TUS thin client I am trying to get 
+PeeWeeLinux to boot on from CF card.
+The specs of the client are here :
+ http://reviews.cnet.com/NETVISTA_2800_THIN_CLIENT_64MB_TR_8364_TUS/4507-3119_7-776185.html?tag=subnav 
+
+<http://reviews.cnet.com/NETVISTA_2800_THIN_CLIENT_64MB_TR_8364_TUS/4507-3119_7-776185.html?tag=subnav>(Sorry 
+for the CNet link - can't find the IBM specs anymore...)
+This is basically a Pentium 266 with 64MB RAM on a custom IBM 
+motherboard with integrated SIS graphics chip.
+
+I unfortunately have the Token ring version, but the machine does have a 
+PCI slot for an ethernet card.
+
+I've read quite a few IBM FAQ's and deja comments that state it should 
+be possible to boot off a
+Compact Flash card for this machine (the board has an integrated CF 
+slot, and the BIOS recognises a 32MB hard disk
+on IDE0 in the BIOS when I plug in my CF card - which is a Sandisk as 
+required IBM)
+
+I'm not sure I've built my CF card correctly as I don't get anything 
+other than "Operating System not found" displayed by the client.
+
+It's also possible that I need to update the BIOS to a later version (I 
+have the server downloads from IBM to do this, but am having difficulty
+getting  token ring hardware (without paying an arm and a leg for 
+something I want to use once just to flash the BIOS!!))
+To update the BIOS requires PIX booting from the IBM tftp server and 
+then having the IBM software flash the BIOS.
+
+I have tested this by DD'ing a 1.44" floppy image onto the CF card and 
+booting that, but I still get the same error. ("No OS found")
+
+Firstly, has anyone booted the IBM 8364 netvista series from CF card???
+
+Is DD'ing a floppy  image onto a CF card a valid process (I could mount 
+the card and see the contents of the image filesystem correctly on my host).
+
+Are CF card images available for download to test my hardware so I can 
+rule out PeeWeeLinux configuration problems??
+
+Thanks Heaps in advanve for any pointers or advice!!!!
+
+-- 
+Kind Regards
+Michael McCallum
+ 
+
+
+--------------000701030405030006030101
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=ISO-8859-1">
+  <title></title>
+</head>
+<body text="#000000" bgcolor="#ffffff">
+<br>
+Hi!<br>
+<br>
+I've got an IBM NetVista 8364 TUS thin client I am trying to get
+PeeWeeLinux to boot on from CF card.<br>
+The specs of the client are here :<br>
+&nbsp;<a
+ href="http://reviews.cnet.com/NETVISTA_2800_THIN_CLIENT_64MB_TR_8364_TUS/4507-3119_7-776185.html?tag=subnav">http://reviews.cnet.com/NETVISTA_2800_THIN_CLIENT_64MB_TR_8364_TUS/4507-3119_7-776185.html?tag=subnav
+<br>
+</a>(Sorry for the CNet link - can't find the IBM specs anymore...)<br>
+This is basically a Pentium 266 with 64MB RAM on a custom IBM
+motherboard with integrated SIS graphics chip.<br>
+<br>
+I unfortunately have the Token ring version, but the machine does have
+a PCI slot for an ethernet card. <br>
+<br>
+I've read quite a few IBM FAQ's and deja comments that state it should
+be possible to boot off a <br>
+Compact Flash card for this machine (the board has an integrated CF
+slot, and the BIOS recognises a 32MB hard disk <br>
+on IDE0 in the BIOS when I plug in my CF card - which is a Sandisk as
+required IBM)<br>
+<br>
+I'm not sure I've built my CF card correctly as I don't get anything
+other than "Operating System not found" displayed by the client.<br>
+<br>
+It's also possible that I need to update the BIOS to a later version (I
+have the server downloads from IBM to do this, but am having difficulty
+<br>
+getting&nbsp; token ring hardware (without paying an arm and a leg for
+something I want to use once just to flash the BIOS!!))<br>
+To update the BIOS requires PIX booting from the IBM tftp server and
+then having the IBM software flash the BIOS.<br>
+<br>
+I have tested this by DD'ing a 1.44" floppy image onto the CF card and
+booting that, but I still get the same error. ("No OS found")<br>
+<br>
+Firstly, has anyone booted the IBM 8364 netvista series from CF card???<br>
+<br>
+Is DD'ing a floppy&nbsp; image onto a CF card a valid process (I could mount
+the card and see the contents of the image filesystem correctly on my
+host).<br>
+<br>
+Are CF card images available for download to test my hardware so I can
+rule out PeeWeeLinux configuration problems??<br>
+<br>
+Thanks Heaps in advanve for any pointers or advice!!!!<br>
+<br>
+<pre class="moz-signature" cols="72">-- 
+Kind Regards
+Michael McCallum
+ </pre>
+</body>
+</html>
+
+--------------000701030405030006030101--
+
+
+From peeweelinux@adis.on.ca  Tue Oct 21 21:53:56 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Tue, 21 Oct 2003 13:53:56 -0700 (PDT)
+Subject: [Peeweelinux] Help request booting  IBM Netvista thin
+ client
+Message-ID: <2.2.16.20031021135440.5df7aa78@zmicro.com>
+
+Michael,
+
+I don't have any experience with you hardware but if it says it
+can boot off IDE0 then you ought to be able to get *something*
+out of it.
+
+Look at the text of the OS boot failure message carefully.
+Also compare to what you see if you pull the CF card out
+and try to boot.  Most non-bootable media still has a 
+boot program in it that says in effect "Can't boot this".
+
+Is there a BIOS message that shows it detects the flash disk?
+
+Next, dd the first sector of your CF card back off the
+card and look at it, and see if it looks like a boot sector.
+Or post a hex dump of it if you don't have that experience.
+
+Make sure the IBM really boots that drive as IDE0 and that
+you told peeweelinux that it is "hda".  A lot of boards
+that have a CF drive use hdc (master drive but second
+controller.)  Make sure peewee didn't throw an error,
+especially in the lilo installation.
+
+A floppy's boot sector, and a hard drive's boot + partition
+table aren't the same.  I don't think the floppy sector
+will boot a hard drive but I don't recall trying (now
+I'll have to...)
+
+A linux kernel will boot from a floppy if you dd it.  But
+again I don't think this would work on a hard drive.
+
+The point I'm trying to make is to find out what happens
+in that first access to IDE0.  If that doesn't happen,
+then it matters little how your Linux was built.
+
+Barry
+
+
+
+
+

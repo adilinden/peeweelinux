@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] thttpd web server Q+A, net-pf-10
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000744.html">
+   <LINK REL="Next"  HREF="000746.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] thttpd web server Q+A, net-pf-10
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] thttpd web server Q+A, net-pf-10">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 14 Aug 2002 14:31:17 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000744.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+        <LI> Next message: <A HREF="000746.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#745">[ date ]</a>
+              <a href="thread.html#745">[ thread ]</a>
+              <a href="subject.html#745">[ subject ]</a>
+              <a href="author.html#745">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ok, I did the research.
+
+depmod and modprobe go together.  In fact, they share a common man
+page.  It is depmod that will read and interpret modules.conf,
+and it handles the alias lines itself, without the shell's help.
+
+Here is a useful command I found:   
+
+   modprobe -c
+
+It will dump to the screen everything that it knows about.  (This
+seems to be more than /lib/modules/2.2.17/modules.dep   Maybe
+it's in the kernel?)   This includes 'path', 'alias', 'option',
+most of which is put there by default (maybe compiled in, don't
+know).
+
+Since I've still got thttpd in the title, here is another tip:
+Pipe the output of some command to a file in the web server's
+directory, and you can view or fetch it over the network  using 
+your web browser.  I do this because my target system doesn't 
+have less, or more, or telnet, or ftp...
+
+Barry
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000744.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+	<LI> Next message: <A HREF="000746.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#745">[ date ]</a>
+              <a href="thread.html#745">[ thread ]</a>
+              <a href="subject.html#745">[ subject ]</a>
+              <a href="author.html#745">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

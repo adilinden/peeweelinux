@@ -1,0 +1,837 @@
+From PeeWeeLinux@adis.on.ca  Wed Mar  1 07:30:07 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Wed, 1 Mar 2000 01:30:07 -0600 (CST)
+Subject: Work in progress
+Message-ID: <Pine.LNX.4.10.10003010124550.3980-100000@big.adis.on.ca>
+
+Hi,
+
+Just uploading embedded-0.20pre-src.tar.gz and
+embedded-0.20pre-bin.tar.gz. It's work in progress. Some added packages,
+thttpd and dhcpcd. Also the source packages are now extracted, patched and
+compiled. Essentially in the near future it should be possible to create a
+PeeWeeLinux distribution from sources and RedHat 6.1 rpms automatically.
+
+Things still unfinished:
+- Fixing the boa package. The config file is buggy.
+- Replacing the minimal /etc/termcap with a more suitable version.
+- Fix all the things that broke by recompiling the packages.
+- There no getty in this pre version. Need to fix that, too!
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Mar  1 15:10:05 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Wed, 1 Mar 2000 09:10:05 -0600 (CST)
+Subject: embedded-0.20pre
+Message-ID: <Pine.LNX.4.10.10003010908580.6508-100000@big.adis.on.ca>
+
+Hi,
+
+Changed the available pre-release (work in progress) to include a mingetty
+package. Can't do much without it...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Mar  2 04:25:17 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Wed, 1 Mar 2000 22:25:17 -0600 (CST)
+Subject: PeeWeeLinux v0.20
+Message-ID: <Pine.LNX.4.10.10003012221230.7156-100000@big.adis.on.ca>
+
+Hi,
+
+PeeWeeLinux v0.20 is now available. The biggest changes from 0.19 are the
+patch files to turn sources into PWL packages. As a result the source
+distribution is now less than half the size.
+
+Added thttpd a single threaded webserver with htaccess style
+authentication and cgi capabilities.
+
+Added dhcpcd a dhcp client dor situations where pump fails to work
+properly.
+
+TTYL,
+Adi
+ 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sun Mar  5 18:27:29 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Sun, 5 Mar 2000 12:27:29 -0600 (CST)
+Subject: PeeWeeLinux Ideas
+Message-ID: <Pine.LNX.4.10.10003051201590.10927-100000@big.adis.on.ca>
+
+Hi Ralph,
+
+Just making notes of some random PeeWeeLinux ideas. Thought I'd email them
+to you to see what you think...
+
+I cc'd this to the PeeWeeLinux lists. Perhaps someone else using PWL has
+ideas or suggestions, too?
+
+Package Names
+-------------
+
+Currently packages are named like thttpd-1.2.3.tar indicating the name and
+version of the software. This naming applies to all packages build from
+original sources regardless of whether they came from the original author
+or were taken from a SRPM.
+
+Currently packages build from precompiled binaries (RedHat rpm or running
+system) are named thttpd-1.2.3-rh.tar to indicate the fact they were not
+compiled and taken from the system. Perhaps still stripped and dependency
+checked and associated scripts changed, but no other changes.
+
+Would it make sense to start adding a version numer similar to what RedHat
+does? Like creating thttpd-1.2.3-1.tar for the initial release. When a
+package is changed due to bugfixes, etc, the version number of the package
+could be incremented like thttpd-1.2.3-2.tar. Obviously this wouldn't
+happen with every PeeWeeLinux release but as bugs are reported and fixed
+or as other features are added.
+
+File List
+---------
+
+If you look at the Embedded_Build directory, there is a file called
+Filelist (I think) which contains the package names and files associated
+with it. Would it make sense to keep a file like it, indicating the
+included package name and the related files?
+
+As one of the todo tasks I want to eliminate duplicate files in packages.
+Since networking is an obvious feature of Linux I will change the
+arrangements of packages in a way that it assumed that networking is going
+to be installed. I want to remove all the configuration files from the
+base_filesystem and base_libs packages and create a base_script or
+base_configuration package that contains all those. Things to include
+there would be:
+
+/etc/services
+/etc/protocols
+/etc/nsswitch
+
+Subsequently I am removing those files from their duplicate places...
+
+Should the Filelist file include the descriptions entered in the
+package.README files? I tend to not to include them to not clutter up the
+filelist file.
+
+Maintaining the filelist file would make it easy to chack for duplicate
+files within the PWL distribution and to enable on to quickly find a
+particular binary, i.e. which package includes 'su'?
+
+Distributing PWL
+----------------
+
+I am thinking about creating a PWL packages directory on the server in
+which to keep all the packages for individual download. Perhaps gzip the
+packages, though. This would allow for individual packages to be
+downloaded rather than the complete archive if some packages are added.
+Also, it would allow for newly build packages to be made available
+immediately without having to wait for a new release.
+
+I am a bit torn between the idea of creating a new release too often or
+not often enough. Just adding a couple of packes doesn't necessarily
+justify creating a new release, especially if some known bugs haven't been
+addressed. On the other hand I don't want to not release new features and
+additions because I won't have time to address some issues immediately. I
+need some guidance here.
+
+Closing
+-------
+
+This all comes to mind because I will have a crude X package compiled from
+sources soon. This will add some 40MB to the source distribution. I think
+it's a bit of a waste to have to download a 50MB file for some minor
+changes... I guess there's always the binary distribution.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Mar  6 04:55:03 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Sun, 5 Mar 2000 20:55:03 -0800 (PST)
+Subject: PeeWeeLinux Ideas
+Message-ID: <20000306045503.26316.qmail@web1106.mail.yahoo.com>
+
+Adi,
+Sounds like some good ideas, some thoughts below:
+
+> 
+> Package Names
+> -------------
+> 
+> Would it make sense to start adding a version numer similar to what RedHat
+> does? Like creating thttpd-1.2.3-1.tar for the initial release. 
+
+Sounds great, then maybe you could also just download a patch file to 
+go from xxx-1.2.3-1 to xxx-1.2.3-2 (but these are binaries hmmm...not
+sure about that)
+
+> 
+> File List
+> ---------
+> 
+> If you look at the Embedded_Build directory, there is a file called
+> Filelist (I think) which contains the package names and files associated
+> with it. Would it make sense to keep a file like it, indicating the
+> included package name and the related files?
+> 
+
+Hey, I did this as part of my pwl_update script. I go through the entire
+packages directory and list every file into one file .root.list or 
+something like that.  Very handy to help speed up the searching for 
+a specific file...
+
+> As one of the todo tasks I want to eliminate duplicate files in packages.
+> 
+Great! Thats one problem I'm having...trying to find a package for a file
+and finding it in multiple places.  Also, the extraction continues to 
+give errors when a file is duplicated...
+
+> Subsequently I am removing those files from their duplicate places...
+> 
+> Should the Filelist file include the descriptions entered in the
+> package.README files? I tend to not to include them to not clutter up the
+> filelist file.
+> 
+
+Since pwl_config builds and maintains a list for "internal" use, you 
+could put most anything here that would make it easy for people to use.
+This could be rather time consuming to maintain, but any information
+like this would be unique to Pee Wee Linux (I can't find docs for most 
+of the other small Linux file systems :-(
+
+
+> Maintaining the filelist file would make it easy to chack for duplicate
+> files within the PWL distribution and to enable on to quickly find a
+> particular binary, i.e. which package includes 'su'?
+> 
+
+BTW, A handy program I just started using, "uniq" will print a list of 
+duplicates or a unique list from a file. For example:
+
+cat filelist_A filelist_B | sort | uniq -d   
+
+will list only the files that are duplicated in both lists. 
+
+> Distributing PWL
+> ----------------
+> 
+> I am thinking about creating a PWL packages directory on the server in
+> which to keep all the packages for individual download. Perhaps gzip the
+> packages, though. This would allow for individual packages to be
+> downloaded rather than the complete archive if some packages are added.
+> Also, it would allow for newly build packages to be made available
+> immediately without having to wait for a new release.
+> 
+
+I think this problem is now being solved on some lists with CVS.  You
+can check any one latest file or just give an update command to get
+all the changes since your last update.  Or you can checkout all files
+up to some version number.  Haven't been able to try this yet myself...
+
+> I am a bit torn between the idea of creating a new release too often or
+> not often enough. Just adding a couple of packes doesn't necessarily
+> justify creating a new release, especially if some known bugs haven't been
+> addressed. On the other hand I don't want to not release new features and
+> additions because I won't have time to address some issues immediately. I
+> need some guidance here.
+> 
+> Closing
+> -------
+> 
+> This all comes to mind because I will have a crude X package compiled from
+> sources soon. This will add some 40MB to the source distribution. I think
+> it's a bit of a waste to have to download a 50MB file for some minor
+> changes... I guess there's always the binary distribution.
+> 
+
+Ouch!  I think if the patch files aren't too hard to create, I'd love to 
+just load the source from my Red Hat disk and do the patch.  Now my source
+matches yours and I didn't need a big download.  Of course, you could
+just order the Pee Wee Linux distro CD which has it all :-)
+
+> TTYL,
+> Adi
+> 
+
+More thoughts...
+
+I've been thinking about all the dozens of little linux's out there and
+how we could take advantage of all the work done for them. (Granted, most
+are for different kernels, but that may be only a temporary problem).
+
+What if:
+
+Embedded_Build\packages        contains directories:
+   PeeWeeLinux
+   LinuxRouterProject
+   LEM
+   Toms_linux
+   tiny_linux
+   embedded_linux
+   mobile_linux
+   ...
+
+One of the configuration options for a project would be to select the
+distribution you preferr.  pwl_config could only work within that
+distribution directory and you could try out different distributions.
+Or you could pick and choose some files from various distros...
+
+Of course, now the sources directory just went deeper too.
+Maybe something to thinkabout down the road...
+
+
+Later,
+Ralph
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Mar  6 05:41:07 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Sun, 5 Mar 2000 23:41:07 -0600 (CST)
+Subject: PeeWeeLinux Ideas
+In-Reply-To: <20000306045503.26316.qmail@web1106.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10003052323100.10927-100000@big.adis.on.ca>
+
+Hi Ralph,
+
+> > Package Names
+> > -------------
+> > 
+> > Would it make sense to start adding a version numer similar to what RedHat
+> > does? Like creating thttpd-1.2.3-1.tar for the initial release. 
+> 
+> Sounds great, then maybe you could also just download a patch file to 
+> go from xxx-1.2.3-1 to xxx-1.2.3-2 (but these are binaries hmmm...not
+> sure about that)
+
+Nope, won't work with binary files...
+
+> > File List
+> > ---------
+> > 
+> > If you look at the Embedded_Build directory, there is a file called
+> > Filelist (I think) which contains the package names and files associated
+> > with it. Would it make sense to keep a file like it, indicating the
+> > included package name and the related files?
+> > 
+> 
+> Hey, I did this as part of my pwl_update script. I go through the entire
+> packages directory and list every file into one file .root.list or 
+> something like that.  Very handy to help speed up the searching for 
+> a specific file...
+
+So I wasn't the first to think of it :) Good stuff.
+
+> > As one of the todo tasks I want to eliminate duplicate files in packages.
+> > 
+> Great! Thats one problem I'm having...trying to find a package for a file
+> and finding it in multiple places.  Also, the extraction continues to 
+> give errors when a file is duplicated...
+
+And it's confusing to extract thesame file multiple times.
+
+> Since pwl_config builds and maintains a list for "internal" use, you 
+> could put most anything here that would make it easy for people to use.
+> This could be rather time consuming to maintain, but any information
+> like this would be unique to Pee Wee Linux (I can't find docs for most 
+> of the other small Linux file systems :-(
+
+I just don't want to 'overkill'. Since the README files are already there
+there might not be a need to duplicate the info, especially if the package
+info is there while using pwlconfig.
+
+I was thinking of creating the filelist using a script.
+
+> > Distributing PWL
+> > ----------------
+>
+> I think this problem is now being solved on some lists with CVS.  You
+> can check any one latest file or just give an update command to get
+> all the changes since your last update.  Or you can checkout all files
+> up to some version number.  Haven't been able to try this yet myself...
+
+I am not sure if CVS is really necessary. What about having an
+uncompressed PeeWeeLinux tree (contents of Embedded_Build) on the server
+and using rsync to synchronize the local copy with the remote copy. That
+should be pretty painless and easy. I could even do a script that does
+that :) So to upgrade your Embedded_Build directory just run an rsync
+job...
+
+> > Closing
+> > -------
+> > 
+> > This all comes to mind because I will have a crude X package compiled from
+> > sources soon. This will add some 40MB to the source distribution. I think
+> > it's a bit of a waste to have to download a 50MB file for some minor
+> > changes... I guess there's always the binary distribution.
+> > 
+> 
+> Ouch!  I think if the patch files aren't too hard to create, I'd love to 
+> just load the source from my Red Hat disk and do the patch.  Now my source
+> matches yours and I didn't need a big download.  Of course, you could
+> just order the Pee Wee Linux distro CD which has it all :-)
+
+Burning a PeeWeeLinux distro CD is no problem. Get to put my CD burner to
+good use ;-)  Actually, maybe I could send the sourceforge people a CD
+everytime...?
+
+I had a difficult time getting X to run on the ipix. So I choose to
+download the latest and compile from scratch. I did the download prior to
+thinking about the tar.gz files from the RedHat SRPMS.
+
+Still need to find a way to extract the tar.gz file only from a source
+rpm. Then we could add a step to the package build process...
+
+- Extract blah.tar.gz frpm blah.src.rpm
+- Extract blah.tar.gz
+- Apply blah.patch
+- Run ./build_pwl/blah/build_pwl.sh
+- Voila, we have a new package
+
+Without the first step I need to include the sources for everything
+deviating from the precompiled RedHat binaries.
+
+> More thoughts...
+> 
+> I've been thinking about all the dozens of little linux's out there and
+> how we could take advantage of all the work done for them. (Granted, most
+> are for different kernels, but that may be only a temporary problem).
+> 
+> What if:
+> 
+> Embedded_Build\packages        contains directories:
+>    PeeWeeLinux
+>    LinuxRouterProject
+>    LEM
+>    Toms_linux
+>    tiny_linux
+>    embedded_linux
+>    mobile_linux
+>    ...
+> 
+> One of the configuration options for a project would be to select the
+> distribution you preferr.  pwl_config could only work within that
+> distribution directory and you could try out different distributions.
+> Or you could pick and choose some files from various distros...
+> 
+> Of course, now the sources directory just went deeper too.
+> Maybe something to thinkabout down the road...
+
+Every little distro is different. The LinuxRouterProject is very different
+in how the packages work. So that's why I started PWL. There wasn't
+anything to fit my need. The other big complained. Barely any docs with
+any of the other little distros. Someone ought to slap me though. I am not
+any better. So far docs aren't much further than your pwlconfig info and
+my promises....
+
+Sooo... thinking about the rsync... I think that would be neat... Saved a
+lot of bandwith!
+
+So the next release of PWL could be an iso image, a cd... Anything you can
+think of :)
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Mar 24 05:50:16 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Thu, 23 Mar 2000 23:50:16 -0600 (CST)
+Subject: embedded-0.32 is now available
+Message-ID: <Pine.LNX.4.10.10003232343120.15264-100000@big.adis.on.ca>
+
+Hi,
+
+The latest stable PeeWeeLinux release is now available. Downloading from
+the adis.on.ca server is difficult these days. So I waited with this
+announcement until all the files are available on sourceforge.
+
+The sources:
+    http://download.sourceforge.net/embedded/embedded-0.32-src.tar.gz
+
+The binaries:
+    http://download.sourceforge.net/embedded/embedded-0.32-bin.tar.gz
+    http://download.sourceforge.net/embedded/embedded-0.32-bin.supp.tar.gz
+
+The uncompressed source tree of the latest PeeWeeLinux release is from now
+on available on the adis.on.ca server:
+
+    http://adis.on.ca/pub/Projects/Embedded/Embedded_Build/
+
+A list of the latest changes:
+
+    v0.32 -- March 19, 2000
+    -----------------------
+     o Added netscape navigator 4.72
+     o Added /usr/X11R6/lib/X11/locale to XFree86
+     o Added additional accelerated Xservers
+     o Added fonts needed by citrix and netscape
+     o Properly generate fonts.dir in the font directories now 
+
+    v0.31 -- March 18, 2000
+    -----------------------
+     o Added libc5 libraries under packages/libc5/libs
+     o Added netscape 3.04 under packages/libc5/network
+     o Added citrix client under packages/libc5/network
+     o Added a commented entry for xdm to inittab
+
+    v0.30 -- March 17, 2000
+    -----------------------
+     o Added a standard lilo package.
+     o Netscape 3.04 requires libc5 libs. What to do???
+     o Thought of netscape 4.72. The patchfile is still here.
+       Netscape package comes in at 21,580k plus dependend libs.
+     o New kernel, again, now with M-SYS DOC and PS/2 mouse and
+       without M-SYS DOC but with PS/2 mouse.
+     o Added tinylogin
+     o Added vim editor in a featured and minimal configuration
+       Renamed vim binary to vi
+     o Added ee editor
+     o Replaced bash 1.4 with bash 2.03
+     o Added lildl.so.2 to the base_libs package, removed duplicates
+       from other packages
+     o Removed resolv.conf from base_configuration
+     o Removed uptime from sh-utils 
+     o Fixed the thttpd package and added uucp to system files
+     o Changed the basefilesystem to include the X directories and
+       changed /usr and /local symlinks to a real directory
+     o Added base_filesystem-minimal-1.tar for memory constrained systems
+     o Added the syslinux-1.48.zip containing syslinux for DOS
+     o Revised several packages to support the XFree86 packages
+     o Continued work on eliminating duplicate files across packages
+     o Adding revision numbers to packages, i.e. thttp-1.2.3-1.tar
+                This is the first revision of the package ---^
+     o Renamed packages/base/<packages>
+     o Removed configuration from base_filesystem and created
+       base_configuration
+     o Compiled and added XFree86 packages
+
+Enjoy!
+
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Mar 24 14:16:40 2000
+From: PeeWeeLinux@adis.on.ca (PeeWeeLinux@adis.on.ca)
+Date: Fri, 24 Mar 2000 11:16:40 -0300
+Subject: No subject
+Message-ID: <0FRX00B92JNS7T@email-1.ig.com.br>
+
+Hi all,
+
+	I'm using PeeWee Linux as wireless router.Everything is running Ok but I
+have a problem.
+	How to update some files ?
+	Actually I mount the disk ( or flash) in my workstation,copy ramdisk.img,
+etc...
+	But sometimes I need to update remote routers.
+	Regards,
+		Marcio
+
+_________________________________________________________
+Oi! Você quer um iG-mail gratuito?
+Então clique aqui: http://www.ig.com.br/paginas/assineigmail.html
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Mar 24 14:54:44 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Fri, 24 Mar 2000 08:54:44 -0600 (CST)
+Subject: your mail
+In-Reply-To: <0FRX00B92JNS7T@email-1.ig.com.br>
+Message-ID: <Pine.LNX.4.10.10003240846350.15840-100000@big.adis.on.ca>
+
+Hi,
+
+The disk images I create weren't meant to be upadated remotely. I am
+working on a design of the wireless system that stores configuration files
+in a compressed file on disk or flash. The settings are loaded when the
+system boots and can be saved on demand to make permanent changes.
+
+I've attempted that with PeeWeeLinux 0.20 but quickly ran out of disk
+space on the single floppy. PeeWeeLinuc now includes tinylogin, etc.
+Hopefully this will make enough room for this feature to be workable.
+
+An alternative would be to use IDE flash or Compacft Flash with IDE
+adaptor instead of a floppy.
+
+I'll try to remember to post the wireless stuff to the list when I am
+done, now that I know that it's actually being used :)
+
+TTYL,
+Adi
+
+
+On Fri, 24 Mar 2000 msamont@ig.com.br wrote:
+
+> Hi all,
+> 
+> 	I'm using PeeWee Linux as wireless router.Everything is running Ok but I
+> have a problem.
+> 	How to update some files ?
+> 	Actually I mount the disk ( or flash) in my workstation,copy ramdisk.img,
+> etc...
+> 	But sometimes I need to update remote routers.
+> 	Regards,
+> 		Marcio
+> 
+> _________________________________________________________
+> Oi! Você quer um iG-mail gratuito?
+> Então clique aqui: http://www.ig.com.br/paginas/assineigmail.html
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Mar 24 23:00:20 2000
+From: PeeWeeLinux@adis.on.ca (PeeWeeLinux@adis.on.ca)
+Date: Fri, 24 Mar 2000 20:00:20 -0300
+Subject: Browser
+Message-ID: <0FRY00IF27WKKD@email-1.ig.com.br>
+
+Hi all,
+
+	Just a suggestion: Netscape > 10M
+			   Opera  1.5M
+	
+
+__________________________________
+Oi! Você quer um iG-mail gratuito?
+Então clique aqui: http://www.ig.com.br/paginas/assineigmail.html
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Mar 24 23:11:43 2000
+From: PeeWeeLinux@adis.on.ca (PeeWeeLinux@adis.on.ca)
+Date: Fri, 24 Mar 2000 20:11:43 -0300
+Subject: ELEC
+Message-ID: <0FRY00MLE8FJCZ@email-1.ig.com.br>
+
+Hi all,
+
+	PeeWee Linux at Embedded Linux Expo & Conference ?
+	Why not Adi? 
+	Regards,
+		Marcio
+
+	
+
+__________________________________
+Oi! Você quer um iG-mail gratuito?
+Então clique aqui: http://www.ig.com.br/paginas/assineigmail.html
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sat Mar 25 05:12:28 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 24 Mar 2000 21:12:28 -0800 (PST)
+Subject: Browser
+Message-ID: <20000325051228.21407.qmail@web1105.mail.yahoo.com>
+
+Hello,
+I heard about the Opera browser and it sounds good - at last some competition
+for the big "two". From a quick check, this is what I found:
+
+--- msamont@ig.com.br wrote:
+> Hi all,
+> 
+> 	Just a suggestion: Netscape > 10M
+
+$0.00
+> 			   Opera  1.5M
+
+$35.00
+IIRC...without java and every feature must be downloaded as a
+plug-in...hmmm...might take more RAM...
+
+If you have a fixed set of pages (Kiosk or the like) and don't mind the price
+this would be great - from what I've read this is not ready for a prime time,
+generic browser. Netscape works...ummm...most of the time :-)
+
+Also, 10Mb of CF is about $40 now (i.e. 32MB $99; 40MB is $139 - single unit,
+retail pricing)...3 months from now I expect CF to be less than that; I don't
+think they will lower their price on the browser as fast as CF goes down in
+price.
+
+So...buy the browser for $35 or pay for the flash...I recommend going for the
+hardware, we can always replace the browser later...you're mileage may vary.
+
+However, if you have a Opera Browser package (demo) working I'd love to give it
+a try!
+
+Thanks,
+Ralph
+
+> 	
+> 
+> __________________________________
+> Oi! Você quer um iG-mail gratuito?
+> Então clique aqui: http://www.ig.com.br/paginas/assineigmail.html
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sat Mar 25 06:29:49 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 24 Mar 2000 22:29:49 -0800 (PST)
+Subject: ELEC
+Message-ID: <20000325062949.11799.qmail@web1104.mail.yahoo.com>
+
+I found some info on this at:
+
+http://www.rtcgroup.com/elinuxexpo/
+
+Looks like a great, one-day event tied with the RTC people.  No list of
+exhibitors...cheapest way would be to share a booth - anyone else going :-)
+
+Date set is for June 22, 2000...wow, 3 months - ummm, not much time...
+
+Also note, for those northerners, eh!
+
+"A second ELEC event is planned for Toronto, Ontario in November 2000."
+
+Ralph
+
+
+--- msamont@ig.com.br wrote:
+> Hi all,
+> 
+> 	PeeWee Linux at Embedded Linux Expo & Conference ?
+> 	Why not Adi? 
+> 	Regards,
+> 		Marcio
+> 
+> 	
+> 
+> __________________________________
+> Oi! Você quer um iG-mail gratuito?
+> Então clique aqui: http://www.ig.com.br/paginas/assineigmail.html
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sun Mar 26 01:10:29 2000
+From: PeeWeeLinux@adis.on.ca (PeeWeeLinux@adis.on.ca)
+Date: Sat, 25 Mar 2000 22:10:29 -0300
+Subject: ELEC
+Message-ID: <0FS000EYF8LG4V@email-1.ig.com.br>
+
+Hi Ralph,
+
+	They are calling for papers.
+
+http://www.linuxdevices.com/cgi-bin/news_view.cgi?
+newsid=NS5955539713&last=&searchcat=&searchkey=
+
+	I think you must send a message to linuxdevices.com just to promote PeeWee.
+Or write an article to LinuxJornal.
+	They have a column (Embeddeb Systems News Briefs)in LinuxJornal.
+	By the way what's peewee ? A chinese city ?
+	Cheers,
+		Marcio Montenegro
+	
+
+
+__________________________________
+Oi! Você quer um iG-mail gratuito?
+Então clique aqui: http://www.ig.com.br/paginas/assineigmail.html
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Mar 29 21:36:49 2000
+From: PeeWeeLinux@adis.on.ca (Marcio Montenegro)
+Date: Wed, 29 Mar 2000 18:36:49 -0300
+Subject: Linux Today: LinuxDevices.com: Crash-safe filesystem [JFFS] for diskless
+ embedded devices
+Message-ID: <38E27771.14C44683@elogica.com.br>
+
+http://linuxtoday.com/story.php3?sn=19232
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+

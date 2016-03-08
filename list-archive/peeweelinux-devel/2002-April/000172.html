@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux-devel] reiserfs on peeweelinux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="000173.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux-devel] reiserfs on peeweelinux
+   </H1>
+    <B>Giuseppe Scarpi
+    </B> 
+    <A HREF="mailto:peeweelinux-devel%40adis.on.ca"
+       TITLE="[Peeweelinux-devel] reiserfs on peeweelinux">peeweelinux-devel@adis.on.ca
+       </A><BR>
+    <I>8 Apr 2002 12:48:01 -0000</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="000173.html">[Peeweelinux-devel] reiserfs on peeweelinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172">[ date ]</a>
+              <a href="thread.html#172">[ thread ]</a>
+              <a href="subject.html#172">[ subject ]</a>
+              <a href="author.html#172">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi everybody!
+For a project I'm currently on charge of, I need to install a linux with very small footprint AND a journalised fs.
+At the end, I decided to adopt peeweelinux because it seems much more flexible than other tiny distributions, and ReiserFS because its seems the best around so far.
+Here is the strategy I plan to apply, I would like to receive your comments and share experiences:
+
+1) apply the ReiserFS 3.5.28 for kernel 2.2.17
+2) slightly modify the PW scripts in order to create a Reiser partition instead of an ext2 (I am developing on a DOM that acts as an IDE disk).
+
+Should 3.5.28 prove itself unstable for some reasons, I could apply a different strategy:
+
+1) upgrade PWL kernel to 2.2.19 applying the appropriate patches
+2) apply the ReiserFS 3.5.34 for kernel 2.2.19
+3) modify scripts as said before.
+
+What do you think of this? Suggestions? Better methods? Deja-vu? ;-)
+tks
+  Giuseppe
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="000173.html">[Peeweelinux-devel] reiserfs on peeweelinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#172">[ date ]</a>
+              <a href="thread.html#172">[ thread ]</a>
+              <a href="subject.html#172">[ subject ]</a>
+              <a href="author.html#172">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

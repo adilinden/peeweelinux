@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Extracting 2.2.17-13 kernel source error
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001163.html">
+   <LINK REL="Next"  HREF="001165.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Extracting 2.2.17-13 kernel source error
+   </H1>
+    <B>Robbie
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Extracting 2.2.17-13 kernel source error">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 8 Aug 2003 16:07:25 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001163.html">[Peeweelinux] Other browser?
+</A></li>
+        <LI> Next message: <A HREF="001165.html">[Peeweelinux] Extracting 2.2.17-13 kernel source error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1164">[ date ]</a>
+              <a href="thread.html#1164">[ thread ]</a>
+              <a href="subject.html#1164">[ subject ]</a>
+              <a href="author.html#1164">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>G'day folks,
+
+Myself and a few mates are in the process of
+developing a small embedded system using a PCM-3350
+GX1 PC/104 board with the OS to boot off compact
+flash. 
+
+I'm currently using RH 9 on a xp2200 with plently of
+HDD space. The PeeWeeLinux 0.61.1 package was d/loaded
+and successfully installed, but... on attempting to
+extract the supplied kernel source the following error
+is displayed:
+
+./scripts/pwl_kernel: line 931: 23823 Segmentation
+fault      $RPM -i --root $rootDir $rpmOptions
+$srcFile
+ln: creating symbolic link
+`/usr/local/Embedded_Build/kernelbuild/usr/src/linux' 
+                           to
+`/usr/local/Embedded_Build/kernelbuild/usr/src/linux-2.2.17-13':
+No such file or directory
+
+I've complied my own 2.4.20 kernel and had the PC/104
+booting successfully, however I would much prefer to
+use PWL in terms of managing files &lt;translation: looks
+so much easier&gt;. 
+
+I guess i'm 'still' a novice, maybe missing some
+fundamental step in the process....
+
+Any assistance would be greatly appreciated.
+
+Kind Regards,
+
+- Rob Ravlic
+
+__________________________________
+Do you Yahoo!?
+Yahoo! SiteBuilder - Free, easy-to-use web site design software
+<A HREF="http://sitebuilder.yahoo.com">http://sitebuilder.yahoo.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001163.html">[Peeweelinux] Other browser?
+</A></li>
+	<LI> Next message: <A HREF="001165.html">[Peeweelinux] Extracting 2.2.17-13 kernel source error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1164">[ date ]</a>
+              <a href="thread.html#1164">[ thread ]</a>
+              <a href="subject.html#1164">[ subject ]</a>
+              <a href="author.html#1164">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

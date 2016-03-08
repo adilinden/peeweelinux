@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Adding Custom RPMS
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001068.html">
+   <LINK REL="Next"  HREF="001070.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Adding Custom RPMS
+   </H1>
+    <B>Correy Edmed
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Adding Custom RPMS">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 02 May 2003 11:58:38 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001068.html">[Peeweelinux] How to load a linux kernel from a USB Iomega Zip device.
+</A></li>
+        <LI> Next message: <A HREF="001070.html">[Peeweelinux] Adding Custom RPMS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1069">[ date ]</a>
+              <a href="thread.html#1069">[ thread ]</a>
+              <a href="subject.html#1069">[ subject ]</a>
+              <a href="author.html#1069">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+
+I would like to get a few more programs working on peeweelinux. Namely 
+sndconfig to configure my sound card and comedi to configure my PCM-3730 
+I/O controller.
+
+I notice that the &quot;Configure Custom Files&quot; allows you to update single 
+files or add whole directories however this is no good if you want to 
+add an RPM or make install an application.
+
+I notice that &quot;/Embedded_Build/RPMS&quot; holds all the rpm files for the 
+&quot;Configure file system menu&quot; which somehow have been loaded into a 
+directory &quot;/Embedded_Build/packages&quot;. If you enter one of these 
+directories for arguments sake lets use &quot;/Embedded_Build/RPMS/Editors&quot; 
+you would get the following listing:
+ee.list    e.tar    nano.list    nano.tar    vim-ncurses.list    
+vim-ncurses.tar    vim.list    vim.tar
+
+SO THE MILLION DOLLAR QUESTION IS -  How do I take an RPM file for eg 
+&quot;sndconfig-0.43-1.i386.rpm&quot; (Redhat 6.2 file) and add it to say the 
+directory /Embedded_Build/packages/Applications_Sound in the format 
+&quot;sndconfig.tar sndconfig.list?
+
+So that when I launch ./pwlconfig and go into Configure file systems and 
+then enter Applications_Sound I will have the option of selecting sndconfig?
+
+Would be great if someone could do a HOWTO for this question because it 
+is never dealt with fully in the archives however I would love to be 
+proved wrong.
+
+Thanks
+
+Correy
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001068.html">[Peeweelinux] How to load a linux kernel from a USB Iomega Zip device.
+</A></li>
+	<LI> Next message: <A HREF="001070.html">[Peeweelinux] Adding Custom RPMS
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1069">[ date ]</a>
+              <a href="thread.html#1069">[ thread ]</a>
+              <a href="subject.html#1069">[ subject ]</a>
+              <a href="author.html#1069">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

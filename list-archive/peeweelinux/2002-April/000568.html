@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] PWL on Redhat 7.1
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000567.html">
+   <LINK REL="Next"  HREF="000569.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] PWL on Redhat 7.1
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] PWL on Redhat 7.1">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 24 Apr 2002 19:39:46 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000567.html">[Peeweelinux] PWL on Redhat 7.1
+</A></li>
+        <LI> Next message: <A HREF="000569.html">[Peeweelinux] PWL on Redhat 7.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#568">[ date ]</a>
+              <a href="thread.html#568">[ thread ]</a>
+              <a href="subject.html#568">[ subject ]</a>
+              <a href="author.html#568">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Michael,
+
+I didn't have to modify any makefiles to compile applications for Peewee 
+Linux under Redhat 7.2.
+
+Assuming RH 7.1 is the same, the compatibility libraries install the 
+i386-glibc21-linux-env.sh script in /usr/i386-glibc-21-linux/linux/bin.  
+There are instructions in this file.
+
+When running this script, make sure to type in:
+
+. /usr/i386-glibc-21-linux/linux/i386-glibc21-linux-env.sh
+
+or 
+
+. ./i386-glibc21-linux-env.sh (in that directory)
+
+instead of typing:
+
+./i386-glibc21-linux-env.sh 
+
+I originally tried just running the script (as in the last example), but this 
+doesn't export the LDEMULATION and GCC_EXEC_PREFIX values properly.  When I 
+finally figured out what I was doing wrong, everything worked great.
+
+Regards,
+
+Mark
+
+On Wednesday 24 April 2002 04:40 pm, Michael McManus wrote:
+
+&gt;<i> Can you give me more details
+</I>&gt;<i> i.e. which Makefile and its location
+</I>&gt;<i> plus i have installed compat-glibc-6.2-2.1.3.2.i386.rpm
+</I>&gt;<i> but i cannot find &quot;i386-glibc21-linux-env.sh&quot; does red hat 7.1 change this?
+</I>&gt;<i>
+</I>&gt;<i> Regards
+</I>&gt;<i> Michael McManus
+</I>&gt;<i> <A HREF="mailto:Michael@durhamdomains.co.uk">Michael@durhamdomains.co.uk</A>
+</I>&gt;<i> -= i dont suffer from insanity i enjoy every minute of it =-
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000567.html">[Peeweelinux] PWL on Redhat 7.1
+</A></li>
+	<LI> Next message: <A HREF="000569.html">[Peeweelinux] PWL on Redhat 7.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#568">[ date ]</a>
+              <a href="thread.html#568">[ thread ]</a>
+              <a href="subject.html#568">[ subject ]</a>
+              <a href="author.html#568">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

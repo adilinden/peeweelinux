@@ -1,0 +1,1493 @@
+From peeweelinux@adis.on.ca  Thu Aug  1 01:28:49 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 31 Jul 2002 17:28:49 -0700 (PDT)
+Subject: [Peeweelinux] menus ** and ~~
+Message-ID: <2.2.16.20020731173951.6b57a5a4@zmicro.com>
+
+   What is the meaning, in the pwlconfig menus, of the characters:
+
+   package foo    -->    menu under here.
+[*]package foo ** -->    everything is (not selected)
+[*]package foo ~~ -->    some things (nothing) is selected
+
+Close? Wrong? Random?
+
+Deselecting the field at the far left means it won't use anything 
+in there, whether it's selected or not, right?  (You can tell I
+haven't spent a lot of time in Menuconfig either).
+
+I get conflicting results everytime I try to predict what I'll see.
+I guess it's important to know what I've actually selected :)
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Thu Aug  1 02:05:35 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 31 Jul 2002 18:05:35 -0700 (PDT)
+Subject: [Peeweelinux] kernel building problems
+Message-ID: <2.2.16.20020731181638.8e8f8aee@zmicro.com>
+
+Scripts are a double edged sword.  They are great until something
+doesn't work.
+
+I did a whole kernel compile without ever seeing a command line!
+It *says* it worked--is it that smart?
+
+When I try to "Load File System onto Target" I get an error here:
+
+ Copying the ramdisk....ok
+ Copying the kernel....failed        
+
+There are a *lot* of scripts in there.   I haven't yet determined
+how to tell which one does what (if that even makes sense). 
+More to the point, though, I don't see a bzimage in my 
+project tree.   Shouldn't someone somewhere have linked it all
+together and compressed it as well?
+
+Seems I have a kernel tar file in which the boot directory is
+empty.   Lots of .o files, though
+
+I have a feeling if I "build the kernel" again it will start
+over.  I don't want to do that too often on this 166 Pentium.
+
+I'm wary of trying to "build by hand" because of the "real" RH7.3
+system with the 2.4 kernel -- I bet pwlconfig modifies
+some environment variables before setting off on its adventures.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Thu Aug  1 10:28:37 2002
+From: peeweelinux@adis.on.ca (Noergaard John)
+Date: Thu, 1 Aug 2002 12:28:37 +0300
+Subject: [Peeweelinux] Release date of new PeeWeeLinux ?
+Message-ID: <C69F6874DBBFD411A6680008C7249B38269B3D@LK07>
+
+Dear Adi Linden
+
+When do you think the new version of PeeWeeLinux will come. ?
+(The version with its own build environment and should work independent of
+the Linux distribution it's been installed on.)
+
+
+Best regards/Med venlig hilsen
+John Nørgaard
+
+
+Afd. 115
+LK as
+Industriparken 32
+2750 Ballerup
+
+Tel. :   44 20 74 14
+Fax.:   44 20 71 75
+Email: john.noergaard@lk.dk <john.noergaard@lk.dk> 
+
+
+From peeweelinux@adis.on.ca  Thu Aug  1 15:03:42 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 1 Aug 2002 09:03:42 -0500 (CDT)
+Subject: [Peeweelinux] Release date of new PeeWeeLinux ?
+In-Reply-To: <C69F6874DBBFD411A6680008C7249B38269B3D@LK07>
+Message-ID: <Pine.LNX.4.33.0208010902010.18926-100000@adibox.knet.ca>
+
+Hi John,
+
+I honestly don't know. I've been working away on it slowly but I have very 
+little time for PeeWeeLinux right now. I hope to have something worth 
+releasing before the end of the year.
+
+Adi
+
+
+On Thu, 1 Aug 2002, Noergaard John wrote:
+
+> Dear Adi Linden
+> 
+> When do you think the new version of PeeWeeLinux will come. ?
+> (The version with its own build environment and should work independent of
+> the Linux distribution it's been installed on.)
+> 
+> 
+> Best regards/Med venlig hilsen
+> John Nørgaard
+> 
+> 
+> Afd. 115
+> LK as
+> Industriparken 32
+> 2750 Ballerup
+> 
+> Tel. :   44 20 74 14
+> Fax.:   44 20 71 75
+> Email: john.noergaard@lk.dk <john.noergaard@lk.dk> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Aug  1 16:57:48 2002
+From: peeweelinux@adis.on.ca (samuel allard)
+Date: Thu, 01 Aug 2002 11:57:48 -0400
+Subject: [Peeweelinux] Cancel me from your mailing list.
+References: <Pine.LNX.4.33.0208010902010.18926-100000@adibox.knet.ca>
+Message-ID: <3D495A7C.1030705@digicom.ca>
+
+>
+>
+I whant to know how to stop all the email your sending me...
+
+
+
+
+From peeweelinux@adis.on.ca  Mon Aug  5 20:45:25 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 5 Aug 2002 12:45:25 -0700 (PDT)
+Subject: [Peeweelinux] FAQ: New RedHat, no errors, no bzImage
+Message-ID: <2.2.16.20020805125639.71cfa972@zmicro.com>
+
+So you all saw my lament about building a custom kernel, and
+smiled to yourselves, thinking, "He'll find out soon enough".  Well,
+he's found out alright; I'd just suggest that if I could get through
+this sooner I might have some time to contribute to the project.
+Your punishment is you get to read the same answers again.
+
+I post this now because there are always new people always coming by 
+and this needs to stay visible.
+
+Problem: Redhat 7.3, "Compile the Kernel" succeeds, but "Load 
+File System onto Target" fails.  A little digging reveals that no
+kernel image (bzImage) was ever produced.
+
+Reason: "Compile the Kernel" did NOT succeed. 
+
+   Reason: checksum.S did not compile (ok, assemble).
+
+      Reason: gcc version 2.96 is broken.
+
+         Reason: Red Hat distributed it with 7.0 +
+
+Okay, solutions.
+
+First of all, (Ralph,) be aware that the pwlconfig script won't 
+catch this!  So don't be mislead.  If you want to check, go on
+to the next step  "Create Custom Kernel Package (not rpm!)",
+then go back to "Configure Project File System -->",
+"Kernel_Custom -->",     then select the kernel you just built, 
+and look in the list for /boot/bzImage.  If you only see /boot, 
+then you didn't get a kernel.
+
+Next, RedHat supplies an older version of gcc especially for
+compiling kernels.  It's called kgcc.  It's an older egcs-2.91.66
+compiler that works just fine.  It should already be on your
+system.  Try 'which kgcc' and 'kgcc --version' to be sure.  There
+is no kgcc.rpm on my disks so I don't know where it came from.
+All you need to do now, to use it, is to edit your Makefile.  This is in  
+
+Embedded_Build/kernelbuild/usr/src/linux-2.2.17-13
+
+find the "cc" line:
+
+CC      =$(CROSS_COMPILE)kgcc -D__KERNEL__ -I$(HPATH)
+
+change "cc" to "kgcc" as I have done, 
+then compile once again, and things will start to
+work.
+
+
+About that "2.96 is broken" remark.  This was a development
+version that should not have been distributed.  The GNU 
+folks moved the version up to 2.97 in response and announced
+there would never be a stable version of 2.96  (So you'll know
+they are all broken).   I remember the discussions at the time
+(remember this was almost two years ago) and while I didn't
+retain all the kernel-related particulars I do know it 
+reinforced my own feelings that I should get a good version
+(2.95) and refuse to upgrade it until someone (several 
+someones!) announced an "all clear".  
+
+searching on "bzImage" or "checksum" will find similar 
+problems and answers like this one.
+
+
+From peeweelinux@adis.on.ca  Mon Aug  5 21:37:08 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Mon, 5 Aug 2002 16:37:08 -0400
+Subject: [Peeweelinux] FAQ: New RedHat, no errors, no bzImage
+In-Reply-To: <2.2.16.20020805125639.71cfa972@zmicro.com>
+References: <2.2.16.20020805125639.71cfa972@zmicro.com>
+Message-ID: <200208051635671.SM02488@there>
+
+Hi Barry,
+
+Have you seen Troy Engel's "kernel 2.4 mini-howto"?  It has detailed 
+instructions that may be relevant:
+
+http://mail.adis.on.ca/pipermail/peeweelinux/2002-June/000608.html
+
+Also, for what it's worth, I usually just include my custom kernel (bzImage) 
+as a "custom" file, effectively replacing the one created by Peewee.  This is 
+certainly not the most *elegant* way to do this (Troy's method is better), 
+but it does allow me to control the kernel building process independent of 
+Peewee's scripts or compiler dependencies.
+
+Mark
+
+Barry Gershenfeld wrote:
+> Problem: Redhat 7.3, "Compile the Kernel" succeeds, but "Load
+> File System onto Target" fails.  A little digging reveals that no
+> kernel image (bzImage) was ever produced.
+
+
+From peeweelinux@adis.on.ca  Mon Aug  5 23:27:11 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 5 Aug 2002 15:27:11 -0700 (PDT)
+Subject: [Peeweelinux] compiling old kernel on new Red Hat, as86
+Message-ID: <2.2.16.20020805153825.841f11d2@zmicro.com>
+
+This is an addendum to my adventure building kernels.
+
+Spoiler:  I ended up needing as86, and it's in the dev86 rpm.
+          I needed kgcc as well and it's in an egcs rpm.
+
+Story: As a PeeWeeLinux hacker, I'm inclined toward minimalist
+systems.  So, when I do installs, I look for things to
+leave out, things I'll never use.  Also the questions in those
+installs are rather general, so I'm dealing with large sections
+of the system at a time.   So it came to pass that I found it
+would be nice to have gcc in there for the occasional C program
+or test.   That wasn't a problem because there's an rpm for
+it.  Then I discovered that just about any utility program I
+wanted to compile wanted to see the kernel-headers so I installed 
+those, too.    On the next system install I chose  "development".
+For that I got, gcc, the kernel, plus the sources for perl, python, 
+XFree86, GNOME, java, emacs, ...  I decided to go back to 
+installing the packages myself.  Now I keep a list, so I also
+know the dependencies.
+
+This weekend I decided to duplicate my efforts and build a 
+peewee system on my laptop, which happens to be faster than
+the target system I'm building it on here.  I thought the
+kernel would compile faster as well.   Oh, it was real
+fast.  It was bombing out because kgcc wasn't there.
+
+Now, I didn't know where kgcc came from but I had decided the Magic
+must work all the time so I didn't worry about it (see my 
+previous message).  Now confronted with this problem I did 
+some more searching.   Knowing that kgcc was "the kernel's gcc"
+and that in turn was an older version and that it was called
+"egcs" back then, I was finally able to locate it in the package
+"compat-egcs-6.2-1.1.2.16.i386.rpm"   There is one dependency
+so you'll need "compat-glibc-6.2-2.1.3.2.i386.rpm" as well.
+These names are for Red Hat 7.3, anyway.
+
+So now I was ready to build the kernel for real.  Everything 
+was fine until it couldn't find the program as86.  Back to
+research.   It turns out this is the assembler, and it
+is in "dev86-0.15.5-1.i386.rpm" for Red Hat.  My searching
+turned up the same thing with "bin86" as the package for 
+debian users.  Seems as86 is an 8086 real-mode assembler 
+for creating code for the boot code in the kernel and the 
+boot block for lilo.
+
+Now that I can compile the kernel, I can go back to figuring
+out how pwlconfig deals with all of that.
+
+One problem is that I set EXTRAVERSION in the makefile so I 
+could be sure it was booting the kernel that I had built...but 
+it doesn't show up!  Fortunately the date does, so I think 
+I've got the real thing.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Mon Aug  5 23:38:09 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 5 Aug 2002 15:38:09 -0700 (PDT)
+Subject: [Peeweelinux] FAQ: New RedHat, no errors, no bzImage
+Message-ID: <2.2.16.20020805154923.841f9eca@zmicro.com>
+
+>Hi Barry,
+>
+>Have you seen Troy Engel's "kernel 2.4 mini-howto"? 
+
+No, but I saw a reference to it.  For some reason I was never able
+to locate it.  I had downloaded the archives and imported them to 
+my mail reader, so it was a search problem.   Thanks to your link, 
+I have it in my sights now.
+
+
+>Also, for what it's worth, I usually just include my custom kernel (bzImage) 
+>as a "custom" file, effectively replacing the one created by Peewee.
+
+I found that if I save the result of "packaging the kernel" into a
+directory of my own naming, it shows up in the package selection
+for the project just like the "stock" kernel does.  So far seems
+to work.  Sounds similar to what you are doing.  Unless you are
+able to manage the sources separately.
+
+
+>but it does allow me to control the kernel building process independent of 
+>Peewee's scripts or compiler dependencies.
+>
+>Mark
+
+So much of using pwlconfig is tied up in undestanding what it's 
+trying to do.   It helps to know how to do it in the first place.
+I have a lot better picture of kernel making now that I've done
+it by hand a few times.
+
+Thanks for the lead.
+
+Barry
+  
+
+
+From peeweelinux@adis.on.ca  Wed Aug  7 01:11:17 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Tue, 6 Aug 2002 17:11:17 -0700 (PDT)
+Subject: [Peeweelinux] EXTRAVERSION
+Message-ID: <2.2.16.20020806172233.80e7b14a@zmicro.com>
+
+I set EXTRAVERSION in the Makefile so that the kernel I
+build will be identifiable using uname.   But it's not
+there.  And it has disappeared from the Makefile after
+compilation.  This time I checked to make sure it was
+there before I started compiling.   So somewhere it
+is getting removed.  And my fix for cc -> kgcc is
+still there, so the file is not being overwritten.
+
+If the scripts do it intentionally, are they perhaps
+trying to copy it from somewhere else that I can set?
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Wed Aug  7 20:40:43 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 7 Aug 2002 14:40:43 -0500 (CDT)
+Subject: [Peeweelinux] EXTRAVERSION
+In-Reply-To: <2.2.16.20020806172233.80e7b14a@zmicro.com>
+Message-ID: <Pine.LNX.4.33.0208071437490.1286-100000@adibox.knet.ca>
+
+If you are using pwlconfig to compile the kernel, the scripts will modify 
+EXTRAVERSION I believe. 
+
+If you need to make changes to the kernel sources beyond whats 
+configurable in pwlconfig, I would suggest building a kernel using 
+prestine kernel sources and including the resulting kernel and modules as 
+custom files.
+
+Adi
+
+
+On Tue, 6 Aug 2002, Barry Gershenfeld wrote:
+
+> I set EXTRAVERSION in the Makefile so that the kernel I
+> build will be identifiable using uname.   But it's not
+> there.  And it has disappeared from the Makefile after
+> compilation.  This time I checked to make sure it was
+> there before I started compiling.   So somewhere it
+> is getting removed.  And my fix for cc -> kgcc is
+> still there, so the file is not being overwritten.
+> 
+> If the scripts do it intentionally, are they perhaps
+> trying to copy it from somewhere else that I can set?
+> 
+> Barry
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Aug  8 19:08:39 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 8 Aug 2002 11:08:39 -0700 (PDT)
+Subject: [Peeweelinux] EXTRAVERSION
+Message-ID: <2.2.16.20020808111957.6de745ba@zmicro.com>
+
+>If you are using pwlconfig to compile the kernel, the scripts will modify 
+>EXTRAVERSION I believe. 
+
+I think I proved that.  The question was how, or what?  If it is
+being erased on purpose then there is probably a reason.  If it is
+being substituted from elsewhere then if I know the location of
+'elsewhere' I could put it there and be happy.   
+
+They warned me that when compiling kernels, it's a good idea to
+change EXTRAVERSION so that the modules built with one kernel
+don't accidentally wind up in another.   Your packaging scheme
+makes this less likely, though you never want to underestimate
+the ingeniousness of fools...
+
+I understand that Ralph wrote a lot of the scripts and so you
+don't have all the answers.  It's also obvious you guys don't
+have a lot of time to throw at this.   I'm trying to get a 
+clue for the design behind the scripts so that I can find some
+of my own answers.   I do like the way the options are keyed
+to file and directory names.  Makes it easy to know what
+to choose.   It also lets me manage them (rename or delete)
+from outside pwlconfig without having to know too much.
+
+
+
+>If you need to make changes to the kernel sources beyond whats 
+>configurable in pwlconfig, I would suggest building a kernel using 
+>prestine kernel sources and including the resulting kernel and modules as 
+>custom files.
+
+I'm really trying to "stay inside the lines" until such time that I
+really know what I'm doing.
+
+My question is: Are there modifications to the code here, or 
+are all the packages "stock"?   I see a lot of "roll your own"
+suggestions but I keep thinking there are some "tweaks" applied
+that make the target system work.   I mean changes to code,
+not things like simplyfying startup scripts.   It's a question
+of whether I can expect to be able to go get some package
+and be able to use it as is.   I was surprised that you
+can apparently use a 2.4 kernel "as is".   Namely because
+I also hear talk like "updating peewee to be able to use
+a 2.4 kernel".   Maybe these are all library issues?
+
+I've got a system now, with a reconfigured kernel, network drivers,
+and I am able to ping other addresses.  Now I'm working on 
+making thttpd work.   Doubtless you'll hear about that soon :)
+
+Thanks for all your effort.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Wed Aug 14 00:49:09 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Tue, 13 Aug 2002 16:49:09 -0700 (PDT)
+Subject: [Peeweelinux] thttpd web server Q+A, net-pf-10
+Message-ID: <2.2.16.20020813170037.903f6ee8@zmicro.com>
+
+With my embedded system actually running, I try to start
+the web server.  From the command prompt, I type thttpd
+and I get:
+
+  modprobe: modprobe: Can't locate module net-pf-10
+
+(Your mileage may vary on this one, since I have a funny 
+configuration issue at this time: depmod needs to be run
+first, but it doesn't; then something tries to modprobe
+and I don't know who (probably network) is doing it).  
+
+Anyway, research on net-pf-10 turns out to be a reference
+to IPV6, which is something thttpd claims to be capable of,
+so I believe it.  Further research claims the fix is 
+to "alias net-pf-10 off".
+
+The problem with this is, the shell I get (ash?) does not 
+support aliases, and the shell is apparently where aliases 
+come from.   Attempts to put bash on there gives me a 
+different shell, but prompts, command history, aliases, and 
+so on don't work.  (Probably a configuration issue but
+I'm in too deep already).  Maybe if I could get rid of
+the attempt to access net-pf-10 I could dispense with all
+this alias stuff.
+
+But all the above is not real.  Such is the price of trying
+to build these things  yourself.   After repeatedly trying
+to run ps I finally got that put into the target, and once
+I was able to do ps ax, I found that thttpd was running
+already, and had been the whole time.   In fact, the 
+error I get is from running it at the command line when 
+it's running already, and though I don't know why it says
+what it says, it is a non-problem since the server's already
+running.
+
+I still have to start eth0 by hand, but that's next on the list.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Wed Aug 14 02:21:17 2002
+From: peeweelinux@adis.on.ca (Tim Westbrook)
+Date: Tue, 13 Aug 2002 18:21:17 -0700 (PDT)
+Subject: [Peeweelinux] thttpd web server Q+A, net-pf-10
+In-Reply-To: <2.2.16.20020813170037.903f6ee8@zmicro.com>
+Message-ID: <20020814012117.96371.qmail@web13508.mail.yahoo.com>
+
+I don't know much about thttpd IPv6 or peeweelinux for that matter, 
+but when referring to kernel modules...
+
+> to "alias net-pf-10 off".
+> 
+
+usually means adding the line to the /etc/modules.conf directory rather
+than using a shell alias
+
+-Tim
+
+__________________________________________________
+Do You Yahoo!?
+HotJobs - Search Thousands of New Jobs
+http://www.hotjobs.com
+
+From peeweelinux@adis.on.ca  Wed Aug 14 19:19:57 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 14 Aug 2002 11:19:57 -0700 (PDT)
+Subject: [Peeweelinux] thttpd web server Q+A, net-pf-10
+Message-ID: <2.2.16.20020814113132.8107f9fc@zmicro.com>
+
+>I don't know much about thttpd IPv6 or peeweelinux for that matter, 
+>but when referring to kernel modules...
+>
+>> to "alias net-pf-10 off".
+>> 
+>
+>usually means adding the line to the /etc/modules.conf directory rather
+>than using a shell alias
+>
+>-Tim
+
+Thanks for the response.  I don't need ipv6 and thttpd turned up
+working, but I still am trying to find all the loose ends of
+the startup scripts.
+
+How does that "alias" think work?  I have "made up" explanations
+for many things and while they often turn out to be right I am
+always watching for that clue that I've got it wrong.  So I need
+to know who reads modules.conf, and how the alias is handled.  I'm
+thinking that it may well be a shell script, maybe it sources the
+modules.conf file, but that would point back to the shell needing
+to keep aliases....I think I will do some digging around in my host
+system for this.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Wed Aug 14 19:41:08 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 14 Aug 2002 13:41:08 -0500 (CDT)
+Subject: [Peeweelinux] PeeWeeLinux Documentation
+In-Reply-To: <2.2.16.20020814113132.8107f9fc@zmicro.com>
+Message-ID: <Pine.LNX.4.33.0208141334380.18932-100000@adibox.knet.ca>
+
+Hi,
+
+I am seeing quite a few messages on the list covering various 
+documentation aspects of PeeWeeLinux. This is great and having the list 
+archives will be a great resource. 
+
+I think there needs to be a central location for documentation somehow. 
+I've some sites use faq-o-matic and wiki to collect and build 
+documentation. I like the wiki concept. Question, is there interest in 
+contributing and collecting information for PeeWeeLinux using a wiki system?
+
+Thanks,
+Adi
+
+
+From peeweelinux@adis.on.ca  Wed Aug 14 20:58:09 2002
+From: peeweelinux@adis.on.ca (Stefan Willmert)
+Date: Wed, 14 Aug 2002 14:58:09 -0500
+Subject: [Peeweelinux] thttpd web server Q+A, net-pf-10
+In-Reply-To: <2.2.16.20020814113132.8107f9fc@zmicro.com>
+Message-ID: <ICEOIHIIFHIJAFEIJICPMEOJCBAA.stefanw@intellanet.com>
+
+I'm not exactly sure what loads modules.conf. One of the system startup
+scripts catches it, which is then used by modprobe to start up kernel
+modules. The "alias" command, I believe..is just simply that. another name
+for which to call a module. Modprobe seems to use some standard naming when
+trying to figure out which modules to load. Especially for sound modules.
+
+In PWL, you don't need to use the alias command. What I did, was to put the
+insmod commands directly in rc.modules since rc.modules gets executed like a
+shell script. You can ignore modules.conf unless you are going to have one
+of your startup scripts use modprobe to determine what modules to load. Not
+as elegant as a full-blown system...but then if i wanted a full blown
+system, i'd just install from the cd.
+
+-stefan
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Barry Gershenfeld
+Sent: Wednesday, August 14, 2002 1:20 PM
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] thttpd web server Q+A, net-pf-10
+
+
+>I don't know much about thttpd IPv6 or peeweelinux for that matter,
+>but when referring to kernel modules...
+>
+>> to "alias net-pf-10 off".
+>>
+>
+>usually means adding the line to the /etc/modules.conf directory rather
+>than using a shell alias
+>
+>-Tim
+
+Thanks for the response.  I don't need ipv6 and thttpd turned up
+working, but I still am trying to find all the loose ends of
+the startup scripts.
+
+How does that "alias" think work?  I have "made up" explanations
+for many things and while they often turn out to be right I am
+always watching for that clue that I've got it wrong.  So I need
+to know who reads modules.conf, and how the alias is handled.  I'm
+thinking that it may well be a shell script, maybe it sources the
+modules.conf file, but that would point back to the shell needing
+to keep aliases....I think I will do some digging around in my host
+system for this.
+
+Barry
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Aug 14 22:31:17 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 14 Aug 2002 14:31:17 -0700 (PDT)
+Subject: [Peeweelinux] thttpd web server Q+A, net-pf-10
+Message-ID: <2.2.16.20020814144251.758ff8c0@zmicro.com>
+
+Ok, I did the research.
+
+depmod and modprobe go together.  In fact, they share a common man
+page.  It is depmod that will read and interpret modules.conf,
+and it handles the alias lines itself, without the shell's help.
+
+Here is a useful command I found:   
+
+   modprobe -c
+
+It will dump to the screen everything that it knows about.  (This
+seems to be more than /lib/modules/2.2.17/modules.dep   Maybe
+it's in the kernel?)   This includes 'path', 'alias', 'option',
+most of which is put there by default (maybe compiled in, don't
+know).
+
+Since I've still got thttpd in the title, here is another tip:
+Pipe the output of some command to a file in the web server's
+directory, and you can view or fetch it over the network  using 
+your web browser.  I do this because my target system doesn't 
+have less, or more, or telnet, or ftp...
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Wed Aug 14 22:57:45 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 14 Aug 2002 14:57:45 -0700 (PDT)
+Subject: [Peeweelinux] thttpd web server Q+A, net-pf-10
+Message-ID: <2.2.16.20020814150917.5d07a4d0@zmicro.com>
+
+So, after researching all that, I can respond semi-intelligently...
+
+At 02:58 PM 8/14/02 -0500, Stefan Willmert wrote:
+>I'm not exactly sure what loads modules.conf. 
+
+It is read when doing depmod -a
+
+>Modprobe seems to use some standard naming when
+>trying to figure out which modules to load. Especially 
+>for sound modules.
+
+This would actually be in the startup script.  modprobe just
+does the translation, having loaded up some aliases.
+
+>What I did, was to put the insmod commands directly in rc.modules 
+
+I can write a script to "bring everything up by hand" but I am
+wary that I will install some package that conflicts with that
+method.  Also I get the feeling the bring-up may already be in
+there and I just don't understand how to tweak it just right.
+
+Hmm, I don't seem to have an rc.modules directory...  Maybe I
+will just create a few small scripts in rcS.d  That way they
+will remain "visible" and not "fall into a crack".
+
+>You can ignore modules.conf unless you are going to have one
+>of your startup scripts use modprobe to determine what
+>modules to load.
+
+Now that  you mention it, I already know what I want to load
+(and if I didn't I would find out as soon as I looked at lsmod).
+So I don't really need modprobe at all.   Hey maybe if I
+removed it I would find out who is trying to call it!
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Thu Aug 15 01:44:11 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 14 Aug 2002 17:44:11 -0700 (PDT)
+Subject: [Peeweelinux] PeeWeeLinux Documentation
+Message-ID: <2.2.16.20020814175545.8f2fdcd8@zmicro.com>
+
+>I am seeing quite a few messages on the list covering various 
+>documentation aspects of PeeWeeLinux. This is great and having the list 
+>archives will be a great resource. 
+
+Yes, and it's mostly my fault.  I'm glad you see it my way and
+don't think I'm (just :) rambling.
+
+>I think there needs to be a central location for documentation somehow. 
+>I've some sites use faq-o-matic and wiki to collect and build 
+>documentation. I like the wiki concept. Question, is there interest in 
+>contributing and collecting information for PeeWeeLinux using a wiki system?
+
+I could answer that better if I had used one before.  Being
+able to add information would be great, but unless the 
+interface is easy to understand people might not bother.  Also
+I might be hesitant to post "half-answers", which I seem
+to come up with a lot.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Thu Aug 15 02:48:55 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 14 Aug 2002 20:48:55 -0500 (Central Daylight Time)
+Subject: [Peeweelinux] PeeWeeLinux Documentation
+In-Reply-To: <2.2.16.20020814175545.8f2fdcd8@zmicro.com>
+Message-ID: <Pine.WNT.4.44.0208142047160.1208-100000@mobile>
+
+> I could answer that better if I had used one before.  Being
+> able to add information would be great, but unless the
+> interface is easy to understand people might not bother.  Also
+> I might be hesitant to post "half-answers", which I seem
+> to come up with a lot.
+
+http://tavi.sourceforge.net/ is what I was looking at. At the bottom of
+the page is an "Edit this document" link which allows anyone to make
+changes. That's how wiki works ...
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Thu Aug 15 04:56:20 2002
+From: peeweelinux@adis.on.ca (Stefan Willmert)
+Date: Wed, 14 Aug 2002 22:56:20 -0500
+Subject: [Peeweelinux] PeeWeeLinux Documentation
+In-Reply-To: <Pine.WNT.4.44.0208142047160.1208-100000@mobile>
+Message-ID: <ICEOIHIIFHIJAFEIJICPMEOLCBAA.stefanw@intellanet.com>
+
+Rather than the ability to change an existing document...i would suggest
+having a feature to append to a document:
+
+1. leaving a document open for editing...could cause loss of original data
+2. a natural progression of events and discussions regarding a topic might
+be helpful to
+a user researching a problem.
+3. as information is added to a document...mistakes can be kept
+intact...allowing a user to know what NOT to do.
+
+I've seen various bug tracking systems work this way. Its nice to see the
+original issue with comments regarding what has been tried and what has
+worked or failed.
+
+just my 2 cents
+
+-stefan
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Adi Linden
+Sent: Wednesday, August 14, 2002 8:49 PM
+To: Barry Gershenfeld
+Cc: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] PeeWeeLinux Documentation
+
+
+> I could answer that better if I had used one before.  Being
+> able to add information would be great, but unless the
+> interface is easy to understand people might not bother.  Also
+> I might be hesitant to post "half-answers", which I seem
+> to come up with a lot.
+
+http://tavi.sourceforge.net/ is what I was looking at. At the bottom of
+the page is an "Edit this document" link which allows anyone to make
+changes. That's how wiki works ...
+
+Adi
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Aug 16 16:49:08 2002
+From: peeweelinux@adis.on.ca (Cristián Mejía)
+Date: Fri, 16 Aug 2002 11:49:08 -0400
+Subject: [Peeweelinux] Saving data in a big partition
+Message-ID: <5.1.0.14.0.20020816114349.02d1a728@mail.ecofor.cl>
+
+I need to save data (from card readers) to a big partition in the disk, but 
+I want to keep the boot-root partition r/o and using a second partition rw.
+
+There is a way to use the actual pwlconfig to do that ??
+
+If possible, a way to configure the partitions at will.
+Thanks!!
+
+Cristián.
+
+
+From peeweelinux@adis.on.ca  Fri Aug 16 16:57:20 2002
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Fri, 16 Aug 2002 08:57:20 -0700
+Subject: [Peeweelinux] Saving data in a big partition
+In-Reply-To: <5.1.0.14.0.20020816114349.02d1a728@mail.ecofor.cl>
+References: <5.1.0.14.0.20020816114349.02d1a728@mail.ecofor.cl>
+Message-ID: <1058306159.20020816085720@amiga.com>
+
+Friday, August 16, 2002, 8:49:08 AM, Cristián wrote:
+
+CM> I need to save data (from card readers) to a big partition in the disk, but 
+CM> I want to keep the boot-root partition r/o and using a second partition rw.
+
+CM> There is a way to use the actual pwlconfig to do that ??
+
+CM> If possible, a way to configure the partitions at will.
+CM> Thanks!!
+
+When I needed to do this, I ended up modifying the pwl scripts to
+accomplish it.
+
+This was quite a few versions back though. The interface may be more
+capable now.
+
+-- 
+Dean Brown                           mailto:dean@amiga.com
+
+
+From peeweelinux@adis.on.ca  Wed Aug 21 22:53:20 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 21 Aug 2002 14:53:20 -0700 (PDT)
+Subject: [Peeweelinux] Success
+Message-ID: <2.2.16.20020821150509.8b571b02@zmicro.com>
+
+Last Wednesday my embedded hardware arrived.  I got a DiskOnModule with
+it.  It has an IDE connector on it.  I plugged it onto the host 
+system's motherboard and let PeeWee write an image to it.   The 
+only hitch I had was on the embedded hardware.  The disk module 
+wouldn't respond.  Turns out there is an IDE master jumper that's 
+routed to the power connector and the mating connector didn't 
+have a wire there.  Once that was taken care of, the system booted!
+On Thursday 8/15 I had an embedded web site running on our LAN.  
+
+The hardware is an Arbor EmCore-i413 featuring the ZFx86 "Linux" chip.
+ 5V, 1A.  100 MHz (39 BogoMIPS, must be a 486)
+
+The DiskOnModule is hard to find item that emulates an IDE drive. It's
+built onto the back of an IDE connector and extends back less than
+an inch.  The vendor (Modular Industrial Solutions) recommended
+them as being less trouble than the DiskOnChip, and they cost 
+less, too.   They sell the board and the disk.  http://www.modindsol.com
+
+One month from the time I started.  Not too bad, seemed like more :)
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Thu Aug 22 18:34:41 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 22 Aug 2002 10:34:41 -0700 (PDT)
+Subject: [Peeweelinux] system initialization
+Message-ID: <2.2.16.20020822104630.6d7fedc4@zmicro.com>
+
+My target system initially needed to be started by hand.  I have 
+worked it out to the point where it's automatic now.  But there
+is a lot of detail down there in those init scripts!  Here's
+what I started with:
+
+  - network card module present but I had to load it with "modprobe"
+  - modprobe fails because no modules.dep
+  - modules.dep is created by "depmod"
+  - have to run "depmod"
+  - have to run ifconfig to bring up network card
+
+Once the network is up the web server answers requests and all
+is well.  Here is what I worked out to solve the above issues:
+
+One premise I worked with was that the system really does know
+how to to all this, and I just had something wrong.
+
+I had already learned from adventure with thttpd and net-pf-10
+about depmod and modprobe, so I created a task in rcS.d called
+00depmod that would run first.  That was temporary and I moved
+the depmod to another file later.
+
+The issue with ifconfig led me through the 10Network script, 
+wherein I found that it will find the ifcfg-eth0 file in
+/etc/config and use the contents of that to construct an
+appropriate ifconfig...up command.   The assumption that
+this would work by itself proved to be correct after I
+fixed the driver issue.   However, at this time I discovered
+the place to put the IP address (or to set dhcp if I wish
+to try that).
+
+The driver modules was a little more interesting.  Looking
+through the target scripts I find that there could be 
+an /etc/rc.modules, which, if present, will read a file
+/etc/modules and use that as a list of modules to
+be loaded.   This pair of files was not present in my 
+target system, nor was it present on my host RedHat system;
+but they were present on my Coyote (LRP) system.  So, 
+without any more clues, I decided to write my own rc.modules
+file which runs depmod, then loads the modules for the
+network card.  That way I have kept the customizations to a
+minimum.  
+
+I know that insmod will load modules without the help of
+modules.dep   The issue of depmod was somewhat of an experimental
+investigation (I figured I should know about it).  One thing
+that seems to be likely is that depmod can be run on the
+kernel libraries after they are compiled, and possibly the
+resulting modules.dep can be copied to the target system and
+then no depmod is required.
+
+The last issue is that I put "alias eth0 ne2k-pci" into modules.conf
+but I was unable to discover who reads that information.  That would
+be the other way these modules get loaded (and seems to be the way
+it's done in our real linux boxes.)
+
+So the questions are:
+  - what runs depmod during startup?
+  - do embedded systems usually have a prebuilt modules.dep?
+  - what uses modules.conf to find out what modules to load?
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Thu Aug 22 19:00:15 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 22 Aug 2002 13:00:15 -0500 (CDT)
+Subject: [Peeweelinux] system initialization
+In-Reply-To: <2.2.16.20020822104630.6d7fedc4@zmicro.com>
+Message-ID: <Pine.LNX.4.33.0208221250580.11886-100000@adibox.knet.ca>
+
+>   - network card module present but I had to load it with "modprobe"
+>   - modprobe fails because no modules.dep
+>   - modules.dep is created by "depmod"
+>   - have to run "depmod"
+>   - have to run ifconfig to bring up network card
+
+I usually use insmod and have it load the required modules in the 
+proper sequence. This eliminates the need for depmod and /etc/modules.conf 
+amongst things.
+
+> The issue with ifconfig led me through the 10Network script, 
+> wherein I found that it will find the ifcfg-eth0 file in
+> /etc/config and use the contents of that to construct an
+> appropriate ifconfig...up command.   The assumption that
+> this would work by itself proved to be correct after I
+> fixed the driver issue.   However, at this time I discovered
+> the place to put the IP address (or to set dhcp if I wish
+> to try that).
+
+If you create /etc/config/ifcfg-eth0 with the appropriate content the 
+network startup script will automatically configure the network interface. 
+The syntax for the file is similar to RedHats. I.e.
+
+  DEVICE=eth0
+  IPADDR=192.168.1.1
+  NETMASK=255.255.255.0
+  
+There is also support for specifying BROADCAST and NETWORK addresses if 
+needed. If dhcp is used instead of static addressing do this instead:
+
+  DEVICE=eth0
+  BOOTPROTO=dhcp
+
+This will reqire that either pump or dhcpcd are installed.
+
+> The driver modules was a little more interesting.  Looking
+> through the target scripts I find that there could be 
+> an /etc/rc.modules, which, if present, will read a file
+> /etc/modules and use that as a list of modules to
+> be loaded.   This pair of files was not present in my 
+> target system, nor was it present on my host RedHat system;
+> but they were present on my Coyote (LRP) system.  So, 
+> without any more clues, I decided to write my own rc.modules
+> file which runs depmod, then loads the modules for the
+> network card.  That way I have kept the customizations to a
+> minimum.  
+> 
+> I know that insmod will load modules without the help of
+> modules.dep   The issue of depmod was somewhat of an experimental
+> investigation (I figured I should know about it).  One thing
+> that seems to be likely is that depmod can be run on the
+> kernel libraries after they are compiled, and possibly the
+> resulting modules.dep can be copied to the target system and
+> then no depmod is required.
+> 
+> The last issue is that I put "alias eth0 ne2k-pci" into modules.conf
+> but I was unable to discover who reads that information.  That would
+> be the other way these modules get loaded (and seems to be the way
+> it's done in our real linux boxes.)
+> 
+> So the questions are:
+>   - what runs depmod during startup?
+>   - do embedded systems usually have a prebuilt modules.dep?
+>   - what uses modules.conf to find out what modules to load?
+
+There is no automatic way to run depmod since the intend was to run insmod 
+instead. So you would create an /etc/rc.modules containing something like:
+
+  insmod ne2k-pci
+  
+And what ever else modules you need to load. If there are module 
+dependencies you would need to add insmod lines for those in the proper 
+order to satisfy dependencies.
+
+Hope this helps,
+Adi
+
+
+From peeweelinux@adis.on.ca  Thu Aug 22 19:23:26 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 22 Aug 2002 11:23:26 -0700 (PDT)
+Subject: [Peeweelinux] system initialization
+Message-ID: <2.2.16.20020822113517.81e7610c@zmicro.com>
+
+>There is no automatic way to run depmod since the intend was to run insmod 
+>instead. So you would create an /etc/rc.modules containing something like:
+>
+>  insmod ne2k-pci
+
+That's what I did.  You might think it's bad that something's
+lacking in the system but it's exactly what I wanted to hear.  That
+way I can stop looking for it and get on with configuring it myself!
+
+
+>I usually use insmod and have it load the required modules in the 
+>proper sequence. This eliminates the need for depmod and /etc/modules.conf 
+>amongst things.
+
+I think you meant "modules.dep" ; or do you put your insmod 
+in something other than /etc/rc.modules as you described above?
+
+>  DEVICE=eth0
+>  IPADDR=192.168.1.1
+>  NETMASK=255.255.255.0
+
+Yes, I intended to explain that I had figured all this out by
+way of reading the network script and such.  Also a lot of 
+RedHat experience.
+
+Thanks for the the help.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Thu Aug 22 19:41:45 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 22 Aug 2002 13:41:45 -0500 (CDT)
+Subject: [Peeweelinux] system initialization
+In-Reply-To: <2.2.16.20020822113517.81e7610c@zmicro.com>
+Message-ID: <Pine.LNX.4.33.0208221340030.11886-100000@adibox.knet.ca>
+
+> >I usually use insmod and have it load the required modules in the 
+> >proper sequence. This eliminates the need for depmod and /etc/modules.conf 
+> >amongst things.
+> 
+> I think you meant "modules.dep" ; or do you put your insmod 
+> in something other than /etc/rc.modules as you described above?
+> 
+> >  DEVICE=eth0
+> >  IPADDR=192.168.1.1
+> >  NETMASK=255.255.255.0
+
+Not using modprobe eliminates the need to have a "/etc/modules.conf" file. 
+Everything can be specified on the "insmod" command line. "modules.dep" is 
+not required either, nor is "depmod"...
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Thu Aug 22 23:18:06 2002
+From: peeweelinux@adis.on.ca (Cristián Mejía)
+Date: Thu, 22 Aug 2002 18:18:06 -0400
+Subject: [Peeweelinux] Transparent cursor
+Message-ID: <5.1.0.14.0.20020822181546.054b0ce8@mail.ecofor.cl>
+
+Anybody has changed the XFree cursor with a transparent pixmap ?? I'm using 
+only the server (not any WM).
+Thanks in advance.
+		Cristián.
+
+
+From peeweelinux@adis.on.ca  Fri Aug 23 10:43:21 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Fri, 23 Aug 2002 10:43:21 +0100
+Subject: [Peeweelinux] system initialization
+In-Reply-To: <2.2.16.20020822104630.6d7fedc4@zmicro.com>
+Message-ID: <000101c24a89$853eb710$03b812d4@ricardo>
+
+you can use modules.rc to load the module automatically on startup. since
+it's probably only one module don't bother with modprobe.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Barry Gershenfeld
+Sent: quinta-feira, 22 de Agosto de 2002 18:35
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] system initialization
+
+
+My target system initially needed to be started by hand.  I have
+worked it out to the point where it's automatic now.  But there
+is a lot of detail down there in those init scripts!  Here's
+what I started with:
+
+  - network card module present but I had to load it with "modprobe"
+  - modprobe fails because no modules.dep
+  - modules.dep is created by "depmod"
+  - have to run "depmod"
+  - have to run ifconfig to bring up network card
+
+Once the network is up the web server answers requests and all
+is well.  Here is what I worked out to solve the above issues:
+
+One premise I worked with was that the system really does know
+how to to all this, and I just had something wrong.
+
+I had already learned from adventure with thttpd and net-pf-10
+about depmod and modprobe, so I created a task in rcS.d called
+00depmod that would run first.  That was temporary and I moved
+the depmod to another file later.
+
+The issue with ifconfig led me through the 10Network script,
+wherein I found that it will find the ifcfg-eth0 file in
+/etc/config and use the contents of that to construct an
+appropriate ifconfig...up command.   The assumption that
+this would work by itself proved to be correct after I
+fixed the driver issue.   However, at this time I discovered
+the place to put the IP address (or to set dhcp if I wish
+to try that).
+
+The driver modules was a little more interesting.  Looking
+through the target scripts I find that there could be
+an /etc/rc.modules, which, if present, will read a file
+/etc/modules and use that as a list of modules to
+be loaded.   This pair of files was not present in my
+target system, nor was it present on my host RedHat system;
+but they were present on my Coyote (LRP) system.  So,
+without any more clues, I decided to write my own rc.modules
+file which runs depmod, then loads the modules for the
+network card.  That way I have kept the customizations to a
+minimum.
+
+I know that insmod will load modules without the help of
+modules.dep   The issue of depmod was somewhat of an experimental
+investigation (I figured I should know about it).  One thing
+that seems to be likely is that depmod can be run on the
+kernel libraries after they are compiled, and possibly the
+resulting modules.dep can be copied to the target system and
+then no depmod is required.
+
+The last issue is that I put "alias eth0 ne2k-pci" into modules.conf
+but I was unable to discover who reads that information.  That would
+be the other way these modules get loaded (and seems to be the way
+it's done in our real linux boxes.)
+
+So the questions are:
+  - what runs depmod during startup?
+  - do embedded systems usually have a prebuilt modules.dep?
+  - what uses modules.conf to find out what modules to load?
+
+Barry
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Aug 23 10:43:57 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Fri, 23 Aug 2002 10:43:57 +0100
+Subject: [Peeweelinux] system initialization
+In-Reply-To: <2.2.16.20020822104630.6d7fedc4@zmicro.com>
+Message-ID: <000201c24a89$9c84d080$03b812d4@ricardo>
+
+when the module is read automatically you no longer will have to run
+ifconfig
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Barry Gershenfeld
+Sent: quinta-feira, 22 de Agosto de 2002 18:35
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] system initialization
+
+
+My target system initially needed to be started by hand.  I have
+worked it out to the point where it's automatic now.  But there
+is a lot of detail down there in those init scripts!  Here's
+what I started with:
+
+  - network card module present but I had to load it with "modprobe"
+  - modprobe fails because no modules.dep
+  - modules.dep is created by "depmod"
+  - have to run "depmod"
+  - have to run ifconfig to bring up network card
+
+Once the network is up the web server answers requests and all
+is well.  Here is what I worked out to solve the above issues:
+
+One premise I worked with was that the system really does know
+how to to all this, and I just had something wrong.
+
+I had already learned from adventure with thttpd and net-pf-10
+about depmod and modprobe, so I created a task in rcS.d called
+00depmod that would run first.  That was temporary and I moved
+the depmod to another file later.
+
+The issue with ifconfig led me through the 10Network script,
+wherein I found that it will find the ifcfg-eth0 file in
+/etc/config and use the contents of that to construct an
+appropriate ifconfig...up command.   The assumption that
+this would work by itself proved to be correct after I
+fixed the driver issue.   However, at this time I discovered
+the place to put the IP address (or to set dhcp if I wish
+to try that).
+
+The driver modules was a little more interesting.  Looking
+through the target scripts I find that there could be
+an /etc/rc.modules, which, if present, will read a file
+/etc/modules and use that as a list of modules to
+be loaded.   This pair of files was not present in my
+target system, nor was it present on my host RedHat system;
+but they were present on my Coyote (LRP) system.  So,
+without any more clues, I decided to write my own rc.modules
+file which runs depmod, then loads the modules for the
+network card.  That way I have kept the customizations to a
+minimum.
+
+I know that insmod will load modules without the help of
+modules.dep   The issue of depmod was somewhat of an experimental
+investigation (I figured I should know about it).  One thing
+that seems to be likely is that depmod can be run on the
+kernel libraries after they are compiled, and possibly the
+resulting modules.dep can be copied to the target system and
+then no depmod is required.
+
+The last issue is that I put "alias eth0 ne2k-pci" into modules.conf
+but I was unable to discover who reads that information.  That would
+be the other way these modules get loaded (and seems to be the way
+it's done in our real linux boxes.)
+
+So the questions are:
+  - what runs depmod during startup?
+  - do embedded systems usually have a prebuilt modules.dep?
+  - what uses modules.conf to find out what modules to load?
+
+Barry
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Aug 23 23:20:49 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Fri, 23 Aug 2002 15:20:49 -0700 (PDT)
+Subject: [Peeweelinux] system initialization
+Message-ID: <2.2.16.20020823153242.801f4da2@zmicro.com>
+
+>you can use modules.rc to load the module automatically on startup. since
+>it's probably only one module don't bother with modprobe.
+>
+
+I scanned my systems for a file "modules.rc" (And just now, the
+Web.)  There isn't any such file.   I think you meant "rc.modules".
+And this is what I did, I made an rc.modules, and it works.   The 
+modprobe thing was to make sure I knew how to do that, in case I 
+ever build a system that has a lot of modules or has a changing 
+configuration.  And I have other Linux systems to mess with, too.
+
+>when the module is read automatically you no longer will have to run
+>ifconfig
+
+Yes, I saw this in the network script, and indeed, if the associated
+config file is present and the card is live it will bring it up.
+
+Thanks for the response.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Sat Aug 24 00:06:13 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Fri, 23 Aug 2002 16:06:13 -0700 (PDT)
+Subject: [Peeweelinux] packages?
+Message-ID: <2.2.16.20020823161804.7f375e1a@zmicro.com>
+
+What do I have to do to a given program to include it into 
+a PeeWeeLinux system?  There are hints that when PeeWee was
+built, that the packages were modified in some way.  Hints 
+like, and my own guesses on...
+
+ - built against the right kernel
+ - stripped (remove debug symbols)
+ - minimize footprint
+ - rpm vs. tar file
+ - (deadliest of all:) unknown
+
+In one sense, I can take a working binary and just dump it
+into the custom directory and have the system built with
+it.  There are reasons this might be unworkable or cumbersome.
+Or I could compile it myself and do the same, with somewhat 
+better chances.  But what else do I need to know?
+
+I need to do control apps via a web interface, so I'm currently
+looking at web servers.  I need it to be a little fancy, so
+I want something like php so I don't reinvent the last 8
+years of cgi scripting progress.  So my choices are thttpd 
+or Apache.   There's a php module for thttpd but it requires
+a specific version of thttpd so I'd be building that again.
+Apache looks like it might be too fancy for its own good, but
+it's well-known and documented and all that.
+
+The answers to the package questions are going to apply to 
+anything I want to add to PeeWee, so it's a general question 
+and not knowing could really get in the way.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Sat Aug 24 04:59:31 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 23 Aug 2002 22:59:31 -0500 (CDT)
+Subject: [Peeweelinux] packages?
+In-Reply-To: <2.2.16.20020823161804.7f375e1a@zmicro.com>
+Message-ID: <Pine.LNX.4.33.0208232254430.895-100000@mobile.adis.on.ca>
+
+All PeeWeeLinux packages are built using rpm. The "pwlconfig" scripts
+convert rpms into tar files. When building the rpm, steps are taken to
+minimize the footprint of the package by not including unneeded files,
+stripping the binaries, linking only libraries actually available, etc.
+
+Another important point is to use a RedHat 6.2 system for building rpms
+otherwise the build binaries will not work with the PeeWeeLinux glibc.
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Sat Aug 24 00:29:59 2002
+From: peeweelinux@adis.on.ca (Tom Genereaux)
+Date: 23 Aug 2002 23:29:59 +0000
+Subject: [Peeweelinux] packages?
+In-Reply-To: <Pine.LNX.4.33.0208232254430.895-100000@mobile.adis.on.ca>
+References: <Pine.LNX.4.33.0208232254430.895-100000@mobile.adis.on.ca>
+Message-ID: <1030145399.4429.5.camel@dharma.lawrence.ks.us>
+
+It's long past time to change this. In the near future, I'll be adding
+some scripts to allow toolchain building automatically, along the lines
+of the gentoo project. Right now, I'm about halfway there. 6.2 is very
+long in the tooth and does not play well with the newer X environments.
+(Something else I'll be feeding back into the project over the next
+several months.)
+
+Tom
+
+On Sat, 2002-08-24 at 03:59, Adi Linden wrote:
+> 
+> Another important point is to use a RedHat 6.2 system for building rpms
+> otherwise the build binaries will not work with the PeeWeeLinux glibc.
+> 
+> Adi
+> 
+
+
+
+From peeweelinux@adis.on.ca  Wed Aug 28 02:36:18 2002
+From: peeweelinux@adis.on.ca (Patrick Beaven)
+Date: Tue, 27 Aug 2002 20:36:18 -0500
+Subject: [Peeweelinux] 6.2 kernel and lilo ?
+Message-ID: <3D6C2912.3F56F2EA@thebeavens.net>
+
+I've recently downloaded and created a few project filesystems but I'm
+very new to peewee. Can anyone tell me why
+after i created a custom kernel with 6.2 and made a boot floppy , The
+boot floppy works great. but when i go to install the new image to the
+disk lilo gives me an error like " no binary image selected "  I must be
+doing something wrong..
+its just a bzImage file. is there something specific i need to do with
+lilo or the image . normally i edit my lilo.conf replace line with the
+new image and run lilo to write the changes.
+can anyone help..
+thanks
+
+
+From peeweelinux@adis.on.ca  Wed Aug 28 03:17:20 2002
+From: peeweelinux@adis.on.ca (Patrick Beaven)
+Date: Tue, 27 Aug 2002 21:17:20 -0500
+Subject: [Peeweelinux] 6.2 kernel and lilo ?
+References: <3D6C2912.3F56F2EA@thebeavens.net>
+Message-ID: <3D6C32B0.32E901C@thebeavens.net>
+
+Patrick Beaven wrote:
+
+> I've recently downloaded and created a few project filesystems but I'm
+> very new to peewee. Can anyone tell me why
+> after i created a custom kernel with 6.2 and made a boot floppy , The
+> boot floppy works great. but when i go to install the new image to the
+> disk lilo gives me an error like " no binary image selected "  I must be
+> doing something wrong..
+> its just a bzImage file. is there something specific i need to do with
+> lilo or the image . normally i edit my lilo.conf replace line with the
+> new image and run lilo to write the changes.
+> can anyone help..
+> thanks
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+scratch that last request i fat fingered a name in the lilo.conf file..
+Sorry ..
+I have a real question now what utility do i use or how do i do this:
+I have a binary rpm package that i want to include in the pwlconfig so when
+i want to create a filesystem i can include
+this package ...
+how do i go about this, do i enter it manually somewhere or is there some
+util to put it in the pwlconfig ..
+your response is appreciated.
+Pat
+
+
+From peeweelinux@adis.on.ca  Sat Aug 31 14:00:30 2002
+From: peeweelinux@adis.on.ca (Thanomsak Liumsuwan)
+Date: Sat, 31 Aug 2002 06:00:30 -0700 (PDT)
+Subject: [Peeweelinux] Success using PeeWee Thanks ...
+Message-ID: <20020831130030.26794.qmail@web10105.mail.yahoo.com>
+
+I use it as webcam server + dialin server , installed
+it on old Pentium 133 with 48 MB ram + 250mb hdd ,
+everything ran on ramdisk so I can use timer with it
+to turn on at 7:00am and turn off at 22:00pm everyday 
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Finance - Get real-time stock quotes
+http://finance.yahoo.com
+

@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Kernel Compile failure
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000395.html">
+   <LINK REL="Next"  HREF="000385.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Kernel Compile failure
+   </H1>
+    <B>Sudhanshu Tewari
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Kernel Compile failure">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 7 Nov 2001 09:52:30 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000395.html">[Peeweelinux] how about read-write root on a single partition
+</A></li>
+        <LI> Next message: <A HREF="000385.html">[Peeweelinux] Kernel Compile failure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+------_=_NextPart_001_01C167AC.96D8D487
+Content-Type: text/plain;
+	charset=&quot;iso-8859-1&quot;
+
+Hi,
+
+I am Sudhanshu from Boulder CO
+Using successfully the latest version of Peewee LInux.
+Thanks for the good work !!
+
+Recently i tried compiling the the custum kernel using pwlconfig menu.
+I did't add any thing custum but just took the 2.2.17-13 code used standard
+peeweelinux-basic configuration.
+and compiled the kernel.
+
+The Problem is the scripts comes out with kernel compiled successful after
+creating custom kernel package, But there is no bzImage file in the boot
+directory.
+The modules are getting compiled fine.
+
+when i tried compiling using make dep;make clean;make bzImage in the
+.../usr/src/linux/* directory.
+
+the make bzImage fails at Checksum.S at line 234 complaining badly puntuated
+parameter in #define.
+
+The #define problem gets fixed if i remove option -traditional from the make
+file but then it crashes in get_address.c in line 177 &amp; 187 complaining
+invalid lvalue in asm statement.
+
+
+Any idead what i am missing !!!
+
+Thanks
+Sudhanshu
+
+
+------_=_NextPart_001_01C167AC.96D8D487
+Content-Type: text/html;
+	charset=&quot;iso-8859-1&quot;
+Content-Transfer-Encoding: quoted-printable
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;META HTTP-EQUIV=3D&quot;Content-Type&quot; CONTENT=3D&quot;text/html; =
+charset=3Diso-8859-1&quot;&gt;
+&lt;META NAME=3D&quot;Generator&quot; CONTENT=3D&quot;MS Exchange Server version =
+5.5.2650.12&quot;&gt;
+&lt;TITLE&gt;Kernel Compile failure&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;Hi,&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;I am Sudhanshu from Boulder CO&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;Using successfully the latest version =
+of Peewee LInux.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;Thanks for the good work !!&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;Recently i tried compiling the the =
+custum kernel using pwlconfig menu.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;I did't add any thing custum but just =
+took the 2.2.17-13 code used standard peeweelinux-basic =
+configuration.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;and compiled the kernel.&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;The Problem is the scripts comes out =
+with kernel compiled successful after creating custom kernel package, =
+But there is no bzImage file in the boot directory.&lt;/FONT&gt;&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;The modules are getting compiled =
+fine.&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;when i tried compiling using make =
+dep;make clean;make bzImage in the .../usr/src/linux/* =
+directory.&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;the make bzImage fails at Checksum.S =
+at line 234 complaining badly puntuated parameter in #define.&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;The #define problem gets fixed if i =
+remove option -traditional from the make file but then it crashes in =
+get_address.c in line 177 &amp;amp; 187 complaining&lt;/FONT&gt;&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;invalid lvalue in asm =
+statement.&lt;/FONT&gt;
+&lt;/P&gt;
+&lt;BR&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;Any idead what i am missing !!!&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;Thanks&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2 FACE=3D&quot;Arial&quot;&gt;Sudhanshu&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+------_=_NextPart_001_01C167AC.96D8D487--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000395.html">[Peeweelinux] how about read-write root on a single partition
+</A></li>
+	<LI> Next message: <A HREF="000385.html">[Peeweelinux] Kernel Compile failure
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

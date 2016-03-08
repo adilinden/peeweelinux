@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re[3]: Mouse PS2 problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001058.html">
+   <LINK REL="Next"  HREF="001060.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re[3]: Mouse PS2 problem
+   </H1>
+    <B>Leif Steinhour
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re[3]: Mouse PS2 problem">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 25 Apr 2003 11:40:41 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001058.html">[Peeweelinux] Re[3]: Mouse PS2 problem
+</A></li>
+        <LI> Next message: <A HREF="001060.html">[Peeweelinux] Files get deleted after reboot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1059">[ date ]</a>
+              <a href="thread.html#1059">[ thread ]</a>
+              <a href="subject.html#1059">[ subject ]</a>
+              <a href="author.html#1059">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It looks like your permissions are the problem. Check out the chmod 
+command using man: set them so that they match the output below.
+
+
+On 2003.04.25 11:33 Hanoi Santos Hung wrote:
+&gt;<i> 
+</I>&gt;<i> &gt;Dennis W. Tokarski wrote :
+</I>&gt;<i> 
+</I>&gt;<i> &gt;How about /dev/psaux? You said it exists, but maybe
+</I>&gt;<i> &gt;it's got the wrong major or minor number. 'ls -l /dev/psaux'
+</I>&gt;<i> &gt;should show:
+</I>&gt;<i> 
+</I>&gt;<i> &gt;crw-------    1 root     root      10,   1 Apr 24 20:16 /dev/psaux
+</I>&gt;<i> 
+</I>&gt;<i> My &quot;ls -l&quot; result is somehow diferent from yours :
+</I>&gt;<i> 
+</I>&gt;<i> ----------------------
+</I>&gt;<i> ls -l /dev/psaux
+</I>&gt;<i> crw-rw----     1 root     root    10,    1 May 5 1998 /dev/psaux
+</I>&gt;<i> ----------------------
+</I>&gt;<i> ----------------------
+</I>&gt;<i> ls -l /dev/mouse
+</I>&gt;<i> lrwxrwxrwx    1 root      root    5 Apr 24 13:09 /dev/mouse -&gt; psaux
+</I>&gt;<i> ---------------------
+</I>&gt;<i> 
+</I>&gt;<i> My psaux is very old ,and I don't know why.
+</I>&gt;<i> I'm running Peewee Linux Configurator Version 0.61.1 over a RH7.3
+</I>&gt;<i> host.I will appreciate any help.
+</I>&gt;<i> 
+</I>&gt;<i> Best Regards
+</I>&gt;<i> Hanoi Santos Hung
+</I>&gt;<i> Linux User 296804
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001058.html">[Peeweelinux] Re[3]: Mouse PS2 problem
+</A></li>
+	<LI> Next message: <A HREF="001060.html">[Peeweelinux] Files get deleted after reboot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1059">[ date ]</a>
+              <a href="thread.html#1059">[ thread ]</a>
+              <a href="subject.html#1059">[ subject ]</a>
+              <a href="author.html#1059">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

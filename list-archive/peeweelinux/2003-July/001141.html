@@ -1,0 +1,374 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] lilo.conf hangs
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001140.html">
+   <LINK REL="Next"  HREF="001142.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] lilo.conf hangs
+   </H1>
+    <B>correy
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] lilo.conf hangs">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 18 Jul 2003 12:06:24 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001140.html">[Peeweelinux] lilo.conf hangs
+</A></li>
+        <LI> Next message: <A HREF="001142.html">[Peeweelinux] rootfilesystem isn't free after flushing to ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1141">[ date ]</a>
+              <a href="thread.html#1141">[ thread ]</a>
+              <a href="subject.html#1141">[ subject ]</a>
+              <a href="author.html#1141">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--------------090001040005010207000400
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hi there
+Thanks for the information it is always good to know what is going on. 
+ From what I gather the lilo.conf file is only in PWL for fun just 
+incase you use it later cause the one I originally had said stuff like 
+disk=/dev/sda which could never have worked since I have /dev/hdc so I 
+had to modify it but as from my first post I didn't modify it well 
+enough so now I have changed it from this -
+__________________________
+disk=/dev/hdc
+ bios=0x80
+ heads=4
+ sectors=32
+ cylinders=490
+
+boot=/dev/hdc
+map=/mnt/cf1/map
+install=/mnt/cf1/boot.b
+compact
+prompt
+timeout=20
+default=linux
+
+image=/mnt/cf1/vmlinuz
+       label=linux
+       initrd=/mnt/cf1/initrd
+       read-only
+       root=/dev/hdc2
+       vga=0x317
+--------------------------------------------------
+To This
+________________________________
+boot=/dev/hdc
+disk=/dev/hdc
+        bios=0x80
+
+linear
+map=/mnt/cf1/map
+install=/mnt/cf1/boot.b
+prompt
+timeout=50
+initrd=/mnt/cf1/initrd
+default=vmlinuz
+
+image=/mnt/cf1/vmlinuz
+        label=vmlinuz
+        root=/dev/hdc2
+#       ramdisk=9312
+        read-only
+image=/mnt/cf1/bzImage
+        label=bzImage
+        root=/dev/hdc2
+        read-only
+--------------------------------------------
+The important things are that I added initrd and got rid of a lot of 
+stuff that was causing grief I now have added another image.
+I am having problem with the eepro100 drivers for my ethernet intel 
+82559ER and alsa drivers and so I am now compiling a 2.4.9 kernel 
+instead of the 2.2.17 kernel so that they can all be 
+satisfied......finergers crossed.
+
+Correy
+
+
+Barry Gershenfeld wrote:
+
+&gt;&gt;<i>I have been playing with lilo.conf to try another kernel image. I tried 
+</I>&gt;&gt;<i>the other image I made but it didn't work and then I tried to restore 
+</I>&gt;&gt;<i>the original one but it doesn't work so I am assuming it is a problem 
+</I>&gt;&gt;<i>with my lilo.conf file.
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>It used to work?  Did you install lilo this way when you got
+</I>&gt;<i>it to work?  I am not familiar with installing from a chroot
+</I>&gt;<i>environment, nor do I use a CF disk, so while I would usually
+</I>&gt;<i>question entries in your lilo.conf file, they are probably
+</I>&gt;<i>right, if it used to work.
+</I>&gt;<i>
+</I>&gt;<i>So, which line(s) did you change?
+</I>&gt;<i>Or, what are you doing different?
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>I then run lilo and it says
+</I>&gt;&gt;<i>Added linux *
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>So lilo doesn't think you have any errors.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>However after rebooting all I get is LI and the system hangs.
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>This means that you did not get to load the kernel.  That 
+</I>&gt;<i>means you don't have to worry about 
+</I>&gt;<i>  -append arguments to the kernel
+</I>&gt;<i>  -initrd
+</I>&gt;<i>  -init
+</I>&gt;<i>  -startup scripts
+</I>&gt;<i>  -mounted drives
+</I>&gt;<i>because none of this will have happened yet.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>also I don't really understand about 
+</I>&gt;&gt;<i>initrd and what script causes it to load into ram2?
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>The kernel, after it is running, after it has detected processor
+</I>&gt;<i>and hardware, wants to mount a root file
+</I>&gt;<i>system to work from.  This can be a ramdisk.  From watching it
+</I>&gt;<i>boot, it is apparent the code for mounting a ramdisk and even
+</I>&gt;<i>the copying-to-it part are in the kernel.
+</I>&gt;<i>
+</I>&gt;<i>Up until this point the kernel is a single piece of code doing
+</I>&gt;<i>its thing.  Once a root disk is mounted it (tries to) start init
+</I>&gt;<i>and from there inittab and all the other scripts start running
+</I>&gt;<i>and other processes can be created.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>More specifically, when you see &quot;LI&quot;, code in the boot sector
+</I>&gt;<i>has executed, read what it thinks is the map file, loaded what
+</I>&gt;<i>it thinks is the kernel loader, and tried to jump to it.
+</I>&gt;<i>
+</I>&gt;<i>The most common problem is &quot;geometry mismatch&quot;, which in a few
+</I>&gt;<i>words means that lilo (when you install it) has to be able
+</I>&gt;<i>to predict exactly what to feed the BIOS on boot up such
+</I>&gt;<i>that it will read the same device/sectors it found during
+</I>&gt;<i>the install.
+</I>&gt;<i>
+</I>&gt;<i>Well, you said &quot;any help&quot; :)
+</I>&gt;<i>
+</I>&gt;<i>Barry
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Peeweelinux mailing list
+</I>&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+
+--------------090001040005010207000400
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Hi there&lt;br&gt;
+Thanks for the information it is always good to know what is going on. From
+what I gather the lilo.conf file is only in PWL for fun just incase you use
+it later cause the one I originally had said stuff like disk=/dev/sda which
+could never have worked since I have /dev/hdc so I had to modify it but as
+from my first post I didn't modify it well enough so now I have changed it
+from this - &lt;br&gt;
+__________________________&lt;br&gt;
+disk=/dev/hdc &lt;br&gt;
+&amp;nbsp;bios=0x80 &lt;br&gt;
+&amp;nbsp;heads=4 &lt;br&gt;
+&amp;nbsp;sectors=32 &lt;br&gt;
+&amp;nbsp;cylinders=490 &lt;br&gt;
+ &lt;br&gt;
+boot=/dev/hdc &lt;br&gt;
+map=/mnt/cf1/map &lt;br&gt;
+install=/mnt/cf1/boot.b &lt;br&gt;
+compact &lt;br&gt;
+prompt &lt;br&gt;
+timeout=20 &lt;br&gt;
+default=linux &lt;br&gt;
+ &lt;br&gt;
+image=/mnt/cf1/vmlinuz &lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; label=linux &lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; initrd=/mnt/cf1/initrd &lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; read-only &lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; root=/dev/hdc2 &lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; vga=0x317 &lt;br&gt;
+--------------------------------------------------&lt;br&gt;
+To This&lt;br&gt;
+________________________________&lt;br&gt;
+boot=/dev/hdc&lt;br&gt;
+disk=/dev/hdc&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; bios=0x80&lt;br&gt;
+&lt;br&gt;
+linear&lt;br&gt;
+map=/mnt/cf1/map&lt;br&gt;
+install=/mnt/cf1/boot.b&lt;br&gt;
+prompt&lt;br&gt;
+timeout=50&lt;br&gt;
+initrd=/mnt/cf1/initrd&lt;br&gt;
+default=vmlinuz&lt;br&gt;
+&lt;br&gt;
+image=/mnt/cf1/vmlinuz&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; label=vmlinuz&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; root=/dev/hdc2&lt;br&gt;
+#&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; ramdisk=9312&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; read-only&lt;br&gt;
+image=/mnt/cf1/bzImage&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; label=bzImage&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; root=/dev/hdc2&lt;br&gt;
+&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp; read-only&lt;br&gt;
+--------------------------------------------&lt;br&gt;
+The important things are that I added initrd and got rid of a lot of stuff
+that was causing grief I now have added another image.&lt;br&gt;
+I am having problem with the eepro100 drivers for my ethernet intel 82559ER
+and alsa drivers and so I am now compiling a 2.4.9 kernel instead of the
+2.2.17 kernel so that they can all be satisfied......finergers crossed.&lt;br&gt;
+&lt;br&gt;
+Correy&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+Barry Gershenfeld wrote:&lt;br&gt;
+&lt;blockquote type=&quot;cite&quot;
+ cite=&quot;<A HREF="mailto:mid2.2.16.20030717113504.6b4f16de@zmicro.com">mid2.2.16.20030717113504.6b4f16de@zmicro.com</A>&quot;&gt;
+  &lt;blockquote type=&quot;cite&quot;&gt;
+    &lt;pre wrap=&quot;&quot;&gt;I have been playing with lilo.conf to try another kernel image. I tried 
+the other image I made but it didn't work and then I tried to restore 
+the original one but it doesn't work so I am assuming it is a problem 
+with my lilo.conf file.
+    &lt;/pre&gt;
+  &lt;/blockquote&gt;
+  &lt;pre wrap=&quot;&quot;&gt;&lt;!----&gt;
+It used to work?  Did you install lilo this way when you got
+it to work?  I am not familiar with installing from a chroot
+environment, nor do I use a CF disk, so while I would usually
+question entries in your lilo.conf file, they are probably
+right, if it used to work.
+
+So, which line(s) did you change?
+Or, what are you doing different?
+
+  &lt;/pre&gt;
+  &lt;blockquote type=&quot;cite&quot;&gt;
+    &lt;pre wrap=&quot;&quot;&gt;I then run lilo and it says
+Added linux *
+    &lt;/pre&gt;
+  &lt;/blockquote&gt;
+  &lt;pre wrap=&quot;&quot;&gt;&lt;!----&gt;
+So lilo doesn't think you have any errors.
+
+  &lt;/pre&gt;
+  &lt;blockquote type=&quot;cite&quot;&gt;
+    &lt;pre wrap=&quot;&quot;&gt;However after rebooting all I get is LI and the system hangs.
+    &lt;/pre&gt;
+  &lt;/blockquote&gt;
+  &lt;pre wrap=&quot;&quot;&gt;&lt;!----&gt;
+This means that you did not get to load the kernel.  That 
+means you don't have to worry about 
+  -append arguments to the kernel
+  -initrd
+  -init
+  -startup scripts
+  -mounted drives
+because none of this will have happened yet.
+
+  &lt;/pre&gt;
+  &lt;blockquote type=&quot;cite&quot;&gt;
+    &lt;pre wrap=&quot;&quot;&gt;also I don't really understand about 
+initrd and what script causes it to load into ram2?
+    &lt;/pre&gt;
+  &lt;/blockquote&gt;
+  &lt;pre wrap=&quot;&quot;&gt;&lt;!----&gt;
+The kernel, after it is running, after it has detected processor
+and hardware, wants to mount a root file
+system to work from.  This can be a ramdisk.  From watching it
+boot, it is apparent the code for mounting a ramdisk and even
+the copying-to-it part are in the kernel.
+
+Up until this point the kernel is a single piece of code doing
+its thing.  Once a root disk is mounted it (tries to) start init
+and from there inittab and all the other scripts start running
+and other processes can be created.
+
+
+More specifically, when you see &quot;LI&quot;, code in the boot sector
+has executed, read what it thinks is the map file, loaded what
+it thinks is the kernel loader, and tried to jump to it.
+
+The most common problem is &quot;geometry mismatch&quot;, which in a few
+words means that lilo (when you install it) has to be able
+to predict exactly what to feed the BIOS on boot up such
+that it will read the same device/sectors it found during
+the install.
+
+Well, you said &quot;any help&quot; :)
+
+Barry
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+&lt;a class=&quot;moz-txt-link-abbreviated&quot; href=&quot;mailto:<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&quot;&gt;<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&lt;/a&gt;
+&lt;a class=&quot;moz-txt-link-freetext&quot; href=&quot;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux"">http://mail.adis.on.ca/lists/listinfo/peeweelinux&quot;</A>&gt;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux</a">http://mail.adis.on.ca/lists/listinfo/peeweelinux&lt;/a</A>&gt;
+
+
+  &lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;br&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+--------------090001040005010207000400--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001140.html">[Peeweelinux] lilo.conf hangs
+</A></li>
+	<LI> Next message: <A HREF="001142.html">[Peeweelinux] rootfilesystem isn't free after flushing to ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1141">[ date ]</a>
+              <a href="thread.html#1141">[ thread ]</a>
+              <a href="subject.html#1141">[ subject ]</a>
+              <a href="author.html#1141">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,1003 @@
+From peeweelinux@adis.on.ca  Fri Aug 10 18:11:34 2001
+From: peeweelinux@adis.on.ca (Dumais, Alexandre)
+Date: Fri, 10 Aug 2001 13:11:34 -0400
+Subject: Telnet problem
+Message-ID: <5009AD9521A8D41198EE00805F85F18FD075A8@SEMBO111>
+
+Hi,
+
+I'm using pwlconfig 0.61 to create an embedded linux version and it's
+working well (nice distribution !) except for the telnet that gives me this
+error message when i try to use it:
+
+"telnet: error in loading shared libraries: libutil.so.1: cannot open shared
+object file: No such file or directory"
+
+I've included many network packages but this one is probably dependent of a
+specific package that I did not include. Maybe you could help me with this.
+
+I would also like to install a ftp deamon and I didn't find one with PeeWee
+Linux. Is there any one that I missed and if not, does someone know a small
+one that works fine with PeeWee?
+
+Thanks
+
+AlexandreDumais- dumaisa@teknor.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Aug 20 22:04:11 2001
+From: peeweelinux@adis.on.ca (Guillaume Sisteron)
+Date: Mon, 20 Aug 2001 23:04:11 +0200
+Subject: DiskOnChip Problem
+Message-ID: <002601c129bb$a954ba90$a016fea9@guigui>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0027_01C129CC.6CDD8A90
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Hi,
+ 
+I'm trying to develop a Linux-based system on a Disk On Chip (8Mb).
+ 
+I've got several problems, and although I've read your mailing list
+archive, I didn't find a great solution.
+ 
+I'm using PeeWeeLinux 0.61.0 distribution.
+I build my file system (with DOC driver included as module or as static
+in the kernel : both don't work) and put it on the DiskOnChip (by
+replacing lilo with doc-lilo in the pwl-target-load script).
+I manage to boot on the DOC, but the system is then bloked while trying
+to mount the root partition.
+ 
+It says something like: VFS unable to mount root partition on device
+03:02.
+ 
+ 
+Do you know the problem or at least could you answer to the following
+questions:
+ 
+1)       Is it possible to put all the file system directly on the Disk
+On Chip target ?
+2)       Is it necessary to use doc-lilo (and a special lilo.conf file)
+instead of lilo in the pwl_target_load script ?
+3)       In the mailing list archive, some say it is necessary to first
+put everything on ide partition and then put everything on DOC ?
+4)       On the web site, it is written: " Currently the loading of
+target devices directly attached to the development system are
+supported. These include floppy drives, IDE hard drives, scsi hard
+drives, M-Systems Disk-On-Chip and CompactFlash devices.".
+So what's the best method to load the file system on the DiskOnChip
+target ?
+ 
+ 
+Thanks very much for your answer !
+ 
+ 
+---
+Guillaume SISTERON
+COM One
+ 
+
+------=_NextPart_000_0027_01C129CC.6CDD8A90
+Content-Type: text/html;
+	charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns=3D"http://www.w3.org/TR/REC-html40">
+
+<head>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Dus-ascii">
+
+
+<meta name=3DProgId content=3DWord.Document>
+<meta name=3DGenerator content=3D"Microsoft Word 10">
+<meta name=3DOriginator content=3D"Microsoft Word 10">
+<link rel=3DFile-List href=3D"cid:filelist.xml@01C129CC.6C911840">
+<!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:DoNotRelyOnCSS/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:DocumentKind>DocumentEmail</w:DocumentKind>
+  <w:HyphenationZone>21</w:HyphenationZone>
+  <w:EnvelopeVis/>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+span.StyleCourrierlectronique17
+	{mso-style-type:personal-compose;
+	mso-style-noshow:yes;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	color:windowtext;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:1879277224;
+	mso-list-type:hybrid;
+	mso-list-template-ids:1397397194 67895313 67895321 67895323 67895311 =
+67895321 67895323 67895311 67895321 67895323;}
+@list l0:level1
+	{mso-level-text:"%1\)";
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level2
+	{mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level3
+	{mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level5
+	{mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level6
+	{mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level8
+	{mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level9
+	{mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */=20
+ table.MsoNormalTable
+	{mso-style-name:"Tableau Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]-->
+</head>
+
+<body lang=3DFR link=3Dblue vlink=3Dpurple =
+style=3D'tab-interval:35.4pt'>
+
+<div class=3DSection1>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>Hi,<o:p></o:p></span></=
+font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>I&#8217;m trying to =
+develop a
+Linux-based system on a Disk On Chip (8Mb).<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>I&#8217;ve got several
+problems, and although I&#8217;ve read your mailing list archive, I
+didn&#8217;t find a great solution.<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>I&#8217;m using =
+</span></font><span
+lang=3DEN-GB style=3D'mso-ansi-language:EN-GB'>PeeWeeLinux 0.61.0 =
+distribution.<o:p></o:p></span></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>I build my file system =
+(with
+DOC driver included as module or as static in the kernel : both =
+don&#8217;t
+work) and put it on the DiskOnChip (by replacing lilo with doc-lilo in =
+the
+pwl-target-load script).<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>I manage to boot on =
+the DOC,
+but the system is then bloked while trying to mount the root =
+partition.<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>It says something =
+like: VFS
+unable to mount root partition on device =
+03:02.<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>Do you know the =
+problem or at
+least could you answer to the following =
+questions:<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1;
+tab-stops:list 36.0pt'><![if !supportLists]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'><span style=3D'mso-list:Ignore'>1)<font =
+size=3D1
+face=3D"Times New Roman"><span style=3D'font:7.0pt "Times New =
+Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></font></span></span></font><![endif]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>Is
+it possible to put all the file system directly on the Disk On Chip =
+target ?<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1;
+tab-stops:list 36.0pt'><![if !supportLists]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'><span style=3D'mso-list:Ignore'>2)<font =
+size=3D1
+face=3D"Times New Roman"><span style=3D'font:7.0pt "Times New =
+Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></font></span></span></font><![endif]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>Is
+it necessary to use doc-lilo (and a special lilo.conf file) instead of =
+lilo in
+the pwl_target_load script ?<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1;
+tab-stops:list 36.0pt'><![if !supportLists]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'><span style=3D'mso-list:Ignore'>3)<font =
+size=3D1
+face=3D"Times New Roman"><span style=3D'font:7.0pt "Times New =
+Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></font></span></span></font><![endif]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>In
+the mailing list archive, some say it is necessary to first put =
+everything on
+ide partition and then put everything on DOC =
+?<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo1;
+tab-stops:list 36.0pt'><![if !supportLists]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'><span style=3D'mso-list:Ignore'>4)<font =
+size=3D1
+face=3D"Times New Roman"><span style=3D'font:7.0pt "Times New =
+Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></font></span></span></font><![endif]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>On
+the web site, it is written: &#8220; C</span></font><span lang=3DEN-GB
+style=3D'mso-ansi-language:EN-GB'>urrently the loading of target devices =
+directly
+attached to the development system are supported. These include floppy =
+drives,
+IDE hard drives, scsi hard drives, M-Systems Disk-On-Chip and =
+CompactFlash
+devices.&#8221;.</span><font size=3D2 face=3DArial><span lang=3DEN-GB
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p=
+></o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:18.0pt'><font size=3D3
+face=3D"Times New Roman"><span lang=3DEN-GB =
+style=3D'font-size:12.0pt;mso-ansi-language:
+EN-GB'>So what&#8217;s the best method to load the file system on the
+DiskOnChip target ?<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:18.0pt'><font size=3D3
+face=3D"Times New Roman"><span lang=3DEN-GB =
+style=3D'font-size:12.0pt;mso-ansi-language:
+EN-GB'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:18.0pt'><font size=3D3
+face=3D"Times New Roman"><span lang=3DEN-GB =
+style=3D'font-size:12.0pt;mso-ansi-language:
+EN-GB'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:18.0pt'><font size=3D3
+face=3D"Times New Roman"><span lang=3DEN-GB =
+style=3D'font-size:12.0pt;mso-ansi-language:
+EN-GB'>Thanks very much for your answer !<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:18.0pt'><font size=3D3
+face=3D"Times New Roman"><span lang=3DEN-GB =
+style=3D'font-size:12.0pt;mso-ansi-language:
+EN-GB'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:18.0pt'><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p=
+>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:18.0pt'><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>---<=
+o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:18.0pt'><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>Guil=
+laume
+SISTERON<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:18.0pt'><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>COM
+One<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span =
+style=3D'font-size:10.0pt;
+font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+</div>
+
+</body>
+
+</html>
+
+------=_NextPart_000_0027_01C129CC.6CDD8A90--
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Aug 21 08:21:38 2001
+From: peeweelinux@adis.on.ca (Tim Westbrook)
+Date: Tue, 21 Aug 2001 00:21:38 -0700 (PDT)
+Subject: DiskOnChip Problem
+In-Reply-To: <002601c129bb$a954ba90$a016fea9@guigui>
+Message-ID: <20010821072138.87587.qmail@web13502.mail.yahoo.com>
+
+Hello Guillaume,
+    Oddly enough, I found myself in your exact same
+situation tonight. I am using a doc system as well,
+with the target being an uncompressed ext2 partion on
+ramdisk. 
+
+    I was able to get around your particular problem
+by creating an msys subdirectory in my
+/project/minimal/mnt/dev directory.
+
+    It seems that the portion of the script that
+creates the boot device directory structure does not
+create multi-level /dev entries. So you may be seeing
+cp error messages when your run "load target"
+
+   You may be able to do this with the custom files
+option I did it by editing the script file that
+creates these directory entries.
+
+   Also make sure that the doc driver is loaded, i am
+using a modular driver so i had to modify the linuxrc
+in the initrd to load the driver before attempting to
+mount the root partition.
+
+   I myself am having trouble with finding init. My
+root partition seems to boot fine , but i get 
+"Kernel Panic: No INIT found" I suppose for some
+reason, the system can't read my root partition.
+   
+   A curious item, I noticed that for uncompressed
+ext2 partitions booting from lilo, the linuxrc script
+in the initrd copies the root partition from the
+source partion on the flash to /dev/ram2, but the
+fstab entry created points / to /dev/ram0. I don't
+think this is my problem , but it seems sort of odd.
+   
+- Tim
+
+
+
+--- Guillaume Sisteron <gsistero@com1.fr> wrote:
+> Hi,
+>  
+> I'm trying to develop a Linux-based system on a Disk
+> On Chip (8Mb).
+>  
+> I've got several problems, and although I've read
+> your mailing list
+> archive, I didn't find a great solution.
+>  
+> I'm using PeeWeeLinux 0.61.0 distribution.
+> I build my file system (with DOC driver included as
+> module or as static
+> in the kernel : both don't work) and put it on the
+> DiskOnChip (by
+> replacing lilo with doc-lilo in the pwl-target-load
+> script).
+> I manage to boot on the DOC, but the system is then
+> bloked while trying
+> to mount the root partition.
+>  
+> It says something like: VFS unable to mount root
+> partition on device
+> 03:02.
+>  
+>  
+> Do you know the problem or at least could you answer
+> to the following
+> questions:
+>  
+> 1)       Is it possible to put all the file system
+> directly on the Disk
+> On Chip target ?
+> 2)       Is it necessary to use doc-lilo (and a
+> special lilo.conf file)
+> instead of lilo in the pwl_target_load script ?
+> 3)       In the mailing list archive, some say it is
+> necessary to first
+> put everything on ide partition and then put
+> everything on DOC ?
+> 4)       On the web site, it is written: " Currently
+> the loading of
+> target devices directly attached to the development
+> system are
+> supported. These include floppy drives, IDE hard
+> drives, scsi hard
+> drives, M-Systems Disk-On-Chip and CompactFlash
+> devices.".
+> So what's the best method to load the file system on
+> the DiskOnChip
+> target ?
+>  
+>  
+> Thanks very much for your answer !
+>  
+>  
+> ---
+> Guillaume SISTERON
+> COM One
+>  
+> 
+
+
+__________________________________________________
+Do You Yahoo!?
+Make international calls for as low as $.04/minute with Yahoo! Messenger
+http://phonecard.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Aug 22 18:17:08 2001
+From: peeweelinux@adis.on.ca (SISTERON Guillaume)
+Date: Wed, 22 Aug 2001 16:17:08 -0100
+Subject: Telnet problem
+Message-ID: <01082216170800.01020@gsisteron.local.com1.fr>
+
+Hi, 
+
+The solution for your telnet problem is that you didn't include the 
+libutil.so.1. You can find this package in Shell_Librairies / Glibc / (I 
+think...)
+
+
+For you ftp daemon, I'm having the same problem.
+If you find a small good one, I will be happy to have news about it...
+
+Thanks
+
+Guillaume Sisteron
+COM One
+
+
+
+
+--------------------
+
+
+
+
+Reply to:
+
+Hi, 
+
+
+I'm using pwlconfig 0.61 to create an embedded linux version and it's 
+working well (nice distribution !) except for the telnet that gives me this 
+error message when i try to use it: 
+
+
+"telnet: error in loading shared libraries: libutil.so.1: cannot open shared 
+object file: No such file or directory" 
+
+
+I've included many network packages but this one is probably dependent of a 
+specific package that I did not include. Maybe you could help me with this. 
+
+
+I would also like to install a ftp deamon and I didn't find one with PeeWee 
+Linux. Is there any one that I missed and if not, does someone know a small 
+one that works fine with PeeWee? 
+
+
+Thanks 
+
+
+AlexandreDumais- dumaisa@teknor.com 
+--------------------------------------------------- 
+See the list archives at http://adis.on.ca/archives/ 
+See the PWL homepage at http://peeweelinux.com 
+--------------------------------------------------- 
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Aug 23 15:12:06 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 23 Aug 2001 09:12:06 -0500 (CDT)
+Subject: Telnet problem
+In-Reply-To: <01082216170800.01020@gsisteron.local.com1.fr>
+Message-ID: <Pine.LNX.4.33.0108230911330.920-100000@mobile.adis.on.ca>
+
+Hi,
+
+I believe there is a netkit-ftp package which also includes the ftp
+daemon.
+
+TTYL,
+Adi
+
+On Wed, 22 Aug 2001, SISTERON Guillaume wrote:
+
+> Hi,
+>
+> The solution for your telnet problem is that you didn't include the
+> libutil.so.1. You can find this package in Shell_Librairies / Glibc / (I
+> think...)
+>
+>
+> For you ftp daemon, I'm having the same problem.
+> If you find a small good one, I will be happy to have news about it...
+>
+> Thanks
+>
+> Guillaume Sisteron
+> COM One
+>
+>
+>
+>
+> --------------------
+>
+>
+>
+>
+> Reply to:
+>
+> Hi,
+>
+>
+> I'm using pwlconfig 0.61 to create an embedded linux version and it's
+> working well (nice distribution !) except for the telnet that gives me this
+> error message when i try to use it:
+>
+>
+> "telnet: error in loading shared libraries: libutil.so.1: cannot open shared
+> object file: No such file or directory"
+>
+>
+> I've included many network packages but this one is probably dependent of a
+> specific package that I did not include. Maybe you could help me with this.
+>
+>
+> I would also like to install a ftp deamon and I didn't find one with PeeWee
+> Linux. Is there any one that I missed and if not, does someone know a small
+> one that works fine with PeeWee?
+>
+>
+> Thanks
+>
+>
+> AlexandreDumais- dumaisa@teknor.com
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at http://peeweelinux.com
+> ---------------------------------------------------
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+>
+
+-- 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Aug 23 19:12:36 2001
+From: peeweelinux@adis.on.ca (SISTERON Guillaume)
+Date: Thu, 23 Aug 2001 17:12:36 -0100
+Subject: Telnet problem
+In-Reply-To: <Pine.LNX.4.33.0108230911330.920-100000@mobile.adis.on.ca>
+References: <Pine.LNX.4.33.0108230911330.920-100000@mobile.adis.on.ca>
+Message-ID: <01082317123602.01236@gsisteron.local.com1.fr>
+
+Hi,
+
+I'm using troll-ftpd and it's running well...
+
+Guillaume
+
+
+On Thursday 23 August 2001 13:12, Adi Linden wrote:
+> Hi,
+>
+> I believe there is a netkit-ftp package which also includes the ftp
+> daemon.
+>
+> TTYL,
+> Adi
+>
+> On Wed, 22 Aug 2001, SISTERON Guillaume wrote:
+> > Hi,
+> >
+> > The solution for your telnet problem is that you didn't include the
+> > libutil.so.1. You can find this package in Shell_Librairies / Glibc / (I
+> > think...)
+> >
+> >
+> > For you ftp daemon, I'm having the same problem.
+> > If you find a small good one, I will be happy to have news about it...
+> >
+> > Thanks
+> >
+> > Guillaume Sisteron
+> > COM One
+> >
+> >
+> >
+> >
+> > --------------------
+> >
+> >
+> >
+> >
+> > Reply to:
+> >
+> > Hi,
+> >
+> >
+> > I'm using pwlconfig 0.61 to create an embedded linux version and it's
+> > working well (nice distribution !) except for the telnet that gives me
+> > this error message when i try to use it:
+> >
+> >
+> > "telnet: error in loading shared libraries: libutil.so.1: cannot open
+> > shared object file: No such file or directory"
+> >
+> >
+> > I've included many network packages but this one is probably dependent of
+> > a specific package that I did not include. Maybe you could help me with
+> > this.
+> >
+> >
+> > I would also like to install a ftp deamon and I didn't find one with
+> > PeeWee Linux. Is there any one that I missed and if not, does someone
+> > know a small one that works fine with PeeWee?
+> >
+> >
+> > Thanks
+> >
+> >
+> > AlexandreDumais- dumaisa@teknor.com
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at http://peeweelinux.com
+> > ---------------------------------------------------
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Aug 24 06:10:03 2001
+From: peeweelinux@adis.on.ca (Tim Westbrook)
+Date: Thu, 23 Aug 2001 22:10:03 -0700 (PDT)
+Subject: Can mount ramdisk root (/) ; Can't find /sbin/init
+Message-ID: <20010824051003.72798.qmail@web13509.mail.yahoo.com>
+
+Howdy.
+   4 nights and nothing to show for it but a greatly
+enhanced knowledge of the linux boot process... and
+yet.....
+   I am using a DOC system with an uncompressed ext2
+ramdisk and initrd.
+   When I boot up , 
+       initrd runs (which installs my DOC driver),
+       the /dev/msys/fla2 gets successfully
+transferred to /dev/ram2,
+       the kernel reports a successful mount of the
+root filesystem,
+       The kernel reports it can't find init.
+
+   I also have a development hda on this system and if
+I pass the "root=/dev/hda1 init=/bin/sh" command to
+the kernel/bootloader it comes up fine. I can even
+mount /dev/ram2 and run /ram/mount/point/sbin/init.
+
+   Any ideas? 
+   I am getting a psychic vibration from the ramdisk
+configuration. Could this be a library issue? 
+
+Thanks
+-Tim
+
+
+__________________________________________________
+Do You Yahoo!?
+Make international calls for as low as $.04/minute with Yahoo! Messenger
+http://phonecard.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Aug 25 17:40:23 2001
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Sat, 25 Aug 2001 17:40:23 +0100
+Subject: notice from your webhost
+Message-ID: <E15agTv-00010E-00.2001-08-25-17-40-23@cmailg6.svr.pol.co.uk>
+
+
+
+This email is being sent to you on behalf of your current webspace provider.
+This message is not a spam or junk email, your email address was supplied to WebHosting.com
+You will not receive any more messages from WebHosting.com this is a one time special offer notice.
+
+WebHosting.com is offering a selected number of webhost's member's the following special offer. This offer is not available on our website at www.webhosting.com or anywhere else, this is a special offer and is valid only for a limitied time. Read on to learn more about this amazing offer.
+
+For only $6.25 (one time fee) you can get:
+
+> 500mb webspace
+> unlimited pop3 email addresses
+> cgi-bin
+> full ftp access
+> php, ssi, my-sql, asp support
+> mySQL database
+> FREE DOMAIN REGISTRATION (.com .net .org)
+> unlimited bandwidth
+> miva merchant account
+> secure server for transactions
+> accept credit cards
+> 24hour technical support
+
+You did read it right, all this will only cost you $6.25. There are no monthly fees or any other costs. You are probably wondering how WebHosting.com can offer all this for the very low price of only $6.25, the answer is that WebHosting.com will make a lot of revenue from extra webspace charges - people wishing to have more than 500mb can pay $10 per 10mb per month.
+
+If you would like to receive this excellent offer all you have to do is send your details to the following email address and your username and password will be emailed to you within 5 business days. Then you will be able to login at the members area of WebHosting.com and configure your account (add domains, setup scripts etc.).
+
+Please send all of the following details:
+
+Your Full Name
+Your Full Address
+Your Phone Number
+Your Email Address
+Your Credit Card Number
+Your Credit Card Expiry Date
+Your Credit Card Type (eg. visa, mastercard etc.)
+
+Send all of the above to webhost@techie.com
+
+
+
+
+Thank you and I hope you enjoy this very special offer
+
+John Simmons
+Head of Special Promotions, Webhosting.com
+
+-------------------------------------------------------------------------------------
+WebHosting.com is a member of the CNS International Internet Businesses Association
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Aug 29 21:10:03 2001
+From: peeweelinux@adis.on.ca (Kevin Fonner)
+Date: Wed, 29 Aug 2001 16:10:03 -0400
+Subject: getting started question
+Message-ID: <3B8D4C1B.6060607@fonner.net>
+
+Hello, I am a little new to the world of embedded linux so go easy on 
+me.  Anyways I am having some trouble getting started.  I extracted the 
+files as root under /root/Embedded_Build.  I go into this directory and 
+type ./pwlconfig
+and all it shows is
+..
+and then it just sits there.  Any idea what going on?  I tried 
+downloading it twice.  The first time I downloaded the whole thing..  
+peeweelinux-0.61.0-src.tar.gz
+Second time I downloaded..  peeweelinux-0.61.0-bin.tar.gz
+Same result both times.
+FYI...This is on a fresh installation of Redhat 7.1
+
+Thanks,
+Kevin
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Aug 31 19:44:21 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 31 Aug 2001 13:44:21 -0500 (CDT)
+Subject: getting started question
+In-Reply-To: <3B8D4C1B.6060607@fonner.net>
+Message-ID: <Pine.LNX.4.33.0108311342220.2363-100000@adibox.knet.ca>
+
+Hi,
+
+You need to have ncurses installed on the RedHat 7.1 box...
+
+TTYL,
+Adi
+
+On Wed, 29 Aug 2001, Kevin Fonner wrote:
+
+> Hello, I am a little new to the world of embedded linux so go easy on
+> me.  Anyways I am having some trouble getting started.  I extracted the
+> files as root under /root/Embedded_Build.  I go into this directory and
+> type ./pwlconfig
+> and all it shows is
+> ..
+> and then it just sits there.  Any idea what going on?  I tried
+> downloading it twice.  The first time I downloaded the whole thing..
+> peeweelinux-0.61.0-src.tar.gz
+> Second time I downloaded..  peeweelinux-0.61.0-bin.tar.gz
+> Same result both times.
+> FYI...This is on a fresh installation of Redhat 7.1
+>
+> Thanks,
+> Kevin
+>
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+>
+
+-- 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

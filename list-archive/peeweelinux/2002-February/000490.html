@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] [inittab] - Bad inittab entry: si::sysinit:/rc.init
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000495.html">
+   <LINK REL="Next"  HREF="000492.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] [inittab] - Bad inittab entry: si::sysinit:/rc.init
+   </H1>
+    <B>Charles T. Houghtby IV
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] [inittab] - Bad inittab entry: si::sysinit:/rc.init">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 26 Feb 2002 12:18:53 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000495.html">[Peeweelinux] vmware
+</A></li>
+        <LI> Next message: <A HREF="000492.html">[Peeweelinux] [boot - kernel] - pc_keyb: controller jammed (0xFF).
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#490">[ date ]</a>
+              <a href="thread.html#490">[ thread ]</a>
+              <a href="subject.html#490">[ subject ]</a>
+              <a href="author.html#490">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All... 
+
+Does anyone know where &quot;the directions&quot; as quoted in the boot results section? are? I'm using busybox's init services (i believe)
+
+I have kinda figured out that the first section before the first : Is the device to send output to? I can put /bin/bash in instead of a mingetty call and it works.. I put ttyS0 in instead of 1 2 3 4 or 5. 
+
+Maybe this whole thing is caused by conflicting settings in ./pwlconfig.. does busybox provide sysvinit as configured by peewee?
+
+boot results as follows:
+Freeing unused kernel memory: 72k freed
+serial console detected.  Disabling virtual terminals.
+Bad inittab entry: id:3:initdefault:
+device '/dev/si' does not exist.  Did you read the directions?
+Bad inittab entry: si::sysinit:/rc.init
+device '/dev/l0' does not exist.  Did you read the directions?
+\
+|<i>-=more of the same.. cut for space, available upon req.=-
+</I>/
+Bad inittab entry: 3:3:respawn:/sbin/mingetty tty3
+device '/dev/4' does not exist.  Did you read the directions?
+Bad inittab entry: 4:3:respawn:/sbin/mingetty tty4
+No more tasks for init -- sleeping forever.
+
+--
+
+Sincerely,
+
+Charles T. Houghtby IV
+Technical Consultant
+Concepts In System Design, Inc
+
+Imbalance of power corrupts, and monopoly of power corrupts absolutely.
+   -- Genji
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000495.html">[Peeweelinux] vmware
+</A></li>
+	<LI> Next message: <A HREF="000492.html">[Peeweelinux] [boot - kernel] - pc_keyb: controller jammed (0xFF).
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#490">[ date ]</a>
+              <a href="thread.html#490">[ thread ]</a>
+              <a href="subject.html#490">[ subject ]</a>
+              <a href="author.html#490">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

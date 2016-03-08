@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001143.html">
+   <LINK REL="Next"  HREF="001145.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 23 Jul 2003 15:15:21 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001143.html">[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+</A></li>
+        <LI> Next message: <A HREF="001145.html">[Peeweelinux] Re: [Peeweelinux ] rootfilesystem isn't free after flushing to ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1144">[ date ]</a>
+              <a href="thread.html#1144">[ thread ]</a>
+              <a href="subject.html#1144">[ subject ]</a>
+              <a href="author.html#1144">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> I ALSO discovered, in that same directory, the &quot;linuxrc&quot; file
+</I>&gt;<i> that the make-target scripts often talk about.  And the
+</I>&gt;<i> contents of that file are interesting:
+</I>&gt;<i> 
+</I>&gt;<i>   echo &quot;Copying filesystem /dev/hda2 to /dev/ram2....&quot;
+</I>&gt;<i>   dd if=/dev/hda2 of=/dev/ram2
+</I>&gt;<i>   echo &quot;Flushing buffers to disk....&quot;
+</I>&gt;<i>   sync
+</I>&gt;<i> 
+</I>&gt;<i> I said the other day this was built into the kernel--apparently
+</I>&gt;<i> not!  I am still trying to figure out how this script gets
+</I>&gt;<i> run before the real init is started.
+</I>
+The linuxrc file is part of the initrd mechanism. A really good 
+description of the initrd mechanism in in the kernel Documentation, 
+typically: /usr/src/linux/Documentation/initrd.txt
+
+Adi
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001143.html">[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+</A></li>
+	<LI> Next message: <A HREF="001145.html">[Peeweelinux] Re: [Peeweelinux ] rootfilesystem isn't free after flushing to ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1144">[ date ]</a>
+              <a href="thread.html#1144">[ thread ]</a>
+              <a href="subject.html#1144">[ subject ]</a>
+              <a href="author.html#1144">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

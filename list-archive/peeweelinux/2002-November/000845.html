@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Kernel panic: no init found.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000844.html">
+   <LINK REL="Next"  HREF="000846.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Kernel panic: no init found.
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Kernel panic: no init found.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 27 Nov 2002 12:06:54 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000844.html">[Peeweelinux] Kernel panic: no init found.
+</A></li>
+        <LI> Next message: <A HREF="000846.html">[Peeweelinux] Kernel panic: no init found.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#845">[ date ]</a>
+              <a href="thread.html#845">[ thread ]</a>
+              <a href="subject.html#845">[ subject ]</a>
+              <a href="author.html#845">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It appears as if you don't have the init program installed. 
+
+go to your project_folder/mnt/ folder and look to see if the init program is there. It is probably in mnt/sbin/init. 
+
+For some reason your config might not include init (although I can't imagine how..)
+
+~Ken
+
+&gt;&gt;&gt;<i> Hanoi Santos Hung &lt;<A HREF="mailto:hanoi@icid.edu.cu">hanoi@icid.edu.cu</A>&gt; 11/27 10:42 AM &gt;&gt;&gt;
+</I>Hello:
+I'm working in a almost full configuration, only excluding X and some
+network and video drivers, with the last version of peewee.I change
+the bzimage for bzimage-full and I'm booting from a 16 MB Compact
+Flash located in hdc for programming and in hda for booting.
+I'm using a GX1 SBC Card with Cx5530 Chipset and 64 MB Ram
+
+This is the error message:
+
+hda: Sandisk SDCFB-16, ATA DISK drive
+ide0 at 0x1f0-0x1f7 on irq 14
+hda: Sandisk SDFCB-16, 15 MB w/1kB Cache, CHS=490/2/32
+Floppy drives(s):fd0 is 1.44M
+FDC 0 is a post-1991 82077
+scsi : 0 hosts
+scsi : detected total
+Partition check:
+RAMDISK: Compressed image found at block 0
+VFS Mounted root (ext2 filesystem).
+Freeing unused kernel memory: 84 freed
+Kernel Panic: no init found. Try passing init= option to kernel
+
+
+
+-- 
+Best regards,
+Ing Hanoi Santos
+ mailto:<A HREF="mailto:hanoi@icid.edu.cu">hanoi@icid.edu.cu</A> 
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A> 
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000844.html">[Peeweelinux] Kernel panic: no init found.
+</A></li>
+	<LI> Next message: <A HREF="000846.html">[Peeweelinux] Kernel panic: no init found.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#845">[ date ]</a>
+              <a href="thread.html#845">[ thread ]</a>
+              <a href="subject.html#845">[ subject ]</a>
+              <a href="author.html#845">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

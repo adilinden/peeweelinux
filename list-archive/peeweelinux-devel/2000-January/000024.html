@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> V0.19 and pwlconfig design notes...
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000022.html">
+   <LINK REL="Next"  HREF="000023.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>V0.19 and pwlconfig design notes...
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="V0.19 and pwlconfig design notes...">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 26 Jan 2000 08:47:15 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000022.html">V0.19 and pwlconfig design notes...
+</A></li>
+        <LI> Next message: <A HREF="000023.html">YASL - Yet Another Small Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> I downloaded the 0.19 source file today (pretty good response for downloads
+</I>&gt;<i> from sourceforge...haven't tried your new ftp yet). Looks like a lot of stuff
+</I>&gt;<i> in there..not sure what it all is though...
+</I>
+There are still duplicate sources in there. The originals and the
+extracted, modified, comiled ones for PWL. I only patched boa so far. I
+have to work throught the other ones too.
+
+Still need to decide wether to do the tar thing or use rpm.
+
+&gt;<i> I started on the next release of pwlconfig.  I've integrated it so it can use
+</I>&gt;<i> my &quot;mkBootDevice&quot; shell script, now I just have to add a few parameters to the
+</I>&gt;<i> project.  So far I can only come up with a handfull of &quot;project&quot; specific
+</I>&gt;<i> parameters, but I'm planning on a menu that will let you enter these items into
+</I>&gt;<i> a &quot;...projects/myproject/project.default&quot; file. (you can manually edit it or
+</I>&gt;<i> use the menus).  Adding more parameters anytime should be a breeze...
+</I>&gt;<i> 
+</I>&gt;<i> &gt;From Main Menu-&gt;Manage project
+</I>&gt;<i> &quot;Project Device Type: DOC&quot;
+</I>&gt;<i> &quot;Project Device Location: /dev/fla1&quot;
+</I>&gt;<i> &quot;Project Mount Point: ./mnt&quot;
+</I>&gt;<i> &quot;Boot Label: pwlboot&quot;
+</I>&gt;<i> &quot;File System Compressed: no&quot;
+</I>&gt;<i> &quot;Default source for custom files: /home/ralph/SRC&quot;
+</I>&gt;<i> &quot;&lt;suggestions ???&gt;&quot;
+</I>&gt;<i> 
+</I>&gt;<i> Cursor through these items and select them to change them.  Its a little
+</I>&gt;<i> overhead (script coding) to provide an interactive menu, but it keeps all the
+</I>&gt;<i> pwl stuff integrated in the pwlconfig script.  I think I'll keep these
+</I>&gt;<i> functions in a small script, like &quot;pwl_default&quot;, that gets called by pwlconfig
+</I>&gt;<i> or from the command line.
+</I>
+So thi would allow for a configuration to be 'totally' configured with
+pwlconfig, where the projects files go, where the temp mount point is?
+
+&gt;<i> I split out some of the utility functions to shorten the pwlconfig script and
+</I>&gt;<i> also to share these between the scripts.  Small sharp tools and all that...
+</I>
+Good idea.
+
+&gt;<i> After this release, I'll start on integrating the &quot;build package&quot;
+</I>&gt;<i> scripts...then what ?? The compressed file system should be good challenge
+</I>&gt;<i> too...almost forgot about that one...
+</I>
+Ok, of the main menu there should be a configuration section to set
+whatever parameter for the project. Another main section should be the
+package selection portion and extraction of these files to the configured
+mount point. The next major meu item should be about what to with the
+build filesystem, i.e. load a DOC or flash, create  a ramdisk, iso image,
+tar file, etc...   
+
+&gt;<i> Probably need to start building a couple of default projects..once users
+</I>&gt;<i> download the binaries, they should be able to download &quot;router&quot;, &quot;thin client&quot;
+</I>&gt;<i> and so on - maybe 5-10K each - or the &quot;Project of the Month&quot;.  Since I haven't
+</I>&gt;<i> gotten anything to work yet, I can't help here :-(  
+</I>
+Yup, I fried a DOC. Don't know how I did it, but if I boot my development
+system on the embedded box I get a kernel message 'cannot access
+/dev/fla...'. I tried using the dos tools to restore it to a DOS disk with
+the original boot sector. It tells me it is not a FFS device. I s there
+warranty on these???
+
+&gt;<i> Best thing to do is see if you can build one of your working projects just
+</I>&gt;<i> using pwlconfig...that should be a good test :-)
+</I>
+Yup, planning on doing that with the dialin box. Also, plan on doing this
+for the satellite router as part of doing the documentation of how to
+build it. It's sometimes a pain to do docs and decide what knowledge the
+reader should have (in how much detail to go).
+
+&gt;<i> BTW, I tried your generate_list script (after I noticed that my &quot;include all&quot;
+</I>&gt;<i> wasn't working since there were no list files to include).  It kept killing my
+</I>&gt;<i> xterm window...so, I played with it...(hacker mentality - not my code, it must
+</I>&gt;<i> be tweaked!;-) and add a &quot;--remove&quot; function...and set it up to work from
+</I>&gt;<i> either directory (Embedded_Build or Embedded_Build/scripts). I'll post it
+</I>
+Good stuff, I am considering myself a beginner when it comes to perl and
+shell scripts. I think bacause I didn't formally learn it I missing some
+basics but at the same time know a lot of adavanced stuff because of all
+the other programming stuff I did. I am still having a bit of a hard time
+with having the script determine how it was invoked and where it live.
+
+The `pwd` command would give you the location from where the script was
+started. The '$0' variable includes the path and script name to get to the
+script from the 'pwd' location. Maybe using these 2 it would be possible
+to jump to predefined starting point?
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000022.html">V0.19 and pwlconfig design notes...
+</A></li>
+	<LI> Next message: <A HREF="000023.html">YASL - Yet Another Small Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

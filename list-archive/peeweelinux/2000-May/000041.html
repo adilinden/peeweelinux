@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Uncompressed root fs to ramdisk.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000040.html">
+   <LINK REL="Next"  HREF="000043.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Uncompressed root fs to ramdisk.
+   </H1>
+    <B>Mattias Sjogren
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Uncompressed root fs to ramdisk.">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 24 May 2000 16:12:04 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000040.html">Uncompressed root fs to ramdisk.
+</A></li>
+        <LI> Next message: <A HREF="000043.html">Uncompressed root fs to ramdisk.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#41">[ date ]</a>
+              <a href="thread.html#41">[ thread ]</a>
+              <a href="subject.html#41">[ subject ]</a>
+              <a href="author.html#41">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Another thing to try... Mount the filesystem in synch-mode
+and no curruption should occur on a suden power failure. Or,
+does anyone know any better?
+
+/Mattias
+
+Ralph Stickley &lt;<A HREF="mailto:r_stickley@yahoo.com">r_stickley@yahoo.com</A>&gt; skrev:
+&gt;<i> Kyle,
+</I>&gt;<i> Thanks for the help!  
+</I>&gt;<i> 
+</I>&gt;<i> --- Kyle Harris &lt;<A HREF="mailto:kharris@nexus-tech.net">kharris@nexus-tech.net</A>&gt; wrote:
+</I>&gt;<i> &gt; Ralph,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Please see below.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Ralph Stickley wrote:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; Not sure about the minigetty thing.  I think the
+</I>&gt;<i> /dev/tty things (are they
+</I>&gt;<i> &gt; &gt; files , pipes ? does anybody know ?? ) have to be in
+</I>&gt;<i> R/W partition. I just
+</I>&gt;<i> &gt; &gt; linked to my ram disk:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; /dev/xxx are special &quot;files&quot; called nodes. It provides
+</I>&gt;<i> a mechanism for
+</I>&gt;<i> &gt; accessing devices through a major and minor number.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Ahhh! thats the mknod thing does ... Still not sure how
+</I>&gt;<i> the permissions 
+</I>&gt;<i> get changed on these files even with a read-only file
+</I>&gt;<i> system...
+</I>&gt;<i> 
+</I>&gt;<i> Of course, init finds rc.sysinit before I execute a
+</I>&gt;<i> mount...
+</I>&gt;<i> 
+</I>&gt;<i> Hey, does the kernel mount the &quot;root=/dev/hdx&quot; device
+</I>&gt;<i> specified to Lilo?
+</I>&gt;<i> Then it can read inittab and use the /dev stuff.  Then
+</I>&gt;<i> rc.sysinit
+</I>&gt;<i> mounts this as read only.
+</I>&gt;<i> Only guessing here, then why doesn't my initial console
+</I>&gt;<i> work ?
+</I>&gt;<i> Does this mean my file system is mounted read/write at
+</I>&gt;<i> boot time ?
+</I>&gt;<i> 
+</I>&gt;<i> Hmmmm...I guess I'd have to study the kernel source code
+</I>&gt;<i> to find this...
+</I>&gt;<i> any clues ?
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; mount /dev/ram /var
+</I>&gt;<i> &gt; &gt; /tmp -&gt; /var
+</I>&gt;<i> &gt; &gt; /dev/tty0 -&gt; /tmp/tty0
+</I>&gt;<i> &gt; &gt; ...
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I like this idea of having /dev in the ramdisk. 
+</I>&gt;<i> 
+</I>&gt;<i> Only some items are linked...others seem to work even
+</I>&gt;<i> though they are in 
+</I>&gt;<i> read only file system...(like /dev/ram :)
+</I>&gt;<i> 
+</I>&gt;<i> &gt; But how does this work
+</I>&gt;<i> &gt; since you need /dev/ram in order to create and mount
+</I>&gt;<i> /var? And the
+</I>&gt;<i> &gt; kernel wants a console early in the boot sequence.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Oops...caught me :-)  I get a nasty message from the
+</I>&gt;<i> kernel at boot time.
+</I>&gt;<i> Something about not being able to open initial console.
+</I>&gt;<i> Ok. Tough! Hmmmm...
+</I>&gt;<i> wonder if that screws up other stuff ??  I have no clue
+</I>&gt;<i> whats going on 
+</I>&gt;<i> here with these /dev/ node things...
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt; Where /tmp is a link to the /var mount point for the
+</I>&gt;<i> ram disk. That might
+</I>&gt;<i> &gt; help
+</I>&gt;<i> &gt; &gt; ?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Do you create more than one ramdisk ? How do you
+</I>&gt;<i> specify the size of your
+</I>&gt;<i> &gt; ram
+</I>&gt;<i> &gt; &gt; disk ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; for a 2 MB disk, I use mke2fs -m0 /dev/ram0 2048
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Ah...another flag!  Should have figured..Thanks for the
+</I>&gt;<i> help :-)
+</I>&gt;<i> 
+</I>&gt;<i> Later,
+</I>&gt;<i> Ralph
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Kyle.
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> &gt; See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> &gt; See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> __________________________________________________
+</I>&gt;<i> Do You Yahoo!?
+</I>&gt;<i> Send instant messages &amp; get email alerts with Yahoo!
+</I>&gt;<i> Messenger.
+</I>&gt;<i> <A HREF="http://im.yahoo.com/">http://im.yahoo.com/</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>
+<A HREF="http://www.docs.uu.se/robocup/">http://www.docs.uu.se/robocup/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000040.html">Uncompressed root fs to ramdisk.
+</A></li>
+	<LI> Next message: <A HREF="000043.html">Uncompressed root fs to ramdisk.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#41">[ date ]</a>
+              <a href="thread.html#41">[ thread ]</a>
+              <a href="subject.html#41">[ subject ]</a>
+              <a href="author.html#41">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

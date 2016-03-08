@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Files get deleted after reboot
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001059.html">
+   <LINK REL="Next"  HREF="001061.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Files get deleted after reboot
+   </H1>
+    <B>Correy Edmed
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Files get deleted after reboot">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sun, 27 Apr 2003 20:17:55 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001059.html">[Peeweelinux] Re[3]: Mouse PS2 problem
+</A></li>
+        <LI> Next message: <A HREF="001061.html">[Peeweelinux] tcsetpgrp: Inappropriate ioctl for device error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1060">[ date ]</a>
+              <a href="thread.html#1060">[ thread ]</a>
+              <a href="subject.html#1060">[ subject ]</a>
+              <a href="author.html#1060">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a multi-part message in MIME format.
+
+------=_NextPart_000_000B_01C30CFA.166FAA40
+Content-Type: text/plain;
+	charset=&quot;iso-8859-1&quot;
+Content-Transfer-Encoding: quoted-printable
+
+ Hi
+
+When I log on as root I get ulimit: not found.
+Everything seems to work however whenever I restart none of the files i =
+created have been saved onto the compact flash.
+
+I am using a 256MB Ultra Sandisk Compact flash and I think it has =
+something to do with the way the system is partitioned
+
+/proc/partitions
+major minor #blocks name
+22    0      250880    hdc
+22    1      250879    hdc1
+
+/proc/cmdline
+auto BOOT_IMAGE=3Dlinux ro root=3D100 ramdisk=3D28376
+
+/proc/swaps
+Filename            Type      Size      Used      Priority
+
+/proc/versions
+Linux version 2.2.17 (<A HREF="mailto:root@ce">root@ce</A>) (gcc version egcs-2.91.66 199990314/linux =
+(egcs-1.1.2 relase)) #1 Fri May 2 15:33:53 EDT 2003
+
+When I log in as admin and try and create a file it says Permission =
+denied. even though I should have write permissions.
+
+How can I make it so that I can write to the compact flash and it will =
+be there when I reboot?
+
+Correy
+
+
+------=_NextPart_000_000B_01C30CFA.166FAA40
+Content-Type: text/html;
+	charset=&quot;iso-8859-1&quot;
+Content-Transfer-Encoding: quoted-printable
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;
+&lt;META content=3D&quot;text/html; charset=3Diso-8859-1&quot; =
+http-equiv=3DContent-Type&gt;
+&lt;META content=3D&quot;MSHTML 5.00.3502.5390&quot; name=3DGENERATOR&gt;
+&lt;STYLE&gt;&lt;/STYLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgColor=3D#ffffff&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial size=3D2&gt;&lt;!--StartFragment =
+--&gt;&amp;nbsp;Hi&lt;BR&gt;&lt;BR&gt;When I log on=20
+as root I get ulimit: not found.&lt;BR&gt;Everything seems to work however =
+whenever I=20
+restart none of the files i created have been saved onto the compact=20
+flash.&lt;BR&gt;&lt;BR&gt;I am using a 256MB Ultra Sandisk Compact flash and I think =
+it has=20
+something to do with the way the system is=20
+partitioned&lt;BR&gt;&lt;BR&gt;/proc/partitions&lt;BR&gt;major minor #blocks=20
+name&lt;BR&gt;22&amp;nbsp;&amp;nbsp;&amp;nbsp; 0&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; 250880 =
+&amp;nbsp;&amp;nbsp;=20
+hdc&lt;BR&gt;22&amp;nbsp;&amp;nbsp;&amp;nbsp; 1&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; =
+250879&amp;nbsp;&amp;nbsp;&amp;nbsp;=20
+hdc1&lt;BR&gt;&lt;BR&gt;/proc/cmdline&lt;BR&gt;auto BOOT_IMAGE=3Dlinux ro root=3D100=20
+ramdisk=3D28376&lt;BR&gt;&lt;BR&gt;/proc/swaps&lt;BR&gt;Filename&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;=20
+&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; Type&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp; Size&amp;nbsp;&amp;nbsp; =
+
+&amp;nbsp;&amp;nbsp; Used&amp;nbsp;&amp;nbsp; &amp;nbsp;&amp;nbsp;=20
+Priority&lt;BR&gt;&lt;BR&gt;/proc/versions&lt;BR&gt;Linux version 2.2.17 (<A HREF="mailto:root@ce">root@ce</A>) (gcc =
+version=20
+egcs-2.91.66 199990314/linux (egcs-1.1.2 relase)) #1 Fri May 2 15:33:53 =
+EDT=20
+2003&lt;BR&gt;&lt;BR&gt;When I log in as admin and try and create a file it says =
+Permission=20
+denied. even though I should have write permissions.&lt;BR&gt;&lt;BR&gt;How can I =
+make it so=20
+that I can write to the compact flash and it will be there when I=20
+reboot?&lt;BR&gt;&lt;BR&gt;Correy&lt;BR&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+
+------=_NextPart_000_000B_01C30CFA.166FAA40--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001059.html">[Peeweelinux] Re[3]: Mouse PS2 problem
+</A></li>
+	<LI> Next message: <A HREF="001061.html">[Peeweelinux] tcsetpgrp: Inappropriate ioctl for device error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1060">[ date ]</a>
+              <a href="thread.html#1060">[ thread ]</a>
+              <a href="subject.html#1060">[ subject ]</a>
+              <a href="author.html#1060">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

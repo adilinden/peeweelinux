@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] newbie wants to target USB HDD
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000882.html">
+   <LINK REL="Next"  HREF="000884.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] newbie wants to target USB HDD
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] newbie wants to target USB HDD">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 30 Dec 2002 10:33:46 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000882.html">[Peeweelinux] newbie wants to target USB HDD
+</A></li>
+        <LI> Next message: <A HREF="000884.html">[Peeweelinux] newbie wants to target USB HDD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#883">[ date ]</a>
+              <a href="thread.html#883">[ thread ]</a>
+              <a href="subject.html#883">[ subject ]</a>
+              <a href="author.html#883">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>I'm working through the example to create an image to a boot floppy. Instead,
+</I>&gt;<i>I'd like to write it to my USB disk, so I can move it to my test machine and
+</I>&gt;<i>see if it boots. Is this possible?
+</I>&gt;<i>
+</I>&gt;<i>thanks,
+</I>&gt;<i>dan
+</I>
+It's possible if the test machine will boot a USB drive.
+
+Basically you have to choose a creating method and then 
+specify the USB drive in place of the floppy or hard
+drive.  The floppy setup has &quot;/dev/fd0&quot; as the device
+to write to, while hard drive options specify &quot;/dev/hdc&quot;
+or equivalent.  Your USB drive is likely mapped to a 
+scsi device so it would be something like &quot;/dev/sda&quot;
+instead.  Be very sure what you specify since the 
+script will erase/partition/makefs whatever you
+specify.
+
+If the USB drive boots like a floppy then use the
+floppy setup; otherwise use one of the hard drive
+options to program it.
+
+I don't understand all the options in that disk-creation
+script, but I have messed with some of them so give it
+a try and let us know what the result is.
+
+Barry
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000882.html">[Peeweelinux] newbie wants to target USB HDD
+</A></li>
+	<LI> Next message: <A HREF="000884.html">[Peeweelinux] newbie wants to target USB HDD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#883">[ date ]</a>
+              <a href="thread.html#883">[ thread ]</a>
+              <a href="subject.html#883">[ subject ]</a>
+              <a href="author.html#883">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

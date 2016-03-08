@@ -1,0 +1,4100 @@
+From peeweelinux@adis.on.ca  Tue Apr  1 14:19:26 2003
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Tue, 01 Apr 2003 09:19:26 -0500
+Subject: [Peeweelinux] boot scripts
+Message-ID: <se8959b4.088@qatech.com>
+
+Cool,
+
+Yep, this works nice. Thanks.
+
+~Ken
+
+>>> Troy Engel <tengel@fluid.com> 03/31 6:51 PM >>>
+Create a file named something like "30nfsmount", mode 0755, that is simply:
+
+#!/bin/sh
+/bin/mount -a -t nfs
+
+Obviously, make sure it's numbered at least one step higher than your 
+networking config. (I've completely rewritten the networking 
+initialization, so don't remember the defaults...)
+
+Then add this file as a custom file that gets put into /etc/rcS.d/ upon 
+build. Increase it's complexity as necessary...
+
+-te
+
+
+Ken Emmons, Jr. wrote:
+> Hello,
+> 
+> I have been trying to track down why my nfs filesystem is not mounted by root at bootup. I am able to mount it manually as root no problem. 
+> 
+> It seems that the rc.sysinit script which performs the "mount -a" command is executed before the rc scripts, so my network is not up at the point the mount command is processed, therefore my nfs is not mounted. 
+> 
+> Is there a post sysinit script that can be used for this purpose?
+> 
+> ~Ken
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca 
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux 
+
+-- 
+Troy Engel, Systems Engineer
+"Now, Beakie, we'll just flip this switch and 60,000 refreshing
+  volts of electricity will surge through your body. Ready?"
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca 
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Apr  2 06:22:16 2003
+From: peeweelinux@adis.on.ca (Yuval Yohai)
+Date: Tue, 1 Apr 2003 22:22:16 -0800 (PST)
+Subject: [Peeweelinux] how to creat a standalone image file on my HD
+Message-ID: <20030402062216.5803.qmail@web41305.mail.yahoo.com>
+
+Hello,
+
+I'm trying to create an floppy image file on my HD and then send it
+to a friend. But I am not able to it since the only options i see in
+the pwlconfig is doing it into a partition or a device. I tried to
+attach a loop device with no luck.
+
+Any suggestions?
+
+Thanks,
+Yuval
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Tax Center - File online, calculators, forms, and more
+http://tax.yahoo.com
+
+From peeweelinux@adis.on.ca  Thu Apr  3 00:26:23 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Wed, 02 Apr 2003 16:26:23 -0800
+Subject: [Peeweelinux] how to creat a standalone image file on my HD
+In-Reply-To: <20030402062216.5803.qmail@web41305.mail.yahoo.com>
+References: <20030402062216.5803.qmail@web41305.mail.yahoo.com>
+Message-ID: <3E8B7FAF.6020509@fluid.com>
+
+Do it to an actual floppy, then use 'dd' to pull it off the floppy to a 
+file. Something like 'dd if=/dev/fd0 of=/var/tmp/floppy.img bs=2048' 
+should do the trick (check that for errors first).
+
+-te
+
+Yuval Yohai wrote:
+> Hello,
+> 
+> I'm trying to create an floppy image file on my HD and then send it
+> to a friend. But I am not able to it since the only options i see in
+> the pwlconfig is doing it into a partition or a device. I tried to
+> attach a loop device with no luck.
+> 
+> Any suggestions?
+> 
+> Thanks,
+> Yuval
+> 
+> __________________________________________________
+> Do you Yahoo!?
+> Yahoo! Tax Center - File online, calculators, forms, and more
+> http://tax.yahoo.com
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Troy Engel, Systems Engineer
+"Now, Beakie, we'll just flip this switch and 60,000 refreshing
+  volts of electricity will surge through your body. Ready?"
+
+
+From peeweelinux@adis.on.ca  Thu Apr  3 06:43:07 2003
+From: peeweelinux@adis.on.ca (Yuval Yohai)
+Date: Wed, 2 Apr 2003 22:43:07 -0800 (PST)
+Subject: [Peeweelinux] how to creat a standalone image file on my HD
+In-Reply-To: <3E8B7FAF.6020509@fluid.com>
+Message-ID: <20030403064307.98734.qmail@web41301.mail.yahoo.com>
+
+Thanks, but that I know, the problem I need an image larger that a
+floppy size.
+
+Yuval
+
+--- Troy Engel <tengel@fluid.com> wrote:
+> Do it to an actual floppy, then use 'dd' to pull it off the floppy
+> to a 
+> file. Something like 'dd if=/dev/fd0 of=/var/tmp/floppy.img
+> bs=2048' 
+> should do the trick (check that for errors first).
+> 
+> -te
+> 
+> Yuval Yohai wrote:
+> > Hello,
+> > 
+> > I'm trying to create an floppy image file on my HD and then send
+> it
+> > to a friend. But I am not able to it since the only options i see
+> in
+> > the pwlconfig is doing it into a partition or a device. I tried
+> to
+> > attach a loop device with no luck.
+> > 
+> > Any suggestions?
+> > 
+> > Thanks,
+> > Yuval
+> > 
+> > __________________________________________________
+> > Do you Yahoo!?
+> > Yahoo! Tax Center - File online, calculators, forms, and more
+> > http://tax.yahoo.com
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> -- 
+> Troy Engel, Systems Engineer
+> "Now, Beakie, we'll just flip this switch and 60,000 refreshing
+>   volts of electricity will surge through your body. Ready?"
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Tax Center - File online, calculators, forms, and more
+http://tax.yahoo.com
+
+From peeweelinux@adis.on.ca  Thu Apr  3 07:06:12 2003
+From: peeweelinux@adis.on.ca (vwbug19)
+Date: Thu, 3 Apr 2003 02:06:12 -0500
+Subject: [Peeweelinux] how to creat a standalone image file on my HD
+References: <20030403064307.98734.qmail@web41301.mail.yahoo.com>
+Message-ID: <006c01c2f9af$8324b850$bd00100a@VW4>
+
+try the  ide internal zipdrive it holds up to 100mb
+
+----- Original Message ----- 
+From: "Yuval Yohai" <yuval_yohai@yahoo.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Thursday, April 03, 2003 1:43 AM
+Subject: Re: [Peeweelinux] how to creat a standalone image file on my HD
+
+
+> Thanks, but that I know, the problem I need an image larger that a
+> floppy size.
+> 
+> Yuval
+> 
+> --- Troy Engel <tengel@fluid.com> wrote:
+> > Do it to an actual floppy, then use 'dd' to pull it off the floppy
+> > to a 
+> > file. Something like 'dd if=/dev/fd0 of=/var/tmp/floppy.img
+> > bs=2048' 
+> > should do the trick (check that for errors first).
+> > 
+> > -te
+> > 
+> > Yuval Yohai wrote:
+> > > Hello,
+> > > 
+> > > I'm trying to create an floppy image file on my HD and then send
+> > it
+> > > to a friend. But I am not able to it since the only options i see
+> > in
+> > > the pwlconfig is doing it into a partition or a device. I tried
+> > to
+> > > attach a loop device with no luck.
+> > > 
+> > > Any suggestions?
+> > > 
+> > > Thanks,
+> > > Yuval
+> > > 
+> > > __________________________________________________
+> > > Do you Yahoo!?
+> > > Yahoo! Tax Center - File online, calculators, forms, and more
+> > > http://tax.yahoo.com
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > 
+> > -- 
+> > Troy Engel, Systems Engineer
+> > "Now, Beakie, we'll just flip this switch and 60,000 refreshing
+> >   volts of electricity will surge through your body. Ready?"
+> > 
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> __________________________________________________
+> Do you Yahoo!?
+> Yahoo! Tax Center - File online, calculators, forms, and more
+> http://tax.yahoo.com
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+From peeweelinux@adis.on.ca  Thu Apr  3 10:32:20 2003
+From: peeweelinux@adis.on.ca (Yuval Yohai)
+Date: Thu, 3 Apr 2003 02:32:20 -0800 (PST)
+Subject: [Peeweelinux] how to creat a standalone image file on my HD
+In-Reply-To: <006c01c2f9af$8324b850$bd00100a@VW4>
+Message-ID: <20030403103220.32677.qmail@web41301.mail.yahoo.com>
+
+that's a nice idea. I even got a zip drive already on my comp. Yet it
+could be nice to have it as an option called, let's say, 'compressed
+image with bootloadre to a file'.
+
+Thanks,
+Yuval
+
+--- vwbug19 <vwbug19@worldnetoh.com> wrote:
+> try the  ide internal zipdrive it holds up to 100mb
+> 
+> ----- Original Message ----- 
+> From: "Yuval Yohai" <yuval_yohai@yahoo.com>
+> To: <peeweelinux@adis.on.ca>
+> Sent: Thursday, April 03, 2003 1:43 AM
+> Subject: Re: [Peeweelinux] how to creat a standalone image file on
+> my HD
+> 
+> 
+> > Thanks, but that I know, the problem I need an image larger that
+> a
+> > floppy size.
+> > 
+> > Yuval
+> > 
+> > --- Troy Engel <tengel@fluid.com> wrote:
+> > > Do it to an actual floppy, then use 'dd' to pull it off the
+> floppy
+> > > to a 
+> > > file. Something like 'dd if=/dev/fd0 of=/var/tmp/floppy.img
+> > > bs=2048' 
+> > > should do the trick (check that for errors first).
+> > > 
+> > > -te
+> > > 
+> > > Yuval Yohai wrote:
+> > > > Hello,
+> > > > 
+> > > > I'm trying to create an floppy image file on my HD and then
+> send
+> > > it
+> > > > to a friend. But I am not able to it since the only options i
+> see
+> > > in
+> > > > the pwlconfig is doing it into a partition or a device. I
+> tried
+> > > to
+> > > > attach a loop device with no luck.
+> > > > 
+> > > > Any suggestions?
+> > > > 
+> > > > Thanks,
+> > > > Yuval
+> > > > 
+> > > > __________________________________________________
+> > > > Do you Yahoo!?
+> > > > Yahoo! Tax Center - File online, calculators, forms, and more
+> > > > http://tax.yahoo.com
+> > > > _______________________________________________
+> > > > Peeweelinux mailing list
+> > > > Peeweelinux@adis.on.ca
+> > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > 
+> > > -- 
+> > > Troy Engel, Systems Engineer
+> > > "Now, Beakie, we'll just flip this switch and 60,000 refreshing
+> > >   volts of electricity will surge through your body. Ready?"
+> > > 
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > 
+> > 
+> > __________________________________________________
+> > Do you Yahoo!?
+> > Yahoo! Tax Center - File online, calculators, forms, and more
+> > http://tax.yahoo.com
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Tax Center - File online, calculators, forms, and more
+http://tax.yahoo.com
+
+From peeweelinux@adis.on.ca  Thu Apr  3 16:34:55 2003
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Thu, 3 Apr 2003 08:34:55 -0800
+Subject: [Peeweelinux] how to creat a standalone image file on my HD
+In-Reply-To: <20030403103220.32677.qmail@web41301.mail.yahoo.com>; from yuval_yohai@yahoo.com on Thu, Apr 03, 2003 at 02:32:20 -0800
+References: <006c01c2f9af$8324b850$bd00100a@VW4> <20030403103220.32677.qmail@web41301.mail.yahoo.com>
+Message-ID: <20030403083455.D1870@leif.attbi.com>
+
+I could be wrong about this, but I think there's a practical difficulty 
+associated with doing that. It's my understanding that the boot image has 
+hard coded in it the specific spot on the partition table where the root 
+image lives, and so you'd have to redo that for each new device. Otherwise 
+we wouldn't need lilo at all. By forcing you to install to an actual 
+device, pee wee assures itself that all of the relevant information is 
+available to it during the install. There may be a way to set up a 
+loopback device with a number of virtual cylinders, heads, etc., 
+concurrent with your freind's harware, I haven't explored this option.
+
+
+On 2003.04.03 02:32 Yuval Yohai wrote:
+> that's a nice idea. I even got a zip drive already on my comp. Yet it
+> could be nice to have it as an option called, let's say, 'compressed
+> image with bootloadre to a file'.
+> 
+> Thanks,
+> Yuval
+> 
+> --- vwbug19 <vwbug19@worldnetoh.com> wrote:
+> > try the  ide internal zipdrive it holds up to 100mb
+> >
+> > ----- Original Message -----
+> > From: "Yuval Yohai" <yuval_yohai@yahoo.com>
+> > To: <peeweelinux@adis.on.ca>
+> > Sent: Thursday, April 03, 2003 1:43 AM
+> > Subject: Re: [Peeweelinux] how to creat a standalone image file on
+> > my HD
+> >
+> >
+> > > Thanks, but that I know, the problem I need an image larger that
+> > a
+> > > floppy size.
+> > >
+> > > Yuval
+> > >
+> > > --- Troy Engel <tengel@fluid.com> wrote:
+> > > > Do it to an actual floppy, then use 'dd' to pull it off the
+> > floppy
+> > > > to a
+> > > > file. Something like 'dd if=/dev/fd0 of=/var/tmp/floppy.img
+> > > > bs=2048'
+> > > > should do the trick (check that for errors first).
+> > > >
+> > > > -te
+> > > >
+> > > > Yuval Yohai wrote:
+> > > > > Hello,
+> > > > >
+> > > > > I'm trying to create an floppy image file on my HD and then
+> > send
+> > > > it
+> > > > > to a friend. But I am not able to it since the only options i
+> > see
+> > > > in
+> > > > > the pwlconfig is doing it into a partition or a device. I
+> > tried
+> > > > to
+> > > > > attach a loop device with no luck.
+> > > > >
+> > > > > Any suggestions?
+> > > > >
+> > > > > Thanks,
+> > > > > Yuval
+> > > > >
+> > > > > __________________________________________________
+> > > > > Do you Yahoo!?
+> > > > > Yahoo! Tax Center - File online, calculators, forms, and more
+> > > > > http://tax.yahoo.com
+> > > > > _______________________________________________
+> > > > > Peeweelinux mailing list
+> > > > > Peeweelinux@adis.on.ca
+> > > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > >
+> > > > --
+> > > > Troy Engel, Systems Engineer
+> > > > "Now, Beakie, we'll just flip this switch and 60,000 refreshing
+> > > >   volts of electricity will surge through your body. Ready?"
+> > > >
+> > > > _______________________________________________
+> > > > Peeweelinux mailing list
+> > > > Peeweelinux@adis.on.ca
+> > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> > >
+> > > __________________________________________________
+> > > Do you Yahoo!?
+> > > Yahoo! Tax Center - File online, calculators, forms, and more
+> > > http://tax.yahoo.com
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> __________________________________________________
+> Do you Yahoo!?
+> Yahoo! Tax Center - File online, calculators, forms, and more
+> http://tax.yahoo.com
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Thu Apr  3 20:39:26 2003
+From: peeweelinux@adis.on.ca (Yuval Yohai)
+Date: Thu, 3 Apr 2003 12:39:26 -0800 (PST)
+Subject: [Peeweelinux] how to creat a standalone image file on my HD
+In-Reply-To: <20030403083455.D1870@leif.attbi.com>
+Message-ID: <20030403203926.43092.qmail@web41310.mail.yahoo.com>
+
+That is vary interesting and gives me some vary important points to
+think about.
+
+That means I will have to install lilo on my friend's machine
+manually and then add the root filesystem. Doesn't it?
+
+My other option looks like using syslinux somehow. (i think !??)
+
+Thanks,
+Yuval
+
+--- Leif Steinhour <grnwrnch@attbi.com> wrote:
+> 
+> I could be wrong about this, but I think there's a practical
+> difficulty 
+> associated with doing that. It's my understanding that the boot
+> image has 
+> hard coded in it the specific spot on the partition table where the
+> root 
+> image lives, and so you'd have to redo that for each new device.
+> Otherwise 
+> we wouldn't need lilo at all. By forcing you to install to an
+> actual 
+> device, pee wee assures itself that all of the relevant information
+> is 
+> available to it during the install. There may be a way to set up a 
+> loopback device with a number of virtual cylinders, heads, etc., 
+> concurrent with your freind's harware, I haven't explored this
+> option.
+> 
+> 
+> On 2003.04.03 02:32 Yuval Yohai wrote:
+> > that's a nice idea. I even got a zip drive already on my comp.
+> Yet it
+> > could be nice to have it as an option called, let's say,
+> 'compressed
+> > image with bootloadre to a file'.
+> > 
+> > Thanks,
+> > Yuval
+> > 
+> > --- vwbug19 <vwbug19@worldnetoh.com> wrote:
+> > > try the  ide internal zipdrive it holds up to 100mb
+> > >
+> > > ----- Original Message -----
+> > > From: "Yuval Yohai" <yuval_yohai@yahoo.com>
+> > > To: <peeweelinux@adis.on.ca>
+> > > Sent: Thursday, April 03, 2003 1:43 AM
+> > > Subject: Re: [Peeweelinux] how to creat a standalone image file
+> on
+> > > my HD
+> > >
+> > >
+> > > > Thanks, but that I know, the problem I need an image larger
+> that
+> > > a
+> > > > floppy size.
+> > > >
+> > > > Yuval
+> > > >
+> > > > --- Troy Engel <tengel@fluid.com> wrote:
+> > > > > Do it to an actual floppy, then use 'dd' to pull it off the
+> > > floppy
+> > > > > to a
+> > > > > file. Something like 'dd if=/dev/fd0 of=/var/tmp/floppy.img
+> > > > > bs=2048'
+> > > > > should do the trick (check that for errors first).
+> > > > >
+> > > > > -te
+> > > > >
+> > > > > Yuval Yohai wrote:
+> > > > > > Hello,
+> > > > > >
+> > > > > > I'm trying to create an floppy image file on my HD and
+> then
+> > > send
+> > > > > it
+> > > > > > to a friend. But I am not able to it since the only
+> options i
+> > > see
+> > > > > in
+> > > > > > the pwlconfig is doing it into a partition or a device. I
+> > > tried
+> > > > > to
+> > > > > > attach a loop device with no luck.
+> > > > > >
+> > > > > > Any suggestions?
+> > > > > >
+> > > > > > Thanks,
+> > > > > > Yuval
+> > > > > >
+> > > > > > __________________________________________________
+> > > > > > Do you Yahoo!?
+> > > > > > Yahoo! Tax Center - File online, calculators, forms, and
+> more
+> > > > > > http://tax.yahoo.com
+> > > > > > _______________________________________________
+> > > > > > Peeweelinux mailing list
+> > > > > > Peeweelinux@adis.on.ca
+> > > > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > > >
+> > > > > --
+> > > > > Troy Engel, Systems Engineer
+> > > > > "Now, Beakie, we'll just flip this switch and 60,000
+> refreshing
+> > > > >   volts of electricity will surge through your body.
+> Ready?"
+> > > > >
+> > > > > _______________________________________________
+> > > > > Peeweelinux mailing list
+> > > > > Peeweelinux@adis.on.ca
+> > > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > >
+> > > >
+> > > > __________________________________________________
+> > > > Do you Yahoo!?
+> > > > Yahoo! Tax Center - File online, calculators, forms, and more
+> > > > http://tax.yahoo.com
+> > > > _______________________________________________
+> > > > Peeweelinux mailing list
+> > > > Peeweelinux@adis.on.ca
+> > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > 
+> > 
+> > __________________________________________________
+> > Do you Yahoo!?
+> > Yahoo! Tax Center - File online, calculators, forms, and more
+> > http://tax.yahoo.com
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Tax Center - File online, calculators, forms, and more
+http://tax.yahoo.com
+
+From peeweelinux@adis.on.ca  Thu Apr 10 03:19:28 2003
+From: peeweelinux@adis.on.ca (zyfeng)
+Date: Thu, 10 Apr 2003 10:19:28 +0800
+Subject: [Peeweelinux] AutoBoot and X windows project release
+References: <se799d39.017@qatech.com>
+Message-ID: <OE32cf3ednHM3SOlbpH0000f2e5@hotmail.com>
+
+
+
+Hello Ken Emmons,
+
+I am using your Autoboot project with X windows support . It has worked.
+
+but the screen is 640x480,and color-depth is less than 16.
+
+my gtk app doesn't work with this configure.my gtk app need 800x600,16 colors at least.
+
+I had try to modfiy the /etc/X11/XF86conf. but it is failing.
+
+Please ,give me some suggestions how  to do it.
+
+
+  thanks for you bootx.gz ,it is good example.
+
+   thank you very much.
+
+From peeweelinux@adis.on.ca  Thu Apr 10 14:35:35 2003
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Thu, 10 Apr 2003 09:35:35 -0400
+Subject: [Peeweelinux] Minor update of bootx (was RE:AutoBoot and X windows project
+ release)
+Message-ID: <se953afa.093@qatech.com>
+
+This is a MIME message. If you are reading this text, you may want to 
+consider changing to a mail reader or gateway that understands how to 
+properly handle MIME multipart messages.
+
+--=_9AC53C2A.422347F2
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: inline
+
+Hello,
+
+I've updated autobootx so that it fixes a minor inconvenience when booting =
+into runmode 3. (I've changed /etc/inittab in case you just want to copy =
+that file....) I've attached it to this email.=20
+
+As for questions about getting more than 16 colors, try the following:
+
+The X server used is the VGA16 server, which is 16 color. GTK apps *DO* =
+look poor with the default colors and this server. The only thing to do is =
+to select the server that your video hardware uses in pwlconfig. It =
+doesn't hurt to have more than one server installed (its just more disk =
+space). Then you need XFree86 to point to that driver. So go to pwlconfig =
+and select your x server, whether it is SVGA or whatever....
+
+To actually "specify" to XFree86 that you want to use another server =
+(driver), go to your "custom" folder in the project and change the symlink =
+to point to your server for your video card. Take a look at custom/usr/X11/=
+bin/X  (I think this is the path??)  which is the symlink to your server. =
+if you do a "ls -l" you should see that this symlink points to the VGA16 =
+server. Point it to your server of interest using the "ln" command. You =
+can now try building it and reboot.=20
+
+At this point you should be able to run XFree with your particular server =
+with the default config file (I havnet tried this, but it probably works =
+since it is so generic...). Then you can tweak your XF86Config file on the =
+running system to try out different colors, resolutions, and such, that =
+are supported by that card. The actual config will vary depending on your =
+card.=20
+
+BTW, if you type "linux 3" at the lilo prompt you will boot into normal =
+runmode without autologin and autobooting of X. This helps debugging X. =
+You may have to switch to terminal 2 (by typing alt-F2) after the boot =
+process. There is a bug in my inittab file, which I have fixed on my =
+machine and attached tot his email.=20
+
+Thanks, I am glad you got some use out of this, and that it worked out of =
+the box. I think you are the first person to confirm that it worked. =20
+
+BTW, I am trying to get some default install that works on multiple =
+machines with more than 16 colors. It may not be possible with one setup, =
+but I was looking into framebuffer as one possible solution. Unfortunately =
+a lot of cards don't seem to fully support VESA 2.0 these days. If anyone =
+has any ideas, please let me know. I'd hate to have scripts at bootup to =
+change aorund video hardware configs! Also, my card is only supported by =
+XFree86 4.x, so I am stuck with 16 colors for now... :o(=20
+
+~Ken
+
+
+
+>>> "zyfeng" <voiptime@hotmail.com> 04/09 10:19 PM >>>
+
+
+
+Hello Ken Emmons,
+
+I am using your Autoboot project with X windows support . It has worked.
+
+but the screen is 640x480,and color-depth is less than 16.
+
+my gtk app doesn't work with this configure.my gtk app need 800x600,16 =
+colors at least.
+
+I had try to modfiy the /etc/X11/XF86conf. but it is failing.
+
+Please ,give me some suggestions how  to do it.
+
+
+  thanks for you bootx.gz ,it is good example.
+
+   thank you very much.
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca=20
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+--=_9AC53C2A.422347F2
+Content-Type: application/octet-stream; name="bootx-4-10-03.tgz"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="bootx-4-10-03.tgz"
+
+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
+
+--=_9AC53C2A.422347F2--
+
+From peeweelinux@adis.on.ca  Sun Apr 13 01:30:54 2003
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Sun, 13 Apr 2003 01:30:54 +0100
+Subject: [Peeweelinux] background thread exits with telnet end
+Message-ID: <PPEJJDOIBFJHGGGEELNNIEFLFJAA.Ricardo.Trindade@myrealbox.com>
+
+Hi,
+
+	I use an ant automated telnet session to deploy software to my peewee
+embedded pc.
+
+	I run my program with ./program& on a telnet session, but it exits when the
+telnet session ends. Isn't linux supposed do daemonize background threads ?
+	If not, how can I do it ? should I use nohup ?
+
+thanks
+Ricardo
+
+
+From peeweelinux@adis.on.ca  Sun Apr 13 10:56:14 2003
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Sun, 13 Apr 2003 09:56:14 +0000
+Subject: [Peeweelinux] background thread exits with telnet end
+In-Reply-To: <PPEJJDOIBFJHGGGEELNNIEFLFJAA.Ricardo.Trindade@myrealbox.com>
+References: <PPEJJDOIBFJHGGGEELNNIEFLFJAA.Ricardo.Trindade@myrealbox.com>
+Message-ID: <200304130955.36047.mark@lakeshoremicro.com>
+
+On Sunday 13 April 2003 12:30 am, Ricardo Trindade wrote:
+> 	I run my program with ./program& on a telnet session, but it exits when
+> the telnet session ends. Isn't linux supposed do daemonize background
+> threads ? If not, how can I do it ? should I use nohup ?
+
+Hi Ricardo,
+
+Linux doesn't daemonize in this case -- your program is still attached to its 
+parent (your telnet session), and it will exit when the parent exits.
+
+If your are programming in C, the following is a good example of how to 
+"daemonize" a process, using the fork() system call.
+
+http://www.enderunix.org/docs/eng/daemon.php
+
+Mark
+
+
+From peeweelinux@adis.on.ca  Tue Apr 15 10:18:16 2003
+From: peeweelinux@adis.on.ca (Massimo Rossi)
+Date: Tue, 15 Apr 2003 11:18:16 +0200
+Subject: [Peeweelinux] Peewee for rtai linux on flash disk?
+Message-ID: <002201c3032f$f2cdb6a0$9601a8c0@AlphaXp>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_001F_01C30340.B62E1710
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Hi everybody,
+I developed an embedded real time application under linux kernel 2.4.18 =
+patched with rtai 24.1.11. My goal is now to put a reduced version of =
+the system in a flash disk, for the final version of the embedded =
+system.=20
+I'd really appreciate any help on using peeweelinux to obtain that. Does =
+exist any documentation beside the one distributed with peeweelinux?
+If anyone has already faced with similar problem, could give me some =
+advice on the size needed for the flash disk?
+
+Thank you
+
+Massimo Rossi
+
+------=_NextPart_000_001F_01C30340.B62E1710
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.2715.400" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>Hi everybody,</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>I developed an embedded&nbsp;real time=20
+application&nbsp;under linux kernel 2.4.18 patched with rtai 24.1.11. My =
+goal is=20
+now to put a reduced version of the system in a flash disk, for the =
+final=20
+version of the embedded system. </FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>I'd really appreciate any help on using =
+peeweelinux=20
+to obtain that. Does exist any documentation beside the one distributed =
+with=20
+peeweelinux?</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>If anyone has already&nbsp;faced with =
+similar=20
+problem, could give me some advice on the size needed for the flash=20
+disk?</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Thank you</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Massimo =
+Rossi</FONT></DIV></BODY></HTML>
+
+------=_NextPart_000_001F_01C30340.B62E1710--
+
+
+From peeweelinux@adis.on.ca  Tue Apr 15 12:58:44 2003
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Tue, 15 Apr 2003 07:58:44 -0400
+Subject: [Peeweelinux] Peewee for rtai linux on flash disk?
+Message-ID: <se9bbbdb.029@qatech.com>
+
+Hello,
+
+I have done just this. 
+
+With Peewee you just put your RTAI kernel in /boot and your modules in /lib in the custom folder of your proect. They get copied over the stock peewee kernel during the build. 
+
+The only other hitch is that I had to use insmod from my debian system since the one that came with peewee doesn't seem to find the modules automatically. If you can live with typing in full paths to the modules it isnt a big deal though. There may be other ways around this, I am not sure. 
+
+~Ken
+
+>>> "Massimo Rossi" <m.assimorossi@libero.it> 04/15 5:18 AM >>>
+Hi everybody,
+I developed an embedded real time application under linux kernel 2.4.18 patched with rtai 24.1.11. My goal is now to put a reduced version of the system in a flash disk, for the final version of the embedded system. 
+I'd really appreciate any help on using peeweelinux to obtain that. Does exist any documentation beside the one distributed with peeweelinux?
+If anyone has already faced with similar problem, could give me some advice on the size needed for the flash disk?
+
+Thank you
+
+Massimo Rossi
+
+
+From peeweelinux@adis.on.ca  Tue Apr 15 15:18:45 2003
+From: peeweelinux@adis.on.ca (Hartwig Harder)
+Date: Tue, 15 Apr 2003 16:18:45 +0200
+Subject: [Peeweelinux] newbies question .list files empty and tar's contain all 0
+Message-ID: <1501207045.20030415161845@mpch-mainz.mpg.de>
+
+Hi all,
+
+I just installed PeeWee on RedHat 9 and followed the quick reference to
+setup a sample project. This failed as the created files system was empty.
+So I checked the .list files, which were generated at the beginning and
+they are all empty. The tar files have the same length and they contain
+0's.
+I guessed that perhaps my rpm is not working correctly (empty list files
+come from corrupted tar file coming from broken rpm ?) but a rpm -q -l
+-p on a given file listed correctly content of the rpm archive.
+What am I'm doing wrong ?
+Is it a problem that the underlying development system is RH 9 and the
+rpm's in the PeeWee distribution are not corresponding to the installed
+ones ?
+I got the same results with Suse 8.1 and hoped that RH 9 will work but
+apparently I make always the same stupid mistake.
+
+
+Thanks a lot for any advice !!
+
+Cheers,
+
+Hartwig
+
+
+From peeweelinux@adis.on.ca  Wed Apr 16 20:42:59 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Wed, 16 Apr 2003 12:42:59 -0700
+Subject: [Peeweelinux] Peewee for rtai linux on flash disk?
+In-Reply-To: <002201c3032f$f2cdb6a0$9601a8c0@AlphaXp>
+References: <002201c3032f$f2cdb6a0$9601a8c0@AlphaXp>
+Message-ID: <3E9DB243.5020604@fluid.com>
+
+Besides the way Ken suggests, I wrote a mini HowTo last year on getting 
+a 2.4 kernel into PWL in a more detailed manner (2.4 wants newer 
+modutils, e2fsprogs, and whatnot):
+
+http://mail.adis.on.ca/pipermail/peeweelinux/2002-June/000608.html
+
+Perhaps that'll help you out.
+-te
+
+Massimo Rossi wrote:
+> Hi everybody,
+> I developed an embedded real time application under linux kernel 2.4.18 
+> patched with rtai 24.1.11. My goal is now to put a reduced version of 
+> the system in a flash disk, for the final version of the embedded system.
+> I'd really appreciate any help on using peeweelinux to obtain that. Does 
+> exist any documentation beside the one distributed with peeweelinux?
+> If anyone has already faced with similar problem, could give me some 
+> advice on the size needed for the flash disk?
+>  
+> Thank you
+>  
+> Massimo Rossi
+
+-- 
+Troy Engel, Systems Engineer
+"Now, Beakie, we'll just flip this switch and 60,000 refreshing
+  volts of electricity will surge through your body. Ready?"
+
+
+From peeweelinux@adis.on.ca  Thu Apr 17 07:57:08 2003
+From: peeweelinux@adis.on.ca (Stephen Lee)
+Date: 16 Apr 2003 23:57:08 -0700
+Subject: [Peeweelinux] gunzipping ramdisk
+Message-ID: <1050562628.12685.705.camel@ralph.plexio.private>
+
+I would like to mount the ramdisk residing on flash (running PWL on a
+DOC2000) so changes can be made and then saved again. After mounting the
+DOC under PWL, I tried to unzip the ramdisk so I could mount it for
+editing. What was a 1.3Meg file ballooned to more than 30Meg after
+unzipping the file. I wasn't sure of the exact size because it ran out
+of ramdisk space. Surely, 1.3Meg can possibly expand THAT much?!?. I had
+renamed "ramdisk" to "ramdisk.gz" and then tried running "gunzip
+ramdisk.gz" What is the correct command to unzip the ramdisk? 
+
+Thanks,
+Stephen 
+
+
+From peeweelinux@adis.on.ca  Thu Apr 17 09:12:13 2003
+From: peeweelinux@adis.on.ca (Stephen Lee)
+Date: 17 Apr 2003 01:12:13 -0700
+Subject: [Peeweelinux] Adding nfsroot parameters to lilo
+Message-ID: <1050567133.12685.733.camel@ralph.plexio.private>
+
+I added the following bits to the lilo.conf portion in
+pwl_target_functions:
+
+image = $rd_bp_kernel
+root = /dev/nfs
+label = nfs
+vga = 768
+append = "console=tty2 ip=bootp  \
+          nfsroot=192.168.1.200:/export/linux/root"
+
+During the lilo loader phase when writing PWL to a DOC2000, I get the
+following error:
+
+Creating lilo.conf in a temporary location...ok
+Installing lilo bootloader...Patched LILO for M-Systems' DiskOnChip 2000
+LILO version 21, Copyright 1992-1998 Werner Almesberger
+
+Reading boot sector from /dev/nftla
+Merging with ./mnt/boot.b
+Boot image: ./mnt/bzImage
+Mapping RAM disk ./mnt/ramdisk
+Added linux
+Not a number: "/dev/nfs"   <------- error
+ok
+Unmounting target device /dev/nftla1...ok
+
+According to nfsroot.txt in the kernel docs (2.4.20), you're suppose to
+create a dummy device (mknod /dev/boot255 c 0 255) to satisfy the
+root=/dev/nfs requirement. I created the device on the system hosting
+prior to runnig pwlconfig but that didn't help lilo recognize /dev/nfs.
+How do  I do this with pwlconfig or manually. 
+
+Thanks,
+Stephen
+
+
+From peeweelinux@adis.on.ca  Thu Apr 17 14:23:43 2003
+From: peeweelinux@adis.on.ca (rok ostrovrsnik)
+Date: Thu, 17 Apr 2003 15:23:43 +0200
+Subject: [Peeweelinux] CF card problem
+Message-ID: <3E9EAADF.700@volja.net>
+
+I just want to know why it is not wise to use IDE adapters with CF
+cards. Why is fdisk causing troubles with CF cards?
+I have used IDE adapter on my computer and it worked fine for some time.
+But now i have problem. I cant format the CF card anymore. Sometimes i
+can get it working but only if i format it in windows and then format it
+again with fdisk. My project works fine for now but it is configured for
+  read-only operations. But i need at least 1 partition for storing some
+information in case that power fails. So if IDE adapters are only
+suitable for read-only how can i overcome that problem.
+
+Please i need some answers soon.
+Thanks in advance
+
+Rok Ostrovrsnik
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Apr 17 14:38:37 2003
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Thu, 17 Apr 2003 09:38:37 -0400
+Subject: [Peeweelinux] CF card problem
+Message-ID: <se9e7629.052@qatech.com>
+
+Hello,
+
+Did you try other flash cards witht he same setup? Just asking because I had problems witha  Kingston card in one system, but not the other. I tried Sandisk and it worked on both systems. Both computers used an IDE adapter. I am not sure if this helps, but give it a try if you haven't already.  
+
+~Ken
+
+>>> rok ostrovrsnik <gianta@volja.net> 04/17 9:23 AM >>>
+I just want to know why it is not wise to use IDE adapters with CF
+cards. Why is fdisk causing troubles with CF cards?
+I have used IDE adapter on my computer and it worked fine for some time.
+But now i have problem. I cant format the CF card anymore. Sometimes i
+can get it working but only if i format it in windows and then format it
+again with fdisk. My project works fine for now but it is configured for
+  read-only operations. But i need at least 1 partition for storing some
+information in case that power fails. So if IDE adapters are only
+suitable for read-only how can i overcome that problem.
+
+Please i need some answers soon.
+Thanks in advance
+
+Rok Ostrovrsnik
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca 
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Apr 17 15:02:12 2003
+From: peeweelinux@adis.on.ca (Stefan Willmert)
+Date: Thu, 17 Apr 2003 09:02:12 -0500
+Subject: [Peeweelinux] CF Problem
+Message-ID: <NIENLBNOFJMGGDDNKJGKMEHNCFAA.stefanw@intellanet.com>
+
+Hey guys,
+This isn't specifically a PWL problem, but i'm hoping with everyone's
+experience in cf cards, someone may have run across this issue.
+
+I have an advantech board, which uses a CF card for the system. I load the
+filesystem and partitions onto the cf card from a desktop computer using a
+cf Card reader. I then insert the cf card into the advantech board, and
+occasionally, notice that one file may inadvertantly become a block device
+file. (Marked with a 'b'). This doesn't always happen, and only seems to
+happen when first creating the card. Once things are booted on the advantech
+board correctly, it always works correctly.
+
+file on CF via Advantech board
+brwxrwxrwx            1, 2  Apr 1  2003 mymodule.so
+file on CF via CF Card Reader
+-rwxrwxrwx		  300567  Apr 1  2003 mymodule.so
+
+
+I have noticed an inconvenient way of fixing the problem.
+Scenario:
+	Load CF card from desktop machine.
+	Boot card from Advantech board.
+	Notice a particular file has become a block device file.
+	Shutdown system.
+	Mount partition on CF card from my desktop machine using a CF card reader.
+	copy (not move) the offending file (*Note: the file appears correctly when
+mounted through the CF Card Reader on my desktop)
+	remove original file
+	rename copy to original file name.
+	boot card from advantech board.
+	All is well!
+
+I suspect something about a file residing on a particular sector that
+doesn't get read correctly when mounted through the advantech board? I'm
+trying to learn about how files are stored on disk, etc, to see if there is
+a way to repair it.
+
+I have been hunting for information regarding this problem with no luck.
+Advantech suggested trying a different brand of cf cards as the chipsets may
+be different than what they have tested. I have tried a few so far, with no
+luck. I'll keep trying brands they have suggested.
+
+Anyone else ever have an issue like this?
+Any suggestions on repairing the block device file automatically?
+Can Anyone with disk file experience explain what changes may occur to cause
+a file to become a block device file?
+
+This bug is really starting to get to me. Any suggestions anyone may have
+would be greatly appreciated.
+
+Thank you
+
+-stefan willmert
+
+
+
+From peeweelinux@adis.on.ca  Thu Apr 17 15:47:10 2003
+From: peeweelinux@adis.on.ca (Dennis W. Tokarski)
+Date: Thu, 17 Apr 2003 10:47:10 -0400
+Subject: [Peeweelinux] Adding nfsroot parameters to lilo
+References: <1050567133.12685.733.camel@ralph.plexio.private>
+Message-ID: <3E9EBE6E.1090607@PolTec.COM>
+
+Stephen Lee wrote:
+> I added the following bits to the lilo.conf portion in
+> pwl_target_functions:
+> 
+> image = $rd_bp_kernel
+> root = /dev/nfs
+> label = nfs
+> vga = 768
+> append = "console=tty2 ip=bootp  \
+>           nfsroot=192.168.1.200:/export/linux/root"
+
+[snip]
+
+> 
+> According to nfsroot.txt in the kernel docs (2.4.20), you're suppose to
+> create a dummy device (mknod /dev/boot255 c 0 255) to satisfy the
+> root=/dev/nfs requirement. I created the device on the system hosting
+> prior to runnig pwlconfig but that didn't help lilo recognize /dev/nfs.
+> How do  I do this with pwlconfig or manually. 
+> 
+
+Right, but the device you name in "root=" needs to be the same
+as the dummy device you created. So either say "root=/dev/boot255"
+or rename the device to "/dev/nfs".
+
+   --Dennis
+
+
+
+From peeweelinux@adis.on.ca  Thu Apr 17 18:10:03 2003
+From: peeweelinux@adis.on.ca (Stephen Lee)
+Date: 17 Apr 2003 10:10:03 -0700
+Subject: [Peeweelinux] Adding nfsroot parameters to lilo
+In-Reply-To: <3E9EBE6E.1090607@PolTec.COM>
+References: <1050567133.12685.733.camel@ralph.plexio.private>
+ <3E9EBE6E.1090607@PolTec.COM>
+Message-ID: <1050599403.32062.17.camel@ralph.plexio.private>
+
+On Thu, 2003-04-17 at 07:47, Dennis W. Tokarski wrote:
+> Stephen Lee wrote:
+> > I added the following bits to the lilo.conf portion in
+> > pwl_target_functions:
+> > 
+> > image = $rd_bp_kernel
+> > root = /dev/nfs
+> > label = nfs
+> > vga = 768
+> > append = "console=tty2 ip=bootp  \
+> >           nfsroot=192.168.1.200:/export/linux/root"
+> 
+> [snip]
+> 
+> > 
+> > According to nfsroot.txt in the kernel docs (2.4.20), you're suppose to
+> > create a dummy device (mknod /dev/boot255 c 0 255) to satisfy the
+> > root=/dev/nfs requirement. I created the device on the system hosting
+> > prior to runnig pwlconfig but that didn't help lilo recognize /dev/nfs.
+> > How do  I do this with pwlconfig or manually. 
+> > 
+> 
+> Right, but the device you name in "root=" needs to be the same
+> as the dummy device you created. So either say "root=/dev/boot255"
+> or rename the device to "/dev/nfs".
+> 
+I gotcha, thanks Dennis.  In the mean time, I added root=/dev/nfs to the
+append line and that seemed fix the problem.
+
+Stephen
+
+
+From peeweelinux@adis.on.ca  Thu Apr 17 19:52:30 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Thu, 17 Apr 2003 11:52:30 -0700
+Subject: [Peeweelinux] CF Problem
+In-Reply-To: <NIENLBNOFJMGGDDNKJGKMEHNCFAA.stefanw@intellanet.com>
+References: <NIENLBNOFJMGGDDNKJGKMEHNCFAA.stefanw@intellanet.com>
+Message-ID: <3E9EF7EE.3000903@fluid.com>
+
+We use Advantech boards and Sandisk industrial grade CF disks, no 
+problems. My CF writer device is a IOMega something-or-other on the USB 
+port, written many many chips.
+
+-te
+
+Stefan Willmert wrote:
+> 
+> I have an advantech board, which uses a CF card for the system. I load the
+> filesystem and partitions onto the cf card from a desktop computer using a
+> cf Card reader. I then insert the cf card into the advantech board, and
+> occasionally, notice that one file may inadvertantly become a block device
+> file. (Marked with a 'b'). This doesn't always happen, and only seems to
+> happen when first creating the card. Once things are booted on the advantech
+> board correctly, it always works correctly.
+
+-- 
+Troy Engel, Systems Engineer
+
+
+From peeweelinux@adis.on.ca  Fri Apr 18 06:48:50 2003
+From: peeweelinux@adis.on.ca (rok ostrovrsnik)
+Date: Fri, 18 Apr 2003 07:48:50 +0200
+Subject: [Peeweelinux] CF card problem
+In-Reply-To: <se9e7629.052@qatech.com>
+References: <se9e7629.052@qatech.com>
+Message-ID: <3E9F91C2.7090401@volja.net>
+
+Hello
+
+I am working with sandisk CF card and i have that problem. I want to 
+know if anyone is using IDE adapter for CF card on target system in 
+read-write mode. Because if i use CF as read-only then everything works. 
+But if i use it as read-write i had problems because sometimes fsck 
+finds problems and deletes some files from CF and my system becomes 
+unusable.
+
+Is this problem hapening because i used linux fdisk to create 
+partitions? I saw that some have had that problem. if this is the 
+problem does anyone know why is it happening?
+
+Rok Ostrovrsnik
+
+Ken Emmons, Jr. wrote:
+
+>Hello,
+>
+>Did you try other flash cards witht he same setup? Just asking because I had problems witha  Kingston card in one system, but not the other. I tried Sandisk and it worked on both systems. Both computers used an IDE adapter. I am not sure if this helps, but give it a try if you haven't already.  
+>
+>~Ken
+>
+>  
+>
+>>>>rok ostrovrsnik <gianta@volja.net> 04/17 9:23 AM >>>
+>>>>        
+>>>>
+>I just want to know why it is not wise to use IDE adapters with CF
+>cards. Why is fdisk causing troubles with CF cards?
+>I have used IDE adapter on my computer and it worked fine for some time.
+>But now i have problem. I cant format the CF card anymore. Sometimes i
+>can get it working but only if i format it in windows and then format it
+>again with fdisk. My project works fine for now but it is configured for
+>  read-only operations. But i need at least 1 partition for storing some
+>information in case that power fails. So if IDE adapters are only
+>suitable for read-only how can i overcome that problem.
+>
+>Please i need some answers soon.
+>Thanks in advance
+>
+>Rok Ostrovrsnik
+>
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca 
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>  
+>
+
+
+
+From peeweelinux@adis.on.ca  Fri Apr 18 13:25:53 2003
+From: peeweelinux@adis.on.ca (Hanoi Santos Hung)
+Date: Fri, 18 Apr 2003 08:25:53 -0400
+Subject: [Peeweelinux] Error executing startx
+Message-ID: <22347812.20030418082553@icid.edu.cu>
+
+Hello,
+
+Somebody has the solution to this error ? :
+
+-----------------------------------
+execve failed for /usr/X11R6/bin/X (errno 2)
+_X11TransSocketUNIXConnect: Can't connect : errno = 111
+giving up
+xinit:Connection refused (errno 111): unable to connect to X server
+xinit:No such process (errno 3): Server error.
+--------------------------------
+
+  
+
+Best Regards
+Hanoi Santos Hung
+email : hanoi@icid.edu.cu
+Linux User 296804
+
+
+From peeweelinux@adis.on.ca  Fri Apr 18 14:06:50 2003
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Fri, 18 Apr 2003 09:06:50 -0400
+Subject: [Peeweelinux] CF card problem
+Message-ID: <se9fc052.056@qatech.com>
+
+Currently I am using CF with compressed ramdrive. This works well but is RO. 
+
+I am, however, mounting flash disk as read/write to save data, and then mounting back to RO. This works well for me. 
+
+~Ken
+
+
+
+>>> rok ostrovrsnik <gianta@volja.net> 04/18 1:48 AM >>>
+Hello
+
+I am working with sandisk CF card and i have that problem. I want to 
+know if anyone is using IDE adapter for CF card on target system in 
+read-write mode. Because if i use CF as read-only then everything works. 
+But if i use it as read-write i had problems because sometimes fsck 
+finds problems and deletes some files from CF and my system becomes 
+unusable.
+
+Is this problem hapening because i used linux fdisk to create 
+partitions? I saw that some have had that problem. if this is the 
+problem does anyone know why is it happening?
+
+Rok Ostrovrsnik
+
+Ken Emmons, Jr. wrote:
+
+>Hello,
+>
+>Did you try other flash cards witht he same setup? Just asking because I had problems witha  Kingston card in one system, but not the other. I tried Sandisk and it worked on both systems. Both computers used an IDE adapter. I am not sure if this helps, but give it a try if you haven't already.  
+>
+>~Ken
+>
+>  
+>
+>>>>rok ostrovrsnik <gianta@volja.net> 04/17 9:23 AM >>>
+>>>>        
+>>>>
+>I just want to know why it is not wise to use IDE adapters with CF
+>cards. Why is fdisk causing troubles with CF cards?
+>I have used IDE adapter on my computer and it worked fine for some time.
+>But now i have problem. I cant format the CF card anymore. Sometimes i
+>can get it working but only if i format it in windows and then format it
+>again with fdisk. My project works fine for now but it is configured for
+>  read-only operations. But i need at least 1 partition for storing some
+>information in case that power fails. So if IDE adapters are only
+>suitable for read-only how can i overcome that problem.
+>
+>Please i need some answers soon.
+>Thanks in advance
+>
+>Rok Ostrovrsnik
+>
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca 
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux 
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca 
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux 
+>
+>  
+>
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca 
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Apr 18 17:02:25 2003
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Fri, 18 Apr 2003 09:02:25 -0700
+Subject: [Peeweelinux] Error executing startx
+In-Reply-To: <22347812.20030418082553@icid.edu.cu>; from hanoi@icid.edu.cu on Fri, Apr 18, 2003 at 05:25:53 -0700
+References: <22347812.20030418082553@icid.edu.cu>
+Message-ID: <20030418090225.E2164@leif.attbi.com>
+
+Sure: for starters you need to go into the font directory under /etc/X11 
+and edit the config file and remove the listing for 75dpi fonts (you can 
+also check that the other fonts listed correspond with real files). Then 
+you need to start up xfs (that's the font server). Then you need to link X 
+in your /usr/X11R6/bin directory to one of the font servers. Finally, you 
+need to configure XF86Config under /usr/X11R6/lib for your graphics 
+display and mouse. 
+
+On 2003.04.18 05:25 Hanoi Santos Hung wrote:
+> Hello,
+> 
+> Somebody has the solution to this error ? :
+> 
+> -----------------------------------
+> execve failed for /usr/X11R6/bin/X (errno 2)
+> _X11TransSocketUNIXConnect: Can't connect : errno = 111
+> giving up
+> xinit:Connection refused (errno 111): unable to connect to X server
+> xinit:No such process (errno 3): Server error.
+> --------------------------------
+> 
+> 
+> 
+> Best Regards
+> Hanoi Santos Hung
+> email : hanoi@icid.edu.cu
+> Linux User 296804
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Sat Apr 19 00:26:28 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Fri, 18 Apr 2003 16:26:28 -0700 (PDT)
+Subject: [Peeweelinux] gunzipping ramdisk
+Message-ID: <2.2.16.20030418162506.7a17aa3c@zmicro.com>
+
+>I would like to mount the ramdisk residing on flash (running PWL on a
+>DOC2000) so changes can be made and then saved again. After mounting the
+>DOC under PWL, I tried to unzip the ramdisk so I could mount it for
+>editing. What was a 1.3Meg file ballooned to more than 30Meg after
+>unzipping the file. I wasn't sure of the exact size because it ran out
+>of ramdisk space. Surely, 1.3Meg can possibly expand THAT much?!?. I had
+>renamed "ramdisk" to "ramdisk.gz" and then tried running "gunzip
+>ramdisk.gz" What is the correct command to unzip the ramdisk? 
+>Thanks,
+>Stephen 
+
+gunzip file should do it.  These programs are generally smart 
+enough to tell you if your file isn't a zip file.   It _is_ possible
+to compress a file 100:1  especially if it is
+an empty file.
+
+The file system that appears there should be the compressed version
+of the one pwl built.  cd to to the projects directory, to the
+name of your project, and then to mnt.    Then, issue the
+du -h    command to see how much got put in there.   It may
+be possible to create a lot of empty space through the pwl 
+configurations but I'm not sure of that and I'm not much good 
+looking at their scripts.
+
+Barry
+
+
+
+
+
+From peeweelinux@adis.on.ca  Sat Apr 19 01:49:12 2003
+From: peeweelinux@adis.on.ca (Stephen Lee)
+Date: 18 Apr 2003 17:49:12 -0700
+Subject: [Peeweelinux] gunzipping ramdisk
+In-Reply-To: <2.2.16.20030418162506.7a17aa3c@zmicro.com>
+References: <2.2.16.20030418162506.7a17aa3c@zmicro.com>
+Message-ID: <1050713352.826.56.camel@ralph.plexio.private>
+
+On Fri, 2003-04-18 at 16:26, Barry Gershenfeld wrote:
+> >I would like to mount the ramdisk residing on flash (running PWL on a
+> >DOC2000) so changes can be made and then saved again. After mounting the
+> >DOC under PWL, I tried to unzip the ramdisk so I could mount it for
+> >editing. What was a 1.3Meg file ballooned to more than 30Meg after
+> >unzipping the file. I wasn't sure of the exact size because it ran out
+> >of ramdisk space. Surely, 1.3Meg can possibly expand THAT much?!?. I had
+> >renamed "ramdisk" to "ramdisk.gz" and then tried running "gunzip
+> >ramdisk.gz" What is the correct command to unzip the ramdisk? 
+> >Thanks,
+> >Stephen 
+> 
+> gunzip file should do it.  These programs are generally smart 
+> enough to tell you if your file isn't a zip file.   It _is_ possible
+> to compress a file 100:1  especially if it is
+> an empty file.
+> 
+> The file system that appears there should be the compressed version
+> of the one pwl built.  cd to to the projects directory, to the
+> name of your project, and then to mnt.    Then, issue the
+> du -h    command to see how much got put in there.   It may
+> be possible to create a lot of empty space through the pwl 
+> configurations but I'm not sure of that and I'm not much good 
+> looking at their scripts.
+Thanks Barry. I was hoping to be able to make permanent changes to the
+ramdisk file while running pwl/doc. Is there any other way other than to
+uncompress the whole ramdisk file to the ramdisk? Ultimately I would
+like to make modifications to lilo.conf or any other file in pwl without
+having to pull out the DOC and doing it in a reader.
+
+Thanks,
+Stephen
+-- 
+splee@spl-linux.com
+www.spl-linux.com
+
+
+From peeweelinux@adis.on.ca  Mon Apr 21 19:26:00 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 21 Apr 2003 11:26:00 -0700 (PDT)
+Subject: [Peeweelinux] gunzipping ramdisk
+Message-ID: <2.2.16.20030421112441.7bf79f4e@zmicro.com>
+
+>Thanks Barry. I was hoping to be able to make permanent changes to the
+>ramdisk file while running pwl/doc. Is there any other way other than to
+>uncompress the whole ramdisk file to the ramdisk? Ultimately I would
+>like to make modifications to lilo.conf or any other file in pwl without
+>having to pull out the DOC and doing it in a reader.     >Stephen
+
+
+I don't have a DOC so my drive looks like an ordinary IDE 
+drive.  I'd hope the DOC, once the right drivers are attached,
+would behave similarly.  But I can't help with those 
+specifics.
+
+As I said, pwl gives various disk-making options, but I 
+don't understand it well enough to know what I'm getting
+without trying it and looking at the results, or to alter 
+the scripts to give me a different combination.
+
+But I am faced with the same challenge as you.  I will 
+want to store altered information.  I can offer two ideas.
+
+(1) Add a separate partition that is mounted read/write and
+use that for the modified info.  You have probably seen 
+discussions about this before.
+
+(2) As for your approach, when my system boots, it does 
+exactly what you are trying to do.  It says, "copying 
+filesystem /dev/hda2 to /dev/ram2" and it is 
+uncompressed into memory.  The running system runs from
+/dev/ram2.  I can log in and I can modify
+files just like you say.  The missing link then, is to
+be able to compress the results into a new ramdisk image
+and write it back to your disk-on-chip.  Although at this
+point is doesn't seem all that different from the idea
+in #(1), and perhaps more work (and risk).
+
+I use the option "Compressed ramdisk on ext2 partition" as
+the target environment to make my system.  Note that you 
+can ask for an uncompressed one as well, and at least
+see what size you get.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Tue Apr 22 09:46:15 2003
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Tue, 22 Apr 2003 10:46:15 +0200 (CEST)
+Subject: [Peeweelinux] CF card problem
+In-Reply-To: <se9fc052.056@qatech.com>
+References: <se9fc052.056@qatech.com>
+Message-ID: <33496.164.8.17.25.1051001175.squirrel@vmail1.volja.net>
+
+Hello
+
+Is anyone using CF card in target system with IDE adapter for storing large sums
+of data. Is CF card suitable for such purpose or is it suitable only for RO
+mode. I need this answer for my project and i would like some information if CF
+card is suitable for this because i had problems with it.
+I know i have put this question before but i didnt't get any answer from
+experienced embedded-linux gurus that i belive are on this list.
+
+Rok Ostrovrsnik
+
+p.s. i  am thankfull ken simmons for answering me so quickly
+_____________________________________________________________________________
+Prvi mesec brezplacno. Brez zasedenih linij. Hitra aktivacija.
+PREMIUM VOLJA: klicni paket z vsemi prednostmi, ki jih potrebujete.
+http://premium.volja.net
+
+
+
+From peeweelinux@adis.on.ca  Tue Apr 22 13:42:51 2003
+From: peeweelinux@adis.on.ca (Stefan Willmert)
+Date: Tue, 22 Apr 2003 07:42:51 -0500
+Subject: [Peeweelinux] CF card problem
+In-Reply-To: <33496.164.8.17.25.1051001175.squirrel@vmail1.volja.net>
+Message-ID: <NIENLBNOFJMGGDDNKJGKMEKKCFAA.stefanw@intellanet.com>
+
+what I learned from the manufacturers:
+
+A compact flash card is good for about 500,000 writes per sector. Industrial
+strength cards suggest about 2,000,000 writes per sector.
+
+So, it depends on your usage.
+I use it to store a ram disk image, and configuration files to limit the
+number of writes to the card.
+
+-stefan
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]On
+Behalf Of gianta@volja.net
+Sent: Tuesday, April 22, 2003 3:46 AM
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] CF card problem
+
+
+Hello
+
+Is anyone using CF card in target system with IDE adapter for storing large
+sums
+of data. Is CF card suitable for such purpose or is it suitable only for RO
+mode. I need this answer for my project and i would like some information if
+CF
+card is suitable for this because i had problems with it.
+I know i have put this question before but i didnt't get any answer from
+experienced embedded-linux gurus that i belive are on this list.
+
+Rok Ostrovrsnik
+
+p.s. i  am thankfull ken simmons for answering me so quickly
+____________________________________________________________________________
+_
+
+Prvi mesec brezplacno. Brez zasedenih linij. Hitra aktivacija.
+
+PREMIUM VOLJA: klicni paket z vsemi prednostmi, ki jih potrebujete.
+
+http://premium.volja.net
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Apr 23 01:55:12 2003
+From: peeweelinux@adis.on.ca (Correy Edmed)
+Date: Wed, 23 Apr 2003 10:55:12 +1000
+Subject: [Peeweelinux] Compact Flash
+Message-ID: <3EA5E470.4010506@iinet.net.au>
+
+Hi
+
+I am currently at work experience and trying to set up peewee linux. I 
+have a PCM-3350 GX1 300Mhz Embedded PC and have a Sandisk 256M Compact 
+Flash card that I want to install the operating system on.
+
+I have heard bad reports about formatting and partitioning CF cards and 
+this is where I am up to at the moment. I guess I need to partition the 
+CF card with a boot sector (hda1)  OS (hda2) and swap (hda3).
+
+I have already experimented with the embedded PC using an ide HDD that I 
+have installed Redhat 8 on. The CF card just arrived and I placed it in 
+the CompactFlash socket and it is recognised in the bios as an ide 
+device however I have no idea on how to mount it.
+
+While reading about PCMCIA I noticed in relation to CF cards about 
+"ftl_format -i /dev/mem0c0c" however this file (mem0c0c) isn't even in 
+my dev directory. Also after reading the man page for ftl_format I 
+noticed that you are able to create a boot secotor which perhaps is what 
+I need.
+
+Any help on setting up the Compact Flash Card so I can start installing 
+peewee linux would be much appreciated.
+
+Correy
+
+
+
+
+
+
+
+
+From peeweelinux@adis.on.ca  Wed Apr 23 02:41:19 2003
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Tue, 22 Apr 2003 18:41:19 -0700
+Subject: [Peeweelinux] Compact Flash
+In-Reply-To: <3EA5E470.4010506@iinet.net.au>; from correy.edmed@iinet.net.au on Tue, Apr 22, 2003 at 17:55:12 -0700
+References: <3EA5E470.4010506@iinet.net.au>
+Message-ID: <20030422184119.C2262@leif.attbi.com>
+
+
+Okay, a bunch of people have written about this, so I want to set some 
+things straight.
+
+Here's what I think is going on:
+
+1). PWL is probably having even more problems running under RH 8.x than it 
+did under 7.x. My advice: go back and install 6.2 (that's right) on your 
+development platform. You should be able to get it online, it will make 
+your life much easier. 
+2). This stuff about things not working on Compact flash is half nonsense. 
+IDE Compact flash cards are pin-compatible with ide hard disks (if you 
+look online they even sell header boards which route all the signals 
+without modifying them), so Pee Wee runs fine on both ATA compact flash 
+and ATA PCMCIA cards. There are some cards that are sold as "memory" cards 
+that do not have the IDE circuitry built in that will not work (as BOOT 
+devices, but fine for storing info once card services is loaded), but if 
+you get a card that says it shows up as an ide device then it will work 
+provided the card is working (flash drives can wear out). If you have 
+questions about a given card that you have, plug it in to a machine that 
+has the pcmcia drivers and utlities installed properly and see what 
+cardinfo/cardctl have to say about the device.
+
+Pee Wee will automatically (thanks Adi!) do all of the partitioning, so 
+all you need to figure out is where on the development platform the target 
+device is installed and tell pwlconfig in one of the setup screens. For 
+compact flash and PCMCIA devices, either during startup or when the device 
+is inserted it should tell you, for instance "/dev/hde1". You can use the 
+dmesg command to show information about the boot, otherwise it should 
+print the info to your console during a card insertion. Make sure you're 
+not using your host drive as the target, or you will not be happy with the 
+results. The command df will tell you where your host drives are mounted 
+so you can check. 
+3). If you are installing pee wee on a Disk on Chip, then you need to do 
+more work, because the kernel you use must have the right drivers, and I 
+will refer the reader to past posts in the archives for the appropriate 
+info. 
+
+
+On 2003.04.22 17:55 Correy Edmed wrote:
+> 
+> Hi
+> 
+> I am currently at work experience and trying to set up peewee linux. I 
+> have a PCM-3350 GX1 300Mhz Embedded PC and have a Sandisk 256M Compact 
+> Flash card that I want to install the operating system on.
+> 
+> I have heard bad reports about formatting and partitioning CF cards and 
+> this is where I am up to at the moment. I guess I need to partition the 
+> CF card with a boot sector (hda1)  OS (hda2) and swap (hda3).
+> 
+> I have already experimented with the embedded PC using an ide HDD that I 
+> have installed Redhat 8 on. The CF card just arrived and I placed it in 
+> the CompactFlash socket and it is recognised in the bios as an ide 
+> device however I have no idea on how to mount it.
+> 
+> While reading about PCMCIA I noticed in relation to CF cards about 
+> "ftl_format -i /dev/mem0c0c" however this file (mem0c0c) isn't even in 
+> my dev directory. Also after reading the man page for ftl_format I 
+> noticed that you are able to create a boot secotor which perhaps is what 
+> I need.
+> 
+> Any help on setting up the Compact Flash Card so I can start installing 
+> peewee linux would be much appreciated.
+> 
+> Correy
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+From peeweelinux@adis.on.ca  Wed Apr 23 11:47:47 2003
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 23 Apr 2003 11:47:47 +0100
+Subject: [Peeweelinux] Compact Flash
+In-Reply-To: <20030422184119.C2262@leif.attbi.com>
+Message-ID: <PPEJJDOIBFJHGGGEELNNGEJDFJAA.Ricardo.Trindade@myrealbox.com>
+
+I only disagree with the rh8 part, I'm running fine on it.
+
+-----Mensagem original-----
+De: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]Em
+nome de Leif Steinhour
+Enviada: quarta-feira, 23 de Abril de 2003 2:41
+Para: peeweelinux@adis.on.ca
+Assunto: Re: [Peeweelinux] Compact Flash
+
+
+
+
+Okay, a bunch of people have written about this, so I want to set some 
+things straight.
+
+Here's what I think is going on:
+
+1). PWL is probably having even more problems running under RH 8.x than it 
+did under 7.x. My advice: go back and install 6.2 (that's right) on your 
+development platform. You should be able to get it online, it will make 
+your life much easier. 
+2). This stuff about things not working on Compact flash is half nonsense. 
+IDE Compact flash cards are pin-compatible with ide hard disks (if you 
+look online they even sell header boards which route all the signals 
+without modifying them), so Pee Wee runs fine on both ATA compact flash 
+and ATA PCMCIA cards. There are some cards that are sold as "memory" cards 
+that do not have the IDE circuitry built in that will not work (as BOOT 
+devices, but fine for storing info once card services is loaded), but if 
+you get a card that says it shows up as an ide device then it will work 
+provided the card is working (flash drives can wear out). If you have 
+questions about a given card that you have, plug it in to a machine that 
+has the pcmcia drivers and utlities installed properly and see what 
+cardinfo/cardctl have to say about the device.
+
+Pee Wee will automatically (thanks Adi!) do all of the partitioning, so 
+all you need to figure out is where on the development platform the target 
+device is installed and tell pwlconfig in one of the setup screens. For 
+compact flash and PCMCIA devices, either during startup or when the device 
+is inserted it should tell you, for instance "/dev/hde1". You can use the 
+dmesg command to show information about the boot, otherwise it should 
+print the info to your console during a card insertion. Make sure you're 
+not using your host drive as the target, or you will not be happy with the 
+results. The command df will tell you where your host drives are mounted 
+so you can check. 
+3). If you are installing pee wee on a Disk on Chip, then you need to do 
+more work, because the kernel you use must have the right drivers, and I 
+will refer the reader to past posts in the archives for the appropriate 
+info. 
+
+
+On 2003.04.22 17:55 Correy Edmed wrote:
+> 
+> Hi
+> 
+> I am currently at work experience and trying to set up peewee linux. I 
+> have a PCM-3350 GX1 300Mhz Embedded PC and have a Sandisk 256M Compact 
+> Flash card that I want to install the operating system on.
+> 
+> I have heard bad reports about formatting and partitioning CF cards and 
+> this is where I am up to at the moment. I guess I need to partition the 
+> CF card with a boot sector (hda1)  OS (hda2) and swap (hda3).
+> 
+> I have already experimented with the embedded PC using an ide HDD that I 
+> have installed Redhat 8 on. The CF card just arrived and I placed it in 
+> the CompactFlash socket and it is recognised in the bios as an ide 
+> device however I have no idea on how to mount it.
+> 
+> While reading about PCMCIA I noticed in relation to CF cards about 
+> "ftl_format -i /dev/mem0c0c" however this file (mem0c0c) isn't even in 
+> my dev directory. Also after reading the man page for ftl_format I 
+> noticed that you are able to create a boot secotor which perhaps is what 
+> I need.
+> 
+> Any help on setting up the Compact Flash Card so I can start installing 
+> peewee linux would be much appreciated.
+> 
+> Correy
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Apr 23 13:46:17 2003
+From: peeweelinux@adis.on.ca (Hanoi Santos Hung)
+Date: Wed, 23 Apr 2003 08:46:17 -0400
+Subject: [Peeweelinux] Mouse PS2 problem
+Message-ID: <183653312.20030423084617@icid.edu.cu>
+
+Hello ,
+ After several changes I'm runing X, but my PS2 mouse is not
+ recognized (I have to use AllowMouseOpenFail in
+ ServerFlags/XF86Config) .
+ I only get a X on the screen and a report of :
+ 
+ --------
+ 'Cannot open mouse (No such device) - Continuing...'
+ ----------
+ 
+ Then I add gpm to my linux image , and when I run gpm I get the
+ following message :
+ 
+ ---------
+ gpm : oops() invoked from gpm.c(984)
+ /dev/mouse : no such device
+ ----------
+
+ dev/mouse exists and it is a symlink to /dev/psaux.
+ 
+ I wonder if you would be so kind to help me with this problem.
+ 
+ 
+
+Best Regards
+Hanoi Santos Hung
+email : hanoi@icid.edu.cu
+Linux User 296804
+
+
+From peeweelinux@adis.on.ca  Wed Apr 23 16:49:16 2003
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Wed, 23 Apr 2003 08:49:16 -0700
+Subject: [Peeweelinux] Compact Flash
+In-Reply-To: <PPEJJDOIBFJHGGGEELNNGEJDFJAA.Ricardo.Trindade@myrealbox.com>; from Ricardo.Trindade@myrealbox.com on Wed, Apr 23, 2003 at 03:47:47 -0700
+References: <20030422184119.C2262@leif.attbi.com> <PPEJJDOIBFJHGGGEELNNGEJDFJAA.Ricardo.Trindade@myrealbox.com>
+Message-ID: <20030423084916.I2262@leif.attbi.com>
+
+I am happy to be wrong about that. Did you have to do anything special 
+(beyond the kgcc changes) to get it running? Are you using a stock kernel 
+or one you've compiled yourself?
+
+
+On 2003.04.23 03:47 Ricardo Trindade wrote:
+> I only disagree with the rh8 part, I'm running fine on it.
+> 
+> -----Mensagem original-----
+> De: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]Em
+> nome de Leif Steinhour
+> Enviada: quarta-feira, 23 de Abril de 2003 2:41
+> Para: peeweelinux@adis.on.ca
+> Assunto: Re: [Peeweelinux] Compact Flash
+> 
+> 
+> 
+> 
+> Okay, a bunch of people have written about this, so I want to set some
+> things straight.
+> 
+> Here's what I think is going on:
+> 
+> 1). PWL is probably having even more problems running under RH 8.x than
+> it
+> did under 7.x. My advice: go back and install 6.2 (that's right) on your
+> development platform. You should be able to get it online, it will make
+> your life much easier.
+> 2). This stuff about things not working on Compact flash is half
+> nonsense.
+> IDE Compact flash cards are pin-compatible with ide hard disks (if you
+> look online they even sell header boards which route all the signals
+> without modifying them), so Pee Wee runs fine on both ATA compact flash
+> and ATA PCMCIA cards. There are some cards that are sold as "memory"
+> cards
+> that do not have the IDE circuitry built in that will not work (as BOOT
+> devices, but fine for storing info once card services is loaded), but if
+> you get a card that says it shows up as an ide device then it will work
+> provided the card is working (flash drives can wear out). If you have
+> questions about a given card that you have, plug it in to a machine that
+> has the pcmcia drivers and utlities installed properly and see what
+> cardinfo/cardctl have to say about the device.
+> 
+> Pee Wee will automatically (thanks Adi!) do all of the partitioning, so
+> all you need to figure out is where on the development platform the
+> target
+> device is installed and tell pwlconfig in one of the setup screens. For
+> compact flash and PCMCIA devices, either during startup or when the
+> device
+> is inserted it should tell you, for instance "/dev/hde1". You can use the
+> 
+> dmesg command to show information about the boot, otherwise it should
+> print the info to your console during a card insertion. Make sure you're
+> not using your host drive as the target, or you will not be happy with
+> the
+> results. The command df will tell you where your host drives are mounted
+> so you can check.
+> 3). If you are installing pee wee on a Disk on Chip, then you need to do
+> more work, because the kernel you use must have the right drivers, and I
+> will refer the reader to past posts in the archives for the appropriate
+> info.
+> 
+> 
+> On 2003.04.22 17:55 Correy Edmed wrote:
+> >
+> > Hi
+> >
+> > I am currently at work experience and trying to set up peewee linux. I
+> > have a PCM-3350 GX1 300Mhz Embedded PC and have a Sandisk 256M Compact
+> > Flash card that I want to install the operating system on.
+> >
+> > I have heard bad reports about formatting and partitioning CF cards and
+> 
+> > this is where I am up to at the moment. I guess I need to partition the
+> 
+> > CF card with a boot sector (hda1)  OS (hda2) and swap (hda3).
+> >
+> > I have already experimented with the embedded PC using an ide HDD that
+> I
+> > have installed Redhat 8 on. The CF card just arrived and I placed it in
+> 
+> > the CompactFlash socket and it is recognised in the bios as an ide
+> > device however I have no idea on how to mount it.
+> >
+> > While reading about PCMCIA I noticed in relation to CF cards about
+> > "ftl_format -i /dev/mem0c0c" however this file (mem0c0c) isn't even in
+> > my dev directory. Also after reading the man page for ftl_format I
+> > noticed that you are able to create a boot secotor which perhaps is
+> what
+> > I need.
+> >
+> > Any help on setting up the Compact Flash Card so I can start installing
+> 
+> > peewee linux would be much appreciated.
+> >
+> > Correy
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Wed Apr 23 16:48:46 2003
+From: peeweelinux@adis.on.ca (Dennis W. Tokarski)
+Date: Wed, 23 Apr 2003 11:48:46 -0400
+Subject: [Peeweelinux] Mouse PS2 problem
+References: <183653312.20030423084617@icid.edu.cu>
+Message-ID: <3EA6B5DE.7070900@PolTec.COM>
+
+Hanoi Santos Hung wrote:
+
+[snip]
+
+>
+> Then I add gpm to my linux image , and when I run gpm I get the
+> following message :
+> 
+> ---------
+> gpm : oops() invoked from gpm.c(984)
+> /dev/mouse : no such device
+> ----------
+>
+> dev/mouse exists and it is a symlink to /dev/psaux.
+> 
+> 
+>
+
+That error message suggests the kernel doesn't contain a
+ps/2 mouse driver, either built in or as a module. Can you
+check your kernel build configuration file and verify
+you have the right mouse features enables?
+
+
+
+From peeweelinux@adis.on.ca  Wed Apr 23 20:00:00 2003
+From: peeweelinux@adis.on.ca (Hanoi Santos Hung)
+Date: Wed, 23 Apr 2003 15:00:00 -0400
+Subject: [Peeweelinux] Re[2]: Mouse PS2 problem
+Message-ID: <10726076109.20030423150000@icid.edu.cu>
+
+>
+> Then I add gpm to my linux image , and when I run gpm I get the
+> following message :
+> 
+> ---------
+> gpm : oops() invoked from gpm.c(984)
+> /dev/mouse : no such device
+> ----------
+>
+> dev/mouse exists and it is a symlink to /dev/psaux.
+> 
+> 
+>
+
+>That error message suggests the kernel doesn't contain a
+>ps/2 mouse driver, either built in or as a module. Can you
+>check your kernel build configuration file and verify
+>you have the right mouse features enables?
+
+In my custom kernel I have enabled :
+Character Devices -> [*] Mouse Support (not serial mouse)
+Character Devices -> Mice -> <*> Microsoft busmouse support
+Character Devices -> Mice -> [*] PS/2 mouse (aka "auxiliary device") support
+
+Is this enough ? Or I have to add another module or change a
+configuration file ?
+
+
+Best Regards
+Hanoi Santos Hung
+email : hanoi@icid.edu.cu
+Linux User 296804
+
+
+From peeweelinux@adis.on.ca  Thu Apr 24 00:58:08 2003
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 24 Apr 2003 00:58:08 +0100
+Subject: [Peeweelinux] Compact Flash
+In-Reply-To: <20030423084916.I2262@leif.attbi.com>
+Message-ID: <PPEJJDOIBFJHGGGEELNNMEJHFJAA.Ricardo.Trindade@myrealbox.com>
+
+it's running out of the box. I used it successfully with 7.2, 7.3 and now 8.
+never tried it with 9...
+
+-----Mensagem original-----
+De: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]Em
+nome de Leif Steinhour
+Enviada: quarta-feira, 23 de Abril de 2003 16:49
+Para: peeweelinux@adis.on.ca
+Assunto: Re: [Peeweelinux] Compact Flash
+
+
+
+I am happy to be wrong about that. Did you have to do anything special 
+(beyond the kgcc changes) to get it running? Are you using a stock kernel 
+or one you've compiled yourself?
+
+
+On 2003.04.23 03:47 Ricardo Trindade wrote:
+> I only disagree with the rh8 part, I'm running fine on it.
+> 
+> -----Mensagem original-----
+> De: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]Em
+> nome de Leif Steinhour
+> Enviada: quarta-feira, 23 de Abril de 2003 2:41
+> Para: peeweelinux@adis.on.ca
+> Assunto: Re: [Peeweelinux] Compact Flash
+> 
+> 
+> 
+> 
+> Okay, a bunch of people have written about this, so I want to set some
+> things straight.
+> 
+> Here's what I think is going on:
+> 
+> 1). PWL is probably having even more problems running under RH 8.x than
+> it
+> did under 7.x. My advice: go back and install 6.2 (that's right) on your
+> development platform. You should be able to get it online, it will make
+> your life much easier.
+> 2). This stuff about things not working on Compact flash is half
+> nonsense.
+> IDE Compact flash cards are pin-compatible with ide hard disks (if you
+> look online they even sell header boards which route all the signals
+> without modifying them), so Pee Wee runs fine on both ATA compact flash
+> and ATA PCMCIA cards. There are some cards that are sold as "memory"
+> cards
+> that do not have the IDE circuitry built in that will not work (as BOOT
+> devices, but fine for storing info once card services is loaded), but if
+> you get a card that says it shows up as an ide device then it will work
+> provided the card is working (flash drives can wear out). If you have
+> questions about a given card that you have, plug it in to a machine that
+> has the pcmcia drivers and utlities installed properly and see what
+> cardinfo/cardctl have to say about the device.
+> 
+> Pee Wee will automatically (thanks Adi!) do all of the partitioning, so
+> all you need to figure out is where on the development platform the
+> target
+> device is installed and tell pwlconfig in one of the setup screens. For
+> compact flash and PCMCIA devices, either during startup or when the
+> device
+> is inserted it should tell you, for instance "/dev/hde1". You can use the
+> 
+> dmesg command to show information about the boot, otherwise it should
+> print the info to your console during a card insertion. Make sure you're
+> not using your host drive as the target, or you will not be happy with
+> the
+> results. The command df will tell you where your host drives are mounted
+> so you can check.
+> 3). If you are installing pee wee on a Disk on Chip, then you need to do
+> more work, because the kernel you use must have the right drivers, and I
+> will refer the reader to past posts in the archives for the appropriate
+> info.
+> 
+> 
+> On 2003.04.22 17:55 Correy Edmed wrote:
+> >
+> > Hi
+> >
+> > I am currently at work experience and trying to set up peewee linux. I
+> > have a PCM-3350 GX1 300Mhz Embedded PC and have a Sandisk 256M Compact
+> > Flash card that I want to install the operating system on.
+> >
+> > I have heard bad reports about formatting and partitioning CF cards and
+> 
+> > this is where I am up to at the moment. I guess I need to partition the
+> 
+> > CF card with a boot sector (hda1)  OS (hda2) and swap (hda3).
+> >
+> > I have already experimented with the embedded PC using an ide HDD that
+> I
+> > have installed Redhat 8 on. The CF card just arrived and I placed it in
+> 
+> > the CompactFlash socket and it is recognised in the bios as an ide
+> > device however I have no idea on how to mount it.
+> >
+> > While reading about PCMCIA I noticed in relation to CF cards about
+> > "ftl_format -i /dev/mem0c0c" however this file (mem0c0c) isn't even in
+> > my dev directory. Also after reading the man page for ftl_format I
+> > noticed that you are able to create a boot secotor which perhaps is
+> what
+> > I need.
+> >
+> > Any help on setting up the Compact Flash Card so I can start installing
+> 
+> > peewee linux would be much appreciated.
+> >
+> > Correy
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Apr 24 04:16:30 2003
+From: peeweelinux@adis.on.ca (Correy Edmed)
+Date: Thu, 24 Apr 2003 13:16:30 +1000
+Subject: [Peeweelinux] Redhat 6.2 ISO Burning corruption
+Message-ID: <3EA7570E.107@iinet.net.au>
+
+Hi
+
+I have taken the advise about using redhat 6.2 to avoid troubles however 
+it has created these problems in the process.
+
+I have downloaded these 3 files from /redhat/linux/6.2/en/iso/i386
+
+redhat-6.2-doc.iso
+redhat-6.2-i386.iso
+redhat-6.2-srpms.iso
+
+I then used NERO and selected burn image however it said wrong block 
+size and gave me the option to correct it or ignore it. It was preset on 
+2048 and I tried burning it.
+
+All the files appear on the cdrom however some of the files are 
+corrupted for example you can't even copy them.
+
+I then changed the block size and re-tried burning it however this time 
+it didn't even register. I then burnt it using Easy CD creator which 
+didn't give me an error at all but some of the files were still corrupt.
+
+Obviously because these files are corrupt I was unable to boot from them 
+even when I downloaded boot.img and tried booting it from the floppy. I 
+got /module/module-info corrupt and it exited the install.
+
+Are the files (*.iso) I have downloaded (1.8G worth) corrupt and should 
+I try another site or is it another problem which I am overlooking.
+
+Correy Edmed
+
+
+From peeweelinux@adis.on.ca  Thu Apr 24 05:27:52 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Thu, 24 Apr 2003 01:27:52 -0300
+Subject: [Peeweelinux] Redhat 6.2 ISO Burning corruption
+In-Reply-To: <3EA7570E.107@iinet.net.au>
+References: <3EA7570E.107@iinet.net.au>
+Message-ID: <3EA767C8.3040604@tutopia.com.br>
+
+Correy Edmed wrote:
+> Hi
+> 
+> I have taken the advise about using redhat 6.2 to avoid troubles however 
+> it has created these problems in the process.
+
+Hello.
+
+I suggest you verify de MD5.
+
+Adilson.
+
+
+
+From peeweelinux@adis.on.ca  Fri Apr 25 01:19:08 2003
+From: peeweelinux@adis.on.ca (Dennis W. Tokarski)
+Date: Thu, 24 Apr 2003 20:19:08 -0400
+Subject: [Peeweelinux] Re[2]: Mouse PS2 problem
+References: <10726076109.20030423150000@icid.edu.cu>
+Message-ID: <3EA87EFC.1030105@PolTec.COM>
+
+Hanoi Santos Hung wrote:
+
+[snip]
+
+> 
+> In my custom kernel I have enabled :
+> Character Devices -> [*] Mouse Support (not serial mouse)
+> Character Devices -> Mice -> <*> Microsoft busmouse support
+> Character Devices -> Mice -> [*] PS/2 mouse (aka "auxiliary device") support
+> 
+> Is this enough ? Or I have to add another module or change a
+> configuration file ?
+> 
+
+I would think that's OK. I don't have bus mouse support
+turned on, but otherwise my config's the same. Your
+selection of bus mouse shouldn't do anything since you
+don't seem to have selected any of the specific bus
+mouse options.
+
+How about /dev/psaux? You said it exists, but maybe
+it's got the wrong major or minor number. 'ls -l /dev/psaux'
+should show:
+
+crw-------    1 root     root      10,   1 Apr 24 20:16 /dev/psaux
+
+   --Dennis
+
+
+From peeweelinux@adis.on.ca  Fri Apr 25 02:10:03 2003
+From: peeweelinux@adis.on.ca (Correy Edmed)
+Date: Fri, 25 Apr 2003 11:10:03 +1000
+Subject: [Peeweelinux] Searching these archives
+Message-ID: <3EA88AEB.6020703@iinet.net.au>
+
+How do you search the whole peeweelinux archives by a phrase or keyword. 
+I tried google under group but it didn't give me any recent results. 
+Some of the archives appear when searched in the normal google search.
+
+Correy
+
+
+From peeweelinux@adis.on.ca  Fri Apr 25 14:22:46 2003
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Fri, 25 Apr 2003 14:22:46 +0100
+Subject: [Peeweelinux] Searching these archives
+In-Reply-To: <3EA88AEB.6020703@iinet.net.au>
+Message-ID: <PPEJJDOIBFJHGGGEELNNGEKAFJAA.Ricardo.Trindade@myrealbox.com>
+
+you can download all the mailing list archive as a single text file from the
+site (about 2Mb)
+
+-----Mensagem original-----
+De: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]Em
+nome de Correy Edmed
+Enviada: sexta-feira, 25 de Abril de 2003 2:10
+Para: peeweelinux@adis.on.ca
+Assunto: [Peeweelinux] Searching these archives
+
+
+How do you search the whole peeweelinux archives by a phrase or keyword.
+I tried google under group but it didn't give me any recent results.
+Some of the archives appear when searched in the normal google search.
+
+Correy
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Apr 25 19:33:37 2003
+From: peeweelinux@adis.on.ca (Hanoi Santos Hung)
+Date: Fri, 25 Apr 2003 14:33:37 -0400
+Subject: [Peeweelinux] Re[3]: Mouse PS2 problem
+Message-ID: <7620183015.20030425143337@icid.edu.cu>
+
+>Dennis W. Tokarski wrote :
+
+>How about /dev/psaux? You said it exists, but maybe
+>it's got the wrong major or minor number. 'ls -l /dev/psaux'
+>should show:
+
+>crw-------    1 root     root      10,   1 Apr 24 20:16 /dev/psaux
+
+My "ls -l" result is somehow diferent from yours :
+
+----------------------
+ls -l /dev/psaux
+crw-rw----     1 root     root    10,    1 May 5 1998 /dev/psaux
+----------------------
+----------------------
+ls -l /dev/mouse
+lrwxrwxrwx    1 root      root    5 Apr 24 13:09 /dev/mouse -> psaux
+---------------------
+
+My psaux is very old ,and I don't know why.
+I'm running Peewee Linux Configurator Version 0.61.1 over a RH7.3
+host.I will appreciate any help.
+
+Best Regards
+Hanoi Santos Hung
+Linux User 296804
+
+
+From peeweelinux@adis.on.ca  Fri Apr 25 19:40:41 2003
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Fri, 25 Apr 2003 11:40:41 -0700
+Subject: [Peeweelinux] Re[3]: Mouse PS2 problem
+In-Reply-To: <7620183015.20030425143337@icid.edu.cu>; from hanoi@icid.edu.cu on Fri, Apr 25, 2003 at 11:33:37 -0700
+References: <7620183015.20030425143337@icid.edu.cu>
+Message-ID: <20030425114041.L9476@leif.attbi.com>
+
+It looks like your permissions are the problem. Check out the chmod 
+command using man: set them so that they match the output below.
+
+
+On 2003.04.25 11:33 Hanoi Santos Hung wrote:
+> 
+> >Dennis W. Tokarski wrote :
+> 
+> >How about /dev/psaux? You said it exists, but maybe
+> >it's got the wrong major or minor number. 'ls -l /dev/psaux'
+> >should show:
+> 
+> >crw-------    1 root     root      10,   1 Apr 24 20:16 /dev/psaux
+> 
+> My "ls -l" result is somehow diferent from yours :
+> 
+> ----------------------
+> ls -l /dev/psaux
+> crw-rw----     1 root     root    10,    1 May 5 1998 /dev/psaux
+> ----------------------
+> ----------------------
+> ls -l /dev/mouse
+> lrwxrwxrwx    1 root      root    5 Apr 24 13:09 /dev/mouse -> psaux
+> ---------------------
+> 
+> My psaux is very old ,and I don't know why.
+> I'm running Peewee Linux Configurator Version 0.61.1 over a RH7.3
+> host.I will appreciate any help.
+> 
+> Best Regards
+> Hanoi Santos Hung
+> Linux User 296804
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Sun Apr 27 11:17:55 2003
+From: peeweelinux@adis.on.ca (Correy Edmed)
+Date: Sun, 27 Apr 2003 20:17:55 +1000
+Subject: [Peeweelinux] Files get deleted after reboot
+Message-ID: <000e01c30ca6$464c5d20$0201a8c0@correy>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_000B_01C30CFA.166FAA40
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+ Hi
+
+When I log on as root I get ulimit: not found.
+Everything seems to work however whenever I restart none of the files i =
+created have been saved onto the compact flash.
+
+I am using a 256MB Ultra Sandisk Compact flash and I think it has =
+something to do with the way the system is partitioned
+
+/proc/partitions
+major minor #blocks name
+22    0      250880    hdc
+22    1      250879    hdc1
+
+/proc/cmdline
+auto BOOT_IMAGE=3Dlinux ro root=3D100 ramdisk=3D28376
+
+/proc/swaps
+Filename            Type      Size      Used      Priority
+
+/proc/versions
+Linux version 2.2.17 (root@ce) (gcc version egcs-2.91.66 199990314/linux =
+(egcs-1.1.2 relase)) #1 Fri May 2 15:33:53 EDT 2003
+
+When I log in as admin and try and create a file it says Permission =
+denied. even though I should have write permissions.
+
+How can I make it so that I can write to the compact flash and it will =
+be there when I reboot?
+
+Correy
+
+
+------=_NextPart_000_000B_01C30CFA.166FAA40
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META content=3D"text/html; charset=3Diso-8859-1" =
+http-equiv=3DContent-Type>
+<META content=3D"MSHTML 5.00.3502.5390" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2><!--StartFragment =
+-->&nbsp;Hi<BR><BR>When I log on=20
+as root I get ulimit: not found.<BR>Everything seems to work however =
+whenever I=20
+restart none of the files i created have been saved onto the compact=20
+flash.<BR><BR>I am using a 256MB Ultra Sandisk Compact flash and I think =
+it has=20
+something to do with the way the system is=20
+partitioned<BR><BR>/proc/partitions<BR>major minor #blocks=20
+name<BR>22&nbsp;&nbsp;&nbsp; 0&nbsp;&nbsp; &nbsp;&nbsp; 250880 =
+&nbsp;&nbsp;=20
+hdc<BR>22&nbsp;&nbsp;&nbsp; 1&nbsp;&nbsp; &nbsp;&nbsp; =
+250879&nbsp;&nbsp;&nbsp;=20
+hdc1<BR><BR>/proc/cmdline<BR>auto BOOT_IMAGE=3Dlinux ro root=3D100=20
+ramdisk=3D28376<BR><BR>/proc/swaps<BR>Filename&nbsp;&nbsp; &nbsp;&nbsp;=20
+&nbsp;&nbsp; &nbsp;&nbsp; Type&nbsp;&nbsp; &nbsp;&nbsp; Size&nbsp;&nbsp; =
+
+&nbsp;&nbsp; Used&nbsp;&nbsp; &nbsp;&nbsp;=20
+Priority<BR><BR>/proc/versions<BR>Linux version 2.2.17 (root@ce) (gcc =
+version=20
+egcs-2.91.66 199990314/linux (egcs-1.1.2 relase)) #1 Fri May 2 15:33:53 =
+EDT=20
+2003<BR><BR>When I log in as admin and try and create a file it says =
+Permission=20
+denied. even though I should have write permissions.<BR><BR>How can I =
+make it so=20
+that I can write to the compact flash and it will be there when I=20
+reboot?<BR><BR>Correy<BR></FONT></DIV></BODY></HTML>
+
+------=_NextPart_000_000B_01C30CFA.166FAA40--
+
+
+From peeweelinux@adis.on.ca  Mon Apr 28 06:45:06 2003
+From: peeweelinux@adis.on.ca (Correy Edmed)
+Date: Mon, 28 Apr 2003 15:45:06 +1000
+Subject: [Peeweelinux] tcsetpgrp: Inappropriate ioctl for device error
+Message-ID: <3EACBFE2.8030704@iinet.net.au>
+
+My error is
+*******************************************
+/dev/hda2Flushing buffers to disk
+tcsetpgrp: Inappropriate ioctl for device
+Kernel panic: VFS: Unable to mount root fs on 01:02
+*******************************************
+My configuration for the target system is as follows:
+
+Target: Uncompressed ramdisk, boot from ext2 partition
+Target device: "/dev/hdc"
+
+I am using Redhat 6.2 and have tried the projects minimal,wireless-isa 
+and my own custom file where I customised the kernel.
+
+All have the same error message when trying to boot up.
+
+I have read through the newsgroup and one other person had a similar 
+problem however this was not solved?
+
+Correy
+
+
+
+From peeweelinux@adis.on.ca  Tue Apr 29 08:58:10 2003
+From: peeweelinux@adis.on.ca (Correy Edmed)
+Date: Tue, 29 Apr 2003 17:58:10 +1000
+Subject: [Peeweelinux] Kernel Panic
+References: <3EADE1AF.9030405@iinet.net.au> <33434.209.204.178.13.1051584620.squirrel@mail.fluid.com>
+Message-ID: <3EAE3092.2060504@iinet.net.au>
+
+Hi Troy and Adi and Ricardo and Leif and PWL archive
+
+**********************************************************************
+Target System = PCM-3350 GX1 300MHz
+Developement PC = Redhat 6.2 with all the rpm's installed as specified 
+in Reference
+**********************************************************************
+
+Troy has helped me so far with this problem but I noticed in the 
+peewelinux archives that you all seem to know a bit in this area so any 
+help you can give me would be much appreciated.
+
+Thankyou for your answer Troy (attached at bottom) I have another CF 
+that is branded Sandisk Ultra 256M compact flash. That I tried instead 
+of the Kodac 128M CF
+
+I have recompiled the kernel and made sure that all of the filesystems 
+including ext2 fat16 and all the other ones are compiled in and not only 
+as modules.
+
+The things that I notice as fishy are
+
+when PWL configures it it creates 3 partitions
+
+Partition        Contents
+hdc1               boot.b    bzImage    initrd    map
+hdc2                bin    boot     dev    etc    lib    mnt    proc    
+rc.init    root    sbin    tmp    usr    var
+hdc3                **Is there but I can't mount it and no documentation 
+about formating it during target install**
+
+I then have a look at /etc/lilo.conf and find the following which seems 
+really wacky so I have included the lines that I changed in bold
+*********************************
+disk=/dev/sda    *disk=/dev/hdc*
+    bios=0x80
+    heads=4
+    sectors=32
+    cylinders=490
+
+boot=/dev/sda        *disk=/dev/hdc*
+map=/boot/map
+install=/boot/boot.b
+compact
+prompt
+timeout=20
+default=linux
+
+image=/boot/bzImage-ipx    *image=/boot/bzImage*
+    label=linux
+    read-only
+    root=/dev/hda1                *root=/dev/hdc2*
+    vga=0x317
+***************************************
+However i don't even think it is accessing this file yet.
+
+After these changes (new kernel, updated lilo.conf file) I get the same 
+errors as before (ioctl) plus more errors I am thinking because of all 
+the extra file systems I built into the kernel that try and recognise it 
+but fail.
+I have tried using the kernels supplied with pwl such as bzImage-full 
+and selecting modules but no go there either.
+
+Incase some more of the errors being produced would be helpful here they 
+are:
+
+*********************************************
+Partition check:
+hdc: hdc1 hdc2 hdc3
+RAMDISK: Compressed image found at block 0
+VFS: Mounted root (ext2 filesystem).
+Copying filesystem /dev/hda2 to /dev/ram2.....
+/dev/hda2Flushing buffers to disk....
+tcsetpgrp: Inappropriate ioctl for device
+Invalid session number or type of track
+Kernel panic: VFS: Unable to mount root fs on 01:02
+*********************************************
+
+I am able to get it to work when I use a Compressed ramdisk on ext2 
+partition however that is not practical because it installs it all on 
+hdc1 with no other partitions. I need it Uncompressed on ext2 partition 
+so that I can write data to the hdc2 partition.
+
+Do you know what hdc3 is used for is it meant to be a swap or something? 
+I tried partitioning it,(mke2fs) so that I could mount it and everything 
+however to no avail at bootup.
+
+I have been reading the Bootdisk HOWTO and they have this error under 
+their troubleshooting and say there is only a few problems here and to 
+check the rdev -R on /dev/hdc1/bzImage. I followed through this 
+possibility but it did nothing.
+
+Apparently you can look up what device 01:02 is in the format XX:YY in 
+/usr/src/linux/Documentation/devices.txt however I didn't understand this.
+
+Thankyou for any help you can give me,  I will document any successful 
+help I am given in my writeup.
+
+Correy
+
+
+Troy Engel wrote:
+
+>Hiya,
+>
+>Correy Edmed said:
+>  
+>
+>>tcsetpgrp: Inappropriate ioctl for device
+>>kernel panic: VFS: Unable to mount root fs on 01:02
+>>    
+>>
+>
+>I saw this thread, but I'm not part of it I think? In any case, I'll try
+>to help...
+>
+>  
+>
+>>/dev/hda2Flushing buffers to disk....
+>>tcsetpgrp: Inappropriate ioctl for device
+>>Kernel panic: VFS: Unable to mount root fs on 01:02
+>>    
+>>
+>
+>This smells like a CF error, or something in the subsystem like that. Do
+>you have any other flash chips to try and use, besides this one? Likewise,
+>do you have a different CF reader/writer to try?
+>
+>Under normal circumstances, this is the kind of error I would expect when
+>trying to mount a bad disk (or possibly a disk with a filesystem the
+>kernel doesn't have compiled in? like Sun or SGI disk, etc)
+>
+>Hope that helps some....
+>-te
+>
+>  
+>
+
+
+
+
+From peeweelinux@adis.on.ca  Tue Apr 29 09:57:24 2003
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Tue, 29 Apr 2003 09:57:24 +0100
+Subject: [Peeweelinux] Kernel Panic
+In-Reply-To: <3EAE3092.2060504@iinet.net.au>
+Message-ID: <PPEJJDOIBFJHGGGEELNNKEKMFJAA.Ricardo.Trindade@myrealbox.com>
+
+the uncompressed ext2 image (second partition) is copied to a ramdisk as
+umounted afterwards. from your post it looks like you are not aware of this.
+
+as for a data partition the third partition is the way to go, just format it
+and add a line to mount it to fstab.
+
+-----Mensagem original-----
+De: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]Em
+nome de Correy Edmed
+Enviada: terca-feira, 29 de Abril de 2003 8:58
+Para: tengel@fluid.com; adi@adis.on.ca; Ricardo.Trindade@myrealbox.com;
+Leif Steinhour; peeweelinux@adis.on.ca
+Assunto: [Peeweelinux] Kernel Panic
+
+
+Hi Troy and Adi and Ricardo and Leif and PWL archive
+
+**********************************************************************
+Target System = PCM-3350 GX1 300MHz
+Developement PC = Redhat 6.2 with all the rpm's installed as specified
+in Reference
+**********************************************************************
+
+Troy has helped me so far with this problem but I noticed in the
+peewelinux archives that you all seem to know a bit in this area so any
+help you can give me would be much appreciated.
+
+Thankyou for your answer Troy (attached at bottom) I have another CF
+that is branded Sandisk Ultra 256M compact flash. That I tried instead
+of the Kodac 128M CF
+
+I have recompiled the kernel and made sure that all of the filesystems
+including ext2 fat16 and all the other ones are compiled in and not only
+as modules.
+
+The things that I notice as fishy are
+
+when PWL configures it it creates 3 partitions
+
+Partition        Contents
+hdc1               boot.b    bzImage    initrd    map
+hdc2                bin    boot     dev    etc    lib    mnt    proc
+rc.init    root    sbin    tmp    usr    var
+hdc3                **Is there but I can't mount it and no documentation
+about formating it during target install**
+
+I then have a look at /etc/lilo.conf and find the following which seems
+really wacky so I have included the lines that I changed in bold
+*********************************
+disk=/dev/sda    *disk=/dev/hdc*
+    bios=0x80
+    heads=4
+    sectors=32
+    cylinders=490
+
+boot=/dev/sda        *disk=/dev/hdc*
+map=/boot/map
+install=/boot/boot.b
+compact
+prompt
+timeout=20
+default=linux
+
+image=/boot/bzImage-ipx    *image=/boot/bzImage*
+    label=linux
+    read-only
+    root=/dev/hda1                *root=/dev/hdc2*
+    vga=0x317
+***************************************
+However i don't even think it is accessing this file yet.
+
+After these changes (new kernel, updated lilo.conf file) I get the same
+errors as before (ioctl) plus more errors I am thinking because of all
+the extra file systems I built into the kernel that try and recognise it
+but fail.
+I have tried using the kernels supplied with pwl such as bzImage-full
+and selecting modules but no go there either.
+
+Incase some more of the errors being produced would be helpful here they
+are:
+
+*********************************************
+Partition check:
+hdc: hdc1 hdc2 hdc3
+RAMDISK: Compressed image found at block 0
+VFS: Mounted root (ext2 filesystem).
+Copying filesystem /dev/hda2 to /dev/ram2.....
+/dev/hda2Flushing buffers to disk....
+tcsetpgrp: Inappropriate ioctl for device
+Invalid session number or type of track
+Kernel panic: VFS: Unable to mount root fs on 01:02
+*********************************************
+
+I am able to get it to work when I use a Compressed ramdisk on ext2
+partition however that is not practical because it installs it all on
+hdc1 with no other partitions. I need it Uncompressed on ext2 partition
+so that I can write data to the hdc2 partition.
+
+Do you know what hdc3 is used for is it meant to be a swap or something?
+I tried partitioning it,(mke2fs) so that I could mount it and everything
+however to no avail at bootup.
+
+I have been reading the Bootdisk HOWTO and they have this error under
+their troubleshooting and say there is only a few problems here and to
+check the rdev -R on /dev/hdc1/bzImage. I followed through this
+possibility but it did nothing.
+
+Apparently you can look up what device 01:02 is in the format XX:YY in
+/usr/src/linux/Documentation/devices.txt however I didn't understand this.
+
+Thankyou for any help you can give me,  I will document any successful
+help I am given in my writeup.
+
+Correy
+
+
+Troy Engel wrote:
+
+>Hiya,
+>
+>Correy Edmed said:
+>
+>
+>>tcsetpgrp: Inappropriate ioctl for device
+>>kernel panic: VFS: Unable to mount root fs on 01:02
+>>
+>>
+>
+>I saw this thread, but I'm not part of it I think? In any case, I'll try
+>to help...
+>
+>
+>
+>>/dev/hda2Flushing buffers to disk....
+>>tcsetpgrp: Inappropriate ioctl for device
+>>Kernel panic: VFS: Unable to mount root fs on 01:02
+>>
+>>
+>
+>This smells like a CF error, or something in the subsystem like that. Do
+>you have any other flash chips to try and use, besides this one? Likewise,
+>do you have a different CF reader/writer to try?
+>
+>Under normal circumstances, this is the kind of error I would expect when
+>trying to mount a bad disk (or possibly a disk with a filesystem the
+>kernel doesn't have compiled in? like Sun or SGI disk, etc)
+>
+>Hope that helps some....
+>-te
+>
+>
+>
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Apr 29 11:36:22 2003
+From: peeweelinux@adis.on.ca (Correy Edmed)
+Date: Tue, 29 Apr 2003 20:36:22 +1000
+Subject: [Peeweelinux] Kernel Panic
+In-Reply-To: <PPEJJDOIBFJHGGGEELNNKEKMFJAA.Ricardo.Trindade@myrealbox.com>
+References: <PPEJJDOIBFJHGGGEELNNKEKMFJAA.Ricardo.Trindade@myrealbox.com>
+Message-ID: <3EAE55A6.2080602@iinet.net.au>
+
+Hi there
+
+ > > the uncompressed ext2 image (second partition) is copied to a ramdisk
+ From what I understand that is what this line is doing
+ > > Copying filesystem /dev/hda2 to /dev/ram2.....
+However shouldn't that be /dev/hdc2 for my case.
+
+And what must I do to get the boot process past this fatal error.
+
+> tcsetpgrp: Inappropriate ioctl for device
+> Invalid session number or type of track
+> Kernel panic: VFS: Unable to mount root fs on 01:02
+
+> > as for a data partition the third partition is the way to go, just format it
+> > and add a line to mount it to fstab.
+
+Yes I have formatted partition 3 however I am still unable to get to the login screen.
+
+Thankyou for your help.
+
+Correy
+
+
+
+
+
+ > > as umounted afterwards. from your post it looks like you are not 
+aware of this.
+
+ From what I underst
+
+Ricardo Trindade wrote:
+
+>the uncompressed ext2 image (second partition) is copied to a ramdisk as
+>umounted afterwards. from your post it looks like you are not aware of this.
+>
+>as for a data partition the third partition is the way to go, just format it
+>and add a line to mount it to fstab.
+>
+>-----Mensagem original-----
+>De: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]Em
+>nome de Correy Edmed
+>Enviada: terca-feira, 29 de Abril de 2003 8:58
+>Para: tengel@fluid.com; adi@adis.on.ca; Ricardo.Trindade@myrealbox.com;
+>Leif Steinhour; peeweelinux@adis.on.ca
+>Assunto: [Peeweelinux] Kernel Panic
+>
+>
+>Hi Troy and Adi and Ricardo and Leif and PWL archive
+>
+>**********************************************************************
+>Target System = PCM-3350 GX1 300MHz
+>Developement PC = Redhat 6.2 with all the rpm's installed as specified
+>in Reference
+>**********************************************************************
+>
+>Troy has helped me so far with this problem but I noticed in the
+>peewelinux archives that you all seem to know a bit in this area so any
+>help you can give me would be much appreciated.
+>
+>Thankyou for your answer Troy (attached at bottom) I have another CF
+>that is branded Sandisk Ultra 256M compact flash. That I tried instead
+>of the Kodac 128M CF
+>
+>I have recompiled the kernel and made sure that all of the filesystems
+>including ext2 fat16 and all the other ones are compiled in and not only
+>as modules.
+>
+>The things that I notice as fishy are
+>
+>when PWL configures it it creates 3 partitions
+>
+>Partition        Contents
+>hdc1               boot.b    bzImage    initrd    map
+>hdc2                bin    boot     dev    etc    lib    mnt    proc
+>rc.init    root    sbin    tmp    usr    var
+>hdc3                **Is there but I can't mount it and no documentation
+>about formating it during target install**
+>
+>I then have a look at /etc/lilo.conf and find the following which seems
+>really wacky so I have included the lines that I changed in bold
+>*********************************
+>disk=/dev/sda    *disk=/dev/hdc*
+>    bios=0x80
+>    heads=4
+>    sectors=32
+>    cylinders=490
+>
+>boot=/dev/sda        *disk=/dev/hdc*
+>map=/boot/map
+>install=/boot/boot.b
+>compact
+>prompt
+>timeout=20
+>default=linux
+>
+>image=/boot/bzImage-ipx    *image=/boot/bzImage*
+>    label=linux
+>    read-only
+>    root=/dev/hda1                *root=/dev/hdc2*
+>    vga=0x317
+>***************************************
+>However i don't even think it is accessing this file yet.
+>
+>After these changes (new kernel, updated lilo.conf file) I get the same
+>errors as before (ioctl) plus more errors I am thinking because of all
+>the extra file systems I built into the kernel that try and recognise it
+>but fail.
+>I have tried using the kernels supplied with pwl such as bzImage-full
+>and selecting modules but no go there either.
+>
+>Incase some more of the errors being produced would be helpful here they
+>are:
+>
+>*********************************************
+>Partition check:
+>hdc: hdc1 hdc2 hdc3
+>RAMDISK: Compressed image found at block 0
+>VFS: Mounted root (ext2 filesystem).
+>Copying filesystem /dev/hda2 to /dev/ram2.....
+>/dev/hda2Flushing buffers to disk....
+>tcsetpgrp: Inappropriate ioctl for device
+>Invalid session number or type of track
+>Kernel panic: VFS: Unable to mount root fs on 01:02
+>*********************************************
+>
+>I am able to get it to work when I use a Compressed ramdisk on ext2
+>partition however that is not practical because it installs it all on
+>hdc1 with no other partitions. I need it Uncompressed on ext2 partition
+>so that I can write data to the hdc2 partition.
+>
+>Do you know what hdc3 is used for is it meant to be a swap or something?
+>I tried partitioning it,(mke2fs) so that I could mount it and everything
+>however to no avail at bootup.
+>
+>I have been reading the Bootdisk HOWTO and they have this error under
+>their troubleshooting and say there is only a few problems here and to
+>check the rdev -R on /dev/hdc1/bzImage. I followed through this
+>possibility but it did nothing.
+>
+>Apparently you can look up what device 01:02 is in the format XX:YY in
+>/usr/src/linux/Documentation/devices.txt however I didn't understand this.
+>
+>Thankyou for any help you can give me,  I will document any successful
+>help I am given in my writeup.
+>
+>Correy
+>
+>
+>Troy Engel wrote:
+>
+>  
+>
+>>Hiya,
+>>
+>>Correy Edmed said:
+>>
+>>
+>>    
+>>
+>>>tcsetpgrp: Inappropriate ioctl for device
+>>>kernel panic: VFS: Unable to mount root fs on 01:02
+>>>
+>>>
+>>>      
+>>>
+>>I saw this thread, but I'm not part of it I think? In any case, I'll try
+>>to help...
+>>
+>>
+>>
+>>    
+>>
+>>>/dev/hda2Flushing buffers to disk....
+>>>tcsetpgrp: Inappropriate ioctl for device
+>>>Kernel panic: VFS: Unable to mount root fs on 01:02
+>>>
+>>>
+>>>      
+>>>
+>>This smells like a CF error, or something in the subsystem like that. Do
+>>you have any other flash chips to try and use, besides this one? Likewise,
+>>do you have a different CF reader/writer to try?
+>>
+>>Under normal circumstances, this is the kind of error I would expect when
+>>trying to mount a bad disk (or possibly a disk with a filesystem the
+>>kernel doesn't have compiled in? like Sun or SGI disk, etc)
+>>
+>>Hope that helps some....
+>>-te
+>>
+>>
+>>
+>>    
+>>
+>
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+>  
+>
+
+
+
+From peeweelinux@adis.on.ca  Tue Apr 29 17:52:21 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 29 Apr 2003 09:52:21 -0700
+Subject: [Peeweelinux] Kernel Panic
+In-Reply-To: <3EAE55A6.2080602@iinet.net.au>
+References: <PPEJJDOIBFJHGGGEELNNKEKMFJAA.Ricardo.Trindade@myrealbox.com> <3EAE55A6.2080602@iinet.net.au>
+Message-ID: <3EAEADC5.1040809@fluid.com>
+
+Ok, let's start at the beginning and try to get you straight, with some 
+infos along the way.
+
+1) what is "hdc" on your build machine can be anything on your embedded 
+board. I happen to use this exact board, the PCM-3350.  For me, on my 
+build machine the target is "sdb", but when booting on the PCM-3350, the 
+CF is "hdc". As far as I can tell, it will always be hdc on the PCM-3350.
+
+In the PWL gui config, go into "Configure Target Hardware". Your options 
+may be slightly different, but as a general guidline use these:
+
+- Target: Uncompressed ramdisk, boot from ext2 partition -->
+- Target Device: "/dev/sdb"
+- Boot Device on Target System: "/dev/hdc"
+
+2) Now the PWL gui should be able to build everything onto the flash 
+chip as normal. You've noticed that there's an extra "hdc3" laying 
+around -- in order to do it, you need to add a little trickery:
+
+- Make sure you have a kernel with desired options for the filesystem 
+(meaning, I upgraded to kernel 2.4.18 to be able to use ext3 on hdc3, 
+instead of ext2)
+
+- After PWL gui builds the chip, format hdc3 and populate it; I mount 
+hdc3 as /opt, so I have a script called "makeopt.sh" that does all this. 
+In general, you need to do at least:
+
+   echo "Creating filesystem..."
+   mke2fs -j -b 1024 -m0 /dev/sdb3
+   mount -t ext3 /dev/sdb3 /mnt/usbdev
+
+   [... INSERT CUSTOM POPULATION STUFF HERE ...]
+
+   echo "Syncing and unmounting..."
+   sync
+   umount /mnt/usbdev
+
+3) Now your hdc3 is ready to be used, but PWL knows nothing about it. 
+But, there's a little hack you can do. PWL, on boot, will run a script 
+called "/etc/rc.modules" if it exists. Create a 
+<PWLDIR>/custom/rc.custom script (mode 0755) that has the following in it:
+
+   # this all happens before filesystems are mounted
+
+   # this is so we can mount our ext3 /opt
+   mkdir /opt
+   echo "/dev/hdc3 /opt ext3 defaults 1 2" >> /etc/fstab
+
+Go back into the PWL gui, and use the features to make custom/rc.modules 
+copied to "/etc/rc.modules". Extract the filesystems again (important!), 
+then rebuild the flash chip. Rerun your "makeopt.sh" script to redo hdc3 
+partition.
+
+Now stick that chip in the PCM-3350 and it should boot fine -- the 
+default BIOS assigns the CF/IDE adapter as hdc (there are already two 
+onboard IDE channels hda and hdb for adding real hardrives).
+
+Do NOT go screwing around with lilo.conf or anything else, if you 
+configure PWL correctly and use these guidelines, it all should "just 
+work" with little effort. This PCM-3350 has been super easy to work with 
+for me, nary a problem.
+
+hope this helps...
+-te
+
+Correy Edmed wrote:
+> Hi there
+> 
+>  > > the uncompressed ext2 image (second partition) is copied to a ramdisk
+>  From what I understand that is what this line is doing
+>  > > Copying filesystem /dev/hda2 to /dev/ram2.....
+> However shouldn't that be /dev/hdc2 for my case.
+> 
+> And what must I do to get the boot process past this fatal error.
+> 
+>> tcsetpgrp: Inappropriate ioctl for device
+>> Invalid session number or type of track
+>> Kernel panic: VFS: Unable to mount root fs on 01:02
+> 
+> 
+>> > as for a data partition the third partition is the way to go, just 
+>> format it
+>> > and add a line to mount it to fstab.
+> 
+> 
+> Yes I have formatted partition 3 however I am still unable to get to the 
+> login screen.
+> 
+> Thankyou for your help.
+> 
+> Correy
+> 
+> 
+> 
+> 
+> 
+>  > > as umounted afterwards. from your post it looks like you are not 
+> aware of this.
+> 
+>  From what I underst
+> 
+> Ricardo Trindade wrote:
+> 
+>> the uncompressed ext2 image (second partition) is copied to a ramdisk as
+>> umounted afterwards. from your post it looks like you are not aware of 
+>> this.
+>>
+>> as for a data partition the third partition is the way to go, just 
+>> format it
+>> and add a line to mount it to fstab.
+>>
+>> -----Mensagem original-----
+>> De: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]Em
+>> nome de Correy Edmed
+>> Enviada: terca-feira, 29 de Abril de 2003 8:58
+>> Para: tengel@fluid.com; adi@adis.on.ca; Ricardo.Trindade@myrealbox.com;
+>> Leif Steinhour; peeweelinux@adis.on.ca
+>> Assunto: [Peeweelinux] Kernel Panic
+>>
+>>
+>> Hi Troy and Adi and Ricardo and Leif and PWL archive
+>>
+>> **********************************************************************
+>> Target System = PCM-3350 GX1 300MHz
+>> Developement PC = Redhat 6.2 with all the rpm's installed as specified
+>> in Reference
+>> **********************************************************************
+>>
+>> Troy has helped me so far with this problem but I noticed in the
+>> peewelinux archives that you all seem to know a bit in this area so any
+>> help you can give me would be much appreciated.
+>>
+>> Thankyou for your answer Troy (attached at bottom) I have another CF
+>> that is branded Sandisk Ultra 256M compact flash. That I tried instead
+>> of the Kodac 128M CF
+>>
+>> I have recompiled the kernel and made sure that all of the filesystems
+>> including ext2 fat16 and all the other ones are compiled in and not only
+>> as modules.
+>>
+>> The things that I notice as fishy are
+>>
+>> when PWL configures it it creates 3 partitions
+>>
+>> Partition        Contents
+>> hdc1               boot.b    bzImage    initrd    map
+>> hdc2                bin    boot     dev    etc    lib    mnt    proc
+>> rc.init    root    sbin    tmp    usr    var
+>> hdc3                **Is there but I can't mount it and no documentation
+>> about formating it during target install**
+>>
+>> I then have a look at /etc/lilo.conf and find the following which seems
+>> really wacky so I have included the lines that I changed in bold
+>> *********************************
+>> disk=/dev/sda    *disk=/dev/hdc*
+>>    bios=0x80
+>>    heads=4
+>>    sectors=32
+>>    cylinders=490
+>>
+>> boot=/dev/sda        *disk=/dev/hdc*
+>> map=/boot/map
+>> install=/boot/boot.b
+>> compact
+>> prompt
+>> timeout=20
+>> default=linux
+>>
+>> image=/boot/bzImage-ipx    *image=/boot/bzImage*
+>>    label=linux
+>>    read-only
+>>    root=/dev/hda1                *root=/dev/hdc2*
+>>    vga=0x317
+>> ***************************************
+>> However i don't even think it is accessing this file yet.
+>>
+>> After these changes (new kernel, updated lilo.conf file) I get the same
+>> errors as before (ioctl) plus more errors I am thinking because of all
+>> the extra file systems I built into the kernel that try and recognise it
+>> but fail.
+>> I have tried using the kernels supplied with pwl such as bzImage-full
+>> and selecting modules but no go there either.
+>>
+>> Incase some more of the errors being produced would be helpful here they
+>> are:
+>>
+>> *********************************************
+>> Partition check:
+>> hdc: hdc1 hdc2 hdc3
+>> RAMDISK: Compressed image found at block 0
+>> VFS: Mounted root (ext2 filesystem).
+>> Copying filesystem /dev/hda2 to /dev/ram2.....
+>> /dev/hda2Flushing buffers to disk....
+>> tcsetpgrp: Inappropriate ioctl for device
+>> Invalid session number or type of track
+>> Kernel panic: VFS: Unable to mount root fs on 01:02
+>> *********************************************
+>>
+>> I am able to get it to work when I use a Compressed ramdisk on ext2
+>> partition however that is not practical because it installs it all on
+>> hdc1 with no other partitions. I need it Uncompressed on ext2 partition
+>> so that I can write data to the hdc2 partition.
+>>
+>> Do you know what hdc3 is used for is it meant to be a swap or something?
+>> I tried partitioning it,(mke2fs) so that I could mount it and everything
+>> however to no avail at bootup.
+>>
+>> I have been reading the Bootdisk HOWTO and they have this error under
+>> their troubleshooting and say there is only a few problems here and to
+>> check the rdev -R on /dev/hdc1/bzImage. I followed through this
+>> possibility but it did nothing.
+>>
+>> Apparently you can look up what device 01:02 is in the format XX:YY in
+>> /usr/src/linux/Documentation/devices.txt however I didn't understand 
+>> this.
+>>
+>> Thankyou for any help you can give me,  I will document any successful
+>> help I am given in my writeup.
+>>
+>> Correy
+>>
+>>
+>> Troy Engel wrote:
+>>
+>>  
+>>
+>>> Hiya,
+>>>
+>>> Correy Edmed said:
+>>>
+>>>
+>>>   
+>>>
+>>>> tcsetpgrp: Inappropriate ioctl for device
+>>>> kernel panic: VFS: Unable to mount root fs on 01:02
+>>>>
+>>>>
+>>>>     
+>>>
+>>> I saw this thread, but I'm not part of it I think? In any case, I'll try
+>>> to help...
+>>>
+>>>
+>>>
+>>>   
+>>>
+>>>> /dev/hda2Flushing buffers to disk....
+>>>> tcsetpgrp: Inappropriate ioctl for device
+>>>> Kernel panic: VFS: Unable to mount root fs on 01:02
+>>>>
+>>>>
+>>>>     
+>>>
+>>> This smells like a CF error, or something in the subsystem like that. Do
+>>> you have any other flash chips to try and use, besides this one? 
+>>> Likewise,
+>>> do you have a different CF reader/writer to try?
+>>>
+>>> Under normal circumstances, this is the kind of error I would expect 
+>>> when
+>>> trying to mount a bad disk (or possibly a disk with a filesystem the
+>>> kernel doesn't have compiled in? like Sun or SGI disk, etc)
+>>>
+>>> Hope that helps some....
+>>> -te
+>>>
+>>>
+>>>
+>>>   
+>>
+>>
+>>
+>>
+>> _______________________________________________
+>> Peeweelinux mailing list
+>> Peeweelinux@adis.on.ca
+>> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+>> _______________________________________________
+>> Peeweelinux mailing list
+>> Peeweelinux@adis.on.ca
+>> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+>>
+>>  
+>>
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Troy Engel, Systems Engineer
+"Now, Beakie, we'll just flip this switch and 60,000 refreshing
+  volts of electricity will surge through your body. Ready?"
+
+
+From peeweelinux@adis.on.ca  Tue Apr 29 22:02:31 2003
+From: peeweelinux@adis.on.ca (Correy Edmed)
+Date: Wed, 30 Apr 2003 07:02:31 +1000
+Subject: [Peeweelinux] Kernel Panic
+In-Reply-To: <3EAEADC5.1040809@fluid.com>
+References: <PPEJJDOIBFJHGGGEELNNKEKMFJAA.Ricardo.Trindade@myrealbox.com> <3EAE55A6.2080602@iinet.net.au> <3EAEADC5.1040809@fluid.com>
+Message-ID: <3EAEE867.8090109@iinet.net.au>
+
+Hey there
+
+ > > - Boot Device on Target System: "/dev/hdc"
+Was my biggest downfall in the help is says
+************************************************
+Boot Device: /dev/hda
+How the target device will be known as on the final target system
+It is unlikely you will need to change this parameter.
+*************************************************
+After changing this to /dev/hdc it obviously found where to boot from 
+and stopped giving me the kernel panic and I can now
+login which is great.
+
+I don't have a Compact Flash to ide adapter so I have installed Redhat 
+6.2 on a hard disk connected to the PCM-3350.
+which means that my target system is hdc I am assuming ithat sda would 
+be the default when using this adapter.
+
+to change any of the files what I do since everything is running in 
+ramdisk I mount the partitions.
+mount -t ext2 /dev/hdc2 /mnt/cf2
+mount -t ext2 /dev/hdc3 /mnt/cf3
+And do all my changes this way that way when I boot up next time 
+everything will have taken place.
+
+Is there a command to flush everything in ramdisk to the CF card? 
+Because all the changes are only
+made to ramdisk at the time so when I reboot the ramdisk is of course 
+rebooted and none of my
+changes have taken place.
+
+I like what you were doing with /opt and hdc3 I will give that a go.
+
+I realy appreciate the effort you went to to write this all out for me.
+Enjoy your day.
+
+correy
+
+Troy Engel wrote:
+
+> Ok, let's start at the beginning and try to get you straight, with 
+> some infos along the way.
+>
+> 1) what is "hdc" on your build machine can be anything on your 
+> embedded board. I happen to use this exact board, the PCM-3350.  For 
+> me, on my build machine the target is "sdb", but when booting on the 
+> PCM-3350, the CF is "hdc". As far as I can tell, it will always be hdc 
+> on the PCM-3350.
+>
+> In the PWL gui config, go into "Configure Target Hardware". Your 
+> options may be slightly different, but as a general guidline use these:
+>
+> - Target: Uncompressed ramdisk, boot from ext2 partition -->
+> - Target Device: "/dev/sdb"
+> - Boot Device on Target System: "/dev/hdc"
+>
+> 2) Now the PWL gui should be able to build everything onto the flash 
+> chip as normal. You've noticed that there's an extra "hdc3" laying 
+> around -- in order to do it, you need to add a little trickery:
+>
+> - Make sure you have a kernel with desired options for the filesystem 
+> (meaning, I upgraded to kernel 2.4.18 to be able to use ext3 on hdc3, 
+> instead of ext2)
+>
+> - After PWL gui builds the chip, format hdc3 and populate it; I mount 
+> hdc3 as /opt, so I have a script called "makeopt.sh" that does all 
+> this. In general, you need to do at least:
+>
+>   echo "Creating filesystem..."
+>   mke2fs -j -b 1024 -m0 /dev/sdb3
+>   mount -t ext3 /dev/sdb3 /mnt/usbdev
+>
+>   [... INSERT CUSTOM POPULATION STUFF HERE ...]
+>
+>   echo "Syncing and unmounting..."
+>   sync
+>   umount /mnt/usbdev
+>
+> 3) Now your hdc3 is ready to be used, but PWL knows nothing about it. 
+> But, there's a little hack you can do. PWL, on boot, will run a script 
+> called "/etc/rc.modules" if it exists. Create a 
+> <PWLDIR>/custom/rc.custom script (mode 0755) that has the following in 
+> it:
+>
+>   # this all happens before filesystems are mounted
+>
+>   # this is so we can mount our ext3 /opt
+>   mkdir /opt
+>   echo "/dev/hdc3 /opt ext3 defaults 1 2" >> /etc/fstab
+>
+> Go back into the PWL gui, and use the features to make 
+> custom/rc.modules copied to "/etc/rc.modules". Extract the filesystems 
+> again (important!), then rebuild the flash chip. Rerun your 
+> "makeopt.sh" script to redo hdc3 partition.
+>
+> Now stick that chip in the PCM-3350 and it should boot fine -- the 
+> default BIOS assigns the CF/IDE adapter as hdc (there are already two 
+> onboard IDE channels hda and hdb for adding real hardrives).
+>
+> Do NOT go screwing around with lilo.conf or anything else, if you 
+> configure PWL correctly and use these guidelines, it all should "just 
+> work" with little effort. This PCM-3350 has been super easy to work 
+> with for me, nary a problem.
+>
+> hope this helps...
+> -te
+>
+> Correy Edmed wrote:
+>
+>> Hi there
+>>
+>>  > > the uncompressed ext2 image (second partition) is copied to a 
+>> ramdisk
+>>  From what I understand that is what this line is doing
+>>  > > Copying filesystem /dev/hda2 to /dev/ram2.....
+>> However shouldn't that be /dev/hdc2 for my case.
+>>
+>> And what must I do to get the boot process past this fatal error.
+>>
+>>> tcsetpgrp: Inappropriate ioctl for device
+>>> Invalid session number or type of track
+>>> Kernel panic: VFS: Unable to mount root fs on 01:02
+>>
+>>
+>>
+>>> > as for a data partition the third partition is the way to go, just 
+>>> format it
+>>> > and add a line to mount it to fstab.
+>>
+>>
+>>
+>> Yes I have formatted partition 3 however I am still unable to get to 
+>> the login screen.
+>>
+>> Thankyou for your help.
+>>
+>> Correy
+>>
+>>
+>>
+>>
+>>
+>>  > > as umounted afterwards. from your post it looks like you are not 
+>> aware of this.
+>>
+>>  From what I underst
+>>
+>> Ricardo Trindade wrote:
+>>
+>>> the uncompressed ext2 image (second partition) is copied to a 
+>>> ramdisk as
+>>> umounted afterwards. from your post it looks like you are not aware 
+>>> of this.
+>>>
+>>> as for a data partition the third partition is the way to go, just 
+>>> format it
+>>> and add a line to mount it to fstab.
+>>>
+>>> -----Mensagem original-----
+>>> De: peeweelinux-admin@adis.on.ca 
+>>> [mailto:peeweelinux-admin@adis.on.ca]Em
+>>> nome de Correy Edmed
+>>> Enviada: terca-feira, 29 de Abril de 2003 8:58
+>>> Para: tengel@fluid.com; adi@adis.on.ca; Ricardo.Trindade@myrealbox.com;
+>>> Leif Steinhour; peeweelinux@adis.on.ca
+>>> Assunto: [Peeweelinux] Kernel Panic
+>>>
+>>>
+>>> Hi Troy and Adi and Ricardo and Leif and PWL archive
+>>>
+>>> **********************************************************************
+>>> Target System = PCM-3350 GX1 300MHz
+>>> Developement PC = Redhat 6.2 with all the rpm's installed as specified
+>>> in Reference
+>>> **********************************************************************
+>>>
+>>> Troy has helped me so far with this problem but I noticed in the
+>>> peewelinux archives that you all seem to know a bit in this area so any
+>>> help you can give me would be much appreciated.
+>>>
+>>> Thankyou for your answer Troy (attached at bottom) I have another CF
+>>> that is branded Sandisk Ultra 256M compact flash. That I tried instead
+>>> of the Kodac 128M CF
+>>>
+>>> I have recompiled the kernel and made sure that all of the filesystems
+>>> including ext2 fat16 and all the other ones are compiled in and not 
+>>> only
+>>> as modules.
+>>>
+>>> The things that I notice as fishy are
+>>>
+>>> when PWL configures it it creates 3 partitions
+>>>
+>>> Partition        Contents
+>>> hdc1               boot.b    bzImage    initrd    map
+>>> hdc2                bin    boot     dev    etc    lib    mnt    proc
+>>> rc.init    root    sbin    tmp    usr    var
+>>> hdc3                **Is there but I can't mount it and no 
+>>> documentation
+>>> about formating it during target install**
+>>>
+>>> I then have a look at /etc/lilo.conf and find the following which seems
+>>> really wacky so I have included the lines that I changed in bold
+>>> *********************************
+>>> disk=/dev/sda    *disk=/dev/hdc*
+>>>    bios=0x80
+>>>    heads=4
+>>>    sectors=32
+>>>    cylinders=490
+>>>
+>>> boot=/dev/sda        *disk=/dev/hdc*
+>>> map=/boot/map
+>>> install=/boot/boot.b
+>>> compact
+>>> prompt
+>>> timeout=20
+>>> default=linux
+>>>
+>>> image=/boot/bzImage-ipx    *image=/boot/bzImage*
+>>>    label=linux
+>>>    read-only
+>>>    root=/dev/hda1                *root=/dev/hdc2*
+>>>    vga=0x317
+>>> ***************************************
+>>> However i don't even think it is accessing this file yet.
+>>>
+>>> After these changes (new kernel, updated lilo.conf file) I get the same
+>>> errors as before (ioctl) plus more errors I am thinking because of all
+>>> the extra file systems I built into the kernel that try and 
+>>> recognise it
+>>> but fail.
+>>> I have tried using the kernels supplied with pwl such as bzImage-full
+>>> and selecting modules but no go there either.
+>>>
+>>> Incase some more of the errors being produced would be helpful here 
+>>> they
+>>> are:
+>>>
+>>> *********************************************
+>>> Partition check:
+>>> hdc: hdc1 hdc2 hdc3
+>>> RAMDISK: Compressed image found at block 0
+>>> VFS: Mounted root (ext2 filesystem).
+>>> Copying filesystem /dev/hda2 to /dev/ram2.....
+>>> /dev/hda2Flushing buffers to disk....
+>>> tcsetpgrp: Inappropriate ioctl for device
+>>> Invalid session number or type of track
+>>> Kernel panic: VFS: Unable to mount root fs on 01:02
+>>> *********************************************
+>>>
+>>> I am able to get it to work when I use a Compressed ramdisk on ext2
+>>> partition however that is not practical because it installs it all on
+>>> hdc1 with no other partitions. I need it Uncompressed on ext2 partition
+>>> so that I can write data to the hdc2 partition.
+>>>
+>>> Do you know what hdc3 is used for is it meant to be a swap or 
+>>> something?
+>>> I tried partitioning it,(mke2fs) so that I could mount it and 
+>>> everything
+>>> however to no avail at bootup.
+>>>
+>>> I have been reading the Bootdisk HOWTO and they have this error under
+>>> their troubleshooting and say there is only a few problems here and to
+>>> check the rdev -R on /dev/hdc1/bzImage. I followed through this
+>>> possibility but it did nothing.
+>>>
+>>> Apparently you can look up what device 01:02 is in the format XX:YY in
+>>> /usr/src/linux/Documentation/devices.txt however I didn't understand 
+>>> this.
+>>>
+>>> Thankyou for any help you can give me,  I will document any successful
+>>> help I am given in my writeup.
+>>>
+>>> Correy
+>>>
+>>>
+>>> Troy Engel wrote:
+>>>
+>>>  
+>>>
+>>>> Hiya,
+>>>>
+>>>> Correy Edmed said:
+>>>>
+>>>>
+>>>>  
+>>>>
+>>>>> tcsetpgrp: Inappropriate ioctl for device
+>>>>> kernel panic: VFS: Unable to mount root fs on 01:02
+>>>>>
+>>>>>
+>>>>>     
+>>>>
+>>>>
+>>>> I saw this thread, but I'm not part of it I think? In any case, 
+>>>> I'll try
+>>>> to help...
+>>>>
+>>>>
+>>>>
+>>>>  
+>>>>
+>>>>> /dev/hda2Flushing buffers to disk....
+>>>>> tcsetpgrp: Inappropriate ioctl for device
+>>>>> Kernel panic: VFS: Unable to mount root fs on 01:02
+>>>>>
+>>>>>
+>>>>>     
+>>>>
+>>>>
+>>>> This smells like a CF error, or something in the subsystem like 
+>>>> that. Do
+>>>> you have any other flash chips to try and use, besides this one? 
+>>>> Likewise,
+>>>> do you have a different CF reader/writer to try?
+>>>>
+>>>> Under normal circumstances, this is the kind of error I would 
+>>>> expect when
+>>>> trying to mount a bad disk (or possibly a disk with a filesystem the
+>>>> kernel doesn't have compiled in? like Sun or SGI disk, etc)
+>>>>
+>>>> Hope that helps some....
+>>>> -te
+>>>>
+>>>>
+>>>>
+>>>>   
+>>>
+>>>
+>>>
+>>>
+>>>
+>>> _______________________________________________
+>>> Peeweelinux mailing list
+>>> Peeweelinux@adis.on.ca
+>>> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>
+>>> _______________________________________________
+>>> Peeweelinux mailing list
+>>> Peeweelinux@adis.on.ca
+>>> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>
+>>>
+>>>  
+>>>
+>>
+>>
+>> _______________________________________________
+>> Peeweelinux mailing list
+>> Peeweelinux@adis.on.ca
+>> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+
+
+
+From peeweelinux@adis.on.ca  Tue Apr 29 23:00:48 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 29 Apr 2003 15:00:48 -0700
+Subject: [Peeweelinux] Kernel Panic
+In-Reply-To: <3EAEE867.8090109@iinet.net.au>
+References: <PPEJJDOIBFJHGGGEELNNKEKMFJAA.Ricardo.Trindade@myrealbox.com> <3EAE55A6.2080602@iinet.net.au> <3EAEADC5.1040809@fluid.com> <3EAEE867.8090109@iinet.net.au>
+Message-ID: <3EAEF610.2060408@fluid.com>
+
+Correy Edmed wrote:
+> 
+> I don't have a Compact Flash to ide adapter so I have installed Redhat 
+> 6.2 on a hard disk connected to the PCM-3350.
+> which means that my target system is hdc I am assuming ithat sda would 
+> be the default when using this adapter.
+
+Sorry, not what I meant -- the PCM-3350 has a CF slot built right in, on 
+the underside of the board (flipside of where the power connector is). 
+This slot is recognized by the BIOS as "hdc" (secondary master). The 
+sda/sdb usage in my case is because my dev machine recognizes the CF 
+reader (on the USB port) as a SCSI device.
+
+Looks like in your case you'll have hda (RH 6.2 harddrive) and hdc (CF 
+slot). Even easier. ;)
+
+> to change any of the files what I do since everything is running in 
+> ramdisk I mount the partitions.
+> mount -t ext2 /dev/hdc2 /mnt/cf2
+> mount -t ext2 /dev/hdc3 /mnt/cf3
+> And do all my changes this way that way when I boot up next time 
+> everything will have taken place.
+
+For hdc2, you should really work on using PWL's built in "custom" files 
+ability; look at the PWL archives, and you'll see many examples how we 
+use the custom/ folder features to make core changes to the subsystem.
+
+> Is there a command to flush everything in ramdisk to the CF card? 
+> Because all the changes are only
+> made to ramdisk at the time so when I reboot the ramdisk is of course 
+> rebooted and none of my
+> changes have taken place.
+
+No -- a ramdisk is a compressed image which is loaded from disk into 
+ram; once loaded it's no longer tied to the disk in any way, shape, or 
+form. You best bet is to:
+
+a) use the custom/ features of PWL to make core changes
+b) keep editable things on hdc3 (/opt).
+
+For instance, for my project I'll never know how the device will connect 
+to the internet until it makes it to a client site. As such, I rewrote 
+the networking subsytem to completely live in /opt/, and support PPP, 
+DHCP, static, CDMA and CDPD (GPRS coming) which can be flipped by the 
+end client at runtime, and "stick".
+
+Another handy use is to edit the core PWL to include a simple 
+/etc/rcS.d/07local script like this:
+
+   #!/bin/sh
+   # run any per-unit customs
+   if [ -f /opt/etc/rc.custom ]; then
+     /opt/etc/rc.custom
+   fi
+   exit 0
+
+Then, because this is run right at boot, you can have a sticky 
+/opt/etc/rc.custom script which does neat things (links in a new 
+/etc/localtime, sets the time/date, enables debug syslogs, whatever you 
+can dream up!). Handy for online remote field debugging, that's for sure.
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+"Now, Beakie, we'll just flip this switch and 60,000 refreshing
+  volts of electricity will surge through your body. Ready?"
+
+

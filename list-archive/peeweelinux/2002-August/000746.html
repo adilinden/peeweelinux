@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] thttpd web server Q+A, net-pf-10
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000745.html">
+   <LINK REL="Next"  HREF="000747.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] thttpd web server Q+A, net-pf-10
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] thttpd web server Q+A, net-pf-10">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 14 Aug 2002 14:57:45 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000745.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+        <LI> Next message: <A HREF="000747.html">[Peeweelinux] PeeWeeLinux Documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#746">[ date ]</a>
+              <a href="thread.html#746">[ thread ]</a>
+              <a href="subject.html#746">[ subject ]</a>
+              <a href="author.html#746">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>So, after researching all that, I can respond semi-intelligently...
+
+At 02:58 PM 8/14/02 -0500, Stefan Willmert wrote:
+&gt;<i>I'm not exactly sure what loads modules.conf. 
+</I>
+It is read when doing depmod -a
+
+&gt;<i>Modprobe seems to use some standard naming when
+</I>&gt;<i>trying to figure out which modules to load. Especially 
+</I>&gt;<i>for sound modules.
+</I>
+This would actually be in the startup script.  modprobe just
+does the translation, having loaded up some aliases.
+
+&gt;<i>What I did, was to put the insmod commands directly in rc.modules 
+</I>
+I can write a script to &quot;bring everything up by hand&quot; but I am
+wary that I will install some package that conflicts with that
+method.  Also I get the feeling the bring-up may already be in
+there and I just don't understand how to tweak it just right.
+
+Hmm, I don't seem to have an rc.modules directory...  Maybe I
+will just create a few small scripts in rcS.d  That way they
+will remain &quot;visible&quot; and not &quot;fall into a crack&quot;.
+
+&gt;<i>You can ignore modules.conf unless you are going to have one
+</I>&gt;<i>of your startup scripts use modprobe to determine what
+</I>&gt;<i>modules to load.
+</I>
+Now that  you mention it, I already know what I want to load
+(and if I didn't I would find out as soon as I looked at lsmod).
+So I don't really need modprobe at all.   Hey maybe if I
+removed it I would find out who is trying to call it!
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000745.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+	<LI> Next message: <A HREF="000747.html">[Peeweelinux] PeeWeeLinux Documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#746">[ date ]</a>
+              <a href="thread.html#746">[ thread ]</a>
+              <a href="subject.html#746">[ subject ]</a>
+              <a href="author.html#746">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

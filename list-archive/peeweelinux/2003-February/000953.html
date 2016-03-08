@@ -1,0 +1,276 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] SBC mediaGX
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000952.html">
+   <LINK REL="Next"  HREF="000945.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] SBC mediaGX
+   </H1>
+    <B>Charles Billette
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] SBC mediaGX">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>16 Feb 2003 20:18:07 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000952.html">[Peeweelinux] SBC mediaGX
+</A></li>
+        <LI> Next message: <A HREF="000945.html">[Peeweelinux] or PCMCIA Compact Flash Card Adapter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#953">[ date ]</a>
+              <a href="thread.html#953">[ thread ]</a>
+              <a href="subject.html#953">[ subject ]</a>
+              <a href="author.html#953">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--=-08ckKNI7rbtpHJIv4L4n
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+Take for the script!
+
+I try it but I still have a problem. When I resume the board it not seem
+to run full speed.
+
+
+
+
+On Fri, 2003-02-14 at 05:25, Sventje Lill (RR) wrote:
+
+&gt;<i> On 12 Feb 2003 12:41:50 -0500, Charles Billette &lt;<A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A>&gt; 
+</I>&gt;<i> wrote:
+</I>&gt;<i> 
+</I>&gt;<i> Maybe this will help ;-)
+</I>&gt;<i> 
+</I>&gt;<i> #!/bin/sh
+</I>&gt;<i> #
+</I>&gt;<i> # This script, when installed in your /etc/rc.d directory,
+</I>&gt;<i> # and when called from e.g. rc.local or rc.M will enable
+</I>&gt;<i> # various performance and power-saving features on your
+</I>&gt;<i> # Cyrix CPU.
+</I>&gt;<i> #
+</I>&gt;<i> # set6x86 version 1.2 or newer required
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> BINPATH=/usr/sbin
+</I>&gt;<i> 
+</I>&gt;<i> echo -n &quot;Cyrix 6x86: Suspend-on-Halt, &quot;
+</I>&gt;<i> $BINPATH/set6x86 -p 0xC2 -s 0x08
+</I>&gt;<i> 
+</I>&gt;<i> echo -n &quot;Fast ADS, &quot;
+</I>&gt;<i> $BINPATH/set6x86 -p 0xC2 -c 0x02
+</I>&gt;<i> 
+</I>&gt;<i> # MAPEN (access to CCR4/5 enabled -- needed for settings below)
+</I>&gt;<i> $BINPATH/set6x86 -p 0xC3 -s 0x10
+</I>&gt;<i> 
+</I>&gt;<i> echo -n &quot;Fast IORT, &quot;
+</I>&gt;<i> $BINPATH/set6x86 -p 0xE8 -s 0x07
+</I>&gt;<i> 
+</I>&gt;<i> echo -n &quot;Enable DTE, &quot;
+</I>&gt;<i> $BINPATH/set6x86 -p 0xE8 -s 0x10
+</I>&gt;<i> 
+</I>&gt;<i> echo -n &quot;Fast LOOP, &quot;
+</I>&gt;<i> $BINPATH/set6x86 -p 0xE9 -c 0x02
+</I>&gt;<i> 
+</I>&gt;<i> # This enables some performance features for the linear memory mapped
+</I>&gt;<i> # VGA memory buffer, assuming it's on address 0xE0000000.
+</I>&gt;<i> #
+</I>&gt;<i> # On my system, memory bandwidth goes from 44 MB/sec to 78 MB/sec.
+</I>&gt;<i> #
+</I>&gt;<i> # It is disabled here, because this is very system-dependent.
+</I>&gt;<i> #
+</I>&gt;<i> #echo -n &quot;Fast Lin. VidMem.&quot;
+</I>&gt;<i> #$BINPATH/set6x86 -p 0xD6 0xE0
+</I>&gt;<i> #$BINPATH/set6x86 -p 0xD7 0x00
+</I>&gt;<i> #$BINPATH/set6x86 -p 0xD8 0x0A
+</I>&gt;<i> #$BINPATH/set6x86 -p 0xE2 0x09
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> # MAPEN (disable access to CCR4/5)
+</I>&gt;<i> $BINPATH/set6x86 -p 0xC3 -c 0x10
+</I>&gt;<i> 
+</I>&gt;<i> echo
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Hi
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Is there SBC mediaGX user on this news group?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ________________________________________________________________________
+</I>&gt;<i> &gt; Charles Billette
+</I>&gt;<i> &gt; - 514.909.2452
+</I>&gt;<i> &gt; - <A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A>
+</I>&gt;<i> &gt; ________________________________________________________________________
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 3 additional files attached
+</I>&gt;<i> -6x86reg shows the registers used by the CPU
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> and for more hints:
+</I>&gt;<i> <A HREF="http://wwwd.national.com/national/developer.nsf/df772260f0f9b90c872569590075bc32/">http://wwwd.national.com/national/developer.nsf/df772260f0f9b90c872569590075bc32/</A>
+</I>&gt;<i> 
+</I>&gt;<i> have fun
+</I>&gt;<i> 
+</I>&gt;<i> Ralf Riedel
+</I>
+
+________________________________________________________________________
+Charles Billette
+- 514.909.2452
+- <A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A>
+                                                                        
+________________________________________________________________________
+
+--=-08ckKNI7rbtpHJIv4L4n
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 TRANSITIONAL//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+  &lt;META HTTP-EQUIV=&quot;Content-Type&quot; CONTENT=&quot;text/html; CHARSET=UTF-8&quot;&gt;
+  &lt;META NAME=&quot;GENERATOR&quot; CONTENT=&quot;GtkHTML/1.1.7&quot;&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+Take for the script!&lt;BR&gt;
+&lt;BR&gt;
+I try it but I still have a problem. When I resume the board it not seem to run full speed.&lt;BR&gt;
+&lt;BR&gt;
+&lt;BR&gt;
+&lt;BR&gt;
+&lt;BR&gt;
+On Fri, 2003-02-14 at 05:25, Sventje Lill (RR) wrote:
+&lt;BLOCKQUOTE TYPE=CITE&gt;
+&lt;PRE&gt;&lt;FONT COLOR=&quot;#737373&quot; SIZE=&quot;3&quot;&gt;&lt;I&gt;On 12 Feb 2003 12:41:50 -0500, Charles Billette &amp;lt;<A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A>&amp;gt; 
+wrote:
+
+Maybe this will help ;-)
+
+#!/bin/sh
+#
+# This script, when installed in your /etc/rc.d directory,
+# and when called from e.g. rc.local or rc.M will enable
+# various performance and power-saving features on your
+# Cyrix CPU.
+#
+# set6x86 version 1.2 or newer required
+
+
+BINPATH=/usr/sbin
+
+echo -n &amp;quot;Cyrix 6x86: Suspend-on-Halt, &amp;quot;
+$BINPATH/set6x86 -p 0xC2 -s 0x08
+
+echo -n &amp;quot;Fast ADS, &amp;quot;
+$BINPATH/set6x86 -p 0xC2 -c 0x02
+
+# MAPEN (access to CCR4/5 enabled -- needed for settings below)
+$BINPATH/set6x86 -p 0xC3 -s 0x10
+
+echo -n &amp;quot;Fast IORT, &amp;quot;
+$BINPATH/set6x86 -p 0xE8 -s 0x07
+
+echo -n &amp;quot;Enable DTE, &amp;quot;
+$BINPATH/set6x86 -p 0xE8 -s 0x10
+
+echo -n &amp;quot;Fast LOOP, &amp;quot;
+$BINPATH/set6x86 -p 0xE9 -c 0x02
+
+# This enables some performance features for the linear memory mapped
+# VGA memory buffer, assuming it's on address 0xE0000000.
+#
+# On my system, memory bandwidth goes from 44 MB/sec to 78 MB/sec.
+#
+# It is disabled here, because this is very system-dependent.
+#
+#echo -n &amp;quot;Fast Lin. VidMem.&amp;quot;
+#$BINPATH/set6x86 -p 0xD6 0xE0
+#$BINPATH/set6x86 -p 0xD7 0x00
+#$BINPATH/set6x86 -p 0xD8 0x0A
+#$BINPATH/set6x86 -p 0xE2 0x09
+
+
+# MAPEN (disable access to CCR4/5)
+$BINPATH/set6x86 -p 0xC3 -c 0x10
+
+echo
+
+
+
+&amp;gt;<i> Hi
+</I>&amp;gt;<i>
+</I>&amp;gt;<i> Is there SBC mediaGX user on this news group?
+</I>&amp;gt;<i>
+</I>&amp;gt;<i> ________________________________________________________________________
+</I>&amp;gt;<i> Charles Billette
+</I>&amp;gt;<i> - 514.909.2452
+</I>&amp;gt;<i> - <A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A>
+</I>&amp;gt;<i> ________________________________________________________________________
+</I>&amp;gt;<i>
+</I>
+
+3 additional files attached
+-6x86reg shows the registers used by the CPU
+
+
+and for more hints:&lt;/FONT&gt;
+&lt;A HREF=&quot;<A HREF="http://wwwd.national.com/national/developer.nsf/df772260f0f9b90c872569590075bc32/"">http://wwwd.national.com/national/developer.nsf/df772260f0f9b90c872569590075bc32/&quot;</A>&gt;&lt;FONT SIZE=&quot;3&quot;&gt;<A HREF="http://wwwd.national.com/national/developer.nsf/df772260f0f9b90c872569590075bc32/</FONT">http://wwwd.national.com/national/developer.nsf/df772260f0f9b90c872569590075bc32/&lt;/FONT</A>&gt;&lt;/A&gt;
+&lt;FONT COLOR=&quot;#737373&quot; SIZE=&quot;3&quot;&gt;
+have fun
+
+Ralf Riedel&lt;/I&gt;&lt;/FONT&gt;&lt;/PRE&gt;
+&lt;/BLOCKQUOTE&gt;
+&lt;PRE&gt;&lt;TABLE CELLSPACING=&quot;0&quot; CELLPADDING=&quot;0&quot; WIDTH=&quot;100%&quot;&gt;
+&lt;TR&gt;
+&lt;TD&gt;
+
+&lt;HR&gt;
+&lt;BR&gt;
+&lt;A HREF=&quot;mailto:<A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A>&quot;&gt;&lt;FONT SIZE=&quot;5&quot;&gt;&lt;B&gt;Charles Billette&lt;/B&gt;&lt;/FONT&gt;&lt;/A&gt;&lt;BR&gt;
+- 514.909.2452&lt;BR&gt;
+- &lt;A HREF=&quot;mailto:<A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A>&quot;&gt;<A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A>&lt;/A&gt;&lt;BR&gt;
+&lt;DIV ALIGN=right&gt;
+&lt;HR&gt;
+&lt;/DIV&gt;
+&lt;/TD&gt;
+&lt;/TR&gt;
+&lt;/TABLE&gt;
+&lt;/PRE&gt;
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+--=-08ckKNI7rbtpHJIv4L4n--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000952.html">[Peeweelinux] SBC mediaGX
+</A></li>
+	<LI> Next message: <A HREF="000945.html">[Peeweelinux] or PCMCIA Compact Flash Card Adapter
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#953">[ date ]</a>
+              <a href="thread.html#953">[ thread ]</a>
+              <a href="subject.html#953">[ subject ]</a>
+              <a href="author.html#953">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

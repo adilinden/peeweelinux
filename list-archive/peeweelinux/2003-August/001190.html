@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Error loading file system to
+ targetcompactflashcard
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001193.html">
+   <LINK REL="Next"  HREF="001191.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Error loading file system to
+ targetcompactflashcard
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Error loading file system to
+ targetcompactflashcard">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 25 Aug 2003 14:19:43 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001193.html">[Peeweelinux] Adi's Electronics
+</A></li>
+        <LI> Next message: <A HREF="001191.html">[Peeweelinux] Error loading file system to
+ targetcompactflashcard
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1190">[ date ]</a>
+              <a href="thread.html#1190">[ thread ]</a>
+              <a href="subject.html#1190">[ subject ]</a>
+              <a href="author.html#1190">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sounds like an issue with the 2.2 kernel and your hardware. IF nothing else, see if you can plug in a serial mouse and try that route to get you going until you can debug why the kernel is not cooperating with your PS/2 port.
+
+~Ken 
+
+&gt;<i> -----Original Message-----
+</I>&gt;<i> From: Ashley Rolleston &lt;<A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>&gt; 
+</I>&gt;<i> Sent: Monday, August 25, 2003 1:48 PM
+</I>&gt;<i> To: <A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>; <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: RE: [Peeweelinux] Error loading file system to
+</I>&gt;<i> targetcompactflashcard
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Edit the XF86Config file in the project directory. ITs 
+</I>&gt;<i> under the &quot;custom&quot;
+</I>&gt;<i> directory in your project. 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Edit etc/X11/XF86Config  for your particular mouse options. 
+</I>&gt;<i> By default, the
+</I>&gt;<i> mouse is set up for PS/2 protocol on the /dev/psaux  device. 
+</I>&gt;<i> Make sure these
+</I>&gt;<i> things are OK. 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Yep checked these, all is OK.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Try doing the following at your prompt:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; dmesg | grep Detected
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; You should see a line saying &quot;Detected PS/2 Mouse&quot; or similar. 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> When I execute this command it shows nothing, just returns me to the
+</I>&gt;<i> command prompt again. 
+</I>&gt;<i> 
+</I>&gt;<i> On looking in /proc/interrupts there is no entry on IRQ 12, where the
+</I>&gt;<i> mouse should be assigned. This is despite the fact that the 
+</I>&gt;<i> BIOS detects
+</I>&gt;<i> the mouse on boot-up and initialises. IRQ 12 is not reserved in the
+</I>&gt;<i> BIOS.
+</I>&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i> Ashley Rolleston
+</I>&gt;<i> aka Onyx^
+</I>&gt;<i> <A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001193.html">[Peeweelinux] Adi's Electronics
+</A></li>
+	<LI> Next message: <A HREF="001191.html">[Peeweelinux] Error loading file system to
+ targetcompactflashcard
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1190">[ date ]</a>
+              <a href="thread.html#1190">[ thread ]</a>
+              <a href="subject.html#1190">[ subject ]</a>
+              <a href="author.html#1190">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

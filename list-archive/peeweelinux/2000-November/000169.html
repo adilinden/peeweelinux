@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> experiences with PWL0.53.10 (some problems?)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000163.html">
+   <LINK REL="Next"  HREF="000170.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>experiences with PWL0.53.10 (some problems?)
+   </H1>
+    <B>Dr Jaime V. Miro
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="experiences with PWL0.53.10 (some problems?)">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 13 Nov 2000 19:28:22 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000163.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+        <LI> Next message: <A HREF="000170.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#169">[ date ]</a>
+              <a href="thread.html#169">[ thread ]</a>
+              <a href="subject.html#169">[ subject ]</a>
+              <a href="author.html#169">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Dean,
+
+Dean Brown wrote:
+&gt;<i> 
+</I>&gt;<i> Adi Linden wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I have some answers...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; I am experiencing the following with PWL0.53.10:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; a) when I tried to extract a file system to a CompactFlash IDE target
+</I>&gt;<i> &gt; &gt; device (/dev/hdc) from pwlconfig, I always get the following:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &quot;testing that nothing is mounted on mount directory&quot; ...failed
+</I>&gt;<i> 
+</I>&gt;<i> This happens to me if the device is mounted prior to loading the
+</I>&gt;<i> filesystem onto the CF device. Do a umount /dev/hdc first and the
+</I>&gt;<i> problem should go away.
+</I>&gt;<i>
+</I>
+
+/dev/hdc is not mounted. I don't know what else to do. Particularly since the script rd_dialog works fine. I am utterly puzzled, particularly since nobody else seems to have that problem. 
+
+The latest attempt to solve it was to reinstall from scratch 0.53-bin file, and then add on top the new patch for 0.53.14 (only). Same result. I even tried to update patch after patch (8,10,14), with same results.
+
+ 
+&gt;<i> &gt; Seeing that rd_dialog works, the actual script that loads the filesystem
+</I>&gt;<i> &gt; is alright. What do you see when you go to
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Configure Target Hardware --&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Did pwlconfig ask you to create a new configuration file (it should have)
+</I>&gt;<i> &gt; when you tried to load your target? All I can think of is that the path to
+</I>&gt;<i> &gt; the temporary mount directory is not correct. It should say something
+</I>&gt;<i> &gt; like:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Device Mount Point: &quot;./mnt&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; b) On another note, the minimal configuration example that comes with
+</I>&gt;<i> &gt; &gt; PWL0.53.10 tries to extract, as kernel,
+</I>&gt;<i> &gt; &gt; ./packages/Kernel/kernel-basic-2.2.17.list, which does not exist (at
+</I>&gt;<i> &gt; &gt; least not in the distro I have). Hence,, the system generated does not
+</I>&gt;<i> &gt; &gt; have a kernel. Furthermore, I have noticed that even If you select
+</I>&gt;<i> &gt; &gt; another kernel, project.conf always includes
+</I>&gt;<i> &gt; &gt; ./packages/Kernel/kernel-basic-2.2.17.list, hence the error is also
+</I>&gt;<i> &gt; &gt; generated, despite your selected kernel included okay (that happens
+</I>&gt;<i> &gt; &gt; whenever your project is based on &quot;minimal&quot;. If you start your new
+</I>&gt;<i> &gt; &gt; project from the scratch, it does not happen).
+</I>&gt;<i> &gt;
+</I>
+
+I manually had to copy kernel-basic-2.2.17.tar to get minimal to work &quot;off-the-shelf&quot;. It is missing from 0.53-bin file. That works now.
+
+Regards,
+
+Jaime
+
+-- 
+Dr Jaime V. Miro
+Sw and control systems analyst
+H2eye Ltd
+24-28 Hatton Wall
+London EC1N 8JH
+
+Tel:020-7404 9600
+Fax:020-7404 9490
+<A HREF="mailto:j.v.miro@h2eye.com">j.v.miro@h2eye.com</A>
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000163.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+	<LI> Next message: <A HREF="000170.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#169">[ date ]</a>
+              <a href="thread.html#169">[ thread ]</a>
+              <a href="subject.html#169">[ subject ]</a>
+              <a href="author.html#169">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

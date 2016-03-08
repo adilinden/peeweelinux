@@ -1,0 +1,3574 @@
+From peeweelinux@adis.on.ca  Mon Nov  6 14:40:43 2000
+From: peeweelinux@adis.on.ca (Jay Rogers)
+Date: Mon, 6 Nov 2000 09:40:43 -0500 (EST)
+Subject: console msgs and serial port problems
+Message-ID: <200011061440.JAA24225@shell2.shore.net>
+
+I'm setting-up an embedded processor that has modems on both
+serial ports.  When the system boots, console messages are sent
+out ttyS0 causing the modem to become unresponsive.
+
+How do I direct console messages somewhere that won't affect the
+serial ports?  I tried adding "console=tty9,9600" as an append to
+lilo.conf.  The kernel still uses ttyS0.  Perhaps it needs a real
+serial device but both are being used.
+
+--
+Jay Rogers
+jay@rgrs.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov  6 15:12:44 2000
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Mon, 06 Nov 2000 15:12:44 +0000
+Subject: signal catching during boot-up scripts
+References: <20001005185027.18035.qmail@web9104.mail.yahoo.com>
+Message-ID: <3A06CA6C.92337D84@h2eye.com>
+
+Hi
+
+I am not sure whether this question should be addressed to the PeeWeeLinux community, or to embedded linux in general, so I guess I'll send it to both. 
+
+Thanks
+
+
+******************
+
+I've written a (GNU C++) program whose main(), after creating some threads, sigwaits for Ctrl+C
+to terminate "nicely". It works fine and does what it is supposed to do. Now, that application is
+gonna control an embedded device, for which I've put together an embedded flavour of Linux (based
+on PeeWeeLinux v0.52).  It works fine in that environment too. No probs so far. 
+
+Now, in order to seemlessly (from the user point of view) boot up straight into the application,
+I launch the application from the rc.local script (PeeWeeLinux based on red hat, i.e. system V
+init scripts, I think). The application starts fine, but I can never catch Ctrl+C (SIGINT). It
+hangs up. I can, however,  ctrl+alt+del and the system is shutdown. From what I see, it looks as
+though signals are not passed (from /sbin/init) on to user programs during boot up, at least not until getting the
+mingetty, which I don't need (embedded, no user inputs or terminals, no log in ... nothing. The
+reason to catching the signals at this stage is purely for debugging) 
+
+Am I right? or maybe I am barking at the wrong tree and that is not the best approach to go
+anyway? any pointers greatly appreciated.
+
+Thanks in advance,
+
+Jaime
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov  6 15:25:03 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 6 Nov 2000 09:25:03 -0600 (CST)
+Subject: console msgs and serial port problems
+In-Reply-To: <200011061440.JAA24225@shell2.shore.net>
+Message-ID: <Pine.LNX.4.10.10011060923540.22406-100000@develop.knet.on.ca>
+
+Hi,
+
+Are you using a serial console? The kernel should dump all logging to the
+console unless a logging daemon is installed (syslogd, klogd).
+
+TTYL,
+Adi
+
+On Mon, 6 Nov 2000, Jay Rogers wrote:
+
+> I'm setting-up an embedded processor that has modems on both
+> serial ports.  When the system boots, console messages are sent
+> out ttyS0 causing the modem to become unresponsive.
+> 
+> How do I direct console messages somewhere that won't affect the
+> serial ports?  I tried adding "console=tty9,9600" as an append to
+> lilo.conf.  The kernel still uses ttyS0.  Perhaps it needs a real
+> serial device but both are being used.
+> 
+> --
+> Jay Rogers
+> jay@rgrs.com
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov  6 16:25:04 2000
+From: peeweelinux@adis.on.ca (Jay Rogers)
+Date: Mon, 6 Nov 2000 11:25:04 -0500 (EST)
+Subject: console msgs and serial port problems
+In-Reply-To: <Pine.LNX.4.10.10011060923540.22406-100000@develop.knet.on.ca>
+ (message from Adi Linden on Mon, 6 Nov 2000 09:25:03 -0600 (CST))
+References: <Pine.LNX.4.10.10011060923540.22406-100000@develop.knet.on.ca>
+Message-ID: <200011061625.LAA16209@shell2.shore.net>
+
+From: Adi Linden <adi@adis.on.ca>
+> Are you using a serial console?
+
+It has no console at all.  It'll be fielded in an area difficult
+for people to access.
+
+> The kernel should dump all logging to the console unless a
+> logging daemon is installed (syslogd, klogd).
+
+Yes and since there's no video card, the console ends up on
+ttyS0, which "dorks" the modem.  We can't find a way put it
+elsewhere or completely shut it off.  BTW, ttyS1 also has a modem
+on it.
+
+Surely, someone else must have come across this problem where
+PeeWee Linux is used on a machine without a video card and where
+both serial ports are in use?
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov  6 16:18:33 2000
+From: peeweelinux@adis.on.ca (John Markham)
+Date: Mon, 6 Nov 2000 09:18:33 -0700
+Subject: signal catching during boot-up scripts
+In-Reply-To: <3A06CA6C.92337D84@h2eye.com>
+Message-ID: <NDBBKPGEPMIOIHLBPONIMEGJCEAA.jmarkham@enflex.net>
+
+This probably has to do with the controlling tty and default behavior of
+ctrl-C in Linux.  The ctrl-alt-del function is set up in your inittab.
+While I don't think it is a wise thing to do you should be able to map that
+key sequence using the kbrequest in inittab to a function that kills your
+program.
+
+John Markham
+EnFlex Corp.
+
+-----Original Message-----
+From: owner-linux-embedded@waste.org
+[mailto:owner-linux-embedded@waste.org]On Behalf Of Dr Jaime V. Miro
+Sent: Monday, November 06, 2000 8:13 AM
+To: PeeWeeLinux@adis.on.ca; linux-embedded@waste.org
+Subject: signal catching during boot-up scripts
+
+
+Hi
+
+I am not sure whether this question should be addressed to the PeeWeeLinux
+community, or to embedded linux in general, so I guess I'll send it to both.
+
+Thanks
+
+
+******************
+
+I've written a (GNU C++) program whose main(), after creating some threads,
+sigwaits for Ctrl+C
+to terminate "nicely". It works fine and does what it is supposed to do.
+Now, that application is
+gonna control an embedded device, for which I've put together an embedded
+flavour of Linux (based
+on PeeWeeLinux v0.52).  It works fine in that environment too. No probs so
+far.
+
+Now, in order to seemlessly (from the user point of view) boot up straight
+into the application,
+I launch the application from the rc.local script (PeeWeeLinux based on red
+hat, i.e. system V
+init scripts, I think). The application starts fine, but I can never catch
+Ctrl+C (SIGINT). It
+hangs up. I can, however,  ctrl+alt+del and the system is shutdown. From
+what I see, it looks as
+though signals are not passed (from /sbin/init) on to user programs during
+boot up, at least not until getting the
+mingetty, which I don't need (embedded, no user inputs or terminals, no log
+in ... nothing. The
+reason to catching the signals at this stage is purely for debugging)
+
+Am I right? or maybe I am barking at the wrong tree and that is not the best
+approach to go
+anyway? any pointers greatly appreciated.
+
+Thanks in advance,
+
+Jaime
+
+
+--
+To unsubscribe from this list, send a message to majordomo@waste.org
+with the command "unsubscribe linux-embedded" in the message body.
+For more information, see <http://waste.org/mail/linux-embedded>.
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov  6 22:05:07 2000
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Mon, 06 Nov 2000 16:05:07 -0600 (CST)
+Subject: Problems configuring packages
+Message-ID: <XFMail.20001106160507.jbodnar@gocho.net>
+
+Hi,
+
+I have installed peeweelinux-0.53-bin and peeweelinux-0.53.8-cfg. I can create
+a new project without a problem. I then select Manage Project Files -> Extract
+ALL binary RPM files. It then successfuly (I think) extracts the rpms. I then
+go back a menu and select Configure Project File System but there are any
+categories or packages listed.
+
+What am I doing wrong?
+
+Thanks.
+
+-- 
+Jason Bodnar
+jbodnar@gocho.net
+Gocho Networks
+
+Boy, I don't know.  You gotta be pretty desperate to make it with a robot.
+
+                -- Homer Simpson
+                   Selma's Choice
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov  6 23:57:52 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 6 Nov 2000 17:57:52 -0600 (CST)
+Subject: Problems configuring packages
+In-Reply-To: <XFMail.20001106160507.jbodnar@gocho.net>
+Message-ID: <Pine.LNX.4.10.10011061755250.30494-100000@big.adis.on.ca>
+
+Hi,
+
+Yup, you're right. I thought I tested 0.53.8 thoroughly... Missed the
+extract rpm function. I am fixing it now and there'll be a 0.53.9 release
+later this evening. 
+
+The problem is only with the pwl_pkgmgr script. So downloading and
+installing peeweelinux-0.53.9-cfg.tar.gz will do the trick.
+
+TTYL,
+Adi
+
+On Mon, 6 Nov 2000 jbodnar@gocho.net wrote:
+
+> Hi,
+> 
+> I have installed peeweelinux-0.53-bin and peeweelinux-0.53.8-cfg. I can create
+> a new project without a problem. I then select Manage Project Files -> Extract
+> ALL binary RPM files. It then successfuly (I think) extracts the rpms. I then
+> go back a menu and select Configure Project File System but there are any
+> categories or packages listed.
+> 
+> What am I doing wrong?
+> 
+> Thanks.
+> 
+> -- 
+> Jason Bodnar
+> jbodnar@gocho.net
+> Gocho Networks
+> 
+> Boy, I don't know.  You gotta be pretty desperate to make it with a robot.
+> 
+>                 -- Homer Simpson
+>                    Selma's Choice
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov  7 03:09:00 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 6 Nov 2000 21:09:00 -0600 (CST)
+Subject: PeeWeeLinux updated
+In-Reply-To: <XFMail.20001106160507.jbodnar@gocho.net>
+Message-ID: <Pine.LNX.4.10.10011062104200.30494-100000@big.adis.on.ca>
+
+Hi,
+
+I introduced some bugs into 0.53.8 which have been fixed with the 0.53.10
+release. To update any older 0.53 archive just download either one:
+
+http://peeweelinux.org/pub/Projects/Embedded/peeweelinux-0.53.10-cfg.tar.gz
+http://download.sourceforge.net/embedded/peeweelinux-0.53.10-cfg.tar.gz
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov  7 14:27:10 2000
+From: peeweelinux@adis.on.ca (Pete Buechler)
+Date: Tue, 7 Nov 2000 07:27:10 -0700
+Subject: signal catching during boot-up scripts
+In-Reply-To: <3A06CA6C.92337D84@h2eye.com>
+References: <20001005185027.18035.qmail@web9104.mail.yahoo.com> <3A06CA6C.92337D84@h2eye.com>
+Message-ID: <00110707271007.30340@CX579290-B>
+
+On Monday 06 November 2000 08:12, Dr Jaime V. Miro wrote:
+
+> Now, in order to seemlessly (from the user point of view) boot up
+> straight into the application, I launch the application from the
+> rc.local script (PeeWeeLinux based on red hat, i.e. system V init
+> scripts, I think). The application starts fine, but I can never catch
+> Ctrl+C (SIGINT). It hangs up. I can, however,  ctrl+alt+del and the
+> system is shutdown. From what I see, it looks as though signals are
+> not passed (from /sbin/init) on to user programs during boot up, at
+> least not until getting the mingetty, which I don't need (embedded,
+> no user inputs or terminals, no log in ... nothing. The reason to
+> catching the signals at this stage is purely for debugging)
+
+If you are sending this signal by typing Ctrl-C then the problem coud 
+be that the keyboard is not the controlling tty for the process to 
+which you want to send the signal. I have forgotten the details, but 
+basically each process belongs to a group, and then the groups can be 
+in sessions, and each session has a controlling tty. Read the libc info 
+pages for excruciating detail.
+-- 
+Pete Buechler
+Developer, SuSE Labs
+peterb@suse.com
+http://www.suse.com/~peterb
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Nov  8 12:10:18 2000
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Wed, 08 Nov 2000 12:10:18 +0000
+Subject: signal catching in PeeWeeLinux
+Message-ID: <3A0942AA.C3E82E0B@h2eye.com>
+
+Hi,
+
+I've sent a few posting lately regarding signal catching during booting-up (see messages above, in Nov'00), only to realise that the problem I am having is not specific to the boot-up process but seems to be general to PWL.
+
+Essentially, I am writing an application that needs catching a signal sent by the user. I dont't need a shell, being an embedded application, so I have chosen SIGQUIT (typing Ctrl+\ in kdb, but it could also easily be SIGINT, by typing CTRL+C). The application has been writen in a RH6.1 development machine with kernel 2.2.12, and static libraries linked into it. It works fine. 
+
+Now, I have PeeWeeLinux 0.51, which casually seems to be based on the same system (RH6.1). I've got it working fine. Boots up, gives me the prompt, loging in. No probs. Now, if I run my application (previosly copied accross from the dev machine), it starts fine, and works fine, but never catches the signal, i.e., loops forever. While this is the behaviour that will exhibit in the future, when it is a proper embedded system, during development is proving a pain to have to shutdown the system
+(ctrl+alt+del works, hence that signal is being cought by init, I guess) to terminate the application. 
+
+I can't quite work out the reason. Maybe I should link something else in PWL? maybe upgrading to 0.53 will solve it? (does not seem the reason to me, though)
+
+Any wild guesses? Thanks very much in advance,
+
+Jaime
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Nov  8 15:29:42 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 8 Nov 2000 09:29:42 -0600 (CST)
+Subject: signal catching in PeeWeeLinux
+In-Reply-To: <3A0942AA.C3E82E0B@h2eye.com>
+Message-ID: <Pine.LNX.4.10.10011080923260.18432-100000@develop.knet.on.ca>
+
+Hi,
+
+When you say it works fine on the development system, are you starting it
+from init on your redhat 6.1 system just as you do in PWL?
+
+The majority of changes between 0.51 and 0.53 are relating to the
+pwlconfig scripts. The kernel has been upgraded to 2.2.17 and some minor
+packages were added.
+
+Do you have a sample application to 'play' with? Then I can see if I can
+recreate your problem...
+
+TTYL,
+Adi
+
+> I've sent a few posting lately regarding signal catching during
+> booting-up (see messages above, in Nov'00), only to realise that the
+> problem I am having is not specific to the boot-up process but seems to
+> be general to PWL.
+> 
+> Essentially, I am writing an application that needs catching a signal
+> sent by the user. I dont't need a shell, being an embedded application,
+> so I have chosen SIGQUIT (typing Ctrl+\ in kdb, but it could also easily
+> be SIGINT, by typing CTRL+C). The application has been writen in a RH6.1
+> development machine with kernel 2.2.12, and static libraries linked into
+> it. It works fine. 
+>  
+> Now, I have PeeWeeLinux 0.51, which casually seems to be based on the
+> same system (RH6.1). I've got it working fine. Boots up, gives me the
+> prompt, loging in. No probs. Now, if I run my application (previosly
+> copied accross from the dev machine), it starts fine, and works fine,
+> but never catches the signal, i.e., loops forever. While this is the
+> behaviour that will exhibit in the future, when it is a proper embedded
+> system, during development is proving a pain to have to shutdown the
+> system (ctrl+alt+del works, hence that signal is being cought by init, I
+> guess) to terminate the application. 
+> 
+> I can't quite work out the reason. Maybe I should link something else
+> in PWL? maybe upgrading to 0.53 will solve it? (does not seem the reason
+> to me, though)
+> 
+> Any wild guesses? Thanks very much in advance,
+> 
+> Jaime
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Nov  8 15:53:28 2000
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Wed, 08 Nov 2000 15:53:28 +0000
+Subject: signal catching in PeeWeeLinux
+References: <Pine.LNX.4.10.10011080923260.18432-100000@develop.knet.on.ca>
+Message-ID: <3A0976F8.684C1A6D@h2eye.com>
+
+Hi Adi,
+
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> When you say it works fine on the development system, are you starting it
+> from init on your redhat 6.1 system just as you do in PWL?
+
+In PWL the response is the same, whether my code being started from init or from an interactive shell after loggin in. Hence, in the development system in RH6.1 I have not bother testing from init, since it works from a shell.  I believe it should work from the (PWL) shell first (as it does in RH6.1), and then I'll worry about starting from init (from all the mails that I got back as an answer to this problem, I believe I know how to work that out ... once the application works from the (PWL)
+shell). One step at a time.
+
+
+> 
+> The majority of changes between 0.51 and 0.53 are relating to the
+> pwlconfig scripts. The kernel has been upgraded to 2.2.17 and some minor
+> packages were added.
+
+
+I was focused on getting my stuff working, and I don't think is the kernel, so I haven't updated yet. Also, there were quite a few buggy scripts reports that seem to be sorted now, so I will give it a shot soon.
+
+> 
+> Do you have a sample application to 'play' with? Then I can see if I can
+> recreate your problem...
+
+Right now the application is kinda biggish (a few threads and shared areas of memo), so I'll try and get a cut down version with the problem. Any pointers welcome meanwhile. 
+
+Thanks
+
+Jaime
+
+
+> 
+> TTYL,
+> Adi
+> 
+> > I've sent a few posting lately regarding signal catching during
+> > booting-up (see messages above, in Nov'00), only to realise that the
+> > problem I am having is not specific to the boot-up process but seems to
+> > be general to PWL.
+> >
+> > Essentially, I am writing an application that needs catching a signal
+> > sent by the user. I dont't need a shell, being an embedded application,
+> > so I have chosen SIGQUIT (typing Ctrl+\ in kdb, but it could also easily
+> > be SIGINT, by typing CTRL+C). The application has been writen in a RH6.1
+> > development machine with kernel 2.2.12, and static libraries linked into
+> > it. It works fine.
+> >
+> > Now, I have PeeWeeLinux 0.51, which casually seems to be based on the
+> > same system (RH6.1). I've got it working fine. Boots up, gives me the
+> > prompt, loging in. No probs. Now, if I run my application (previosly
+> > copied accross from the dev machine), it starts fine, and works fine,
+> > but never catches the signal, i.e., loops forever. While this is the
+> > behaviour that will exhibit in the future, when it is a proper embedded
+> > system, during development is proving a pain to have to shutdown the
+> > system (ctrl+alt+del works, hence that signal is being cought by init, I
+> > guess) to terminate the application.
+> >
+> > I can't quite work out the reason. Maybe I should link something else
+> > in PWL? maybe upgrading to 0.53 will solve it? (does not seem the reason
+> > to me, though)
+> >
+> > Any wild guesses? Thanks very much in advance,
+> >
+> > Jaime
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+-- 
+Dr Jaime V. Miro
+Sw and control systems analyst
+H2eye Ltd
+24-28 Hatton Wall
+London EC1N 8JH
+
+Tel:020-7404 9600
+Fax:020-7404 9490
+j.v.miro@h2eye.com
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Nov  8 16:05:45 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 8 Nov 2000 10:05:45 -0600 (CST)
+Subject: signal catching in PeeWeeLinux
+In-Reply-To: <3A0976F8.684C1A6D@h2eye.com>
+Message-ID: <Pine.LNX.4.10.10011081000470.18432-100000@develop.knet.on.ca>
+
+Hi,
+
+> In PWL the response is the same, whether my code being started from init or from an interactive shell after loggin in. Hence, in the development system in RH6.1 I have not bother testing from init, since it works from a shell.  I believe it should work from the (PWL) shell first (as it does in RH6.1), and then I'll worry about starting from init (from all the mails that I got back as an answer to this problem, I believe I know how to work that out ... once the application works from the (PWL)
+> shell). One step at a time.
+
+So it should run from the shell just fine....
+
+> I was focused on getting my stuff working, and I don't think is the kernel, so I haven't updated yet. Also, there were quite a few buggy scripts reports that seem to be sorted now, so I will give it a shot soon.
+
+I just mentioned the changes, I don't think the differences between 0.51
+and 0.53 relate to your problem.
+
+> > Do you have a sample application to 'play' with? Then I can see if I can
+> > recreate your problem...
+> 
+> Right now the application is kinda biggish (a few threads and shared areas of memo), so I'll try and get a cut down version with the problem. Any pointers welcome meanwhile. 
+
+I am not sure how to approach this, since I haven't come across anything
+showing this type of behaviour. As far as I can tell the PWL application
+react as expected to signals (kill -HUP <inetd ID> causes the inet daemon 
+to reread it's configuration). If I CTRL-C an application it will quit.
+
+You said it's compiled statically... So you shouldn't be missing any libs
+on the PWL system.
+
+TTYL,
+Adi 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Nov  8 16:39:52 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Wed, 08 Nov 2000 08:39:52 -0800
+Subject: Silent booting
+Message-ID: <3A0981D8.E05956A2@amiga.com>
+
+I've got my application running completely automated right from power
+up. I would now like to hide the bootup spew so that the first thing the
+user sees is the application. Does anyone know how to configure Lilo and
+the kernel to do such a thing?
+
+Thanks in advance.
+-- 
+
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Nov  8 16:34:11 2000
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Wed, 08 Nov 2000 16:34:11 +0000
+Subject: signal catching in PeeWeeLinux - sample
+References: <Pine.LNX.4.10.10011080923260.18432-100000@develop.knet.on.ca>
+Message-ID: <3A098083.A558439F@h2eye.com>
+
+Hi Adi,
+ 
+> Do you have a sample application to 'play' with? Then I can see if I can
+> recreate your problem...
+ 
+
+This is a very simple sample which shows the same behavious as my complete application with regards to signals. As before, it runs fine from my 2 development machines (both RH6.1, kernel 2.2.12-20, gcc version egcs-2.91.66 19990314/Linux (egcs-1.1.2 release). I can run the application from the shell and it behaves by finishing fine. However, it consistenly hangs up on PWL, just like my applcation does.
+
+
+*********** main.cc ****************
+
+#include <iostream.h>
+#include <signal.h>
+#include <pthread.h>
+
+int main (int argc, char *argv[]) 
+{
+	sigset_t sigs_to_catch;
+	int caught;
+
+	cout << "<Main()> started.\n";
+	
+	// All subsequent threads will block SIGQUIT (Ctrl+\) signal (i.e., signal is marked pending, 
+	// hence signal is not delivered to thead until it is unblocked (which it is with sigwait)) 
+    	sigemptyset(&sigs_to_catch);
+    	sigaddset(&sigs_to_catch, SIGQUIT);
+	
+	// this is here just because I use it in all the thread creted by my application. 
+	//Not relevant here since there are no further threads, but I left it just in case it makes any difference
+    	pthread_sigmask(SIG_BLOCK, &sigs_to_catch, NULL);
+	
+	// Wait to catch (unblock) next SIGQUIT (Ctrl+\) signal sent by user to terminate program
+	sigwait(&sigs_to_catch, &caught);
+	
+	// End program	
+	cout << "<Main()> finished\n"; 
+	return 0; 
+
+}
+********** end of main.cc ********* 
+
+
+Only very few lines of the Makefile are relevant here, but I include the full-blown-up thing just in case
+
+
+
+******** Makefile *********
+
+# This file was automatically generated by makemake.
+# Do not edit it directly!
+# Any changes you make will be silently overwritten.
+
+# Edit this file to define constants and custom build targets.
+# Please refer to the makemake documentation for more information.
+
+# Useful directories
+
+MYCODEDIR := .
+
+# Directories to search for header files
+
+SEARCHDIRS := -I- -I${MYCODEDIR}
+
+# makemake variables
+
+LINKER       := g++  
+DEPENDFLAGS  := -g -D_REENTRANT -D_THREADSAFE ${SEARCHDIRS} # -Wall -Werror
+TOUCHHEADERS := ${MYCODEDIR}/*.h
+
+# make variables
+
+CC        := gcc
+CXX       := g++
+CCC       := g++
+FC        := f77
+CFLAGS     = ${DEPENDFLAGS}
+CXXFLAGS   = ${DEPENDFLAGS}
+FFLAGS     = 
+CPPFLAGS   = 
+LOADLIBES := -ldl -lpthread -lm  
+LDFLAGS   := -static  
+
+
+# This is what makemake added
+
+
+# linuxtop			<---------------------- name of application
+
+linuxtop : ./wtop.o
+	${LINKER} ${LDFLAGS} -o $@ ${filter-out %.a %.so, $^} ${LOADLIBES}
+
+# target for making everything
+
+.PHONY : all
+all: linuxtop
+
+
+# target for removing all object files
+
+.PHONY : tidy
+tidy::
+	@${RM} core ./wtop.o
+
+# target for removing all object files
+
+.PHONY : clean
+clean:: tidy
+	@${RM} linuxtop
+
+# list of all source files
+
+MM_ALL_SOURCES := ./wtop.cc
+
+
+# target for checking a source file
+
+CHECKSYNTAXFILE := ${basename ${filter %${CHECKSTRING}, ${MM_ALL_SOURCES}}}
+
+.PHONY : checksyntax
+checksyntax:
+  ifneq (${CHECKSYNTAXFILE},)
+	@${MAKE} ${addsuffix .o, ${CHECKSYNTAXFILE}}
+  else
+	@echo No target to make ${CHECKSTRING}
+  endif
+
+
+# target for touching appropriate source files
+
+.PHONY : touch
+touch::
+	@list=$$(grep -l ${TOUCHSTRING} ${MM_ALL_SOURCES}); \
+     for file in $$list; do { echo $$file; touch $$file; } done
+
+
+# target for calculating dependencies (MAKEMAKE)
+
+.PHONY : jdepend
+jdepend:
+	@${MAKEMAKE} --depend Makefile -- ${DEPENDFLAGS} --  ./wtop.cc ./wtop.o
+
+
+# DO NOT DELETE THIS LINE -- makemake depends on it.
+
+./wtop.o: /usr/include/pthread.h /usr/include/signal.h
+
+************* end of Makefile **********
+
+
+Thanks very much for your time,
+
+Jaime
+
+
+-- 
+Dr Jaime V. Miro
+Sw and control systems analyst
+H2eye Ltd
+24-28 Hatton Wall
+London EC1N 8JH
+
+Tel:020-7404 9600
+Fax:020-7404 9490
+j.v.miro@h2eye.com
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Nov  8 16:40:24 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 8 Nov 2000 10:40:24 -0600 (CST)
+Subject: Silent booting
+In-Reply-To: <3A0981D8.E05956A2@amiga.com>
+Message-ID: <Pine.LNX.4.10.10011081039240.18432-100000@develop.knet.on.ca>
+
+Hi, 
+
+Which version of pwl and kernel are you using? The 2.2.17 kernel in
+0.53 includes the silent.patch which allows for boot messages to be
+hidden.
+
+TTYL,
+Adi
+
+
+On Wed, 8 Nov 2000, Dean Brown wrote:
+
+> I've got my application running completely automated right from power
+> up. I would now like to hide the bootup spew so that the first thing the
+> user sees is the application. Does anyone know how to configure Lilo and
+> the kernel to do such a thing?
+> 
+> Thanks in advance.
+> -- 
+> 
+> Dean Brown
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Nov  8 19:47:57 2000
+From: peeweelinux@adis.on.ca (Ralph Stickley)
+Date: Wed, 8 Nov 2000 11:47:57 -0800 (PST)
+Subject: signal catching in PeeWeeLinux
+Message-ID: <20001108194757.88611.qmail@web9108.mail.yahoo.com>
+
+Notes from the clueless here....
+
+Is this a Bash/Ash or busybox difference ? 
+
+Does bash actually trap signals and/or keystrokes and pass them on ? 
+
+Sorry for the interruption...now back to your regulary scheduled e-mail...
+
+Later,
+Ralph
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> > In PWL the response is the same, whether my code being started from init or
+> from an interactive shell after loggin in. Hence, in the development system
+> in RH6.1 I have not bother testing from init, since it works from a shell.  I
+> believe it should work from the (PWL) shell first (as it does in RH6.1), and
+> then I'll worry about starting from init (from all the mails that I got back
+> as an answer to this problem, I believe I know how to work that out ... once
+> the application works from the (PWL)
+> > shell). One step at a time.
+> 
+> So it should run from the shell just fine....
+> 
+> > I was focused on getting my stuff working, and I don't think is the kernel,
+> so I haven't updated yet. Also, there were quite a few buggy scripts reports
+> that seem to be sorted now, so I will give it a shot soon.
+> 
+> I just mentioned the changes, I don't think the differences between 0.51
+> and 0.53 relate to your problem.
+> 
+> > > Do you have a sample application to 'play' with? Then I can see if I can
+> > > recreate your problem...
+> > 
+> > Right now the application is kinda biggish (a few threads and shared areas
+> of memo), so I'll try and get a cut down version with the problem. Any
+> pointers welcome meanwhile. 
+> 
+> I am not sure how to approach this, since I haven't come across anything
+> showing this type of behaviour. As far as I can tell the PWL application
+> react as expected to signals (kill -HUP <inetd ID> causes the inet daemon 
+> to reread it's configuration). If I CTRL-C an application it will quit.
+> 
+> You said it's compiled statically... So you shouldn't be missing any libs
+> on the PWL system.
+> 
+> TTYL,
+> Adi 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Photos - 35mm Quality Prints, Now Get 15 Free!
+http://photos.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Nov  9 10:50:08 2000
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Thu, 09 Nov 2000 10:50:08 +0000
+Subject: signal catching in PeeWeeLinux
+References: <20001108194757.88611.qmail@web9108.mail.yahoo.com>
+Message-ID: <3A0A8160.9BDF4A5A@h2eye.com>
+
+
+Hi Ralph,
+
+
+Ralph Stickley wrote:
+> 
+> Notes from the clueless here....
+> 
+> Is this a Bash/Ash or busybox difference ?
+>
+
+I run everything from the bash shell that comes with PWL051 (GNU bash v2.03.0(1). Haven't given busybox a try yet.
+ 
+> Does bash actually trap signals and/or keystrokes and pass them on ?
+>
+
+AFAIK yes. But it is worth investigating further ... (investigation in proces) ... in fact, my development machin uses GNU bash, version 1.14.7(1). Should that matter? probably not, but I'll find out. Thanks fpr the pointer.
+
+ 
+> Sorry for the interruption...now back to your regulary scheduled e-mail...
+> 
+
+Most welcome. Ta.
+
+Jaime
+
+> Later,
+> Ralph
+> 
+> --- Adi Linden <adi@adis.on.ca> wrote:
+> > Hi,
+> >
+> > > In PWL the response is the same, whether my code being started from init or
+> > from an interactive shell after loggin in. Hence, in the development system
+> > in RH6.1 I have not bother testing from init, since it works from a shell.  I
+> > believe it should work from the (PWL) shell first (as it does in RH6.1), and
+> > then I'll worry about starting from init (from all the mails that I got back
+> > as an answer to this problem, I believe I know how to work that out ... once
+> > the application works from the (PWL)
+> > > shell). One step at a time.
+> >
+> > So it should run from the shell just fine....
+> >
+> > > I was focused on getting my stuff working, and I don't think is the kernel,
+> > so I haven't updated yet. Also, there were quite a few buggy scripts reports
+> > that seem to be sorted now, so I will give it a shot soon.
+> >
+> > I just mentioned the changes, I don't think the differences between 0.51
+> > and 0.53 relate to your problem.
+> >
+> > > > Do you have a sample application to 'play' with? Then I can see if I can
+> > > > recreate your problem...
+> > >
+> > > Right now the application is kinda biggish (a few threads and shared areas
+> > of memo), so I'll try and get a cut down version with the problem. Any
+> > pointers welcome meanwhile.
+> >
+> > I am not sure how to approach this, since I haven't come across anything
+> > showing this type of behaviour. As far as I can tell the PWL application
+> > react as expected to signals (kill -HUP <inetd ID> causes the inet daemon
+> > to reread it's configuration). If I CTRL-C an application it will quit.
+> >
+> > You said it's compiled statically... So you shouldn't be missing any libs
+> > on the PWL system.
+> >
+> > TTYL,
+> > Adi
+> >
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Nov  9 12:10:46 2000
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Thu, 09 Nov 2000 12:10:46 +0000
+Subject: signal catching in PeeWeeLinux
+References: <20001108194757.88611.qmail@web9108.mail.yahoo.com> <3A0A8160.9BDF4A5A@h2eye.com>
+Message-ID: <3A0A9446.BFCF335B@h2eye.com>
+
+Hi Ralph,
+
+
+"Dr Jaime V. Miro" wrote:
+> 
+> Hi Ralph,
+> 
+> Ralph Stickley wrote:
+> >
+> > Notes from the clueless here....
+> >
+> > Is this a Bash/Ash or busybox difference ?
+> >
+> 
+> I run everything from the bash shell that comes with PWL051 (GNU bash v2.03.0(1). Haven't given busybox a try yet.
+> 
+> > Does bash actually trap signals and/or keystrokes and pass them on ?
+> >
+> 
+> AFAIK yes. But it is worth investigating further ... (investigation in proces) ... in fact, my development machin uses GNU bash, version 1.14.7(1). Should that matter? probably not, but I'll find out. Thanks fpr the pointer.
+> 
+> 
+
+
+It does not seem to be the shell. Copied GNU bash, version 1.14.7(1) to the PWL machine, and still the same. Application starts fine, but signals don't get there.
+
+Cheers,
+
+Jaime
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Nov  9 18:06:38 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Thu, 09 Nov 2000 10:06:38 -0800
+Subject: Silent booting
+References: <Pine.LNX.4.10.10011081039240.18432-100000@develop.knet.on.ca>
+Message-ID: <3A0AE7AE.4DAEEE05@amiga.com>
+
+I'm currently using 0.53-10 of pwl, and the 2.2.14 kernel. When I
+changed to the 2.2.17 kernel however, I started having problems with the
+rtl8139 network driver. 
+
+I'm getting an error when the rc.modules script is executed which simply
+does an insmod on the rtl8139.o module. The errors I am getting are:
+/lib/modules/2.2.17/net/rtl8139.o: unresolved symbol pci_drv_unregister
+/lib/modules/2.2.17/net/rtl8139.o: unresolved symbol pci_drv_register
+
+This was using the precompiled binaries, so I downloaded the source
+files and recompiled the kernel RPM. I'm still getting the same error.
+
+Assuming I can get this issue solved, do you have any instructions on
+the 'silent.patch'?
+
+Thanks in advance!
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> Which version of pwl and kernel are you using? The 2.2.17 kernel in
+> 0.53 includes the silent.patch which allows for boot messages to be
+> hidden.
+> 
+> TTYL,
+> Adi
+> 
+> On Wed, 8 Nov 2000, Dean Brown wrote:
+> 
+> > I've got my application running completely automated right from power
+> > up. I would now like to hide the bootup spew so that the first thing the
+> > user sees is the application. Does anyone know how to configure Lilo and
+> > the kernel to do such a thing?
+> >
+> > Thanks in advance.
+> > --
+> >
+> > Dean Brown
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+> >
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+-- 
+
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Nov  9 18:54:54 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 9 Nov 2000 12:54:54 -0600 (CST)
+Subject: Silent booting
+In-Reply-To: <3A0AE7AE.4DAEEE05@amiga.com>
+Message-ID: <Pine.LNX.4.10.10011091244360.19883-100000@develop.knet.on.ca>
+
+Hi,
+
+Some of the network modules require a pci driver to be installed. The
+module to load prior to the rtl8139, tulip, natsemi or via-rhine driver is
+pci-scan. Now, that module was supposed to be loaded automatically when
+one of those network drivers is loaded.
+
+Try doing
+
+insmod pci-scan
+insmod rtl8139
+
+I'll dig up the email with the silent.patch instructions and forward it to
+you.
+
+This got me thinking about the kernel compile process... maybe I'll make
+the updated network drivers and option (independend package) rather than a
+kernel patch...
+
+TTYL,
+Adi
+
+On Thu, 9 Nov 2000, Dean Brown wrote:
+
+> I'm currently using 0.53-10 of pwl, and the 2.2.14 kernel. When I
+> changed to the 2.2.17 kernel however, I started having problems with the
+> rtl8139 network driver. 
+> 
+> I'm getting an error when the rc.modules script is executed which simply
+> does an insmod on the rtl8139.o module. The errors I am getting are:
+> /lib/modules/2.2.17/net/rtl8139.o: unresolved symbol pci_drv_unregister
+> /lib/modules/2.2.17/net/rtl8139.o: unresolved symbol pci_drv_register
+> 
+> This was using the precompiled binaries, so I downloaded the source
+> files and recompiled the kernel RPM. I'm still getting the same error.
+> 
+> Assuming I can get this issue solved, do you have any instructions on
+> the 'silent.patch'?
+> 
+> Thanks in advance!
+> 
+> Adi Linden wrote:
+> > 
+> > Hi,
+> > 
+> > Which version of pwl and kernel are you using? The 2.2.17 kernel in
+> > 0.53 includes the silent.patch which allows for boot messages to be
+> > hidden.
+> > 
+> > TTYL,
+> > Adi
+> > 
+> > On Wed, 8 Nov 2000, Dean Brown wrote:
+> > 
+> > > I've got my application running completely automated right from power
+> > > up. I would now like to hide the bootup spew so that the first thing the
+> > > user sees is the application. Does anyone know how to configure Lilo and
+> > > the kernel to do such a thing?
+> > >
+> > > Thanks in advance.
+> > > --
+> > >
+> > > Dean Brown
+> > > ---------------------------------------------------
+> > > See the list archives at http://adis.on.ca/archives/
+> > > See the PWL homepage at  http://peeweelinux.com
+> > > ---------------------------------------------------
+> > >
+> > 
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+> 
+> -- 
+> 
+> Dean Brown
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Nov  9 18:57:21 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 9 Nov 2000 12:57:21 -0600 (CST)
+Subject: messages on boot and loading (fwd)
+Message-ID: <Pine.LNX.4.10.10011091256260.19883-100000@develop.knet.on.ca>
+
+Here's the little info I have on how to use the silent.patch...
+
+> Also, with the patch below, is there a boot parameter that can be given
+> manually at the lilo prompt to make the kernel print messages if needed
+> (without changing lilo.conf and running lilo)? 
+
+The patch allows you to set the kernel logging level using the "debug=n" boot
+parameter.  If you want the normal boot-up noise, set "debug=9"...
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 10 01:37:24 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Thu, 09 Nov 2000 17:37:24 -0800
+Subject: Silent booting
+References: <Pine.LNX.4.10.10011091244360.19883-100000@develop.knet.on.ca>
+Message-ID: <3A0B5154.795E8AB0@amiga.com>
+
+Ok,
+
+Several problems here. First off, there is no pci-scan.o module anywhere
+in the pwl distribution that I've been able to find. Searching the
+available packages for pci-scan or pci-scan.o or pci-scan* returns a not
+found. 
+
+Searching the filesystem rooted at the Embedded_Builds directory found a
+pci-scan.{c|h|o} in the ./src/BUILDS/2.2.17/net path. Copying the .o
+file to the /lib/modules/2.2.17/net/ directory and modifying the
+/etc/rc.modules file to load the pci-scan module results in an error at
+boot time of "/lib/modules/2.2.17/net/pci-scan.o: couldn't find the
+kernel version the module was compiled for".
+
+I am using the 2.2.17 kernel.
+
+On another note, entering linux debug=0 at the lilo prompt does indeed
+suppress all the kernel spew. Is there any way to add additional
+parameters to the lilo.conf created during the load process without
+requiring lilo to be manually installed?
+
+Thanks again for you help.
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> Some of the network modules require a pci driver to be installed. The
+> module to load prior to the rtl8139, tulip, natsemi or via-rhine driver is
+> pci-scan. Now, that module was supposed to be loaded automatically when
+> one of those network drivers is loaded.
+> 
+> Try doing
+> 
+> insmod pci-scan
+> insmod rtl8139
+> 
+> I'll dig up the email with the silent.patch instructions and forward it to
+> you.
+> 
+> This got me thinking about the kernel compile process... maybe I'll make
+> the updated network drivers and option (independend package) rather than a
+> kernel patch...
+> 
+> TTYL,
+> Adi
+> 
+> On Thu, 9 Nov 2000, Dean Brown wrote:
+> 
+> > I'm currently using 0.53-10 of pwl, and the 2.2.14 kernel. When I
+> > changed to the 2.2.17 kernel however, I started having problems with the
+> > rtl8139 network driver.
+> >
+> > I'm getting an error when the rc.modules script is executed which simply
+> > does an insmod on the rtl8139.o module. The errors I am getting are:
+> > /lib/modules/2.2.17/net/rtl8139.o: unresolved symbol pci_drv_unregister
+> > /lib/modules/2.2.17/net/rtl8139.o: unresolved symbol pci_drv_register
+> >
+> > This was using the precompiled binaries, so I downloaded the source
+> > files and recompiled the kernel RPM. I'm still getting the same error.
+> >
+> > Assuming I can get this issue solved, do you have any instructions on
+> > the 'silent.patch'?
+> >
+> > Thanks in advance!
+> >
+> > Adi Linden wrote:
+> > >
+> > > Hi,
+> > >
+> > > Which version of pwl and kernel are you using? The 2.2.17 kernel in
+> > > 0.53 includes the silent.patch which allows for boot messages to be
+> > > hidden.
+> > >
+> > > TTYL,
+> > > Adi
+> > >
+> > > On Wed, 8 Nov 2000, Dean Brown wrote:
+> > >
+> > > > I've got my application running completely automated right from power
+> > > > up. I would now like to hide the bootup spew so that the first thing the
+> > > > user sees is the application. Does anyone know how to configure Lilo and
+> > > > the kernel to do such a thing?
+> > > >
+> > > > Thanks in advance.
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 10 02:44:06 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 9 Nov 2000 20:44:06 -0600 (CST)
+Subject: Silent booting
+In-Reply-To: <3A0B5154.795E8AB0@amiga.com>
+Message-ID: <Pine.LNX.4.10.10011092026560.25585-100000@big.adis.on.ca>
+
+Hi,
+
+I have a box here with the National Semi chipset which uses the pci-scan
+module as well. Here are the pci-scan modules in the kernel rpms:
+
+[root@big Embedded_Build]# rpm -qpl RPMS/kernel-full-2.2.17-6.i386.rpm |
+grep pci-scan
+/lib/modules/2.2.17-full/net/pci-scan.o
+
+[root@big Embedded_Build]# rpm -qpl RPMS/kernel-basic-2.2.17-6.i386.rpm |
+grep pci-scan
+/lib/modules/2.2.17/net/pci-scan.o
+
+I tried the natsemi.o module and I did have to do:
+
+   insmod pci-scan
+   insmod natsemi
+
+This worked just fine. Trying to load natsemi without the pci-scan driver
+resulted in the same errors you reported.
+
+I am just working on a fresh compile of the kernel rpms. I intend to add
+the devfs patch and daemon for 2.2.17. This should allow for an easier way
+to build a read-only rootfs plus save considerable space.
+
+I am considering removing the netdriver patch which adds the new network
+drivers requiring pci-scan and creating it as a seperate package (similar
+to emlog and the rl2 driver). That way the default kernel(s) included with
+PeeWeeLinux wouldn't require pci-scan to be loaded.
+
+As far as the lilo prompt, no, there is currently no way to add additional
+lilo paramters using pwlconfig. Looking at pwlconfig, I think it should be
+possible to add a couple of parameters like:
+
+Ramdisk File Name: "ramdisk"
+Initrd File Name: "initrd"
+--- Boot loader options ---
+Boot Label: "linux"
+Boot Prompt Timeout: "0"
+VGA Mode: "normal"
+Boot Option 1:
+Boot Option 2:
+--- floppy ---
+
+The Boot Option 1|2 would allow for custom options to be enterred. I'll
+play with that and release an updated peeweelinux-*-cfg.tar.gz package if
+it works (and doesn't break any previous configurations).
+
+TTYL,
+Adi
+
+
+
+On Thu, 9 Nov 2000, Dean Brown wrote:
+
+> Ok,
+> 
+> Several problems here. First off, there is no pci-scan.o module anywhere
+> in the pwl distribution that I've been able to find. Searching the
+> available packages for pci-scan or pci-scan.o or pci-scan* returns a not
+> found. 
+> 
+> Searching the filesystem rooted at the Embedded_Builds directory found a
+> pci-scan.{c|h|o} in the ./src/BUILDS/2.2.17/net path. Copying the .o
+> file to the /lib/modules/2.2.17/net/ directory and modifying the
+> /etc/rc.modules file to load the pci-scan module results in an error at
+> boot time of "/lib/modules/2.2.17/net/pci-scan.o: couldn't find the
+> kernel version the module was compiled for".
+> 
+> I am using the 2.2.17 kernel.
+> 
+> On another note, entering linux debug=0 at the lilo prompt does indeed
+> suppress all the kernel spew. Is there any way to add additional
+> parameters to the lilo.conf created during the load process without
+> requiring lilo to be manually installed?
+> 
+> Thanks again for you help.
+> 
+> Adi Linden wrote:
+> > 
+> > Hi,
+> > 
+> > Some of the network modules require a pci driver to be installed. The
+> > module to load prior to the rtl8139, tulip, natsemi or via-rhine driver is
+> > pci-scan. Now, that module was supposed to be loaded automatically when
+> > one of those network drivers is loaded.
+> > 
+> > Try doing
+> > 
+> > insmod pci-scan
+> > insmod rtl8139
+> > 
+> > I'll dig up the email with the silent.patch instructions and forward it to
+> > you.
+> > 
+> > This got me thinking about the kernel compile process... maybe I'll make
+> > the updated network drivers and option (independend package) rather than a
+> > kernel patch...
+> > 
+> > TTYL,
+> > Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 10 17:49:06 2000
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Fri, 10 Nov 2000 17:49:06 +0000
+Subject: experiences with PWL0.53.10 (some problems?)
+References: <Pine.LNX.4.10.10011092026560.25585-100000@big.adis.on.ca>
+Message-ID: <3A0C3512.403FDBE8@h2eye.com>
+
+
+Hi there, 
+
+I am experiencing the following with PWL0.53.10: 
+
+a) when I tried to extract a file system to a CompactFlash IDE target device (/dev/hdc) from pwlconfig, I always get the following:
+
+"testing that nothing is mounted on mount directory" ...failed
+
+And nothing is written in the flash. If, on the other hand, I manually (from outside pwlconfig) run: 
+
+[PWL directory of PWL0.53.10]/Embedded_Build/scripts/rd_dialog 
+
+(that is, as it used to be in PWL0.51), the script works fine and it loads the file system and boots up from the flash. As a double check, I still have PWL0.51, and if I run:  
+
+[PWL directory of PWL0.51]/Embedded_Build/misc/rd_dialog
+
+everything works fine too.
+
+
+b) On another note, the minimal configuration example that comes with PWL0.53.10 tries to extract, as kernel, ./packages/Kernel/kernel-basic-2.2.17.list, which does not exist (at least not in the distro I have). Hence,, the system generated does not have a kernel. Furthermore, I have noticed that even If you select another kernel, project.conf always includes ./packages/Kernel/kernel-basic-2.2.17.list, hence the error is also generated, despite your selected kernel included okay (that happens
+whenever your project is based on "minimal". If you start your new project from the scratch, it does not happen).
+
+
+c) the problem with shell signal catching (see my other postings this month) is stil there in PWL0.53, as was suspected and hinted in previous responses. It was time to install PWL0.53 anyway. Still open to suggestions!
+
+
+Anybody experiencing these problems?
+
+Hope it helps. Thanks
+
+
+Jaime
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 10 20:16:21 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 10 Nov 2000 14:16:21 -0600 (CST)
+Subject: experiences with PWL0.53.10 (some problems?)
+In-Reply-To: <3A0C3512.403FDBE8@h2eye.com>
+Message-ID: <Pine.LNX.4.10.10011101348020.19883-100000@develop.knet.on.ca>
+
+Hi,
+
+I have some answers...
+
+> I am experiencing the following with PWL0.53.10: 
+> 
+> a) when I tried to extract a file system to a CompactFlash IDE target
+> device (/dev/hdc) from pwlconfig, I always get the following:
+> 
+> "testing that nothing is mounted on mount directory" ...failed
+
+Seeing that rd_dialog works, the actual script that loads the filesystem
+is alright. What do you see when you go to 
+
+    Configure Target Hardware -->
+
+Did pwlconfig ask you to create a new configuration file (it should have) 
+when you tried to load your target? All I can think of is that the path to
+the temporary mount directory is not correct. It should say something
+like: 
+
+    Device Mount Point: "./mnt"
+
+> b) On another note, the minimal configuration example that comes with
+> PWL0.53.10 tries to extract, as kernel,
+> ./packages/Kernel/kernel-basic-2.2.17.list, which does not exist (at
+> least not in the distro I have). Hence,, the system generated does not
+> have a kernel. Furthermore, I have noticed that even If you select
+> another kernel, project.conf always includes
+> ./packages/Kernel/kernel-basic-2.2.17.list, hence the error is also
+> generated, despite your selected kernel included okay (that happens
+> whenever your project is based on "minimal". If you start your new
+> project from the scratch, it does not happen).
+
+Did you upgrade to 0.53.10 by downloading the peeweelinux-*-cfg.tar.gz
+package or did you download the complete bin or src archive?
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 10 21:02:32 2000
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Fri, 10 Nov 2000 21:02:32 +0000
+Subject: experiences with PWL0.53.10 (some problems?)
+References: <Pine.LNX.4.10.10011101348020.19883-100000@develop.knet.on.ca>
+Message-ID: <3A0C6268.F06645B2@h2eye.com>
+
+Hi Ali,
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> I have some answers...
+> 
+> > I am experiencing the following with PWL0.53.10:
+> >
+> > a) when I tried to extract a file system to a CompactFlash IDE target
+> > device (/dev/hdc) from pwlconfig, I always get the following:
+> >
+> > "testing that nothing is mounted on mount directory" ...failed
+> 
+> Seeing that rd_dialog works, the actual script that loads the filesystem
+> is alright. What do you see when you go to
+> 
+>     Configure Target Hardware -->
+> 
+
+
+A page with the various targets, ramdisk, floppy, IDE and the corresponding config parameters.
+
+
+> Did pwlconfig ask you to create a new configuration file (it should have)
+> when you tried to load your target? 
+
+
+I can't quite remember that. Sorry. I can always install it all again and see what it says. I am still playing around with it, so no major projects on it yet.
+
+
+> All I can think of is that the path to
+> the temporary mount directory is not correct. It should say something
+> like:
+> 
+>     Device Mount Point: "./mnt"
+>
+
+it does. In fact, I keep comparing with PWL0.51 and all the relevant parameters seem the same. That's why I am puzzled. 
+ 
+> > b) On another note, the minimal configuration example that comes with
+> > PWL0.53.10 tries to extract, as kernel,
+> > ./packages/Kernel/kernel-basic-2.2.17.list, which does not exist (at
+> > least not in the distro I have). Hence,, the system generated does not
+> > have a kernel. Furthermore, I have noticed that even If you select
+> > another kernel, project.conf always includes
+> > ./packages/Kernel/kernel-basic-2.2.17.list, hence the error is also
+> > generated, despite your selected kernel included okay (that happens
+> > whenever your project is based on "minimal". If you start your new
+> > project from the scratch, it does not happen).
+> 
+> Did you upgrade to 0.53.10 by downloading the peeweelinux-*-cfg.tar.gz
+> package or did you download the complete bin or src archive?
+> 
+
+
+I downloaded peeweelinux-0.53-bin.tar.gz from ftp://metalab.unc.edu/pub/linux/distributions/peewee/, and then I applied the patch http://peeweelinux.org/pub/Projects/Embedded/peeweelinux-0.53.10-cfg.tar.gz.
+
+
+Thanks
+
+Jaime
+
+
+-- 
+Dr Jaime V. Miro
+Sw and control systems analyst
+H2eye Ltd
+24-28 Hatton Wall
+London EC1N 8JH
+
+Tel:020-7404 9600
+Fax:020-7404 9490
+j.v.miro@h2eye.com
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 10 21:24:26 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Fri, 10 Nov 2000 13:24:26 -0800
+Subject: experiences with PWL0.53.10 (some problems?)
+References: <Pine.LNX.4.10.10011101348020.19883-100000@develop.knet.on.ca>
+Message-ID: <3A0C678A.7FB897F@amiga.com>
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> I have some answers...
+> 
+> > I am experiencing the following with PWL0.53.10:
+> >
+> > a) when I tried to extract a file system to a CompactFlash IDE target
+> > device (/dev/hdc) from pwlconfig, I always get the following:
+> >
+> > "testing that nothing is mounted on mount directory" ...failed
+
+This happens to me if the device is mounted prior to loading the
+filesystem onto the CF device. Do a umount /dev/hdc first and the
+problem should go away.
+ 
+> Seeing that rd_dialog works, the actual script that loads the filesystem
+> is alright. What do you see when you go to
+> 
+>     Configure Target Hardware -->
+> 
+> Did pwlconfig ask you to create a new configuration file (it should have)
+> when you tried to load your target? All I can think of is that the path to
+> the temporary mount directory is not correct. It should say something
+> like:
+> 
+>     Device Mount Point: "./mnt"
+> 
+> > b) On another note, the minimal configuration example that comes with
+> > PWL0.53.10 tries to extract, as kernel,
+> > ./packages/Kernel/kernel-basic-2.2.17.list, which does not exist (at
+> > least not in the distro I have). Hence,, the system generated does not
+> > have a kernel. Furthermore, I have noticed that even If you select
+> > another kernel, project.conf always includes
+> > ./packages/Kernel/kernel-basic-2.2.17.list, hence the error is also
+> > generated, despite your selected kernel included okay (that happens
+> > whenever your project is based on "minimal". If you start your new
+> > project from the scratch, it does not happen).
+> 
+> Did you upgrade to 0.53.10 by downloading the peeweelinux-*-cfg.tar.gz
+> package or did you download the complete bin or src archive?
+
+I've just recently seen that same error and I haven't tried the example
+configurations. I have however just re-installed the original 0.53 then
+0.53-8 and then 0.53-10.
+
+Another minor annoyance that I've noticed is that if a 'load target'
+fails, any subsequent attempt within the same pwlconfig session will
+also report a failure, even if the load succeeded. This appears to be a
+case of the failure flag not being cleared in the beginning of the load
+script.
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 10 21:28:57 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 10 Nov 2000 15:28:57 -0600 (CST)
+Subject: experiences with PWL0.53.10 (some problems?)
+In-Reply-To: <3A0C678A.7FB897F@amiga.com>
+Message-ID: <Pine.LNX.4.10.10011101524140.19883-100000@develop.knet.on.ca>
+
+Hi,
+
+Did you experience this in 0.53.10? It was an issue with 0.53 but I
+thought I fixed that since.
+
+> Another minor annoyance that I've noticed is that if a 'load target'
+> fails, any subsequent attempt within the same pwlconfig session will
+> also report a failure, even if the load succeeded. This appears to be a
+> case of the failure flag not being cleared in the beginning of the load
+> script.
+
+I know know what I did to break the 'minimal' sample package! I created a
+new kernel package somewhere around 0.53.8(?) in order to create the pwl
+script that will allow for a kernel compile from within pwlconfig. I
+didn't intend to breaking anything but it sounds like I changed a name of
+a kernel package.
+
+Downloading and installing a peeweelinux-*-cfg.tar.gz package will replace
+all the pwlconfig related scripts. So it's not incremental like a patch.
+Hmmm... I could create patches to show some detail of the changes... would
+that be of interest?
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 10 21:54:56 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Fri, 10 Nov 2000 13:54:56 -0800
+Subject: experiences with PWL0.53.10 (some problems?)
+References: <Pine.LNX.4.10.10011101524140.19883-100000@develop.knet.on.ca>
+Message-ID: <3A0C6EB0.519ADF4E@amiga.com>
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> Did you experience this in 0.53.10? It was an issue with 0.53 but I
+> thought I fixed that since.
+
+I've gotten so used to exiting pwlconfig and restarting it if I fail a
+device load, I can't say if the problem still exists. Next time it
+happens, I'll check it out.
+ 
+> > Another minor annoyance that I've noticed is that if a 'load target'
+> > fails, any subsequent attempt within the same pwlconfig session will
+> > also report a failure, even if the load succeeded. This appears to be a
+> > case of the failure flag not being cleared in the beginning of the load
+> > script.
+> 
+> I know know what I did to break the 'minimal' sample package! I created a
+> new kernel package somewhere around 0.53.8(?) in order to create the pwl
+> script that will allow for a kernel compile from within pwlconfig. I
+> didn't intend to breaking anything but it sounds like I changed a name of
+> a kernel package.
+> 
+> Downloading and installing a peeweelinux-*-cfg.tar.gz package will replace
+> all the pwlconfig related scripts. So it's not incremental like a patch.
+> Hmmm... I could create patches to show some detail of the changes... would
+> that be of interest?
+
+I did things in an incremental fashion this morning trying to find the
+pci-scan file needed to fix my other problem. I wanted to make sure that
+I was running a complete and up to date system.
+
+BTW, that issue is now fixed. Thanks!
+
+
+> TTYL,
+> Adi
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 10 22:01:53 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Fri, 10 Nov 2000 14:01:53 -0800
+Subject: Silent booting
+References: <Pine.LNX.4.10.10011092026560.25585-100000@big.adis.on.ca>
+Message-ID: <3A0C7051.30D50902@amiga.com>
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> I have a box here with the National Semi chipset which uses the pci-scan
+> module as well. Here are the pci-scan modules in the kernel rpms:
+> 
+> [root@big Embedded_Build]# rpm -qpl RPMS/kernel-full-2.2.17-6.i386.rpm |
+> grep pci-scan
+> /lib/modules/2.2.17-full/net/pci-scan.o
+> 
+> [root@big Embedded_Build]# rpm -qpl RPMS/kernel-basic-2.2.17-6.i386.rpm |
+> grep pci-scan
+> /lib/modules/2.2.17/net/pci-scan.o
+> 
+> I tried the natsemi.o module and I did have to do:
+> 
+>    insmod pci-scan
+>    insmod natsemi
+> 
+> This worked just fine. Trying to load natsemi without the pci-scan driver
+> resulted in the same errors you reported.
+
+This is now working. Thanks!
+ 
+> I am just working on a fresh compile of the kernel rpms. I intend to add
+> the devfs patch and daemon for 2.2.17. This should allow for an easier way
+> to build a read-only rootfs plus save considerable space.
+
+I notice that the framebuffer support is no longer enabled in the
+2.2.17-basic kernel, but is in the 2.2.17-full. Is this intentional?
+ 
+> I am considering removing the netdriver patch which adds the new network
+> drivers requiring pci-scan and creating it as a seperate package (similar
+> to emlog and the rl2 driver). That way the default kernel(s) included with
+> PeeWeeLinux wouldn't require pci-scan to be loaded.
+> 
+> As far as the lilo prompt, no, there is currently no way to add additional
+> lilo paramters using pwlconfig. Looking at pwlconfig, I think it should be
+> possible to add a couple of parameters like:
+> 
+> Ramdisk File Name: "ramdisk"
+> Initrd File Name: "initrd"
+> --- Boot loader options ---
+> Boot Label: "linux"
+> Boot Prompt Timeout: "0"
+> VGA Mode: "normal"
+> Boot Option 1:
+> Boot Option 2:
+> --- floppy ---
+> 
+> The Boot Option 1|2 would allow for custom options to be enterred. I'll
+> play with that and release an updated peeweelinux-*-cfg.tar.gz package if
+> it works (and doesn't break any previous configurations).
+
+This would work, but it would be nice to be able to include an external
+file in the lilo.conf file. This might be difficult to do cleanly
+however. On that note, where is the lilo.conf file stored at that is
+actually used to install lilo onto the CF device? I'm using the read
+only root filesystem as a target.
+
+
+> TTYL,
+> Adi
+> 
+> On Thu, 9 Nov 2000, Dean Brown wrote:
+> 
+> > Ok,
+> >
+> > Several problems here. First off, there is no pci-scan.o module anywhere
+> > in the pwl distribution that I've been able to find. Searching the
+> > available packages for pci-scan or pci-scan.o or pci-scan* returns a not
+> > found.
+> >
+> > Searching the filesystem rooted at the Embedded_Builds directory found a
+> > pci-scan.{c|h|o} in the ./src/BUILDS/2.2.17/net path. Copying the .o
+> > file to the /lib/modules/2.2.17/net/ directory and modifying the
+> > /etc/rc.modules file to load the pci-scan module results in an error at
+> > boot time of "/lib/modules/2.2.17/net/pci-scan.o: couldn't find the
+> > kernel version the module was compiled for".
+> >
+> > I am using the 2.2.17 kernel.
+> >
+> > On another note, entering linux debug=0 at the lilo prompt does indeed
+> > suppress all the kernel spew. Is there any way to add additional
+> > parameters to the lilo.conf created during the load process without
+> > requiring lilo to be manually installed?
+> >
+> > Thanks again for you help.
+> >
+> > Adi Linden wrote:
+> > >
+> > > Hi,
+> > >
+> > > Some of the network modules require a pci driver to be installed. The
+> > > module to load prior to the rtl8139, tulip, natsemi or via-rhine driver is
+> > > pci-scan. Now, that module was supposed to be loaded automatically when
+> > > one of those network drivers is loaded.
+> > >
+> > > Try doing
+> > >
+> > > insmod pci-scan
+> > > insmod rtl8139
+> > >
+> > > I'll dig up the email with the silent.patch instructions and forward it to
+> > > you.
+> > >
+> > > This got me thinking about the kernel compile process... maybe I'll make
+> > > the updated network drivers and option (independend package) rather than a
+> > > kernel patch...
+> > >
+> > > TTYL,
+> > > Adi
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 10 22:32:31 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 10 Nov 2000 16:32:31 -0600 (CST)
+Subject: Silent booting
+In-Reply-To: <3A0C7051.30D50902@amiga.com>
+Message-ID: <Pine.LNX.4.10.10011101620350.19883-100000@develop.knet.on.ca>
+
+Hi,
+
+> I notice that the framebuffer support is no longer enabled in the
+> 2.2.17-basic kernel, but is in the 2.2.17-full. Is this intentional?
+
+An ommission when I build the new kernel. The kernel will change a bit
+with the next release. I will make sure that the basic kernel has frame
+buffer support again. 
+
+> This would work, but it would be nice to be able to include an external
+> file in the lilo.conf file. This might be difficult to do cleanly
+> however. On that note, where is the lilo.conf file stored at that is
+> actually used to install lilo onto the CF device? I'm using the read
+> only root filesystem as a target.
+
+The target load scripts create a Embedded_Build/tmp/lilo.conf file. This
+is used to lilo the target device. The tmp directory contains other
+goodies as well. There is a rd.log file that contains the output of all
+the commands run during the target load process. It's a good place to look
+for hints if a load failed. In a future release I intend to make rd.log
+accessible ofter a failed installation attempt to aid in troubleshooting.
+The tmp directory is used to store syslinux.cfg, ramdisk images, initrd
+images, etc... Anything temporary created by the target build scripts. I
+don't think I am cleaning up so those files should stay around until
+they're overwritten by a subsequent run.
+
+I looked at the custom lilo option deal I proposed earlier. I ran into a
+'little' problem. The proper lilo command for debug (and other options)
+is:
+
+    append = "debug=0"
+
+The quotes are a problem. Most other lilo options do not require quotes.
+Since all the options are stored in shell variables the quotes get lost.
+So I could add an option like:
+
+    Additional Boot Parms:
+
+Except how can it be made clear these appear after a pwlconfig generated
+'append = ' statement?
+
+Since the siletn boot is a desired option and an intended feature of PWL
+it should be possible to enable it in pwlconfig... I guess another option
+would be a mere:
+
+    Show Boot Messages:
+
+parameter that requires a yes/no answer...
+
+Ideas...???
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Nov 11 10:48:09 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 11 Nov 2000 04:48:09 -0600 (CST)
+Subject: 0.53.14
+Message-ID: <Pine.LNX.4.10.10011110441450.12472-100000@big.adis.on.ca>
+
+Hi,
+
+I just uploaded the latest work on PeeWeeLinux. Find it at
+http://peeweelinux.org/pub/Projects/Embedded/peeweelinux-0.53.14-cfg.tar.gz
+
+Some of the changes:
+- Improved the speed when entering 'Configure Target Hardware'.
+- Added 'Append Option' to bootloader. Enter 'debug=0' for silent boot.
+- Added version checking on config file. From now on, when an older
+  project is used in a newer PeeWeeLinux release, the config file will
+  be updated to the newest setting. All old settings are retained and
+  new parameters and options are set to their default values.
+
+I've tested this with the minimal package but not exhaustively.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Nov 12 17:03:13 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Sun, 12 Nov 2000 09:03:13 -0800
+Subject: Silent booting
+References: <Pine.LNX.4.10.10011101620350.19883-100000@develop.knet.on.ca>
+Message-ID: <3A0ECD51.B7A4894E@amiga.com>
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> > I notice that the framebuffer support is no longer enabled in the
+> > 2.2.17-basic kernel, but is in the 2.2.17-full. Is this intentional?
+> 
+> An ommission when I build the new kernel. The kernel will change a bit
+> with the next release. I will make sure that the basic kernel has frame
+> buffer support again.
+
+Great, Thanks!
+ 
+> > This would work, but it would be nice to be able to include an external
+> > file in the lilo.conf file. This might be difficult to do cleanly
+> > however. On that note, where is the lilo.conf file stored at that is
+> > actually used to install lilo onto the CF device? I'm using the read
+> > only root filesystem as a target.
+> 
+> The target load scripts create a Embedded_Build/tmp/lilo.conf file. This
+> is used to lilo the target device. The tmp directory contains other
+> goodies as well. There is a rd.log file that contains the output of all
+> the commands run during the target load process. It's a good place to look
+> for hints if a load failed. In a future release I intend to make rd.log
+> accessible ofter a failed installation attempt to aid in troubleshooting.
+> The tmp directory is used to store syslinux.cfg, ramdisk images, initrd
+> images, etc... Anything temporary created by the target build scripts. I
+> don't think I am cleaning up so those files should stay around until
+> they're overwritten by a subsequent run.
+
+This is good information. I can use this to tweak a build in a way that
+I can't do now.
+ 
+> I looked at the custom lilo option deal I proposed earlier. I ran into a
+> 'little' problem. The proper lilo command for debug (and other options)
+> is:
+> 
+>     append = "debug=0"
+> 
+> The quotes are a problem. Most other lilo options do not require quotes.
+> Since all the options are stored in shell variables the quotes get lost.
+> So I could add an option like:
+
+So you can't just dump the shell variable into the lilo.conf file to
+allow for generic additions to the configuration. 
+
+>     Additional Boot Parms:
+
+Change this to "Additional Boot Parms 'append = ':" and it will work for
+me!  ;^)
+
+> 
+> Except how can it be made clear these appear after a pwlconfig generated
+> 'append = ' statement?
+> 
+> Since the siletn boot is a desired option and an intended feature of PWL
+> it should be possible to enable it in pwlconfig... I guess another option
+> would be a mere:
+> 
+>     Show Boot Messages:
+> 
+> parameter that requires a yes/no answer...
+> 
+> Ideas...???
+
+This works too, and is even better as it plays right into the embedded
+OS theme of pwl. As a side note, maybe this same configuration option
+can be used to silence the startup scripts as well.
+ 
+> TTYL,
+> Adi
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+-- 
+
+It took them 15 years to catch up... Now they never will!
+
+Privileged and Confidential communication. If you are not the addressee,
+you may not read, copy, or distribute this email. This email is not for
+public use or knowledge. If you receive this email in error, please
+advise
+us by return email. Thank you.
+
+Dean Brown
+Director of Hardware
+Amiga Inc.
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov 13 06:36:19 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 13 Nov 2000 00:36:19 -0600 (CST)
+Subject: Silent booting
+In-Reply-To: <3A0ECD51.B7A4894E@amiga.com>
+Message-ID: <Pine.LNX.4.10.10011130028280.12472-100000@big.adis.on.ca>
+
+Hi,
+
+> Change this to "Additional Boot Parms 'append = ':" and it will work for
+> me!  ;^)
+
+Yup, created an 'Append Options:' section under boot options. Entering
+debug=0 should do the trick!
+
+> This works too, and is even better as it plays right into the embedded
+> OS theme of pwl. As a side note, maybe this same configuration option
+> can be used to silence the startup scripts as well.
+
+Append is useful for other things, too. Like sending paramters to driver
+compiled into a monolithic kernel. That's why I decided to go that route.
+
+It's fairly easy to probe the kernel for boot paramters. There's something
+in /proc somewhere... So the next step would be to test for the debug=0
+statement in the boot scripts and silence the boot scripts if it's found.
+Hmmm... there was a way to redirect all output from a script to /dev/null
+by simply including a statement at the beginning of the script....
+
+TTYL,
+Adi
+ 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov 13 19:28:22 2000
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Mon, 13 Nov 2000 19:28:22 +0000
+Subject: experiences with PWL0.53.10 (some problems?)
+References: <Pine.LNX.4.10.10011101348020.19883-100000@develop.knet.on.ca> <3A0C678A.7FB897F@amiga.com>
+Message-ID: <3A1040D6.E0373FEF@h2eye.com>
+
+Hi Dean,
+
+Dean Brown wrote:
+> 
+> Adi Linden wrote:
+> >
+> > Hi,
+> >
+> > I have some answers...
+> >
+> > > I am experiencing the following with PWL0.53.10:
+> > >
+> > > a) when I tried to extract a file system to a CompactFlash IDE target
+> > > device (/dev/hdc) from pwlconfig, I always get the following:
+> > >
+> > > "testing that nothing is mounted on mount directory" ...failed
+> 
+> This happens to me if the device is mounted prior to loading the
+> filesystem onto the CF device. Do a umount /dev/hdc first and the
+> problem should go away.
+>
+
+
+/dev/hdc is not mounted. I don't know what else to do. Particularly since the script rd_dialog works fine. I am utterly puzzled, particularly since nobody else seems to have that problem. 
+
+The latest attempt to solve it was to reinstall from scratch 0.53-bin file, and then add on top the new patch for 0.53.14 (only). Same result. I even tried to update patch after patch (8,10,14), with same results.
+
+ 
+> > Seeing that rd_dialog works, the actual script that loads the filesystem
+> > is alright. What do you see when you go to
+> >
+> >     Configure Target Hardware -->
+> >
+> > Did pwlconfig ask you to create a new configuration file (it should have)
+> > when you tried to load your target? All I can think of is that the path to
+> > the temporary mount directory is not correct. It should say something
+> > like:
+> >
+> >     Device Mount Point: "./mnt"
+> >
+> > > b) On another note, the minimal configuration example that comes with
+> > > PWL0.53.10 tries to extract, as kernel,
+> > > ./packages/Kernel/kernel-basic-2.2.17.list, which does not exist (at
+> > > least not in the distro I have). Hence,, the system generated does not
+> > > have a kernel. Furthermore, I have noticed that even If you select
+> > > another kernel, project.conf always includes
+> > > ./packages/Kernel/kernel-basic-2.2.17.list, hence the error is also
+> > > generated, despite your selected kernel included okay (that happens
+> > > whenever your project is based on "minimal". If you start your new
+> > > project from the scratch, it does not happen).
+> >
+
+
+I manually had to copy kernel-basic-2.2.17.tar to get minimal to work "off-the-shelf". It is missing from 0.53-bin file. That works now.
+
+Regards,
+
+Jaime
+
+-- 
+Dr Jaime V. Miro
+Sw and control systems analyst
+H2eye Ltd
+24-28 Hatton Wall
+London EC1N 8JH
+
+Tel:020-7404 9600
+Fax:020-7404 9490
+j.v.miro@h2eye.com
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov 13 21:15:18 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 13 Nov 2000 15:15:18 -0600 (CST)
+Subject: experiences with PWL0.53.10 (some problems?)
+In-Reply-To: <3A1040D6.E0373FEF@h2eye.com>
+Message-ID: <Pine.LNX.4.10.10011131509170.27890-100000@develop.knet.on.ca>
+
+Hi,
+
+It's solved!
+
+> /dev/hdc is not mounted. I don't know what else to do. Particularly
+> since the script rd_dialog works fine. I am utterly puzzled,
+> particularly since nobody else seems to have that problem. 
+
+The problem with it is that pwlconfig defaults to relative paths. That is
+the default settings for the mount directory is relative to the
+Embedded_Build directory. Part of the checks done before running the
+target load script is to see if anything is mounted on the proposed
+loacation. If something is mounted subsequent mount commands on the same
+point will fail if something else is mounted.
+
+I came across it once I mounted /mnt/cdrom. The ./mnt matches /mnt/cdrom
+for some reason.
+
+I am working on a fix. A temporary solution is to enter the complete path
+to the mount pint in the 'Target Hardware Configuration' screen:
+
+   Device Mount Point: "/root/Embedded_Build/mnt"
+
+Make sure you match your actual path! 
+
+I will work on a more permanent and reliable fix tonight!
+
+> The latest attempt to solve it was to reinstall from scratch 0.53-bin
+> file, and then add on top the new patch for 0.53.14 (only). Same result.
+> I even tried to update patch after patch (8,10,14), with same results.
+
+The peeweelinux-*-cfg.tag.gz archives are not incremental. They basically
+replace all the contents of scripts, bin and pwlconfig.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 14 00:05:22 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Mon, 13 Nov 2000 16:05:22 -0800
+Subject: 0.53.14 problems
+Message-ID: <3A1081C2.1833014F@amiga.com>
+
+Adi,
+	It seems that 0.53.14 is broken!! :^(
+
+Taking a configuration that worked correctly under 0.53.10, and updating
+to 0.53.14 is causing bootup problems. Symptoms are as follows:
+
+The error spew is:
+----begin----
+/etc/rc.sysinit: cannot create /var/run/utmp: directory nonexistent
+INIT: Entering runlevel: 3
+Setting hostname
+Bringing up interface lo....
+modprobe: modprobe: Can't open dependencies file
+/lib/modules/2.2.17-full/modules.dep (No such file or directory)
+(the above line is repeated about 16 times)
+Bringing up interface eth0....
+Determining IP information for eth0....modprobe: modprobe: Can't open
+dependencies file /lib/modules/2.2.17-full/modules.dep (No such file or
+directory)
+dhcpd[49]: dhcpStart: ioctl SIOCGIFHWADDR: no such device
+
+failed....
+touch: /var/lock/subsys/network: No such file or directory
+INIT: Id "1" respawning too fast: disabled for 5 minutes
+INIT: Id "2" respawning too fast: disabled for 5 minutes
+INIT: Id "3" respawning too fast: disabled for 5 minutes
+INIT: Id "4" respawning too fast: disabled for 5 minutes
+INIT: no more processes left in this runlevel
+----end----
+
+The problem is in the 'load filesystem' portion of pwl. If I Extract a
+filesystem using the 0.53.14 scripts and then load them onto the device
+with the 0.53.10 versions, the errors don't occur. Loading with the
+0.53.14 scripts causes the errors regardless of how the extracted system
+was created.
+
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 14 05:33:15 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 13 Nov 2000 23:33:15 -0600 (CST)
+Subject: 0.53.14 problems
+In-Reply-To: <3A1081C2.1833014F@amiga.com>
+Message-ID: <Pine.LNX.4.10.10011132308560.8441-100000@big.adis.on.ca>
+
+Hi,
+
+It looks like your filesystem isn't extracted. Did you make sure to
+convert binary rpms to packages first?
+
+I am using 0.53.14 myself to build some wireless boxes and I haven't
+encountered any such problems. I've changed the mount -a statement from
+rc.init to rc.sysinit. However, that shouldn't make a difference and
+doesn't affect the minimal system I use for testing. Especially, since the
+mount -a statement didn't exist in the rc.init created by pwlconfig
+
+Your error messages look like part of the filesystem tree is missing. Take
+a look at the extracted filesystem tree at projects/<your project>/mnt and
+see if projects/<your project>/mnt/lib/modules/2.2.17-full and
+projects/<your project>/mnt/var/run exist...
+
+TTYL,
+Adi
+
+
+On Mon, 13 Nov 2000, Dean Brown wrote:
+
+> Adi,
+> 	It seems that 0.53.14 is broken!! :^(
+> 
+> Taking a configuration that worked correctly under 0.53.10, and updating
+> to 0.53.14 is causing bootup problems. Symptoms are as follows:
+> 
+> The error spew is:
+> ----begin----
+> /etc/rc.sysinit: cannot create /var/run/utmp: directory nonexistent
+> INIT: Entering runlevel: 3
+> Setting hostname
+> Bringing up interface lo....
+> modprobe: modprobe: Can't open dependencies file
+> /lib/modules/2.2.17-full/modules.dep (No such file or directory)
+> (the above line is repeated about 16 times)
+> Bringing up interface eth0....
+> Determining IP information for eth0....modprobe: modprobe: Can't open
+> dependencies file /lib/modules/2.2.17-full/modules.dep (No such file or
+> directory)
+> dhcpd[49]: dhcpStart: ioctl SIOCGIFHWADDR: no such device
+> 
+> failed....
+> touch: /var/lock/subsys/network: No such file or directory
+> INIT: Id "1" respawning too fast: disabled for 5 minutes
+> INIT: Id "2" respawning too fast: disabled for 5 minutes
+> INIT: Id "3" respawning too fast: disabled for 5 minutes
+> INIT: Id "4" respawning too fast: disabled for 5 minutes
+> INIT: no more processes left in this runlevel
+> ----end----
+> 
+> The problem is in the 'load filesystem' portion of pwl. If I Extract a
+> filesystem using the 0.53.14 scripts and then load them onto the device
+> with the 0.53.10 versions, the errors don't occur. Loading with the
+> 0.53.14 scripts causes the errors regardless of how the extracted system
+> was created.
+> 
+> 
+> -- 
+> Dean Brown
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 14 05:47:21 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 13 Nov 2000 23:47:21 -0600 (CST)
+Subject: 0.53.14
+In-Reply-To: <3A0C7051.30D50902@amiga.com>
+Message-ID: <Pine.LNX.4.10.10011132341040.8441-100000@big.adis.on.ca>
+
+Hi,
+
+Another note about your 0.53.14 problems. Contrary to my earlier reply,
+yes, there is a situation that could possibly cause the problem you're
+seeing.
+
+Dou you have a custom rc.sysinit loaded from custom files?
+
+If so, you would be missing the mount -a statement I removed from rc.init
+and added to rc.sysinit. A subtle but important issue! There are 2 ways to
+fix this, 0.53.15 "should" fix this. I added instructions to mount /dev to
+rc.init which should fix this. Or, edit your rc.sysinit and add a mount -a
+statement near the top.
+
+The reason for this change: I am using Disk-On-Chip. The kernel requires a
+module to be loaded prior to mounting the flash drive to access
+Disk-On-Chip. Since the mount -a statment was located in rc.init I
+couldn't change it to eliminate the error messages I got during bootup.
+Moving mount -a to rc.sysinit allowed me to create a custom rc.sysinit
+where modules are loaded prior to any additional mounting instructions...
+
+TTYL,
+Adi 
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 14 07:05:39 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 14 Nov 2000 01:05:39 -0600 (CST)
+Subject: Silent booting in 0.53.15
+Message-ID: <Pine.LNX.4.10.10011140054010.8441-100000@big.adis.on.ca>
+
+Hi,
+
+Here is 0.53.15, to be found at
+
+    http://peeweelinux.org/pub/Projects/Embedded
+
+The most noticable changes are a fix to the boot script for a read-only
+filesystem when an older project is used.
+
+The boot scripts were modified to be silent if the file "/etc/boot.silent"
+exists. At this point this file is not created when "debug=0" is given as
+an append option. But it should work fine if it is added as a custome file
+like "touch <custom location>/etc/boot.silent". Note that this requires:
+
+    1. A complete PeeWeelinux download (bin or src or iso) - or -
+       replacing the old initscripts-1.4-1.i386.rpm with
+       initscripts-1.5-1.i386.rpm (can be found at
+       http://peeweelinux.org/pub/Projects/Embedded/Embedded_Build/RPMS
+    2. Any custom rc.sysinit and/or rcS scripts to be replaced
+       with the new scripts.
+    3. Don't forget to add "debug=0" and to create "/etc/boot.silent" for
+       quiet booting.
+
+An important note: I did not get a chance to test the uploaded release!!!
+I tested the changes but there is always a chance of typos when I made the
+changes in the real release rather then my test environment!
+
+Also, I will be travelling for the next week. I will check email and
+answer questions as I can, but I won't have access to a PeeWeeLinux system
+to anything 'hands-on'...
+
+
+CHANGELOG:
+==========
+v0.53.*
+-------
+ o Compile syslinux for glibc
+ o Changes to pwlconfig outlined in scripts/CHANGES.pwlconfig
+ o Changed kernel package
+   - added functions for pwl_kernel
+   - changed netdrivers to an optional package
+ o Added cd_install script
+ o Added emlog.o kernel module for endless logging
+ o Added wget package
+ o Combined dev packages into one with less devices
+ o Added libpanel.so.4 to libncurses
+ o Updated iniscripts
+ o Added wireless-isa and minimal example projects
+ o Added portfw daemon
+ o Added boot.silent option to initscripts
+
+scripts/CHANGES.pwlconfig:
+==========================
+
+Tue Nov 14 2000 Adi Linden <adi@adis.on.ca>
+- v0.53.15
+- pwl_target_functions
+    added mount /dev to rc.init for read-only root target
+    removed echo "Mounting root read-write..." statement
+- initscripts
+    added silent boot scripts if /etc/boot.silent is found
+
+Fri Nov 10 2000 Adi Linden <adi@adis.on.ca>
+- v0.53.14
+- pwl_defaults, pwl_target_functions
+    added rd_bp_append variable
+    changed parsing of configuration file to increase speed
+    added upgrade function for old configuration files
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 14 13:51:09 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 14 Nov 2000 07:51:09 -0600 (CST)
+Subject: 0.53.16
+Message-ID: <Pine.LNX.4.10.10011140747210.17900-100000@big.adis.on.ca>
+
+Hi,
+
+Released 0.53.16 this morning. Just a minor but important fix I forgot
+last night. Now mounted volumes like /mnt/cdrom shouldn't interfere with
+pwlconfigs checks prior to mounting the target drive.
+
+This change only affects the peeweelinux-0.53.16-cfg.tar.gz file, the
+packages remain unchanged from 0.53.15.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 14 13:59:19 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Tue, 14 Nov 2000 05:59:19 -0800
+Subject: 0.53.14 problems
+References: <Pine.LNX.4.10.10011132308560.8441-100000@big.adis.on.ca>
+Message-ID: <3A114537.816F08E@amiga.com>
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> It looks like your filesystem isn't extracted. Did you make sure to
+> convert binary rpms to packages first?
+
+The filesystem is extracted. 
+ 
+> I am using 0.53.14 myself to build some wireless boxes and I haven't
+> encountered any such problems. I've changed the mount -a statement from
+> rc.init to rc.sysinit. However, that shouldn't make a difference and
+> doesn't affect the minimal system I use for testing. Especially, since the
+> mount -a statement didn't exist in the rc.init created by pwlconfig
+> 
+> Your error messages look like part of the filesystem tree is missing. Take
+> a look at the extracted filesystem tree at projects/<your project>/mnt and
+> see if projects/<your project>/mnt/lib/modules/2.2.17-full and
+> projects/<your project>/mnt/var/run exist...
+
+They do. I can extract the filesystem using either .10 or .14. Making no
+other changes, loading with .14 fails, loading with .10 works.
+ 
+> TTYL,
+> Adi
+> 
+> On Mon, 13 Nov 2000, Dean Brown wrote:
+> 
+> > Adi,
+> >       It seems that 0.53.14 is broken!! :^(
+> >
+> > Taking a configuration that worked correctly under 0.53.10, and updating
+> > to 0.53.14 is causing bootup problems. Symptoms are as follows:
+> >
+> > The error spew is:
+> > ----begin----
+> > /etc/rc.sysinit: cannot create /var/run/utmp: directory nonexistent
+> > INIT: Entering runlevel: 3
+> > Setting hostname
+> > Bringing up interface lo....
+> > modprobe: modprobe: Can't open dependencies file
+> > /lib/modules/2.2.17-full/modules.dep (No such file or directory)
+> > (the above line is repeated about 16 times)
+> > Bringing up interface eth0....
+> > Determining IP information for eth0....modprobe: modprobe: Can't open
+> > dependencies file /lib/modules/2.2.17-full/modules.dep (No such file or
+> > directory)
+> > dhcpd[49]: dhcpStart: ioctl SIOCGIFHWADDR: no such device
+> >
+> > failed....
+> > touch: /var/lock/subsys/network: No such file or directory
+> > INIT: Id "1" respawning too fast: disabled for 5 minutes
+> > INIT: Id "2" respawning too fast: disabled for 5 minutes
+> > INIT: Id "3" respawning too fast: disabled for 5 minutes
+> > INIT: Id "4" respawning too fast: disabled for 5 minutes
+> > INIT: no more processes left in this runlevel
+> > ----end----
+> >
+> > The problem is in the 'load filesystem' portion of pwl. If I Extract a
+> > filesystem using the 0.53.14 scripts and then load them onto the device
+> > with the 0.53.10 versions, the errors don't occur. Loading with the
+> > 0.53.14 scripts causes the errors regardless of how the extracted system
+> > was created.
+> >
+> >
+> > --
+> > Dean Brown
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+> >
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Nov 16 22:02:58 2000
+From: peeweelinux@adis.on.ca (David Hamm)
+Date: Thu, 16 Nov 2000 17:02:58 -0500
+Subject: Disk on Chip help
+Message-ID: <00111617095406.29136@workbox.atlanta.itserve.com>
+
+Could anyone shed some light on how to access M-Systems disk on chip? I have
+the modules compiled into the kernel and can load them but don't know
+how to use mknode to create the entry in /dev/.
+
+Thanks
+
+
+ ---------------------------------
+David Hamm
+Systems Analyst
+Imaging Technologies Services Inc.
+email: dhamm@itrepro.com
+voice: 404-870-6663
+---------------------------------
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 17 01:42:22 2000
+From: peeweelinux@adis.on.ca (Jacky)
+Date: Fri, 17 Nov 2000 09:42:22 +0800
+Subject: Disk on Chip help
+References: <00111617095406.29136@workbox.atlanta.itserve.com>
+Message-ID: <3A148CFE.82C33786@iwill.net>
+
+If you get the version4.21 driver for linux,
+the 'mknod_fl' utility makes the fl* entry in /dev/msys, not in /dev
+but the version4.2 makes it in /dev/fl*,
+so make sure what version your driver is.
+
+Check the version of your DOC, and get the lastest document and driver from
+http://www.m-sys.com/tech_soft.asp
+
+especially these 2 documents...
+IM-DOC-021: Using the DiskOnChip with Linux OS v3.2
+http://www.m-sys.com/files/manuals/doc/IM-DOC-021_Linux_OS_Rev3.2.pdf
+DiskOnChip Utilities User Manual v3.2
+http://www.m-sys.com/files/manuals/doc/UM_DOC_Utils_Rev3.2.pdf
+
+
+David Hamm wrote¡G
+
+> Could anyone shed some light on how to access M-Systems disk on chip? I have
+> the modules compiled into the kernel and can load them but don't know
+> how to use mknode to create the entry in /dev/.
+
+--
+Best regards,
+
+Jacky Chen
+Software Engineer / IA
+Iwill Corp.
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 17 18:49:30 2000
+From: peeweelinux@adis.on.ca (David Hamm)
+Date: Fri, 17 Nov 2000 13:49:30 -0500
+Subject: 0.53.8 and extracting packages
+Message-ID: <00111713535207.21586@workbox.atlanta.itserve.com>
+
+Looking at SourceForge there seems to be a 53.14 version of PeeWee but no files
+for it.  So I downloaded 53 and added the 53.8 pwlconfig update and it doesn't
+extract_all packages.  It will extract one package at a time though.  Could
+anyone point me to the latest full binary version?
+
+Also how small can PeeWee be?  I'm working with 16 megs of doc.  Can I make a
+router/firewall in 16 megs of doc?
+
+ ---------------------------------
+David Hamm
+Systems Analyst
+Imaging Technologies Services Inc.
+email: dhamm@itrepro.com
+voice: 404-870-6663
+---------------------------------
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Nov 17 19:47:38 2000
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Fri, 17 Nov 2000 19:47:38 +0000
+Subject: 0.53.8 and extracting packages
+References: <00111713535207.21586@workbox.atlanta.itserve.com>
+Message-ID: <3A158B5A.CABA03A4@h2eye.com>
+
+David Hamm wrote:
+> 
+> Looking at SourceForge there seems to be a 53.14 version of PeeWee but no files
+> for it.  So I downloaded 53 and added the 53.8 pwlconfig update and it doesn't
+> extract_all packages.  It will extract one package at a time though.  Could
+> anyone point me to the latest full binary version?
+> 
+
+
+http://peeweelinux.com/
+
+Check mailing list for most up-to-date info and pointers to lastest updates. 
+
+> Also how small can PeeWee be?  I'm working with 16 megs of doc.  Can I make a
+> router/firewall in 16 megs of doc?
+> 
+
+
+I haven't done a router myself, but I would imagine it's more than enough.
+
+Good luck
+
+
+
+-- 
+Dr Jaime V. Miro
+Sw and control systems analyst
+H2eye Ltd
+24-28 Hatton Wall
+London EC1N 8JH
+
+Tel:020-7404 9600
+Fax:020-7404 9490
+j.v.miro@h2eye.com
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Nov 18 14:54:53 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 18 Nov 2000 08:54:53 -0600 (CST)
+Subject: 0.53.8 and extracting packages
+In-Reply-To: <00111713535207.21586@workbox.atlanta.itserve.com>
+Message-ID: <Pine.LNX.4.10.10011180853320.610-100000@mobile.adis.on.ca>
+
+Hi,
+
+http://peeweelinux.org/pub/Projects/Embedded
+
+Latest is 0.53.16... I have had difficulties uploading to SourceForge. My
+uploaded files seems to be corrupt or deleted before I get a chane to add
+them.
+
+TTYL,
+Adi
+
+On Fri, 17 Nov 2000, David Hamm wrote:
+
+> Looking at SourceForge there seems to be a 53.14 version of PeeWee but no files
+> for it.  So I downloaded 53 and added the 53.8 pwlconfig update and it doesn't
+> extract_all packages.  It will extract one package at a time though.  Could
+> anyone point me to the latest full binary version?
+> 
+> Also how small can PeeWee be?  I'm working with 16 megs of doc.  Can I make a
+> router/firewall in 16 megs of doc?
+> 
+>  ---------------------------------
+> David Hamm
+> Systems Analyst
+> Imaging Technologies Services Inc.
+> email: dhamm@itrepro.com
+> voice: 404-870-6663
+> ---------------------------------
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Nov 19 01:33:22 2000
+From: peeweelinux@adis.on.ca (Matt Carlson)
+Date: Sat, 18 Nov 2000 19:33:22 -0600
+Subject: Minimal downloads
+Message-ID: <002e01c051c8$bafb14e0$01f7a8c0@home.net>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0025_01C05196.69921720
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+I am new to both embedded computing, and peeweelinux.
+I have read through the archives, and the documentation.  One thing that =
+I have not been able to find information on is this.
+What are the minimal files that I need to download to use PeeWeeLinux.
+I am finding 3 sets of files for each version.  Source, Binaries, and =
+Configs.
+The Configs and Binaries are of reasonable sizes, where as the Source =
+tar's are a bit large to grab on a slow connection.  Do I need them or =
+are they only there for GPL compliance?
+
+Thank you,
+M@
+
+
+------=_NextPart_000_0025_01C05196.69921720
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META content=3D"text/html; charset=3Diso-8859-1" =
+http-equiv=3DContent-Type>
+<META content=3D"MSHTML 5.00.2614.3500" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial>Hello,</FONT></DIV>
+<DIV><FONT face=3DArial>I am new to both embedded computing, and=20
+peeweelinux.</FONT></DIV>
+<DIV><FONT face=3DArial>I have read through the archives, and the=20
+documentation.&nbsp; One thing that I have not been able to find =
+information on=20
+is this.</FONT></DIV>
+<DIV><FONT face=3DArial>What are the minimal files that I need to =
+download to use=20
+PeeWeeLinux.</FONT></DIV>
+<DIV><FONT face=3DArial>I am finding 3 sets of files for each =
+version.&nbsp;=20
+Source, Binaries, and Configs.</FONT></DIV>
+<DIV><FONT face=3DArial>The Configs and Binaries are of reasonable =
+sizes, where as=20
+the Source tar's are a bit large to grab on a slow connection.&nbsp; Do =
+I need=20
+them or are they only there for GPL compliance?</FONT></DIV>
+<DIV>&nbsp;</DIV>
+<DIV><FONT face=3DArial>Thank you,</FONT></DIV>
+<DIV><FONT face=3DArial>M@</FONT></DIV>
+<DIV>&nbsp;</DIV></BODY></HTML>
+
+------=_NextPart_000_0025_01C05196.69921720--
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Nov 19 02:11:57 2000
+From: peeweelinux@adis.on.ca (Matt Carlson)
+Date: Sat, 18 Nov 2000 20:11:57 -0600
+Subject: How small is PeeWeeLinux?
+Message-ID: <034301c051ce$1f9d76e0$01f7a8c0@home.net>
+
+For my next newby question I'd like to ask:
+How small of a distrobution can you get from PWL?
+My target is to get a bootable system with pcmcia-cs, networking, and a few
+spacific programs loaded onto a 16M DiskOnChip for my wearable computer.
+Most distros that I've seen that are based on RedHat talk about a minimum of
+43-45megs.
+
+Thanks,
+M@
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Nov 19 02:53:31 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 18 Nov 2000 20:53:31 -0600
+Subject: Minimal downloads
+In-Reply-To: <002e01c051c8$bafb14e0$01f7a8c0@home.net>
+References: <002e01c051c8$bafb14e0$01f7a8c0@home.net>
+Message-ID: <200011190253.UAA23508@gizmo.adis.on.ca>
+
+Hi,
+
+The source distribution contains everything there is to 
+PeeWeeLinux. Scropts, binary rpms and source rpms.
+
+The binary distribution is lacking the source rpms but 
+otherwise complete.
+
+The config archives are for upgrading the pwlconfig 
+scripts only and are of no use unless a binary or 
+source distribution has been installed.
+
+Hope this helps!
+TTYL,
+Adi
+
+Quoting Matt Carlson <mcarlson@inetnebr.com>:
+
+> Hello,
+> I am new to both embedded computing, and peeweelinux.
+> I have read through the archives, and the 
+documentation.  One thing that > I have not been able 
+to find information on is this.
+> What are the minimal files that I need to download to 
+use PeeWeeLinux.
+> I am finding 3 sets of files for each version.  
+Source, Binaries, and > Configs.
+> The Configs and Binaries are of reasonable sizes, 
+where as the Source > tar's are a bit large to grab on 
+a slow connection.  Do I need them or > are they only 
+there for GPL compliance?
+>
+> Thank you,
+> M@
+>
+> 
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Nov 19 03:23:07 2000
+From: peeweelinux@adis.on.ca (Matt Carlson)
+Date: Sat, 18 Nov 2000 21:23:07 -0600
+Subject: Minimal downloads
+References: <002e01c051c8$bafb14e0$01f7a8c0@home.net> <200011190253.UAA23508@gizmo.adis.on.ca>
+Message-ID: <000501c051d8$109d3d60$01f7a8c0@home.net>
+
+> The source distribution contains everything there is to
+> PeeWeeLinux. Scropts, binary rpms and source rpms.
+>
+> The binary distribution is lacking the source rpms but
+> otherwise complete.
+>
+> The config archives are for upgrading the pwlconfig
+> scripts only and are of no use unless a binary or
+> source distribution has been installed.
+>
+Just to make sure I understand correctly.
+All I REALLY need to download to get up and running with PWL is the latest
+version of the binary distribution.  (which is good becuase it's already 70%
+downloaded :)
+
+Maybe I will have my system up and running this weekend.  Thanks
+
+M@
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Nov 19 07:58:04 2000
+From: peeweelinux@adis.on.ca (Matt Carlson)
+Date: Sun, 19 Nov 2000 01:58:04 -0600
+Subject: Modules
+Message-ID: <000a01c051fe$7353f900$01f7a8c0@home.net>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0007_01C051CC.27949100
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+PeeWeeLinux is a god send!
+In the last 2 weeks I have spent many sleepless nights trying to 'roll =
+my own' bootable system for a DiskOnChip.  I learned many ways not to do =
+it, but hadn't figured out how to do it.
+In the last few hours I have used PeeWeeLinux to setup the system, =
+install my custom 2.2.17 kernel with DOC and PCMCIA support for my WLAN =
+card.  Basicly in a few hours I got more done than 2 weeks worth of hard =
+work and trial and error.
+
+The last thing that I am having trouble with is loading my moduals. =
+(spacificly sound)
+I found that I needed to add 45pcmcia to /etc/rcS.d/ as well as copy =
+cardctl and cardmgr to /sbin but I haven't found the magic that will =
+tell the system that my moduals are in /lib/modules/2.2.17-doc/ in the =
+subdirs misc,pcmcia,ect.. like they are on my RedHat 6.2 partition.
+Does anyone know what I'm missing here?
+
+when I try to run=20
+modprobe sb.o io=3D0x220 irq=3D0x5 dma=3D0x1
+it tells me that it can't find sb.o
+
+Any help would be greatly appriciated.
+M@
+
+
+
+------=_NextPart_000_0007_01C051CC.27949100
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META content=3D"text/html; charset=3Diso-8859-1" =
+http-equiv=3DContent-Type>
+<META content=3D"MSHTML 5.00.2614.3500" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>PeeWeeLinux is a god send!</FONT></DIV>
+<DIV><FONT face=3DArial>In the last 2 weeks I have spent many sleepless =
+nights=20
+trying to 'roll my own' bootable system for a DiskOnChip.&nbsp; I =
+learned many=20
+ways not to do it, but hadn't figured out how to do it.</FONT></DIV>
+<DIV><FONT face=3DArial>In the last few hours I have used PeeWeeLinux to =
+setup the=20
+system, install my custom 2.2.17 kernel with DOC and PCMCIA support for =
+my WLAN=20
+card.&nbsp; Basicly in a few hours I got more done than 2 weeks worth of =
+hard=20
+work and trial and error.</FONT></DIV>
+<DIV>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>The last thing that I am having trouble =
+with is=20
+loading my moduals. (spacificly sound)</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>I found that I needed to add 45pcmcia =
+to=20
+/etc/rcS.d/ as well as copy cardctl and cardmgr to /sbin but I haven't =
+found the=20
+magic that will tell the system that my moduals are in =
+/lib/modules/2.2.17-doc/=20
+in the subdirs misc,pcmcia,ect.. like they are on my RedHat 6.2=20
+partition.</FONT></DIV>
+<DIV><FONT face=3DArial>Does anyone know what I'm missing =
+here?</FONT></DIV>
+<DIV>&nbsp;</DIV>
+<DIV><FONT face=3DArial>when I try to run </FONT></DIV>
+<DIV><FONT face=3DArial>modprobe sb.o io=3D0x220 irq=3D0x5 =
+dma=3D0x1</FONT></DIV>
+<DIV><FONT face=3DArial>it tells me that it can't find sb.o</FONT></DIV>
+<DIV>&nbsp;</DIV>
+<DIV><FONT face=3DArial>Any help would be greatly =
+appriciated.</FONT></DIV>
+<DIV><FONT face=3DArial>M@</FONT></DIV>
+<DIV>&nbsp;</DIV>
+<DIV>&nbsp;</DIV></BODY></HTML>
+
+------=_NextPart_000_0007_01C051CC.27949100--
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov 20 15:42:00 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Mon, 20 Nov 2000 07:42:00 -0800
+Subject: How small is PeeWeeLinux?
+References: <034301c051ce$1f9d76e0$01f7a8c0@home.net>
+Message-ID: <3A194648.E0864EA9@amiga.com>
+
+I currently have a working system that includes networking that fits in
+5.5 MBytes. This does not include the application. I will soon be
+testing a build that fits in 4.3 MBytes.
+
+You can get things quite small!!
+
+
+Matt Carlson wrote:
+> 
+> For my next newby question I'd like to ask:
+> How small of a distrobution can you get from PWL?
+> My target is to get a bootable system with pcmcia-cs, networking, and a few
+> spacific programs loaded onto a 16M DiskOnChip for my wearable computer.
+> Most distros that I've seen that are based on RedHat talk about a minimum of
+> 43-45megs.
+> 
+> Thanks,
+> M@
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov 20 22:39:31 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 20 Nov 2000 16:39:31 -0600 (CST)
+Subject: Minimal downloads
+In-Reply-To: <000501c051d8$109d3d60$01f7a8c0@home.net>
+Message-ID: <Pine.LNX.4.10.10011201639010.798-100000@develop.knet.on.ca>
+
+Hi,
+
+You're correct!
+
+TTYL,
+Adi
+
+On Sat, 18 Nov 2000, Matt Carlson wrote:
+
+> > The source distribution contains everything there is to
+> > PeeWeeLinux. Scropts, binary rpms and source rpms.
+> >
+> > The binary distribution is lacking the source rpms but
+> > otherwise complete.
+> >
+> > The config archives are for upgrading the pwlconfig
+> > scripts only and are of no use unless a binary or
+> > source distribution has been installed.
+> >
+> Just to make sure I understand correctly.
+> All I REALLY need to download to get up and running with PWL is the latest
+> version of the binary distribution.  (which is good becuase it's already 70%
+> downloaded :)
+> 
+> Maybe I will have my system up and running this weekend.  Thanks
+> 
+> M@
+> 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Nov 20 23:05:38 2000
+From: peeweelinux@adis.on.ca (Robert Heezeman)
+Date: Tue, 21 Nov 2000 10:05:38 +1100
+Subject: what difference
+Message-ID: <918BB3173DC2D3118D920090274ED200011D80@thycon01.internal.thycon.com.au>
+
+
+What is the difference with PeeWeeLinux vs Mulinux.
+
+I know Mulinux is based on Redhat 5.2 and PeeWeeLinux 6.1 and there is some
+additional support for USB and 
+
+5.2 (2.0.3x) kernel is smaller but what else ?
+
+Robert
+
+This communication is intended for use of the addressee(s) and may contain legally privileged and confidential information.
+Any views or opinions presented are solely those of the author and do not necessarily represent those of Thycon.
+If you are not the addressee you are notified that any transmission, distribution or replication of this message is strictly prohibited.
+The legal privilege and confidentiality attached to this email and its contents is not waived, lost or destroyed by reason of
+mistaken delivery to you. 
+If you have received this message in error, please notify Thycon immediately by E-mail to thycon@thycon.com.au and
+permanently delete the email from your system.
+
+Email transmission cannot be guaranteed to be secure or error-free as information could be intercepted, corrupted,
+lost, destroyed, arrive late or incomplete, or contain viruses. The sender therefore does not accept liability for any errors 
+or omissions in the contents of this message, which arise as a result of email transmission. If verification is required please
+request a hard-copy version.
+
+Copyright 2000 Thycon. All rights reserved.
+
+PHONE : 61 3 9319 9000
+FAX : 61 3 9319 9001
+
+
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 21 18:58:11 2000
+From: peeweelinux@adis.on.ca (David Hamm)
+Date: Tue, 21 Nov 2000 13:58:11 -0500
+Subject: DOC quandry
+Message-ID: <00112114040602.29329@workbox.atlanta.itserve.com>
+
+Following the PeeWeeLinux-3.html doc I have the DOC mountable.  But pwlconfig
+doesn't seem to see it.  I've added links in /dev/ for the devices listed in
+/dev/msys/* and still don't have a main menu choice of Erase-Disk-On-Chip.  Any
+suggestions?
+
+
+  --------------------------------- 
+David Hamm Systems Analyst
+Imaging Technologies Services Inc.
+email: dhamm@itrepro.com
+voice: 404-870-6663
+---------------------------------
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 21 20:01:05 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 21 Nov 2000 14:01:05 -0600 (CST)
+Subject: DOC quandry
+In-Reply-To: <00112114040602.29329@workbox.atlanta.itserve.com>
+Message-ID: <Pine.LNX.4.10.10011211356490.798-100000@develop.knet.on.ca>
+
+Hi,
+
+The documentation is quite outdated and the option you refer to no longer
+exists. It has been replaced with new target configuration options.
+
+Note, that the PeeWeeLinux configuration utility does not support the
+combination of LILO and M-Systems Disk-On-Chip at this point. The stock
+LILO is being used which clashes with the firmware on the Disk-On-Chip
+device.
+
+Once I have a board that supports the PeeWeeLinux development environment
+and Disk-On-Chip I will work on a solution. Or perhaps someone else can
+test this and submit the required changes to make LILO work with DOC.
+
+TTYL,
+Adi
+
+
+On Tue, 21 Nov 2000, David Hamm wrote:
+
+> Following the PeeWeeLinux-3.html doc I have the DOC mountable.  But pwlconfig
+> doesn't seem to see it.  I've added links in /dev/ for the devices listed in
+> /dev/msys/* and still don't have a main menu choice of Erase-Disk-On-Chip.  Any
+> suggestions?
+> 
+> 
+>   --------------------------------- 
+> David Hamm Systems Analyst
+> Imaging Technologies Services Inc.
+> email: dhamm@itrepro.com
+> voice: 404-870-6663
+> ---------------------------------
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 21 20:13:32 2000
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Tue, 21 Nov 2000 14:13:32 -0600
+Subject: DOC quandry
+In-Reply-To: <00112114040602.29329@workbox.atlanta.itserve.com>; from dhamm@itrepro.com on Tue, Nov 21, 2000 at 01:58:11PM -0500
+References: <00112114040602.29329@workbox.atlanta.itserve.com>
+Message-ID: <20001121141332.B8147@inetnebr.com>
+
+On Tue, Nov 21, 2000 at 01:58:11PM -0500, David Hamm wrote:
+> Following the PeeWeeLinux-3.html doc I have the DOC mountable.  But pwlconfig
+> doesn't seem to see it.  I've added links in /dev/ for the devices listed in
+> /dev/msys/* and still don't have a main menu choice of Erase-Disk-On-Chip.  Any
+> suggestions?
+>
+I just got done doing this last weekend.
+1) do you have version 4.2 of the drivers from M-Sys?
+This is kind of important
+2) Did you compile support into the kernel or are you using a modual?
+You need to have one of these going before the system can see the DOC
+
+The way I ended up doing this over all was to use pwlconfig to setup a system
+on a 16M hdd partition (the size of my DOC).  I then 'tweeked' it get to get
+my moduals and everything else up and running the way I wanted.
+Then out side of pwl I just copied everything to the DOC
+mount /dev/msys/fla1 /mnt/flash
+cp -dpR /<insert pwl partion name here> /mnt/flash
+
+I then put doc.b in /mtn/flash/boot and doc-lilo in /mnt/flash/etc
+
+I then had to reboot into dos to run there dos utils (dupdate) to update the
+firmware for the last time, and rebooted.
+
+I understand that this is doing things outside of plwconfig which is probably
+to be avoided, but it did work.
+All of what I've just talked about is fairly well listed in the docs for the 
+4.2 version of the firmware on the M-Sys site.  I typed all of this up from 
+memory so I wouldn't follow it as a step by step but rather a guide to looking
+through the offical docs.
+
+If I can be of any more help let me know.
+
+M@
+ 
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 21 20:15:47 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 21 Nov 2000 14:15:47 -0600 (CST)
+Subject: bounce
+In-Reply-To: <200011211243.GAA09125@gizmo.adis.on.ca>
+Message-ID: <Pine.LNX.4.10.10011211410550.798-100000@develop.knet.on.ca>
+
+Hi,
+
+There is no Xconfigurator included with PeeWeeLinux. You need to generate
+a config file by hand. ALternately, if you can connect a HD with a full
+Linux distro to your platform you can generate a config file and copy it
+to the PeeWeeLinux system as a custom file.
+
+Some of the busybox functions have slightly different syntax then the full
+featured Linux binaries.
+
+TTYL,
+Adi 
+
+
+
+> Hi,
+> 
+> Two separate issues I would appreciate some help on: 
+> 
+> a) I am not sure whether anyone has got X working, but I can't. Can anyone provide some hints? (I've got a version of PWL0.53.14 with everything on it to start of - 40M! ... just testing :-) - but still "startx" and "xinit" fail to start. I can't get any XF86_* server to start either, and there is no XConfigurator I can locate)
+> 
+> b) On another matter, I've got another system for which I woud like to evaluate busybox/tinylogin. It's a small system for which I have selected filesystem,dev,initscripts and a kernel, plus busy-box and tinylogin. This is the minimal system recomended to me in the mailing list to get the system working, but it does not start. There something with init and busybox/tinylogin that does not quite work, it hangs when executing init script. It's probably something simple, but I am new to
+> busybox/tinylogin, and can't find good pointers to sort it out. Anybody?
+> 
+> Thanks very much
+> 
+> Jaime
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 21 20:21:59 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 21 Nov 2000 14:21:59 -0600 (CST)
+Subject: DOC quandry
+In-Reply-To: <20001121141332.B8147@inetnebr.com>
+Message-ID: <Pine.LNX.4.10.10011211416530.798-100000@develop.knet.on.ca>
+
+Hi,
+
+Just a couple of comments...
+
+> I just got done doing this last weekend.
+> 1) do you have version 4.2 of the drivers from M-Sys?
+> This is kind of important
+> 2) Did you compile support into the kernel or are you using a modual?
+> You need to have one of these going before the system can see the DOC
+
+The precompiled kernels included in PeeWeeLinux included DOC support.
+Based on the latest modular drivers from M-Systems.
+
+Your development system also needs DOC support and the /dev/fla* devices.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 21 21:12:43 2000
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Tue, 21 Nov 2000 15:12:43 -0600
+Subject: DOC quandry
+In-Reply-To: <Pine.LNX.4.10.10011211416530.798-100000@develop.knet.on.ca>; from adi@adis.on.ca on Tue, Nov 21, 2000 at 02:21:59PM -0600
+References: <20001121141332.B8147@inetnebr.com> <Pine.LNX.4.10.10011211416530.798-100000@develop.knet.on.ca>
+Message-ID: <20001121151243.A8299@inetnebr.com>
+
+On Tue, Nov 21, 2000 at 02:21:59PM -0600, Adi Linden wrote:
+> Just a couple of comments...
+> 
+> > I just got done doing this last weekend.
+> > 1) do you have version 4.2 of the drivers from M-Sys?
+> > This is kind of important
+> > 2) Did you compile support into the kernel or are you using a modual?
+> > You need to have one of these going before the system can see the DOC
+> 
+> The precompiled kernels included in PeeWeeLinux included DOC support.
+> Based on the latest modular drivers from M-Systems.
+> 
+> Your development system also needs DOC support and the /dev/fla* devices.
+>
+Great!  I did a couple of extra steps then.  Oh well, learning experience.
+Is it useing the 4.2 version of the m-sys drivers?  As far as I know they were
+just released this month.
+
+when I used the tools from m-sys they set my system up with /dev/msys/fla*
+I don't know if this is a significant difference or not, but I thought it was
+at least worth noting.
+
+M@
+ 
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 28 20:14:21 2000
+From: peeweelinux@adis.on.ca (David Hamm)
+Date: Tue, 28 Nov 2000 15:14:21 -0500
+Subject: DOC quandry
+References: <20001121141332.B8147@inetnebr.com>
+Message-ID: <00112815155900.30596@workbox.atlanta.itserve.com>
+
+I'm having problems with doc-lilo.  It hangs after printing dLI on the
+console.   I followed the steps you suggested.  Any ideas?
+
+
+ On Tue, 21 Nov 2000, you wrote:
+> On Tue, Nov 21, 2000 at 01:58:11PM -0500, David Hamm wrote:
+> > Following the PeeWeeLinux-3.html doc I have the DOC mountable.  But pwlconfig
+> > doesn't seem to see it.  I've added links in /dev/ for the devices listed in
+> > /dev/msys/* and still don't have a main menu choice of Erase-Disk-On-Chip.  Any
+> > suggestions?
+> >
+> I just got done doing this last weekend.
+> 1) do you have version 4.2 of the drivers from M-Sys?
+> This is kind of important
+> 2) Did you compile support into the kernel or are you using a modual?
+> You need to have one of these going before the system can see the DOC
+> 
+> The way I ended up doing this over all was to use pwlconfig to setup a system
+> on a 16M hdd partition (the size of my DOC).  I then 'tweeked' it get to get
+> my moduals and everything else up and running the way I wanted.
+> Then out side of pwl I just copied everything to the DOC
+> mount /dev/msys/fla1 /mnt/flash
+> cp -dpR /<insert pwl partion name here> /mnt/flash
+> 
+> I then put doc.b in /mtn/flash/boot and doc-lilo in /mnt/flash/etc
+> 
+> I then had to reboot into dos to run there dos utils (dupdate) to update the
+> firmware for the last time, and rebooted.
+> 
+> I understand that this is doing things outside of plwconfig which is probably
+> to be avoided, but it did work.
+> All of what I've just talked about is fairly well listed in the docs for the 
+> 4.2 version of the firmware on the M-Sys site.  I typed all of this up from 
+> memory so I wouldn't follow it as a step by step but rather a guide to looking
+> through the offical docs.
+> 
+> If I can be of any more help let me know.
+> 
+> M@
+>  
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+--
+---------------------------------
+David Hamm
+Systems Analyst
+Imaging Technologies Services Inc.
+email: dhamm@itrepro.com
+voice: 404-870-6663
+---------------------------------
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Nov 28 22:02:53 2000
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Tue, 28 Nov 2000 16:02:53 -0600
+Subject: DOC quandry
+In-Reply-To: <00112815155900.30596@workbox.atlanta.itserve.com>; from dhamm@itrepro.com on Tue, Nov 28, 2000 at 03:14:21PM -0500
+References: <20001121141332.B8147@inetnebr.com> <00112815155900.30596@workbox.atlanta.itserve.com>
+Message-ID: <20001128160253.A30227@inetnebr.com>
+
+On Tue, Nov 28, 2000 at 03:14:21PM -0500, David Hamm wrote:
+> I'm having problems with doc-lilo.  It hangs after printing dLI on the
+> console.   I followed the steps you suggested.  Any ideas?
+>
+email M-sys support, also check out there FAQ.
+When I emailed them with a problem I ran into (booting to a blank DOC, oops!)
+they got back to me within 24 hours and were very helpful.
+
+M@
+ 
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Nov 30 22:51:50 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Thu, 30 Nov 2000 14:51:50 -0800
+Subject: How small is PeeWeeLinux?
+References: <034301c051ce$1f9d76e0$01f7a8c0@home.net> <3A194648.E0864EA9@amiga.com>
+Message-ID: <3A26DA06.87B3C063@amiga.com>
+
+I've now got a kernel and filesystem that fits into 3.5 MBytes excluding
+the application. It is not useful for much else than launching and
+supporting a single application.
+
+Dean Brown wrote:
+> 
+> I currently have a working system that includes networking that fits in
+> 5.5 MBytes. This does not include the application. I will soon be
+> testing a build that fits in 4.3 MBytes.
+> 
+> You can get things quite small!!
+> 
+> Matt Carlson wrote:
+> >
+> > For my next newby question I'd like to ask:
+> > How small of a distrobution can you get from PWL?
+> > My target is to get a bootable system with pcmcia-cs, networking, and a few
+> > spacific programs loaded onto a 16M DiskOnChip for my wearable computer.
+> > Most distros that I've seen that are based on RedHat talk about a minimum of
+> > 43-45megs.
+> >
+> > Thanks,
+> > M@
+> >
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+> 
+> --
+> Dean Brown
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Nov 30 23:15:44 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Thu, 30 Nov 2000 15:15:44 -0800
+Subject: Kernel configuration files
+Message-ID: <3A26DFA0.1E2830A8@amiga.com>
+
+Adi,
+Are the configuration files you use to build the kernel images available
+anywhere? I'd like to use your 2.2.17-basic build as a starting point
+and add framebuffer support. 
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

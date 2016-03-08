@@ -1,0 +1,1579 @@
+From peeweelinux@adis.on.ca  Sun Sep  1 22:05:18 2002
+From: peeweelinux@adis.on.ca (Patrick Beaven)
+Date: Sun, 01 Sep 2002 16:05:18 -0500
+Subject: [Peeweelinux] adding packages
+Message-ID: <3D72810E.C3BF03A2@thebeavens.net>
+
+Hello, Can anyone tell me how to add packages in peewee... For example:
+a small binary rpm package like x3270 or
+tn5250 ..Is there a utility to do this ?
+Your Help Is appreciated
+ Patrick Beaven
+
+
+From peeweelinux@adis.on.ca  Thu Sep  5 02:22:08 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 4 Sep 2002 18:22:08 -0700 (PDT)
+Subject: [Peeweelinux] adding packages
+Message-ID: <2.2.16.20020904183422.9e4f9e26@zmicro.com>
+
+At 04:05 PM 9/1/02 -0500, you wrote:
+>Hello, Can anyone tell me how to add packages in peewee... For example:
+>a small binary rpm package like x3270 or
+>tn5250 ..Is there a utility to do this ?
+>Your Help Is appreciated
+> Patrick Beaven
+
+>From what I can ascertain, peewee works from rpm's.  I do know
+(because I have notes) that when peewee is first brought up,
+it unpacks the rpms from a certain directory, and then builds
+tar files which it stores in the packages directory.  I don't
+know what happens if you add another rpm, whether it "knows"
+and offers to convert it, whether you have to find this
+operation on the menu, or whether it's a manual task.  One
+of us should try it and find out :)
+
+With packages, Adi cautions us to make sure they come from
+the same RH6.2 system that peewee comes from, so that your
+program will find the libraries it needs.  Other fiddling
+may be required since peewee packages were built with some
+unneeded features left out...so the program might not work.
+
+The nice thing is that packages put in this way are automatically
+recognized and show up in the menu just like the rest of 'em.
+
+There is another way to include programs and files outright.
+By building into directory called "/root/custom" you can
+have files just copied into the target system and if there
+are no issues with the result then they are ready to go.  This
+works for things that don't have many files.   There are menu
+options that let you collect and select the custom files. 
+
+Hope this helps somehow.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Thu Sep  5 02:33:36 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 4 Sep 2002 18:33:36 -0700 (PDT)
+Subject: [Peeweelinux] How to build 6.2 programs, or other ways
+Message-ID: <2.2.16.20020904184549.791f01a2@zmicro.com>
+
+I need to write myself a program to let my embedded board
+do control, and so to assure myself success I would need
+to compile it on a RedHat 6.2 system like everything
+else in peeweelinux.  But are there alternatives? Ken
+Emmons has put a 2.4 kernel in his system.  Does this
+cause any problems?  Will everything work like magic
+or is the real problem in the libraries?   And then the
+libraries have to match the kernel....I was able to
+build a 6.2 kernel using egcs, so can I repeat this
+trick on my own program?
+
+The answers, even if negative, would help me understand
+how the parts of the system link together.
+
+My host system is RH7.3
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Thu Sep  5 03:16:39 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 4 Sep 2002 21:16:39 -0500 (CDT)
+Subject: [Peeweelinux] How to build 6.2 programs, or other ways
+In-Reply-To: <2.2.16.20020904184549.791f01a2@zmicro.com>
+Message-ID: <Pine.LNX.4.33.0209042110250.857-100000@mobile.adis.on.ca>
+
+As far as I know, the kernel is a static build binary. It does not depend
+on any particular libraries at runtime. So it doesn't really matter which
+libraries were installed on the system the kernel was build on.
+
+When it comes to applications this is different. It is certainly possible
+to build a statically compiled binary using any libraries of your choice
+and it will run on PeeWeeLinux. Being statically compiled it won't require
+any libraries to be present at runtime.
+
+If you build a dynamically linked library it is advisable to match the
+libraries as build time with the libraries at runtime. The binary require
+whatever libs is was linked against at runtime.
+
+I hope this makes sense...
+
+Adi
+
+On Wed, 4 Sep 2002, Barry Gershenfeld wrote:
+
+> I need to write myself a program to let my embedded board
+> do control, and so to assure myself success I would need
+> to compile it on a RedHat 6.2 system like everything
+> else in peeweelinux.  But are there alternatives? Ken
+> Emmons has put a 2.4 kernel in his system.  Does this
+> cause any problems?  Will everything work like magic
+> or is the real problem in the libraries?   And then the
+> libraries have to match the kernel....I was able to
+> build a 6.2 kernel using egcs, so can I repeat this
+> trick on my own program?
+>
+> The answers, even if negative, would help me understand
+> how the parts of the system link together.
+>
+> My host system is RH7.3
+>
+> Barry
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Thu Sep  5 04:04:19 2002
+From: peeweelinux@adis.on.ca (Randy Torgerson)
+Date: Wed, 4 Sep 2002 20:04:19 -0700
+Subject: [Peeweelinux] rc.pcmcia fails
+Message-ID: <000001c25488$ee12f360$8001a8c0@san.rr.com>
+
+I moved my project from my 386SX to my Pentium Laptop because I was having
+memory leaks.  I recompiled the kernel to add PCMCIA and I removed all the
+network card drivers.  When rc.pcmcia is called from sysinit during the boot
+up process it fails. I think that it is failing because sysinit does not
+pass the 'start' directive.  I added it and it still does not work.    I can
+successfully start rc.pcmcia at the command line.  Anyone have any ideas?
+
+There are two other fails that I have seen.  The first is a 'grep -F'.  When
+I look at the web page for busybox there isn't an '-F' listed, nor is there
+one listed on grep on my Redhat 7.2 box.  The other problem is in the last
+line of the script, I get a 'Syntax error: Bad substitution'
+
+Thanks,
+
+Randy Torgerson
+
+
+From peeweelinux@adis.on.ca  Thu Sep  5 08:14:01 2002
+From: peeweelinux@adis.on.ca (Jan De Geeter)
+Date: Thu, 5 Sep 2002 09:14:01 +0200
+Subject: [Peeweelinux] How to build 6.2 programs, or other ways
+Message-ID: <1179FFD5B43CD4118D220050042A54142C5932@COMM_SERVER>
+
+My host system is RH7.2, kernel 2.4.2
+Indeed, as Adi mentions, static linking against my host system's libraries
+makes my application run fine on PeeWee with kernel 2.2.17.
+
+Jan
+
+> -----Original Message-----
+> From: Barry Gershenfeld [mailto:barry_g@zmicro.com]
+> Sent: donderdag 5 september 2002 3:34
+> To: peeweelinux@adis.on.ca
+> Subject: [Peeweelinux] How to build 6.2 programs, or other ways
+> 
+> 
+> I need to write myself a program to let my embedded board
+> do control, and so to assure myself success I would need
+> to compile it on a RedHat 6.2 system like everything
+> else in peeweelinux.  But are there alternatives? Ken
+> Emmons has put a 2.4 kernel in his system.  Does this
+> cause any problems?  Will everything work like magic
+> or is the real problem in the libraries?   And then the
+> libraries have to match the kernel....I was able to
+> build a 6.2 kernel using egcs, so can I repeat this
+> trick on my own program?
+> 
+> The answers, even if negative, would help me understand
+> how the parts of the system link together.
+> 
+> My host system is RH7.3
+> 
+> Barry
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Thu Sep  5 17:37:02 2002
+From: peeweelinux@adis.on.ca (John Maddox)
+Date: Thu, 5 Sep 2002 12:37:02 -0400
+Subject: [Peeweelinux] Get rid of PeeWee login
+Message-ID: <08F9C91BD42DD411A48900C04F109FD45C047F@atlaspdc.atlas-tech.com>
+
+My problem is that I want to auto login, but what files do I edit. 
+I would like the system to boot without giving me a login and password
+prompt.
+
+I also would like to do away with the kernel boot messages.  I know how to
+edit
+lilo.conf in a normal linux file system and then run lilo to get rid of the
+messages by 
+typing append="quiet" but I do not know where to put it in PeeWee.
+
+Any help would be greatly appreciated.
+
+John Maddox
+Programmer Analyst II
+
+
+
+From peeweelinux@adis.on.ca  Thu Sep  5 18:06:12 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Thu, 05 Sep 2002 13:06:12 -0400
+Subject: [Peeweelinux] Get rid of PeeWee login
+Message-ID: <sd7756e6.055@qatech.com>
+
+Hello,
+
+A while back I did a project that autoboots into a pre-defined user login and starts up the X window system. If you simply download the project from the peewee contributed folder on the server you can take a peak at what I did. I think the key files should be in the "custom" folder of my project under /etc/inittab and also the dotfiles in the autologin user's home directory. Also take a look at the /etc/passwd file for the user creation. I am pretty sure the launching of X gets done in the "autologin" users' bash startup, so you could modify that and be golden if you don't require X support. 
+
+Please give any suggestions or changed scripts if you don't like what I've done.
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Fri Sep  6 19:39:02 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Fri, 6 Sep 2002 11:39:02 -0700 (PDT)
+Subject: [Peeweelinux] rc.pcmcia fails
+Message-ID: <2.2.16.20020906115125.8e67ac64@zmicro.com>
+
+I "grepped grep" and found this, on a RH7.3 system.
+
+  Fgrep is the same as grep -F.
+
+  -F, --fixed-strings
+         Interpret PATTERN as a list of fixed strings, sepa-
+         rated  by  newlines, any of which is to be matched.
+         -P, --perl-regexp Interpret PATTERN as a Perl regu-
+         lar expression.
+
+I'd be surprised if these were "just added" but the man page does
+say Jan 2002, so it could be.
+
+Here is another trick for strange messages from scripts:
+
+  sh -x pcmcia
+
+will echo everything going in and out of the script so you can
+see the command that caused the 'Syntax error: Bad substitution'
+error.
+
+Barry
+
+
+
+At 08:04 PM 9/4/02 -0700, you wrote:
+>'grep -F'.  When
+>I look at the web page for busybox there isn't an '-F' listed, nor is there
+>one listed on grep on my Redhat 7.2 box.  The other problem is in the last
+>line of the script, I get a 'Syntax error: Bad substitution'
+>
+>Randy Torgerson
+
+
+From peeweelinux@adis.on.ca  Sun Sep  8 18:16:39 2002
+From: peeweelinux@adis.on.ca (vwbug19)
+Date: Sun, 8 Sep 2002 13:16:39 -0400
+Subject: [Peeweelinux] rc.pcmcia fails
+References: <2.2.16.20020906115125.8e67ac64@zmicro.com>
+Message-ID: <003401c2575b$8170a9c0$bd00a8c0@VW4>
+
+we can simple toss out the rh 6.2 grep and replace it with older version of
+grep and it may work?
+----- Original Message -----
+From: "Barry Gershenfeld" <barry_g@zmicro.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Friday, September 06, 2002 2:39 PM
+Subject: Re: [Peeweelinux] rc.pcmcia fails
+
+
+> I "grepped grep" and found this, on a RH7.3 system.
+>
+>   Fgrep is the same as grep -F.
+>
+>   -F, --fixed-strings
+>          Interpret PATTERN as a list of fixed strings, sepa-
+>          rated  by  newlines, any of which is to be matched.
+>          -P, --perl-regexp Interpret PATTERN as a Perl regu-
+>          lar expression.
+>
+> I'd be surprised if these were "just added" but the man page does
+> say Jan 2002, so it could be.
+>
+> Here is another trick for strange messages from scripts:
+>
+>   sh -x pcmcia
+>
+> will echo everything going in and out of the script so you can
+> see the command that caused the 'Syntax error: Bad substitution'
+> error.
+>
+> Barry
+>
+>
+>
+> At 08:04 PM 9/4/02 -0700, you wrote:
+> >'grep -F'.  When
+> >I look at the web page for busybox there isn't an '-F' listed, nor is
+there
+> >one listed on grep on my Redhat 7.2 box.  The other problem is in the
+last
+> >line of the script, I get a 'Syntax error: Bad substitution'
+> >
+> >Randy Torgerson
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Sep 10 04:35:04 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Tue, 10 Sep 2002 13:35:04 +1000
+Subject: [Peeweelinux] possible (tiny) problem with peewee script ?
+Message-ID: <OF77860AA5.A4847C62-ON4A256C30.00121889@jupiters.com.au>
+
+Hi all,
+
+just wondering if someone could confirm something for me.
+
+I have modified (butchered is probably the correct term) some of Adis'
+peewee scripts to create some extra load options so that peewee
+creates/populates some partitions etc. that are specific to a project I am
+working on.
+
+in the <peewee_path>/Embedded_Build/scripts directory there is a
+pwl_target_functions script that contains a function called
+func_rd_fstab_ro_root_rd
+which creates the /etc/fstab entry for the project option that allows you
+to create a ro root partition with multiple ramdisks.
+
+now in the original pwl_target_functions that ships with peewee, the line
+marked with a <<------- below reads:
+${rd_boot}2       /            ext2    defaults,ro
+
+I think it should read as below. The root partition is definitely the first
+partition. Anyone else come across this ?
+
+######################################################################
+#
+# func_rd_fstab_ro_root_rd
+#
+# This function creates the fstab file for the read-only root target
+# layout. It contains multiple partitions.
+#
+
+func_rd_fstab_ro_root_rd () {
+    cat <<-EOF
+        ${rd_boot}1       /            ext2    defaults,ro        <<-------
+        /dev/ram2       /dev         ext2    defaults
+        /dev/ram3       /etc         ext2    defaults
+        /dev/ram4       /home        ext2    defaults
+        none            /proc        proc    defaults
+EOF
+}
+
+It's no big deal, just took me 1/2 hour to work out what was going on when
+mount reported / being mounted on /dev/hdc2 and /dev/hdc2/ only having
+a/home filesystem :)
+
+anyway, hope this stops someone else from doubting their sanity :)
+Happy PeeWeeing.
+
+
+Delaney.
+
+
+
+**********************************************************************
+This email and any files transmitted with it are confidential and
+intended solely for the use of the individual or entity to whom they
+are addressed. If you have received this email in error please notify
+mail.administrator@jupiters.com.au
+
+**********************************************************************
+
+
+From peeweelinux@adis.on.ca  Tue Sep 10 18:47:26 2002
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Tue, 10 Sep 2002 10:47:26 -0700
+Subject: [Peeweelinux] Almost working, newbie needs a couple of
+Message-ID: <20020910104726.D26223@leif.octopusmanor>
+
+Background: I'm trying to put Pee Wee on Norand 6110 and 6100 handhelds 
+(they are like the ones UPS guys use) so that I can add them to our store 
+of available devices (a HOWTO will be coming when I have them working). My 
+build environment is a Red Hat 7.2 / 2.4.17 setup with an ISA PCMCIA 
+bridge. I'm using regular 256MB PCMCIA Sandisk flash cards. I've got the 
+pwlconfig script loading fine onto the target hardware and believe the 
+custom kernel script is working as well. In my build script I've tried to 
+include syslog and turn on as much logging as possible but may have 
+screwed that up. 
+
+Here goes:
+
+1). (Easy/Dumb) The 6110 starts up and then immediately shuts off, 
+possibly due to a power issue. Attaching it to the docking station results 
+in bringing up the lilo boot menu, and pressing return loads the kernel 
+and gets it to a screen with a bunch of startup and routing (which is 
+strange because I've not installed any networking either in the kernel or 
+the packages) information but it halts there with no login prompt. I'm 
+guessing it's getting to a serial console? but don't really know. It's 
+probably worth noting that it does this regardless of what drive I set the 
+"boot device on target system" to be (I've tried hdc, hde, hdf so far), 
+which is weird. 	When I take the PCMCIA cards out and put them back 
+in my host computer after having done that the /var/messages "file" is not 
+a file and is not readable. For starters, if there is any trick to getting 
+regular bootup information viewable after a boot I'd sure love to hear 
+about it.
+
+2). (Intermediate) The 6100 has a dos 5.x ROM, so I think I have to use 
+loadlin as my bootloader: when I try to use the FAT 16 / ramdisk setup, 
+the unit won't seem to recognize the partition as bootable. Has anyone 
+used loadlin with pee wee? I looked at the FAT 12 partition that the 
+script is creating for the booting off of and it looks like something 
+similar is going on, but I think the norand hardware needs an autoexec.bat 
+file in order to get loadlin working.
+
+	Thanks in advance for any help, and thanks in general for all your 
+work previously. I have benefitted tremendously from looking at the 
+archives.
+
+From peeweelinux@adis.on.ca  Wed Sep 11 00:54:53 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Tue, 10 Sep 2002 16:54:53 -0700 (PDT)
+Subject: [Peeweelinux] Almost working, newbie needs a couple of
+Message-ID: <2.2.16.20020910170726.13670896@zmicro.com>
+
+>My build environment is a Red Hat 7.2 / 2.4.17 setup with an 
+>ISA PCMCIA bridge. 
+
+Have I got this right?  Your host is RH 7.2  Your target is peewee
+with the 6.2 packages, but you have a custom kernel that's 2.4.17
+
+
+>In my build script I've tried to include syslog and turn on as 
+>much logging as possible but may have screwed that up. 
+
+syslog is on my to-learn list.
+
+>loads the kernel 
+>and gets it to a screen with a bunch of startup and routing (which is 
+>strange because I've not installed any networking either in the kernel or 
+>the packages) information but it halts there with no login prompt. I'm 
+>guessing it's getting to a serial console? 
+
+I would think it would go to a serial console (1) if you told it to,
+or (2) if it couldn't find the native (?) console.  Since you see 
+all those messages it must be that it knows how to talk to the
+native console (an LCD screen?)
+
+>if there is any trick to getting regular bootup information viewable 
+>after a boot I'd sure love to hear about it.
+
+There is a line in the scripts that checks for the existence of a
+file /etc/boot.silent and it looks like it would send output to
+/var/log/boot, otherwise the screen...That silent file doesn't
+appear so it should go to the screen.   Of course that is 
+for the init scripts that run after the kernel has come up.
+I did put an 'echo "hi world" ' in one of the init scripts and
+it does indeed show up on my screen.    Now that I've looked
+at what it actually does, maybe I should try creating the
+quiet file and see what I get...
+
+Which part of the sequence is missing?
+
+
+>2). (Intermediate) The 6100 has a dos 5.x ROM, so I think I have to use 
+>loadlin as my bootloader: when I try to use the FAT 16 / ramdisk setup, 
+>the unit won't seem to recognize the partition as bootable. Has anyone 
+>used loadlin with pee wee? I looked at the FAT 12 partition that the 
+>script is creating for the booting off of and it looks like something 
+>similar is going on, but I think the norand hardware needs an autoexec.bat 
+>file in order to get loadlin working.
+
+In the beginning I was able to boot my system using loadlin.  What I
+was doing was making a "floppy" (actually writing the fat12 image
+to a hard drive partition).  The resulting syslinux.cfg file has
+all the parameter information you need to construct a loadlin command.
+You put the kernel image and the ramdisk image where you want to
+boot from and those filenames are the ones you use with loadlin.
+I haven't figured out what the other target image generating options
+in peewee do; unfortunately I don't know of any documentation about 
+that.  All I can do is select one of the Target image choices, let 
+it make it, and then inspect the results on a running system.
+
+I don't usually offer such dubious help, but it's pretty quiet
+here otherwise.  Hope it helps.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Wed Sep 11 02:02:19 2002
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Tue, 10 Sep 2002 18:02:19 -0700
+Subject: [Peeweelinux] Almost working, newbie needs a couple of
+In-Reply-To: <2.2.16.20020910170726.13670896@zmicro.com>; from barry_g@zmicro.com on Tue, Sep 10, 2002 at 16:54:53 -0700
+References: <2.2.16.20020910170726.13670896@zmicro.com>
+Message-ID: <20020910180219.A29606@leif.octopusmanor>
+
+On 2002.09.10 16:54 Barry Gershenfeld wrote:
+> 
+> >My build environment is a Red Hat 7.2 / 2.4.17 setup with an
+> >ISA PCMCIA bridge.
+> 
+> Have I got this right?  Your host is RH 7.2  Your target is peewee
+> with the 6.2 packages, but you have a custom kernel that's 2.4.17
+> 
+> 
+
+Yep.
+
+
+> >In my build script I've tried to include syslog and turn on as
+> >much logging as possible but may have screwed that up.
+> 
+> syslog is on my to-learn list.
+> 
+> >loads the kernel
+> >and gets it to a screen with a bunch of startup and routing (which is
+> >strange because I've not installed any networking either in the kernel
+> or
+> >the packages) information but it halts there with no login prompt. I'm
+> >guessing it's getting to a serial console?
+> 
+> I would think it would go to a serial console (1) if you told it to,
+> or (2) if it couldn't find the native (?) console.  Since you see
+> all those messages it must be that it knows how to talk to the
+> native console (an LCD screen?)
+> 
+> >if there is any trick to getting regular bootup information viewable
+> >after a boot I'd sure love to hear about it.
+> 
+> There is a line in the scripts that checks for the existence of a
+> file /etc/boot.silent and it looks like it would send output to
+> /var/log/boot, otherwise the screen...That silent file doesn't
+> appear so it should go to the screen.   Of course that is
+> for the init scripts that run after the kernel has come up.
+> I did put an 'echo "hi world" ' in one of the init scripts and
+> it does indeed show up on my screen.    Now that I've looked
+> at what it actually does, maybe I should try creating the
+> quiet file and see what I get...
+> 
+> Which part of the sequence is missing?
+> 
+
+
+The only thing that I have in the /var/log directory is the wtmp file, 
+which is empty. This is probably my main problem, without feedback I don't 
+really know where to look...
+
+
+> 
+> >2). (Intermediate) The 6100 has a dos 5.x ROM, so I think I have to use
+> >loadlin as my bootloader: when I try to use the FAT 16 / ramdisk setup,
+> >the unit won't seem to recognize the partition as bootable. Has anyone
+> >used loadlin with pee wee? I looked at the FAT 12 partition that the
+> >script is creating for the booting off of and it looks like something
+> >similar is going on, but I think the norand hardware needs an
+> autoexec.bat
+> >file in order to get loadlin working.
+> 
+> In the beginning I was able to boot my system using loadlin.  What I
+> was doing was making a "floppy" (actually writing the fat12 image
+> to a hard drive partition).  The resulting syslinux.cfg file has
+> all the parameter information you need to construct a loadlin command.
+> You put the kernel image and the ramdisk image where you want to
+> boot from and those filenames are the ones you use with loadlin.
+> I haven't figured out what the other target image generating options
+> in peewee do; unfortunately I don't know of any documentation about
+> that.  All I can do is select one of the Target image choices, let
+> it make it, and then inspect the results on a running system.
+> 
+> I don't usually offer such dubious help, but it's pretty quiet
+> here otherwise.  Hope it helps.
+
+Any little bit, this was much appreciated. I hadn't thought to fool around 
+with the syslinux.cfg file, I'll definitely try that out. And if I figure 
+out anything about the syslog files I'll definitely pass it on. Thanks 
+again,
+
+	-LS
+
+From peeweelinux@adis.on.ca  Wed Sep 11 14:20:54 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Wed, 11 Sep 2002 09:20:54 -0400
+Subject: [Peeweelinux] Almost working, newbie needs a couple of
+Message-ID: <sd7f0b21.036@qatech.com>
+
+It seems to me that you have a couple of issues with this embedded board. 
+
+I would first try to bypass the DOS ROM if at all possible and try to boot natively off of the CF card. This is the intended way for peewee to boot. The stuff for Syslinux within the peewee project is intended to be installed on the same disk as the rest of the system, where what you are describing is using syslinux in a DOS ROM to boot Linux residing on another disk. 
+
+I know that embedded hardware at this scale can get pretty strange and proprietary, so you might want to check things such as can the motherboard in this device boot directly off of the CF card, is it really a CF card and not a Disk On Chip, etc etc. I could even imagine that the card has some kind of flash storage that linux doesn't have drivers built for it and it uses some kind of  BIOS code in order to make it work in DOS, similar to a SCSI or Promise card BIOS extension. But now when you boot linux the kernel cannot load, or has no idea of how to mount the root filesystem, etc. 
+
+I'm not saying this is the problem, but its a possibilty that there is something like this going on. 
+
+I have also had problems witht he 2.4 kernels and power management on some motherboards (media GX on an old compaq),  so there might be something going on there. 
+
+~Ken
+
+>>> Barry Gershenfeld <barry_g@zmicro.com> 09/10 7:54 PM >>>
+
+>My build environment is a Red Hat 7.2 / 2.4.17 setup with an 
+>ISA PCMCIA bridge. 
+
+Have I got this right?  Your host is RH 7.2  Your target is peewee
+with the 6.2 packages, but you have a custom kernel that's 2.4.17
+
+
+>In my build script I've tried to include syslog and turn on as 
+>much logging as possible but may have screwed that up. 
+
+syslog is on my to-learn list.
+
+>loads the kernel 
+>and gets it to a screen with a bunch of startup and routing (which is 
+>strange because I've not installed any networking either in the kernel or 
+>the packages) information but it halts there with no login prompt. I'm 
+>guessing it's getting to a serial console? 
+
+I would think it would go to a serial console (1) if you told it to,
+or (2) if it couldn't find the native (?) console.  Since you see 
+all those messages it must be that it knows how to talk to the
+native console (an LCD screen?)
+
+>if there is any trick to getting regular bootup information viewable 
+>after a boot I'd sure love to hear about it.
+
+There is a line in the scripts that checks for the existence of a
+file /etc/boot.silent and it looks like it would send output to
+/var/log/boot, otherwise the screen...That silent file doesn't
+appear so it should go to the screen.   Of course that is 
+for the init scripts that run after the kernel has come up.
+I did put an 'echo "hi world" ' in one of the init scripts and
+it does indeed show up on my screen.    Now that I've looked
+at what it actually does, maybe I should try creating the
+quiet file and see what I get...
+
+Which part of the sequence is missing?
+
+
+>2). (Intermediate) The 6100 has a dos 5.x ROM, so I think I have to use 
+>loadlin as my bootloader: when I try to use the FAT 16 / ramdisk setup, 
+>the unit won't seem to recognize the partition as bootable. Has anyone 
+>used loadlin with pee wee? I looked at the FAT 12 partition that the 
+>script is creating for the booting off of and it looks like something 
+>similar is going on, but I think the norand hardware needs an autoexec.bat 
+>file in order to get loadlin working.
+
+In the beginning I was able to boot my system using loadlin.  What I
+was doing was making a "floppy" (actually writing the fat12 image
+to a hard drive partition).  The resulting syslinux.cfg file has
+all the parameter information you need to construct a loadlin command.
+You put the kernel image and the ramdisk image where you want to
+boot from and those filenames are the ones you use with loadlin.
+I haven't figured out what the other target image generating options
+in peewee do; unfortunately I don't know of any documentation about 
+that.  All I can do is select one of the Target image choices, let 
+it make it, and then inspect the results on a running system.
+
+I don't usually offer such dubious help, but it's pretty quiet
+here otherwise.  Hope it helps.
+
+Barry
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca 
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+From peeweelinux@adis.on.ca  Wed Sep 11 17:52:17 2002
+From: peeweelinux@adis.on.ca (John Maddox)
+Date: Wed, 11 Sep 2002 12:52:17 -0400
+Subject: [Peeweelinux] Network Problems
+Message-ID: <08F9C91BD42DD411A48900C04F109FD45C0483@atlaspdc.atlas-tech.com>
+
+I am having problems being able to ping my machine.
+I have read and re-read some of the previous archives and I still can't get
+my 
+network card seen on my PeeWee build.
+
+I am using a m-sys DOC 2000 with the MTD kernel support.  I have made
+my build image and have put my custom files and apps onto the build.
+I am also using kernel 2.4.18.  The system boots fine into my DOC and the 
+file system looks fine and my app works except the networking part does not.
+I have put my own custom ifcfg-eth0 file into the /etc/config location and
+when 
+the system boots and I go look at the file it has the correct information in
+it, but 
+I cannot ping the system from another computer.
+
+Just to let you know I can see the system if I boot from the HD into my
+installed
+Linux Red Hat 7.3 version with the same ifcfg-eth0 and hosts files I am
+trying to use
+with PeeWee.  I can ping the system fine when I am booted into this system.
+
+One things that I have done to try to get this to work:
+Rebuilt the kernel so that my NIC is embedded into the kernel and not a
+module,  but after 
+building and placing my bzImage under /boot is there anything else to do.
+Shouldn't the system
+find the ethernet card and use the config files and initialize my card??
+
+Or what about insmod or modules???
+
+I would appreciate any HELP!!!
+
+John Maddox
+Programmer Analyst II
+
+
+From peeweelinux@adis.on.ca  Wed Sep 11 18:01:52 2002
+From: peeweelinux@adis.on.ca (Stefan Willmert)
+Date: Wed, 11 Sep 2002 12:01:52 -0500
+Subject: [Peeweelinux] Network Problems
+In-Reply-To: <08F9C91BD42DD411A48900C04F109FD45C0483@atlaspdc.atlas-tech.com>
+Message-ID: <ICEOIHIIFHIJAFEIJICPEEBDCCAA.stefanw@intellanet.com>
+
+Most likely, your system is not loading the driver module for your network
+card. PWL will not do this automatically as a normal linux system will. To
+test, just execute the command
+	insmod <yournicmodule>
+
+then do an
+	lsmod
+
+to see if your module is loaded correctly. If that works, add the "insmod
+<yournicmodule>" command to the rc.modules file in the /etc directory of
+your PWL build and it should load when your system boots.
+
+good luck
+
+-stefan
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of John Maddox
+Sent: Wednesday, September 11, 2002 11:52 AM
+To: 'peeweelinux@adis.on.ca'
+Subject: [Peeweelinux] Network Problems
+
+
+I am having problems being able to ping my machine.
+I have read and re-read some of the previous archives and I still can't get
+my
+network card seen on my PeeWee build.
+
+I am using a m-sys DOC 2000 with the MTD kernel support.  I have made
+my build image and have put my custom files and apps onto the build.
+I am also using kernel 2.4.18.  The system boots fine into my DOC and the
+file system looks fine and my app works except the networking part does not.
+I have put my own custom ifcfg-eth0 file into the /etc/config location and
+when
+the system boots and I go look at the file it has the correct information in
+it, but
+I cannot ping the system from another computer.
+
+Just to let you know I can see the system if I boot from the HD into my
+installed
+Linux Red Hat 7.3 version with the same ifcfg-eth0 and hosts files I am
+trying to use
+with PeeWee.  I can ping the system fine when I am booted into this system.
+
+One things that I have done to try to get this to work:
+Rebuilt the kernel so that my NIC is embedded into the kernel and not a
+module,  but after
+building and placing my bzImage under /boot is there anything else to do.
+Shouldn't the system
+find the ethernet card and use the config files and initialize my card??
+
+Or what about insmod or modules???
+
+I would appreciate any HELP!!!
+
+John Maddox
+Programmer Analyst II
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Sep 11 18:38:04 2002
+From: peeweelinux@adis.on.ca (John Maddox)
+Date: Wed, 11 Sep 2002 13:38:04 -0400
+Subject: [Peeweelinux] Network Problems
+Message-ID: <08F9C91BD42DD411A48900C04F109FD45C0484@atlaspdc.atlas-tech.com>
+
+Stefan,
+
+<Most likely, your system is not loading the driver module for your network
+card. PWL will not do this <automatically as a normal linux system will. To
+test, just execute the command insmod <yournicmodule> 
+
+When you use insmod, what do you put in place for <yournicmodule>
+
+Is it the *.o file located under
+/lib/modules/2.4.18/kernel/driver/net/8139too.o
+I guess this is my nick module because under the modules.conf file 
+it has an alias eth0 8139too
+
+BUT, I tried typing in insmod 8139too after booting into my peewee build
+but I got errors stating that I have unresolved symbols.
+
+Where do I go from here??
+
+And why do I need to do a insmod if I built the drivers straight into the
+kernel,
+instead of putting an M I did a *
+
+Thanks
+John Maddox
+Programmer Analyst II
+
+
+From peeweelinux@adis.on.ca  Wed Sep 11 18:50:29 2002
+From: peeweelinux@adis.on.ca (Stefan Willmert)
+Date: Wed, 11 Sep 2002 12:50:29 -0500
+Subject: [Peeweelinux] Network Problems
+In-Reply-To: <08F9C91BD42DD411A48900C04F109FD45C0484@atlaspdc.atlas-tech.com>
+Message-ID: <ICEOIHIIFHIJAFEIJICPEEBECCAA.stefanw@intellanet.com>
+
+You would enter the command
+	insmod 8139too
+to load your network driver. If you are receiving errors regarding
+unresolved symbols, then your driver is searching for another library or
+driver that it can't find.
+
+If you do an
+	nm 8139too.o
+command, you should be able to determine what symbols are unresolved. It
+could be the way your driver is compiled, whether its static compiled or
+dynamic.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of John Maddox
+Sent: Wednesday, September 11, 2002 12:38 PM
+To: 'peeweelinux@adis.on.ca'
+Subject: [Peeweelinux] Network Problems
+
+
+Stefan,
+
+<Most likely, your system is not loading the driver module for your network
+card. PWL will not do this <automatically as a normal linux system will. To
+test, just execute the command insmod <yournicmodule>
+
+When you use insmod, what do you put in place for <yournicmodule>
+
+Is it the *.o file located under
+/lib/modules/2.4.18/kernel/driver/net/8139too.o
+I guess this is my nick module because under the modules.conf file
+it has an alias eth0 8139too
+
+BUT, I tried typing in insmod 8139too after booting into my peewee build
+but I got errors stating that I have unresolved symbols.
+
+Where do I go from here??
+
+And why do I need to do a insmod if I built the drivers straight into the
+kernel,
+instead of putting an M I did a *
+
+Thanks
+John Maddox
+Programmer Analyst II
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Sep 18 02:45:14 2002
+From: peeweelinux@adis.on.ca (Jim Graham)
+Date: Tue, 17 Sep 2002 21:45:14 -0400
+Subject: [Peeweelinux] remote target
+Message-ID: <3D87DAAA.2409C26D@sensors.com>
+
+This is a multi-part message in MIME format.
+--------------8FB650CCC03D2AB9E6D1BE4F
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Hi
+
+    Just getting started with PeeWee Linux.  I am trying to build the
+kernel for a remote machine on a host machine which is running RedHat
+Linux.  Using pwlconfig everything went fine until I went to extract
+file system for the target.  pwlconfig tried to overwrite files on the
+host in boot, /lib,... I must have missed setting something up.  Any
+suggestions?
+
+
+-- thanks
+
+--------------8FB650CCC03D2AB9E6D1BE4F
+Content-Type: text/x-vcard; charset=us-ascii;
+ name="graham.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Description: Card for Jim Graham
+Content-Disposition: attachment;
+ filename="graham.vcf"
+
+begin:vcard 
+n:Graham;Jim
+tel;fax:(315) 798-8950
+tel;work:(315) 798-1377
+x-mozilla-html:FALSE
+url:www.sensors.com
+org:Integrated Sensors Inc.
+adr:;;502 Court Street;Utica;NY;13502;
+version:2.1
+email;internet:graham@sensors.com
+title:Senior Software Engineer
+end:vcard
+
+--------------8FB650CCC03D2AB9E6D1BE4F--
+
+
+From peeweelinux@adis.on.ca  Wed Sep 18 03:49:57 2002
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Tue, 17 Sep 2002 19:49:57 -0700
+Subject: [Peeweelinux] remote target
+In-Reply-To: <3D87DAAA.2409C26D@sensors.com>; from graham@sensors.com on Tue, Sep 17, 2002 at 18:45:14 -0700
+References: <3D87DAAA.2409C26D@sensors.com>
+Message-ID: <20020917194957.A4555@leif>
+
+Ouch!!
+
+What I'm guessing you need to do is to go under "Configure Target 
+Hardware" and scroll down to the target device. If you're using an ISA 
+PCMCIA adaptor, you probably need /dev/hde as your "Target Device". I'm 
+guessing it's probably set to /dev/hda (or, if you're using SCSI /dev/sda).
+
+Hopefully, with time and patience you can get up to the area where I'm 
+stuck.... ;)
+
+On 2002.09.17 18:45 Jim Graham wrote:
+> Hi
+> 
+>     Just getting started with PeeWee Linux.  I am trying to build the
+> kernel for a remote machine on a host machine which is running RedHat
+> Linux.  Using pwlconfig everything went fine until I went to extract
+> file system for the target.  pwlconfig tried to overwrite files on the
+> host in boot, /lib,... I must have missed setting something up.  Any
+> suggestions?
+> 
+> 
+> -- thanks
+> 
+> begin:vcard
+> n:Graham;Jim
+> tel;fax:(315) 798-8950
+> tel;work:(315) 798-1377
+> x-mozilla-html:FALSE
+> url:www.sensors.com
+> org:Integrated Sensors Inc.
+> adr:;;502 Court Street;Utica;NY;13502;
+> version:2.1
+> email;internet:graham@sensors.com
+> title:Senior Software Engineer
+> end:vcard
+> 
+
+From peeweelinux@adis.on.ca  Wed Sep 18 16:49:15 2002
+From: peeweelinux@adis.on.ca (Bob O'Connor)
+Date: Wed, 18 Sep 2002 11:49:15 -0400
+Subject: [Peeweelinux] How to properly add packages?
+Message-ID: <001001c25f2a$f146a840$b87ba8c0@bob>
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_g3RrClAtAUX6yXkcW789VQ)
+Content-type: text/plain; charset=iso-8859-1
+Content-transfer-encoding: 7BIT
+
+Hello,
+I am new to pwl and am trying to shrink down an existing RH 7.2 project to run on a CF.  I am able to create basic distros on the CF and boot from them fine. Problem is I am trying to add apache (apache-1.3.20-16.i386.rpm) and others to my project. This is what I have done:
+
+- log in as root
+- copied the apache rpm file into RPMS directory.
+- run pwlconfig->Manage Package Files
+
+When I try to extract a binary, I see the rpm in the list and I select it. It comes back saying package was extracted. However there are no *.tar or *.list files created anywhere for apache.
+
+When I try to extract ALL binaries, it runs thru them all (including apache) and does create a *.tar and *.list file in the Deamons directory, but "tar tvf" is empty and the list file is zero size.
+
+What am I doing wrong?
+Thanks,
+Bob
+
+
+
+--Boundary_(ID_g3RrClAtAUX6yXkcW789VQ)
+Content-type: text/html; charset=iso-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2600.0" name=GENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=#ffffff>
+<DIV><FONT face=Arial size=2>Hello,</FONT></DIV>
+<DIV><FONT face=Arial size=2>I am&nbsp;new to pwl and am trying to shrink down 
+an existing RH 7.2 project to run on a CF.&nbsp; I am able to create basic 
+distros on the CF and boot from them fine. Problem is I am trying to add apache 
+(apache-1.3.20-16.i386.rpm) and others&nbsp;to my project. This is what I have 
+done:</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2>- log in as root</FONT></DIV>
+<DIV><FONT face=Arial size=2>- copied the apache rpm file into RPMS 
+directory.</FONT></DIV>
+<DIV><FONT face=Arial size=2>- run pwlconfig-&gt;Manage Package 
+Files</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2>When I try to extract a binary, I see the rpm in 
+the list and I select it. It comes back saying package was extracted. However 
+there are no *.tar or *.list files created anywhere for apache.</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2>When I try to extract ALL binaries, it runs thru 
+them all (including apache) and does create a *.tar and *.list file in the 
+Deamons directory, but "tar tvf" is empty and the list file is zero 
+size.</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial size=2>What am I doing wrong?</FONT></DIV>
+<DIV><FONT face=Arial size=2>Thanks,</FONT></DIV>
+<DIV><FONT face=Arial size=2>Bob</DIV>
+<DIV><BR></DIV></FONT></BODY></HTML>
+
+--Boundary_(ID_g3RrClAtAUX6yXkcW789VQ)--
+
+From peeweelinux@adis.on.ca  Wed Sep 18 18:30:49 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 18 Sep 2002 18:30:49 +0100
+Subject: [Peeweelinux] How to properly add packages?
+In-Reply-To: <001001c25f2a$f146a840$b87ba8c0@bob>
+Message-ID: <000a01c25f39$218f9df0$6fb812d4@ricardo>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_000B_01C25F41.835405F0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+I have had that same problem, and it was the version of the rpm binary.
+peewee uses it's own rpm binary (from rh 6.2).
+
+test your rpm file with that rpm binary and find out if it can open it. if
+not, get your own rpm binary. I also once replaced peewees rpm binary with a
+simlink to my normal rpm binary, and everything worked, but that's probably
+not such a good idea... adi ?
+
+ricardo
+
+   -----Original Message-----
+  From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]On
+Behalf Of Bob O'Connor
+  Sent: quarta-feira, 18 de Setembro de 2002 16:49
+  To: peeweelinux@adis.on.ca
+  Subject: [Peeweelinux] How to properly add packages?
+
+
+  Hello,
+  I am new to pwl and am trying to shrink down an existing RH 7.2 project to
+run on a CF.  I am able to create basic distros on the CF and boot from them
+fine. Problem is I am trying to add apache (apache-1.3.20-16.i386.rpm) and
+others to my project. This is what I have done:
+
+  - log in as root
+  - copied the apache rpm file into RPMS directory.
+  - run pwlconfig->Manage Package Files
+
+  When I try to extract a binary, I see the rpm in the list and I select it.
+It comes back saying package was extracted. However there are no *.tar or
+*.list files created anywhere for apache.
+
+  When I try to extract ALL binaries, it runs thru them all (including
+apache) and does create a *.tar and *.list file in the Deamons directory,
+but "tar tvf" is empty and the list file is zero size.
+
+  What am I doing wrong?
+  Thanks,
+  Bob
+
+
+
+------=_NextPart_000_000B_01C25F41.835405F0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1">
+
+
+<META content=3D"MSHTML 5.00.3502.5390" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT color=3D#0000ff face=3DArial size=3D2><SPAN =
+class=3D695572717-18092002>I have=20
+had that same problem, and it was the version of the rpm binary. peewee =
+uses=20
+it's own rpm binary (from rh 6.2). </SPAN></FONT></DIV>
+<DIV><FONT color=3D#0000ff face=3DArial size=3D2><SPAN=20
+class=3D695572717-18092002></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT color=3D#0000ff face=3DArial size=3D2><SPAN =
+class=3D695572717-18092002>test=20
+your rpm file with that rpm binary and find out if it can open it. if =
+not, get=20
+your own rpm binary. I also once replaced peewees rpm binary with a =
+simlink to=20
+my normal rpm binary, and everything worked, but that's probably not =
+such a good=20
+idea... adi ?</SPAN></FONT></DIV>
+<DIV><FONT color=3D#0000ff face=3DArial size=3D2><SPAN=20
+class=3D695572717-18092002></SPAN></FONT><FONT color=3D#0000ff =
+face=3DArial=20
+size=3D2><SPAN class=3D695572717-18092002></SPAN></FONT>&nbsp;</DIV>
+<DIV><FONT color=3D#0000ff face=3DArial size=3D2><SPAN=20
+class=3D695572717-18092002>ricardo</SPAN></FONT></DIV>
+<DIV><FONT color=3D#0000ff face=3DArial size=3D2><SPAN=20
+class=3D695572717-18092002></SPAN></FONT>&nbsp;</DIV>
+<BLOCKQUOTE style=3D"MARGIN-RIGHT: 0px">
+  <DIV align=3Dleft class=3DOutlookMessageHeader dir=3Dltr><FONT =
+face=3DTahoma><FONT=20
+  size=3D2><SPAN class=3D695572717-18092002><FONT color=3D#0000ff=20
+  face=3DArial>&nbsp;</FONT></SPAN>-----Original =
+Message-----<BR><B>From:</B>=20
+  peeweelinux-admin@adis.on.ca =
+[mailto:peeweelinux-admin@adis.on.ca]<B>On Behalf=20
+  Of </B>Bob O'Connor<BR><B>Sent:</B> quarta-feira, 18 de Setembro de =
+2002=20
+  16:49<BR><B>To:</B> peeweelinux@adis.on.ca<BR><B>Subject:</B> =
+[Peeweelinux]=20
+  How to properly add packages?<BR><BR></FONT></DIV></FONT>
+  <DIV><FONT face=3DArial size=3D2>Hello,</FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2>I am&nbsp;new to pwl and am trying to =
+shrink down=20
+  an existing RH 7.2 project to run on a CF.&nbsp; I am able to create =
+basic=20
+  distros on the CF and boot from them fine. Problem is I am trying to =
+add=20
+  apache (apache-1.3.20-16.i386.rpm) and others&nbsp;to my project. This =
+is what=20
+  I have done:</FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+  <DIV><FONT face=3DArial size=3D2>- log in as root</FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2>- copied the apache rpm file into =
+RPMS=20
+  directory.</FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2>- run pwlconfig-&gt;Manage Package=20
+  Files</FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+  <DIV><FONT face=3DArial size=3D2>When I try to extract a binary, I see =
+the rpm in=20
+  the list and I select it. It comes back saying package was extracted. =
+However=20
+  there are no *.tar or *.list files created anywhere for =
+apache.</FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+  <DIV><FONT face=3DArial size=3D2>When I try to extract ALL binaries, =
+it runs thru=20
+  them all (including apache) and does create a *.tar and *.list file in =
+the=20
+  Deamons directory, but "tar tvf" is empty and the list file is zero=20
+  size.</FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+  <DIV><FONT face=3DArial size=3D2>What am I doing wrong?</FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2>Thanks,</FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2>Bob</DIV>
+  <DIV><BR></DIV></BLOCKQUOTE></FONT></BODY></HTML>
+
+------=_NextPart_000_000B_01C25F41.835405F0--
+
+
+From peeweelinux@adis.on.ca  Wed Sep 18 18:45:16 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 18 Sep 2002 12:45:16 -0500 (CDT)
+Subject: [Peeweelinux] How to properly add packages?
+In-Reply-To: <000a01c25f39$218f9df0$6fb812d4@ricardo>
+Message-ID: <Pine.LNX.4.33.0209181242310.3242-100000@adibox.knet.ca>
+
+That problem was caused by rpm. I think there were some changes in later 
+versions of rpm. The quick fix at the time was to use the specific rpm 
+version that was known to work. This is the solution for RedHat 6.x
+
+Having said that, I don't think the RedHat 7.x binary rpms work with 
+older rpm versions. Not sure about that, though. Never tried RedHat 7.x 
+rpms myself just because of the issues involved with different glibc 
+versions.
+
+Adi 
+
+On Wed, 18 Sep 2002, Ricardo Trindade wrote:
+
+> I have had that same problem, and it was the version of the rpm binary.
+> peewee uses it's own rpm binary (from rh 6.2).
+> 
+> test your rpm file with that rpm binary and find out if it can open it. if
+> not, get your own rpm binary. I also once replaced peewees rpm binary with a
+> simlink to my normal rpm binary, and everything worked, but that's probably
+> not such a good idea... adi ?
+> 
+> ricardo
+> 
+>    -----Original Message-----
+>   From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]On
+> Behalf Of Bob O'Connor
+>   Sent: quarta-feira, 18 de Setembro de 2002 16:49
+>   To: peeweelinux@adis.on.ca
+>   Subject: [Peeweelinux] How to properly add packages?
+> 
+> 
+>   Hello,
+>   I am new to pwl and am trying to shrink down an existing RH 7.2 project to
+> run on a CF.  I am able to create basic distros on the CF and boot from them
+> fine. Problem is I am trying to add apache (apache-1.3.20-16.i386.rpm) and
+> others to my project. This is what I have done:
+> 
+>   - log in as root
+>   - copied the apache rpm file into RPMS directory.
+>   - run pwlconfig->Manage Package Files
+> 
+>   When I try to extract a binary, I see the rpm in the list and I select it.
+> It comes back saying package was extracted. However there are no *.tar or
+> *.list files created anywhere for apache.
+> 
+>   When I try to extract ALL binaries, it runs thru them all (including
+> apache) and does create a *.tar and *.list file in the Deamons directory,
+> but "tar tvf" is empty and the list file is zero size.
+> 
+>   What am I doing wrong?
+>   Thanks,
+>   Bob
+> 
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Sat Sep 21 21:16:21 2002
+From: peeweelinux@adis.on.ca (Bob O'Connor)
+Date: Sat, 21 Sep 2002 16:16:21 -0400
+Subject: [Peeweelinux] Can't successfully boot off CF
+Message-ID: <001901c261ab$c0735140$b87ba8c0@bob>
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_+cWgBvq08cLlxDOIl8hZSg)
+Content-type: text/plain; charset=iso-8859-1
+Content-transfer-encoding: 7BIT
+
+Hi,
+I'm trying to create a CF based distro based on the latest pwl. I am able to create a "minimal" project and have it boot fine. Now I'm trying to add more functions like telnet, and various utilities which I add to minimal. I am using the "full" kernel. Just cannot seem to get past or understand this when booting:
+
+INIT: version 2,78 booting
+INIT: cannot execute "/rc.init"
+INIT: entering runlevel: 3
+INIT cannot execute "/etc/rcS"
+INIT: Id "1" respawning too fast: disabled for 5 minutes
+
+INIT: Id "2" respawning too fast: disabled for 5 minutes
+
+INIT: Id "3" respawning too fast: disabled for 5 minutes
+
+INIT: Id "4" respawning too fast: disabled for 5 minutes
+
+INIT: no more processes left in this runlevel
+
+
+
+I am using an uncompressed root with a single ramdisk. If I mount the CF and look at it, rc.init and rcS are both there and appear normal. I'm about to start removing packages one by one until it works, but I'm stumped!
+
+
+
+Any thoughts?
+
+Bob
+
+
+--Boundary_(ID_+cWgBvq08cLlxDOIl8hZSg)
+Content-type: text/html; charset=iso-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2600.0" name=GENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=#ffffff>
+<DIV><FONT face=Arial size=2>Hi,</FONT></DIV>
+<DIV><FONT face=Arial size=2>I'm trying to create a CF based distro based on the 
+latest pwl. I am able to create a "minimal" project and have it boot fine. Now 
+I'm trying to add more functions like telnet, and various utilities which I add 
+to minimal. I am using the "full" kernel. Just cannot seem to get past or 
+understand this when booting:</FONT></DIV>
+<DIV><FONT face=Arial size=2></FONT>&nbsp;</DIV>
+<DIV><FONT face="Courier New" size=2>INIT: version 2,78 booting</FONT></DIV>
+<DIV><FONT face="Courier New" size=2>INIT: cannot execute 
+"/rc.init"</FONT></DIV>
+<DIV><FONT face="Courier New" size=2>INIT: entering runlevel: 3</FONT></DIV>
+<DIV><FONT face="Courier New" size=2>INIT cannot execute "/etc/rcS"</FONT></DIV>
+<DIV><FONT size=2>
+<P class=MsoPlainText style="MARGIN: 0in 0in 0pt"><SPAN 
+style="mso-fareast-font-family: 'MS Mincho'"><FONT face="Courier New">INIT: Id 
+"1" respawning too fast: disabled for 5 minutes<?xml:namespace prefix = o ns = 
+"urn:schemas-microsoft-com:office:office" /><o:p></o:p></FONT></SPAN></P>
+<P class=MsoPlainText style="MARGIN: 0in 0in 0pt"><SPAN 
+style="mso-fareast-font-family: 'MS Mincho'"><FONT face="Courier New">INIT: Id 
+"2" respawning too fast: disabled for 5 minutes<o:p></o:p></FONT></SPAN></P>
+<P class=MsoPlainText style="MARGIN: 0in 0in 0pt"><SPAN 
+style="mso-fareast-font-family: 'MS Mincho'"><FONT face="Courier New">INIT: Id 
+"3" respawning too fast: disabled for 5 minutes<o:p></o:p></FONT></SPAN></P>
+<P class=MsoPlainText style="MARGIN: 0in 0in 0pt"><SPAN 
+style="mso-fareast-font-family: 'MS Mincho'"><FONT face="Courier New">INIT: Id 
+"4" respawning too fast: disabled for 5 minutes<o:p></o:p></FONT></SPAN></P>
+<P class=MsoPlainText style="MARGIN: 0in 0in 0pt"><SPAN 
+style="mso-fareast-font-family: 'MS Mincho'"><FONT face="Courier New">INIT: no 
+more processes left in this runlevel</FONT></SPAN></P>
+<P class=MsoPlainText style="MARGIN: 0in 0in 0pt"><SPAN 
+style="mso-fareast-font-family: 'MS Mincho'"><FONT 
+face="Courier New"></FONT></SPAN>&nbsp;</P>
+<P class=MsoPlainText style="MARGIN: 0in 0in 0pt"><SPAN 
+style="mso-fareast-font-family: 'MS Mincho'"><FONT face=Arial>I am using an 
+uncompressed root with a single ramdisk. </FONT></SPAN><SPAN 
+style="mso-fareast-font-family: 'MS Mincho'"><FONT face=Arial>If I mount the CF 
+and look at it, rc.init and rcS are both there and appear normal. I'm about to 
+start removing packages one by one until it works, but I'm 
+stumped!</FONT></SPAN></P>
+<P class=MsoPlainText style="MARGIN: 0in 0in 0pt"><SPAN 
+style="mso-fareast-font-family: 'MS Mincho'"><FONT 
+face=Arial></FONT></SPAN>&nbsp;</P>
+<P class=MsoPlainText style="MARGIN: 0in 0in 0pt"><SPAN 
+style="mso-fareast-font-family: 'MS Mincho'"><FONT face=Arial>Any 
+thoughts?</FONT></SPAN></P>
+<P class=MsoPlainText style="MARGIN: 0in 0in 0pt"><SPAN 
+style="mso-fareast-font-family: 'MS Mincho'"><FONT 
+face=Arial>Bob</FONT></SPAN></P></FONT></DIV></BODY></HTML>
+
+--Boundary_(ID_+cWgBvq08cLlxDOIl8hZSg)--
+
+From peeweelinux@adis.on.ca  Sun Sep 22 17:10:50 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Sun, 22 Sep 2002 17:10:50 +0100
+Subject: [Peeweelinux] Can't successfully boot off CF
+In-Reply-To: <001901c261ab$c0735140$b87ba8c0@bob>
+Message-ID: <000601c26252$9f2900a0$e5113ad5@ricardo>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0007_01C2625B.00F075E0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 8bit
+
+this once happened to me because of a faulty CF
+  -----Original Message-----
+  From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]On
+Behalf Of Bob O'Connor
+  Sent: sábado, 21 de Setembro de 2002 21:16
+  To: peeweelinux@adis.on.ca
+  Subject: [Peeweelinux] Can't successfully boot off CF
+
+
+  Hi,
+  I'm trying to create a CF based distro based on the latest pwl. I am able
+to create a "minimal" project and have it boot fine. Now I'm trying to add
+more functions like telnet, and various utilities which I add to minimal. I
+am using the "full" kernel. Just cannot seem to get past or understand this
+when booting:
+
+  INIT: version 2,78 booting
+  INIT: cannot execute "/rc.init"
+  INIT: entering runlevel: 3
+  INIT cannot execute "/etc/rcS"
+  INIT: Id "1" respawning too fast: disabled for 5 minutes
+
+  INIT: Id "2" respawning too fast: disabled for 5 minutes
+
+  INIT: Id "3" respawning too fast: disabled for 5 minutes
+
+  INIT: Id "4" respawning too fast: disabled for 5 minutes
+
+  INIT: no more processes left in this runlevel
+
+
+
+  I am using an uncompressed root with a single ramdisk. If I mount the CF
+and look at it, rc.init and rcS are both there and appear normal. I'm about
+to start removing packages one by one until it works, but I'm stumped!
+
+
+
+  Any thoughts?
+
+  Bob
+
+
+------=_NextPart_000_0007_01C2625B.00F075E0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1">
+
+
+<META content=3D"MSHTML 5.00.3502.5390" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT color=3D#0000ff face=3DArial size=3D2><SPAN =
+class=3D992381016-22092002>this=20
+once happened to me because of a faulty CF</SPAN></FONT></DIV>
+<BLOCKQUOTE style=3D"MARGIN-RIGHT: 0px">
+  <DIV align=3Dleft class=3DOutlookMessageHeader dir=3Dltr><FONT =
+face=3DTahoma=20
+  size=3D2>-----Original Message-----<BR><B>From:</B> =
+peeweelinux-admin@adis.on.ca=20
+  [mailto:peeweelinux-admin@adis.on.ca]<B>On Behalf Of </B>Bob=20
+  O'Connor<BR><B>Sent:</B> s=E1bado, 21 de Setembro de 2002 =
+21:16<BR><B>To:</B>=20
+  peeweelinux@adis.on.ca<BR><B>Subject:</B> [Peeweelinux] Can't =
+successfully=20
+  boot off CF<BR><BR></DIV></FONT>
+  <DIV><FONT face=3DArial size=3D2>Hi,</FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2>I'm trying to create a CF based =
+distro based on=20
+  the latest pwl. I am able to create a "minimal" project and have it =
+boot fine.=20
+  Now I'm trying to add more functions like telnet, and various =
+utilities which=20
+  I add to minimal. I am using the "full" kernel. Just cannot seem to =
+get past=20
+  or understand this when booting:</FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+  <DIV><FONT face=3D"Courier New" size=3D2>INIT: version 2,78 =
+booting</FONT></DIV>
+  <DIV><FONT face=3D"Courier New" size=3D2>INIT: cannot execute=20
+  "/rc.init"</FONT></DIV>
+  <DIV><FONT face=3D"Courier New" size=3D2>INIT: entering runlevel: =
+3</FONT></DIV>
+  <DIV><FONT face=3D"Courier New" size=3D2>INIT cannot execute=20
+  "/etc/rcS"</FONT></DIV>
+  <DIV><FONT size=3D2>
+  <P class=3DMsoPlainText style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+  style=3D"mso-fareast-font-family: 'MS Mincho'"><FONT face=3D"Courier =
+New">INIT: Id=20
+  "1" respawning too fast: disabled for 5 minutes<?xml:namespace prefix =
+=3D o ns =3D=20
+  "urn:schemas-microsoft-com:office:office" =
+/><o:p></o:p></FONT></SPAN></P>
+  <P class=3DMsoPlainText style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+  style=3D"mso-fareast-font-family: 'MS Mincho'"><FONT face=3D"Courier =
+New">INIT: Id=20
+  "2" respawning too fast: disabled for 5 =
+minutes<o:p></o:p></FONT></SPAN></P>
+  <P class=3DMsoPlainText style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+  style=3D"mso-fareast-font-family: 'MS Mincho'"><FONT face=3D"Courier =
+New">INIT: Id=20
+  "3" respawning too fast: disabled for 5 =
+minutes<o:p></o:p></FONT></SPAN></P>
+  <P class=3DMsoPlainText style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+  style=3D"mso-fareast-font-family: 'MS Mincho'"><FONT face=3D"Courier =
+New">INIT: Id=20
+  "4" respawning too fast: disabled for 5 =
+minutes<o:p></o:p></FONT></SPAN></P>
+  <P class=3DMsoPlainText style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+  style=3D"mso-fareast-font-family: 'MS Mincho'"><FONT face=3D"Courier =
+New">INIT: no=20
+  more processes left in this runlevel</FONT></SPAN></P>
+  <P class=3DMsoPlainText style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+  style=3D"mso-fareast-font-family: 'MS Mincho'"><FONT=20
+  face=3D"Courier New"></FONT></SPAN>&nbsp;</P>
+  <P class=3DMsoPlainText style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+  style=3D"mso-fareast-font-family: 'MS Mincho'"><FONT face=3DArial>I am =
+using an=20
+  uncompressed root with a single ramdisk. </FONT></SPAN><SPAN=20
+  style=3D"mso-fareast-font-family: 'MS Mincho'"><FONT face=3DArial>If I =
+mount the=20
+  CF and look at it, rc.init and rcS are both there and appear normal. =
+I'm about=20
+  to start removing packages one by one until it works, but I'm=20
+  stumped!</FONT></SPAN></P>
+  <P class=3DMsoPlainText style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+  style=3D"mso-fareast-font-family: 'MS Mincho'"><FONT=20
+  face=3DArial></FONT></SPAN>&nbsp;</P>
+  <P class=3DMsoPlainText style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+  style=3D"mso-fareast-font-family: 'MS Mincho'"><FONT face=3DArial>Any=20
+  thoughts?</FONT></SPAN></P>
+  <P class=3DMsoPlainText style=3D"MARGIN: 0in 0in 0pt"><SPAN=20
+  style=3D"mso-fareast-font-family: 'MS Mincho'"><FONT=20
+  =
+face=3DArial>Bob</FONT></SPAN></P></FONT></DIV></BLOCKQUOTE></BODY></HTML=
+>
+
+------=_NextPart_000_0007_01C2625B.00F075E0--
+
+
+From peeweelinux@adis.on.ca  Mon Sep 23 13:18:48 2002
+From: peeweelinux@adis.on.ca (Eric Chung)
+Date: Mon, 23 Sep 2002 20:18:48 +0800
+Subject: [Peeweelinux] Mail Server for peeweelinux
+Message-ID: <OE65siQnbTcfO5LnQ6T00001d09@hotmail.com>
+
+Hi all
+
+Is it any subjection for adding the mail server into peeweelinux ?
+I have only 8MB diskonchip for holding the peeweelinux system image and it
+running good as boardbank router + http server, I want to add the mail
+server function on it.
+
+Pls help
+
+CKP
+
+
+From peeweelinux@adis.on.ca  Tue Sep 24 15:16:39 2002
+From: peeweelinux@adis.on.ca (Ozgur Yasa)
+Date: Tue, 24 Sep 2002 07:16:39 -0700 (PDT)
+Subject: [Peeweelinux] Re: Peeweelinux digest, Vol 1 #138 - 2 msgs
+In-Reply-To: <200209221701.g8MH15Q29444@yoda.adis.on.ca>
+Message-ID: <20020924141639.53282.qmail@web21310.mail.yahoo.com>
+
+Hi Bob,
+Firstly check your prepared project such as your etc
+directory.
+Then manipulate your inittab file which is in your
+etc(in your project of course) directory and disable
+mgettys and write ash or bash(which you seleceted
+before) there by this way you will pass the warnings
+and you can check your project.
+Did you select sysklogd(or such as this I can't
+remember full name of this program) which is in system
+deamons.
+Did you select mgetty?
+Control them I think the problem is one of them.
+
+__________________________________________________
+Do you Yahoo!?
+New DSL Internet Access from SBC & Yahoo!
+http://sbc.yahoo.com
+

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] compiling old kernel on new Red Hat, as86
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000734.html">
+   <LINK REL="Next"  HREF="000736.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] compiling old kernel on new Red Hat, as86
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] compiling old kernel on new Red Hat, as86">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 5 Aug 2002 15:27:11 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000734.html">[Peeweelinux] FAQ: New RedHat, no errors, no bzImage
+</A></li>
+        <LI> Next message: <A HREF="000736.html">[Peeweelinux] FAQ: New RedHat, no errors, no bzImage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#735">[ date ]</a>
+              <a href="thread.html#735">[ thread ]</a>
+              <a href="subject.html#735">[ subject ]</a>
+              <a href="author.html#735">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is an addendum to my adventure building kernels.
+
+Spoiler:  I ended up needing as86, and it's in the dev86 rpm.
+          I needed kgcc as well and it's in an egcs rpm.
+
+Story: As a PeeWeeLinux hacker, I'm inclined toward minimalist
+systems.  So, when I do installs, I look for things to
+leave out, things I'll never use.  Also the questions in those
+installs are rather general, so I'm dealing with large sections
+of the system at a time.   So it came to pass that I found it
+would be nice to have gcc in there for the occasional C program
+or test.   That wasn't a problem because there's an rpm for
+it.  Then I discovered that just about any utility program I
+wanted to compile wanted to see the kernel-headers so I installed 
+those, too.    On the next system install I chose  &quot;development&quot;.
+For that I got, gcc, the kernel, plus the sources for perl, python, 
+XFree86, GNOME, java, emacs, ...  I decided to go back to 
+installing the packages myself.  Now I keep a list, so I also
+know the dependencies.
+
+This weekend I decided to duplicate my efforts and build a 
+peewee system on my laptop, which happens to be faster than
+the target system I'm building it on here.  I thought the
+kernel would compile faster as well.   Oh, it was real
+fast.  It was bombing out because kgcc wasn't there.
+
+Now, I didn't know where kgcc came from but I had decided the Magic
+must work all the time so I didn't worry about it (see my 
+previous message).  Now confronted with this problem I did 
+some more searching.   Knowing that kgcc was &quot;the kernel's gcc&quot;
+and that in turn was an older version and that it was called
+&quot;egcs&quot; back then, I was finally able to locate it in the package
+&quot;compat-egcs-6.2-1.1.2.16.i386.rpm&quot;   There is one dependency
+so you'll need &quot;compat-glibc-6.2-2.1.3.2.i386.rpm&quot; as well.
+These names are for Red Hat 7.3, anyway.
+
+So now I was ready to build the kernel for real.  Everything 
+was fine until it couldn't find the program as86.  Back to
+research.   It turns out this is the assembler, and it
+is in &quot;dev86-0.15.5-1.i386.rpm&quot; for Red Hat.  My searching
+turned up the same thing with &quot;bin86&quot; as the package for 
+debian users.  Seems as86 is an 8086 real-mode assembler 
+for creating code for the boot code in the kernel and the 
+boot block for lilo.
+
+Now that I can compile the kernel, I can go back to figuring
+out how pwlconfig deals with all of that.
+
+One problem is that I set EXTRAVERSION in the makefile so I 
+could be sure it was booting the kernel that I had built...but 
+it doesn't show up!  Fortunately the date does, so I think 
+I've got the real thing.
+
+Barry
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000734.html">[Peeweelinux] FAQ: New RedHat, no errors, no bzImage
+</A></li>
+	<LI> Next message: <A HREF="000736.html">[Peeweelinux] FAQ: New RedHat, no errors, no bzImage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#735">[ date ]</a>
+              <a href="thread.html#735">[ thread ]</a>
+              <a href="subject.html#735">[ subject ]</a>
+              <a href="author.html#735">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

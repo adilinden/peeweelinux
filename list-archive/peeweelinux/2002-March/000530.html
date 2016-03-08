@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Driver modules not loading...
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000526.html">
+   <LINK REL="Next"  HREF="000531.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Driver modules not loading...
+   </H1>
+    <B>K West
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Driver modules not loading...">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 22 Mar 2002 09:15:34 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000526.html">[Peeweelinux] java
+</A></li>
+        <LI> Next message: <A HREF="000531.html">[Peeweelinux] Driver modules not loading...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#530">[ date ]</a>
+              <a href="thread.html#530">[ thread ]</a>
+              <a href="subject.html#530">[ subject ]</a>
+              <a href="author.html#530">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm a PeeWee newbie.  Using the 0.61.1 version of PeeWeeLinux, I can produce 
+a bootable CF card.
+
+The problem I'm having is with driver modules not loading.  For instance, I 
+have the eepro100 module included in the kernel but, to bring up networking, 
+I have to manually load the module on my target machine and run ifconfig as 
+follows:
+
+insmod //lib/modules/2.2.17/net/eepro100.o
+ifconfig eth0 &lt;ip-addr&gt;
+
+Similarly, if I want to mount a DOS floppy, I have to manually enter:
+
+insmod //lib/modules/2.2.17/fs/fat.o
+insmod //lib/modules/2.2.17/fs/msdos.o
+
+What am I missing?  These modules are supposed to already be in the kernel.  
+Why am i having to load them manually?
+
+Thanks in advance for any assistance.
+
+
+
+_________________________________________________________________
+Get your FREE download of MSN Explorer at <A HREF="http://explorer.msn.com/intl.asp.">http://explorer.msn.com/intl.asp.</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000526.html">[Peeweelinux] java
+</A></li>
+	<LI> Next message: <A HREF="000531.html">[Peeweelinux] Driver modules not loading...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#530">[ date ]</a>
+              <a href="thread.html#530">[ thread ]</a>
+              <a href="subject.html#530">[ subject ]</a>
+              <a href="author.html#530">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

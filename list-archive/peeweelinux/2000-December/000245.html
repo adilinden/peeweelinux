@@ -1,0 +1,258 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Read only filesystem size issues.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000244.html">
+   <LINK REL="Next"  HREF="000247.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Read only filesystem size issues.
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Read only filesystem size issues.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 13 Dec 2000 22:53:55 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000244.html">Read only filesystem size issues.
+</A></li>
+        <LI> Next message: <A HREF="000247.html">Read only filesystem size issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#245">[ date ]</a>
+              <a href="thread.html#245">[ thread ]</a>
+              <a href="subject.html#245">[ subject ]</a>
+              <a href="author.html#245">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Dean,
+
+Here are some notes to your comments... I am cutting away all the
+irrelevant parts of the script...
+
+# here you calculate the size of the entire filesystem including /home, /root, /dev, and /etc
+    # calculate the required root fs space
+    rd_size_fs=`du -s -k $rd_projectroot | cut -f 1`
+
+-&gt; Correct!
+
+# these are the compressed images of the /dev and /etc directories
+    # add the ramdisk sizes
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.dev | cut -f 1`))
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.etc | cut -f 1`))
+    # add the bootloader
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_bootb | cut -f 1`))
+    # add a few kB for a margin
+    rd_size_fs=$((rd_size_fs + rd_size_boot_margin))
+
+-&gt; Correct!
+
+# this block calculates the size of the /hom and /root directories that are also a part of 
+# the above calculations.
+    # calculate the home partition size
+    rd_size_home=`du -s -k $rd_projectroot/home | cut -f 1`
+    # add /root
+    rd_size_home=$((rd_size_home + `du -s -k $rd_projectroot/root | cut -f 1`))
+    # add the desired free space
+    rd_size_home=$((rd_size_home + rd_home_free))
+
+-&gt; Correct. This is needed to determine the size of the partition
+containing the /home (and /root) directory
+
+    # check if things will fit
+    # also take our /home partition into consideration
+# Here is where your calculation double includes the /home and /root directories.
+    if [ $((rd_size_fs + rd_size_home)) -gt $rd_size_avail ]
+
+-&gt; Yup, I missed the fact that $rd_size_fs already includes the file
+system size included in $rd_size_home. So essentially I could rewrite the
+above to simply state:
+
+    if [ $rd_size_fs -gt $rd_size_avail ]
+
+-&gt; This should eliminate this error.
+
+    # mount remaining partitions
+    func_rd_action m &quot;Mounting /home partition ${rd_target}2...&quot;
+    mount -t ext2 ${rd_target}2 $rd_mount/home
+
+-&gt; We're mounting the /home partition up above
+
+    func_rd_action test
+    func_rd_action m &quot;Mounting /mnt/flash partition ${rd_target}3...&quot;
+    mount -t ext2 ${rd_target}3 $rd_mount/mnt/flash
+    func_rd_action test
+
+    func_rd_action m &quot;Copying files...&quot;
+    # copy files
+    for i in $rd_projectroot/*; do
+
+        # clear the flag
+        rd_status=
+
+# you are not copying /root here, but you are copying /home, but by mounting /home
+# the space taken by this copy is wasted.
+
+-&gt; Not quite true. At this point /home is mounted. The subsequent copy
+command will copy the contents of /home into the mounted partition instead
+of the root partition. The intend was to have the /home directory
+uncompressed so one could save the contents of /home or even eliminate the
+building and mounting of a /home ramdisk and mount the filesystem
+directly. Perhaps adding reiserfs would allow for that with little risk of
+corruption?
+
+        # mark any directories we don't want to copy
+        for j in dev etc root tmp var; do
+            if [ `basename $i` = $j ]; then
+                rd_status=no
+            fi
+        done
+
+        # copy if we're clear
+        if [ ! $rd_status ]; then
+            cp -a $i $rd_mount 
+        fi
+    done
+
+    # copy whatever is in /root to /home/root
+    cp -a $rd_projectroot/root $rd_mount/home
+        
+    # create symlinks for our new file locations
+    ln -sf /dev/var $rd_mount/var
+    ln -sf /dev/var/tmp $rd_mount/tmp
+    ln -sf /home/root $rd_mount/root
+
+    # copy ramdisk, initrd, boot.b
+    cp -f $rd_tmp/ramdisk.dev $rd_mount/boot/ramdisk.dev
+    cp -f $rd_tmp/ramdisk.etc $rd_mount/boot/ramdisk.etc
+    cp -f $rd_tmp/$rd_initrd $rd_mount/boot/$rd_initrd
+    cp -f $rd_bootb $rd_mount/boot/boot.b
+
+    # create devices required before anything is mounted
+    cp -a $rd_projectroot/dev/console $rd_mount/dev/console
+    cp -a $rd_projectroot/dev/systty $rd_mount/dev/systty
+    cp -a $rd_projectroot/dev/null $rd_mount/dev/null
+    cp -a $rd_projectroot/dev/ram $rd_mount/dev/ram
+    cp -a $rd_projectroot/dev/ram0 $rd_mount/dev/ram0
+# can this be modified to only copy the devices actually in rd_projectroot/dev?
+
+-&gt; This is a poor way of doing this. At least by using the ${rd_boot}
+variable only the devices relevant to the boot device are created.
+
+    for i in 1 2 3 4 5 6 7 8 9; do
+        cp -a $rd_projectroot${rd_boot}${i} ${rd_mount}${rd_boot}${i}
+        cp -a $rd_projectroot/dev/ram$i ${rd_mount}/dev/ram$i
+    done
+    for i in 0 1 2 3 4; do
+        cp -a $rd_projectroot/dev/tty$i $rd_mount/dev/tty$i
+    done
+
+    # copy our modified inittab to the root directory
+    cp -f $rd_tmp/inittab $rd_mount/etc/inittab
+    func_rd_action test
+
+    # add rc.init
+
+    # make some noise
+    func_rd_action m &quot;Creating fstab and rc.init...&quot;
+
+# There is no way that I can see to modify this flag in pwl
+
+-&gt; I missed to add this flag to the projects.defaults file. This could be
+important for instance where you want to include your own fstab and
+rc.init file.
+
+    # see if we're allowed to
+    if [ &quot;$rd_initscripts&quot; = &quot;y&quot; ]; then
+
+        # lets do it!
+        func_rd_fstab_ro_root_rd &gt; $rd_mount/etc/fstab
+        func_rd_init_ro_root_rd &gt; $rd_mount/rc.init
+
+        # make sure rc.init is executable
+        chmod 755 $rd_mount/rc.init
+
+        # send the ok
+        func_rd_action s
+    else
+
+        # duh we're not configured print a warning
+        func_rd_action w
+    fi
+
+# in the XFree86 package there is a ld.so.conf file that accomplishes the
+# the linking of /usr/X11R6/lib. Is there a reason you have it hard coded here as well?
+
+-&gt; Yes. My idea is that an embedded system shouldn't change. so you
+wouldn't need the ldconfig binary. On a small system this is quite
+significant. I don't expect any ld.so.conf to be on the target filesystem.
+So just in case X is included it will be linked. Perhaps the list of
+library paths at this stage could be configurable in a projects.default
+variable, too?  
+
+    # run library loader and include XFree86 lib directory
+    # remember it's been relocated to /lib/ld.so.cache
+    func_rd_action m &quot;Creating ld.so.cache...&quot;
+    ldconfig -v -C /lib/ld.so.cache -r $rd_mount /usr/X11R6/lib &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+    
+-&gt; Thank you for your suggestions! The above was created for a particular
+project but never really tested thoroughly. It does work, though. If you
+have ideas for a different partitioning method I'd be quite happy to
+either modify this target or even create a new one.
+
+With the 2.4.x kernels we should have a devfs which should allow for the
+/dev ramdisk to disappear. It is defenitely something with a lot of waste.
+Especially with fairly little devices it still is rather large since each
+device entry requires an inode. devfs works similar to the /proc
+filesystem where it's a kernel generated filesystem.
+
+having the /etc files in  compressed ramdisk makes them rather difficult
+to change. So a different solution might be an idea. Perhaps keep it in a
+partition just as /home but copy the partition into a ramdisk on boot?
+
+Note that I added the following in 0.53.23 to correct some calcualtions:
+
+    # deduct the /dev and /etc filesystems
+    # reverse addition of free space to ramdisks!
+    rd_size_fs=$((rd_size_fs - (rd_size_fs_dev - rd_dev_free)))
+    rd_size_fs=$((rd_size_fs - (rd_size_fs_etc - rd_etc_free)))
+
+It works and I think it makes sense...
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000244.html">Read only filesystem size issues.
+</A></li>
+	<LI> Next message: <A HREF="000247.html">Read only filesystem size issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#245">[ date ]</a>
+              <a href="thread.html#245">[ thread ]</a>
+              <a href="subject.html#245">[ subject ]</a>
+              <a href="author.html#245">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

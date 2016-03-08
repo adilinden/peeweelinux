@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> PeeWeeLinux Ideas
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000021.html">
+   <LINK REL="Next"  HREF="000023.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>PeeWeeLinux Ideas
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="PeeWeeLinux Ideas">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Sun, 5 Mar 2000 20:55:03 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000021.html">PeeWeeLinux Ideas
+</A></li>
+        <LI> Next message: <A HREF="000023.html">PeeWeeLinux Ideas
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adi,
+Sounds like some good ideas, some thoughts below:
+
+&gt;<i> 
+</I>&gt;<i> Package Names
+</I>&gt;<i> -------------
+</I>&gt;<i> 
+</I>&gt;<i> Would it make sense to start adding a version numer similar to what RedHat
+</I>&gt;<i> does? Like creating thttpd-1.2.3-1.tar for the initial release. 
+</I>
+Sounds great, then maybe you could also just download a patch file to 
+go from xxx-1.2.3-1 to xxx-1.2.3-2 (but these are binaries hmmm...not
+sure about that)
+
+&gt;<i> 
+</I>&gt;<i> File List
+</I>&gt;<i> ---------
+</I>&gt;<i> 
+</I>&gt;<i> If you look at the Embedded_Build directory, there is a file called
+</I>&gt;<i> Filelist (I think) which contains the package names and files associated
+</I>&gt;<i> with it. Would it make sense to keep a file like it, indicating the
+</I>&gt;<i> included package name and the related files?
+</I>&gt;<i> 
+</I>
+Hey, I did this as part of my pwl_update script. I go through the entire
+packages directory and list every file into one file .root.list or 
+something like that.  Very handy to help speed up the searching for 
+a specific file...
+
+&gt;<i> As one of the todo tasks I want to eliminate duplicate files in packages.
+</I>&gt;<i> 
+</I>Great! Thats one problem I'm having...trying to find a package for a file
+and finding it in multiple places.  Also, the extraction continues to 
+give errors when a file is duplicated...
+
+&gt;<i> Subsequently I am removing those files from their duplicate places...
+</I>&gt;<i> 
+</I>&gt;<i> Should the Filelist file include the descriptions entered in the
+</I>&gt;<i> package.README files? I tend to not to include them to not clutter up the
+</I>&gt;<i> filelist file.
+</I>&gt;<i> 
+</I>
+Since pwl_config builds and maintains a list for &quot;internal&quot; use, you 
+could put most anything here that would make it easy for people to use.
+This could be rather time consuming to maintain, but any information
+like this would be unique to Pee Wee Linux (I can't find docs for most 
+of the other small Linux file systems :-(
+
+
+&gt;<i> Maintaining the filelist file would make it easy to chack for duplicate
+</I>&gt;<i> files within the PWL distribution and to enable on to quickly find a
+</I>&gt;<i> particular binary, i.e. which package includes 'su'?
+</I>&gt;<i> 
+</I>
+BTW, A handy program I just started using, &quot;uniq&quot; will print a list of 
+duplicates or a unique list from a file. For example:
+
+cat filelist_A filelist_B | sort | uniq -d   
+
+will list only the files that are duplicated in both lists. 
+
+&gt;<i> Distributing PWL
+</I>&gt;<i> ----------------
+</I>&gt;<i> 
+</I>&gt;<i> I am thinking about creating a PWL packages directory on the server in
+</I>&gt;<i> which to keep all the packages for individual download. Perhaps gzip the
+</I>&gt;<i> packages, though. This would allow for individual packages to be
+</I>&gt;<i> downloaded rather than the complete archive if some packages are added.
+</I>&gt;<i> Also, it would allow for newly build packages to be made available
+</I>&gt;<i> immediately without having to wait for a new release.
+</I>&gt;<i> 
+</I>
+I think this problem is now being solved on some lists with CVS.  You
+can check any one latest file or just give an update command to get
+all the changes since your last update.  Or you can checkout all files
+up to some version number.  Haven't been able to try this yet myself...
+
+&gt;<i> I am a bit torn between the idea of creating a new release too often or
+</I>&gt;<i> not often enough. Just adding a couple of packes doesn't necessarily
+</I>&gt;<i> justify creating a new release, especially if some known bugs haven't been
+</I>&gt;<i> addressed. On the other hand I don't want to not release new features and
+</I>&gt;<i> additions because I won't have time to address some issues immediately. I
+</I>&gt;<i> need some guidance here.
+</I>&gt;<i> 
+</I>&gt;<i> Closing
+</I>&gt;<i> -------
+</I>&gt;<i> 
+</I>&gt;<i> This all comes to mind because I will have a crude X package compiled from
+</I>&gt;<i> sources soon. This will add some 40MB to the source distribution. I think
+</I>&gt;<i> it's a bit of a waste to have to download a 50MB file for some minor
+</I>&gt;<i> changes... I guess there's always the binary distribution.
+</I>&gt;<i> 
+</I>
+Ouch!  I think if the patch files aren't too hard to create, I'd love to 
+just load the source from my Red Hat disk and do the patch.  Now my source
+matches yours and I didn't need a big download.  Of course, you could
+just order the Pee Wee Linux distro CD which has it all :-)
+
+&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>
+More thoughts...
+
+I've been thinking about all the dozens of little linux's out there and
+how we could take advantage of all the work done for them. (Granted, most
+are for different kernels, but that may be only a temporary problem).
+
+What if:
+
+Embedded_Build\packages        contains directories:
+   PeeWeeLinux
+   LinuxRouterProject
+   LEM
+   Toms_linux
+   tiny_linux
+   embedded_linux
+   mobile_linux
+   ...
+
+One of the configuration options for a project would be to select the
+distribution you preferr.  pwl_config could only work within that
+distribution directory and you could try out different distributions.
+Or you could pick and choose some files from various distros...
+
+Of course, now the sources directory just went deeper too.
+Maybe something to thinkabout down the road...
+
+
+Later,
+Ralph
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000021.html">PeeWeeLinux Ideas
+</A></li>
+	<LI> Next message: <A HREF="000023.html">PeeWeeLinux Ideas
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

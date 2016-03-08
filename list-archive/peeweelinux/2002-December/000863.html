@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] rc.init
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000862.html">
+   <LINK REL="Next"  HREF="000864.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] rc.init
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] rc.init">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 11 Dec 2002 12:41:02 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000862.html">[Peeweelinux] help - static compiling
+</A></li>
+        <LI> Next message: <A HREF="000864.html">[Peeweelinux] help - static compiling
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#863">[ date ]</a>
+              <a href="thread.html#863">[ thread ]</a>
+              <a href="subject.html#863">[ subject ]</a>
+              <a href="author.html#863">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>I downloaded the source package and ran the script pwlconfig. Worked fine
+</I>until the Extract File System for project. I found out about an hour later I
+had to run the rpm2tar first. Maybe this will help some new comers like me...
+
+I think I saw this complaint from someone else recently.  Normally
+this will happen automatically.  In my notes I see the following
+observation:
+
+The first time I ran pwlconfig I was taken to:
+
+&quot;Create new project&quot;.  After choosing a name I got:
+
+	No tar packages were found. Do you wish to extraxt 
+	 all binary rpms and create tar packages now
+	 (recommended)?
+
+
+I can only guess that the pwlconfig script somehow &quot;knows&quot; if
+the packages are missing (by looking at some directory) and
+something you did fooled it.  The scripts are sometimes
+easy to confuse.   Fortunately you found the workaround
+and now it's on record.   (This is a long way of 
+saying, &quot;it worked for me&quot;).
+
+
+&gt;<i>Now for my problem: 
+</I>&gt;<i>I'm trying to boot on a floppy. I get a &quot;sh:
+</I>PATH=/bin:/sbin:/usr/bin:/usr/sbin: No such file or directory&quot;
+&gt;<i>I extracted the ramdisk from the floppy mounted it and ran the script
+</I>rc.init with a chroot. So I could conclude it comes from the rc.init (boy
+that's only the second line of the script :( ).
+&gt;<i>and btw, I'm using busybox (&lt;--- it's probably his fault!!)
+</I>&gt;<i>Has anybody gone through that?
+</I>&gt;<i>
+</I>&gt;<i>François
+</I>
+My notes agree with yours (contents of rc.init and so on).  My 
+interpretation of your error is that &quot;PATH&quot; is not a program
+nor is it a shell command.  To which you say, &quot;of course
+not, it's setting an environment variable!&quot;   Yes, but the
+shell (?) does not know that, apparently.  Somehow the shell 
+is wrong, broken, or not a shell. 
+
+My experience has been that sometimes I start over making
+the project, so I can document it and get help, and that
+time it works.  It's worth a try.  There are some subtle
+things in pwl (and lots of choices to make on the menus)
+
+Barry
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000862.html">[Peeweelinux] help - static compiling
+</A></li>
+	<LI> Next message: <A HREF="000864.html">[Peeweelinux] help - static compiling
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#863">[ date ]</a>
+              <a href="thread.html#863">[ thread ]</a>
+              <a href="subject.html#863">[ subject ]</a>
+              <a href="author.html#863">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

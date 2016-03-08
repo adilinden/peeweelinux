@@ -1,0 +1,331 @@
+From peeweelinux@adis.on.ca  Tue Apr  3 11:49:09 2001
+From: peeweelinux@adis.on.ca (Claude Johnson)
+Date: Tue, 03 Apr 2001 03:49:09 -0700
+Subject: pwlconfig broken?
+Message-ID: <3AC9AAA5.20742901@undoo.com>
+
+Alright, RH 6.1 system on 2.2.18 kernel.
+
+[root@coral Embedded_Build]# ./pwlconfig -n dpn
+Error: -n:  not a valid pwlconfig option 
+
+[root@coral Embedded_Build]# ./pwlconfig
+.../scripts/pwl_create: .select.lst: Permission denied
+./scripts/pwl_create: .select.lst: Permission denied
+./scripts/pwl_create: .select.lst: Permission denied
+./scripts/pwl_create: .select.lst: Permission denied
+./scripts/pwl_create: .select.lst: Permission denied
+./scripts/pwl_create: .result: Permission denied
+./scripts/pwl_create: .result: No such file or directory
+.
+Pee Wee Linux System Configuration - Version 0.61.0
+Error: No Project
+
+bash$ rpm -qa | grep curses
+ncurses-4.2-25
+ncurses-devel-4.2-25
+ncurses3-1.9.9e-9
+
+So, either the docs are wrong or pwlconfig doesn't work.
+The only options it seems to know about are -n, -b and
+-h. Putting the project name on the command line, sans
+-n option, generates the same error.
+
+Did I miss something here? And where are docs for doing
+this by hand, since I would actually like to know?
+
+-- 
+Claude Johnson					    claude@undoo.com
+Undoo Technologies				    949.743.5145 (D)
+*undoo everything*				    301.806.7399 (M)
+Key fingerprint = F00A 34E2 C141 F29D 7E41  6DF6 DB04 0769
+592D 14AD
+	"It takes a tough man to make a tender chicken!"
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Apr  3 14:33:24 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 3 Apr 2001 08:33:24 -0500 (CDT)
+Subject: pwlconfig broken?
+In-Reply-To: <3AC9AAA5.20742901@undoo.com>
+Message-ID: <Pine.LNX.4.10.10104030830570.13788-100000@develop.knet.on.ca>
+
+Hi,
+
+Are you running pwlconfig as root? It sounds like you don't have
+permissions to create the proper files...
+
+> Alright, RH 6.1 system on 2.2.18 kernel.
+
+That's what it's being developed on and tested on.
+
+> [root@coral Embedded_Build]# ./pwlconfig -n dpn
+> Error: -n:  not a valid pwlconfig option 
+> 
+> [root@coral Embedded_Build]# ./pwlconfig
+> .../scripts/pwl_create: .select.lst: Permission denied
+> ./scripts/pwl_create: .select.lst: Permission denied
+> ./scripts/pwl_create: .select.lst: Permission denied
+> ./scripts/pwl_create: .select.lst: Permission denied
+> ./scripts/pwl_create: .select.lst: Permission denied
+> ./scripts/pwl_create: .result: Permission denied
+> ./scripts/pwl_create: .result: No such file or directory
+> .
+> Pee Wee Linux System Configuration - Version 0.61.0
+> Error: No Project
+> 
+> bash$ rpm -qa | grep curses
+> ncurses-4.2-25
+> ncurses-devel-4.2-25
+> ncurses3-1.9.9e-9
+> 
+> So, either the docs are wrong or pwlconfig doesn't work.
+> The only options it seems to know about are -n, -b and
+> -h. Putting the project name on the command line, sans
+> -n option, generates the same error.
+> 
+> Did I miss something here? And where are docs for doing
+> this by hand, since I would actually like to know?
+
+The docs aren't very helpful there have been many changes sonce the docs
+were done...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Apr 10 03:58:37 2001
+From: peeweelinux@adis.on.ca (Les Éditions M.G. Publishing)
+Date: 09 Apr 2001 22:58:37 -0400
+Subject: Subsidies, Grants, Loans, Financing
+Message-ID: <200104100304.WAA02863@trix.myknet.org>
+
+
+MG PUBLISHING
+4865 HWY 138,R.R 1
+ST-ANDREWS WEST 
+ONTARIO, KOC 2A0
+1-800-301-8093
+http://www.mgpublishing.net
+
+
+PRESS RELEASE
+
+CANADIAN SUBSIDY DIRECTORY YEAR 2001 EDITION
+Legal Deposit-National Library of Canada
+ISBN 2-922870-01-4........................................$ 49,95
+
+M.G. Publishing is offering to the public a revised edition of the 
+Canadian Subsidy Directory, a guide containing more than 2300 direct and 
+indirect financial subsidies, grants and loans offered by government 
+departments and agencies, foundations, associations and organizations.  In 
+this new 2001 edition all programs are well described. Electronic version 
+available
+
+The Canadian Subsidy Directory is the most comprehensive tool to start up 
+a business, improve existent activities, set up a business plan, or obtain 
+assistance from experts in fields such as: Industry, transport, 
+agriculture, communications, municipal infrastructure, education, import-
+export, labor, construction and renovation, the service sector, hi-tech 
+industries, research and development, joint ventures, arts, cinema, 
+theatre, music and recording industry, the self employed, contests, and 
+new talents.
+Assistance from and for foundations and associations, guidance to prepare 
+a business plan, market surveys, computers, and much more!
+To obtain the Canadian Subsidy Directory call 1-800-301-8093.
+
+Consult our web site at: http:// www.mgpublishing.net
+
+To remove your e-mail address from our mailing list, please choose one of 
+the following options:
+If the link bellow is all on the same line, simply click on it. 
+http://www.mgpublishing.net/r.asp?Email=PeeWeeLinux@adis.on.ca
+Reply to this email with  ' Remove ' in the subject
+Use the form at the link bellow
+http://www.mgpublishing.net/retrait.asp
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Apr 30 20:31:05 2001
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Mon, 30 Apr 2001 14:31:05 -0500
+Subject: i815 video support with PeeWeeLinux?
+Message-ID: <EE3F7DF79AC85C4BA49A999C8D016A04011E13B6@ausxmbrh06.aus.amer.dell.com>
+
+This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+------_=_NextPart_000_01C0D1AC.22CF9FDE
+Content-Type: text/plain;
+	charset="iso-8859-1"
+
+
+I was wondering if anyone has upgraded the XFree86 support to the 4.0.3 or
+later
+and been successful with supporting the Intel 815 chipset video?   I'm about
+to
+attempt this and if it has been done already I'd be interested in hearing
+your
+findings...
+
+Thanks,
+
+Randy
+
+
+
+
+------_=_NextPart_000_01C0D1AC.22CF9FDE
+Content-Type: application/octet-stream;
+	name="Randy Howard (E-mail).vcf"
+Content-Disposition: attachment;
+	filename="Randy Howard (E-mail).vcf"
+
+BEGIN:VCARD
+VERSION:2.1
+N:Howard;Randy
+FN:Randy Howard (E-mail)
+ORG:Dell Computer Corporation;Customer Solutions Engineering
+TITLE:Sr. Software Technologist
+TEL;WORK;VOICE:(512) 728-3480
+TEL;HOME;VOICE:(512) 868-5580
+TEL;CELL;VOICE:(512) 914-8926
+TEL;WORK;FAX:(512) 728-3255
+ADR;WORK;ENCODING=QUOTED-PRINTABLE:;;Randy Howard=0D=0A265 Logan Ranch Rd.;Georgetown;TX;78628-1206;United Stat=
+es of America
+LABEL;WORK;ENCODING=QUOTED-PRINTABLE:Randy Howard=0D=0A265 Logan Ranch Rd.=0D=0AGeorgetown, TX 78628-1206=0D=0AUn=
+ited States of America
+EMAIL;PREF;INTERNET:randy_howard@us.dell.com
+REV:20010222T202513Z
+END:VCARD
+
+------_=_NextPart_000_01C0D1AC.22CF9FDE--
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Apr 30 22:42:24 2001
+From: peeweelinux@adis.on.ca (Andrei Bulucea)
+Date: Mon, 30 Apr 2001 14:42:24 -0700 (PDT)
+Subject: i815 video support with PeeWeeLinux?
+In-Reply-To: <EE3F7DF79AC85C4BA49A999C8D016A04011E13B6@ausxmbrh06.aus.amer.dell.com>
+Message-ID: <Pine.GSO.4.05.10104301440420.11561-100000@ituner.com>
+
+Hi, 
+
+As far as I know XFree86 does not work woth I815 boards. 
+This has nothing to do with PeeWeeLinux kernel settiongs, it
+is a known problem. 
+
+I might be wrong, so I would like to hear from you if you have
+an X solution. 
+
+Andrei Bulucea
+Ituner Networks Corp
+Voice: 800-97-TUNER
+Fax:   510-795-8855
+http://www.ituner.com
+
+On Mon, 30 Apr 2001 Randy_Howard@dell.com wrote:
+
+> 
+> I was wondering if anyone has upgraded the XFree86 support to the 4.0.3 or
+> later
+> and been successful with supporting the Intel 815 chipset video?   I'm about
+> to
+> attempt this and if it has been done already I'd be interested in hearing
+> your
+> findings...
+> 
+> Thanks,
+> 
+> Randy
+> 
+> 
+> 
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Apr 30 23:19:40 2001
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Mon, 30 Apr 2001 17:19:40 -0500
+Subject: i815 video support with PeeWeeLinux?
+Message-ID: <EE3F7DF79AC85C4BA49A999C8D016A04011E13BB@ausxmbrh06.aus.amer.dell.com>
+
+
+After looking at the driver status notes on XFree86.org, you are correct.
+It
+supports the 810, but apparently not the 815 officially.  However, I have 
+spoken to someone claiming that if you had the 810 support, then the 815
+would also work.  I have yet to see that work myself though.  I'll let you
+know if I can find out anything further.
+
+Randy Howard
+
+-----Original Message-----
+From: Andrei Bulucea [mailto:andrewb@ituner.com]
+Sent: Monday, April 30, 2001 04:42 PM
+To: peeweelinux@adis.on.ca
+Subject: Re: i815 video support with PeeWeeLinux?
+
+
+Hi, 
+
+As far as I know XFree86 does not work woth I815 boards. 
+This has nothing to do with PeeWeeLinux kernel settiongs, it
+is a known problem. 
+
+I might be wrong, so I would like to hear from you if you have
+an X solution. 
+
+Andrei Bulucea
+Ituner Networks Corp
+Voice: 800-97-TUNER
+Fax:   510-795-8855
+http://www.ituner.com
+
+On Mon, 30 Apr 2001 Randy_Howard@dell.com wrote:
+
+> 
+> I was wondering if anyone has upgraded the XFree86 support to the 4.0.3 or
+> later
+> and been successful with supporting the Intel 815 chipset video?   I'm
+about
+> to
+> attempt this and if it has been done already I'd be interested in hearing
+> your
+> findings...
+> 
+> Thanks,
+> 
+> Randy
+> 
+> 
+> 
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

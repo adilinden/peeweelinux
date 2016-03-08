@@ -1,0 +1,161 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Silent booting
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000156.html">
+   <LINK REL="Next"  HREF="000158.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Silent booting
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Silent booting">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 9 Nov 2000 20:44:06 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000156.html">Silent booting
+</A></li>
+        <LI> Next message: <A HREF="000158.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I have a box here with the National Semi chipset which uses the pci-scan
+module as well. Here are the pci-scan modules in the kernel rpms:
+
+[<A HREF="mailto:root@big">root@big</A> Embedded_Build]# rpm -qpl RPMS/kernel-full-2.2.17-6.i386.rpm |
+grep pci-scan
+/lib/modules/2.2.17-full/net/pci-scan.o
+
+[<A HREF="mailto:root@big">root@big</A> Embedded_Build]# rpm -qpl RPMS/kernel-basic-2.2.17-6.i386.rpm |
+grep pci-scan
+/lib/modules/2.2.17/net/pci-scan.o
+
+I tried the natsemi.o module and I did have to do:
+
+   insmod pci-scan
+   insmod natsemi
+
+This worked just fine. Trying to load natsemi without the pci-scan driver
+resulted in the same errors you reported.
+
+I am just working on a fresh compile of the kernel rpms. I intend to add
+the devfs patch and daemon for 2.2.17. This should allow for an easier way
+to build a read-only rootfs plus save considerable space.
+
+I am considering removing the netdriver patch which adds the new network
+drivers requiring pci-scan and creating it as a seperate package (similar
+to emlog and the rl2 driver). That way the default kernel(s) included with
+PeeWeeLinux wouldn't require pci-scan to be loaded.
+
+As far as the lilo prompt, no, there is currently no way to add additional
+lilo paramters using pwlconfig. Looking at pwlconfig, I think it should be
+possible to add a couple of parameters like:
+
+Ramdisk File Name: &quot;ramdisk&quot;
+Initrd File Name: &quot;initrd&quot;
+--- Boot loader options ---
+Boot Label: &quot;linux&quot;
+Boot Prompt Timeout: &quot;0&quot;
+VGA Mode: &quot;normal&quot;
+Boot Option 1:
+Boot Option 2:
+--- floppy ---
+
+The Boot Option 1|2 would allow for custom options to be enterred. I'll
+play with that and release an updated peeweelinux-*-cfg.tar.gz package if
+it works (and doesn't break any previous configurations).
+
+TTYL,
+Adi
+
+
+
+On Thu, 9 Nov 2000, Dean Brown wrote:
+
+&gt;<i> Ok,
+</I>&gt;<i> 
+</I>&gt;<i> Several problems here. First off, there is no pci-scan.o module anywhere
+</I>&gt;<i> in the pwl distribution that I've been able to find. Searching the
+</I>&gt;<i> available packages for pci-scan or pci-scan.o or pci-scan* returns a not
+</I>&gt;<i> found. 
+</I>&gt;<i> 
+</I>&gt;<i> Searching the filesystem rooted at the Embedded_Builds directory found a
+</I>&gt;<i> pci-scan.{c|h|o} in the ./src/BUILDS/2.2.17/net path. Copying the .o
+</I>&gt;<i> file to the /lib/modules/2.2.17/net/ directory and modifying the
+</I>&gt;<i> /etc/rc.modules file to load the pci-scan module results in an error at
+</I>&gt;<i> boot time of &quot;/lib/modules/2.2.17/net/pci-scan.o: couldn't find the
+</I>&gt;<i> kernel version the module was compiled for&quot;.
+</I>&gt;<i> 
+</I>&gt;<i> I am using the 2.2.17 kernel.
+</I>&gt;<i> 
+</I>&gt;<i> On another note, entering linux debug=0 at the lilo prompt does indeed
+</I>&gt;<i> suppress all the kernel spew. Is there any way to add additional
+</I>&gt;<i> parameters to the lilo.conf created during the load process without
+</I>&gt;<i> requiring lilo to be manually installed?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks again for you help.
+</I>&gt;<i> 
+</I>&gt;<i> Adi Linden wrote:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Some of the network modules require a pci driver to be installed. The
+</I>&gt;<i> &gt; module to load prior to the rtl8139, tulip, natsemi or via-rhine driver is
+</I>&gt;<i> &gt; pci-scan. Now, that module was supposed to be loaded automatically when
+</I>&gt;<i> &gt; one of those network drivers is loaded.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Try doing
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; insmod pci-scan
+</I>&gt;<i> &gt; insmod rtl8139
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I'll dig up the email with the silent.patch instructions and forward it to
+</I>&gt;<i> &gt; you.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; This got me thinking about the kernel compile process... maybe I'll make
+</I>&gt;<i> &gt; the updated network drivers and option (independend package) rather than a
+</I>&gt;<i> &gt; kernel patch...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; TTYL,
+</I>&gt;<i> &gt; Adi
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000156.html">Silent booting
+</A></li>
+	<LI> Next message: <A HREF="000158.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#157">[ date ]</a>
+              <a href="thread.html#157">[ thread ]</a>
+              <a href="subject.html#157">[ subject ]</a>
+              <a href="author.html#157">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

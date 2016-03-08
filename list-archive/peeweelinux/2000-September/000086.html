@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Multiple Targets for PeeWee Linux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000078.html">
+   <LINK REL="Next"  HREF="000088.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Multiple Targets for PeeWee Linux
+   </H1>
+    <B>David Wood
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Multiple Targets for PeeWee Linux">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Sun, 10 Sep 2000 01:46:23 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000078.html">Multiple Targets for PeeWee Linux
+</A></li>
+        <LI> Next message: <A HREF="000088.html">Multiple Targets for PeeWee Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#86">[ date ]</a>
+              <a href="thread.html#86">[ thread ]</a>
+              <a href="subject.html#86">[ subject ]</a>
+              <a href="author.html#86">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+On Thu, 7 Sep 2000, Ralph Stickley wrote:
+
+&gt;<i> We are beginning to integrate the ramdisk configuration utilities into the
+</I>&gt;<i> latest version of pwlconfig.  I plan on working on this over the next few
+</I>&gt;<i> days...Anybody have any suggestions please let me know...
+</I>
+Great! :)
+
+&gt;<i> ======
+</I>&gt;<i> Requirement: To build a project on several different targets. Users should
+</I>&gt;<i> configure each target as required, then choose the proper target
+</I>&gt;<i> configuration before doing the Erase/load operations on the target device.
+</I>&gt;<i> 
+</I>&gt;<i>                   Main menu changes:
+</I>&gt;<i>                   ==================
+</I>&gt;<i>                   ...
+</I>&gt;<i>                   ---
+</I>&gt;<i>                   Configure Target Device &quot;CF 32Mb&quot;--&gt;
+</I>
+How about:          Manage Target Devices --&gt;
+                    Select Target Device --&gt;
+
+&gt;<i>                   Erase &quot;Flash&quot; --&gt;
+</I>               of course, erase &quot;flash&quot; would be in the management,
+&gt;<i>                   Load Filesystem to Flash --&gt;
+</I>               as well as the loading of the filesystem,
+&gt;<i>                   Lilo...
+</I>               and lilo ;)
+&gt;<i>                   ---
+</I>&gt;<i>                   ...
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Selecting &quot;Configure Target Device --&gt;&quot; gives the following menu from
+</I>&gt;<i> &quot;pwl_targets&quot; script file:
+</I>&gt;<i> 
+</I>&gt;<i>                   PWL Target Menu
+</I>&gt;<i>                   ===============
+</I>&gt;<i>                   Select Target Type --&gt;
+</I>&gt;<i>                   Save Target Configuration for &quot;my floppy&quot; 
+</I>&gt;<i>                   Create New Target
+</I>&gt;<i>                   ---
+</I>&gt;<i>                   Configure &quot;CF 32Mb&quot; Parameters
+</I>&gt;<i>                   [*] CF 32Mb
+</I>&gt;<i>                   [ ] CF 16Mb
+</I>&gt;<i>                   [ ] RAM 256Mb
+</I>&gt;<i>                   [ ] My test Floppy
+</I>&gt;<i>                   [ ] My CDROM release
+</I>                    [ ] TFTPboot directory
+&gt;<i> 
+</I>&gt;<i> Now each target file would contain all the default parameters as
+</I>&gt;<i> configured for that target.  The &quot;Configure &quot;CF 32Mb&quot; menu item would then
+</I>&gt;<i> display the parameters (basically just like the current &quot;project defaults&quot;
+</I>&gt;<i> menu )
+</I>&gt;<i> 
+</I>&gt;<i>                   Configure Target parameters
+</I>&gt;<i>                   =================
+</I>&gt;<i>                   ---- Boot defaults ---
+</I>&gt;<i>                   boot image file: /boot/bzImage
+</I>&gt;<i>                   boot location: /dev/hda1
+</I>&gt;<i>                   ---- Lilo defaults ---
+</I>&gt;<i>                   Lilo boot label: pwlinuz
+</I>&gt;<i>                   Lilo timeout: 2
+</I>&gt;<i>                   Lilo custom command: linear
+</I>&gt;<i>                   Lilo image command: vga=0x317
+</I>&gt;<i>                   ---- Device defaults ---
+</I>&gt;<i>                   Mount point: ./mnt
+</I>&gt;<i>                   Device name: FLASH
+</I>&gt;<i>                   Device node: /dev/hda
+</I>&gt;<i>                   ---- Partition defaults ---
+</I>&gt;<i>                   Boot partition: 1  size: 1Mb
+</I>&gt;<i>                   system partition: 2 size: 28Mb
+</I>&gt;<i>                   Other partition: 3 size 2Mb
+</I>&gt;<i>                   ---- Ram Disk Defaults ---
+</I>&gt;<i>                   initrd name: rd_image
+</I>&gt;<i>                   verbose operation: On
+</I>&gt;<i>                   ???
+</I>&gt;<i> 
+</I>&gt;<i> And Where the Select Target Type menu is as Adi proposed:
+</I>&gt;<i> 
+</I>&gt;<i>                   Select Target Type
+</I>&gt;<i>                   ==================
+</I>&gt;<i>                   1)  Compressed ramdisk on FAT 16 partition&quot;
+</I>&gt;<i>                   2)  Compressed ramdisk on ext2 partition&quot;
+</I>&gt;<i>                   3)  Uncompressed ramdisk, boot from FAT 16 partition&quot;
+</I>&gt;<i>                   4)  Uncompressed ramdisk, boot from ext2 partition&quot;
+</I>&gt;<i>                   5)  Read-only root fs with multiple ramdisks&quot;
+</I>&gt;<i>                     ----- Non-flash target devices -----&quot;
+</I>&gt;<i>                   6)  Compressed ramdisk on floppy disk w/o bootloader&quot;
+</I>&gt;<i>                   7)  Compressed ramdisk on FAT12 floppy disk w/syslinux&quot;
+</I>&gt;<i>                   8)  Bootable iso image w/ramdisk&quot;
+</I>&gt;<i>                   9)  Bootable iso image w/read-only root&quot;
+</I>&gt;<i>                   &quot;  -----    For testing only!     -----&quot;
+</I>&gt;<i>                   10) Read-write root on a single partition&quot;  &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Ok, I can integrate this and get any/all parameters stored and loaded
+</I>&gt;<i> fairly easily.  I'll try to get the parameters from your rd_dialog
+</I>&gt;<i> functions...any list you have would be appreciated...
+</I>&gt;<i> 
+</I>&gt;<i> The next step is to activate the Erase/Foramt command to handle all the
+</I>&gt;<i> various partitions; and the Load command must build the ramdisk images
+</I>&gt;<i> etc..
+</I>&gt;<i> 
+</I>&gt;<i> Does this look like something that would work for all different targets ? 
+</I>&gt;<i> Suggestions ??
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Ralph
+</I>
+While I have the author's attention,
+
+The current version builds the filesystem into projects/&lt;projectname&gt;/mnt/. 
+There's no note about where the filesystem is built (I discovered with
+find).  Also, if I mount a ramdisk/drive/device to the mountpoint, the
+filesystem build fails on a failure to make the directory.  Could you
+possibly make that specific mkdir check to see if its a mountpoint first?
+
+-David
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000078.html">Multiple Targets for PeeWee Linux
+</A></li>
+	<LI> Next message: <A HREF="000088.html">Multiple Targets for PeeWee Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#86">[ date ]</a>
+              <a href="thread.html#86">[ thread ]</a>
+              <a href="subject.html#86">[ subject ]</a>
+              <a href="author.html#86">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

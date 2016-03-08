@@ -1,0 +1,104 @@
+From peeweelinux@adis.on.ca  Thu Apr  1 10:27:47 2004
+From: peeweelinux@adis.on.ca (Pestka Christophe)
+Date: Thu, 01 Apr 2004 10:27:47 +0000
+Subject: [Peeweelinux] beginner questions
+Message-ID: <406BEEA3.6070603@innopsys.fr>
+
+Hi,
+
+    I' m new in PeeWeelinux, and there are some tricks which confuse me :
+
+       - is it possible to load PeeWeeLinux System on a single partition 
+(like hda8) rather than a whole diskwhen you do "Load File System onto 
+Target"?
+       - which boot system is used when you used an ext2 partition, is Lilo?
+       - I don' t arrive to work with an "Uncompressed ramdisk, boot 
+from ext2 partition" on a USB key.
+
+Thanks in advance for your response.
+
+Best regards.
+
+From peeweelinux@adis.on.ca  Mon Apr 12 06:16:27 2004
+From: peeweelinux@adis.on.ca (Ivan)
+Date: Mon, 12 Apr 2004 13:16:27 +0800
+Subject: [Peeweelinux] questions bout JVM, barcode scanner and wireless network
+Message-ID: <1081746987.407a262bea37e@webmail.jaring.my>
+
+hi all,
+
+  I'm new in PeeWee Linux. I got few questions for this OS. 
+- Which JVM are best to run on this OS ?
+- Is there any problems with serial port/USB barcode scanner ?
+- Howbout wireless network ?
+
+Thanks
+----------------------------------------------------------------
+This e-mail has been sent via JARING webmail at http://www.jaring.my
+
+From peeweelinux@adis.on.ca  Mon Apr 12 22:52:11 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Mon, 12 Apr 2004 14:52:11 -0700
+Subject: [Peeweelinux] questions bout JVM, barcode scanner and wireless
+ network
+In-Reply-To: <1081746987.407a262bea37e@webmail.jaring.my>
+References: <1081746987.407a262bea37e@webmail.jaring.my>
+Message-ID: <407B0F8B.6040201@fluid.com>
+
+Ivan wrote:
+> 
+> - Which JVM are best to run on this OS ?
+
+This will depend on your target device hardware -- we are lucky to use a 
+Geode 300Mhz which is i586-compatible, so we use the Sun JRE (with parts 
+cut out for size). Many people use the "J9" java engine for embedded 
+devices and say it works great, but I've never used it.
+
+> - Is there any problems with serial port/USB barcode scanner ?
+
+This is more of a question about the linux kernel -- you may have to 
+upgrade to 2.4 to get the right device driver for your hardware. I'd 
+carefully research what driver it uses, and what is stable where (in the 
+kernel).
+
+-te
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | http://www.fluid.com
+
+From peeweelinux@adis.on.ca  Wed Apr 14 11:15:02 2004
+From: peeweelinux@adis.on.ca (=?iso-8859-1?q?poubelle=20bin?=)
+Date: Wed, 14 Apr 2004 12:15:02 +0200 (CEST)
+Subject: [Peeweelinux] GTK ??
+Message-ID: <20040414101502.81389.qmail@web25201.mail.ukl.yahoo.com>
+
+--0-1442121798-1081937702=:81177
+Content-Type: text/plain; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+
+Is there a possibility to run make GTK programs for an embedded system installed with PeeWeeLinux ?
+
+I mean, can we install the GTK librairie ?
+Is it possible to develop a program with GTK on an other distribution (for example Knoppix), to compile it on an other plateforme and to take only the program compiled with the Knoppix-example on the embedded ?
+
+Thanks in advance !
+
+		
+---------------------------------
+Yahoo! Mail : votre e-mail personnel et gratuit qui vous suit partout !
+Créez votre Yahoo! Mail
+
+Dialoguez en direct avec vos amis grâce à Yahoo! Messenger !
+--0-1442121798-1081937702=:81177
+Content-Type: text/html; charset=iso-8859-1
+Content-Transfer-Encoding: 8bit
+
+<DIV>Is there a possibility to run make GTK programs for an embedded system installed with PeeWeeLinux ?<BR><BR>I mean, can we install the GTK librairie ?<BR>Is it possible to develop a program with GTK on an other distribution (for example Knoppix), to compile it on an other plateforme and to take only the program compiled with the Knoppix-example on the embedded ?<BR><BR>Thanks in advance !</DIV><p>
+		<hr size=1>
+Yahoo! Mail : votre e-mail personnel et gratuit qui vous suit partout !
+<br><a href="http://fr.rd.yahoo.com/mail/taglines/*http://fr.rd.yahoo.com/mail/mail_taglines/default/*http://fr.benefits.yahoo.com/">Créez votre Yahoo! Mail</a>
+<br><br>
+Dialoguez en direct avec vos amis grâce à <a href="http://fr.rd.yahoo.com/mail/taglines/*http://fr.rd.yahoo.com/messenger/mail_taglines/default/*http://fr.messenger.yahoo.com/">Yahoo! Messenger !</a>
+--0-1442121798-1081937702=:81177--
+

@@ -1,0 +1,4699 @@
+From peeweelinux@adis.on.ca  Thu Jul  4 17:37:31 2002
+From: peeweelinux@adis.on.ca (Justin Fretwell)
+Date: Thu, 4 Jul 2002 17:37:31 +0100
+Subject: [Peeweelinux] lilo message howto?
+In-Reply-To: <200206281701.g5SH14303361@yoda.adis.on.ca>
+References: <200206281701.g5SH14303361@yoda.adis.on.ca>
+Message-ID: <200207041636.QAA30964@hamster.akhter.com>
+
+Where could i possibly add the message option in lilo so that i can use a 
+picture backdrop?
+
+in peewee the lilo.conf is generated somewhere but where and how can i make 
+my message=<some picture> work?
+
+thanks
+Justin
+
+From peeweelinux@adis.on.ca  Fri Jul  5 09:17:58 2002
+From: peeweelinux@adis.on.ca (Justin Fretwell)
+Date: Fri, 5 Jul 2002 09:17:58 +0100
+Subject: [Peeweelinux] X windows system problem.www.lin
+In-Reply-To: <200206281701.g5SH14303361@yoda.adis.on.ca>
+References: <200206281701.g5SH14303361@yoda.adis.on.ca>
+Message-ID: <200207050816.IAA03187@hamster.akhter.com>
+
+hello again,
+
+I have another problem which isnt quite peewees fault.
+
+
+With my distribution i have a perl/Tk script run as soon as you log in.
+ 
+the script runs fine. the problem i am having is when the script starts up 
+(its a dialogue box) it will only come into focus when i click the mouse 
+button on some position on the screen.
+ 
+what i want the script to do is to startup and come into focus in the middle 
+of the screen with no mouse clicking and for it to be locked into that 
+posisition so that people cant then move it around the screen because for 
+some reason when that happens the dialogue doesnt want to refresh so you have 
+to use twm to restart the script.
+ 
+so anyone know how to:
+ 
+a) make the script appear in focus and locked to the middle of the screen? or
+ b) if you cant lock it then how to make the screen refresh when its moved so 
+i dont have to restart the app all the time?
+
+thanks
+Justin
+
+From peeweelinux@adis.on.ca  Mon Jul  8 03:01:44 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Sun, 7 Jul 2002 19:01:44 -0700
+Subject: [Peeweelinux] XFree86 setup help
+Message-ID: <000a01c22623$693ecf30$1345a640@anuff.com>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0007_01C225E8.BCADEAB0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+I've been trying to get XFree86 running but I haven't had any luck.  Can =
+someone please post the steps necessary?
+
+Ed
+
+------=_NextPart_000_0007_01C225E8.BCADEAB0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.2716.2200" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>I've been trying to get XFree86 running =
+but I=20
+haven't had any luck.&nbsp; Can someone please post the steps=20
+necessary?</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Ed</FONT></DIV></BODY></HTML>
+
+------=_NextPart_000_0007_01C225E8.BCADEAB0--
+
+
+From peeweelinux@adis.on.ca  Mon Jul  8 03:11:27 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Sun, 7 Jul 2002 19:11:27 -0700
+Subject: [Peeweelinux] XFree86 setup help
+Message-ID: <002401c22624$c46c8680$1345a640@anuff.com>
+
+(sorry for the previously HTML-formatted email)
+
+I've been trying to get XFree86 running but I haven't had any luck.  Can
+someone please post the steps necessary?
+
+Ed
+
+
+From peeweelinux@adis.on.ca  Mon Jul  8 11:07:48 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Mon, 8 Jul 2002 11:07:48 +0100
+Subject: [Peeweelinux] XFree86 setup help
+In-Reply-To: <002401c22624$c46c8680$1345a640@anuff.com>
+Message-ID: <000201c2266f$77e532d0$0100007f@ricardo>
+
+I was able to setup XFree86 correctly out of the box. can you post your
+concrete troubles ?
+
+
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+Sent: segunda-feira, 8 de Julho de 2002 3:11
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] XFree86 setup help
+
+
+(sorry for the previously HTML-formatted email)
+
+I've been trying to get XFree86 running but I haven't had any luck.  Can
+someone please post the steps necessary?
+
+Ed
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Mon Jul  8 17:46:27 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Mon, 8 Jul 2002 09:46:27 -0700
+Subject: [Peeweelinux] XFree86 setup help
+References: <000201c2266f$77e532d0$0100007f@ricardo>
+Message-ID: <000801c2269f$03b89840$1345a640@anuff.com>
+
+Perhaps I'm not including all the relevant packages?  What packages did you
+select in order to get it to work?  These are the packages I used:
+
+XFree86
+XFree86-100dpi-fonts,
+XFree86-75dpi-fonts
+XFree86-FBDev
+XFree86-libs
+XFree86-stuff,
+XFree86-twm
+XFree86-xdm
+XFree86-xfs
+xpm
+
+Ed
+
+----- Original Message -----
+From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Monday, July 08, 2002 3:07 AM
+Subject: RE: [Peeweelinux] XFree86 setup help
+
+
+> I was able to setup XFree86 correctly out of the box. can you post your
+> concrete troubles ?
+>
+>
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> Sent: segunda-feira, 8 de Julho de 2002 3:11
+> To: peeweelinux@adis.on.ca
+> Subject: [Peeweelinux] XFree86 setup help
+>
+>
+> (sorry for the previously HTML-formatted email)
+>
+> I've been trying to get XFree86 running but I haven't had any luck.  Can
+> someone please post the steps necessary?
+>
+> Ed
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Mon Jul  8 19:08:39 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Mon, 8 Jul 2002 19:08:39 +0100
+Subject: [Peeweelinux] XFree86 setup help
+In-Reply-To: <000801c2269f$03b89840$1345a640@anuff.com>
+Message-ID: <003d01c226b2$c9205a10$56b812d4@ricardo>
+
+looks fine. what's your error ? did you notice if the servers are installed,
+or if they are in individual packages ?
+
+one thing I noticed was the X symlink is not created, so try to run the
+XServer with XFree86_SVGA (for example, if you use this server)
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+Sent: segunda-feira, 8 de Julho de 2002 17:46
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] XFree86 setup help
+
+
+Perhaps I'm not including all the relevant packages?  What packages did you
+select in order to get it to work?  These are the packages I used:
+
+XFree86
+XFree86-100dpi-fonts,
+XFree86-75dpi-fonts
+XFree86-FBDev
+XFree86-libs
+XFree86-stuff,
+XFree86-twm
+XFree86-xdm
+XFree86-xfs
+xpm
+
+Ed
+
+----- Original Message -----
+From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Monday, July 08, 2002 3:07 AM
+Subject: RE: [Peeweelinux] XFree86 setup help
+
+
+> I was able to setup XFree86 correctly out of the box. can you post your
+> concrete troubles ?
+>
+>
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> Sent: segunda-feira, 8 de Julho de 2002 3:11
+> To: peeweelinux@adis.on.ca
+> Subject: [Peeweelinux] XFree86 setup help
+>
+>
+> (sorry for the previously HTML-formatted email)
+>
+> I've been trying to get XFree86 running but I haven't had any luck.  Can
+> someone please post the steps necessary?
+>
+> Ed
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Mon Jul  8 21:27:46 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Mon, 8 Jul 2002 13:27:46 -0700
+Subject: [Peeweelinux] XFree86 setup help
+References: <003d01c226b2$c9205a10$56b812d4@ricardo>
+Message-ID: <001d01c226bd$ebf56e80$1345a640@anuff.com>
+
+I've created a symlink from usr/X11R6/bin/X -> /usr/X11R6/bin/XF86_SVGA and
+tried to start with startx and I get the following errors:
+usr/X11R6/bin/X: error in loading shared libraries: libm.so.6: cannot open
+shared object file: No such file or directory
+_X11TransSocketUNIXConnect: Can't connect: errno = 111
+
+Thanks
+
+Ed
+
+----- Original Message -----
+From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Monday, July 08, 2002 11:08 AM
+Subject: RE: [Peeweelinux] XFree86 setup help
+
+
+> looks fine. what's your error ? did you notice if the servers are
+installed,
+> or if they are in individual packages ?
+>
+> one thing I noticed was the X symlink is not created, so try to run the
+> XServer with XFree86_SVGA (for example, if you use this server)
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> Sent: segunda-feira, 8 de Julho de 2002 17:46
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] XFree86 setup help
+>
+>
+> Perhaps I'm not including all the relevant packages?  What packages did
+you
+> select in order to get it to work?  These are the packages I used:
+>
+> XFree86
+> XFree86-100dpi-fonts,
+> XFree86-75dpi-fonts
+> XFree86-FBDev
+> XFree86-libs
+> XFree86-stuff,
+> XFree86-twm
+> XFree86-xdm
+> XFree86-xfs
+> xpm
+>
+> Ed
+>
+> ----- Original Message -----
+> From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> To: <peeweelinux@adis.on.ca>
+> Sent: Monday, July 08, 2002 3:07 AM
+> Subject: RE: [Peeweelinux] XFree86 setup help
+>
+>
+> > I was able to setup XFree86 correctly out of the box. can you post your
+> > concrete troubles ?
+> >
+> >
+> >
+> > -----Original Message-----
+> > From: peeweelinux-admin@adis.on.ca
+> > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > Sent: segunda-feira, 8 de Julho de 2002 3:11
+> > To: peeweelinux@adis.on.ca
+> > Subject: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > (sorry for the previously HTML-formatted email)
+> >
+> > I've been trying to get XFree86 running but I haven't had any luck.  Can
+> > someone please post the steps necessary?
+> >
+> > Ed
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Mon Jul  8 23:36:09 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Mon, 8 Jul 2002 23:36:09 +0100
+Subject: [Peeweelinux] XFree86 setup help
+In-Reply-To: <001d01c226bd$ebf56e80$1345a640@anuff.com>
+Message-ID: <001001c226cf$dbd09180$0100007f@ricardo>
+
+can you get it working calling the binary directly ?
+do you have XFS running ?
+do you have libm ? if not, perhaps you're missing packages, it's easy
+finding out which, with the peewee gui
+
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+Sent: segunda-feira, 8 de Julho de 2002 21:28
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] XFree86 setup help
+
+
+I've created a symlink from usr/X11R6/bin/X -> /usr/X11R6/bin/XF86_SVGA and
+tried to start with startx and I get the following errors:
+usr/X11R6/bin/X: error in loading shared libraries: libm.so.6: cannot open
+shared object file: No such file or directory
+_X11TransSocketUNIXConnect: Can't connect: errno = 111
+
+Thanks
+
+Ed
+
+----- Original Message -----
+From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Monday, July 08, 2002 11:08 AM
+Subject: RE: [Peeweelinux] XFree86 setup help
+
+
+> looks fine. what's your error ? did you notice if the servers are
+installed,
+> or if they are in individual packages ?
+>
+> one thing I noticed was the X symlink is not created, so try to run the
+> XServer with XFree86_SVGA (for example, if you use this server)
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> Sent: segunda-feira, 8 de Julho de 2002 17:46
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] XFree86 setup help
+>
+>
+> Perhaps I'm not including all the relevant packages?  What packages did
+you
+> select in order to get it to work?  These are the packages I used:
+>
+> XFree86
+> XFree86-100dpi-fonts,
+> XFree86-75dpi-fonts
+> XFree86-FBDev
+> XFree86-libs
+> XFree86-stuff,
+> XFree86-twm
+> XFree86-xdm
+> XFree86-xfs
+> xpm
+>
+> Ed
+>
+> ----- Original Message -----
+> From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> To: <peeweelinux@adis.on.ca>
+> Sent: Monday, July 08, 2002 3:07 AM
+> Subject: RE: [Peeweelinux] XFree86 setup help
+>
+>
+> > I was able to setup XFree86 correctly out of the box. can you post your
+> > concrete troubles ?
+> >
+> >
+> >
+> > -----Original Message-----
+> > From: peeweelinux-admin@adis.on.ca
+> > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > Sent: segunda-feira, 8 de Julho de 2002 3:11
+> > To: peeweelinux@adis.on.ca
+> > Subject: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > (sorry for the previously HTML-formatted email)
+> >
+> > I've been trying to get XFree86 running but I haven't had any luck.  Can
+> > someone please post the steps necessary?
+> >
+> > Ed
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Jul  9 09:48:22 2002
+From: peeweelinux@adis.on.ca (Justin Fretwell)
+Date: Tue, 9 Jul 2002 09:48:22 +0100
+Subject: [Peeweelinux] x setup.
+Message-ID: <200207090845.IAA30905@hamster.akhter.com>
+
+Perhaps I'm not including all the relevant packages?  What packages did you
+select in order to get it to work?  These are the packages I used:
+
+XFree86
+XFree86-100dpi-fonts,
+XFree86-75dpi-fonts
+XFree86-FBDev
+XFree86-libs
+XFree86-stuff,
+XFree86-twm
+XFree86-xdm
+XFree86-xfs
+xpm
+
+
+Those are correct packages.  have you also included the X libraries?
+
+
+If you are trying to make it work using startx thats different.
+
+From peeweelinux@adis.on.ca  Tue Jul  9 14:45:16 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Tue, 09 Jul 2002 09:45:16 -0400
+Subject: [Peeweelinux] X windows system problem.www.lin
+Message-ID: <sd2ab0cb.053@qatech.com>
+
+Hello,
+
+I have an embedded system using peewee and X. I want a GUI to fire up (a statically linked gtk app) when I boot the PC and stay there in focus all the time without anyone being able to "send it to the background". This sounds very familiar with your application. 
+
+What I do is in the default runlevel I SU to a certain user, say autoboot for nomenclature. In the autoboot users bash profile, I have a command for startx. Then I put a .xinitrc file in the users directory so that that gets used instead of the default system xinit script. In short it looks like this:
+
+#/home/autoboot/.profile
+~./bashrc
+
+#/home/autoboot/.bashrc
+/usr/X11R6/bin/startx
+
+#/home/autoboot/.xinitrc
+/usr/bin/YourXAppToRun
+
+Make sure that all the paths are right of course. For the .xinitrc file I copied the one that came with Peewee and then modified by removing all calls to xterm and xclock and other programs (including window manager) and just inserted a call to my app. Everything works fine for me, I never loose focus and since it is the only app I need to run everythign is fine. 
+
+What I have in this example is basically a generic autobooting X server for VGA16 (why can't every video card just support VESA standard VGA256!!) You could replace my app with any app you want, so I was wondering if anyone would want to have an example of my project after its been genericized. Let me know if anyone is interested. 
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Tue Jul  9 14:59:59 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Tue, 9 Jul 2002 14:59:59 +0100
+Subject: [Peeweelinux] X windows system problem.www.lin
+In-Reply-To: <sd2ab0cb.053@qatech.com>
+Message-ID: <000d01c22750$eab56aa0$71b812d4@ricardo>
+
+I do this in a different manner, I edit a runlevel (usually 4), and add a
+service(my application). I guess both are good ways to do it.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ken Emmons, Jr.
+Sent: terca-feira, 9 de Julho de 2002 14:45
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] X windows system problem.www.lin
+
+
+Hello,
+
+I have an embedded system using peewee and X. I want a GUI to fire up (a
+statically linked gtk app) when I boot the PC and stay there in focus all
+the time without anyone being able to "send it to the background". This
+sounds very familiar with your application.
+
+What I do is in the default runlevel I SU to a certain user, say autoboot
+for nomenclature. In the autoboot users bash profile, I have a command for
+startx. Then I put a .xinitrc file in the users directory so that that gets
+used instead of the default system xinit script. In short it looks like
+this:
+
+#/home/autoboot/.profile
+~./bashrc
+
+#/home/autoboot/.bashrc
+/usr/X11R6/bin/startx
+
+#/home/autoboot/.xinitrc
+/usr/bin/YourXAppToRun
+
+Make sure that all the paths are right of course. For the .xinitrc file I
+copied the one that came with Peewee and then modified by removing all calls
+to xterm and xclock and other programs (including window manager) and just
+inserted a call to my app. Everything works fine for me, I never loose focus
+and since it is the only app I need to run everythign is fine.
+
+What I have in this example is basically a generic autobooting X server for
+VGA16 (why can't every video card just support VESA standard VGA256!!) You
+could replace my app with any app you want, so I was wondering if anyone
+would want to have an example of my project after its been genericized. Let
+me know if anyone is interested.
+
+~Ken
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Jul  9 15:13:39 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Tue, 09 Jul 2002 10:13:39 -0400
+Subject: [Peeweelinux] X windows system problem.www.lin
+Message-ID: <sd2ab779.064@qatech.com>
+
+Hello,
+
+In this example I need to log in a user and then fire up an X session. I guess you could do this in a service also by su to user and then run X and application, but using the user facilities seems to work good in this case for me.
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Tue Jul  9 17:05:12 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Tue, 9 Jul 2002 09:05:12 -0700
+Subject: [Peeweelinux] XFree86 setup help
+References: <001001c226cf$dbd09180$0100007f@ricardo>
+Message-ID: <002201c22762$6f5c8d90$1345a640@anuff.com>
+
+I've made some progress.  Here's what I've done so far:
+
+1) Created the /etc/X11/XF86Config file
+2) Link XF86_SVGA -> X
+3) Added libm and libdl libraries
+
+It now makes some progess starting with startx but dies with:
+FontTransSocketUNIXConnect : can't connect : errno = 111
+Failed to set default font path 'unix:7100'
+could not open default font 'fixed'
+
+I assume this means that I'm either missing a required font or I need to
+change the FontPath in the XF86Config to "unix:-1"?
+
+Ed
+
+----- Original Message -----
+From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Monday, July 08, 2002 3:36 PM
+Subject: RE: [Peeweelinux] XFree86 setup help
+
+
+> can you get it working calling the binary directly ?
+> do you have XFS running ?
+> do you have libm ? if not, perhaps you're missing packages, it's easy
+> finding out which, with the peewee gui
+>
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> Sent: segunda-feira, 8 de Julho de 2002 21:28
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] XFree86 setup help
+>
+>
+> I've created a symlink from usr/X11R6/bin/X -> /usr/X11R6/bin/XF86_SVGA
+and
+> tried to start with startx and I get the following errors:
+> usr/X11R6/bin/X: error in loading shared libraries: libm.so.6: cannot open
+> shared object file: No such file or directory
+> _X11TransSocketUNIXConnect: Can't connect: errno = 111
+>
+> Thanks
+>
+> Ed
+>
+> ----- Original Message -----
+> From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> To: <peeweelinux@adis.on.ca>
+> Sent: Monday, July 08, 2002 11:08 AM
+> Subject: RE: [Peeweelinux] XFree86 setup help
+>
+>
+> > looks fine. what's your error ? did you notice if the servers are
+> installed,
+> > or if they are in individual packages ?
+> >
+> > one thing I noticed was the X symlink is not created, so try to run the
+> > XServer with XFree86_SVGA (for example, if you use this server)
+> >
+> > -----Original Message-----
+> > From: peeweelinux-admin@adis.on.ca
+> > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > Sent: segunda-feira, 8 de Julho de 2002 17:46
+> > To: peeweelinux@adis.on.ca
+> > Subject: Re: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > Perhaps I'm not including all the relevant packages?  What packages did
+> you
+> > select in order to get it to work?  These are the packages I used:
+> >
+> > XFree86
+> > XFree86-100dpi-fonts,
+> > XFree86-75dpi-fonts
+> > XFree86-FBDev
+> > XFree86-libs
+> > XFree86-stuff,
+> > XFree86-twm
+> > XFree86-xdm
+> > XFree86-xfs
+> > xpm
+> >
+> > Ed
+> >
+> > ----- Original Message -----
+> > From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> > To: <peeweelinux@adis.on.ca>
+> > Sent: Monday, July 08, 2002 3:07 AM
+> > Subject: RE: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > > I was able to setup XFree86 correctly out of the box. can you post
+your
+> > > concrete troubles ?
+> > >
+> > >
+> > >
+> > > -----Original Message-----
+> > > From: peeweelinux-admin@adis.on.ca
+> > > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > > Sent: segunda-feira, 8 de Julho de 2002 3:11
+> > > To: peeweelinux@adis.on.ca
+> > > Subject: [Peeweelinux] XFree86 setup help
+> > >
+> > >
+> > > (sorry for the previously HTML-formatted email)
+> > >
+> > > I've been trying to get XFree86 running but I haven't had any luck.
+Can
+> > > someone please post the steps necessary?
+> > >
+> > > Ed
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Tue Jul  9 17:40:21 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Tue, 9 Jul 2002 09:40:21 -0700
+Subject: [Peeweelinux] XFree86 setup help
+References: <001001c226cf$dbd09180$0100007f@ricardo> <002201c22762$6f5c8d90$1345a640@anuff.com>
+Message-ID: <003b01c22767$513bbf20$1345a640@anuff.com>
+
+Another update - sorry to bother people with this, but maybe my experience
+will help someone out in the future.
+
+I fixed the font issue by changing the FontPath entry in XF86Config to read:
+
+FontPath "/usr/X11R6/lib/X11/fonts/misc/"
+FontPath "/usr/X11R6/lib/X11/fonts/75dpi/"
+FontPath "/usr/X11R6/lib/X11/fonts/100dpi/"
+
+I then found I needed to add libncurses.
+
+Now startx gets further, draws the desktop and then dies with "xterm: no
+available ptys".
+
+Ed
+
+----- Original Message -----
+From: "Ed Anuff" <ed@anuff.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Tuesday, July 09, 2002 9:05 AM
+Subject: Re: [Peeweelinux] XFree86 setup help
+
+
+> I've made some progress.  Here's what I've done so far:
+>
+> 1) Created the /etc/X11/XF86Config file
+> 2) Link XF86_SVGA -> X
+> 3) Added libm and libdl libraries
+>
+> It now makes some progess starting with startx but dies with:
+> FontTransSocketUNIXConnect : can't connect : errno = 111
+> Failed to set default font path 'unix:7100'
+> could not open default font 'fixed'
+>
+> I assume this means that I'm either missing a required font or I need to
+> change the FontPath in the XF86Config to "unix:-1"?
+>
+> Ed
+>
+> ----- Original Message -----
+> From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> To: <peeweelinux@adis.on.ca>
+> Sent: Monday, July 08, 2002 3:36 PM
+> Subject: RE: [Peeweelinux] XFree86 setup help
+>
+>
+> > can you get it working calling the binary directly ?
+> > do you have XFS running ?
+> > do you have libm ? if not, perhaps you're missing packages, it's easy
+> > finding out which, with the peewee gui
+> >
+> >
+> > -----Original Message-----
+> > From: peeweelinux-admin@adis.on.ca
+> > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > Sent: segunda-feira, 8 de Julho de 2002 21:28
+> > To: peeweelinux@adis.on.ca
+> > Subject: Re: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > I've created a symlink from usr/X11R6/bin/X -> /usr/X11R6/bin/XF86_SVGA
+> and
+> > tried to start with startx and I get the following errors:
+> > usr/X11R6/bin/X: error in loading shared libraries: libm.so.6: cannot
+open
+> > shared object file: No such file or directory
+> > _X11TransSocketUNIXConnect: Can't connect: errno = 111
+> >
+> > Thanks
+> >
+> > Ed
+> >
+> > ----- Original Message -----
+> > From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> > To: <peeweelinux@adis.on.ca>
+> > Sent: Monday, July 08, 2002 11:08 AM
+> > Subject: RE: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > > looks fine. what's your error ? did you notice if the servers are
+> > installed,
+> > > or if they are in individual packages ?
+> > >
+> > > one thing I noticed was the X symlink is not created, so try to run
+the
+> > > XServer with XFree86_SVGA (for example, if you use this server)
+> > >
+> > > -----Original Message-----
+> > > From: peeweelinux-admin@adis.on.ca
+> > > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > > Sent: segunda-feira, 8 de Julho de 2002 17:46
+> > > To: peeweelinux@adis.on.ca
+> > > Subject: Re: [Peeweelinux] XFree86 setup help
+> > >
+> > >
+> > > Perhaps I'm not including all the relevant packages?  What packages
+did
+> > you
+> > > select in order to get it to work?  These are the packages I used:
+> > >
+> > > XFree86
+> > > XFree86-100dpi-fonts,
+> > > XFree86-75dpi-fonts
+> > > XFree86-FBDev
+> > > XFree86-libs
+> > > XFree86-stuff,
+> > > XFree86-twm
+> > > XFree86-xdm
+> > > XFree86-xfs
+> > > xpm
+> > >
+> > > Ed
+> > >
+> > > ----- Original Message -----
+> > > From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> > > To: <peeweelinux@adis.on.ca>
+> > > Sent: Monday, July 08, 2002 3:07 AM
+> > > Subject: RE: [Peeweelinux] XFree86 setup help
+> > >
+> > >
+> > > > I was able to setup XFree86 correctly out of the box. can you post
+> your
+> > > > concrete troubles ?
+> > > >
+> > > >
+> > > >
+> > > > -----Original Message-----
+> > > > From: peeweelinux-admin@adis.on.ca
+> > > > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > > > Sent: segunda-feira, 8 de Julho de 2002 3:11
+> > > > To: peeweelinux@adis.on.ca
+> > > > Subject: [Peeweelinux] XFree86 setup help
+> > > >
+> > > >
+> > > > (sorry for the previously HTML-formatted email)
+> > > >
+> > > > I've been trying to get XFree86 running but I haven't had any luck.
+> Can
+> > > > someone please post the steps necessary?
+> > > >
+> > > > Ed
+> > > >
+> > > > _______________________________________________
+> > > > Peeweelinux mailing list
+> > > > Peeweelinux@adis.on.ca
+> > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > >
+> > > > _______________________________________________
+> > > > Peeweelinux mailing list
+> > > > Peeweelinux@adis.on.ca
+> > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > >
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Tue Jul  9 17:53:40 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Tue, 9 Jul 2002 09:53:40 -0700
+Subject: [Peeweelinux] XFree86 setup help
+References: <001001c226cf$dbd09180$0100007f@ricardo>    <002201c22762$6f5c8d90$1345a640@anuff.com> <003b01c22767$513bbf20$1345a640@anuff.com>
+Message-ID: <004201c22769$2f6e43c0$1345a640@anuff.com>
+
+Ok, success!  I just needed to at the pty entries in the "Configure Project
+File System" menu and it works.
+
+Just to recap, required steps:
+
+1) Created the /etc/X11/XF86Config file with FontPath set to the following:
+    FontPath "/usr/X11R6/lib/X11/fonts/misc/"
+    FontPath "/usr/X11R6/lib/X11/fonts/75dpi/"
+    FontPath "/usr/X11R6/lib/X11/fonts/100dpi/"
+
+2) Link XF86_SVGA -> X
+
+3) Added libm, libdl, libncurses libraries
+
+4) Added necessary ptys in /dev
+
+Ed
+
+----- Original Message -----
+From: "Ed Anuff" <ed@anuff.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Tuesday, July 09, 2002 9:40 AM
+Subject: Re: [Peeweelinux] XFree86 setup help
+
+
+> Another update - sorry to bother people with this, but maybe my experience
+> will help someone out in the future.
+>
+> I fixed the font issue by changing the FontPath entry in XF86Config to
+read:
+>
+> FontPath "/usr/X11R6/lib/X11/fonts/misc/"
+> FontPath "/usr/X11R6/lib/X11/fonts/75dpi/"
+> FontPath "/usr/X11R6/lib/X11/fonts/100dpi/"
+>
+> I then found I needed to add libncurses.
+>
+> Now startx gets further, draws the desktop and then dies with "xterm: no
+> available ptys".
+>
+> Ed
+>
+> ----- Original Message -----
+> From: "Ed Anuff" <ed@anuff.com>
+> To: <peeweelinux@adis.on.ca>
+> Sent: Tuesday, July 09, 2002 9:05 AM
+> Subject: Re: [Peeweelinux] XFree86 setup help
+>
+>
+> > I've made some progress.  Here's what I've done so far:
+> >
+> > 1) Created the /etc/X11/XF86Config file
+> > 2) Link XF86_SVGA -> X
+> > 3) Added libm and libdl libraries
+> >
+> > It now makes some progess starting with startx but dies with:
+> > FontTransSocketUNIXConnect : can't connect : errno = 111
+> > Failed to set default font path 'unix:7100'
+> > could not open default font 'fixed'
+> >
+> > I assume this means that I'm either missing a required font or I need to
+> > change the FontPath in the XF86Config to "unix:-1"?
+> >
+> > Ed
+> >
+> > ----- Original Message -----
+> > From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> > To: <peeweelinux@adis.on.ca>
+> > Sent: Monday, July 08, 2002 3:36 PM
+> > Subject: RE: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > > can you get it working calling the binary directly ?
+> > > do you have XFS running ?
+> > > do you have libm ? if not, perhaps you're missing packages, it's easy
+> > > finding out which, with the peewee gui
+> > >
+> > >
+> > > -----Original Message-----
+> > > From: peeweelinux-admin@adis.on.ca
+> > > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > > Sent: segunda-feira, 8 de Julho de 2002 21:28
+> > > To: peeweelinux@adis.on.ca
+> > > Subject: Re: [Peeweelinux] XFree86 setup help
+> > >
+> > >
+> > > I've created a symlink from usr/X11R6/bin/X ->
+/usr/X11R6/bin/XF86_SVGA
+> > and
+> > > tried to start with startx and I get the following errors:
+> > > usr/X11R6/bin/X: error in loading shared libraries: libm.so.6: cannot
+> open
+> > > shared object file: No such file or directory
+> > > _X11TransSocketUNIXConnect: Can't connect: errno = 111
+> > >
+> > > Thanks
+> > >
+> > > Ed
+> > >
+> > > ----- Original Message -----
+> > > From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> > > To: <peeweelinux@adis.on.ca>
+> > > Sent: Monday, July 08, 2002 11:08 AM
+> > > Subject: RE: [Peeweelinux] XFree86 setup help
+> > >
+> > >
+> > > > looks fine. what's your error ? did you notice if the servers are
+> > > installed,
+> > > > or if they are in individual packages ?
+> > > >
+> > > > one thing I noticed was the X symlink is not created, so try to run
+> the
+> > > > XServer with XFree86_SVGA (for example, if you use this server)
+> > > >
+> > > > -----Original Message-----
+> > > > From: peeweelinux-admin@adis.on.ca
+> > > > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > > > Sent: segunda-feira, 8 de Julho de 2002 17:46
+> > > > To: peeweelinux@adis.on.ca
+> > > > Subject: Re: [Peeweelinux] XFree86 setup help
+> > > >
+> > > >
+> > > > Perhaps I'm not including all the relevant packages?  What packages
+> did
+> > > you
+> > > > select in order to get it to work?  These are the packages I used:
+> > > >
+> > > > XFree86
+> > > > XFree86-100dpi-fonts,
+> > > > XFree86-75dpi-fonts
+> > > > XFree86-FBDev
+> > > > XFree86-libs
+> > > > XFree86-stuff,
+> > > > XFree86-twm
+> > > > XFree86-xdm
+> > > > XFree86-xfs
+> > > > xpm
+> > > >
+> > > > Ed
+> > > >
+> > > > ----- Original Message -----
+> > > > From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> > > > To: <peeweelinux@adis.on.ca>
+> > > > Sent: Monday, July 08, 2002 3:07 AM
+> > > > Subject: RE: [Peeweelinux] XFree86 setup help
+> > > >
+> > > >
+> > > > > I was able to setup XFree86 correctly out of the box. can you post
+> > your
+> > > > > concrete troubles ?
+> > > > >
+> > > > >
+> > > > >
+> > > > > -----Original Message-----
+> > > > > From: peeweelinux-admin@adis.on.ca
+> > > > > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > > > > Sent: segunda-feira, 8 de Julho de 2002 3:11
+> > > > > To: peeweelinux@adis.on.ca
+> > > > > Subject: [Peeweelinux] XFree86 setup help
+> > > > >
+> > > > >
+> > > > > (sorry for the previously HTML-formatted email)
+> > > > >
+> > > > > I've been trying to get XFree86 running but I haven't had any
+luck.
+> > Can
+> > > > > someone please post the steps necessary?
+> > > > >
+> > > > > Ed
+> > > > >
+> > > > > _______________________________________________
+> > > > > Peeweelinux mailing list
+> > > > > Peeweelinux@adis.on.ca
+> > > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > > >
+> > > > > _______________________________________________
+> > > > > Peeweelinux mailing list
+> > > > > Peeweelinux@adis.on.ca
+> > > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > > >
+> > > >
+> > > > _______________________________________________
+> > > > Peeweelinux mailing list
+> > > > Peeweelinux@adis.on.ca
+> > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > >
+> > > > _______________________________________________
+> > > > Peeweelinux mailing list
+> > > > Peeweelinux@adis.on.ca
+> > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > >
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Tue Jul  9 17:59:37 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Tue, 09 Jul 2002 12:59:37 -0400
+Subject: [Peeweelinux] XFree86 setup help
+Message-ID: <sd2ade4c.011@qatech.com>
+
+the pty problem is not a pty problem, but another missing xfree86 package. I cant remember which one it was, but I remember the package description was somehting I originally thought I didn't need.
+
+~Ken
+
+
+
+From peeweelinux@adis.on.ca  Tue Jul  9 21:10:12 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Tue, 9 Jul 2002 21:10:12 +0100
+Subject: [Peeweelinux] XFree86 setup help
+In-Reply-To: <002201c22762$6f5c8d90$1345a640@anuff.com>
+Message-ID: <000a01c22784$a22eaf10$0201a8c0@ricardo>
+
+it means you are not running xfs (X font server).
+
+there is a peewee package for xfs, you have to select it, it will run out of
+the box.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+Sent: terça-feira, 9 de Julho de 2002 17:05
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] XFree86 setup help
+
+
+I've made some progress.  Here's what I've done so far:
+
+1) Created the /etc/X11/XF86Config file
+2) Link XF86_SVGA -> X
+3) Added libm and libdl libraries
+
+It now makes some progess starting with startx but dies with:
+FontTransSocketUNIXConnect : can't connect : errno = 111
+Failed to set default font path 'unix:7100'
+could not open default font 'fixed'
+
+I assume this means that I'm either missing a required font or I need to
+change the FontPath in the XF86Config to "unix:-1"?
+
+Ed
+
+----- Original Message -----
+From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Monday, July 08, 2002 3:36 PM
+Subject: RE: [Peeweelinux] XFree86 setup help
+
+
+> can you get it working calling the binary directly ?
+> do you have XFS running ?
+> do you have libm ? if not, perhaps you're missing packages, it's easy
+> finding out which, with the peewee gui
+>
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> Sent: segunda-feira, 8 de Julho de 2002 21:28
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] XFree86 setup help
+>
+>
+> I've created a symlink from usr/X11R6/bin/X -> /usr/X11R6/bin/XF86_SVGA
+and
+> tried to start with startx and I get the following errors:
+> usr/X11R6/bin/X: error in loading shared libraries: libm.so.6: cannot open
+> shared object file: No such file or directory
+> _X11TransSocketUNIXConnect: Can't connect: errno = 111
+>
+> Thanks
+>
+> Ed
+>
+> ----- Original Message -----
+> From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> To: <peeweelinux@adis.on.ca>
+> Sent: Monday, July 08, 2002 11:08 AM
+> Subject: RE: [Peeweelinux] XFree86 setup help
+>
+>
+> > looks fine. what's your error ? did you notice if the servers are
+> installed,
+> > or if they are in individual packages ?
+> >
+> > one thing I noticed was the X symlink is not created, so try to run the
+> > XServer with XFree86_SVGA (for example, if you use this server)
+> >
+> > -----Original Message-----
+> > From: peeweelinux-admin@adis.on.ca
+> > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > Sent: segunda-feira, 8 de Julho de 2002 17:46
+> > To: peeweelinux@adis.on.ca
+> > Subject: Re: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > Perhaps I'm not including all the relevant packages?  What packages did
+> you
+> > select in order to get it to work?  These are the packages I used:
+> >
+> > XFree86
+> > XFree86-100dpi-fonts,
+> > XFree86-75dpi-fonts
+> > XFree86-FBDev
+> > XFree86-libs
+> > XFree86-stuff,
+> > XFree86-twm
+> > XFree86-xdm
+> > XFree86-xfs
+> > xpm
+> >
+> > Ed
+> >
+> > ----- Original Message -----
+> > From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> > To: <peeweelinux@adis.on.ca>
+> > Sent: Monday, July 08, 2002 3:07 AM
+> > Subject: RE: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > > I was able to setup XFree86 correctly out of the box. can you post
+your
+> > > concrete troubles ?
+> > >
+> > >
+> > >
+> > > -----Original Message-----
+> > > From: peeweelinux-admin@adis.on.ca
+> > > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > > Sent: segunda-feira, 8 de Julho de 2002 3:11
+> > > To: peeweelinux@adis.on.ca
+> > > Subject: [Peeweelinux] XFree86 setup help
+> > >
+> > >
+> > > (sorry for the previously HTML-formatted email)
+> > >
+> > > I've been trying to get XFree86 running but I haven't had any luck.
+Can
+> > > someone please post the steps necessary?
+> > >
+> > > Ed
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Jul  9 21:36:44 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Tue, 9 Jul 2002 13:36:44 -0700
+Subject: [Peeweelinux] XFree86 setup help
+References: <000a01c22784$a22eaf10$0201a8c0@ricardo>
+Message-ID: <001201c22788$56c546c0$1496fe0a@epicentric.com>
+
+I actually did have the xfs package added.  I guess it isn't starting for
+some reason (do I need another package for starting it?) or I had the wrong
+port (7100 instead of -1?).  As you may have seen  from my other email, I
+was able to make it work without running xfs by putting in file paths in the
+FontPath entries in XF86Config.
+
+Ed
+
+----- Original Message -----
+From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Tuesday, July 09, 2002 1:10 PM
+Subject: RE: [Peeweelinux] XFree86 setup help
+
+
+> it means you are not running xfs (X font server).
+>
+> there is a peewee package for xfs, you have to select it, it will run out
+of
+> the box.
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> Sent: terça-feira, 9 de Julho de 2002 17:05
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] XFree86 setup help
+>
+>
+> I've made some progress.  Here's what I've done so far:
+>
+> 1) Created the /etc/X11/XF86Config file
+> 2) Link XF86_SVGA -> X
+> 3) Added libm and libdl libraries
+>
+> It now makes some progess starting with startx but dies with:
+> FontTransSocketUNIXConnect : can't connect : errno = 111
+> Failed to set default font path 'unix:7100'
+> could not open default font 'fixed'
+>
+> I assume this means that I'm either missing a required font or I need to
+> change the FontPath in the XF86Config to "unix:-1"?
+>
+> Ed
+>
+> ----- Original Message -----
+> From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> To: <peeweelinux@adis.on.ca>
+> Sent: Monday, July 08, 2002 3:36 PM
+> Subject: RE: [Peeweelinux] XFree86 setup help
+>
+>
+> > can you get it working calling the binary directly ?
+> > do you have XFS running ?
+> > do you have libm ? if not, perhaps you're missing packages, it's easy
+> > finding out which, with the peewee gui
+> >
+> >
+> > -----Original Message-----
+> > From: peeweelinux-admin@adis.on.ca
+> > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > Sent: segunda-feira, 8 de Julho de 2002 21:28
+> > To: peeweelinux@adis.on.ca
+> > Subject: Re: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > I've created a symlink from usr/X11R6/bin/X -> /usr/X11R6/bin/XF86_SVGA
+> and
+> > tried to start with startx and I get the following errors:
+> > usr/X11R6/bin/X: error in loading shared libraries: libm.so.6: cannot
+open
+> > shared object file: No such file or directory
+> > _X11TransSocketUNIXConnect: Can't connect: errno = 111
+> >
+> > Thanks
+> >
+> > Ed
+> >
+> > ----- Original Message -----
+> > From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> > To: <peeweelinux@adis.on.ca>
+> > Sent: Monday, July 08, 2002 11:08 AM
+> > Subject: RE: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > > looks fine. what's your error ? did you notice if the servers are
+> > installed,
+> > > or if they are in individual packages ?
+> > >
+> > > one thing I noticed was the X symlink is not created, so try to run
+the
+> > > XServer with XFree86_SVGA (for example, if you use this server)
+> > >
+> > > -----Original Message-----
+> > > From: peeweelinux-admin@adis.on.ca
+> > > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > > Sent: segunda-feira, 8 de Julho de 2002 17:46
+> > > To: peeweelinux@adis.on.ca
+> > > Subject: Re: [Peeweelinux] XFree86 setup help
+> > >
+> > >
+> > > Perhaps I'm not including all the relevant packages?  What packages
+did
+> > you
+> > > select in order to get it to work?  These are the packages I used:
+> > >
+> > > XFree86
+> > > XFree86-100dpi-fonts,
+> > > XFree86-75dpi-fonts
+> > > XFree86-FBDev
+> > > XFree86-libs
+> > > XFree86-stuff,
+> > > XFree86-twm
+> > > XFree86-xdm
+> > > XFree86-xfs
+> > > xpm
+> > >
+> > > Ed
+> > >
+> > > ----- Original Message -----
+> > > From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> > > To: <peeweelinux@adis.on.ca>
+> > > Sent: Monday, July 08, 2002 3:07 AM
+> > > Subject: RE: [Peeweelinux] XFree86 setup help
+> > >
+> > >
+> > > > I was able to setup XFree86 correctly out of the box. can you post
+> your
+> > > > concrete troubles ?
+> > > >
+> > > >
+> > > >
+> > > > -----Original Message-----
+> > > > From: peeweelinux-admin@adis.on.ca
+> > > > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > > > Sent: segunda-feira, 8 de Julho de 2002 3:11
+> > > > To: peeweelinux@adis.on.ca
+> > > > Subject: [Peeweelinux] XFree86 setup help
+> > > >
+> > > >
+> > > > (sorry for the previously HTML-formatted email)
+> > > >
+> > > > I've been trying to get XFree86 running but I haven't had any luck.
+> Can
+> > > > someone please post the steps necessary?
+> > > >
+> > > > Ed
+> > > >
+> > > > _______________________________________________
+> > > > Peeweelinux mailing list
+> > > > Peeweelinux@adis.on.ca
+> > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > >
+> > > > _______________________________________________
+> > > > Peeweelinux mailing list
+> > > > Peeweelinux@adis.on.ca
+> > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > >
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Thu Jul 11 11:14:29 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 11 Jul 2002 11:14:29 +0100
+Subject: [Peeweelinux] XFree86 setup help
+In-Reply-To: <001201c22788$56c546c0$1496fe0a@epicentric.com>
+Message-ID: <000201c2293c$66a45ee0$0100007f@ricardo>
+
+can you telnet to the port were the X server tries to find XFS ?
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+Sent: terça-feira, 9 de Julho de 2002 21:37
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] XFree86 setup help
+
+
+I actually did have the xfs package added.  I guess it isn't starting for
+some reason (do I need another package for starting it?) or I had the wrong
+port (7100 instead of -1?).  As you may have seen  from my other email, I
+was able to make it work without running xfs by putting in file paths in the
+FontPath entries in XF86Config.
+
+Ed
+
+----- Original Message -----
+From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Tuesday, July 09, 2002 1:10 PM
+Subject: RE: [Peeweelinux] XFree86 setup help
+
+
+> it means you are not running xfs (X font server).
+>
+> there is a peewee package for xfs, you have to select it, it will run out
+of
+> the box.
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> Sent: terça-feira, 9 de Julho de 2002 17:05
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] XFree86 setup help
+>
+>
+> I've made some progress.  Here's what I've done so far:
+>
+> 1) Created the /etc/X11/XF86Config file
+> 2) Link XF86_SVGA -> X
+> 3) Added libm and libdl libraries
+>
+> It now makes some progess starting with startx but dies with:
+> FontTransSocketUNIXConnect : can't connect : errno = 111
+> Failed to set default font path 'unix:7100'
+> could not open default font 'fixed'
+>
+> I assume this means that I'm either missing a required font or I need to
+> change the FontPath in the XF86Config to "unix:-1"?
+>
+> Ed
+>
+> ----- Original Message -----
+> From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> To: <peeweelinux@adis.on.ca>
+> Sent: Monday, July 08, 2002 3:36 PM
+> Subject: RE: [Peeweelinux] XFree86 setup help
+>
+>
+> > can you get it working calling the binary directly ?
+> > do you have XFS running ?
+> > do you have libm ? if not, perhaps you're missing packages, it's easy
+> > finding out which, with the peewee gui
+> >
+> >
+> > -----Original Message-----
+> > From: peeweelinux-admin@adis.on.ca
+> > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > Sent: segunda-feira, 8 de Julho de 2002 21:28
+> > To: peeweelinux@adis.on.ca
+> > Subject: Re: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > I've created a symlink from usr/X11R6/bin/X -> /usr/X11R6/bin/XF86_SVGA
+> and
+> > tried to start with startx and I get the following errors:
+> > usr/X11R6/bin/X: error in loading shared libraries: libm.so.6: cannot
+open
+> > shared object file: No such file or directory
+> > _X11TransSocketUNIXConnect: Can't connect: errno = 111
+> >
+> > Thanks
+> >
+> > Ed
+> >
+> > ----- Original Message -----
+> > From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> > To: <peeweelinux@adis.on.ca>
+> > Sent: Monday, July 08, 2002 11:08 AM
+> > Subject: RE: [Peeweelinux] XFree86 setup help
+> >
+> >
+> > > looks fine. what's your error ? did you notice if the servers are
+> > installed,
+> > > or if they are in individual packages ?
+> > >
+> > > one thing I noticed was the X symlink is not created, so try to run
+the
+> > > XServer with XFree86_SVGA (for example, if you use this server)
+> > >
+> > > -----Original Message-----
+> > > From: peeweelinux-admin@adis.on.ca
+> > > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > > Sent: segunda-feira, 8 de Julho de 2002 17:46
+> > > To: peeweelinux@adis.on.ca
+> > > Subject: Re: [Peeweelinux] XFree86 setup help
+> > >
+> > >
+> > > Perhaps I'm not including all the relevant packages?  What packages
+did
+> > you
+> > > select in order to get it to work?  These are the packages I used:
+> > >
+> > > XFree86
+> > > XFree86-100dpi-fonts,
+> > > XFree86-75dpi-fonts
+> > > XFree86-FBDev
+> > > XFree86-libs
+> > > XFree86-stuff,
+> > > XFree86-twm
+> > > XFree86-xdm
+> > > XFree86-xfs
+> > > xpm
+> > >
+> > > Ed
+> > >
+> > > ----- Original Message -----
+> > > From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> > > To: <peeweelinux@adis.on.ca>
+> > > Sent: Monday, July 08, 2002 3:07 AM
+> > > Subject: RE: [Peeweelinux] XFree86 setup help
+> > >
+> > >
+> > > > I was able to setup XFree86 correctly out of the box. can you post
+> your
+> > > > concrete troubles ?
+> > > >
+> > > >
+> > > >
+> > > > -----Original Message-----
+> > > > From: peeweelinux-admin@adis.on.ca
+> > > > [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+> > > > Sent: segunda-feira, 8 de Julho de 2002 3:11
+> > > > To: peeweelinux@adis.on.ca
+> > > > Subject: [Peeweelinux] XFree86 setup help
+> > > >
+> > > >
+> > > > (sorry for the previously HTML-formatted email)
+> > > >
+> > > > I've been trying to get XFree86 running but I haven't had any luck.
+> Can
+> > > > someone please post the steps necessary?
+> > > >
+> > > > Ed
+> > > >
+> > > > _______________________________________________
+> > > > Peeweelinux mailing list
+> > > > Peeweelinux@adis.on.ca
+> > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > >
+> > > > _______________________________________________
+> > > > Peeweelinux mailing list
+> > > > Peeweelinux@adis.on.ca
+> > > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > >
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > >
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Jul 12 18:42:20 2002
+From: peeweelinux@adis.on.ca (Michael V. Schaefer)
+Date: Fri, 12 Jul 2002 10:42:20 -0700
+Subject: [Peeweelinux] newbie question (building for different target...)
+Message-ID: <3D2F14FC.1030708@alumni.cwru.edu>
+
+ok, ive managed to build the minimal example, and boot the floppy.
+impressively easy!  my next task is to move the minimal example to
+a different box (i.e. i want to develop on one system and target
+another...  im sure plenty of you do that).  the ./pwlconfig script
+doesnt seem to offer any way of simply "packaging" all of the files
+necessary to do this.  or am i missing something?  can someone point
+me in _a_ direction to figure out what i havent learned yet...
+
+thanks!
+
+-- 
+mvs
+--------------------------------------------------
+"That it will never come again,
+   Is what makes life so sweet." - Emily Dickinson
+
+
+
+
+From peeweelinux@adis.on.ca  Mon Jul 15 14:33:23 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Mon, 15 Jul 2002 09:33:23 -0400
+Subject: [Peeweelinux] newbie question (building for different
+ target...)
+Message-ID: <sd3296ee.032@qatech.com>
+
+I believe you just want to install the networking (FTP, Telnet) in order to do remote development?? If so I think it is pretty much setup for you. I haven't done this myself though. 
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Tue Jul 16 08:36:18 2002
+From: peeweelinux@adis.on.ca (Justin Fretwell)
+Date: Tue, 16 Jul 2002 08:36:18 +0100
+Subject: [Peeweelinux] Gui window distortion in X windows system.
+In-Reply-To: <200207121701.g6CH0HQ30651@yoda.adis.on.ca>
+References: <200207121701.g6CH0HQ30651@yoda.adis.on.ca>
+Message-ID: <200207160739.HAA10209@hamster.akhter.com>
+
+Hi,
+
+I am running peewee on a small thin-client machine.  All parts on the board 
+inside, apart from the flash card are static.  This includes:
+
+300Mhz cpu, 16meg ram.
+
+X comprises of XDM as the display manager and TWM as the windows manager, 
+both of which come with peewee.
+
+The flash card is a 16meg flash card so as you can see the setup is small.
+
+The problem I am having is I am using a perl/Tk gui program that loads up in 
+X at start up (nothing else just he gui) and if i move that gui around the 
+inside of the window doesnt refresh and gets all distorted and even opaque.  
+You might say just dont enable the window to be moved: it doesnt make any 
+odds, i run rdesktop and when it connects to the terminal server if you move 
+the windows around in there they also get distorted.
+
+Something that might be worth mentioning is the background icons do not get 
+distorted when moving a window over them, are they getting refreshed?
+
+If i start up X without starting up the gui and run a Xterm window instead 
+and run the gui from that, the distortion doesnt happen.
+
+I am getting to my wits end with this i could REALLY use some help and/or 
+ideas here.  I think its a memory issue, as all the memory is taken up when 
+expanding the ramdisk.
+
+Ideas would be VERY much appreaciated
+Regards
+Justin
+
+From peeweelinux@adis.on.ca  Thu Jul 18 11:22:22 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 18 Jul 2002 11:22:22 +0100
+Subject: [Peeweelinux] ftp, ext
+Message-ID: <001f01c22e45$01f379f0$0100007f@ricardo>
+
+Hi,
+
+	I've read some posts on the mailing list claiming that peewee doesn't have
+an ftp server. Actually now that I need one, I can't find it. I can find the
+ftp client, but no server (the line exists in inetd, but no binary). I
+imagine I can get the ftpd rpm from redhat 6.1 and put it in RPMs, but it's
+such a basic package...
+
+	Do I need to download any extra packages ?
+
+	I was configuring peewee tonight for java, so I'll send you the list of
+file tomorrow (like I told you on a previous mail).
+
+	Also, I have some other questions :
+
+	- is any way to sync time included in peewee ? perhaps msntp ?
+	- if I want to mount another partition at boot do I have do supply a fstab
+and select the option to replace boot files ? will this impact my rc.init ?
+(asking because of the help text)
+	- I have a rw partition, and would like to make it ext3 or reiser, for
+obvious reasons. can I do this in peewee ? was any of these even suported on
+2.x kernels ?
+
+thanks
+Ricardo
+
+
+From peeweelinux@adis.on.ca  Thu Jul 18 12:56:28 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 18 Jul 2002 12:56:28 +0100
+Subject: [Peeweelinux] su, ftd, telnet and pam
+Message-ID: <000101c22e52$4cc155d0$0100007f@ricardo>
+
+Hi,
+
+	while trying to get ftp working on peewee, I  downloaded wu-ftpd for RH6.1
+on rpmfind.
+
+	it complains about libpam. I can't also use su because of libpam. I imagine
+I'm missing somethig, because su comes with peewee and also doesn't work.
+any ideas ?
+
+	I also have a question about telnetd, it's very slow. I was told it has to
+do with reverse lookup, so I'm not sure if the problem is only peewee
+related... does it happen to anyone else ?
+
+thanks
+Ricardo
+
+
+From peeweelinux@adis.on.ca  Thu Jul 18 13:21:34 2002
+From: peeweelinux@adis.on.ca (Cristián Mejía)
+Date: Thu, 18 Jul 2002 08:21:34 -0400
+Subject: [Peeweelinux] X in Geode with MediaGX chipset
+Message-ID: <5.1.0.14.0.20020718082004.00b83760@mail.ecofor.cl>
+
+Does anybody use X in a Geode with the MediaGX chipset ??
+
+
+From peeweelinux@adis.on.ca  Thu Jul 18 14:38:31 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Thu, 18 Jul 2002 09:38:31 -0400
+Subject: [Peeweelinux] ftp, ext
+Message-ID: <sd368c9c.009@qatech.com>
+
+Dont know about the FTP server,
+
+For reiser, just compile the latest stable 2.4.xx and put it in custom/boot/bzImage. Its really quite easy that way and then you have complete control over your kernel. I prefer this also because I can compile in my ethernet driver and not deal with modules. 
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Thu Jul 18 15:06:59 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 18 Jul 2002 15:06:59 +0100
+Subject: [Peeweelinux] X in Geode with MediaGX chipset
+In-Reply-To: <5.1.0.14.0.20020718082004.00b83760@mail.ecofor.cl>
+Message-ID: <000f01c22e64$62a7b300$0fb812d4@ricardo>
+
+yes, I had no problems at all.
+
+check this tutorial :
+
+http://www.larwe.com/technical/geode_linux.html
+
+if their XF86Config isn't what you want I can send you mine
+
+bye
+Ricardo
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Cristian Mejma
+Sent: quinta-feira, 18 de Julho de 2002 13:22
+To: PeeWee Linux List
+Subject: [Peeweelinux] X in Geode with MediaGX chipset
+
+
+
+Does anybody use X in a Geode with the MediaGX chipset ??
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Jul 18 15:20:24 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 18 Jul 2002 09:20:24 -0500 (CDT)
+Subject: [Peeweelinux] ftp, ext
+In-Reply-To: <001f01c22e45$01f379f0$0100007f@ricardo>
+Message-ID: <Pine.LNX.4.33.0207180914590.15579-100000@adibox.knet.ca>
+
+Hi,
+
+There was supposed to have been an ftp server for PeeWeeLinux. Not sure 
+when it disapeared but it is not in 0.60 or 0.61.
+
+PeeWeeLinux does not need pam. In order to get a ftp server to work it has 
+to be compiled on RH6.2 without pam. Unfortunatley I don't have a working 
+build environment right now, so I can't just build an rpm to include. I am 
+working on the next version of PeeWeeLinux that comes with its own build 
+environment and should work independent of the Linux distribution it's 
+been installed on.
+
+I believe msntp is a simple ntp client but I haven't used it in ages...
+
+Adi
+
+
+On Thu, 18 Jul 2002, Ricardo Trindade wrote:
+
+> Hi,
+> 
+> 	I've read some posts on the mailing list claiming that peewee doesn't have
+> an ftp server. Actually now that I need one, I can't find it. I can find the
+> ftp client, but no server (the line exists in inetd, but no binary). I
+> imagine I can get the ftpd rpm from redhat 6.1 and put it in RPMs, but it's
+> such a basic package...
+> 
+> 	Do I need to download any extra packages ?
+> 
+> 	I was configuring peewee tonight for java, so I'll send you the list of
+> file tomorrow (like I told you on a previous mail).
+> 
+> 	Also, I have some other questions :
+> 
+> 	- is any way to sync time included in peewee ? perhaps msntp ?
+> 	- if I want to mount another partition at boot do I have do supply a fstab
+> and select the option to replace boot files ? will this impact my rc.init ?
+> (asking because of the help text)
+> 	- I have a rw partition, and would like to make it ext3 or reiser, for
+> obvious reasons. can I do this in peewee ? was any of these even suported on
+> 2.x kernels ?
+> 
+> thanks
+> Ricardo
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Jul 18 15:54:46 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 18 Jul 2002 15:54:46 +0100
+Subject: [Peeweelinux] ftp, ext
+In-Reply-To: <Pine.LNX.4.33.0207180914590.15579-100000@adibox.knet.ca>
+Message-ID: <000301c22e6b$0fa560b0$0201a8c0@ricardo>
+
+ok, thanks, I'll try to find an RPM for ftpd.
+
+maybe I'll ask on the list and you can put it in your ftp server ? I've seen
+on the list that it's a fairly regular question...
+
+thanks
+Ricardo
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Adi Linden
+Sent: quinta-feira, 18 de Julho de 2002 15:20
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] ftp, ext
+
+
+Hi,
+
+There was supposed to have been an ftp server for PeeWeeLinux. Not sure
+when it disapeared but it is not in 0.60 or 0.61.
+
+PeeWeeLinux does not need pam. In order to get a ftp server to work it has
+to be compiled on RH6.2 without pam. Unfortunatley I don't have a working
+build environment right now, so I can't just build an rpm to include. I am
+working on the next version of PeeWeeLinux that comes with its own build
+environment and should work independent of the Linux distribution it's
+been installed on.
+
+I believe msntp is a simple ntp client but I haven't used it in ages...
+
+Adi
+
+
+On Thu, 18 Jul 2002, Ricardo Trindade wrote:
+
+> Hi,
+>
+> 	I've read some posts on the mailing list claiming that peewee doesn't
+have
+> an ftp server. Actually now that I need one, I can't find it. I can find
+the
+> ftp client, but no server (the line exists in inetd, but no binary). I
+> imagine I can get the ftpd rpm from redhat 6.1 and put it in RPMs, but
+it's
+> such a basic package...
+>
+> 	Do I need to download any extra packages ?
+>
+> 	I was configuring peewee tonight for java, so I'll send you the list of
+> file tomorrow (like I told you on a previous mail).
+>
+> 	Also, I have some other questions :
+>
+> 	- is any way to sync time included in peewee ? perhaps msntp ?
+> 	- if I want to mount another partition at boot do I have do supply a
+fstab
+> and select the option to replace boot files ? will this impact my rc.init
+?
+> (asking because of the help text)
+> 	- I have a rw partition, and would like to make it ext3 or reiser, for
+> obvious reasons. can I do this in peewee ? was any of these even suported
+on
+> 2.x kernels ?
+>
+> thanks
+> Ricardo
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Jul 18 16:25:59 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 18 Jul 2002 10:25:59 -0500 (CDT)
+Subject: [Peeweelinux] ftp, ext
+In-Reply-To: <000301c22e6b$0fa560b0$0201a8c0@ricardo>
+Message-ID: <Pine.LNX.4.33.0207181024530.15579-100000@adibox.knet.ca>
+
+Hi Ricardo,
+
+A generic RedHat rpm will not likely work for PWL. They will all have PAM 
+support if they were properly build. I'd recommend building one all static 
+or using RedHat 6.2 but disabling PAM.
+
+Adi
+
+On Thu, 18 Jul 2002, Ricardo Trindade wrote:
+
+> ok, thanks, I'll try to find an RPM for ftpd.
+> 
+> maybe I'll ask on the list and you can put it in your ftp server ? I've seen
+> on the list that it's a fairly regular question...
+> 
+> thanks
+> Ricardo
+
+
+From peeweelinux@adis.on.ca  Thu Jul 18 16:50:57 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 18 Jul 2002 16:50:57 +0100
+Subject: [Peeweelinux] (no subject)
+Message-ID: <000501c22e72$e8a91620$0201a8c0@ricardo>
+
+hi list,
+
+	anyone has a working rpm for any ftp server, that can be used
+"out-of-the-box" with peewee ?
+
+	if so, can you please send it to me ?
+
+thanks
+Ricardo
+
+
+From peeweelinux@adis.on.ca  Thu Jul 18 19:56:16 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Thu, 18 Jul 2002 14:56:16 -0400
+Subject: [Peeweelinux] (no subject)
+In-Reply-To: <000501c22e72$e8a91620$0201a8c0@ricardo>
+References: <000501c22e72$e8a91620$0201a8c0@ricardo>
+Message-ID: <200207181453.17805.mark@lakeshoremicro.com>
+
+Hi Ricardo,
+
+I have wu-2.6.1ftpd running on Peewee.  I compiled this from scratch a few 
+months back; the executable is about 147k bytes.
+
+I don't have an RPM for it -- I just placed ftpd and ftpaccess in the proper 
+custom files directories.  If this does you any good, let me know and I can 
+send you the files.
+
+Regards,
+
+Mark
+
+On Thursday 18 July 2002 11:50 am, Ricardo Trindade wrote:
+> 	anyone has a working rpm for any ftp server, that can be used
+> "out-of-the-box" with peewee ?
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Jul 18 23:07:07 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Fri, 19 Jul 2002 08:07:07 +1000
+Subject: [Peeweelinux] ftp, ext
+Message-ID: <OF5878C5E8.41BC4DFC-ON4A256BFA.0078DE2A@jupiters.com.au>
+
+Hi Guys,
+
+This is what I have done,
+I grabbed an ftpd rpm (version from Mandrake 8.1 I think but it doesn't
+matter)
+and just included the pam.permit.so (?) library, and basically used  a pam
+config file to set all pw checking to optional,
+and took root out of the ftpusers - this will not work for everyone, for
+example root can ftp in without a password but in the environment that we
+are deploying peewee on this is not an issue.
+
+Kind Regards,
+Delaney
+
+
+
+                                                                                                                        
+                    Adi Linden                                                                                          
+                    <adi@adis.on.ca>          To:     <peeweelinux@adis.on.ca>                                          
+                    Sent by:                  cc:                                                                       
+                    peeweelinux-admin@          Subject:   RE: [Peeweelinux] ftp, ext                                   
+                    adis.on.ca                                                                                          
+                                             Project:                                                                   
+                                                                                                                        
+                    19/07/2002 01:25                                                                                    
+                    AM                                                                                                  
+                    Please respond to                                                                                   
+                    peeweelinux                                                                                         
+                                                                                                                        
+                                                                                                                        
+
+
+
+
+Hi Ricardo,
+
+A generic RedHat rpm will not likely work for PWL. They will all have PAM
+support if they were properly build. I'd recommend building one all static
+or using RedHat 6.2 but disabling PAM.
+
+Adi
+
+On Thu, 18 Jul 2002, Ricardo Trindade wrote:
+
+> ok, thanks, I'll try to find an RPM for ftpd.
+>
+> maybe I'll ask on the list and you can put it in your ftp server ? I've
+seen
+> on the list that it's a fairly regular question...
+>
+> thanks
+> Ricardo
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+
+**********************************************************************
+This email and any files transmitted with it are confidential and
+intended solely for the use of the individual or entity to whom they
+are addressed. If you have received this email in error please notify
+mail.administrator@jupiters.com.au
+
+**********************************************************************
+
+
+From peeweelinux@adis.on.ca  Fri Jul 19 01:59:47 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 18 Jul 2002 17:59:47 -0700 (PDT)
+Subject: [Peeweelinux] New
+Message-ID: <2.2.16.20020718181318.8adfc6f4@zmicro.com>
+
+After surveying many "embedded" linux packages, I have decided 
+to give PeeWee a try.  I am happy to see that there is some
+activity.  From the looks of things, I didn't expect much.
+
+So far the docs look so old that even I may be able to help.  I
+think a few lines on "getting started" would help.  We certainly 
+have an opportunity to get a "first-timer's" perspective.
+
+I downloaded the ISO image for the cd and burned that, thinking I
+would find both the source and binary packages there.  The unpacking
+instructions tell us, "tar -xzf embedded-0.18-src.tar.gz to extract
+the source release, or tar -xzf embedded-0.18-src.tar.gz to extract
+the binary release."   There isn't anything called embedded on the
+this disk.  There aren't any tar.gz files on the disk (except the
+three in /bin/src).  The files are referred to as 0.18, the doc
+is 0.19, but the current release is 0.61   This makes me suspect
+that both the names and the packaging method may have changed.
+
+I'm off to the mirror site to look for a separate tarball for 
+the binary system, and I hope to have this all figured out shortly.
+If I'm not successful, I'll be back with questions.   I hope I'm
+not the first new guy since 0.19 :)   
+
+This ought to be fun...
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Fri Jul 19 11:32:44 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Fri, 19 Jul 2002 11:32:44 +0100
+Subject: [Peeweelinux] (no subject)
+In-Reply-To: <200207181453.17805.mark@lakeshoremicro.com>
+Message-ID: <000201c22f12$78c33110$0100007f@ricardo>
+
+sure, thanks a lot! please send it to me!
+
+bye
+Ricardo
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Mark Meade
+Sent: quinta-feira, 18 de Julho de 2002 19:56
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] (no subject)
+
+
+Hi Ricardo,
+
+I have wu-2.6.1ftpd running on Peewee.  I compiled this from scratch a few
+months back; the executable is about 147k bytes.
+
+I don't have an RPM for it -- I just placed ftpd and ftpaccess in the proper
+custom files directories.  If this does you any good, let me know and I can
+send you the files.
+
+Regards,
+
+Mark
+
+On Thursday 18 July 2002 11:50 am, Ricardo Trindade wrote:
+> 	anyone has a working rpm for any ftp server, that can be used
+> "out-of-the-box" with peewee ?
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Jul 19 11:31:57 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Fri, 19 Jul 2002 11:31:57 +0100
+Subject: [Peeweelinux] ftp, ext
+In-Reply-To: <OF5878C5E8.41BC4DFC-ON4A256BFA.0078DE2A@jupiters.com.au>
+Message-ID: <000101c22f12$74524260$0100007f@ricardo>
+
+well, I was trying to leave pam out :)
+
+doesn't anyone have a .rpm of an ftp server built without pam ?
+
+thanks
+Ricardo
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of drowe@juptech.com
+Sent: quinta-feira, 18 de Julho de 2002 23:07
+To: peeweelinux@adis.on.ca
+Cc: peeweelinux@adis.on.ca; peeweelinux-admin@adis.on.ca
+Subject: RE: [Peeweelinux] ftp, ext
+
+
+
+Hi Guys,
+
+This is what I have done,
+I grabbed an ftpd rpm (version from Mandrake 8.1 I think but it doesn't
+matter)
+and just included the pam.permit.so (?) library, and basically used  a pam
+config file to set all pw checking to optional,
+and took root out of the ftpusers - this will not work for everyone, for
+example root can ftp in without a password but in the environment that we
+are deploying peewee on this is not an issue.
+
+Kind Regards,
+Delaney
+
+
+
+
+                    Adi Linden
+                    <adi@adis.on.ca>          To:
+<peeweelinux@adis.on.ca>
+                    Sent by:                  cc:
+                    peeweelinux-admin@          Subject:   RE: [Peeweelinux]
+ftp, ext
+                    adis.on.ca
+                                             Project:
+
+                    19/07/2002 01:25
+                    AM
+                    Please respond to
+                    peeweelinux
+
+
+
+
+
+
+Hi Ricardo,
+
+A generic RedHat rpm will not likely work for PWL. They will all have PAM
+support if they were properly build. I'd recommend building one all static
+or using RedHat 6.2 but disabling PAM.
+
+Adi
+
+On Thu, 18 Jul 2002, Ricardo Trindade wrote:
+
+> ok, thanks, I'll try to find an RPM for ftpd.
+>
+> maybe I'll ask on the list and you can put it in your ftp server ? I've
+seen
+> on the list that it's a fairly regular question...
+>
+> thanks
+> Ricardo
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+
+**********************************************************************
+This email and any files transmitted with it are confidential and
+intended solely for the use of the individual or entity to whom they
+are addressed. If you have received this email in error please notify
+mail.administrator@jupiters.com.au
+
+**********************************************************************
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Jul 19 14:35:27 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Fri, 19 Jul 2002 09:35:27 -0400
+Subject: [Peeweelinux] New
+Message-ID: <sd37dd69.084@qatech.com>
+
+Hello Barry,
+
+I am relatively new to peewee and I have found it very useful. I also thought that the documentation was a bit dated when I first started, so it could use some updating that I am sure would be appreciated. I trust you'll find peewee linux very simple, powerful, and flexible after using it a couple times. 
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Sat Jul 20 02:15:11 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Fri, 19 Jul 2002 18:15:11 -0700 (PDT)
+Subject: [Peeweelinux] New - II
+Message-ID: <2.2.16.20020719182850.280f42c2@zmicro.com>
+
+In the following messages I will reveal answers to questions 
+that might be posed by someone starting out cold.  By the time
+I get through this, I'll no longer qualify :)
+
+Getting PeeWee
+
+After going to SourceForge and downloading the binary package,
+and untarring it to a suitable directory tree, I discovered
+a few things.
+
+   - It looks just like the directory tree on the CD
+   - It has one bad symlink to SRPMS
+   - There's a script in the top directory called cd_install
+
+Sure enough, the difference between the CD and the binary package
+is the presence of the SRPMS.  In the binary package the SRPMS
+are removed.  I ran the cd_install script, and (after following
+the directions to become root) let it remove what I had untarred
+and, near as I can tell, it then copied the same things back
+to that directory (plus the sources).
+
+So for first-time obtainers, the images found on SourceForge
+are as follows:
+
+old name: embedded-0.18-src.tar.gz
+   If you look back through the versions, you will find that the
+   name changed between versions 0.32 and 0.40
+
+CD image: peeweelinux-0.61.1.iso
+   Burn this to a CD and everything described below is there.
+
+Source package: peeweelinux-0.61.1-src.tar.gz
+  Untar this and get the same thing that you see on the CD.
+  Includes, source, binary, and configuration.
+
+Binary package: peeweelinux-0.61.1-bin.tar.gz
+  Untar this and get the CD image, except the source tree
+  from src/SRPMS is not present.
+
+Configuration tool:
+  This is just the pwlconfig scripts and utilities found
+  in the bin, scripts, and lxdialog directories. 
+
+
+
+Corrections are solicited.  
+
+Next: Installing ('Unpack')
+
+After that: Making a system (hint--I need help: I couldn't
+  find "boot_system"; and the unmodified "minimal" image
+  didn't fit on a floppy.)
+
+See y'all next week.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Sun Jul 21 01:59:31 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Sun, 21 Jul 2002 01:59:31 +0100
+Subject: [Peeweelinux] graphics
+Message-ID: <000301c230bf$32b53b60$0201a8c0@ricardo>
+
+Hi,
+
+	Is there a way to customize the little tux image that shows when peewee
+boots.
+
+	Last time I checked it was hard-coded in the kernel. is it still like that
+or can it be changed ?
+
+thanks
+Ricardo
+
+
+From peeweelinux@adis.on.ca  Mon Jul 22 07:28:56 2002
+From: peeweelinux@adis.on.ca (Mateo Garcia, Carlos)
+Date: Mon, 22 Jul 2002 08:28:56 +0200
+Subject: [Peeweelinux] graphics
+Message-ID: <82DC6B639424D611A873001083F92DA237D2BD@madtorsv07.indra.es>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1">
+<META NAME=3D"Generator" CONTENT=3D"MS Exchange Server version =
+6.0.5770.91">
+<TITLE>RE: [Peeweelinux] graphics</TITLE>
+</HEAD>
+<BODY>
+<!-- Converted from text/plain format -->
+
+<P><FONT SIZE=3D2>Afaik, it is still hardcoded in the kernel, but it is =
+easy to change it.</FONT>
+</P>
+
+<P><FONT SIZE=3D2>I followed the steps in =
+bulmalug.net/impresion.phtml?nIdNoticia=3D1071, but this page is in =
+spanish.&nbsp; It is really easy.&nbsp; If you don't speak spanish let =
+me know and I will make a short summary.</FONT></P>
+
+<P><FONT SIZE=3D2>There is another page I found but I haven't =
+tested:&nbsp; www.arnor.net/linuxlogo/download.html</FONT>
+</P>
+
+<P><FONT SIZE=3D2>I hope this helps you.</FONT>
+</P>
+
+<P><FONT SIZE=3D2>-----Mensaje original-----</FONT>
+
+<BR><FONT SIZE=3D2>De: Ricardo Trindade [<A =
+HREF=3D"mailto:Ricardo.Trindade@myrealbox.com">mailto:Ricardo.Trindade@my=
+realbox.com</A>]</FONT>
+
+<BR><FONT SIZE=3D2>Enviado el: domingo, 21 de julio de 2002 3:00</FONT>
+
+<BR><FONT SIZE=3D2>Para: peeweelinux@adis.on.ca</FONT>
+
+<BR><FONT SIZE=3D2>Asunto: [Peeweelinux] graphics</FONT>
+</P>
+<BR>
+
+<P><FONT SIZE=3D2>Hi,</FONT>
+</P>
+
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT SIZE=3D2>Is there a =
+way to customize the little tux image that shows when peewee</FONT>
+
+<BR><FONT SIZE=3D2>boots.</FONT>
+</P>
+
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <FONT SIZE=3D2>Last time I =
+checked it was hard-coded in the kernel. is it still like that</FONT>
+
+<BR><FONT SIZE=3D2>or can it be changed ?</FONT>
+</P>
+
+<P><FONT SIZE=3D2>thanks</FONT>
+
+<BR><FONT SIZE=3D2>Ricardo</FONT>
+</P>
+
+<P><FONT SIZE=3D2>_______________________________________________</FONT>
+
+<BR><FONT SIZE=3D2>Peeweelinux mailing list</FONT>
+
+<BR><FONT SIZE=3D2>Peeweelinux@adis.on.ca</FONT>
+
+<BR><FONT SIZE=3D2><A =
+HREF=3D"http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.ad=
+is.on.ca/lists/listinfo/peeweelinux</A></FONT>
+</P>
+
+</BODY>
+</HTML>
+
+From peeweelinux@adis.on.ca  Mon Jul 22 11:48:06 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Mon, 22 Jul 2002 11:48:06 +0100
+Subject: [Peeweelinux] graphics
+In-Reply-To: <82DC6B639424D611A873001083F92DA237D2BD@madtorsv07.indra.es>
+Message-ID: <000401c2316d$43438550$bf1d3ad5@ricardo>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0005_01C23175.A507ED50
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+ok, thanks
+ 
+I'm portuguese, I can read Spanish
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]On
+Behalf Of Mateo Garcia, Carlos
+Sent: segunda-feira, 22 de Julho de 2002 7:29
+To: peeweelinux@adis.on.ca
+Subject: RE: [Peeweelinux] graphics
+
+
+
+Afaik, it is still hardcoded in the kernel, but it is easy to change it. 
+
+I followed the steps in bulmalug.net/impresion.phtml?nIdNoticia=1071, but
+this page is in spanish.  It is really easy.  If you don't speak spanish let
+me know and I will make a short summary.
+
+There is another page I found but I haven't tested:
+www.arnor.net/linuxlogo/download.html 
+
+I hope this helps you. 
+
+-----Mensaje original----- 
+De: Ricardo Trindade [ mailto:Ricardo.Trindade@myrealbox.com
+<mailto:Ricardo.Trindade@myrealbox.com> ] 
+Enviado el: domingo, 21 de julio de 2002 3:00 
+Para: peeweelinux@adis.on.ca 
+Asunto: [Peeweelinux] graphics 
+
+
+Hi, 
+
+        Is there a way to customize the little tux image that shows when
+peewee 
+boots. 
+
+        Last time I checked it was hard-coded in the kernel. is it still
+like that 
+or can it be changed ? 
+
+thanks 
+Ricardo 
+
+_______________________________________________ 
+Peeweelinux mailing list 
+Peeweelinux@adis.on.ca 
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+<http://mail.adis.on.ca/lists/listinfo/peeweelinux>  
+
+_______________________________________________ Peeweelinux mailing list
+Peeweelinux@adis.on.ca http://mail.adis.on.ca/lists/listinfo/peeweelinux 
+
+
+------=_NextPart_000_0005_01C23175.A507ED50
+Content-Type: application/ms-tnef;
+	name="winmail.dat"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment;
+	filename="winmail.dat"
+
+eJ8+IgYKAQaQCAAEAAAAAAABAAEAAQeQBgAIAAAA5AQAAAAAAADoAAEIgAcAGAAAAElQTS5NaWNy
+b3NvZnQgTWFpbC5Ob3RlADEIAQ2ABAACAAAAAgACAAEGgAMADgAAANIHBwAWAAsAMAAAAAEAMgEB
+A5AGACAQAAAqAAAACwACAAEAAAALACMAAAAAAAMAJgAAAAAACwApAAAAAAADAC4AAAAAAAMANgAA
+AAAAHgBwAAEAAAAXAAAAW1BlZXdlZWxpbnV4XSBncmFwaGljcwAAAgFxAAEAAAAWAAAAAcIxbULp
+UCVm1JtnQAmsW3PEK3tBlAAAAgEdDAEAAAAkAAAAU01UUDpSSUNBUkRPLlRSSU5EQURFQE1ZUkVB
+TEJPWC5DT00ACwABDgAAAABAAAYOADAfP20xwgECAQoOAQAAABgAAAAAAAAA76wVglW7/0mT6Po7
+c+YeZsKAAAADABQOAQAAAAsAHw4BAAAAAgEJEAEAAABLCwAARwsAAIIrAABMWkZ1xAzxOgMACgBy
+Y3BnMTI1gjIDQ2h0bWwxAzA/AQMB9wqAAqQD4wIAY2jBCsBzZXQwIAcTAoD/EAMAUARWCFUHshHV
+DlEDAd0Q1zIGAAbDEdUzBEYQ2VkS72Y0A8YRijUDxlR8YWgDcQKAEeMI7wn3O3sbfw4wNRyfHaMR
+4QxgY2cAUAsJAWQzNhFgC6U0siAQAipcDrIBkGchcAAzIDwhRE9DVABZUEUgSFRNTAAgUFVCTElD
+IIAiLS8vVzNDJDBIRFREI0Q0LhFgVHJyAHJ0aQIgB0AkMEX4TiI+EeMh5yKQCqMmnHwxOSKgI1Im
+jiGAKPBFREFEJo0xNzcioFRwSVRMRSaNIXAO8FKgRTogW1AJ4HcJ4EJsC4B1eF0gCcBhlHBoDeBz
+J+04NSKgvi8r/yiSJ48xbyhWNg7wwDxNRVRBIAWgAjCxCfB0PSIF4CNTNSVAIDAuMzMxNdAyODA3
+MCIgJgAHgD1HgSZQRVJBVE9SJo2/LUEwMCp/IlEy/yJBNRFg4DxCT0RZJo0g8TpfiGc5NiKgRElW
+JoB7IfMAISAAAD7VEWAhyTZOND6/P8In/DQ4IqBGmE9OVDTBGxE9IzXwczXwASAgZgDQNwAHEyDV
+AJB6NwAyPqtjE/ADMV8hgAvTAzBBnyIjOCpBUzhQQU40wAtgBBA9MwowQvA3ScAxMC0yGwHQAcEw
+RXw/d29rLBchnEaxPRN0EQBua3N/PWwU8DAwSOJKuUrHQg41/T5BL0NCT28/vgHASscKovdQGAqA
+J/wwKkEkkD6LUB//PH89jz6fUz9Av1hfQt9D7/9E/0YPRx9ILwqjST9KT14PP05fV19ov1GPas9k
+jSZuGGJzcAKAZ8dcJ2H/AUBcH1QfVS9WP1dPbj9Zb/9af2fvXJ95b16/X89g32HvP2L/fD9If2Z/
+Z496FUknlm1MT3eTcBshdWcKUDsRMEwwSTTAA5EbgGFk5wYACrADAHNoaQ9qH4G//2w/i39xP3JP
+c190b45/do8Pd594oyPAIuBLUVVP/lQsMXAICrEQApQvlT8h6S8RYJvAlf944iAHQGlnGG49bAFx
+g6VPdXQrGxBMEE0HkHMiUGVIs4lREzFkaX5QIjByhTv+cQMhn/EKsaDhoSIQ8AMw36Dyjw97D6KH
+oSBpINJ8r/99tH7zGiSaVJvAf68ZYoFP6i2qok8FEGcLgH9xntV/qqMn/DQwO5E3oXAILiFlVwqB
+mO+C10KFO2KBqUY1A2E6ig8vsFqUCSBw1S3YLYlgbQuAQIlgBAD6LgIgLokAhs+af4MSm9HGWwDA
+AxB0bzq077X5Ll2vT7BfoodPA6BCZfURAGx5sE95sLJPs1+ipURNYTUAbyBHCsBj7wcwTD+3r7i2
+QwrAGxBN/P+tH64vrz+8j6J4BmACMLI/D8APtFcRMIhwbmRhLTxmZZ/AwkGEsJ+gZSA4SnVsGkDP
+AoTyIDf4OjI5xV/Gb8d/yI/Jn/2itFS5kMtfzG+0ZsJ/w4//uNS5ubX50G/Rf9KP05/Ur/HKpXVi
+agWQyz/XP7RI/y1/2N/Z77jFLpbcz93f3u//6e/q/+wJ5E+Pb5B/kY+Sn//v7yGtfZGN5ZrPIrCq
+oBcRvG52BJA1AIlwA1IgNQD4eHQvC1N+4AWwAMAFQL+qoDv/56+bf6N1IqBQl79/7x+kb6V/fYeo
+TxAhgXxBvX7waUwhJcAGUBoAcyXQ9myiUBEBZBrwDyCJcPpxu02gzyBrFkEuEMJQYp5w8wZViVBz
+efngwdDmv/xv27jUEPFunyAGUS6Mz43f/7Qq8d/y5f8v9Z/xZDAh/vH/+18K7/1//o8BLwI/A08E
+X/eGCPqRBvBvueCJcAfyBsD8ZXAJMPpxCd8VT7jUCLBqbLlAbIhgLuvQ+iBpfG1wiUAlsNxx6WBw
+IT9gbklkTm8l0MIhPf+EgIRwCJRNoAaRZeAMkh5//x+PuIlvwImzDOxvb3B+iND/BnOJQQbwCYAJ
+UihfKW8qfbF5sHlvdZ+g+RAnneDbLaCJUGswIYmzIJ2wneD7NvAIIG4doCVfJm+4xYkQ+4lwiOB3
+BuK5QAgwnUAbEKengBAgGxB1bblAcixd/w3P9S0P3xDvEf8TDxQfMs//Fj8XTxhfGW8afxuP1WoI
+AP+JQAaCiRAjUEahJKQdQs4hfwijiOBNsPkwL/L5YB4xZL/i7C1PLl8x3z6fuNR3TzB2LmXwRzBy
+IcO6E8UgZ2RvLy/Qd27FIIlgLv9LQjZfN28PHzl/Oo87nzyv/z2/Ps8/30DvQf9DD0QfRS/fHOan
+gLmwJFQIAGweYS+R/zZPUo9Tn1SvVb9Wz1ffWO//Wf9bD1wfXS9eP19PYF+qOu2e0G6rsOKgIH5A
+qxSr//9j/2UP7L/tz+vfcC9xP3JP6aLhRGXlsFLpgAcxCb+7a2+4tlSrAM4xzxFb38+KQafGaIlA
+Zj0iuUVFftUugdZAbXkrsmJsb3jckPnAIm4qqZFpdboAZPYyZofg+nAGwHsASFlQRVJMSU6cSyCE
+b4V/hoN9falRCYfgcnP2oFxjZjH+XM9QctmJf4qPhpF2v++P+3qv46VBeUC7fHX/dw9/b/+Af8Sj
+eA95H3ovez98T31f/aLhRfkgwjB/IboA5bAv0Ne1wVCAzsExz5Jqz1AicPnPlzM6z+CT35Tvlf+X
+D/+YH5kvmj+bT5xfnW+ef/Cy+lCmgGHlsNtv3H+jX6Rv/6f/qQ+qH6svrD+tTwXCNdD/yyDWIKVv
+pn8z5eXc6T+w3/+x72XvZv9oD2kfai+z4ePR/7RMwx9qn2uvbL9tz27fth/Hty+4P/CFSGksvh+/
+L//AP8FPwl/Hr8R/yH/Jj8qf/8uvzL9Jz0rfS+reT99f4G//4X/ij+Of5K/lv+bP59/o7//p/+sP
+7B/tL+4/st/Oj8+fzxyaCTBHUjUyd2EJj7r/fQuqdUlwoJH0AAfjtSB0/nQxEAfgr3AGUDUAR8EH
+8NZhMBFh8HcJMHcIAAfQ/67k0Y/Sn7Jvs3+0j+7/8v3/g6Xz7/T/hlBHQK/Q/P/+D//Tr9S/1c8C
+P9fv2P/aD9sf/9wv3T/vj/Cf7s8UTxVfFm//F38YjxmfGq8bvxzPHd8e7/8f/yEPIh8jL/FvAt/z
+jwVveSTUTGFJcPow+zBH0mP9+lBjNSBIUPcvD48z9PqQ9/ahYnF/AS2GkIIwSFB0kO/6MzUgT4Cg
+QC5G4i9xSXD/NMIB0DUh+5IHPwhP/x8AL/8BPySvA18EbypfOGN0UCxg+0cgMaJigkAscEcgR8BI
+UP4/Mt8z7wlfCm8LfzgfDZ//Dq8PvxDPEd8S7zi/KT87T/NDpPuRbmu+Dz8fNO81//83D0NvS09M
+X3KOftVOz0/f/0A/QU9CX1QPRH9Fj0afR6+/SL9Jz1SvVb9Wz140X2j//2oPatpYr1m/UO8tTy5f
+p+//Uq9Tv2WPZp9nr65DrviNk/+gsfpxMeBr72z/bg9xn3Kv/3O/OT86T3Z/d46vn3m/es//e998
+733/fw91L4Gfie9wlhQ8QYCWaPZgZj0iQSawdHA6Ly94ki41g/gveRJzkWOJgGZvqi+u6SKMTGmg
+QGRu4g5mlCCJgDHge0hZUIBFUkxJTksgj/8zkQ+SH319jPGUIHJzwW9QXGNmMVyhgI1Zf5W/ls+S
+LYYvZMKdz4pdOf1fckHFPoV/ho9u72//cQL/W49cn12vXr+IsGKbY69kuf9q367fr7t3z3jWpF+l
+b3DV/4M/hEOan5uvl86yX7NjqhsXpt+n5op8MGNRL0JMAE9DS1FVT1RFN6L7qQ+5mTWLYb5AT0QS
+WV/NMjeigUhUTSpMX80zs0V9xRAAHgBCEAEAAAA9AAAAPDgyREM2QjYzOTQyNEQ2MTFBODczMDAx
+MDgzRjkyREEyMzdEMkJEQG1hZHRvcnN2MDcuaW5kcmEuZXM+AAAAAAMAAlkAABYAAwAJWQIAAAAL
+AACACCAGAAAAAADAAAAAAAAARgAAAAADhQAAAAAAAAMAAoAIIAYAAAAAAMAAAAAAAABGAAAAABCF
+AAAAAAAAAwAIgAggBgAAAAAAwAAAAAAAAEYAAAAAAYUAAAAAAAADABmACCAGAAAAAADAAAAAAAAA
+RgAAAABShQAAJ2oBAB4AGoAIIAYAAAAAAMAAAAAAAABGAAAAAFSFAAABAAAABAAAADkuMAALABuA
+CCAGAAAAAADAAAAAAAAARgAAAAAGhQAAAAAAAAsAH4AIIAYAAAAAAMAAAAAAAABGAAAAAA6FAAAA
+AAAAAwAggAggBgAAAAAAwAAAAAAAAEYAAAAAEYUAAAAAAAADACKACCAGAAAAAADAAAAAAAAARgAA
+AAAYhQAAAAAAAB4AMYAIIAYAAAAAAMAAAAAAAABGAAAAADaFAAABAAAAAQAAAAAAAAAeADKACCAG
+AAAAAADAAAAAAAAARgAAAAA3hQAAAQAAAAEAAAAAAAAAHgAzgAggBgAAAAAAwAAAAAAAAEYAAAAA
+OIUAAAEAAAABAAAAAAAAAB4APYAIIAYAAAAAAMAAAAAAAABGAAAAAIOFAAABAAAAEwAAADMwMTQ3
+NDcxMC0yMjA3MjAwMgAAAgH4DwEAAAAQAAAA76wVglW7/0mT6Po7c+YeZgIB+g8BAAAAEAAAAO+s
+FYJVu/9Jk+j6O3PmHmYCAfsPAQAAAHcAAAAAAAAAOKG7EAXlEBqhuwgAKypWwgAAbXNwc3QuZGxs
+AAAAAABOSVRB+b+4AQCqADfZbgAAAEM6XERvY3VtZW50cyBhbmQgU2V0dGluZ3NccmljYXJkb1xN
+eSBEb2N1bWVudHNcbXlNYWlsXG1haWxib3gucHN0AAADAP4PBQAAAAMADTT9NwAAAgF/AAEAAAAx
+AAAAMDAwMDAwMDBFRkFDMTU4MjU1QkJGRjQ5OTNFOEZBM0I3M0U2MUU2NjI0OTIzODAwAAAAAAMA
+BhBn+TW0AwAHEGcEAAADABAQAAAAAAMAERAAAAAAHgAIEAEAAABlAAAAT0ssVEhBTktTSU1QT1JU
+VUdVRVNFLElDQU5SRUFEU1BBTklTSC0tLS0tT1JJR0lOQUxNRVNTQUdFLS0tLS1GUk9NOlBFRVdF
+RUxJTlVYLUFETUlOQEFESVNPTkNBTUFJTFRPOgAAAAAv1Q==
+
+------=_NextPart_000_0005_01C23175.A507ED50--
+
+
+From peeweelinux@adis.on.ca  Tue Jul 23 01:10:45 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 22 Jul 2002 17:10:45 -0700 (PDT)
+Subject: [Peeweelinux] New - II
+Message-ID: <2.2.16.20020722172431.6b3776a4@zmicro.com>
+
+#define PWL PeeWeeLinux
+
+As I said in my last post, I'm relating my experiences as I learn
+how to get PWL up and running.  Corrections are welcome and maybe
+some of this can be used to improve the documentation.
+
+(Unless PWL is so simple it needs no documentation :)
+
+Installing PeeWeeLinux 
+
+(2.1 -- Download)
+URL's are fairly fragile; links change often.  Happily, 
+when you get to the SourceForge page, you only need
+to type "peeweelinux" into the search box and you will be
+taken right to it.  (In this case SourceForge has changed
+the link "filelist.php" to "showfiles.php")
+ 
+Select "files" and see my previous post for what to download.
+
+(2.2 -- Unpack)
+
+The doc is out of date and has an error besides.  The name of
+the distribution changed so it's no longer called "embedded-"
+rather it's "peeweelinux-".  Also the doc specifies the same name
+for source and binary, but file you want will have "src" or
+"bin" in the name.
+
+Use the cd_install script (this is explained in the file INSTALL)
+It's the same as untarring the file, but it checks a few extra
+things such as a pre-existing package tree, and whether you 
+have root privileges.
+
+
+
+--
+I suspect the CHANGELOG file also gives some enlightenment, but I
+usually avoid reading that because as a first-time user, I'm
+not really interested in what's been fixed or improved.  
+Nonetheless, it's a good place to look when updating 
+the documentation.
+
+In part III we start running things.
+
+Barry
+ 
+
+
+From peeweelinux@adis.on.ca  Tue Jul 23 02:27:08 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 22 Jul 2002 18:27:08 -0700 (PDT)
+Subject: [Peeweelinux] New - III
+Message-ID: <2.2.16.20020722184053.6ea77910@zmicro.com>
+
+By posting these writeups, I won't lose them :)
+
+3. pwlconfig
+
+The first time you try pwlconfig,  you may get some errors,
+followed by:
+ Utility program "lxdialog" not found
+ ( From (RH) /usr/src/linux type make Menuconfig
+    then cp /usr/src/linux/scripts/lxdialog/lxdialog to ./bin)
+
+What's happened is that lxdialog is (apparently) a utility that's
+built by Linux's kernel-compile "make config" utility. The first
+time you use it to configure a kernel, it discovers there's no
+such thing, so it builds one!  After that, it just runs it (where
+it must be lxdialog, no?) whenever you come back to change 
+something.  Anyway, if you follow the directions, all will
+be well, and you can proceed with pwlconfig.
+
+One error, though; Menuconfig should be menuconfig, and yes, it
+knows the difference.
+
+Note that this is all going on in your host system, and not
+in the PWL package.  But when you copy the result, that
+does go to ./bin, namely Embedded_Build/bin in your PWL tree.
+
+3.1.2 pwlconfig
+The first time pwlconfig is run, it will build a few things
+of its own!
+
+The first time I ran pwlconfig I was taken to:
+
+"Create new project".  After choosing a name I got:
+
+	No tar packages were found. Do you wish to extraxt 
+	 all binary rpms and create tar packages now
+	 (recommended)?
+
+(typo there, in 'extraxt')
+After answering yes, rpm's found in ./src/RPMS/i386/ are extracted and
+placed in ./packages/    This uses about 80MB.
+
+Now we're ready to use the system.  Next I go to "Configure Project 
+File System" as directed.
+
+Here's where I get into trouble.   I'm supposed to see "boot_system"
+but it's just not there.   Things must have changed quite a bit
+since then.   But since everything is probably "as needed" and I
+expect it won't let me build an empty system, I decide to 
+forge ahead to the "go back to main menu" part and select "Extract 
+File System from Project".   I ought to get something pretty 
+small, or a warning like "pick a kernel, stupid!"
+
+So I choose:
+  Load File System onto Target /dev/fd0
+
+I'm not successful.
+
+ * * * 
+
+At this point I am going in about 5 different directions.  I have
+tried to create a new project and build it; I have copied an
+existing one and built it; each time I'm thinking I may get
+a bootable system, useful or not.   Each time I get errors...
+Now, the first time, it claimed it wouldn't all fit on the
+floppy.  But successive tries haven't produced that, so I
+will let that go until it comes up again.  More to the point
+I get problems like no  /etc/ld.so.conf or /etc/ld.so.cache,
+can't stat /lib or /usr/lib, ...
+
+I think this is where my careful note-taking ends.
+
+So I expect that tomorrow I'll be back with more specific 
+questions, like do I need to select a kernel, and is there
+any interaction between the target kernel and the one on
+the host (all this talk about libs and configs).
+
+And then I can think about adding packages.
+
+I'm getting there.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Tue Jul 23 04:05:54 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 22 Jul 2002 22:05:54 -0500 (CDT)
+Subject: [Peeweelinux] New - III
+In-Reply-To: <2.2.16.20020722184053.6ea77910@zmicro.com>
+Message-ID: <Pine.LNX.4.33.0207222204150.7501-100000@big.adis.on.ca>
+
+> The first time you try pwlconfig,  you may get some errors,
+> followed by:
+>  Utility program "lxdialog" not found
+>  ( From (RH) /usr/src/linux type make Menuconfig
+>     then cp /usr/src/linux/scripts/lxdialog/lxdialog to ./bin)
+
+Which PeeWeeLinux version are you trying? The latest release includes the
+lxdialog sources and automatically builds lxdialog the first time
+pwlconfig is run.
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Tue Jul 23 17:24:10 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Tue, 23 Jul 2002 09:24:10 -0700 (PDT)
+Subject: [Peeweelinux] New - III
+Message-ID: <2.2.16.20020723093758.68ef05fa@zmicro.com>
+
+>Which PeeWeeLinux version are you trying? The latest release includes the
+>lxdialog sources and automatically builds lxdialog the first time
+>pwlconfig is run.
+>
+>Adi
+
+I'm using 0.61.1, just downloaded from SourceForge.  It did not
+build automatically, and I'd be willing to find out why, if it
+would help improve the script.  This was tried on two different 
+computers using RH 7.3
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Tue Jul 23 17:41:58 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 23 Jul 2002 11:41:58 -0500 (CDT)
+Subject: [Peeweelinux] New - III
+In-Reply-To: <2.2.16.20020723093758.68ef05fa@zmicro.com>
+Message-ID: <Pine.LNX.4.33.0207231136560.29554-100000@adibox.knet.ca>
+
+> I'm using 0.61.1, just downloaded from SourceForge.  It did not
+> build automatically, and I'd be willing to find out why, if it
+> would help improve the script.  This was tried on two different 
+> computers using RH 7.3
+
+Interesting, the sources for lxdialog should reside in 
+"Embedded_Build/lxdialog" and the build section for lxdialog is in 
+"Embedded_Build/scripts/pwl_functions".
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Tue Jul 23 17:43:44 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Tue, 23 Jul 2002 09:43:44 -0700 (PDT)
+Subject: [Peeweelinux] New - III
+Message-ID: <2.2.16.20020723095732.498fac8e@zmicro.com>
+
+I found it already.
+
+I realized that this did not occur on the second installation. I
+was too busy with my notes from the previous try, to notice.  So
+I will have to change my writeup, because the second comment 
+about "pwlconfig will automatically build some stuff of its own"
+was in fact, lxdialog being built.
+
+The difference was this:  When I first started out, I was trying
+not to be root.   Everyone advises me to stay out of root as
+much as possible.  Problem is, everything I'm interested in 
+doing requires root privileges!   
+
+As for the script, it apparently looks for lxdialog to be built
+before it checks to see if you are root.   So a non-root user
+will get the error and the build instructions as I did.
+
+Barry
+
+
+At 11:41 AM 7/23/02 -0500, you wrote:
+>> I'm using 0.61.1, just downloaded from SourceForge.  It did not
+>> build automatically, and I'd be willing to find out why, if it
+>> would help improve the script.  This was tried on two different 
+>> computers using RH 7.3
+>
+>Interesting, the sources for lxdialog should reside in 
+>"Embedded_Build/lxdialog" and the build section for lxdialog is in 
+>"Embedded_Build/scripts/pwl_functions".
+>
+>Adi
+
+
+From peeweelinux@adis.on.ca  Tue Jul 23 20:45:15 2002
+From: peeweelinux@adis.on.ca (Stefan Willmert)
+Date: Tue, 23 Jul 2002 14:45:15 -0500
+Subject: [Peeweelinux] Filesystem Issues
+Message-ID: <200207231945.g6NJjFo26592@ns.intellanet.com>
+
+Hello everyone,
+Due to the lack of current documentation, I have a few questions. I'm a new 
+PeeWeeLinux user, and so far, it has helped me tremendously. I have an embedded 
+device using a compactflash as the harddrive. I have easily created a system on 
+flash using a USB flash reader to setup the boot system, which successfully boots my 
+device. 
+
+Now, for my questions:
+1. I would like a read-only root filesystem on one partition, and a read-write 
+filesystem on a second partition. The second partition will store config files, log 
+files between power cycles of the embedded device. Since PeeWeeLinux seems to re-
+partition the device each time I load the system, what is the best way to maintain 
+two partitions?
+
+1a. Does anyone have any suggestions on the best way to use a read-write partition? 
+For example, the ramdisk is great because I can power down my embedded device 
+without worrying about corrupting the root filesystem. I do need to maintain config 
+files and log files which change during the operation of my device, so obviously, I 
+need a method to store this information between power cycles. Hence, a read-write 
+partition. It would be nice, however, to not have to worry about corrupting the read-
+write partition if a user just hits the power button. Any suggestions or best 
+practices from anyone here?? Perhaps there is a way to write all config files as 
+power loss is detected? I seem to recall reading something about some devices which 
+maintain power just long enough to store config files. Does anyone have any 
+knowledge in this area?
+
+2. Is there any documentation on how to use the custom features of PeeWeeLinux? I 
+have custom applications which need to be included, plus I will obviously be 
+modifying system scripts, etc. Ultimately, I want an image that I can easily load 
+onto a new flash disk without any further configuration once my initial system is 
+built.
+
+3. In the same regard, certain config files need to be updated during operation of 
+my device. (ex. network ip address, etc). I would expect a user to have the ability 
+to modify the ip address while the device is running. I would also like to maintain 
+these changes after a power-cycle. With a ramdisk, this is not possible. Any 
+suggestions? If i can get a read-write partition to work, I could probably modify 
+the load scripts to mount the partition and read the network config files from 
+there. Any thoughts?
+
+These are just initial questions as I dig into PeeWeeLinux. Any suggestions you have 
+would be greatly appreciated. I will dig into the setup scripts and perhaps make 
+some modifications to suit my purpose. However, I don't want to change too much as 
+it will create problems as new versions of PeeWeeLinux are created.
+
+Thanks in advance for all your help.
+
+-stefan willmert
+
+From peeweelinux@adis.on.ca  Tue Jul 23 20:49:23 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Tue, 23 Jul 2002 12:49:23 -0700 (PDT)
+Subject: [Peeweelinux] New - IV
+Message-ID: <2.2.16.20020723130311.658fba68@zmicro.com>
+
+It's official: I'm confused.
+
+I decided to start where I left off, running pwlconfig and
+using the current project again.  So I start with trying
+to write the target image, same as before.
+
+This time, it worked.
+
+Time to start exploring configurations.  Like, where the root
+password gets assigned :)
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Tue Jul 23 21:03:50 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 23 Jul 2002 15:03:50 -0500 (CDT)
+Subject: [Peeweelinux] New - IV
+In-Reply-To: <2.2.16.20020723130311.658fba68@zmicro.com>
+Message-ID: <Pine.LNX.4.33.0207231502560.29554-100000@adibox.knet.ca>
+
+> It's official: I'm confused.
+> 
+> I decided to start where I left off, running pwlconfig and
+> using the current project again.  So I start with trying
+> to write the target image, same as before.
+> 
+> This time, it worked.
+> 
+> Time to start exploring configurations.  Like, where the root
+> password gets assigned :)
+
+The root password is 'redhat'. You can change password if you include the 
+appropriate files in your project or you can include a custom 
+'/etc/passwd' using custom files.
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Tue Jul 23 21:16:19 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Tue, 23 Jul 2002 16:16:19 -0400
+Subject: [Peeweelinux] Filesystem Issues
+Message-ID: <sd3d8163.095@qatech.com>
+
+Hello Stefan,
+
+I have similar requests as yours regarding filesystem. The option for creating multiple uncompressed partitions is the closest to what you are asking for. 
+
+The uncompressed Read only option gets you stability and ability to shut off power without hurting your file system. It ends up creating two RO partitions, one for boot and one for root I think?? But the third partition is the remaining disk space. It does not get a filesystem on it, so you have to do a mkfs on it manually, if I recall correctly. 
+
+As far as changing parameters with a script or program, simply isse a "mount -o remount  -rw"   (syntax correct??) kind of command and you can modify your config files. Just make sure to remount ar RO once you are done so that the user doesn't trash the filesystem. 
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 01:03:26 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 23 Jul 2002 17:03:26 -0700
+Subject: [Peeweelinux] Filesystem Issues
+References: <200207231945.g6NJjFo26592@ns.intellanet.com>
+Message-ID: <3D3DEECE.2040907@fluid.com>
+
+Stefan Willmert wrote:
+> 
+> Now, for my questions:
+> 1. I would like a read-only root filesystem on one partition, and a read-write 
+> 1a. Does anyone have any suggestions on the best way to use a read-write partition? 
+
+I solved this one by upgrading to kernel 2.4.18 (see my howto in 
+previous list archives), and then using ext3 as the filesystem for the 
+3rd "leftover" partition as (mounted as /opt on boot).  Here's a small 
+script I use that makes/populates /dev/sda3 after PWL rebuilds the flash 
+card:
+
+   #!/bin/sh
+
+   echo "Creating filesystem..."
+   mke2fs -j -b 1024 -m0 /dev/sda3
+
+   echo "Populating filesystem..."
+   mount -t ext3 /dev/sda3 /mnt/usbdev
+   cp -a /usr/local/pwl/Embedded_Build/opt_tree/* /mnt/usbdev/
+
+   echo "Syncing and unmounting..."
+   sync
+   umount /mnt/usbdev
+
+So, of course, this requires you keep the "master" /opt tree on your 
+build machine.  Couple this ext3 filesystem with a SanDisk industrial 
+grade CF disk, and you're set.  I've had nothing but good luck with ext3 
+recovers.
+
+> 2. Is there any documentation on how to use the custom features of PeeWeeLinux? I 
+
+Besides my /opt dealio above, I just make custom .tar files that mimic 
+the PWL shipped ones, and throw them right into the mix.  They then show 
+up nicely in ./pwlconfig and you can just select them.  See the 2.4.18 
+howto, once again, for how I did this. Your mileage may vary. ;)
+
+> 3. In the same regard, certain config files need to be updated during operation of 
+
+Make them symlinks to the files loaded on /opt (or just copy them over 
+from /opt on boot) and you're set.  Of course, make sure /opt is mounted 
+before doing anything fun. ;)
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+"That's what the Internet is for, slandering others anonymously."
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 02:00:44 2002
+From: peeweelinux@adis.on.ca (Stefan Willmert)
+Date: Tue, 23 Jul 2002 20:00:44 -0500
+Subject: [Peeweelinux] Filesystem Issues
+Message-ID: <200207240100.g6O10iA26965@ns.intellanet.com>
+
+Thanks everyone for your wonderful input. I've been digging into PWL and learning 
+how things work. I've already managed to configure my embedded system, loaded my 
+custom application, and it runs! YEAH!!!!!! (minus a few configuration issues)
+
+With that, and all your suggestions, I'll have this thing flying in no time. In case 
+anyone cares, for those doing research, I'm using an Advantech PCM-5820 Biscuit 
+board with a CompactFlash disk. Advantech doesn't support linux, but the hardware is 
+generic, and so far everything is working great. 
+
+On a side note...before discovering PWL, I attempted to create my own distribution. 
+While possible...all i can really say about the experience is AAARRRRGGGHHHHH!!! A 
+few more months and I may have had it. PWL saved me tons of time.
+
+A Big Thanks to the creators of PWL!!!!
+
+Thanks again for all your help.
+
+-stefan
+
+---- Original Message ----
+From:		Troy Engel
+Date:		Tue 7/23/02 19:16
+To:		peeweelinux@adis.on.ca
+Subject:	Re: [Peeweelinux] Filesystem Issues
+
+Stefan Willmert wrote:
+> 
+> Now, for my questions:
+> 1. I would like a read-only root filesystem on one partition, and a read-write 
+> 1a. Does anyone have any suggestions on the best way to use a read-write 
+partition? 
+
+I solved this one by upgrading to kernel 2.4.18 (see my howto in 
+previous list archives), and then using ext3 as the filesystem for the 
+3rd "leftover" partition as (mounted as /opt on boot).  Here's a small 
+script I use that makes/populates /dev/sda3 after PWL rebuilds the flash 
+card:
+
+   #!/bin/sh
+
+   echo "Creating filesystem..."
+   mke2fs -j -b 1024 -m0 /dev/sda3
+
+   echo "Populating filesystem..."
+   mount -t ext3 /dev/sda3 /mnt/usbdev
+   cp -a /usr/local/pwl/Embedded_Build/opt_tree/* /mnt/usbdev/
+
+   echo "Syncing and unmounting..."
+   sync
+   umount /mnt/usbdev
+
+So, of course, this requires you keep the "master" /opt tree on your 
+build machine.  Couple this ext3 filesystem with a SanDisk industrial 
+grade CF disk, and you're set.  I've had nothing but good luck with ext3 
+recovers.
+
+> 2. Is there any documentation on how to use the custom features of PeeWeeLinux? I 
+
+Besides my /opt dealio above, I just make custom .tar files that mimic 
+the PWL shipped ones, and throw them right into the mix.  They then show 
+up nicely in ./pwlconfig and you can just select them.  See the 2.4.18 
+howto, once again, for how I did this. Your mileage may vary. ;)
+
+> 3. In the same regard, certain config files need to be updated during operation of 
+
+Make them symlinks to the files loaded on /opt (or just copy them over 
+from /opt on boot) and you're set.  Of course, make sure /opt is mounted 
+before doing anything fun. ;)
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+"That's what the Internet is for, slandering others anonymously."
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 09:51:58 2002
+From: peeweelinux@adis.on.ca (Justin Fretwell)
+Date: Wed, 24 Jul 2002 09:51:58 +0100
+Subject: [Peeweelinux] changing the tux logo
+In-Reply-To: <200207211700.g6LH0GQ13363@yoda.adis.on.ca>
+References: <200207211700.g6LH0GQ13363@yoda.adis.on.ca>
+Message-ID: <200207240851.IAA32311@hamster.akhter.com>
+
+Its easy, you will of course need framebuffering and then you download the 
+linux logo plugin for the Gimp:
+
+http://registry.gimp.org/plugin?id=376
+
+Its quite easy to use just follow the instructions.
+
+Regards
+Justin
+
+>
+>    1. graphics (Ricardo Trindade)
+>
+> --__--__--
+>
+> Message: 1
+> From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> To: <peeweelinux@adis.on.ca>
+> Date: Sun, 21 Jul 2002 01:59:31 +0100
+> Subject: [Peeweelinux] graphics
+> Reply-To: peeweelinux@adis.on.ca
+>
+> Hi,
+>
+> 	Is there a way to customize the little tux image that shows when peewee
+> boots.
+>
+> 	Last time I checked it was hard-coded in the kernel. is it still like that
+> or can it be changed ?
+>
+> thanks
+> Ricardo
+>
+>
+>
+> --__--__--
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+> End of Peeweelinux Digest
+
+From peeweelinux@adis.on.ca  Wed Jul 24 01:03:00 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 24 Jul 2002 01:03:00 +0100
+Subject: [Peeweelinux] Filesystem Issues
+In-Reply-To: <200207231945.g6NJjFo26592@ns.intellanet.com>
+Message-ID: <000401c23306$66a05880$0100007f@ricardo>
+
+1) I have that setup. on the partition that peewee leaves empty I make a fs,
+include a custom fstab (don't forget to configure the option to modify
+system files), it gets mounted on boot. of course if you load the image to
+the CF again that partition is lost. I don't find that's a problem, once you
+have your distribution stable you probably won't mind that anymore.
+
+1a) the only solution (that I know of) that's good there is a journalling
+FS. One of this days I'm going to try ext3 on peewee, but I think you'll
+need to upgrade the kernel. I don't think the solution you mentioned
+(writing config on powerdown) is "production quality", because it depends on
+your hardware, and linux is not a realtime OS... (I can be wrong of course).
+
+3) the custom feature of peewee is very nice, I think it's easy to use. play
+with it a little, I think you'll get the touch. check the directories under
+your project to understand what it does to files. When I want to change IP,
+I mount the CF on the /mnt/flash mountpoint supplied, change the IP or
+upgrade the app, unmount and reboot.
+
+regarding new versions, Adi is working on a new and improved peewee, so I
+think this version is the last of it's kind (correct me please Adi).
+
+It's a pitty, because a lot of people were getting used to it, but Adi says
+it was getting harder to maintain due to redhat dependencies.
+
+good luck
+bye
+
+
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Stefan Willmert
+Sent: terça-feira, 23 de Julho de 2002 20:45
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] Filesystem Issues
+
+
+Hello everyone,
+Due to the lack of current documentation, I have a few questions. I'm a new
+PeeWeeLinux user, and so far, it has helped me tremendously. I have an
+embedded
+device using a compactflash as the harddrive. I have easily created a system
+on
+flash using a USB flash reader to setup the boot system, which successfully
+boots my
+device.
+
+Now, for my questions:
+1. I would like a read-only root filesystem on one partition, and a
+read-write
+filesystem on a second partition. The second partition will store config
+files, log
+files between power cycles of the embedded device. Since PeeWeeLinux seems
+to re-
+partition the device each time I load the system, what is the best way to
+maintain
+two partitions?
+
+1a. Does anyone have any suggestions on the best way to use a read-write
+partition?
+For example, the ramdisk is great because I can power down my embedded
+device
+without worrying about corrupting the root filesystem. I do need to maintain
+config
+files and log files which change during the operation of my device, so
+obviously, I
+need a method to store this information between power cycles. Hence, a
+read-write
+partition. It would be nice, however, to not have to worry about corrupting
+the read-
+write partition if a user just hits the power button. Any suggestions or
+best
+practices from anyone here?? Perhaps there is a way to write all config
+files as
+power loss is detected? I seem to recall reading something about some
+devices which
+maintain power just long enough to store config files. Does anyone have any
+knowledge in this area?
+
+2. Is there any documentation on how to use the custom features of
+PeeWeeLinux? I
+have custom applications which need to be included, plus I will obviously be
+modifying system scripts, etc. Ultimately, I want an image that I can easily
+load
+onto a new flash disk without any further configuration once my initial
+system is
+built.
+
+3. In the same regard, certain config files need to be updated during
+operation of
+my device. (ex. network ip address, etc). I would expect a user to have the
+ability
+to modify the ip address while the device is running. I would also like to
+maintain
+these changes after a power-cycle. With a ramdisk, this is not possible. Any
+suggestions? If i can get a read-write partition to work, I could probably
+modify
+the load scripts to mount the partition and read the network config files
+from
+there. Any thoughts?
+
+These are just initial questions as I dig into PeeWeeLinux. Any suggestions
+you have
+would be greatly appreciated. I will dig into the setup scripts and perhaps
+make
+some modifications to suit my purpose. However, I don't want to change too
+much as
+it will create problems as new versions of PeeWeeLinux are created.
+
+Thanks in advance for all your help.
+
+-stefan willmert
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 13:20:36 2002
+From: peeweelinux@adis.on.ca (Cristián Mejía)
+Date: Wed, 24 Jul 2002 08:20:36 -0400
+Subject: [Peeweelinux] Only one little thing ...
+Message-ID: <5.1.0.14.0.20020724080957.02dbcfb8@mail.ecofor.cl>
+
+	I have now a improved version for the Linux Kiosk with the PeeWee distro 
+and running completely in RAM, so I'm avoiding the disconnection problem 
+and disks issues. Thanks Adi and all the list !!
+
+	But I'm having a little problem with Netscape because, it is not accepting 
+the .netscape directory even with the same permissions (in fact even the 
+tar gzziped version that was running), and ask me every boot up to accept 
+the licence agreement. With other kiosks I made, the thing was avoided:
+
+copy the .netscape dir to the home of netscapeUser .
+
+su netscapeUser -c "netscape -no-spl....-geom...0+0"
+
+but the su implementation in busybox don't support this sintaxis (-c string 
+command).
+
+If anyone have other solution or idea, please let me know, thanks again !!
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 14:53:29 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 24 Jul 2002 08:53:29 -0500 (CDT)
+Subject: [Peeweelinux] Filesystem Issues
+In-Reply-To: <000401c23306$66a05880$0100007f@ricardo>
+Message-ID: <Pine.LNX.4.33.0207240847130.31445-100000@adibox.knet.ca>
+
+> regarding new versions, Adi is working on a new and improved peewee, so I
+> think this version is the last of it's kind (correct me please Adi).
+
+Actually, if you're only using the binary distribution nothing should 
+change at all.
+
+The source version will be different, though. You should only notice the 
+differece if you're compiling your own rpms. The PeeWeeLinux we have now, 
+required a host Linux system with libs that match PeeWeeLinux, essentially 
+RedHat 6.2. What I plan on doing is a dedicated build environment that you 
+chroot into to build PeeWeeLinux. This will ensure only the libs actually 
+included and distributed with PeeWeeLinux will be available. This will 
+also make rpm spec files easier to maintain since I no longer have to jump 
+through hops to exclude standard RedHat libs which are not part of 
+PeeWeeLinux (pam, etc).
+
+So most of the changes to the new and improved PeeWeeLinux will be behind 
+the scenes.
+
+Now that I have a pretty firm grasp (and many notes) on what and how I 
+like to do it I just have to get the time to actually make it happen...
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 17:27:38 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Wed, 24 Jul 2002 09:27:38 -0700
+Subject: [Peeweelinux] Filesystem Issues
+References: <200207240100.g6O10iA26965@ns.intellanet.com>
+Message-ID: <3D3ED57A.1030407@fluid.com>
+
+Stefan Willmert wrote:
+> 
+> anyone cares, for those doing research, I'm using an Advantech PCM-5820 Biscuit 
+
+We are also using an Advantech system, a PCM-3350 mainboard with a 
+PCM-3643-04A1 4port serial attached, and finally a PCM-3601 modem card 
+plugged on as well.  All pieces play very well with PWL, nary a problem 
+as far as hardware is concerned. (we don't use the vga/usb/lpt at all tho)
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+"That's what the Internet is for, slandering others anonymously."
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 17:31:15 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Wed, 24 Jul 2002 09:31:15 -0700
+Subject: [Peeweelinux] Only one little thing ...
+References: <5.1.0.14.0.20020724080957.02dbcfb8@mail.ecofor.cl>
+Message-ID: <3D3ED653.2060301@fluid.com>
+
+Cristián Mejía wrote:
+> 
+>     But I'm having a little problem with Netscape because, it is not 
+> accepting the .netscape directory even with the same permissions (in 
+> fact even the tar gzziped version that was running), and ask me every 
+> boot up to accept the licence agreement. With other kiosks I made, the 
+> thing was avoided:
+
+If this helps, Netscape stores the info of whether or not you accepted 
+the license agreement in a file called "registry" in the .netscape/ 
+directory.  Perhaps you need to tarball up an already accepted copy of 
+one of those?  *shrug*
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+"That's what the Internet is for, slandering others anonymously."
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 18:07:00 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Wed, 24 Jul 2002 13:07:00 -0400
+Subject: [Peeweelinux] Filesystem Issues
+Message-ID: <sd3ea697.087@qatech.com>
+
+Hello Adi,
+
+Not to get into a great discussion about development, but does the new version of peewee being built in this chroot fashion allow for easier updates (and additional) libraries. I.e. can glibc be updated easily? Right now I am statically building my GTK app.
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 18:34:09 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 24 Jul 2002 12:34:09 -0500 (CDT)
+Subject: [Peeweelinux] Filesystem Issues
+In-Reply-To: <sd3ea697.087@qatech.com>
+Message-ID: <Pine.LNX.4.33.0207241229190.31445-100000@adibox.knet.ca>
+
+Hi Ken,
+
+If glibc was updated it would certainly require all other rpms to be 
+rebuilt as well. My goal is to have scripts that would allow one to build 
+the development environment and all rpms from scratch with, a single 
+command. 
+
+To replace glibc you would have to make changes to the glib.spec file and 
+then build PeeWeeLinux from scratch. This will mean dealing with any 
+problems that surface due to the changed glibc during the build of any 
+other packages.
+
+Adi
+
+
+On Wed, 24 Jul 2002, Ken Emmons, Jr. wrote:
+
+> Hello Adi,
+> 
+> Not to get into a great discussion about development, but does the new 
+> version of peewee being built in this chroot fashion allow for easier 
+> updates (and additional) libraries. I.e. can glibc be updated easily? 
+> Right now I am statically building my GTK app.
+> 
+> ~Ken
+> 
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 18:59:49 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Wed, 24 Jul 2002 10:59:49 -0700
+Subject: [Peeweelinux] Filesystem Issues
+References: <200207240100.g6O10iA26965@ns.intellanet.com>
+Message-ID: <001901c2333b$e758d1c0$1496fe0a@epicentric.com>
+
+I sounds like a lot of people are using Advantech systems with this.  I've
+been using the Advantech PCM-5822.  In regards to the issue of Advantech
+supporting Linux, although their website has minimal info regarding Linux, I
+was quite surprised to find that the CD-ROM that comes with product has a
+lot of Linux info including both the binary and source for the elusive
+official "Durango" XFree86 driver written by National Semi which is
+virtually impossible to find online.  I've had the 5822 for about a month
+now and could have saved quite a bit of time for myself if I'd actually
+looked on the Advantech CD-ROM first, but I'm used to vendor-supplied
+drivers being useless.  Note that this is a an Xfree86 3.x driver - Xfree86
+4.x users should probably stick to the standard VESA driver for best
+results.
+
+Ed
+
+----- Original Message -----
+From: "Stefan Willmert" <stefanw@ns.intellanet.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Tuesday, July 23, 2002 6:00 PM
+Subject: Re: [Peeweelinux] Filesystem Issues
+
+
+> Thanks everyone for your wonderful input. I've been digging into PWL and
+learning
+> how things work. I've already managed to configure my embedded system,
+loaded my
+> custom application, and it runs! YEAH!!!!!! (minus a few configuration
+issues)
+>
+> With that, and all your suggestions, I'll have this thing flying in no
+time. In case
+> anyone cares, for those doing research, I'm using an Advantech PCM-5820
+Biscuit
+> board with a CompactFlash disk. Advantech doesn't support linux, but the
+hardware is
+> generic, and so far everything is working great.
+>
+> On a side note...before discovering PWL, I attempted to create my own
+distribution.
+> While possible...all i can really say about the experience is
+AAARRRRGGGHHHHH!!! A
+> few more months and I may have had it. PWL saved me tons of time.
+>
+> A Big Thanks to the creators of PWL!!!!
+>
+> Thanks again for all your help.
+>
+> -stefan
+>
+> ---- Original Message ----
+> From: Troy Engel
+> Date: Tue 7/23/02 19:16
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] Filesystem Issues
+>
+> Stefan Willmert wrote:
+> >
+> > Now, for my questions:
+> > 1. I would like a read-only root filesystem on one partition, and a
+read-write
+> > 1a. Does anyone have any suggestions on the best way to use a read-write
+> partition?
+>
+> I solved this one by upgrading to kernel 2.4.18 (see my howto in
+> previous list archives), and then using ext3 as the filesystem for the
+> 3rd "leftover" partition as (mounted as /opt on boot).  Here's a small
+> script I use that makes/populates /dev/sda3 after PWL rebuilds the flash
+> card:
+>
+>    #!/bin/sh
+>
+>    echo "Creating filesystem..."
+>    mke2fs -j -b 1024 -m0 /dev/sda3
+>
+>    echo "Populating filesystem..."
+>    mount -t ext3 /dev/sda3 /mnt/usbdev
+>    cp -a /usr/local/pwl/Embedded_Build/opt_tree/* /mnt/usbdev/
+>
+>    echo "Syncing and unmounting..."
+>    sync
+>    umount /mnt/usbdev
+>
+> So, of course, this requires you keep the "master" /opt tree on your
+> build machine.  Couple this ext3 filesystem with a SanDisk industrial
+> grade CF disk, and you're set.  I've had nothing but good luck with ext3
+> recovers.
+>
+> > 2. Is there any documentation on how to use the custom features of
+PeeWeeLinux? I
+>
+> Besides my /opt dealio above, I just make custom .tar files that mimic
+> the PWL shipped ones, and throw them right into the mix.  They then show
+> up nicely in ./pwlconfig and you can just select them.  See the 2.4.18
+> howto, once again, for how I did this. Your mileage may vary. ;)
+>
+> > 3. In the same regard, certain config files need to be updated during
+operation of
+>
+> Make them symlinks to the files loaded on /opt (or just copy them over
+> from /opt on boot) and you're set.  Of course, make sure /opt is mounted
+> before doing anything fun. ;)
+>
+> -te
+>
+> --
+> Troy Engel, Systems Engineer
+> "That's what the Internet is for, slandering others anonymously."
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 19:02:11 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Wed, 24 Jul 2002 11:02:11 -0700
+Subject: [Peeweelinux] Filesystem Issues
+References: <Pine.LNX.4.33.0207240847130.31445-100000@adibox.knet.ca>
+Message-ID: <002601c2333c$3bcbedf0$1496fe0a@epicentric.com>
+
+Adi,
+
+I'm glad to hear that a new version is in the works.  Is there any chance
+that Troy's kernel 2.4.18 support will be rolled in?
+
+Ed
+
+----- Original Message -----
+From: "Adi Linden" <adi@adis.on.ca>
+To: <peeweelinux@adis.on.ca>
+Sent: Wednesday, July 24, 2002 6:53 AM
+Subject: RE: [Peeweelinux] Filesystem Issues
+
+
+> > regarding new versions, Adi is working on a new and improved peewee, so
+I
+> > think this version is the last of it's kind (correct me please Adi).
+>
+> Actually, if you're only using the binary distribution nothing should
+> change at all.
+>
+> The source version will be different, though. You should only notice the
+> differece if you're compiling your own rpms. The PeeWeeLinux we have now,
+> required a host Linux system with libs that match PeeWeeLinux, essentially
+> RedHat 6.2. What I plan on doing is a dedicated build environment that you
+> chroot into to build PeeWeeLinux. This will ensure only the libs actually
+> included and distributed with PeeWeeLinux will be available. This will
+> also make rpm spec files easier to maintain since I no longer have to jump
+> through hops to exclude standard RedHat libs which are not part of
+> PeeWeeLinux (pam, etc).
+>
+> So most of the changes to the new and improved PeeWeeLinux will be behind
+> the scenes.
+>
+> Now that I have a pretty firm grasp (and many notes) on what and how I
+> like to do it I just have to get the time to actually make it happen...
+>
+> Adi
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 19:20:05 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Wed, 24 Jul 2002 14:20:05 -0400
+Subject: [Peeweelinux] Filesystem Issues
+Message-ID: <sd3eb7b3.032@qatech.com>
+
+Personally I think custom kernels are easiest to deal with in the custom project since they are so easy to build.
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 19:23:35 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 24 Jul 2002 13:23:35 -0500 (CDT)
+Subject: [Peeweelinux] Filesystem Issues
+In-Reply-To: <002601c2333c$3bcbedf0$1496fe0a@epicentric.com>
+Message-ID: <Pine.LNX.4.33.0207241313420.31445-100000@adibox.knet.ca>
+
+Right now I am focusing the little time I have on getting the new 
+development environment put together. Once that's done I will work on 
+updating packages...
+
+Adi
+
+
+On Wed, 24 Jul 2002, Ed Anuff wrote:
+
+> Adi,
+> 
+> I'm glad to hear that a new version is in the works.  Is there any chance
+> that Troy's kernel 2.4.18 support will be rolled in?
+> 
+> Ed
+> 
+> ----- Original Message -----
+> From: "Adi Linden" <adi@adis.on.ca>
+> To: <peeweelinux@adis.on.ca>
+> Sent: Wednesday, July 24, 2002 6:53 AM
+> Subject: RE: [Peeweelinux] Filesystem Issues
+> 
+> 
+> > > regarding new versions, Adi is working on a new and improved peewee, so
+> I
+> > > think this version is the last of it's kind (correct me please Adi).
+> >
+> > Actually, if you're only using the binary distribution nothing should
+> > change at all.
+> >
+> > The source version will be different, though. You should only notice the
+> > differece if you're compiling your own rpms. The PeeWeeLinux we have now,
+> > required a host Linux system with libs that match PeeWeeLinux, essentially
+> > RedHat 6.2. What I plan on doing is a dedicated build environment that you
+> > chroot into to build PeeWeeLinux. This will ensure only the libs actually
+> > included and distributed with PeeWeeLinux will be available. This will
+> > also make rpm spec files easier to maintain since I no longer have to jump
+> > through hops to exclude standard RedHat libs which are not part of
+> > PeeWeeLinux (pam, etc).
+> >
+> > So most of the changes to the new and improved PeeWeeLinux will be behind
+> > the scenes.
+> >
+> > Now that I have a pretty firm grasp (and many notes) on what and how I
+> > like to do it I just have to get the time to actually make it happen...
+> >
+> > Adi
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Wed Jul 24 19:35:00 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Wed, 24 Jul 2002 11:35:00 -0700
+Subject: Custom Kernels (was: [Peeweelinux] Filesystem Issues)
+References: <Pine.LNX.4.33.0207241313420.31445-100000@adibox.knet.ca>
+Message-ID: <00b101c23340$d18ae720$1496fe0a@epicentric.com>
+
+Thanks.  On reflection, I think that it might simply be a question of making
+it easier to figure out which packages go with which kernel versions.  When
+I used Troy's approach to work with kernel 2.4.18 the biggest issue was
+figuring out which packages would work as is and which needed to be rebuilt.
+Maybe it's just a documentation issue and if people on the list who are
+using custom 2.4 kernels can simply post here which packages they had to
+rebuild then it might not require any real changes to PWL itself.
+
+Thanks
+
+Ed
+
+----- Original Message -----
+From: "Adi Linden" <adi@adis.on.ca>
+To: <peeweelinux@adis.on.ca>
+Sent: Wednesday, July 24, 2002 11:23 AM
+Subject: Re: [Peeweelinux] Filesystem Issues
+
+
+> Right now I am focusing the little time I have on getting the new
+> development environment put together. Once that's done I will work on
+> updating packages...
+>
+> Adi
+
+
+
+From peeweelinux@adis.on.ca  Thu Jul 25 00:33:57 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 24 Jul 2002 16:33:57 -0700 (PDT)
+Subject: [Peeweelinux] Fits on a floppy?
+Message-ID: <2.2.16.20020724164748.65e73f30@zmicro.com>
+
+I've been trying the "load system onto /dev/fd0" thing here and I
+find that 
+ (1) It's very nearly the size of the floppy
+ (2) Sometimes it fits and sometimes it doesn't
+ (3) There's "nothing" in the system.
+
+"Nothing" means nothing beyond the basic boot-up necessities
+plus a few programs in bin.  The difference between "it fits"
+and "it doesn't fit" might even be accounted for by the luck
+of the draw when the ramdisk is compressed.  The failed disks
+tend to have everything except the syslinux file, which means
+it got really close (or else the directory was written out
+without the data actually fitting).  I should have said that
+this is the same project each time (as far as I know--and that's
+really the point).
+
+But what I'm really wondering is whether I'm going about this
+properly.  Has anyone built a floppy with more applications
+on it?  Does anyone  write their image to a floppy?  Have I
+got something big included (using the "minimal" project) that 
+I've overlooked?
+
+I should point out that I don't need my system to fit on a
+floppy.  That was just an easy way to start.  I'm going to
+use some form of flash disk.  So I don't need any advice
+on tricks to make it fit.  I'm just looking for ways to
+find out how this thing works, trying to catch any miscon-
+ceptions early on.
+
+So far, I like what I see.   I really would like to learn
+how it works.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Thu Jul 25 01:03:24 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 25 Jul 2002 01:03:24 +0100
+Subject: [Peeweelinux] Filesystem Issues
+In-Reply-To: <001901c2333b$e758d1c0$1496fe0a@epicentric.com>
+Message-ID: <000c01c2336e$b2cd8df0$1cb812d4@ricardo>
+
+hi,
+
+	I'm also using Advantech 5820. They ship drivers for X in the CD ?
+
+ricardo
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+Sent: quarta-feira, 24 de Julho de 2002 19:00
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] Filesystem Issues
+
+
+I sounds like a lot of people are using Advantech systems with this.  I've
+been using the Advantech PCM-5822.  In regards to the issue of Advantech
+supporting Linux, although their website has minimal info regarding Linux, I
+was quite surprised to find that the CD-ROM that comes with product has a
+lot of Linux info including both the binary and source for the elusive
+official "Durango" XFree86 driver written by National Semi which is
+virtually impossible to find online.  I've had the 5822 for about a month
+now and could have saved quite a bit of time for myself if I'd actually
+looked on the Advantech CD-ROM first, but I'm used to vendor-supplied
+drivers being useless.  Note that this is a an Xfree86 3.x driver - Xfree86
+4.x users should probably stick to the standard VESA driver for best
+results.
+
+Ed
+
+----- Original Message -----
+From: "Stefan Willmert" <stefanw@ns.intellanet.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Tuesday, July 23, 2002 6:00 PM
+Subject: Re: [Peeweelinux] Filesystem Issues
+
+
+> Thanks everyone for your wonderful input. I've been digging into PWL and
+learning
+> how things work. I've already managed to configure my embedded system,
+loaded my
+> custom application, and it runs! YEAH!!!!!! (minus a few configuration
+issues)
+>
+> With that, and all your suggestions, I'll have this thing flying in no
+time. In case
+> anyone cares, for those doing research, I'm using an Advantech PCM-5820
+Biscuit
+> board with a CompactFlash disk. Advantech doesn't support linux, but the
+hardware is
+> generic, and so far everything is working great.
+>
+> On a side note...before discovering PWL, I attempted to create my own
+distribution.
+> While possible...all i can really say about the experience is
+AAARRRRGGGHHHHH!!! A
+> few more months and I may have had it. PWL saved me tons of time.
+>
+> A Big Thanks to the creators of PWL!!!!
+>
+> Thanks again for all your help.
+>
+> -stefan
+>
+> ---- Original Message ----
+> From: Troy Engel
+> Date: Tue 7/23/02 19:16
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] Filesystem Issues
+>
+> Stefan Willmert wrote:
+> >
+> > Now, for my questions:
+> > 1. I would like a read-only root filesystem on one partition, and a
+read-write
+> > 1a. Does anyone have any suggestions on the best way to use a read-write
+> partition?
+>
+> I solved this one by upgrading to kernel 2.4.18 (see my howto in
+> previous list archives), and then using ext3 as the filesystem for the
+> 3rd "leftover" partition as (mounted as /opt on boot).  Here's a small
+> script I use that makes/populates /dev/sda3 after PWL rebuilds the flash
+> card:
+>
+>    #!/bin/sh
+>
+>    echo "Creating filesystem..."
+>    mke2fs -j -b 1024 -m0 /dev/sda3
+>
+>    echo "Populating filesystem..."
+>    mount -t ext3 /dev/sda3 /mnt/usbdev
+>    cp -a /usr/local/pwl/Embedded_Build/opt_tree/* /mnt/usbdev/
+>
+>    echo "Syncing and unmounting..."
+>    sync
+>    umount /mnt/usbdev
+>
+> So, of course, this requires you keep the "master" /opt tree on your
+> build machine.  Couple this ext3 filesystem with a SanDisk industrial
+> grade CF disk, and you're set.  I've had nothing but good luck with ext3
+> recovers.
+>
+> > 2. Is there any documentation on how to use the custom features of
+PeeWeeLinux? I
+>
+> Besides my /opt dealio above, I just make custom .tar files that mimic
+> the PWL shipped ones, and throw them right into the mix.  They then show
+> up nicely in ./pwlconfig and you can just select them.  See the 2.4.18
+> howto, once again, for how I did this. Your mileage may vary. ;)
+>
+> > 3. In the same regard, certain config files need to be updated during
+operation of
+>
+> Make them symlinks to the files loaded on /opt (or just copy them over
+> from /opt on boot) and you're set.  Of course, make sure /opt is mounted
+> before doing anything fun. ;)
+>
+> -te
+>
+> --
+> Troy Engel, Systems Engineer
+> "That's what the Internet is for, slandering others anonymously."
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Jul 25 11:37:04 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 25 Jul 2002 11:37:04 +0100
+Subject: [Peeweelinux] Fits on a floppy?
+In-Reply-To: <2.2.16.20020724164748.65e73f30@zmicro.com>
+Message-ID: <001801c233cb$2928c2b0$0100007f@ricardo>
+
+I wouldn't worry very much about the floppy. peewee wasn't (I think) really
+intended for this, it's a small distribution, not a "micro" :)
+
+once you get a compact flash and start playing with it you will see it works
+very nicely.
+
+regarding floppies, I think the minimal target (in unchanged) fits in one.
+however, you can't do nothing interesting with it. if you require floppy I
+have some bookmarks of distribution that fit, for routers, etc..
+
+ricardo
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Barry Gershenfeld
+Sent: quinta-feira, 25 de Julho de 2002 0:34
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] Fits on a floppy?
+
+
+I've been trying the "load system onto /dev/fd0" thing here and I
+find that
+ (1) It's very nearly the size of the floppy
+ (2) Sometimes it fits and sometimes it doesn't
+ (3) There's "nothing" in the system.
+
+"Nothing" means nothing beyond the basic boot-up necessities
+plus a few programs in bin.  The difference between "it fits"
+and "it doesn't fit" might even be accounted for by the luck
+of the draw when the ramdisk is compressed.  The failed disks
+tend to have everything except the syslinux file, which means
+it got really close (or else the directory was written out
+without the data actually fitting).  I should have said that
+this is the same project each time (as far as I know--and that's
+really the point).
+
+But what I'm really wondering is whether I'm going about this
+properly.  Has anyone built a floppy with more applications
+on it?  Does anyone  write their image to a floppy?  Have I
+got something big included (using the "minimal" project) that
+I've overlooked?
+
+I should point out that I don't need my system to fit on a
+floppy.  That was just an easy way to start.  I'm going to
+use some form of flash disk.  So I don't need any advice
+on tricks to make it fit.  I'm just looking for ways to
+find out how this thing works, trying to catch any miscon-
+ceptions early on.
+
+So far, I like what I see.   I really would like to learn
+how it works.
+
+Barry
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Jul 25 11:40:29 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 25 Jul 2002 11:40:29 +0100
+Subject: [Peeweelinux] Only one little thing ...
+In-Reply-To: <5.1.0.14.0.20020724080957.02dbcfb8@mail.ecofor.cl>
+Message-ID: <001a01c233cb$320bffa0$0100007f@ricardo>
+
+I think another package (sh-utils) has a proper su.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Cristian Mejma
+Sent: quarta-feira, 24 de Julho de 2002 13:21
+To: PeeWee Linux List
+Subject: [Peeweelinux] Only one little thing ...
+
+
+	I have now a improved version for the Linux Kiosk with the PeeWee distro
+and running completely in RAM, so I'm avoiding the disconnection problem
+and disks issues. Thanks Adi and all the list !!
+
+	But I'm having a little problem with Netscape because, it is not accepting
+the .netscape directory even with the same permissions (in fact even the
+tar gzziped version that was running), and ask me every boot up to accept
+the licence agreement. With other kiosks I made, the thing was avoided:
+
+copy the .netscape dir to the home of netscapeUser .
+
+su netscapeUser -c "netscape -no-spl....-geom...0+0"
+
+but the su implementation in busybox don't support this sintaxis (-c string
+command).
+
+If anyone have other solution or idea, please let me know, thanks again !!
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Jul 25 13:06:08 2002
+From: peeweelinux@adis.on.ca (Cristián Mejía)
+Date: Thu, 25 Jul 2002 08:06:08 -0400
+Subject: [Peeweelinux] Only one little thing ...
+In-Reply-To: <001a01c233cb$320bffa0$0100007f@ricardo>
+References: <5.1.0.14.0.20020724080957.02dbcfb8@mail.ecofor.cl>
+Message-ID: <5.1.0.14.0.20020725080232.03160e00@mail.ecofor.cl>
+
+Thanks Ricardo and Troy:
+
+         With both of your messages I have now all running !!
+
+Thank you Adi for this good project !!
+
+Best Regards,
+         Cristián.
+
+At 11:40 25-07-2002 +0100, you wrote:
+>I think another package (sh-utils) has a proper su.
+>
+>-----Original Message-----
+>From: peeweelinux-admin@adis.on.ca
+>[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Cristian Mejma
+>Sent: quarta-feira, 24 de Julho de 2002 13:21
+>To: PeeWee Linux List
+>Subject: [Peeweelinux] Only one little thing ...
+>
+>
+>         I have now a improved version for the Linux Kiosk with the PeeWee 
+> distro
+>and running completely in RAM, so I'm avoiding the disconnection problem
+>and disks issues. Thanks Adi and all the list !!
+>
+>         But I'm having a little problem with Netscape because, it is not 
+> accepting
+>the .netscape directory even with the same permissions (in fact even the
+>tar gzziped version that was running), and ask me every boot up to accept
+>the licence agreement. With other kiosks I made, the thing was avoided:
+>
+>copy the .netscape dir to the home of netscapeUser .
+>
+>su netscapeUser -c "netscape -no-spl....-geom...0+0"
+>
+>but the su implementation in busybox don't support this sintaxis (-c string
+>command).
+>
+>If anyone have other solution or idea, please let me know, thanks again !!
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Jul 25 22:21:45 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 25 Jul 2002 14:21:45 -0700 (PDT)
+Subject: [Peeweelinux] Fits on a floppy?
+Message-ID: <2.2.16.20020725143539.77af8aa0@zmicro.com>
+
+ricardo wrote:
+>I wouldn't worry very much about the floppy. peewee wasn't (I think) really
+>intended for this, it's a small distribution, not a "micro" :)
+
+I though someone might say that theirs fits with room to spare and
+that it didn't fit until they figured out they had to do such-and-such.
+But it looks like that's not the case.   Clearly all of peewee's users
+have moved on to bigger media.   As I shall, shortly.
+
+I chose peewee *because* it wasn't trying to fit a floppy.  I looked
+at many "embedded" sites and many were no good for me because of this.
+I found the following on a website.  It's in a discussion between Ralph
+and Adi:
+ 
+  "Also, nobody is targeting the 3MB - 32MB systems."
+
+So, think "niche".
+
+>however, you can't do nothing interesting with it. 
+
+You can do demonstrations like showing that it works, and also to
+quickly become familiar with which commands you didn't realize
+you couldn't live without :)
+
+BTW I notice that bin has the "real" versions of the programs.  It
+might be that a busybox implementation would leave room for other
+files.
+
+>if you require floppy
+No, I said I didn't.  Actually I have a Coyote router at home, so I
+know what floppy systems are for.
+
+>once you get a compact flash and start playing with it you will see it works
+>very nicely.
+
+I've got an sbc on order but until then I'm going to target a hard
+drive.  The Adventure continues in next message...
+
+Thanks!
+
+>-----Original Message-----
+...
+>I should point out that I don't need my system to fit on a
+>floppy.  That was just an easy way to start.  
+...
+
+
+
+From peeweelinux@adis.on.ca  Thu Jul 25 22:49:09 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 25 Jul 2002 14:49:09 -0700 (PDT)
+Subject: [Peeweelinux] PeeWee on hard drive partition
+Message-ID: <2.2.16.20020725150301.6ec7c282@zmicro.com>
+
+So, I thought, I should target a hard drive on a computer, that
+will let me get used to running the IDE interface and give me
+some room to start building the real application.  
+
+I made a little space at the end of the second drive on my host
+system and figured I'd write it there.  Should work, no?
+
+Well, nobody really uses a hard drive for embedded work.  A flash
+IDE drive is supported, but the instructions seem to indicate
+that the master boot record gets written, which isn't what I'm
+looking for.  So I choose a floppy, and lie to it that the
+floppy is at /dev/hdb11.  It writes out fine, the partition 
+is a DOS filesystem with the kernel and ramdisk and boot files.
+I tell the host system lilo to add that image.   All is OK.
+
+Except that when I go there, syslinux starts and wants to read
+everything off the floppy drive.
+
+Last night I went to the syslinux site and it looks like I can
+change the drive syslinux is reading from...if I can actually
+get the BIOS to recognize an extended partition on the second
+drive.  Failing that, I think DOS will see it and I can use
+LOADLIN to start it.   Eventually I could probably work it 
+out with lilo if I knew what peewee did for each option.   
+Still, it's all a temporary step on the way to the real target.
+
+Tinkering is fun.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Fri Jul 26 01:49:21 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 25 Jul 2002 17:49:21 -0700 (PDT)
+Subject: [Peeweelinux] Fits on a hard drive
+Message-ID: <2.2.16.20020725180313.b1efd736@zmicro.com>
+
+I am able to boot a peewee system from hdb11 if I boot DOS first
+and use LOADLIN.   I can't get syslinux to do it, but I don't
+know what the problem is there.  (I'm not sure how it knows
+which device to read).  But OK, I'll skip that one for now.
+
+I have discovered that the pwlconfig Help file has a newer
+version of documentation than the 0.19 in ./Documentation
+It's found in ./scripts/README.pwlconfig.    So I'm going 
+to read that to see what tidbits I can find.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Fri Jul 26 13:07:57 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Fri, 26 Jul 2002 13:07:57 +0100
+Subject: [Peeweelinux] PeeWee on hard drive partition
+In-Reply-To: <2.2.16.20020725150301.6ec7c282@zmicro.com>
+Message-ID: <000101c234cb$50ff9dd0$0100007f@ricardo>
+
+I used peewee for a while in a partition, before the CF arrived.
+
+the simplest way would be to .tgz the mnt directory of your project after
+extracting files, and copying it to the partition, the booting it the way
+you prefer.
+
+worked fine for me. this way I was running from disk, not ramdrive.
+
+ricardo
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Barry Gershenfeld
+Sent: quinta-feira, 25 de Julho de 2002 22:49
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] PeeWee on hard drive partition
+
+
+So, I thought, I should target a hard drive on a computer, that
+will let me get used to running the IDE interface and give me
+some room to start building the real application.
+
+I made a little space at the end of the second drive on my host
+system and figured I'd write it there.  Should work, no?
+
+Well, nobody really uses a hard drive for embedded work.  A flash
+IDE drive is supported, but the instructions seem to indicate
+that the master boot record gets written, which isn't what I'm
+looking for.  So I choose a floppy, and lie to it that the
+floppy is at /dev/hdb11.  It writes out fine, the partition
+is a DOS filesystem with the kernel and ramdisk and boot files.
+I tell the host system lilo to add that image.   All is OK.
+
+Except that when I go there, syslinux starts and wants to read
+everything off the floppy drive.
+
+Last night I went to the syslinux site and it looks like I can
+change the drive syslinux is reading from...if I can actually
+get the BIOS to recognize an extended partition on the second
+drive.  Failing that, I think DOS will see it and I can use
+LOADLIN to start it.   Eventually I could probably work it
+out with lilo if I knew what peewee did for each option.
+Still, it's all a temporary step on the way to the real target.
+
+Tinkering is fun.
+
+Barry
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Jul 26 22:49:22 2002
+From: peeweelinux@adis.on.ca (Cristián Mejía)
+Date: Fri, 26 Jul 2002 17:49:22 -0400
+Subject: [Peeweelinux] Uncompressed fail.
+Message-ID: <5.1.0.14.0.20020726174315.02bb0960@mail.ecofor.cl>
+
+I have a working PWL that works in a 32MBytes flash disk when is compressed.
+
+When I'm trying another configuration (uncompressed in ext2 or RO ext2 
+partition with multiple RAM disks) it doesn't start the Xserver. All the 
+distro fits in 25 MBytes, so is not a lack of space and 128MBytes RAM never 
+is reached (when compressed with RAM disks I cannot use a complete 64MBytes 
+memory).
+
+Any idea ??
+
+
+From peeweelinux@adis.on.ca  Sat Jul 27 01:56:41 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Fri, 26 Jul 2002 17:56:41 -0700 (PDT)
+Subject: [Peeweelinux] PeeWee on hard drive partition
+Message-ID: <2.2.16.20020726181035.a0ffb16e@zmicro.com>
+
+>the simplest way would be to .tgz the mnt directory of your project after
+>extracting files, and copying it to the partition, the booting it the way
+>you prefer.
+
+I think you mean to say I would untar it in the new partition so that 
+it would the be a copy of the project's ./mnt directory.  That would
+work.  I guess it would resemble a conventional Linux system.
+
+In reading the help file, I see that I can "extract a file system"...
+"to any mount point".  Since my host and target are the same 
+hardware, I should be able to have it copy the files directly there and
+get the same result.
+
+
+What I did today was realize that if LOADLIN would boot it, that LILO
+should also.  I just had to get the boot parameters right.  After
+messing about a bit I was able to achieve that.   So now I've got
+a PeeWee partition that I can boot directly, using the compressed
+files built by pwlconfig.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Sat Jul 27 02:19:43 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Fri, 26 Jul 2002 18:19:43 -0700 (PDT)
+Subject: [Peeweelinux] Uncompressed fail.
+Message-ID: <2.2.16.20020726183335.a0ff5698@zmicro.com>
+
+Did you change anything, or is it just that it's uncompressed?
+
+Is it that X doesn't start, or does it start and then give up?
+
+X makes a log when it starts, and X will fail for any number
+of reasons, including having the wrong mouse.
+
+If you don't get X but get a login prompt, log in and type
+runlevel to see if your runlevel changed (it's normally 5 if
+you want X)
+
+Barry
+
+
+At 05:49 PM 7/26/02 -0400, you wrote:
+>I have a working PWL that works in a 32MBytes flash disk when is compressed.
+>
+>When I'm trying another configuration (uncompressed in ext2 or RO ext2 
+>partition with multiple RAM disks) it doesn't start the Xserver. All the 
+>distro fits in 25 MBytes, so is not a lack of space and 128MBytes RAM never 
+>is reached (when compressed with RAM disks I cannot use a complete 64MBytes 
+>memory).
+>
+>Any idea ??
+>
+
+
+From peeweelinux@adis.on.ca  Mon Jul 29 13:06:14 2002
+From: peeweelinux@adis.on.ca (Cristián Mejía)
+Date: Mon, 29 Jul 2002 08:06:14 -0400
+Subject: [Peeweelinux] Uncompressed fail.
+In-Reply-To: <2.2.16.20020726183335.a0ff5698@zmicro.com>
+Message-ID: <5.1.0.14.0.20020729075702.00b95150@mail.ecofor.cl>
+
+Barry:
+         I only change the target 'style', the hole system is the same and 
+the machine is the same (video card, mouse, etc.). As it is only 
+uncompressed (or RO partition with multiple RAM) and the files fits without 
+problem in the drive, I cannot know anything because if I comment the line 
+with the Xserver in the rc file, all works fine, but if the Xserver is 
+enabled, it locks the target PC. I cannot acces any log file.
+         Is OK for me to use it compressed, but I think that can be faster 
+to load an uncompressed file system. Better if I can save the memory for 
+the RAM disk using a RO root partition. Maybe I'm wrong in this, but the RO 
+filesystem with multiple RAM disks was faster and uses less memory than any 
+other configuration. (this two tips are very important to me now). Please 
+let me know if any of this asseverations is not right.
+
+Regards
+At 18:19 26-07-2002 -0700, you wrote:
+>Did you change anything, or is it just that it's uncompressed?
+>
+>Is it that X doesn't start, or does it start and then give up?
+>
+>X makes a log when it starts, and X will fail for any number
+>of reasons, including having the wrong mouse.
+>
+>If you don't get X but get a login prompt, log in and type
+>runlevel to see if your runlevel changed (it's normally 5 if
+>you want X)
+>
+>Barry
+>
+>
+>At 05:49 PM 7/26/02 -0400, you wrote:
+> >I have a working PWL that works in a 32MBytes flash disk when is compressed.
+> >
+> >When I'm trying another configuration (uncompressed in ext2 or RO ext2
+> >partition with multiple RAM disks) it doesn't start the Xserver. All the
+> >distro fits in 25 MBytes, so is not a lack of space and 128MBytes RAM never
+> >is reached (when compressed with RAM disks I cannot use a complete 64MBytes
+> >memory).
+> >
+> >Any idea ??
+> >
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+Atte.
+
+Cristián Mejía.
+ECOFOR y Cía. Ltda.
+
+
+From peeweelinux@adis.on.ca  Wed Jul 31 00:05:35 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Tue, 30 Jul 2002 16:05:35 -0700 (PDT)
+Subject: [Peeweelinux] problems, show up in ldconfig
+Message-ID: <2.2.16.20020730161635.6d6fc9d0@zmicro.com>
+
+I managed to reproduce an eariler problem I had, which looks
+like a problem with ldconfig, but it isn't really.  When I see:
+
+  Editing inittab...failed                                                
+  Building ld.so.cache...ldconfig: Can't stat /lib: No such file or direc 
+  ldconfig: Can't stat /usr/lib: No such file or directory                
+  ldconfig: Can't open configuration file /etc/ld.so.conf: No such file o 
+  ldconfig: Can't create temporary cache file /etc/ld.so.cache~: No such  
+   
+it means I have forgotten to "Extract File System for Project".  It's 
+easy to forget, and pwlconfig doesn't check to see if mnt is empty.
+
+Okay, good FAQ entry.   BUT!  (here's part 2)
+
+I've attempted to add some packages to my system.  Building the
+target system says that it _succeeded_, yet in the log, I see:
+
+  .
+  .
+  Editing inittab...ok 
+  Building ld.so.cache...ldconfig: Can't open configuration file /etc/ld.
+  /lib:
+         libtermcap.so.2 -> libtermcap.so.2.0.8 
+         libnss_files.so.2 -> libnss_files-2.1.3.so 
+         libcrypt.so.1 -> libcrypt-2.1.3.so 
+         libc.so.6 -> libc-2.1.3.so 
+         ld-linux.so.2 -> ld-2.1.3.so 
+  /usr/lib: 
+  ok 
+  Unmounting loopback device...ok 
+  Compressing /dev/loop0 into ramdisk...3416+0 records in
+  3416+0 records out  
+  .
+  .
+
+Is that one of those "nuisance errors" as in "nothing to do" ?
+The target system comes up but I don't know enough about it
+yet to know if it's all there.
+
+Other times I get actual failures in that area.  Usually when 
+I've modified a project and build it for the first time.  It
+fails a few times and then when I come back later it succeeds
+without my having changed it.  It seems to be connected with
+the setting of some variables, but I haven't been able to 
+"trick it" just by quitting pwlconfig and re-entering.  But
+I do log out a lot and restart the system frequently, so, I'll \
+keep observing.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Wed Jul 31 00:29:51 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Tue, 30 Jul 2002 16:29:51 -0700 (PDT)
+Subject: [Peeweelinux] Uncompressed fail.
+Message-ID: <2.2.16.20020730164051.6d6fd5fc@zmicro.com>
+
+>Barry:
+>         I only change the target 'style', the hole system is the same and 
+>the machine is the same (video card, mouse, etc.). As it is only 
+>uncompressed (or RO partition with multiple RAM) and the files fits without 
+>problem in the drive, I cannot know anything because if I comment the line 
+>with the Xserver in the rc file, all works fine, but if the Xserver is 
+>enabled, it locks the target PC. I cannot acces any log file.
+
+If you do have a console attached, you could boot up in 
+runlevel 3 [ change this line in  etc/inittab :
+
+id:5:initdefault
+
+ change the 5 to a 3 and recopy your system ]  then you'll get a 
+login prompt.  Once logged in you type startx.   Well, I hope it's
+startx, but embedded X may be stripped down to a simpler command.
+This might let you find out what's up with X.
+
+>         Is OK for me to use it compressed, but I think that can be faster 
+>to load an uncompressed file system. 
+
+With a slow hard drive and a fast processor, it's faster to load 
+less from the hard drive and let the CPU uncompress it.  But with 
+a flash disk and a not-so-fast processor, it may be the other way
+around  You would have to test it.
+
+>Better if I can save the memory for 
+>the RAM disk using a RO root partition. Maybe I'm wrong in this, but the RO 
+>filesystem with multiple RAM disks was faster and uses less memory than any 
+>other configuration. (this two tips are very important to me now). Please 
+>let me know if any of this asseverations is not right.
+
+I don't know enough about this to help.
+
+Barry
+
+

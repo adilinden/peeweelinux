@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> signal catching in PeeWeeLinux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000173.html">
+   <LINK REL="Next"  HREF="000151.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>signal catching in PeeWeeLinux
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="signal catching in PeeWeeLinux">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 8 Nov 2000 11:47:57 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000173.html">0.53.14
+</A></li>
+        <LI> Next message: <A HREF="000151.html">signal catching in PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#150">[ date ]</a>
+              <a href="thread.html#150">[ thread ]</a>
+              <a href="subject.html#150">[ subject ]</a>
+              <a href="author.html#150">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Notes from the clueless here....
+
+Is this a Bash/Ash or busybox difference ? 
+
+Does bash actually trap signals and/or keystrokes and pass them on ? 
+
+Sorry for the interruption...now back to your regulary scheduled e-mail...
+
+Later,
+Ralph
+
+--- Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> &gt; In PWL the response is the same, whether my code being started from init or
+</I>&gt;<i> from an interactive shell after loggin in. Hence, in the development system
+</I>&gt;<i> in RH6.1 I have not bother testing from init, since it works from a shell.  I
+</I>&gt;<i> believe it should work from the (PWL) shell first (as it does in RH6.1), and
+</I>&gt;<i> then I'll worry about starting from init (from all the mails that I got back
+</I>&gt;<i> as an answer to this problem, I believe I know how to work that out ... once
+</I>&gt;<i> the application works from the (PWL)
+</I>&gt;<i> &gt; shell). One step at a time.
+</I>&gt;<i> 
+</I>&gt;<i> So it should run from the shell just fine....
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I was focused on getting my stuff working, and I don't think is the kernel,
+</I>&gt;<i> so I haven't updated yet. Also, there were quite a few buggy scripts reports
+</I>&gt;<i> that seem to be sorted now, so I will give it a shot soon.
+</I>&gt;<i> 
+</I>&gt;<i> I just mentioned the changes, I don't think the differences between 0.51
+</I>&gt;<i> and 0.53 relate to your problem.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt; Do you have a sample application to 'play' with? Then I can see if I can
+</I>&gt;<i> &gt; &gt; recreate your problem...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Right now the application is kinda biggish (a few threads and shared areas
+</I>&gt;<i> of memo), so I'll try and get a cut down version with the problem. Any
+</I>&gt;<i> pointers welcome meanwhile. 
+</I>&gt;<i> 
+</I>&gt;<i> I am not sure how to approach this, since I haven't come across anything
+</I>&gt;<i> showing this type of behaviour. As far as I can tell the PWL application
+</I>&gt;<i> react as expected to signals (kill -HUP &lt;inetd ID&gt; causes the inet daemon 
+</I>&gt;<i> to reread it's configuration). If I CTRL-C an application it will quit.
+</I>&gt;<i> 
+</I>&gt;<i> You said it's compiled statically... So you shouldn't be missing any libs
+</I>&gt;<i> on the PWL system.
+</I>&gt;<i> 
+</I>&gt;<i> TTYL,
+</I>&gt;<i> Adi 
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Photos - 35mm Quality Prints, Now Get 15 Free!
+<A HREF="http://photos.yahoo.com/">http://photos.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000173.html">0.53.14
+</A></li>
+	<LI> Next message: <A HREF="000151.html">signal catching in PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#150">[ date ]</a>
+              <a href="thread.html#150">[ thread ]</a>
+              <a href="subject.html#150">[ subject ]</a>
+              <a href="author.html#150">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

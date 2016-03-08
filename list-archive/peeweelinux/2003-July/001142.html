@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] rootfilesystem isn't free after flushing to ramdisk
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001141.html">
+   <LINK REL="Next"  HREF="001143.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] rootfilesystem isn't free after flushing to ramdisk
+   </H1>
+    <B>correy
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] rootfilesystem isn't free after flushing to ramdisk">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 23 Jul 2003 17:06:24 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001141.html">[Peeweelinux] lilo.conf hangs
+</A></li>
+        <LI> Next message: <A HREF="001143.html">[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1142">[ date ]</a>
+              <a href="thread.html#1142">[ thread ]</a>
+              <a href="subject.html#1142">[ subject ]</a>
+              <a href="author.html#1142">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi 
+My root filesystem isn't unmounted after the bootup. It use to free itself before I changed the kernel using lilo. 
+So the script that sets up lilo in the PeeWeeLinux install program must be doing something different in the way
+that it configures lilo I think.
+
+Below is my lilo file that works. Perhaps my new kernel has something to do with it however everything seems to work
+fine apart from this.
+
+Can you see anything wrong for example should I be telling root that it is at /dev/hdc2 or should I be telling it that
+it is in the ramdisk where the compact flash partition now resides after the boot sequence.
+
+________________________
+boot=/dev/hdc
+disk=/dev/hdc
+        bios=0x80
+
+linear
+map=/mnt/cf1/map
+install=/mnt/cf1/boot.b
+prompt
+timeout=50
+initrd=/mnt/cf1/initrd
+default=bzImage
+
+image=/mnt/cf1/bzImage
+        label=bzImage
+        root=/dev/hdc2
+        read-only
+-----------------------
+
+Any help is welcome
+
+Many thanks
+
+Correy
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001141.html">[Peeweelinux] lilo.conf hangs
+</A></li>
+	<LI> Next message: <A HREF="001143.html">[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1142">[ date ]</a>
+              <a href="thread.html#1142">[ thread ]</a>
+              <a href="subject.html#1142">[ subject ]</a>
+              <a href="author.html#1142">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

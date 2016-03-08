@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] initrd problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000971.html">
+   <LINK REL="Next"  HREF="000973.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] initrd problem
+   </H1>
+    <B>Stephen Lee
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] initrd problem">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>23 Mar 2003 08:47:57 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000971.html">[Peeweelinux] AutoBoot and X windows project release
+</A></li>
+        <LI> Next message: <A HREF="000973.html">[Peeweelinux] initrd problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#972">[ date ]</a>
+              <a href="thread.html#972">[ thread ]</a>
+              <a href="subject.html#972">[ subject ]</a>
+              <a href="author.html#972">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+In following Mark Meade's PeeWee Linux on DiskOnChip instructions
+(<A HREF="http://lakeshoremicro.com/peeweedoc.txt">http://lakeshoremicro.com/peeweedoc.txt</A>), I've managed to load PeeWee
+0.61.1 and lilo-mtd onto the DOC. During startup, lilo from the DOC
+starts and boots the custom kernel (2.4.20) but it ends up using the
+root fs from /dev/hda. Here's a snippet of the kernel message:
+
+RAMDISK: Compressed image found at block 0
+Freeing initrd memory: 1152k freed
+VFS: Mounted root (ext2 filesystem).
+VFS: Mounted root (ext2 filesystem) readonly.
+Trying to move old root to /initrd ... failed
+Unmounting old root
+Trying to free ramdisk memory ... okay
+Freeing unused kernel memory: 264k freed
+
+Is there some setting within pwlconfig I can adjust to fix the initrd
+problem?
+
+Thanks,
+Stephen
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000971.html">[Peeweelinux] AutoBoot and X windows project release
+</A></li>
+	<LI> Next message: <A HREF="000973.html">[Peeweelinux] initrd problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#972">[ date ]</a>
+              <a href="thread.html#972">[ thread ]</a>
+              <a href="subject.html#972">[ subject ]</a>
+              <a href="author.html#972">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Multiple Targets for PeeWee Linux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000071.html">
+   <LINK REL="Next"  HREF="000073.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Multiple Targets for PeeWee Linux
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Multiple Targets for PeeWee Linux">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Thu, 7 Sep 2000 23:06:34 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000071.html">Multiple Targets for PeeWee Linux
+</A></li>
+        <LI> Next message: <A HREF="000073.html">Multiple Targets for PeeWee Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#72">[ date ]</a>
+              <a href="thread.html#72">[ thread ]</a>
+              <a href="subject.html#72">[ subject ]</a>
+              <a href="author.html#72">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Just some notes to what I see here...
+
+&gt;<i> PWL Target Menu
+</I>&gt;<i> ===============
+</I>&gt;<i> Select Target Type --&gt;
+</I>&gt;<i> Save Target Configuration for &quot;my floppy&quot; 
+</I>&gt;<i> Create New Target
+</I>&gt;<i> ---
+</I>&gt;<i> Configure &quot;CF 32Mb&quot; Parameters
+</I>&gt;<i> [*] CF 32Mb
+</I>&gt;<i> [ ] CF 16Mb
+</I>&gt;<i> [ ] RAM 256Mb
+</I>&gt;<i> [ ] My test Floppy
+</I>&gt;<i> [ ] My CDROM release
+</I>&gt;<i> 
+</I>&gt;<i> Now each target file would contain all the default parameters as configured for
+</I>&gt;<i> that target. 
+</I>&gt;<i> The &quot;Configure &quot;CF 32Mb&quot; menu item would then display the parameters (basically
+</I>&gt;<i> just like the current &quot;project defaults&quot; menu )
+</I>
+There is no need to configure the actual device being used. The script
+will automatically determine the size of the target device and calculate
+the proper sizes.
+
+&gt;<i> Configure Target parameters
+</I>&gt;<i> =================
+</I>&gt;<i> ---- Boot defaults ---
+</I>&gt;<i> boot image file: /boot/bzImage
+</I>&gt;<i> boot location: /dev/hda1
+</I>&gt;<i> ---- Lilo defaults ---
+</I>&gt;<i> Lilo boot label: pwlinuz
+</I>&gt;<i> Lilo timeout: 2
+</I>&gt;<i> Lilo custom command: linear
+</I>&gt;<i> Lilo image command: vga=0x317
+</I>&gt;<i> ---- Device defaults ---
+</I>&gt;<i> Mount point: ./mnt
+</I>&gt;<i> Device name: FLASH
+</I>&gt;<i> Device node: /dev/hda
+</I>&gt;<i> ---- Partition defaults ---
+</I>&gt;<i> Boot partition: 1  size: 1Mb
+</I>&gt;<i> system partition: 2 size: 28Mb
+</I>&gt;<i> Other partition: 3 size 2Mb
+</I>&gt;<i> ---- Ram Disk Defaults ---
+</I>&gt;<i> initrd name: rd_image
+</I>&gt;<i> verbose operation: On
+</I>&gt;<i> ???
+</I>
+Partition sizes are configured by specifying free space! I found it really
+annoying having to resize partitions as they grew or ram for a ramdisk
+shrunk. Since we need to calculate before doing anything anyways, I
+figured I calculate the needed space and make the additional free space
+configurable.
+
+Bootlocation should not include the partition, just the device. The script
+picks the proper partition.
+
+&gt;<i> And Where the Select Target Type menu is as Adi proposed:
+</I>&gt;<i> 
+</I>&gt;<i> Select Target Type
+</I>&gt;<i> ==================
+</I>&gt;<i> 1)  Compressed ramdisk on FAT 16 partition&quot;
+</I>&gt;<i> 2)  Compressed ramdisk on ext2 partition&quot;
+</I>&gt;<i> 3)  Uncompressed ramdisk, boot from FAT 16 partition&quot;
+</I>&gt;<i> 4)  Uncompressed ramdisk, boot from ext2 partition&quot;
+</I>&gt;<i> 5)  Read-only root fs with multiple ramdisks&quot;
+</I>&gt;<i>   ----- Non-flash target devices -----&quot;
+</I>&gt;<i> 6)  Compressed ramdisk on floppy disk w/o bootloader&quot;
+</I>&gt;<i> 7)  Compressed ramdisk on FAT12 floppy disk w/syslinux&quot;
+</I>&gt;<i> 8)  Bootable iso image w/ramdisk&quot;
+</I>&gt;<i> 9)  Bootable iso image w/read-only root&quot;
+</I>&gt;<i> &quot;  -----    For testing only!     -----&quot;
+</I>&gt;<i> 10) Read-write root on a single partition&quot;  &gt; 
+</I>
+&gt;<i> Ok, I can integrate this and get any/all parameters stored and loaded fairly
+</I>&gt;<i> easily.  I'll try to get the parameters from your rd_dialog functions...any
+</I>&gt;<i> list you have would be appreciated...
+</I>
+Here is the list of variables that are sensibly selected to be
+configurable.
+
+These first variables are customizable but shouldn't require change. They
+define system defaults. I added the above numbers to indicate which
+setting apply where.
+ 
+    #####
+    #
+    # Only change these if you really know what you are doing!!!
+    #
+    #####
+
+    # define the initrd size
+    rd_initrd_size=                {3,4,5,8,9}
+
+    # define the safety margin for the boot partition
+    rd_size_boot_margin=           {3,4,5}
+
+    # define the safety margin for fit in flash calculations
+    rd_size_margin=                {1,2,3,4,5,6,7,8,9,10}
+
+The following settings apply to file locations, target devices, etc. They
+apply to literally all methods.
+
+    #####
+    #
+    # Configurable paramters
+    #
+    #####
+
+    # selected device layout
+    rd_scheme=                      {put a name to the numbers above}
+
+    # define if we maintain fstab and rc.init
+    rd_initscripts=                 {needed if you have a custom rc.init
+                                     or fstab, prvents rd_function from
+                                     playing with it}
+
+    # define default verbosity
+    rd_action_verbosity=             {how much we dump to the screen}
+
+    # temporary files directory
+    rd_tmp=
+
+    # the temporary mount point
+    rd_mount=
+
+    # the kernel name
+    rd_kernel=                       {the kernel image (bzImage) w/o path}
+
+    # the initrd name
+    rd_initrd=                       {the initrd name w/o path}
+
+    # the ramdisk name
+    rd_ramdisk=                      {the ramdisk name w/o path}
+
+The following variables are used by the raw floppy only.
+
+    ####
+    # target specific options - floppy
+
+    # the target device
+    rd_floppy=                        {just in case you're not using fd0}
+
+    # the free space on the unompressed ramdisk
+    rd_ramdisk_fd_free=
+
+The following applies to mostly all flash based systems {1,2,3,4,5}
+
+    ####
+    # target device specific - hd or flash
+
+    # the target device on the development system
+    rd_target=                         {device (/dev/sda) w/o partition #}
+
+    # the final boot device
+    rd_boot=                           {device (/dev/hda) w/o partition #}
+
+The following is needed for the systems with a single ramdisk or the
+uncompressed ramdisk.
+
+    ####
+    # single ramdisk parameters
+
+    # the free space on the uncompressed ramdisk in kB
+    rd_ramdisk_free=                    {1,2,3,4}
+
+These variables are required by the read-only root system.
+
+    ####
+    # multiple ramdisk parameters
+    # the free space on the /dev - /var partition in kB
+    # this partition also contains the /var tree!!!
+    rd_dev_free=                        {5}
+
+    # the free space on the /etc partition in kb
+    rd_etc_free=                        {5}
+
+    # the free space on the /home partition
+    # this partition also contains /root
+    rd_home_free=                       {5}
+ 
+The next are bootloader options that are valid for any system using
+syslinux or lilo. Note, that I haven't fixed syslinux.cfg for all
+bootoptions yet. But that will happen sometime soon.
+
+    ####
+    # bootloader options
+
+    # prompt timeout
+    rd_bp_time=                         {1,2,3,4,5,7,8,9,10}
+
+    # kernel label
+    rd_bp_label=                        {1,2,3,4,5,7,8,9,10}
+
+    # vga options
+    rd_bp_vga=                          {1,2,3,4,5,7,8,9,10}
+
+This about covers it.
+
+&gt;<i> The next step is to activate the Erase/Foramt command to handle all the various
+</I>&gt;<i> partitions; and the Load command must build the ramdisk images etc..
+</I>
+The loading script does everything! Fdisk, partition and format the
+device. Install the bootloader, restore the DOS MBR for syslinux (if you
+switch from lilo to syslinux). Create intrd, ramdisk compressed or
+uncompressed, removes the kernel from the filesystem where it's not
+needed...
+
+So the sequence to use rd_functions without rd_dialog should be as
+follows:
+
+  1.  source rd_functions
+  2.  set rd_base to the devel root dir (i.e./root/PeeWee/Embedded_Build)
+  3.  call func_rd_env
+  4.  call func_rd_defaults &lt;project name&gt;
+  5.  load custom setting (redefininging some variables defined in prev step)   
+      Note: I wrote function that save whatever rd_dialog defines in a
+            config file. But that's irrelevant as long as pwlconfig has
+            all needed variables defined at this point. The build-in way
+            pwlconfig works should be fine.
+  6.  call function that installs filesystem
+         {1}  func_rd_build_comp_rd_fat
+         {2}  func_rd_build_comp_rd_ext2
+         {3}  func_rd_build_uncomp_rd_fat
+         {4}  func_rd_build_uncomp_rd_ext2
+         {5}  func_rd_build_ro_root_rd  
+         {6}  func_rd_build_fd_raw   
+
+         Proposed: 
+         {7}  func_rd_build_fd_fat   
+         {8}  func_rd_build_rd_iso  
+         {9}  func_rd_build_ro_iso  
+         {10} func_rd_build_rw_root  
+
+A last note, when the function in step 6 is called all required variables
+need to be configured properly. There are no exhausting checks when it
+comes to determining if the variables actually exist or have sane
+locations. They will simply be used...
+
+Hope this makes sense. Hey, I think I did ok documenting the script. I
+look at it and I can still figure out what it does, even after a couple of
+weeks :)  Now if someone previously unexposed to the script can have the
+same satisfying experience I am happy :-)
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000071.html">Multiple Targets for PeeWee Linux
+</A></li>
+	<LI> Next message: <A HREF="000073.html">Multiple Targets for PeeWee Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#72">[ date ]</a>
+              <a href="thread.html#72">[ thread ]</a>
+              <a href="subject.html#72">[ subject ]</a>
+              <a href="author.html#72">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

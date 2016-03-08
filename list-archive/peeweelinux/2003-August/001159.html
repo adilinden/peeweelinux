@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] CF Read Write Partition
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001160.html">
+   <LINK REL="Next"  HREF="001161.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] CF Read Write Partition
+   </H1>
+    <B>Joe A Cairns
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] CF Read Write Partition">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 4 Aug 2003 17:06:20 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001160.html">[Peeweelinux] CF Read Write Partition
+</A></li>
+        <LI> Next message: <A HREF="001161.html">[Peeweelinux] Problems with ICA (Citrix) client 7.0?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1159">[ date ]</a>
+              <a href="thread.html#1159">[ thread ]</a>
+              <a href="subject.html#1159">[ subject ]</a>
+              <a href="author.html#1159">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adilson,
+
+Here is my lilo.conf
+
+boot=/dev/hda
+map=/boot/map
+install=/boot/boot-bmp.b
+bitmap=/boot/logo64a.bmp
+compact
+prompt
+timeout=20
+default=linux
+
+image=/boot/bzImage
+	label=linux
+      read-only
+	root=/dev/hda1
+      vga = normal
+
+Here is my fstab
+
+/dev/ram        /            ext2    defaults        1 1
+/dev/hda2       /MTAtm       ext2    defaults        1 2
+none            /proc        proc    defaults        0 0
+
+Do you know of anything else I need to look at?
+
+Thanks for all your help.
+
+Joe
+
+&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A> 
+</I>&gt;<i> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>] On Behalf Of Adilson Oliveira
+</I>&gt;<i> Sent: Monday, August 04, 2003 4:54 PM
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: [Peeweelinux] CF Read Write Partition
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Joe A Cairns wrote:
+</I>&gt;<i> &gt; Yes and everything looks good.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Here is the output when I ran it on the host.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Device Boot    Start       End    Blocks   Id  System
+</I>&gt;<i> &gt; /dev/hdc1   *         1       800    102399+  83  Linux
+</I>&gt;<i> &gt; /dev/hdc2           801       978     22784   83  Linux
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> That's funny as should work. Are you sure the second 
+</I>&gt;<i> partition is formated? If you try to mount /dev/hdc2 by hadn 
+</I>&gt;<i> you got the same error?
+</I>&gt;<i> 
+</I>&gt;<i> []s
+</I>&gt;<i> 
+</I>&gt;<i> Adilson.
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A> 
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweeli">http://mail.adis.on.ca/lists/listinfo/peeweeli</A>&gt; nux
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001160.html">[Peeweelinux] CF Read Write Partition
+</A></li>
+	<LI> Next message: <A HREF="001161.html">[Peeweelinux] Problems with ICA (Citrix) client 7.0?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1159">[ date ]</a>
+              <a href="thread.html#1159">[ thread ]</a>
+              <a href="subject.html#1159">[ subject ]</a>
+              <a href="author.html#1159">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

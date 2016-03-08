@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] (no subject)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001126.html">
+   <LINK REL="Next"  HREF="001128.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] (no subject)
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] (no subject)">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 7 Jul 2003 12:31:31 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001126.html">[Peeweelinux] Re: RH8, plus no lilo.conf?
+</A></li>
+        <LI> Next message: <A HREF="001128.html">[Peeweelinux] FTP server &amp; Web Server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1127">[ date ]</a>
+              <a href="thread.html#1127">[ thread ]</a>
+              <a href="subject.html#1127">[ subject ]</a>
+              <a href="author.html#1127">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>I might be missing something here, but if your root system is not mounted
+</I>&gt;<i>as read-only (not &quot;ro&quot; in lilo parameters, in /etc/lilo.conf)), then any
+</I>modifications 
+&gt;<i>on your flash should remain there. Mounting as &quot;rw&quot; should make / non-volatile.
+</I>&gt;<i>
+</I>&gt;<i>Jaime
+</I>
+What you're missing is that some (or all?) of the configurations create
+a ramdisk, copy the file system to that and then run from RAM.  So 
+the changes aren't being made to the disk.  Also some of the 
+configurations create a compressed image that is uncompressed at
+boot time, so writing to the disk, even if you mount it, is not
+as simple as it looks.
+
+On my system, peewee creates two partitions and one unused one, so I
+mke2fs a file system on the unused partition and mount that after
+booting, to have something permanent to read and write.
+
+Barry
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001126.html">[Peeweelinux] Re: RH8, plus no lilo.conf?
+</A></li>
+	<LI> Next message: <A HREF="001128.html">[Peeweelinux] FTP server &amp; Web Server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1127">[ date ]</a>
+              <a href="thread.html#1127">[ thread ]</a>
+              <a href="subject.html#1127">[ subject ]</a>
+              <a href="author.html#1127">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

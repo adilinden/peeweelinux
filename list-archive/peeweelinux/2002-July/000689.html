@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] New - III
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000688.html">
+   <LINK REL="Next"  HREF="000690.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] New - III
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] New - III">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 22 Jul 2002 18:27:08 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000688.html">[Peeweelinux] New - II
+</A></li>
+        <LI> Next message: <A HREF="000690.html">[Peeweelinux] New - III
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#689">[ date ]</a>
+              <a href="thread.html#689">[ thread ]</a>
+              <a href="subject.html#689">[ subject ]</a>
+              <a href="author.html#689">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>By posting these writeups, I won't lose them :)
+
+3. pwlconfig
+
+The first time you try pwlconfig,  you may get some errors,
+followed by:
+ Utility program &quot;lxdialog&quot; not found
+ ( From (RH) /usr/src/linux type make Menuconfig
+    then cp /usr/src/linux/scripts/lxdialog/lxdialog to ./bin)
+
+What's happened is that lxdialog is (apparently) a utility that's
+built by Linux's kernel-compile &quot;make config&quot; utility. The first
+time you use it to configure a kernel, it discovers there's no
+such thing, so it builds one!  After that, it just runs it (where
+it must be lxdialog, no?) whenever you come back to change 
+something.  Anyway, if you follow the directions, all will
+be well, and you can proceed with pwlconfig.
+
+One error, though; Menuconfig should be menuconfig, and yes, it
+knows the difference.
+
+Note that this is all going on in your host system, and not
+in the PWL package.  But when you copy the result, that
+does go to ./bin, namely Embedded_Build/bin in your PWL tree.
+
+3.1.2 pwlconfig
+The first time pwlconfig is run, it will build a few things
+of its own!
+
+The first time I ran pwlconfig I was taken to:
+
+&quot;Create new project&quot;.  After choosing a name I got:
+
+	No tar packages were found. Do you wish to extraxt 
+	 all binary rpms and create tar packages now
+	 (recommended)?
+
+(typo there, in 'extraxt')
+After answering yes, rpm's found in ./src/RPMS/i386/ are extracted and
+placed in ./packages/    This uses about 80MB.
+
+Now we're ready to use the system.  Next I go to &quot;Configure Project 
+File System&quot; as directed.
+
+Here's where I get into trouble.   I'm supposed to see &quot;boot_system&quot;
+but it's just not there.   Things must have changed quite a bit
+since then.   But since everything is probably &quot;as needed&quot; and I
+expect it won't let me build an empty system, I decide to 
+forge ahead to the &quot;go back to main menu&quot; part and select &quot;Extract 
+File System from Project&quot;.   I ought to get something pretty 
+small, or a warning like &quot;pick a kernel, stupid!&quot;
+
+So I choose:
+  Load File System onto Target /dev/fd0
+
+I'm not successful.
+
+ * * * 
+
+At this point I am going in about 5 different directions.  I have
+tried to create a new project and build it; I have copied an
+existing one and built it; each time I'm thinking I may get
+a bootable system, useful or not.   Each time I get errors...
+Now, the first time, it claimed it wouldn't all fit on the
+floppy.  But successive tries haven't produced that, so I
+will let that go until it comes up again.  More to the point
+I get problems like no  /etc/ld.so.conf or /etc/ld.so.cache,
+can't stat /lib or /usr/lib, ...
+
+I think this is where my careful note-taking ends.
+
+So I expect that tomorrow I'll be back with more specific 
+questions, like do I need to select a kernel, and is there
+any interaction between the target kernel and the one on
+the host (all this talk about libs and configs).
+
+And then I can think about adding packages.
+
+I'm getting there.
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000688.html">[Peeweelinux] New - II
+</A></li>
+	<LI> Next message: <A HREF="000690.html">[Peeweelinux] New - III
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#689">[ date ]</a>
+              <a href="thread.html#689">[ thread ]</a>
+              <a href="subject.html#689">[ subject ]</a>
+              <a href="author.html#689">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

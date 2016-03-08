@@ -1,0 +1,296 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Help - errors in script,  3rd req
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000242.html">
+   <LINK REL="Next"  HREF="000246.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Help - errors in script,  3rd req
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Help - errors in script,  3rd req">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 12 Dec 2000 20:04:26 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000242.html">Help - errors in script,  3rd req
+</A></li>
+        <LI> Next message: <A HREF="000246.html">PeeWeeLinux 0.53.23
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#243">[ date ]</a>
+              <a href="thread.html#243">[ thread ]</a>
+              <a href="subject.html#243">[ subject ]</a>
+              <a href="author.html#243">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Your pwlconfig screen says you're running 0.53.22 so the files extracted
+properly. I am running 0.53.22 here without any problems. The error you
+indicated is typical if there's an syntax error in the script.
+
+Did you make sure to select:
+
+Configure Target Hardware --&gt;
+    Reset Project Configuration
+
+And set the setting to your liking? There is a problem with pwlconfig that
+causes errors with the:
+
+                         Old Configuration File                 
+               The configuration file is version 0.53.10. You are    
+               using PeeWeeLinux 0.53.22. Do you wish to convert     
+               your configuration file to the current version        
+               now?      
+
+on anything prior to 0.53.22.
+
+Also, there is a problem with the &quot;Uncompressed ramdisk, boot from FAT 16
+partition&quot; target I introduced a bit back by deleting a file that's still
+needed. This will be fixed in 0.53.23. All the other targets should work.
+
+Is the log file ./tmp/rd.log generated? If so please attach the file to an
+email to me and I have a look at it.
+
+No matter what I do, I cannot recreate the problem you describe. Perhaps
+run 
+  ./scripts/distribute cfg
+
+This will create a ../peeweelinux-0.53.xx-cfg.tar.gz file. Email me the
+file and I will compare it to the original archive.
+
+TTYL,
+Adi
+
+
+
+
+On Wed, 13 Dec 2000, Robert Heezeman wrote:
+
+&gt;<i> 
+</I>&gt;<i> Any luck with my problem making a peewee downloadable ???   Remember script
+</I>&gt;<i> failed  .....
+</I>&gt;<i> 
+</I>&gt;<i> I downloaded the peeweelinux-0.53.21-bin.tar.gz binaries and the
+</I>&gt;<i> peeweelinux-0.53.22-cfg.tar.gz and tried it again
+</I>&gt;<i> 
+</I>&gt;<i> SAME story,  
+</I>&gt;<i> 
+</I>&gt;<i> I also used a different PC with 6.1 RedHat and
+</I>&gt;<i> /root/Embedded_Build/pwlconfig on hda and a standard 200 MB HDD as hdb
+</I>&gt;<i> 
+</I>&gt;<i> Same errors, where do i go from here ?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> As usual I extracted the binaries from the RPM's built up a sample
+</I>&gt;<i> &quot;including minimal&quot; file system created in 
+</I>&gt;<i> /root/Embedded_Build/projects/mnt is there including some 2.5 MB of files it
+</I>&gt;<i> says.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> leave and configure Target as hdb  and boot hdb 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Load to Target    AND AGAIN exactly the same errors as listed below
+</I>&gt;<i> (*)*&amp;^^%$@%^$@*&amp;@#)(*&amp;   (frustrated)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Suerly if no one else is having this problem it must be something I am doing
+</I>&gt;<i> wrong ?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> I am really keen to try peewee and don't think it's ti me to give up.
+</I>&gt;<i> 
+</I>&gt;<i> Anything you can think of to try.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Robert  in Australia
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> &gt; still get the errors as listed below. There is nothing on my hda drive.
+</I>&gt;<i> It
+</I>&gt;<i> &gt; is accessible when mounted, 
+</I>&gt;<i> &gt; (as mount -a /dev/hda1 /mnt/xyz)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Even if I write stuff to it it does not get erased..  I don't think I am
+</I>&gt;<i> &gt; getting through the scripts far enough
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Any hope of getting a fix on my problem from the error line numbers below
+</I>&gt;<i> &gt; ???  (re syntax error line no. ####)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Thank you 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Robert in Australia
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; -----Original Message-----
+</I>&gt;<i> &gt; From: Adi Linden [mailto:<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>]
+</I>&gt;<i> &gt; Sent: Monday, December 11, 2000 4:17 PM
+</I>&gt;<i> &gt; To: Robert Heezeman
+</I>&gt;<i> &gt; Subject: RE: Help - errors in script OR me?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; You are using /dev/hda1 as target? Is there anything else on the harddisk
+</I>&gt;<i> &gt; drive?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; pwlconfig takes over the whole drive. It does fdisk, format, etc for you.
+</I>&gt;<i> &gt; So the target has to be the drive itself, i.e. /dev/hda and not /dev/hda1.
+</I>&gt;<i> &gt; The only disadvantage of this approach is you will loose everything on
+</I>&gt;<i> &gt; /dev/hda everythime you load the drive using pwlconfig.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; TTYL,
+</I>&gt;<i> &gt; Adi
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; On Mon, 11 Dec 2000, Robert Heezeman wrote:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Downloaded new peeweelinux-0.53.22-cfg.tar.gz and installed in directory
+</I>&gt;<i> &gt; &gt; tree (using tar -xvzf) and all went well main screen said I was running
+</I>&gt;<i> &gt; &gt; 0.53.22.  
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; started ./pwlconfig
+</I>&gt;<i> &gt; &gt; Extracted &quot;minimal&quot; configuration and found it @ mnt t be 4.1 MB No
+</I>&gt;<i> &gt; errors,
+</I>&gt;<i> &gt; &gt;  /projects/minimal/mnt has file structure and files in it.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Went to Load into Target (default setting,except hda1 as load point (dos
+</I>&gt;<i> &gt; &gt; fs).
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; and recorded the same script errors:::
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &quot;./pwlconfig ./.script/pwl_target_functions: line 1145: Syntax error
+</I>&gt;<i> &gt; &gt; Unexpected End of File&quot;
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; and
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &quot;./pwlconfig ./.script/pwl_target_load: line 1646: Syntax error
+</I>&gt;<i> Unexpected
+</I>&gt;<i> &gt; &gt; End of File&quot;
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; and
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; &quot;./pwlconfig : func_rd_build_fd_fat   command not found&quot;
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Target build script failed to load onto target
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; View of results screen &quot;was blank&quot; no errors ?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; I am running Linux 2.2.xx RedHat 6.5 release (it's a 6.1 I believe) on
+</I>&gt;<i> &gt; hdb1
+</I>&gt;<i> &gt; &gt; and am using hda1 as Target f.s Hda1 is DOS 200 MB HDD. I can write to
+</I>&gt;<i> it
+</I>&gt;<i> &gt; ok
+</I>&gt;<i> &gt; &gt; when mounted from Linux.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Is there anything that you can recommend I do to get some insight as to
+</I>&gt;<i> &gt; why
+</I>&gt;<i> &gt; &gt; my &quot;Target build script failed to load onto target&quot;
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; I'm sure it must be my set-up but I don't understand where ???   
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Robert
+</I>&gt;<i> 
+</I>&gt;<i> This communication is intended for use of the addressee(s) and may contain legally privileged and confidential information.
+</I>&gt;<i> Any views or opinions presented are solely those of the author and do not necessarily represent those of Thycon.
+</I>&gt;<i> If you are not the addressee you are notified that any transmission, distribution or replication of this message is strictly prohibited.
+</I>&gt;<i> The legal privilege and confidentiality attached to this email and its contents is not waived, lost or destroyed by reason of
+</I>&gt;<i> mistaken delivery to you. 
+</I>&gt;<i> If you have received this message in error, please notify Thycon immediately by E-mail to <A HREF="mailto:thycon@thycon.com.au">thycon@thycon.com.au</A> and
+</I>&gt;<i> permanently delete the email from your system.
+</I>&gt;<i> 
+</I>&gt;<i> Email transmission cannot be guaranteed to be secure or error-free as information could be intercepted, corrupted,
+</I>&gt;<i> lost, destroyed, arrive late or incomplete, or contain viruses. The sender therefore does not accept liability for any errors 
+</I>&gt;<i> or omissions in the contents of this message, which arise as a result of email transmission. If verification is required please
+</I>&gt;<i> request a hard-copy version.
+</I>&gt;<i> 
+</I>&gt;<i> Copyright 2000 Thycon. All rights reserved.
+</I>&gt;<i> 
+</I>&gt;<i> PHONE : 61 3 9319 9000
+</I>&gt;<i> FAX : 61 3 9319 9001
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> 
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000242.html">Help - errors in script,  3rd req
+</A></li>
+	<LI> Next message: <A HREF="000246.html">PeeWeeLinux 0.53.23
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#243">[ date ]</a>
+              <a href="thread.html#243">[ thread ]</a>
+              <a href="subject.html#243">[ subject ]</a>
+              <a href="author.html#243">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

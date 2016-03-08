@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> X startup stuff - questions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000042.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>X startup stuff - questions
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="X startup stuff - questions">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Mon, 31 Jan 2000 17:10:41 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000042.html">X startup stuff - questions
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#43">[ date ]</a>
+              <a href="thread.html#43">[ thread ]</a>
+              <a href="subject.html#43">[ subject ]</a>
+              <a href="author.html#43">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> The X windows server XF86_SVGA seems to come up and run...but to make
+</I>&gt;<i> this work from my FLASH disk I have to do the following:
+</I>
+Good stuff!
+
+&gt;<i> 1. extract / erase /load / lilo all from pwlconfig
+</I>&gt;<i> 2. boot to FLASH device
+</I>&gt;<i> 3. mknod /dev/mouse c 10 1
+</I>
+Wouldn't the above be part of the installation process of putting X onto
+the flash device/into the filesystem?
+
+&gt;<i> 4. insmod unix.o 
+</I>&gt;<i> 5. xfs -droppriv -daemon -port -1
+</I>&gt;<i> 6. XF86_SVGA
+</I>
+I would do a startup script to run from the etc/rcS.d directory. All
+scripts in there are run automatically at startup in alphanumerical order.
+To have good control over what runs when they're numbered, like: 05modules
+20firewall, etc....
+
+&gt;<i> Where can I stick the above commands 3,4 and 5 in my etc/init.d files
+</I>&gt;<i> to get this done everytime it boots ?
+</I>
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000042.html">X startup stuff - questions
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#43">[ date ]</a>
+              <a href="thread.html#43">[ thread ]</a>
+              <a href="subject.html#43">[ subject ]</a>
+              <a href="author.html#43">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

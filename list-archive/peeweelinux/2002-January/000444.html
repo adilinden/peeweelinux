@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] RE compact flash partitions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000442.html">
+   <LINK REL="Next"  HREF="000445.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] RE compact flash partitions
+   </H1>
+    <B>Daniel Hennessey
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] RE compact flash partitions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 14 Jan 2002 16:49:35 -0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000442.html">[Peeweelinux] RE compact flash partitions
+</A></li>
+        <LI> Next message: <A HREF="000445.html">[Peeweelinux] RE compact flash partitions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#444">[ date ]</a>
+              <a href="thread.html#444">[ thread ]</a>
+              <a href="subject.html#444">[ subject ]</a>
+              <a href="author.html#444">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have considered using syslinux but it feels like a bit of a cop out. Why
+use a DOS partition (using up valuable blocks on my cf card) to work around
+problems that I don't understand? Seems like a bit of a Micro$haft approach!
+Why would a DOS partition behave when others don't? Is it the BIOS
+implementation on my mobo? I will persevere with what I am doing at the
+moment which is using sfdisk to partition the drive and dd to manipulate the
+bootsector. At least I am learning a hell of a lot about partitioning and
+bootloading.
+
+By the way, I use the Sandisk USB flash reader/writer to partition the card
+'cause I heard there were problems with the cf-ide adaptor.
+
+Cheers y'all.
+
+Dan
+
+&gt;<i> -----Original Message-----
+</I>&gt;<i> From:	Adi Linden [SMTP:<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>]
+</I>&gt;<i> Sent:	14 January 2002 16:29
+</I>&gt;<i> To:	Matthew Schumacher
+</I>&gt;<i> Cc:	<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject:	Re: [Peeweelinux] RE compact flash partitions
+</I>&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Have you considered syslinux as bootloader? It works from a DOS filesystem
+</I>&gt;<i> 
+</I>&gt;<i> but doesn't require any DOS related files.
+</I>&gt;<i> 
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> On Mon, 14 Jan 2002, Matthew Schumacher wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I had problems with my cf card and in the end I put a dos filesystem on
+</I>&gt;<i> &gt; it and used loadlin in the autoexec.bat to load the linux kernel. 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I realize that this isn't the best way to to do this, but I just
+</I>&gt;<i> &gt; couldn't make it boot from a linux filesystem.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Later,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; schu
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; daniel hennessey wrote:
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Hi all,
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; I have found the reason why when I cannot boot from the peeweelinux
+</I>&gt;<i> installation on my compact flash card! Whenever I put the card in the
+</I>&gt;<i> cf-ide converter, it either cannot read or corrupts the partition table! I
+</I>&gt;<i> haven't worked out if it is the mobo, the cf-ide conv or the cf card
+</I>&gt;<i> itself. The other thing I cannot work out is what the geometry of the card
+</I>&gt;<i> should be. It is detected by the mobo bios as 4 heads 16 sectors and 500
+</I>&gt;<i> cylinders, but cfdisk (or fdisk or sfdisk) SOMETIMES reported it as 2 x 16
+</I>&gt;<i> x 500 or 2 x 8 x 1000 !!!
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; In short, has anybody had similar problems with cf cards or does
+</I>&gt;<i> anybody know of a source of information for using cf cards under linux.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Cheers
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Dan
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000442.html">[Peeweelinux] RE compact flash partitions
+</A></li>
+	<LI> Next message: <A HREF="000445.html">[Peeweelinux] RE compact flash partitions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#444">[ date ]</a>
+              <a href="thread.html#444">[ thread ]</a>
+              <a href="subject.html#444">[ subject ]</a>
+              <a href="author.html#444">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Mouse PS2 problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001048.html">
+   <LINK REL="Next"  HREF="001051.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Mouse PS2 problem
+   </H1>
+    <B>Dennis W. Tokarski
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Mouse PS2 problem">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 23 Apr 2003 11:48:46 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001048.html">[Peeweelinux] Mouse PS2 problem
+</A></li>
+        <LI> Next message: <A HREF="001051.html">[Peeweelinux] Re[2]: Mouse PS2 problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1050">[ date ]</a>
+              <a href="thread.html#1050">[ thread ]</a>
+              <a href="subject.html#1050">[ subject ]</a>
+              <a href="author.html#1050">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hanoi Santos Hung wrote:
+
+[snip]
+
+&gt;<i>
+</I>&gt;<i> Then I add gpm to my linux image , and when I run gpm I get the
+</I>&gt;<i> following message :
+</I>&gt;<i> 
+</I>&gt;<i> ---------
+</I>&gt;<i> gpm : oops() invoked from gpm.c(984)
+</I>&gt;<i> /dev/mouse : no such device
+</I>&gt;<i> ----------
+</I>&gt;<i>
+</I>&gt;<i> dev/mouse exists and it is a symlink to /dev/psaux.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>
+</I>
+That error message suggests the kernel doesn't contain a
+ps/2 mouse driver, either built in or as a module. Can you
+check your kernel build configuration file and verify
+you have the right mouse features enables?
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001048.html">[Peeweelinux] Mouse PS2 problem
+</A></li>
+	<LI> Next message: <A HREF="001051.html">[Peeweelinux] Re[2]: Mouse PS2 problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1050">[ date ]</a>
+              <a href="thread.html#1050">[ thread ]</a>
+              <a href="subject.html#1050">[ subject ]</a>
+              <a href="author.html#1050">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] autostart
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000610.html">
+   <LINK REL="Next"  HREF="000612.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] autostart
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] autostart">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 07 Jun 2002 09:15:58 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000610.html">[Peeweelinux] autostart
+</A></li>
+        <LI> Next message: <A HREF="000612.html">[Peeweelinux] autostart
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#611">[ date ]</a>
+              <a href="thread.html#611">[ thread ]</a>
+              <a href="subject.html#611">[ subject ]</a>
+              <a href="author.html#611">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Guillaume,
+
+I have added my stuff to the end of the /etc/rc.sysinit script. In my case I load modules for RTLinux RTOS, but you could launch any programs or scripts. These are launched as root, so just be aware of any security issues. To modify the rc.sysinit you need to go to the project folder under peewee and then into a folder called &quot;custom&quot; Then do this:
+
+mkdir etc
+cp ../mnt/etc/rc.sysinit  ./etc
+
+
+then you can edit your custom/etc/rc.sysinit file and it will be copied to your target.
+
+hope this helps,
+
+~Ken 
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000610.html">[Peeweelinux] autostart
+</A></li>
+	<LI> Next message: <A HREF="000612.html">[Peeweelinux] autostart
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#611">[ date ]</a>
+              <a href="thread.html#611">[ thread ]</a>
+              <a href="subject.html#611">[ subject ]</a>
+              <a href="author.html#611">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

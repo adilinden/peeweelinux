@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux-devel] Re: DOC Docs
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000170.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux-devel] Re: DOC Docs
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux-devel%40adis.on.ca"
+       TITLE="[Peeweelinux-devel] Re: DOC Docs">peeweelinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 13 Mar 2002 10:41:22 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000170.html">[Peeweelinux-devel] Re: DOC Docs
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#171">[ date ]</a>
+              <a href="thread.html#171">[ thread ]</a>
+              <a href="subject.html#171">[ subject ]</a>
+              <a href="author.html#171">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Wed, 13 Mar 2002, Mark Meade wrote:
+
+&gt;<i> Adi Linden wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I am thinking about a directory structure similar to what's below. This
+</I>&gt;<i> &gt; might seem awkward at first, but it will allow for chroot to /peeweelinux
+</I>&gt;<i> &gt; and building of packages within the chrooted environment. Now it won't
+</I>&gt;<i> &gt; mater any longer what underling Linux distribution is used for
+</I>&gt;<i> &gt; PeeWeeLinux.
+</I>&gt;<i> 
+</I>&gt;<i> Being able to rebuild Peewee from scratch would be great.  I assume that this would allow
+</I>&gt;<i> the user to easily rebuild with any version of gcc, glibc, etc.  Would this scheme greatly
+</I>&gt;<i> increase the size of the Peewee distribution -- and would the &quot;binary&quot; only version still
+</I>&gt;<i> be available?
+</I>
+Yes, the binary distribution would still be available. I think my 
+packaging of choice would be an iso image or tar.gz archive containing the 
+scripts and binary rpms. However, it should also be possible to download 
+the build scripts only, from cvs or as an archive. Then it would be 
+possible to download the individual binary (or source) rpms only as 
+needed. Changing any of the libs other packages rely on (like glibc) would 
+certainly require all rpms to be rebuild from the source rpms.
+
+To create the build environment, additional binary rpms will be required 
+to install on the host system for building PeeWeeLinux packages. I am not 
+sure yet how to do this. I am envisioning that a special rpm is build with 
+every source rpm that has a distinguishable name, such as &lt;package&gt;-devel. 
+The sole purpose of this rpm would be to create the environment to build 
+rpms. 
+
+For someone wanting to create the current development environment to build 
+a rpm to be contributerd, all the rpms would have to be installed under 
+the /peeweelinux directory. To actually create a rpm from a srpm, one 
+would have to chroot to the /peeweelinux directory.
+
+If a major portion of PeeWeeLinux is changed, such as glibc, all binary 
+rpms will have to be rebuild. Because of dependencies, this would have to 
+be done in a well defined order.  
+
+&gt;<i> &gt; When RPMS are build, a &lt;packagename&gt;-devel rpm would be build for the sole
+</I>&gt;<i> &gt; purpose of installing in the chrooted environment. This will make it easy
+</I>&gt;<i> &gt; to link against just the libs that are part of PeeWeeLinux.
+</I>&gt;<i> 
+</I>&gt;<i> What would be the process of adding new packages to the pwlconfig menus?  Is this
+</I>&gt;<i> something that could be automated, or would any new packages added end up as &quot;custom&quot;
+</I>&gt;<i> files?
+</I>
+pwlconfig actually processes all the packages in the RPMS directory. It 
+uses the tags in the rpm file to categorize the content. If a custom rpm 
+is contributed it is as simple as dropping the rpm into the RPMS directory 
+and then using pwlconfig to convert rpms to tar files.
+
+&gt;<i> Also, the ability for people to easily contribute Peewee packages would be nice.  I
+</I>&gt;<i> envision the Peewee website having an area for user contributed packages, and other users
+</I>&gt;<i> could simply download a given package (binary only, or complete source), and add it to
+</I>&gt;<i> their already installed base.  Again, this is similar to LRP packages; for an example, see
+</I>&gt;<i> <A HREF="http://lrp.steinkuehler.net/Packages.htm.">http://lrp.steinkuehler.net/Packages.htm.</A>
+</I>
+Yes, this is easily possible. In fact, this can be done now. I think the 
+big stumbling block now is that there is no documentation on how to create 
+a rpm to contribute to PeeWeeLinux. Also, without having a dedicated build 
+environment, it is difficult to ensure proper dependencies. 
+
+I am also looking to keep the PeeWeeLinux scripts seperated from the 
+packages. This should make it possible to start using CVS to maintain the 
+pwlconfig files and other scripts and sources.
+
+Regards,
+Adi
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000170.html">[Peeweelinux-devel] Re: DOC Docs
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#171">[ date ]</a>
+              <a href="thread.html#171">[ thread ]</a>
+              <a href="subject.html#171">[ subject ]</a>
+              <a href="author.html#171">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

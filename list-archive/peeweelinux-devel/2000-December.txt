@@ -1,0 +1,125 @@
+From PeeWeeLinux-devel@adis.on.ca  Thu Dec  7 19:21:19 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Thu, 7 Dec 2000 13:21:19 -0600 (CST)
+Subject: kernel versions in PeeWeeLinux
+In-Reply-To: <20001207180542.9039A611F4@russian-caravan.cloud9.net>
+Message-ID: <Pine.LNX.4.10.10012071320010.8603-100000@develop.knet.on.ca>
+
+Hi,
+
+Is anyone using the 2.2.14 kernel binaries included in PeeWeeLinux? I
+thought of removing the 2.2.14 kernel in the next release...
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Sun Dec 17 20:24:17 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Sun, 17 Dec 2000 14:24:17 -0600 (CST)
+Subject: 0.53.24
+Message-ID: <Pine.LNX.4.10.10012171415290.567-100000@big.adis.on.ca>
+
+Hi,
+
+I am in the process of uploading PeeWeeLinux 0.53.24. It includes the
+latest bug fixes and added features to pwlconfig that have come up.
+
+Issues resolved:
+
+- Filesystem sizes should be calculated properly now for the 
+  "Read-only root fs with multiple ramdisks", thanks to Dean Brown
+  for pointing this out and providing the fix.
+
+- Added a check for the ./packages directory when pwlconfig is run
+  and prompt for a choice to extract rpms immediately.
+
+- Added rd_initscripts variable to project.defaults. Now the automatic
+  modification of rc.init and etc/fstab by the target load scripts can
+  be turned off.
+
+- Cosmetic fixes, typos and help screen updates.
+
+Please post any experiences with 0.53.24. I hope to turn this into the
+0.60 stable release soon.
+
+Only the peeweelinux-0.53.24-cfg.tar.gz file is required to upgrade an
+existing PeeWeeLinux install to 0.53.24!
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Wed Dec 20 06:27:20 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Wed, 20 Dec 2000 00:27:20 -0600 (CST)
+Subject: pwl_target_load: line 1656: syntax error: unexpected end of file
+Message-ID: <Pine.LNX.4.10.10012200018510.32526-100000@big.adis.on.ca>
+
+Hi,
+
+Fixed the pwl_target_load and pwl_target_functions script to work properly
+with bash-2.x. The cause of the problem is a documented incomatability
+between bash-1.14 and bash-2.03. 
+
+So version 0.53.25 will be uploaded shortly...
+
+Below find the 'technical' explanation...
+
+TTYL,
+Adi
+
+
+
+ 
+
+In those scripts I redirect output from certain commands to $rd_log or
+/dev/null depending on the circumstances. Here is an offending line
+example:
+
+{ dd if=$rd_loop_dev bs=1k count=$rd_size_fs | gzip -v9 > $rd_tmp/$rd_ramdisk } >>$rd_log 2>&1
+
+Things are working after adding a semicolon just before the closing
+bracket, like so:
+
+{ dd if=$rd_loop_dev bs=1k count=$rd_size_fs | gzip -v9 > $rd_tmp/$rd_ramdisk; } >>$rd_log 2>&1
+
+Here is the excerpt from the bash2 COMPAT file for reference:
+
+--- Quote ---
+
+2.  One of the bugs fixed in the YACC grammar tightens up the rules
+    concerning group commands ( {...} ).  The `list' that composes the
+    body of the group command must be terminated by a newline or
+    semicolon.  That's because the braces are reserved words, and are
+    recognized as such only when a reserved word is legal.  This means
+    that while bash-1.14 accepted shell function definitions like this:
+
+        foo() { : }
+
+    bash-2.0 requires this:
+
+        foo() { :; }
+
+    This is also an issue for commands like this:
+
+        mkdir dir || { echo 'could not mkdir' ; exit 1; }
+
+    The syntax required by bash-2.0 is also accepted by bash-1.14.
+
+--- Unquote ---
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] trouble compiling custom kernel
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001215.html">
+   <LINK REL="Next"  HREF="001218.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] trouble compiling custom kernel
+   </H1>
+    <B>Jonathan Sturges
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] trouble compiling custom kernel">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 22 Dec 2003 15:18:39 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001215.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+        <LI> Next message: <A HREF="001218.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1216">[ date ]</a>
+              <a href="thread.html#1216">[ thread ]</a>
+              <a href="subject.html#1216">[ subject ]</a>
+              <a href="author.html#1216">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I was able to compile 2.2.25 in gcc 3.2, but the resulting kernel &quot;Oops&quot;es
+when initialized on my Advantech boards, which are using National
+Semiconductor's Geode CPU.  You might be right about gcc 3.2 with 2.2.17
+though.  If I cd into the $PWL_HOME/kernelbuild/usr/src/linux, after trying
+to make a custom kernel within PWL, and do a 'make bzImage' it does choke
+without producing an image.
+
+I will try a 2.4 kernel and see how it goes.
+
+thanks,
+Jonathan
+
+----- Original Message ----- 
+From: &quot;Ken Emmons, Jr.&quot; &lt;<A HREF="mailto:kemmons@qatech.com">kemmons@qatech.com</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Sent: Monday, December 22, 2003 3:05 PM
+Subject: RE: [Peeweelinux] trouble compiling custom kernel
+
+
+&gt;<i> I think the 2.2 kernel compile will die with GCC 3.2, but I am not sure.
+</I>Compile a kernel version (2.4 something) that will work with your compiler
+(view the README docs in the kernel source for where to findd out what
+version of GCC to use). If you can, compile everything static, so you don't
+have to deal with modules.
+&gt;<i>
+</I>&gt;<i> Now you need to Copy the bzImage file (your compiled kernel) into your
+</I>peewee projects &quot;custom&quot; folder. This custom folder mimics the root
+filesystem of your target, which allows you to overwrite or add files. Make
+a &quot;boot&quot; directory if it is not already there, and put your bzImage file
+there.  If you don't need modules, you are now done. Otherwise, copy all of
+your module files intot he appropriate directories, and hope it works.
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ~Ken
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; -----Original Message-----
+</I>&gt;<i> &gt; From: Jonathan Sturges [mailto:<A HREF="mailto:jonathan@sprintmail.com">jonathan@sprintmail.com</A>]
+</I>&gt;<i> &gt; Sent: Monday, December 22, 2003 2:52 PM
+</I>&gt;<i> &gt; To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; Subject: [Peeweelinux] trouble compiling custom kernel
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt; I'm a PWL newbie.  I've been playing with 0.61.1 for a week
+</I>&gt;<i> &gt; or so now and
+</I>&gt;<i> &gt; have made several successful test images with it... pretty
+</I>&gt;<i> &gt; darn intuitive
+</I>&gt;<i> &gt; and easy!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; However I cannot seem to compile a custom kernel from the
+</I>&gt;<i> &gt; 2.2.17 sources
+</I>&gt;<i> &gt; that came with PWL.  It never seems to produce a bzImage.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I was able to follow some directions I found in the list
+</I>&gt;<i> &gt; archive and build a
+</I>&gt;<i> &gt; kernel outside of PWL and bring that in... that did work for
+</I>&gt;<i> &gt; me though.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; FWIW, my host OS is RH 8.0 with gcc 3.2; is that likely a
+</I>&gt;<i> &gt; problem area or is
+</I>&gt;<i> &gt; the host platform pretty flexible with PWL?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; thanks,
+</I>&gt;<i> &gt; Jonathan
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001215.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+	<LI> Next message: <A HREF="001218.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1216">[ date ]</a>
+              <a href="thread.html#1216">[ thread ]</a>
+              <a href="subject.html#1216">[ subject ]</a>
+              <a href="author.html#1216">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

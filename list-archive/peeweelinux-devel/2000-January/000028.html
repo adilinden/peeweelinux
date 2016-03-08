@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> V0.19 and pwlconfig design notes...
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000027.html">
+   <LINK REL="Next"  HREF="000030.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>V0.19 and pwlconfig design notes...
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="V0.19 and pwlconfig design notes...">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 26 Jan 2000 21:16:34 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000027.html">More pwlconfig stuff
+</A></li>
+        <LI> Next message: <A HREF="000030.html">V0.19 and pwlconfig design notes...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hey,
+Couldn't get time to do the e-mail thing today...I wrote another 500 or so
+lines of script to get the pwl_default thing working.  Also split up the
+script files some more, things are getting pretty clean now...
+
+Now that I have started parameterizing the &quot;default&quot; stuff in pwlconfig, I've
+gotten about 10 parameters.  This should come in handy somewhere down the
+road...
+
+BTW, I added the items I'm working on as &quot;new features&quot; in the source forge bug
+tracking stuff.  I got some mail from source forge about the mail server not
+being enabled...might have a link that needs fixing here to get source forge to
+send bug announcements to your mail server.  Thats just a guess...
+
+more...
+--- Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I downloaded the 0.19 source file today (pretty good response for downloads
+</I>&gt;<i> &gt; from sourceforge...haven't tried your new ftp yet). Looks like a lot of
+</I>&gt;<i> stuff
+</I>&gt;<i> &gt; in there..not sure what it all is though...
+</I>&gt;<i> 
+</I>&gt;<i> There are still duplicate sources in there. The originals and the
+</I>&gt;<i> extracted, modified, comiled ones for PWL. I only patched boa so far. I
+</I>&gt;<i> have to work throught the other ones too.
+</I>&gt;<i> 
+</I>&gt;<i> Still need to decide wether to do the tar thing or use rpm.
+</I>&gt;<i>
+</I>
+I like the tar thing for now. I maybe we could re-visit this after we figure
+out what to do with the packages and ram disk stuff.
+ 
+&gt;<i> &gt; I started on the next release of pwlconfig.  I've integrated it so it can
+</I>&gt;<i> use
+</I>&gt;<i> &gt; my &quot;mkBootDevice&quot; shell script, now I just have to add a few parameters to
+</I>&gt;<i> the
+</I>&gt;<i> &gt; project.  So far I can only come up with a handfull of &quot;project&quot; specific
+</I>&gt;<i> &gt; parameters, but I'm planning on a menu that will let you enter these items
+</I>&gt;<i> into
+</I>&gt;<i> &gt; a &quot;...projects/myproject/project.default&quot; file. (you can manually edit it
+</I>&gt;<i> or
+</I>&gt;<i> &gt; use the menus).  Adding more parameters anytime should be a breeze...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt;From Main Menu-&gt;Manage project
+</I>&gt;<i> &gt; &quot;Project Device Type: DOC&quot;
+</I>&gt;<i> &gt; &quot;Project Device Location: /dev/fla1&quot;
+</I>&gt;<i> &gt; &quot;Project Mount Point: ./mnt&quot;
+</I>&gt;<i> &gt; &quot;Boot Label: pwlboot&quot;
+</I>&gt;<i> &gt; &quot;File System Compressed: no&quot;
+</I>&gt;<i> &gt; &quot;Default source for custom files: /home/ralph/SRC&quot;
+</I>&gt;<i> &gt; &quot;&lt;suggestions ???&gt;&quot;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Cursor through these items and select them to change them.  Its a little
+</I>&gt;<i> &gt; overhead (script coding) to provide an interactive menu, but it keeps all
+</I>&gt;<i> the
+</I>&gt;<i> &gt; pwl stuff integrated in the pwlconfig script.  I think I'll keep these
+</I>&gt;<i> &gt; functions in a small script, like &quot;pwl_default&quot;, that gets called by
+</I>&gt;<i> pwlconfig
+</I>&gt;<i> &gt; or from the command line.
+</I>&gt;<i> 
+</I>&gt;<i> So thi would allow for a configuration to be 'totally' configured with
+</I>&gt;<i> pwlconfig, where the projects files go, where the temp mount point is?
+</I>&gt;<i> 
+</I>
+Yep, added that one too..thanks...
+
+&gt;<i> &gt; I split out some of the utility functions to shorten the pwlconfig script
+</I>&gt;<i> and
+</I>&gt;<i> &gt; also to share these between the scripts.  Small sharp tools and all that...
+</I>&gt;<i> 
+</I>&gt;<i> Good idea.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; After this release, I'll start on integrating the &quot;build package&quot;
+</I>&gt;<i> &gt; scripts...then what ?? The compressed file system should be good challenge
+</I>&gt;<i> &gt; too...almost forgot about that one...
+</I>&gt;<i> 
+</I>&gt;<i> Ok, of the main menu there should be a configuration section to set
+</I>&gt;<i> whatever parameter for the project. Another main section should be the
+</I>&gt;<i> package selection portion and extraction of these files to the configured
+</I>&gt;<i> mount point. The next major meu item should be about what to with the
+</I>&gt;<i> build filesystem, i.e. load a DOC or flash, create  a ramdisk, iso image,
+</I>&gt;<i> tar file, etc...   
+</I>&gt;<i> 
+</I>
+I'll look at your next e-mail to try to figure more of this out...
+
+
+&gt;<i> &gt; Probably need to start building a couple of default projects..once users
+</I>&gt;<i> &gt; download the binaries, they should be able to download &quot;router&quot;, &quot;thin
+</I>&gt;<i> client&quot;
+</I>&gt;<i> &gt; and so on - maybe 5-10K each - or the &quot;Project of the Month&quot;.  Since I
+</I>&gt;<i> haven't
+</I>&gt;<i> &gt; gotten anything to work yet, I can't help here :-(  
+</I>&gt;<i> 
+</I>&gt;<i> Yup, I fried a DOC. Don't know how I did it, but if I boot my development
+</I>&gt;<i> system on the embedded box I get a kernel message 'cannot access
+</I>&gt;<i> /dev/fla...'. I tried using the dos tools to restore it to a DOS disk with
+</I>&gt;<i> the original boot sector. It tells me it is not a FFS device. I s there
+</I>&gt;<i> warranty on these???
+</I>&gt;<i>
+</I>
+I sent you an extra chip incase you wanted to play with that on IPIX...
+ 
+&gt;<i> &gt; Best thing to do is see if you can build one of your working projects just
+</I>&gt;<i> &gt; using pwlconfig...that should be a good test :-)
+</I>&gt;<i> 
+</I>&gt;<i> Yup, planning on doing that with the dialin box. Also, plan on doing this
+</I>&gt;<i> for the satellite router as part of doing the documentation of how to
+</I>&gt;<i> build it. It's sometimes a pain to do docs and decide what knowledge the
+</I>&gt;<i> reader should have (in how much detail to go).
+</I>&gt;<i> 
+</I>&gt;<i> &gt; BTW, I tried your generate_list script (after I noticed that my &quot;include
+</I>&gt;<i> all&quot;
+</I>&gt;<i> &gt; wasn't working since there were no list files to include).  It kept killing
+</I>&gt;<i> my
+</I>&gt;<i> &gt; xterm window...so, I played with it...(hacker mentality - not my code, it
+</I>&gt;<i> must
+</I>&gt;<i> &gt; be tweaked!;-) and add a &quot;--remove&quot; function...and set it up to work from
+</I>&gt;<i> &gt; either directory (Embedded_Build or Embedded_Build/scripts). I'll post it
+</I>&gt;<i> 
+</I>&gt;<i> Good stuff, I am considering myself a beginner when it comes to perl and
+</I>&gt;<i> shell scripts. I think bacause I didn't formally learn it I missing some
+</I>&gt;<i> basics but at the same time know a lot of adavanced stuff because of all
+</I>&gt;<i> the other programming stuff I did. I am still having a bit of a hard time
+</I>&gt;<i> with having the script determine how it was invoked and where it live.
+</I>&gt;<i> 
+</I>&gt;<i> The `pwd` command would give you the location from where the script was
+</I>&gt;<i> started. The '$0' variable includes the path and script name to get to the
+</I>&gt;<i> script from the 'pwd' location. Maybe using these 2 it would be possible
+</I>&gt;<i> to jump to predefined starting point?
+</I>&gt;<i>
+</I>or you can look in the current directory to see if the script is there or in
+another directory...depends on what you want to do.
+ 
+&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> 
+</I>__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000027.html">More pwlconfig stuff
+</A></li>
+	<LI> Next message: <A HREF="000030.html">V0.19 and pwlconfig design notes...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#28">[ date ]</a>
+              <a href="thread.html#28">[ thread ]</a>
+              <a href="subject.html#28">[ subject ]</a>
+              <a href="author.html#28">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

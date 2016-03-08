@@ -1,0 +1,19 @@
+From PeeWeeLinux@adis.on.ca  Sat Apr 22 03:43:38 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Fri, 21 Apr 2000 21:43:38 -0500 (CDT)
+Subject: peeweelinux.com
+Message-ID: <Pine.LNX.4.10.10004212142020.838-100000@big.adis.on.ca>
+
+The PeeWeeLinux homepage has its own domain name now! Just go to
+http://peeweelinux.com or http://www.peeweelinux.com
+
+Nothing has changed, though, just the domain has been registered...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+

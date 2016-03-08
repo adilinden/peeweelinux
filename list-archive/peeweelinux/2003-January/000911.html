@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] 16754 uart
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000910.html">
+   <LINK REL="Next"  HREF="000912.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] 16754 uart
+   </H1>
+    <B>Jim Graham
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] 16754 uart">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 20 Jan 2003 14:28:52 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000910.html">[Peeweelinux] glibc 2.2.5 ???
+</A></li>
+        <LI> Next message: <A HREF="000912.html">[Peeweelinux] 16754 uart
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#911">[ date ]</a>
+              <a href="thread.html#911">[ thread ]</a>
+              <a href="subject.html#911">[ subject ]</a>
+              <a href="author.html#911">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a multi-part message in MIME format.
+--------------90150D4C7B09C0E2E448D885
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Hi
+
+   I am trying to interface to a quad uart card which uses TI's
+TL16C754B 64 byte fifo uart.  I have verified that the card is set up
+correctly (after the open I manipulate the device registers for now) but
+still not able to communicate.   I created the device file using
+setserial with uart 16750.
+
+   I can open the device but a write never seems to send data to the
+UART.  I enabled the debugging prints.  When I close the device I get
+transmission of data from the UART but it looks like random data.
+
+Any suggestions?  Is this a path to an end?
+
+thanks
+jim
+
+--------------90150D4C7B09C0E2E448D885
+Content-Type: text/x-vcard; charset=us-ascii;
+ name=&quot;graham.vcf&quot;
+Content-Transfer-Encoding: 7bit
+Content-Description: Card for Jim Graham
+Content-Disposition: attachment;
+ filename=&quot;graham.vcf&quot;
+
+begin:vcard 
+n:Graham;Jim
+tel;fax:(315) 798-8950
+tel;work:(315) 798-1377
+x-mozilla-html:FALSE
+url:www.sensors.com
+org:Integrated Sensors Inc.
+adr:;;502 Court Street;Utica;NY;13502;
+version:2.1
+email;internet:<A HREF="mailto:graham@sensors.com">graham@sensors.com</A>
+title:Senior Software Engineer
+end:vcard
+
+--------------90150D4C7B09C0E2E448D885--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000910.html">[Peeweelinux] glibc 2.2.5 ???
+</A></li>
+	<LI> Next message: <A HREF="000912.html">[Peeweelinux] 16754 uart
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#911">[ date ]</a>
+              <a href="thread.html#911">[ thread ]</a>
+              <a href="subject.html#911">[ subject ]</a>
+              <a href="author.html#911">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

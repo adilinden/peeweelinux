@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] rc.pcmcia fails
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000770.html">
+   <LINK REL="Next"  HREF="000772.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] rc.pcmcia fails
+   </H1>
+    <B>Randy Torgerson
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] rc.pcmcia fails">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 4 Sep 2002 20:04:19 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000770.html">[Peeweelinux] How to build 6.2 programs, or other ways
+</A></li>
+        <LI> Next message: <A HREF="000772.html">[Peeweelinux] How to build 6.2 programs, or other ways
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#771">[ date ]</a>
+              <a href="thread.html#771">[ thread ]</a>
+              <a href="subject.html#771">[ subject ]</a>
+              <a href="author.html#771">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I moved my project from my 386SX to my Pentium Laptop because I was having
+memory leaks.  I recompiled the kernel to add PCMCIA and I removed all the
+network card drivers.  When rc.pcmcia is called from sysinit during the boot
+up process it fails. I think that it is failing because sysinit does not
+pass the 'start' directive.  I added it and it still does not work.    I can
+successfully start rc.pcmcia at the command line.  Anyone have any ideas?
+
+There are two other fails that I have seen.  The first is a 'grep -F'.  When
+I look at the web page for busybox there isn't an '-F' listed, nor is there
+one listed on grep on my Redhat 7.2 box.  The other problem is in the last
+line of the script, I get a 'Syntax error: Bad substitution'
+
+Thanks,
+
+Randy Torgerson
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000770.html">[Peeweelinux] How to build 6.2 programs, or other ways
+</A></li>
+	<LI> Next message: <A HREF="000772.html">[Peeweelinux] How to build 6.2 programs, or other ways
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#771">[ date ]</a>
+              <a href="thread.html#771">[ thread ]</a>
+              <a href="subject.html#771">[ subject ]</a>
+              <a href="author.html#771">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

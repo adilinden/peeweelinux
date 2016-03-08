@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Peewee on Rocky 328E
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000470.html">
+   <LINK REL="Next"  HREF="000474.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Peewee on Rocky 328E
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Peewee on Rocky 328E">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 18 Feb 2002 11:24:27 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000470.html">[Peeweelinux] Peewee on Rocky 328E
+</A></li>
+        <LI> Next message: <A HREF="000474.html">[Peeweelinux] =?iso-8859-1?Q?R=E9f._:_Re:_[Peeweelinux]_Peewee_on_Rocky_328E?=
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#471">[ date ]</a>
+              <a href="thread.html#471">[ thread ]</a>
+              <a href="subject.html#471">[ subject ]</a>
+              <a href="author.html#471">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Testing for target device /mnt/floppy ........ failed
+</I>&gt;<i> Testing that target /mnt/floppy is not mounted ....... failed
+</I>
+Make sure that the target is not mounted prior to loading the file system on
+to your target:
+
+Exit Peewee, umount /mnt/floppy, and then try again.
+
+----- Original Message -----
+From: &lt;<A HREF="mailto:Guillaume.Prevost@space.alcatel.fr">Guillaume.Prevost@space.alcatel.fr</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Sent: Monday, February 18, 2002 11:11 AM
+Subject: [Peeweelinux] Peewee on Rocky 328E
+
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Does anyone's already tried to install peewee on a Rocky 328E ? It's a
+</I>little
+&gt;<i> 386 embedded PC board.
+</I>&gt;<i>
+</I>&gt;<i> And I do not succed in my attempts. But it's the first time that I try to
+</I>&gt;<i> install Peewee...
+</I>&gt;<i>
+</I>&gt;<i> I've successfully configured my project with pwlconfig  (I hope so). And I
+</I>would
+&gt;<i> like to copy this project on the embedded PC board, equipped with a floppy
+</I>and
+&gt;<i> an IDE hard drive. How to do ? Copy the project on a floppy in order to
+</I>load it
+&gt;<i> on the HD? I've tried this solution with this configuration of &quot;Configure
+</I>target
+&gt;<i> Hardware&quot; :
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> *******************************
+</I>&gt;<i>
+</I>&gt;<i> Target : compressed ramdisk on FAT 12 floppy disk w/syslinux
+</I>&gt;<i> Project Mount Point : &quot;mnt&quot;
+</I>&gt;<i> Project Custom Source file path : &quot;/root/custom&quot;
+</I>&gt;<i> Device Mount point : &quot;./mnt&quot;
+</I>&gt;<i> Boot image name : &quot;bzImage&quot;
+</I>&gt;<i> Ramdisk File Name : &quot;ramdisk&quot;
+</I>&gt;<i> Initrd File Name : &quot;initrd&quot;
+</I>&gt;<i> Modify system boot files : &quot;y&quot;
+</I>&gt;<i> ----------
+</I>&gt;<i> .
+</I>&gt;<i> .
+</I>&gt;<i> .
+</I>&gt;<i> ---floppy target configuration parameters-----
+</I>&gt;<i> Floppy Device : &quot;/mnt/floppy&quot;
+</I>&gt;<i> Free space on Ramdisk : &quot;500&quot;
+</I>&gt;<i> .
+</I>&gt;<i> .
+</I>&gt;<i> .
+</I>&gt;<i>
+</I>&gt;<i> ********************
+</I>&gt;<i>
+</I>&gt;<i> But I only obtain this message :
+</I>&gt;<i>
+</I>&gt;<i> The target build script failed to load the filesystem onto the configured
+</I>&gt;<i> target. Do you wish to view the results ?
+</I>&gt;<i>
+</I>&gt;<i> And the result is : all OK except :
+</I>&gt;<i>
+</I>&gt;<i> Testing for target device /mnt/floppy ........ failed
+</I>&gt;<i> Testing that target /mnt/floppy is not mounted ....... failed
+</I>&gt;<i>
+</I>&gt;<i> Does anyone could help me, please ?
+</I>&gt;<i>
+</I>&gt;<i> Thank you.
+</I>&gt;<i>
+</I>&gt;<i> Guillaume PREVOST
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000470.html">[Peeweelinux] Peewee on Rocky 328E
+</A></li>
+	<LI> Next message: <A HREF="000474.html">[Peeweelinux] =?iso-8859-1?Q?R=E9f._:_Re:_[Peeweelinux]_Peewee_on_Rocky_328E?=
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#471">[ date ]</a>
+              <a href="thread.html#471">[ thread ]</a>
+              <a href="subject.html#471">[ subject ]</a>
+              <a href="author.html#471">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

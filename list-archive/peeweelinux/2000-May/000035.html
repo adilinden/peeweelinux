@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Uncompressed root fs to ramdisk.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000034.html">
+   <LINK REL="Next"  HREF="000036.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Uncompressed root fs to ramdisk.
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Uncompressed root fs to ramdisk.">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 19 May 2000 06:39:53 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000034.html">Uncompressed root fs to ramdisk.
+</A></li>
+        <LI> Next message: <A HREF="000036.html">Uncompressed root fs to ramdisk.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#35">[ date ]</a>
+              <a href="thread.html#35">[ thread ]</a>
+              <a href="subject.html#35">[ subject ]</a>
+              <a href="author.html#35">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+The solution I used to protect the system (copied from some other
+distributions):
+
+Format the Compact Flash as follows:
+1. hdx1 Create a boot partition (~1MB)
+2. hdx2 Create a Read Only partition (~28MB)
+3. hdx3 Create a Read/Write partition (~1MB)
+
+Now load each partition:
+1. hdx1 Copy boot.b and kernel-2.2.14 (or whatever your image is)
+2. hdx2 Copy all files here
+3. hdx3 format/erase
+
+Now run LiLo and tell it where the boot image is (/dev/hdx1) 
+and where the file system is (root=/dev/hdx2)
+
+Note fstab never has to mount the boot partition. All system files are
+maintained on the read only partition and never get corrupted. User files are
+vulenerable, but can be backed up on-to the Read only partition as required.
+
+The trickery is all in rc.sysinit. At boot up, you have to mount everything
+and then load the default files to the read/write partition. This
+needs to be checked and reformatted if it gets corrupted.
+I also create a ramdisk to store the /tmp /var /whatever files in.
+this gives about 4MB of space to let the system store stuff.
+
+
+Some files on the Read Only partition may need to be updated on
+occasion.  A simple script will allow access to do this 
+(mount -o remount...).
+
+So far, this works for me, doesn't take much ram.  I don't know how
+to get the permissions set properly, how to get the devices to work
+everytime and other little problems....
+
+The applications I have working (on 32MB CF) so far:
+Netscape 4.7/Citrix/x3270/fvwm95
+
+All system configuration is done through fvwm scripts (clock, mouse,
+keyboard, beep, network, startup applications, screen background).
+
+Hope this helps,
+Ralph
+
+--- Mattias Sjogren &lt;<A HREF="mailto:mattias@voxway.com">mattias@voxway.com</A>&gt; wrote:
+&gt;<i> Hi all!
+</I>&gt;<i> 
+</I>&gt;<i> I have just got going with PeeWee Linux and it looks great
+</I>&gt;<i> so far... My only problem is that I want to load the
+</I>&gt;<i> uncompressed root filesystem to ram to avoid corruption on
+</I>&gt;<i> sudden power failures. I know that this is easily done with
+</I>&gt;<i> a compressed root fs but that makes it so hard to change so
+</I>&gt;<i> I don't want that.
+</I>&gt;<i> 
+</I>&gt;<i> I'm booting from a 16MB Flash pcmcia card in an ide adaptor
+</I>&gt;<i> using LILO. 
+</I>&gt;<i> 
+</I>&gt;<i> Another small question... How do I get the statup scripts to
+</I>&gt;<i> automatically run fsck on the root fs? I have a '1' at the
+</I>&gt;<i> right place in fstab but that doesn't help and I get no
+</I>&gt;<i> errors...
+</I>&gt;<i> 
+</I>Don't know, I have the same problem...some option in mount I suppose...
+
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages &amp; get email alerts with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com/">http://im.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000034.html">Uncompressed root fs to ramdisk.
+</A></li>
+	<LI> Next message: <A HREF="000036.html">Uncompressed root fs to ramdisk.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#35">[ date ]</a>
+              <a href="thread.html#35">[ thread ]</a>
+              <a href="subject.html#35">[ subject ]</a>
+              <a href="author.html#35">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

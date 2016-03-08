@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Extraction problem...
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000096.html">
+   <LINK REL="Next"  HREF="000099.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Extraction problem...
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Extraction problem...">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 20 Sep 2000 08:22:21 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000096.html">Extraction problem...
+</A></li>
+        <LI> Next message: <A HREF="000099.html">./bin/Lilo6_21 ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#97">[ date ]</a>
+              <a href="thread.html#97">[ thread ]</a>
+              <a href="subject.html#97">[ subject ]</a>
+              <a href="author.html#97">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hmmm...I downloaded the 0.50 stuff and extracted everything without fail.
+I suspect that your file got corrupted (or you disk is full ??:O). Let me know
+if you find out anything...
+
+Good luck,
+Ralph
+
+--- Ralph Stickley &lt;<A HREF="mailto:r_stickley@yahoo.com">r_stickley@yahoo.com</A>&gt; wrote:
+&gt;<i> Hey,
+</I>&gt;<i> Ok..that is bizarre...I don't have the 0.50 version, I just upgraded to the
+</I>&gt;<i> V0.51.  I was able to extract all the packages with that version.
+</I>&gt;<i> 
+</I>&gt;<i> So, lets see whats happening here.
+</I>&gt;<i> First, is it possible to install the rpm manually ?
+</I>&gt;<i> The RPM command being used is built as follows:
+</I>&gt;<i> 
+</I>&gt;<i>    srcName=&quot;dev....rpm&quot;              # filename
+</I>&gt;<i>    rootDir=&quot;.../Embedded_Build/rpm&quot;  # fill your path in here
+</I>&gt;<i>    
+</I>&gt;<i>    rpmOptions=&quot;--force  --noscripts --nodeps --notriggers \
+</I>&gt;<i>                --dbpath /.rpm_db  --ignorearch --ignoreos&quot;  
+</I>&gt;<i> 
+</I>&gt;<i>    $RPM -i --root $rootDir $rpmOptions $srcName                              
+</I>&gt;<i>  
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Try that script and see if it you can tell what is going wrong.
+</I>&gt;<i> (The actual extraction occurs in pwl_pkgmgr in function &quot;pkgmgr_rpm_extract&quot;)
+</I>&gt;<i>                     
+</I>&gt;<i> Another potential point of failure is that some of the &quot;info&quot; stuff
+</I>&gt;<i> associated
+</I>&gt;<i> with the rpm file may not be what the package manager is expecting.
+</I>&gt;<i> 
+</I>&gt;<i> If you don't find anything wrong here, try the upgrade. Meanwhile, I'll
+</I>&gt;<i> download this version and see what happens here.
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Ralph
+</I>&gt;<i> 
+</I>&gt;<i> One thing to do is to 
+</I>&gt;<i> --- Michael George &lt;<A HREF="mailto:george@mintcity.com">george@mintcity.com</A>&gt; wrote:
+</I>&gt;<i> &gt; Hi all!
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I have a bizarre problem that I'm hoping someone has seen before, or
+</I>&gt;<i> perhaps
+</I>&gt;<i> &gt; might have a workaround.  I have peeweelinux-0.50-bin.tar.gz, and I've
+</I>&gt;<i> &gt; installed it at work and at home.  Both machines are running a basic RHL6.1
+</I>&gt;<i> &gt; system.  The one at work is running just fine.  But I am trying to Extract
+</I>&gt;<i> &gt; the
+</I>&gt;<i> &gt; rpm files into the package directory.  When I try to do so, though, the
+</I>&gt;<i> &gt; extraction process gets stuck at the dev*.rpm package.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; It doesn't freeze, for I can watch the rpm process consuming time and
+</I>&gt;<i> nearly
+</I>&gt;<i> &gt; 100% of the processor, but I just get the &quot;Extracting ... dev...rpm.&quot;
+</I>&gt;<i> &gt; message.
+</I>&gt;<i> &gt; The additional &quot;.&quot; never appear and it just sits there indefinately.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Very strange, indeed!
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Has anyone else ever heard of this or seen it?  Is there a way I can work
+</I>&gt;<i> &gt; around it and get the packages all unpacked?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Thanks for any help!
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; -Michael
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; -- 
+</I>&gt;<i> &gt; No, my friend, the way to have good and safe government, is not to trust it
+</I>&gt;<i> &gt; all to one, but to divide it among the many, distributing to every one
+</I>&gt;<i> &gt; exactly
+</I>&gt;<i> &gt; the functions he is competent to.  It is by dividing and subdividing these
+</I>&gt;<i> &gt; republics from the national one down through all its subordinations, until
+</I>&gt;<i> it
+</I>&gt;<i> &gt; ends in the administration of every man's farm by himself; by placing under
+</I>&gt;<i> &gt; every one what his own eye may superintend, that all will be done for the
+</I>&gt;<i> &gt; best.
+</I>&gt;<i> &gt;                 -- Thomas Jefferson, to Joseph Cabell, 1816
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> &gt; See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> &gt; See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> __________________________________________________
+</I>&gt;<i> Do You Yahoo!?
+</I>&gt;<i> Send instant messages &amp; get email alerts with Yahoo! Messenger.
+</I>&gt;<i> <A HREF="http://im.yahoo.com/">http://im.yahoo.com/</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages &amp; get email alerts with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com/">http://im.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000096.html">Extraction problem...
+</A></li>
+	<LI> Next message: <A HREF="000099.html">./bin/Lilo6_21 ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#97">[ date ]</a>
+              <a href="thread.html#97">[ thread ]</a>
+              <a href="subject.html#97">[ subject ]</a>
+              <a href="author.html#97">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] resolve a domain name
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001198.html">
+   <LINK REL="Next"  HREF="001201.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] resolve a domain name
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] resolve a domain name">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 11 Sep 2003 18:12:53 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001198.html">[Peeweelinux] resolve a domain name
+</A></li>
+        <LI> Next message: <A HREF="001201.html">[Peeweelinux] resolve a domain name
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1199">[ date ]</a>
+              <a href="thread.html#1199">[ thread ]</a>
+              <a href="subject.html#1199">[ subject ]</a>
+              <a href="author.html#1199">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>Additionally, in case the obvious has been overlooked, you need a file 
+</I>&gt;<i>/etc/resolv.conf with the desired nameservers, eg:
+</I>
+&gt;<i>search foo.com
+</I>&gt;<i>search bar.com
+</I>&gt;<i>nameserver 192.168.0.1
+</I>&gt;<i>nameserver 192.168.0.37
+</I>
+What is the purpose of the &quot;search&quot; lines, especially if
+it needs to resolve foo.com or bar.com to even be able
+to use them?  Or are they assumed to be in hosts?
+
+&gt;<i>When apps using libnss_dns fire up, the libs use this file as it's 
+</I>&gt;<i>config of which nameservers to talk to...
+</I>
+I read that libresolv does the name lookups.  I don't have
+libnss_dns installed.   I installed nslookup.  When I
+run it, it does not complain about any libraries missing.
+The result of nslookup is:
+
+Server:     default
+Address:    default
+
+*** Unknown host
+
+Finally I want so clarify my intent which is to be able to
+use a domain name, for instance, if I want to fetch a package
+off a site somewhere.  So it's not a manual operation, 
+rather some other program would be thinking it could use
+a URL.  Although, if it's possible to run the output of 
+nslookup through a shell script to get this done instead of 
+having to install some other program, that would be 
+interesting.
+
+It's not all that obvious. I'm trying to piece it together
+so I understand which parts do which.  For example I could
+not ping anything until I added a default route.  I can
+download stuff if I use the IP address instead of a name.
+
+Information like &quot;libnss-dns is what looks in /etc/resolv.conf&quot;
+is very valuable.  We often think a particular program is
+responsible.
+
+Barry
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001198.html">[Peeweelinux] resolve a domain name
+</A></li>
+	<LI> Next message: <A HREF="001201.html">[Peeweelinux] resolve a domain name
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1199">[ date ]</a>
+              <a href="thread.html#1199">[ thread ]</a>
+              <a href="subject.html#1199">[ subject ]</a>
+              <a href="author.html#1199">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

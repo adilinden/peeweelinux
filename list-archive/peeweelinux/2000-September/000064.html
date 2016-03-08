@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Making a floppy system with PeeWeeLinux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000062.html">
+   <LINK REL="Next"  HREF="000067.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Making a floppy system with PeeWeeLinux
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Making a floppy system with PeeWeeLinux">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Sat, 2 Sep 2000 11:18:24 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000062.html">making floppy systems
+</A></li>
+        <LI> Next message: <A HREF="000067.html">Making a floppy system with PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Here are some instructions on how to create a floppy run system using
+PeeWeeLinux.
+
+1.  Use pwlconfig to pick the packages and files required.
+
+2.  Use the custom files option to customize your system.
+
+3.  Use the extract filesystem option to create a filesystem.
+
+4.  Exit pwlconfig at this point.
+
+5.  Create an empty ramdisk. Filling it with zero ensure optimal
+    compression. Note that most Linux distributions include a kernel
+    that allows 16 ramdisks of 4000kB each. I found the maximum
+    uncompressed filesystem size on a floppy is about 3MB.
+    Command to run for a 3MB filesystem:
+        dd if=/dev/zero of=/dev/ram bs=1k count=3000
+
+6.  Create a filesystem
+        mke2fs -m0 -b 1024 /dev/ram 3000
+
+7.  Mount the filesystem at a suitable location
+        mount -t ext2 /dev/ram /mnt/flash
+
+8.  Remove some unneeded stuff
+        rm -rf /mnt/flash/lost+found
+
+9.  Copy the extracted filesystem to the mounted ramdisk. Note that this
+    filesystem does not require a kernel! The kernel will be put onto the
+    floppy disk seperately. Nor will lilo be required in the package
+    selection process.
+    
+    a. First option, use the 'cp' command:
+        cp -a Embedded_Build/projects/&lt;your project&gt;/mnt/* /mnt/flash
+        rm /mnt/flash/boot/bzImage
+
+    b. Second option, use tar
+        tar cp \
+            --exclude=bzImage \
+            --directory=Embedded_Build/projects/&lt;your project&gt;/mnt \
+            ./ | tar xp --directory=/mnt/flash
+
+10. ldconfig is a rather large binary which can be ommitted as long as it
+    is run prior to compressing the ramdisk. We do it now.
+        ldconfig -r /mnt/flash
+
+11. Unmount the ramdisk
+        umount /mnt/flash
+
+12. Create a compressed image
+        dd if=/dev/ram bs=1k count=3000 | gzip -v9 &gt; ramdisk.img
+
+13. Insert an empty floppy into the drive
+
+14. Place the kernel on the floppy
+        dd if=Embedded_Build/projects/&lt;your project&gt;/mnt/boot/bzImage \
+            of=/dev/fd0
+
+15. When dd finishes you will get a message similar to
+        410+1 records in
+        410+1 records out
+
+    Record the number reported and add 1. The number indicated is the last
+    1k block the kernel was written to. We want to start the compressed
+    ramdisk image beyond the end of the kernel without overwriting the
+    last block occupied by the kernel. So the number for our example would
+    be 411
+
+16. Place the ramdisk image on the floppy
+        dd if=ramdisk.img of=/dev/fd0 bs=1k seek=411
+
+17. Last we need to tell the kernel where our ramdisk can be found on the
+    kernel. Calculate the sum of 16384 and the earlier recorded number of
+    blocks. I.e 16384 + 411 = 16795
+
+18. Tell the kernel what's up...
+        rdev /dev/fd0 /dev/fd0
+        rdev -r /dev/fd0 16795
+        rdev -R /dev/fd0 0
+
+    A quick explaination: 
+        The first statement tells the kernel that it is booting from the
+          floppy disk device.
+        The second statement tells the kernel to load a compressed ramdisk
+          starting at block 411 of the floppy device without prompting for
+          a second disk. Details of the meaning of 16384 can be found in
+          the kernel documentation.
+        The third statement tells the kernel that it is starting at block
+          0 of the floppy device (I might be wrong about this last rdev
+          statement, though, but that's what I remember it was for).
+
+19. That's it. Boot with the floppy and enjoy!
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000062.html">making floppy systems
+</A></li>
+	<LI> Next message: <A HREF="000067.html">Making a floppy system with PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

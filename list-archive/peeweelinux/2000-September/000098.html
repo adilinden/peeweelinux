@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> booting into a ram disk
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000094.html">
+   <LINK REL="Next"  HREF="000095.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>booting into a ram disk
+   </H1>
+    <B>Dr Jaime V. Miro
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="booting into a ram disk">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 20 Sep 2000 16:37:31 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000094.html">booting into a ram disk
+</A></li>
+        <LI> Next message: <A HREF="000095.html">Extraction problem...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#98">[ date ]</a>
+              <a href="thread.html#98">[ thread ]</a>
+              <a href="subject.html#98">[ subject ]</a>
+              <a href="author.html#98">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;Dr Jaime V. Miro&quot; wrote:
+&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> I've got a minimalistic embedded linux system developed from peeweelinux (0.51). It was done with pwlconfig. I had to add a couple of libs manually, otherwise it would not boot up (libncurses.so.4 and libtermcap.so.2), but it does now. It resides in the HD, boots up, and let's me login with &quot;root&quot; or &quot;admin&quot;.(not much more, as yet)
+</I>&gt;<i> 
+</I>&gt;<i> Feeling brave, I attempted the next step with the ultimate goal of booting from a CF disk: booting from a ram disk. I first tried the tool that comes with pwlconfig (rd_dialog), but it keeps asking me for a project, and while it recognises the name of the last one (the ever present &quot;simple&quot;), no matter what I do or write, can't go past this point. I am probably doing something wrong, but don't know what it is, 
+</I>
+
+found out: select the &quot;number&quot; of the project. I feel a bit stupid now, 'cause it just did not cross my mind. But here is my admission, in case somebody is stuck on the same thing ( probably not ... ;-) )
+
+
+so I've tried to do it manually (I've done it successfully b4 with another / and
+&gt;<i> kernel). I mounted the ram disk, copied the fs into it, unmount it, created the image, compress it, edit lilo to refer to this new image, and reboot. After a couple of glitches (it never likes /devram1, whilst /dev/ram0 is okay ...?), the system boots, mounts the fs into ram, and gives me the peewee prompt ... but I can't login using &quot;root&quot; or &quot;admin&quot; like before! I don't know why. It is exactly the same image and kernel as the one residing in the HD, so passwd and permissions are the same. But
+</I>&gt;<i> it does not go past the login screen. Any pointers?
+</I>
+
+still stuck on that one though! I'll try rd_dialog and see what happens.
+
+thanks in advance
+
+Jaime
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000094.html">booting into a ram disk
+</A></li>
+	<LI> Next message: <A HREF="000095.html">Extraction problem...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#98">[ date ]</a>
+              <a href="thread.html#98">[ thread ]</a>
+              <a href="subject.html#98">[ subject ]</a>
+              <a href="author.html#98">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

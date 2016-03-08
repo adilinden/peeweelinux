@@ -1,0 +1,507 @@
+From PeeWeeLinux@adis.on.ca  Wed Feb  2 23:13:28 2000
+From: PeeWeeLinux@adis.on.ca (Frank Van Uffelen)
+Date: Thu, 3 Feb 2000 00:13:28 +0100
+Subject: termcap
+Message-ID: <200002022315.AAA05412@chekov.Belgium.EU.net>
+
+Hi,
+
+I've just managed to get 0.19 running off a harddisk ;-)  
+
+A couple of observations I'd like to discuss:
+- the /etc/termcap is really huge, I think that most people only need 
+some basic terminal support (eg vt100 and the Linux console - this 
+is an embedded system).  That reduces the file to hardly some kB, 
+and shrinks the image by some 400kB.
+- have you considered using upx on the executables?  It shrinks 
+e.g. the busybox in the distribution file to 43566 bytes, and the 
+elvis to 43278
+
+All this space could be used to either make the system's footprint 
+even smaller than it is right now, or to accomodate ncurses ;-)
+
+
+
+Frank Van Uffelen
+fvu@nfe.be
+Please note : my @tornado.be address ceased to exist end of '98!
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Feb  3 04:06:57 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Wed, 2 Feb 2000 20:06:57 -0800 (PST)
+Subject: termcap
+Message-ID: <20000203040657.19172.qmail@web1104.mail.yahoo.com>
+
+Hello,
+
+--- Frank Van Uffelen <fvu@nfe.be> wrote:
+> Hi,
+> 
+> I've just managed to get 0.19 running off a harddisk ;-)  
+> 
+Glad to hear it worked for you (we have limited testing so far :-)
+
+> A couple of observations I'd like to discuss:
+> - the /etc/termcap is really huge, I think that most people only need 
+> some basic terminal support (eg vt100 and the Linux console - this 
+> is an embedded system).  That reduces the file to hardly some kB, 
+> and shrinks the image by some 400kB.
+
+Wow...sounds great, the linux console is really all I need too...
+
+> - have you considered using upx on the executables?  It shrinks 
+> e.g. the busybox in the distribution file to 43566 bytes, and the 
+> elvis to 43278
+> 
+
+I'm not familiar with upx...I'll have to look it up since I couldn't
+find it in my RH 6.1 std. install :-)
+
+> All this space could be used to either make the system's footprint 
+> even smaller than it is right now, or to accomodate ncurses ;-)
+> 
+
+Yes..Yes...Smaller is better...I've been concentrating on the pwlconfig
+and haven't tried to figure out how to optimize the packages. (My X-Windows 
+3.3.5 is 12MB - ouch!)  I'm trying to automate most of the package 
+building stuff, but the real job is figuring out how what is not needed for 
+each program.
+
+Thanks for the feedback. We are looking for projects that people want
+to share and any ideas on how to make the system easier for everybody...
+just let us know if you have any questions.
+
+Later,
+Ralph Stickley
+
+> 
+> 
+> Frank Van Uffelen
+> fvu@nfe.be
+> Please note : my @tornado.be address ceased to exist end of '98!
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Feb  3 05:54:27 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Wed, 2 Feb 2000 23:54:27 -0600 (CST)
+Subject: termcap
+In-Reply-To: <200002022315.AAA05412@chekov.Belgium.EU.net>
+Message-ID: <Pine.LNX.4.10.10002022349080.7970-100000@localhost.localdomain>
+
+Hi,
+
+> I've just managed to get 0.19 running off a harddisk ;-)  
+
+Good stuff!
+
+> A couple of observations I'd like to discuss:
+> - the /etc/termcap is really huge, I think that most people only need 
+> some basic terminal support (eg vt100 and the Linux console - this 
+> is an embedded system).  That reduces the file to hardly some kB, 
+> and shrinks the image by some 400kB.
+
+There is a small termcap included in the minimal.tar package. However, I
+found that the terminal descriptions in it are too minimal for a system
+administered via telnet from a variety of systems.
+
+> - have you considered using upx on the executables?  It shrinks 
+> e.g. the busybox in the distribution file to 43566 bytes, and the 
+> elvis to 43278
+
+What is upx???
+
+> All this space could be used to either make the system's footprint 
+> even smaller than it is right now, or to accomodate ncurses ;-)
+
+I tried ncurses but found it much harder to shrink in size then termcap.
+One of the future plans for PeeWeeLinux is to include means to create all
+the packages from the sources by using patch files. Perhaps at that point
+it might be an idea to give a choice of compiling with termcap or ncurses?
+Still got to checkout this upx thing, though...
+
+Great to hear from someone who's successful in running a PeeWeeLinux
+system :)
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Feb  3 20:30:01 2000
+From: PeeWeeLinux@adis.on.ca (Frank Van Uffelen)
+Date: Thu, 3 Feb 2000 21:30:01 +0100
+Subject: termcap
+In-Reply-To: <Pine.LNX.4.10.10002022349080.7970-100000@localhost.localdomain>
+References: <200002022315.AAA05412@chekov.Belgium.EU.net>
+Message-ID: <200002032031.VAA05263@bashir.belgium.eu.net>
+
+> Hi,
+> 
+> > I've just managed to get 0.19 running off a harddisk ;-)  
+> 
+> Good stuff!
+
+No major problems, although I had to do some steps manually.  
+The hardest part is to get LILO do what you want it to do.  What do 
+you think, 
+ 
+> There is a small termcap included in the minimal.tar package. However,
+> I found that the terminal descriptions in it are too minimal for a
+> system administered via telnet from a variety of systems.
+
+I'll have a look at it later this evening.
+ 
+> > - have you considered using upx on the executables?  It shrinks e.g.
+> > the busybox in the distribution file to 43566 bytes, and the elvis
+> > to 43278
+> 
+> What is upx???
+
+upx.tsx.org
+upx is an executable compressor that exists for DOS, Windows 
+and Linux.  It's awesome
+ 
+> > All this space could be used to either make the system's footprint
+> > even smaller than it is right now, or to accomodate ncurses ;-)
+> 
+> I tried ncurses but found it much harder to shrink in size then
+> termcap. One of the future plans for PeeWeeLinux is to include means
+> to create all the packages from the sources by using patch files.
+> Perhaps at that point it might be an idea to give a choice of
+> compiling with termcap or ncurses? Still got to checkout this upx
+> thing, though...
+
+You're referring to the terminfo data that ncurses uses?  Same 
+remark as for termcap, you can safely shave off most of them.
+
+> Great to hear from someone who's successful in running a PeeWeeLinux
+> system :)
+
+It's a very nice mini-distro, good work!
+
+
+
+
+Frank Van Uffelen
+fvu@nfe.be
+Please note : my @tornado.be address ceased to exist end of '98!
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Feb  3 22:18:47 2000
+From: PeeWeeLinux@adis.on.ca (Frank Van Uffelen)
+Date: Thu, 3 Feb 2000 23:18:47 +0100
+Subject: termcap
+In-Reply-To: <Pine.LNX.4.10.10002022349080.7970-100000@localhost.localdomain>
+References: <200002022315.AAA05412@chekov.Belgium.EU.net>
+Message-ID: <200002032220.XAA06220@chekov.Belgium.EU.net>
+
+> There is a small termcap included in the minimal.tar package. However,
+> I found that the terminal descriptions in it are too minimal for a
+> system administered via telnet from a variety of systems.
+
+telnet uses vt100 emulation, so adding that one and maybe a vt220 
+in the minimal termcap will solve most problems.  I'll send you a 
+suggested replacement for the minimal termcap.
+But the size of termcap is a symptom of the real problem : it really 
+looks like the creators of terminals considered it a status symbol 
+to design a new command set, thereby forcing those maintaing 
+termcap to let the terminal description database grow with each 
+released product.
+ 
+> I tried ncurses but found it much harder to shrink in size then
+> termcap. One of the future plans for PeeWeeLinux is to include means
+> to create all the packages from the sources by using patch files.
+> Perhaps at that point it might be an idea to give a choice of
+> compiling with termcap or ncurses? Still got to checkout this upx
+> thing, though...
+
+I'm afraid it goes a lot deeper than that. As termcap does not 
+support color and other advanced features you'll have a hard time 
+compiling stuff that can use eg color with another, termcap-based 
+curses.  On the other hand it's much easier to borrow the terminfo 
+definitions of those few terminals you're interested in (just find them 
+in the correct /usr/lib/terminfo subdir and copy it over to the target 
+file system) than with termcap (where you take the full file and edit 
+it down to the required subset).  The former makes much more 
+sense to me.
+
+
+
+
+Frank Van Uffelen
+fvu@nfe.be
+Please note : my @tornado.be address ceased to exist end of '98!
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sun Feb  6 01:08:17 2000
+From: PeeWeeLinux@adis.on.ca (Frank Van Uffelen)
+Date: Sun, 6 Feb 2000 02:08:17 +0100
+Subject: upx, tinylogin
+Message-ID: <200002060110.CAA14419@bashir.belgium.eu.net>
+
+Hi,
+
+I've continued some of my tests.  The results:
+- upx compressed executables don't seem to work on a 386, on a 
+Pentium, K6 and P-II they work correctly.  This may be a problem 
+for real embedded systems as the 386sx is still quite popular there.
+- I've started to experiment with tinylogin, a multicall binary like 
+busybox that replaces login, su, passwd, getty and some other 
+utilities.  It's really nice, but I have some problems with su and with 
+remote login as root.  I'll keep you posted.
+- I'm having a couple of problems with elvis : it seems to loose 
+track of the operations on a line (successions of a, i, x for 
+example), resulting in unwanted results.  Am I the only one having 
+this problem?  
+
+In the mean time : most of my tests were done on a K6-200 and a 
+386dx25 (yesyes ;-)) with 8MB RAM.  Even the latter "feels" quite 
+OK and should be a usable platform for simple tasks or for tasks 
+were high performance is not an issue.
+
+
+
+
+
+
+Frank Van Uffelen
+fvu@nfe.be
+Please note : my @tornado.be address ceased to exist end of '98!
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sun Feb  6 15:41:42 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Sun, 6 Feb 2000 09:41:42 -0600 (CST)
+Subject: upx, tinylogin
+In-Reply-To: <200002060110.CAA14419@bashir.belgium.eu.net>
+Message-ID: <Pine.LNX.4.10.10002060933390.1519-100000@localhost.localdomain>
+
+Hi,
+
+> I've continued some of my tests.  The results:
+> - upx compressed executables don't seem to work on a 386, on a 
+> Pentium, K6 and P-II they work correctly.  This may be a problem 
+> for real embedded systems as the 386sx is still quite popular there.
+
+I am booting the systems from a ramdisk which is compressed. A 2.7meg
+filesystem compresses to about 970k on the boot media. Since I usually
+have plenty of RAM I just load everything in a ramdisk. 
+
+This works great for router type applications where there is no data that
+changes over time that would have to be saved. 
+
+> - I've started to experiment with tinylogin, a multicall binary like 
+> busybox that replaces login, su, passwd, getty and some other 
+> utilities.  It's really nice, but I have some problems with su and with 
+> remote login as root.  I'll keep you posted.
+
+I've build one system with it successful. But I haven't build a
+PeeWeeLinux package yet. I am planning on building patchfiles for all
+existing PeeWeeLinux packages. So there will be a script that compiles and
+builds all the PeeWeeLinux packages from the `stock' sources and generic
+patches.
+
+> - I'm having a couple of problems with elvis : it seems to loose 
+> track of the operations on a line (successions of a, i, x for 
+> example), resulting in unwanted results.  Am I the only one having 
+> this problem?  
+
+I've noticed that elvis does not properly deal with the screen. I find
+that if you memorize what you do it'll work ok. But certain operations
+`loose' thew status line.
+
+In a raouter project I used a static vi instead. It's big but more
+reliable than elvis. I used to use ee. It uses a very different syntax but
+worked great with termcap. 
+
+> In the mean time : most of my tests were done on a K6-200 and a 
+> 386dx25 (yesyes ;-)) with 8MB RAM.  Even the latter "feels" quite 
+> OK and should be a usable platform for simple tasks or for tasks 
+> were high performance is not an issue.
+
+I've looked at 386's. But booting a ramdisk into 8MB ram doesn't leave
+much for `real' memory!
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Feb 14 14:53:32 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Mon, 14 Feb 2000 08:53:32 -0600 (CST)
+Subject: Pee wee Linux - pwlconfig
+In-Reply-To: <000701bf76db$9b09f660$0f00005a@Lalith>
+Message-ID: <Pine.LNX.4.10.10002140848160.1103-100000@localhost.localdomain>
+
+Hi,
+
+> I am using SuSE linux as my main Linux box. I tried to install PWL in a
+> small 36 Meg partition on the same hard disk & LILO in to it on boot time.
+> It all booted well & all that except the network (eth0). I am using a
+> standard NE2000 isa card, but for some reason the ne.o module didn't load &
+> hence failed to bring up network.
+
+The ne2000 driver comes in two pieces. Do the following:
+
+insmod 8390
+insmod ne io=0x300 irq=15
+
+Make sure you use the actual i/o address and irq of your ne2000 card.
+
+> When I  tried to insmod ne.o, It gives out 'unresolved symbols' message. I
+> am using your latest PWL 0.19version.
+
+This is because the 8390 module didn't get loaded before loading the ne
+module.
+
+> Also I cannot run 'pwlconfig' as I  don't have 'lxdialog' in SuSE
+> distribution.
+
+Make sure you have the kernel sources installed. cd into your kernel
+sources directory ('/usr/src/linux') and do a 'make menuconfig'. This will
+create the lxdialog in '/usr/src/linux/scripts/lxdialog' (taking from
+memory and I might have missspelled the path).
+
+Hope this helps,
+Adi 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Feb 18 13:59:29 2000
+From: PeeWeeLinux@adis.on.ca (PeeWeeLinux@adis.on.ca)
+Date: Fri, 18 Feb 2000 13:59:29 GMT
+Subject: problem running pwlconfig
+Message-ID: <OF28933719.7860EBEB-ONC1256889.004C6B53@cardsencodingcy.be>
+
+This is a multipart message in MIME format.
+--=_alternative 004D19FFC1256889_=
+Content-Type: text/plain; charset="us-ascii"
+
+Hi !
+
+I'm trying to install a PeeWee distribution.
+Here is a dummy question:
+When running 'pwlconfig', I get the message:
+"Utility program 'lxdialog' not found".
+
+Then I "make menuconfig" and copy the lxdialog file into the right 
+disrectory (./scripts). The same error message stay.
+
+What should I do ?
+
+Thx for your help.
+
+Mariem
+--=_alternative 004D19FFC1256889_=
+Content-Type: text/html; charset="us-ascii"
+
+
+
+
+<br><font size=2 face="sans-serif">Hi !</font>
+<br>
+<br><font size=2 face="sans-serif">I'm trying to install a PeeWee distribution.</font>
+<br><font size=2 face="sans-serif">Here is a dummy question:</font>
+<br><font size=2 face="sans-serif">When running 'pwlconfig', I get the message:</font>
+<br><font size=2 face="sans-serif">&quot;Utility program 'lxdialog' not found&quot;.</font>
+<br>
+<br><font size=2 face="sans-serif">Then I &quot;make menuconfig&quot; and copy the lxdialog file into the right disrectory (./scripts). The same error message stay.</font>
+<br>
+<br><font size=2 face="sans-serif">What should I do ?</font>
+<br>
+<br><font size=2 face="sans-serif">Thx for your help.</font>
+<br>
+<br><font size=2 face="sans-serif">Mariem</font>
+--=_alternative 004D19FFC1256889_=--
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Feb 18 18:11:33 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 18 Feb 2000 10:11:33 -0800 (PST)
+Subject: problem running pwlconfig
+Message-ID: <20000218181133.12526.qmail@web1104.mail.yahoo.com>
+
+
+Hello,
+
+Depends on the version you are using..(this is early alpha stuff, so
+bear with us while we grow :-)
+
+The Versions 0.82 or less:
+make sure lxdialog is in the Embedded_Build/scripts
+
+The version 0.85 or higher:
+make sure lxdialog in in the Embedded_Build/bin directory
+
+Of course, I forgot to update the error message when I moved these
+files into the bin directory...Sorry about that...
+
+Good luck, and let me know what you think...
+
+Ralph
+
+
+--- m.yemlahi@cardsencodingcy.be wrote:
+> Hi !
+> 
+> I'm trying to install a PeeWee distribution.
+> Here is a dummy question:
+> When running 'pwlconfig', I get the message:
+> "Utility program 'lxdialog' not found".
+> 
+> Then I "make menuconfig" and copy the lxdialog file into the right 
+> disrectory (./scripts). The same error message stay.
+> 
+> What should I do ?
+> 
+> Thx for your help.
+> 
+> Mariem
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+

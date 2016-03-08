@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> More pwlconfig stuff
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000023.html">
+   <LINK REL="Next"  HREF="000026.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>More pwlconfig stuff
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="More pwlconfig stuff">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 26 Jan 2000 09:13:03 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000023.html">YASL - Yet Another Small Linux
+</A></li>
+        <LI> Next message: <A HREF="000026.html">More pwlconfig stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+I am just going through running pwlconfig. It needs lxdialog. And the help
+message or error message is a bit inaccurate, at least for my system:
+
+[<A HREF="mailto:root@big">root@big</A> Embedded_Build]# ./pwlconfig 
+Utility program &quot;lxdialog&quot; not found
+( do make Menuconfig and copy from /usr/src/linux/lxdialog )
+[<A HREF="mailto:root@big">root@big</A> Embedded_Build]# cp /usr/src/linux/scripts/lxdialog/lxdialog
+scripts/
+ 
+The location is where lxdialog is located is a bit further into the source
+tree... Is lxdialog machine dependent? Couldn't we include a lxdialog for
+ease of use?
+
+This is the existing menu:
+
+      Configure Project File System ---&gt;
+      Extract File System for Project ---&gt;
+      ----
+      Erase Disk-On-Chip ---&gt;
+      Load File System onto Disk-On-Chip ---&gt;
+      Install LInux LOader (LILO) to Disk-On-Chip
+      ----
+      Save Project
+      Manage Projects ---&gt;                                     
+
+And some ideas of how to change things:
+
+The first 2 are fine, selecting what to use and extracting it into a spare
+directory.
+
+I think the next 3 could be submenued to facilitate dealing with different
+options like Disk-On-Chip, ramdisk, bootable iso... Like this:
+
+      ---
+      Uncompressed filesystem on Disk-On-Chip
+      Compressed filesystem
+      Bootable ramdisk system
+      Bootable iso image
+      ---
+
+The first item would contain all the DOC specific stuff. The second item
+would create a tar.gz file from the files located in the temporary mount
+directory.
+
+The ramdisk section could be something like this:
+
+      ---
+      Create ramdisk
+      Create bootable filesystem w/syslinux
+      ---      
+
+      The first step would create the ramdisk image. The second step would
+      create a filesystem including all files necessary to boot the
+      ramdisk using syslinux from a FAT12 or FAT 16 formatted disk
+      partition.
+
+And the fourth part would do just that. An iso image that can be processed
+by any burner...
+
+What exactly does the &quot;save Projects&quot; step do? Would it be possible to
+create a menu item that saves (tgz) all the files that make up a
+configured project to make it portable and drop into a furure release of
+pwlconfig and PWL?
+
+Coming to think of it, there aren't that many options, perhaps everything
+could stay on the main page just devided by the little '---' ?
+
+One last thought about the rpm vs tar issue...
+
+rpm uses a .rpmrc file. With it its supposed to be possible to totally
+configure rpm. Directories where to build and extract file systems, etc.
+I'll be playing with it for a bit, too.
+
+The patch I did for boa is an idea to play with. I don't think its
+necessarily the best solution. rpm has a lot for it, too.
+
+TTYL,
+Adi 
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000023.html">YASL - Yet Another Small Linux
+</A></li>
+	<LI> Next message: <A HREF="000026.html">More pwlconfig stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#25">[ date ]</a>
+              <a href="thread.html#25">[ thread ]</a>
+              <a href="subject.html#25">[ subject ]</a>
+              <a href="author.html#25">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

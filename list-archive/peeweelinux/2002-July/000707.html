@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Filesystem Issues
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000706.html">
+   <LINK REL="Next"  HREF="000710.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Filesystem Issues
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Filesystem Issues">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 24 Jul 2002 12:34:09 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000706.html">[Peeweelinux] Filesystem Issues
+</A></li>
+        <LI> Next message: <A HREF="000710.html">[Peeweelinux] Filesystem Issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#707">[ date ]</a>
+              <a href="thread.html#707">[ thread ]</a>
+              <a href="subject.html#707">[ subject ]</a>
+              <a href="author.html#707">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ken,
+
+If glibc was updated it would certainly require all other rpms to be 
+rebuilt as well. My goal is to have scripts that would allow one to build 
+the development environment and all rpms from scratch with, a single 
+command. 
+
+To replace glibc you would have to make changes to the glib.spec file and 
+then build PeeWeeLinux from scratch. This will mean dealing with any 
+problems that surface due to the changed glibc during the build of any 
+other packages.
+
+Adi
+
+
+On Wed, 24 Jul 2002, Ken Emmons, Jr. wrote:
+
+&gt;<i> Hello Adi,
+</I>&gt;<i> 
+</I>&gt;<i> Not to get into a great discussion about development, but does the new 
+</I>&gt;<i> version of peewee being built in this chroot fashion allow for easier 
+</I>&gt;<i> updates (and additional) libraries. I.e. can glibc be updated easily? 
+</I>&gt;<i> Right now I am statically building my GTK app.
+</I>&gt;<i> 
+</I>&gt;<i> ~Ken
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000706.html">[Peeweelinux] Filesystem Issues
+</A></li>
+	<LI> Next message: <A HREF="000710.html">[Peeweelinux] Filesystem Issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#707">[ date ]</a>
+              <a href="thread.html#707">[ thread ]</a>
+              <a href="subject.html#707">[ subject ]</a>
+              <a href="author.html#707">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] lilo.conf hangs
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001135.html">
+   <LINK REL="Next"  HREF="001138.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] lilo.conf hangs
+   </H1>
+    <B>correy
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] lilo.conf hangs">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 17 Jul 2003 09:23:47 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001135.html">[Peeweelinux] Graphical Interface
+</A></li>
+        <LI> Next message: <A HREF="001138.html">[Peeweelinux] Silent Boot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1139">[ date ]</a>
+              <a href="thread.html#1139">[ thread ]</a>
+              <a href="subject.html#1139">[ subject ]</a>
+              <a href="author.html#1139">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have been playing with lilo.conf to try another kernel image. I tried 
+the other image I made but it didn't work and then I tried to restore 
+the original one but it doesn't work so I am assuming it is a problem 
+with my lilo.conf file.
+
+I mount the compact flash and then chroot /mnt/cf2 (root filesystem on cf)
+I then mount the boot partition on hdc1 mount /mnt/cf1
+ls /mnt/cf1
+initrd    boot.b    bzImage    map
+
+My lilo.conf file looks like this.
+____________________________
+disk=/dev/hdc
+  bios=0x80
+  heads=4
+  sectors=32
+  cylinders=490
+
+boot=/dev/hdc
+map=/mnt/cf1/map
+install=/mnt/cf1/boot.b
+compact
+prompt
+timeout=20
+default=linux
+
+image=/mnt/cf1/vmlinuz
+        label=linux
+        initrd=/mnt/cf1/initrd
+        read-only
+        root=/dev/hdc2
+        vga=0x317
+-------------------------------------------------
+I then run lilo and it says
+Added linux *
+
+However after rebooting all I get is LI and the system hangs.
+
+What should I change in lilo.conf also I don't really understand about 
+initrd and what script causes it to load into ram2?
+
+Any help to get me booting again would be great.
+
+Correy
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001135.html">[Peeweelinux] Graphical Interface
+</A></li>
+	<LI> Next message: <A HREF="001138.html">[Peeweelinux] Silent Boot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1139">[ date ]</a>
+              <a href="thread.html#1139">[ thread ]</a>
+              <a href="subject.html#1139">[ subject ]</a>
+              <a href="author.html#1139">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

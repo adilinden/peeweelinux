@@ -1,0 +1,177 @@
+From PeeWeeLinux-devel@adis.on.ca  Sat Aug 11 03:26:31 2001
+From: PeeWeeLinux-devel@adis.on.ca (Dennis W. Tokarski)
+Date: Fri, 10 Aug 2001 22:26:31 -0400
+Subject: cramfs for 2.2 kernel
+References: <Pine.LNX.4.33.0106210028440.7327-100000@big.adis.on.ca>
+Message-ID: <3B7497D7.E4E988E2@PolTec.COM>
+
+Adi,
+
+A message from David Mackay (davidm@monitoreurope.com) called to my
+attention that when we had the conversation below, I returned the
+cramfs patch for the 2.2 kernel in a message exclusively to you,
+rather than the entire pwl mailing list.
+
+If you like, I can repost so everyone on the list gets it. Otherwise,
+perhaps it could be made available in the downloads section of the
+pwl web site. David couldn't find it, and I don't see it there either.
+
+Regards,
+
+  --Dennis
+
+
+
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> Thank you for offering this kernel patch. Attached to an email will do
+> just fine...
+> 
+> TTYL,
+> Adi
+> 
+> On Wed, 20 Jun 2001, Dennis W. Tokarski wrote:
+> 
+
+[snip]
+
+> >
+> > Adi, I can supply a patch for 2.2.16 and later kernel source. It
+> > would probably work on just about any 2.2 release.
+> >
+> > How should I pass along the patch? Would you like it tar/gzipped
+> > and attached to another email (about 50k), inline (about 190k), or
+> > some other way?
+> >
+> >    Regards,
+> >
+> >    Dennis Tokarski
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Tue Aug 14 22:46:41 2001
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Tue, 14 Aug 2001 16:46:41 -0500 (CDT)
+Subject: cramfs for 2.2 kernel
+In-Reply-To: <3B7497D7.E4E988E2@PolTec.COM>
+Message-ID: <Pine.LNX.4.33.0108141640420.869-100000@mobile.adis.on.ca>
+
+Hi,
+
+Sorry about that! I uploaded the patch to the ftp server and it is now
+available in the Contributed directory.
+
+http://adis.on.ca/pub/Projects/Embedded/Contributed/cramfs.tgz
+
+Integrating the cramfs patch into the kernel supplied with PeeWeeLinux is
+on list of todos. Unfortunatley my work load, and the latest setback of a
+week of high fever (chickenpox is no fun!), aren't helping in getting much
+done on PeeWeeLinux.
+
+Regards,
+Adi Linden
+
+On Fri, 10 Aug 2001, Dennis W. Tokarski wrote:
+
+> Adi,
+>
+> A message from David Mackay (davidm@monitoreurope.com) called to my
+> attention that when we had the conversation below, I returned the
+> cramfs patch for the 2.2 kernel in a message exclusively to you,
+> rather than the entire pwl mailing list.
+>
+> If you like, I can repost so everyone on the list gets it. Otherwise,
+> perhaps it could be made available in the downloads section of the
+> pwl web site. David couldn't find it, and I don't see it there either.
+>
+> Regards,
+>
+>   --Dennis
+>
+>
+>
+>
+> Adi Linden wrote:
+> >
+> > Hi,
+> >
+> > Thank you for offering this kernel patch. Attached to an email will do
+> > just fine...
+> >
+> > TTYL,
+> > Adi
+> >
+> > On Wed, 20 Jun 2001, Dennis W. Tokarski wrote:
+> >
+>
+> [snip]
+>
+> > >
+> > > Adi, I can supply a patch for 2.2.16 and later kernel source. It
+> > > would probably work on just about any 2.2 release.
+> > >
+> > > How should I pass along the patch? Would you like it tar/gzipped
+> > > and attached to another email (about 50k), inline (about 190k), or
+> > > some other way?
+> > >
+> > >    Regards,
+> > >
+> > >    Dennis Tokarski
+>
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+>
+
+-- 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Wed Aug 15 02:55:30 2001
+From: PeeWeeLinux-devel@adis.on.ca (Dennis Tokarski)
+Date: Tue, 14 Aug 2001 21:55:30 -0400 (EDT)
+Subject: cramfs for 2.2 kernel
+In-Reply-To: <Pine.LNX.4.33.0108141640420.869-100000@mobile.adis.on.ca>
+Message-ID: <Pine.LNX.4.21.0108142153310.12128-100000@unix.marcdatabase.com>
+
+On Tue, 14 Aug 2001, Adi Linden wrote:
+
+> Hi,
+> 
+> Sorry about that! I uploaded the patch to the ftp server and it is now
+> available in the Contributed directory.
+> 
+> http://adis.on.ca/pub/Projects/Embedded/Contributed/cramfs.tgz
+> 
+> Integrating the cramfs patch into the kernel supplied with PeeWeeLinux is
+> on list of todos. Unfortunatley my work load, and the latest setback of a
+> week of high fever (chickenpox is no fun!), aren't helping in getting much
+> done on PeeWeeLinux.
+> 
+> Regards,
+> Adi Linden
+> 
+
+Egad, man, chicken pox can be *seriously* bad news when it occurs in an
+adult. I'm glad your recovering!!!!
+
+Stay well,
+
+  --Dennis
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

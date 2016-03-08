@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] system initialization
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000752.html">
+   <LINK REL="Next"  HREF="000754.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] system initialization
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] system initialization">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 22 Aug 2002 10:34:41 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000752.html">[Peeweelinux] Success
+</A></li>
+        <LI> Next message: <A HREF="000754.html">[Peeweelinux] system initialization
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#753">[ date ]</a>
+              <a href="thread.html#753">[ thread ]</a>
+              <a href="subject.html#753">[ subject ]</a>
+              <a href="author.html#753">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>My target system initially needed to be started by hand.  I have 
+worked it out to the point where it's automatic now.  But there
+is a lot of detail down there in those init scripts!  Here's
+what I started with:
+
+  - network card module present but I had to load it with &quot;modprobe&quot;
+  - modprobe fails because no modules.dep
+  - modules.dep is created by &quot;depmod&quot;
+  - have to run &quot;depmod&quot;
+  - have to run ifconfig to bring up network card
+
+Once the network is up the web server answers requests and all
+is well.  Here is what I worked out to solve the above issues:
+
+One premise I worked with was that the system really does know
+how to to all this, and I just had something wrong.
+
+I had already learned from adventure with thttpd and net-pf-10
+about depmod and modprobe, so I created a task in rcS.d called
+00depmod that would run first.  That was temporary and I moved
+the depmod to another file later.
+
+The issue with ifconfig led me through the 10Network script, 
+wherein I found that it will find the ifcfg-eth0 file in
+/etc/config and use the contents of that to construct an
+appropriate ifconfig...up command.   The assumption that
+this would work by itself proved to be correct after I
+fixed the driver issue.   However, at this time I discovered
+the place to put the IP address (or to set dhcp if I wish
+to try that).
+
+The driver modules was a little more interesting.  Looking
+through the target scripts I find that there could be 
+an /etc/rc.modules, which, if present, will read a file
+/etc/modules and use that as a list of modules to
+be loaded.   This pair of files was not present in my 
+target system, nor was it present on my host RedHat system;
+but they were present on my Coyote (LRP) system.  So, 
+without any more clues, I decided to write my own rc.modules
+file which runs depmod, then loads the modules for the
+network card.  That way I have kept the customizations to a
+minimum.  
+
+I know that insmod will load modules without the help of
+modules.dep   The issue of depmod was somewhat of an experimental
+investigation (I figured I should know about it).  One thing
+that seems to be likely is that depmod can be run on the
+kernel libraries after they are compiled, and possibly the
+resulting modules.dep can be copied to the target system and
+then no depmod is required.
+
+The last issue is that I put &quot;alias eth0 ne2k-pci&quot; into modules.conf
+but I was unable to discover who reads that information.  That would
+be the other way these modules get loaded (and seems to be the way
+it's done in our real linux boxes.)
+
+So the questions are:
+  - what runs depmod during startup?
+  - do embedded systems usually have a prebuilt modules.dep?
+  - what uses modules.conf to find out what modules to load?
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000752.html">[Peeweelinux] Success
+</A></li>
+	<LI> Next message: <A HREF="000754.html">[Peeweelinux] system initialization
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#753">[ date ]</a>
+              <a href="thread.html#753">[ thread ]</a>
+              <a href="subject.html#753">[ subject ]</a>
+              <a href="author.html#753">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

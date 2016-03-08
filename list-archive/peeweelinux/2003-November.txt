@@ -1,0 +1,178 @@
+From peeweelinux@adis.on.ca  Thu Nov  6 14:57:21 2003
+From: peeweelinux@adis.on.ca (Rushi(temp))
+Date: Thu, 6 Nov 2003 14:57:21 -0000
+Subject: [Peeweelinux] _X11TransSocketUNIXConnect
+Message-ID: <OE127yQU5y50xgy9NYb0000852e@hotmail.com>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_003A_01C3A476.47FBDB10
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+I have exactly same problem , does any one have any solution ??
+
+did u solve it David ??
+
+Hello,
+
+I'am trying to use the PeeWeeLinux on an embedded platform. I have =3D
+downloaded the ISO distribution and make a configuration with PWLCONFIG =
+=3D
+for my target platform. All the boot and initialisation are OK and i can =
+=3D
+login and enter the password. But when i tryied to start the W server =
+=3D
+the next message appear:
+
+-------------------------------------------------------------------------=
+=3D
+---------------------------------
+execve failed for /usr/X11R6/bin/X    (errno 2)
+_X11TransSocketUNIXConnect: can't connect: errno =3D3D 111
+giving up
+xinit: connection refused (errno 111): unable to connect to X server
+xinit: No such process (errno 3): server error
+-------------------------------------------------------------------------=
+=3D
+---------------------------------
+
+I don't know what happened, and i would like to know why the X server =
+=3D
+don't start.
+Are there missing some files, packages on my PWLCONFIG configuration ?
+Is it a reported bug ?
+
+Would you be so kind to help me on this problem because i would like to =
+=3D
+use Xfree86. I would like to use a graphic interface to run an =3D
+application made with FLTK lib or QT lib.
+
+Best regards
+
+David ROCHE=20
+
+Rushi
+
+
+------=_NextPart_000_003A_01C3A476.47FBDB10
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.2800.1126" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>I have exactly same problem , does any =
+one have any=20
+solution ??</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>did u solve it David ??</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV>Hello,<BR><BR>I'am trying to use the PeeWeeLinux on an embedded =
+platform. I=20
+have =3D<BR>downloaded the ISO distribution and make a configuration =
+with=20
+PWLCONFIG =3D<BR>for my target platform. All the boot and initialisation =
+are OK=20
+and i can =3D<BR>login and enter the password. But when i tryied to =
+start the W=20
+server =3D<BR>the next message=20
+appear:<BR><BR>----------------------------------------------------------=
+---------------=3D<BR>---------------------------------<BR>execve=20
+failed for /usr/X11R6/bin/X&nbsp;&nbsp;&nbsp; (errno=20
+2)<BR>_X11TransSocketUNIXConnect: can't connect: errno =3D3D =
+111<BR>giving=20
+up<BR>xinit: connection refused (errno 111): unable to connect to X=20
+server<BR>xinit: No such process (errno 3): server=20
+error<BR>----------------------------------------------------------------=
+---------=3D<BR>---------------------------------<BR><BR>I=20
+don't know what happened, and i would like to know why the X server =
+=3D<BR>don't=20
+start.<BR>Are there missing some files, packages on my PWLCONFIG =
+configuration=20
+?<BR>Is it a reported bug ?<BR><BR>Would you be so kind to help me on =
+this=20
+problem because i would like to =3D<BR>use Xfree86. I would like to use =
+a graphic=20
+interface to run an =3D<BR>application made with FLTK lib or QT =
+lib.<BR><BR>Best=20
+regards<BR><BR>David ROCHE </DIV>
+<DIV>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Rushi</FONT></DIV>
+<DIV><BR></DIV></BODY></HTML>
+
+------=_NextPart_000_003A_01C3A476.47FBDB10--
+
+From peeweelinux@adis.on.ca  Tue Nov 11 22:19:24 2003
+From: peeweelinux@adis.on.ca (Rushi)
+Date: Tue, 11 Nov 2003 22:19:24 -0000
+Subject: [Peeweelinux] Xwindow *urgent* pls help
+Message-ID: <OE72pcXCXWtjik38dWM000002bb@hotmail.com>
+
+Hi everyone,
+Can any one supply any example image with running X on peewee, its been long
+time and many hours I am trying to get X with peewee. At last I got X
+working but I have to block the mouse for that so it is of no use.
+
+1) I installed peewee with X libs and Xserver
+2) I use redhat 7.1 now , I was using Mandrake 8 before
+3)I copy some file from /usr/X11R6/lib/X11 like keyboard layout and server
+policy
+4) I copy XF86Config to /etc/X11
+
+what I am getting if I don't bock mouse when running XF86_SVGA has
+Can not open mouse(no device found)
+Fatel error
+than I have blocked  mouse by  AllowMouseOpenFail
+and yes I am getting a graphical screen and a cursor in the centre but of no
+use as I can not use mouse.
+I have spend a hell of time after Xwindows on peewee, if some one can really
+help me on this,
+I would be appreciate if Adi you can send me some really good information
+rather than just suggestions.
+
+please explain step by step in detail that how to configure the X on peewee,
+I really need that actually other wise things does not seems working easily
+on Linux
+
+Please Help
+
+Rushi
+
+From peeweelinux@adis.on.ca  Mon Nov 24 14:44:33 2003
+From: peeweelinux@adis.on.ca (Guillermo Calvo)
+Date: Mon, 24 Nov 2003 09:44:33 -0500
+Subject: [Peeweelinux] Peewee network setup script
+Message-ID: <003201c3b299$7a5afe70$0300a8c0@Hiperdata>
+
+Hi everybody:
+
+
+I'm new in the list, new in Peewee, and new with Linux
+
+I like peewee, I did my first project and work great !!!
+
+But now I need some customization:
+
+I need to  distribute peewee linux in almost 100 computers,
+I don't want to build 100 diferent systems, I would like something like
+this:
+A script with network setup in the same diskette than the user can easily
+edit outside peewee,
+At boot automaticly mount floppy and run network script, this script must be
+out of image and not compressed
+
+How can I do that?
+
+Best regards
+
+P.D. I'm apologize about my english
+
+

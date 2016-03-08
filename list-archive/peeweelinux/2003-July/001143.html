@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001142.html">
+   <LINK REL="Next"  HREF="001144.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 23 Jul 2003 13:05:35 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001142.html">[Peeweelinux] rootfilesystem isn't free after flushing to ramdisk
+</A></li>
+        <LI> Next message: <A HREF="001144.html">[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1143">[ date ]</a>
+              <a href="thread.html#1143">[ thread ]</a>
+              <a href="subject.html#1143">[ subject ]</a>
+              <a href="author.html#1143">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I don't know if I have the answer but I have discovered some
+more things after looking at your question.
+
+First of all, the lilo.conf that is apparently used to generate
+the target system can be found in the /Embedded_Build/tmp/ 
+directory.  Any other lilo.conf files you find are probably
+not relevant.  You guessed correctly in your original post
+that the file doesn't do anything after the target is made.
+It is only used to install LILO, and isn't used at boot time.
+
+I ALSO discovered, in that same directory, the &quot;linuxrc&quot; file
+that the make-target scripts often talk about.  And the
+contents of that file are interesting:
+
+  echo &quot;Copying filesystem /dev/hda2 to /dev/ram2....&quot;
+  dd if=/dev/hda2 of=/dev/ram2
+  echo &quot;Flushing buffers to disk....&quot;
+  sync
+
+I said the other day this was built into the kernel--apparently
+not!  I am still trying to figure out how this script gets
+run before the real init is started.
+
+Anyway, the root line in my lilo.conf reads like this:
+
+  root      = /dev/ram2 
+
+also:
+
+ ramdisk   = 9556
+ 
+I can't be sure this is the answer for you, because none of the
+lilo.conf files you have posted (including the &quot;before&quot; example)
+show it this way.  But you can try it.   The number after &quot;ramdisk&quot;
+is the amount of memory needed to copy the ramdisk to.  It can be
+larger then needed.
+
+I would have to ask: Which of the target configurations did 
+you use?  Are you not using peeweelinux to generate your
+targets anymore?  Why not?  Do you need something they don't
+do?  Once you set out on your own you will find you have 
+to understand almost everything...
+
+Barry
+
+
+&gt;<i>My root filesystem isn't unmounted after the bootup. It use to free itself
+</I>before I changed the kernel using lilo. 
+&gt;<i>So the script that sets up lilo in the PeeWeeLinux install program must be
+</I>doing something different in the way
+&gt;<i>that it configures lilo I think.
+</I>&gt;<i>
+</I>&gt;<i>Below is my lilo file that works. Perhaps my new kernel has something to do
+</I>with it however everything seems to work
+&gt;<i>fine apart from this.
+</I>&gt;<i>
+</I>&gt;<i>Can you see anything wrong for example should I be telling root that it is
+</I>at /dev/hdc2 or should I be telling it that
+&gt;<i>it is in the ramdisk where the compact flash partition now resides after
+</I>the boot sequence.
+&gt;<i>
+</I>&gt;<i>________________________
+</I>&gt;<i>boot=/dev/hdc
+</I>&gt;<i>disk=/dev/hdc
+</I>&gt;<i>        bios=0x80
+</I>&gt;<i>
+</I>&gt;<i>linear
+</I>&gt;<i>map=/mnt/cf1/map
+</I>&gt;<i>install=/mnt/cf1/boot.b
+</I>&gt;<i>prompt
+</I>&gt;<i>timeout=50
+</I>&gt;<i>initrd=/mnt/cf1/initrd
+</I>&gt;<i>default=bzImage
+</I>&gt;<i>
+</I>&gt;<i>image=/mnt/cf1/bzImage
+</I>&gt;<i>        label=bzImage
+</I>&gt;<i>        root=/dev/hdc2
+</I>&gt;<i>        read-only
+</I>&gt;<i>-----------------------
+</I>&gt;<i>
+</I>&gt;<i>Any help is welcome
+</I>&gt;<i>
+</I>&gt;<i>Many thanks
+</I>&gt;<i>
+</I>&gt;<i>Correy
+</I>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001142.html">[Peeweelinux] rootfilesystem isn't free after flushing to ramdisk
+</A></li>
+	<LI> Next message: <A HREF="001144.html">[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1143">[ date ]</a>
+              <a href="thread.html#1143">[ thread ]</a>
+              <a href="subject.html#1143">[ subject ]</a>
+              <a href="author.html#1143">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

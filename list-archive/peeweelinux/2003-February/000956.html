@@ -1,0 +1,267 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] HowTo: OpenSSH on PWL
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000955.html">
+   <LINK REL="Next"  HREF="000957.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] HowTo: OpenSSH on PWL
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] HowTo: OpenSSH on PWL">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 19 Feb 2003 14:29:38 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000955.html">[Peeweelinux] HowTo: OpenSSH on PWL
+</A></li>
+        <LI> Next message: <A HREF="000957.html">[Peeweelinux] How to compile module for peeweelinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#956">[ date ]</a>
+              <a href="thread.html#956">[ thread ]</a>
+              <a href="subject.html#956">[ subject ]</a>
+              <a href="author.html#956">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>As I rebuilt everything for the newly released OpenSSL-0.9.7a, I noticed 
+a slight error -- the OpenSSH build line is missing a &quot;/usr&quot; for the 
+zlib/ssl-dir params. It *should* reads as follows:
+
+  ./configure --prefix=/usr --sysconfdir=/etc/ssh
+  --with-zlib=/var/tmp/ssh-root/usr --with-ssl-dir=/var/tmp/ssh-root/usr
+  --without-shadow --with-pid-dir=/var/run --with-ipv4-default
+  --build=i386-pc-linux-gnu --without-privsep-user --without-privsep-path
+
+Also found an easier way to create the filelist for pwlconfig -- first, 
+create the tarball then just run &quot;tar -tf openssh-3.5p1.tar &gt; 
+openssh-3.5p1.list&quot; and you're done.
+
+hth,
+-te
+
+Troy Engel wrote:
+&gt;<i> This is a bit tricky, so if it doesn't work quite right (or I missed a 
+</I>&gt;<i> step in this document, etc), just try it again. Errors and ommisions, 
+</I>&gt;<i> just send a note.
+</I>&gt;<i> 
+</I>&gt;<i> Required:
+</I>&gt;<i> - Red Hat 6.2 box with root priv (will be explained)
+</I>&gt;<i> - zlib 1.1.4
+</I>&gt;<i> - openssl-0.9.7
+</I>&gt;<i> - openssh-3.5p1
+</I>&gt;<i> 
+</I>&gt;<i> I ran into a smattering of problems, mainly during linking, when trying 
+</I>&gt;<i> to build this all on a RH 7.2 box with the 6.2 compat libs installed. To 
+</I>&gt;<i> save a lot of hearttache, it was easier to use one of my 6.2 boxes - 
+</I>&gt;<i> they have the same glibc and stuff PWL does.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Set up stuff
+</I>&gt;<i> ============
+</I>&gt;<i> /var/tmp/ is your working directory. Make a directory /var/tmp/ssh-root 
+</I>&gt;<i> (for installs), /var/tmp/src/ and /var/tmp/build/. Download all tarballs 
+</I>&gt;<i> to /var/tmp/src/.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Build zlib
+</I>&gt;<i> ==========
+</I>&gt;<i> Untar zlib to /var/tmp/build/, then build as follows:
+</I>&gt;<i> 
+</I>&gt;<i>   ./configure --prefix=/usr --shared
+</I>&gt;<i>   make
+</I>&gt;<i>   make install prefix=/var/tmp/ssh-root/usr
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Build openssl
+</I>&gt;<i> =============
+</I>&gt;<i> Untar openssl to /var/tmp/build/, then build as follows:
+</I>&gt;<i>   /usr/bin/perl ./Configure --prefix=/usr -no-krb5 linux-elf shared 
+</I>&gt;<i> zlib-dynamic
+</I>&gt;<i> 
+</I>&gt;<i>   make
+</I>&gt;<i>   make INSTALL_PREFIX=/var/tmp/ssh-root install
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Edit LD path
+</I>&gt;<i> ============
+</I>&gt;<i> The openssl configure script (and maybe build, but didn't check) has an 
+</I>&gt;<i> issue with trying to use the openssl libs you just built, if they're not 
+</I>&gt;<i> in the LD scene. Add the following line to /etc/ld.so.conf:
+</I>&gt;<i> 
+</I>&gt;<i>   /var/tmp/ssh-root/usr/lib
+</I>&gt;<i> 
+</I>&gt;<i> ...and run /sbin/ldconfig. We'll remove this when done.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Build openssh
+</I>&gt;<i> =============
+</I>&gt;<i> Untar openssl to /var/tmp/build/, then build as follows:
+</I>&gt;<i> 
+</I>&gt;<i>   ./configure --prefix=/usr --sysconfdir=/etc/ssh 
+</I>&gt;<i> --with-zlib=/var/tmp/ssh-root --with-ssl-dir=/var/tmp/ssh-root 
+</I>&gt;<i> --without-shadow --with-pid-dir=/var/run --with-ipv4-default 
+</I>&gt;<i> --build=i386-pc-linux-gnu --without-privsep-user --without-privsep-path
+</I>&gt;<i> 
+</I>&gt;<i>   make
+</I>&gt;<i>   make install DESTDIR=/var/tmp/ssh-root
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Create sshd keys
+</I>&gt;<i> ================
+</I>&gt;<i> Run the following commands to create the host keypairs (you could do 
+</I>&gt;<i> this on bootup, but I prefer to prepackage them). Change the comment 
+</I>&gt;<i> used in the -C option to your desired comment.
+</I>&gt;<i> 
+</I>&gt;<i>   cd /var/tmp/ssh-root/usr/bin
+</I>&gt;<i>   ./ssh-keygen -t rsa1 -f /var/tmp/ssh-root/etc/ssh/ssh_host_key -N &quot;&quot; 
+</I>&gt;<i> -C &quot;mycomment&quot;
+</I>&gt;<i>   ./ssh-keygen -t rsa -f /var/tmp/ssh-root/etc/ssh/ssh_host_rsa_key -N 
+</I>&gt;<i> &quot;&quot; -C &quot;mycomment&quot;
+</I>&gt;<i>   ./ssh-keygen -t dsa -f /var/tmp/ssh-root/etc/ssh/ssh_host_dsa_key -N 
+</I>&gt;<i> &quot;&quot; -C &quot;mycomment&quot;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Configure sshd_config
+</I>&gt;<i> =====================
+</I>&gt;<i> Edit /var/tmp/ssh-root/etc/ssh/sshd_config and change params as desired 
+</I>&gt;<i> -- you must change at least &quot;UsePrivilegeSeparation no&quot;, as we're not 
+</I>&gt;<i> using it here. (I change &quot;X11Forwarding yes&quot;)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Add startup script
+</I>&gt;<i> ==================
+</I>&gt;<i> Create a startup script in /var/tmp/ssh-root/etc/rcS.d/ (make dir rcS.d) 
+</I>&gt;<i> - the exact name will vary depending on your needs. My PWL has been 
+</I>&gt;<i> customized, so the script for me works named as &quot;60sshd&quot; (I have a 
+</I>&gt;<i> 10network and 50inetd which fire off first). Make sure the file is mode 
+</I>&gt;<i> 0755. Here is my script:
+</I>&gt;<i> 
+</I>&gt;<i>   #!/bin/sh
+</I>&gt;<i> 
+</I>&gt;<i>   # /etc/rcS.d/60sshd
+</I>&gt;<i>   #
+</I>&gt;<i>   # Init file for OpenSSH server daemon
+</I>&gt;<i> 
+</I>&gt;<i>   [ -f /var/lock/subsys/network ] || exit 0
+</I>&gt;<i> 
+</I>&gt;<i>   echo &quot;Starting sshd....&quot;
+</I>&gt;<i>   /usr/sbin/sshd &amp;
+</I>&gt;<i>   touch /var/lock/subsys/sshd
+</I>&gt;<i> 
+</I>&gt;<i>   exit 0
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Clean out things
+</I>&gt;<i> ================
+</I>&gt;<i> Prune down useless stuff (man pages, include files, etc) from your 
+</I>&gt;<i> /var/tmp/ssh-root/ tree. I wanted to leave the user programs there (we 
+</I>&gt;<i> have enough space on the CF disk), but I got rid of a lot of things. My 
+</I>&gt;<i> list is attached at the end of this doc.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Create PWL &quot;list&quot; file and tarball
+</I>&gt;<i> ==================================
+</I>&gt;<i> Change to /var/tmp/ssh-root, then run these commands:
+</I>&gt;<i> 
+</I>&gt;<i>   find . | sed -e &quot;s|^./||g ; /^.$/d&quot; &gt; openssh-3.5p1.list
+</I>&gt;<i>   tar -cf openssh-3.5p1.tar usr/ etc/
+</I>&gt;<i> 
+</I>&gt;<i> ...and now edit &quot;openssh-3.5p1.list&quot; -- you need to add a terminating 
+</I>&gt;<i> slash to all directory names (usr/, etc/, etc) for PWL to work right later.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Add to PWL
+</I>&gt;<i> ==========
+</I>&gt;<i> Add these two files (openssh-3.5p1.list, openssh-3.5p1.tar) to one of 
+</I>&gt;<i> the packages/ locations on your PWL build machine 
+</I>&gt;<i> (packages/Network_Daemons/ seems like a good spot). Run ./pwlconfig and 
+</I>&gt;<i> select the new openssl files as normal, extract the filesystem, and so 
+</I>&gt;<i> forth -- it's all normal from here on out.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> You can now remove the /var/tmp/ssh-root/usr/lib/ from /etc/ld.so.conf 
+</I>&gt;<i> and rerun /sbin/ldconfig on your build machine. I should note that I run 
+</I>&gt;<i> kernel 2.4.18 on our systems (see my other HowTo for new kernels), but 
+</I>&gt;<i> since it builds cleanly on a stock RH62 machine, I don't think there's 
+</I>&gt;<i> going to be any issues here. (my custom kernel includes unixpty support, 
+</I>&gt;<i> et al).
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> My openssh-3.5p1.list file
+</I>&gt;<i> ==========================
+</I>&gt;<i> usr/
+</I>&gt;<i> usr/bin/
+</I>&gt;<i> usr/bin/scp
+</I>&gt;<i> usr/bin/sftp
+</I>&gt;<i> usr/bin/slogin
+</I>&gt;<i> usr/bin/ssh
+</I>&gt;<i> usr/bin/ssh-keygen
+</I>&gt;<i> usr/lib/
+</I>&gt;<i> usr/lib/libz.so.1.1.4
+</I>&gt;<i> usr/lib/libz.so
+</I>&gt;<i> usr/lib/libz.so.1
+</I>&gt;<i> usr/lib/libcrypto.so
+</I>&gt;<i> usr/lib/libcrypto.so.0
+</I>&gt;<i> usr/lib/libcrypto.so.0.9.7
+</I>&gt;<i> usr/lib/libssl.so
+</I>&gt;<i> usr/lib/libssl.so.0
+</I>&gt;<i> usr/lib/libssl.so.0.9.7
+</I>&gt;<i> usr/libexec/
+</I>&gt;<i> usr/libexec/sftp-server
+</I>&gt;<i> usr/sbin/
+</I>&gt;<i> usr/sbin/sshd
+</I>&gt;<i> usr/ssl/
+</I>&gt;<i> usr/ssl/certs/
+</I>&gt;<i> usr/ssl/private/
+</I>&gt;<i> usr/ssl/openssl.cnf
+</I>&gt;<i> etc/
+</I>&gt;<i> etc/ssh/
+</I>&gt;<i> etc/ssh/ssh_config
+</I>&gt;<i> etc/ssh/sshd_config
+</I>&gt;<i> etc/ssh/moduli
+</I>&gt;<i> etc/ssh/ssh_host_key
+</I>&gt;<i> etc/ssh/ssh_host_key.pub
+</I>&gt;<i> etc/ssh/ssh_host_rsa_key
+</I>&gt;<i> etc/ssh/ssh_host_rsa_key.pub
+</I>&gt;<i> etc/ssh/ssh_host_dsa_key
+</I>&gt;<i> etc/ssh/ssh_host_dsa_key.pub
+</I>&gt;<i> etc/rcS.d/
+</I>&gt;<i> etc/rcS.d/60sshd
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+-- 
+Troy Engel, Systems Engineer
+Not suitable for children.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000955.html">[Peeweelinux] HowTo: OpenSSH on PWL
+</A></li>
+	<LI> Next message: <A HREF="000957.html">[Peeweelinux] How to compile module for peeweelinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#956">[ date ]</a>
+              <a href="thread.html#956">[ thread ]</a>
+              <a href="subject.html#956">[ subject ]</a>
+              <a href="author.html#956">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

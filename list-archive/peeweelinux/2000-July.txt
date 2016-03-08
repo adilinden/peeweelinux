@@ -1,0 +1,140 @@
+From PeeWeeLinux@adis.on.ca  Wed Jul 12 15:29:08 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Wed, 12 Jul 2000 09:29:08 -0500 (CDT)
+Subject: BusyBox for peeweelinux
+In-Reply-To: <NEBBJPFFALDNPFAOCHJOIEOHCAAA.mhunt@oddsocks.net>
+Message-ID: <Pine.LNX.4.10.10007120925350.2236-100000@develop.knet.on.ca>
+
+Hi,
+
+Yup, heard of busybox (and tinylogin). Both used to part of PeeWeeLinux
+prior to the rpm compile business. I missed them in the conversion to
+source rpms.
+
+Now that you jogged my memory about them I will be adding them to
+PeeWeeLinux shortly :) They're great for building floppy based systems, I
+agree!
+
+Please let me know how you make out with PeeWeeLinux! It would be nice to
+see and know of users of it.
+
+TTYL,
+Adi
+
+
+On Wed, 12 Jul 2000, Michael Hunt wrote:
+
+> Hi ya,
+> 
+> My name is Michael Hunt and I am working on an embedded
+> linux/router/firewall fro the organization that I work for and have been
+> trying out LRP and peeweelinux. I like the pwlconfig script (though a grand
+> toatl of all apckages would be nice rather than just for each package
+> section).
+> 
+> I was wondering if you had heard of the busybox set of tools produced by
+> Lineo. There website (http://busybox.lineo.com/) has the following to say
+> about there product.
+> 
+> BusyBox combines tiny versions of many common UNIX utilities into a single
+> small executable. It provides minimalist replacements for most of the
+> utilities
+> you usually find in fileutils, shellutils, findutils, textutils, grep, gzip,
+> tar, etc.  BusyBox provides a fairly complete POSIX environment for any
+> small
+> or embedded system.  The utilities in BusyBox generally have fewer options
+> than
+> their full-featured GNU cousins; however, the options that are included
+> provide
+> the expected functionality and behave very much like their GNU counterparts.
+> 
+> BusyBox has been written with size-optimization and limited resources in
+> mind.
+> It is also extremely modular so you can easily include or exclude commands
+> (or
+> features) at compile time.  This makes it easy to customize your embedded
+> systems.  To create a working system, just add a kernel, a shell (such as
+> ash),
+> and an editor (such as elvis-tiny or ae).
+> 
+> Apparently busy box is in use on such systems as Tomsrootboot disK, Storm
+> Linux Install Disks, Debian rescue disk, and the Linux Router Project.
+> 
+> I think that this would also be a great addition to the peewelinux package
+> and would help decrease size requirements even more.
+> 
+> Hope you find this info useful and could see your way to including it in
+> your next release.
+> 
+> Michael Hunt
+> Suffolk UK
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sun Jul 23 18:44:56 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Sun, 23 Jul 2000 12:44:56 -0500 (CDT)
+Subject: pwlinux and busybox
+In-Reply-To: <397AAEB7.3BF15BA2@topit.de>
+Message-ID: <Pine.LNX.4.10.10007231237320.2680-100000@big.adis.on.ca>
+
+Hi,
+
+Which version of pwl are you using? PeeWeeLinux is currently at version 
+0.46. Unfortunately, because of problems with a router at my server site,
+I haven't been able to upload a new version of PeeWeeLinux to sourceforge
+or metalab. The latest version does not yet have busybox or tinylogin
+included.
+
+You're correct, the syntax between the busybox mount command and the
+generic Linux mount command differ. Some of the command line switches are
+not supported. This is noticeable when booting using the default supplied
+rc.sysinit script and on shutdown or reboot.
+
+I will be creating packages for busybox and tinylogin soon. Those
+packages will include modified system scripts that work properly.
+
+Another aspect of rc.sysinit is that it runs ldconfig. On a system that
+has to be small it is advisable to not include ldconfig since it simply
+wastes space. ldconfig can be run with a chroot like switch that processes
+the libs and generates an ld.so.cache in the temporary mount location of
+your build system....
+
+TTYL,
+Adi
+
+
+
+
+On Sun, 23 Jul 2000, Ronald Jeninga wrote:
+
+> Hello,
+> 
+> I just managed to finish an installation of your marvellous pwl :-)
+> I did have some problems though, especialliy with the rc.sysinit script in
+> combination with busybox.
+> The main problem was, that the busybox did not understand
+> 
+>   mount -n -o remount,rw /
+> 
+> because of the device name missing.
+> I did solve the problem by enhancing busybox. It's only a hack now, I'll have to
+> clean it up a bit.
+> If you are interested just drop me an email.
+> 
+> Thanks for the fine work!
+> 
+> Ronald Jeninga
+> 
+> rj@topit.de
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+

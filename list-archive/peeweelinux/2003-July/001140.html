@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] lilo.conf hangs
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001138.html">
+   <LINK REL="Next"  HREF="001141.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] lilo.conf hangs
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] lilo.conf hangs">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 17 Jul 2003 11:35:22 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001138.html">[Peeweelinux] Silent Boot
+</A></li>
+        <LI> Next message: <A HREF="001141.html">[Peeweelinux] lilo.conf hangs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1140">[ date ]</a>
+              <a href="thread.html#1140">[ thread ]</a>
+              <a href="subject.html#1140">[ subject ]</a>
+              <a href="author.html#1140">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>I have been playing with lilo.conf to try another kernel image. I tried 
+</I>&gt;<i>the other image I made but it didn't work and then I tried to restore 
+</I>&gt;<i>the original one but it doesn't work so I am assuming it is a problem 
+</I>&gt;<i>with my lilo.conf file.
+</I>
+It used to work?  Did you install lilo this way when you got
+it to work?  I am not familiar with installing from a chroot
+environment, nor do I use a CF disk, so while I would usually
+question entries in your lilo.conf file, they are probably
+right, if it used to work.
+
+So, which line(s) did you change?
+Or, what are you doing different?
+
+&gt;<i>I then run lilo and it says
+</I>&gt;<i>Added linux *
+</I>
+So lilo doesn't think you have any errors.
+
+&gt;<i>However after rebooting all I get is LI and the system hangs.
+</I>
+This means that you did not get to load the kernel.  That 
+means you don't have to worry about 
+  -append arguments to the kernel
+  -initrd
+  -init
+  -startup scripts
+  -mounted drives
+because none of this will have happened yet.
+
+&gt;<i>also I don't really understand about 
+</I>&gt;<i>initrd and what script causes it to load into ram2?
+</I>
+The kernel, after it is running, after it has detected processor
+and hardware, wants to mount a root file
+system to work from.  This can be a ramdisk.  From watching it
+boot, it is apparent the code for mounting a ramdisk and even
+the copying-to-it part are in the kernel.
+
+Up until this point the kernel is a single piece of code doing
+its thing.  Once a root disk is mounted it (tries to) start init
+and from there inittab and all the other scripts start running
+and other processes can be created.
+
+
+More specifically, when you see &quot;LI&quot;, code in the boot sector
+has executed, read what it thinks is the map file, loaded what
+it thinks is the kernel loader, and tried to jump to it.
+
+The most common problem is &quot;geometry mismatch&quot;, which in a few
+words means that lilo (when you install it) has to be able
+to predict exactly what to feed the BIOS on boot up such
+that it will read the same device/sectors it found during
+the install.
+
+Well, you said &quot;any help&quot; :)
+
+Barry
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001138.html">[Peeweelinux] Silent Boot
+</A></li>
+	<LI> Next message: <A HREF="001141.html">[Peeweelinux] lilo.conf hangs
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1140">[ date ]</a>
+              <a href="thread.html#1140">[ thread ]</a>
+              <a href="subject.html#1140">[ subject ]</a>
+              <a href="author.html#1140">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

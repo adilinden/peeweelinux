@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> compact flash woes
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000340.html">
+   <LINK REL="Next"  HREF="000342.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>compact flash woes
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="compact flash woes">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 9 Jul 2001 12:48:02 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000340.html">compact flash woes
+</A></li>
+        <LI> Next message: <A HREF="000342.html">compact flash woes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#341">[ date ]</a>
+              <a href="thread.html#341">[ thread ]</a>
+              <a href="subject.html#341">[ subject ]</a>
+              <a href="author.html#341">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+On a Linux box I use a USB flash reader to do all the CompactFlash card
+manipulations. This worls great whether it be a multi partition Linux
+system with ext2 partitions and lilo or a ramdisk based system using
+syslinux and a ramdisk image.
+
+I have used the CF-IDE adapter quite successfully for installing syslinux
+on a DOS formatted CF card. However, formatting a CF using the CF-IDE
+adapter using linux fdisk seems to have its problems.
+
+The trouble is very specific to using fdisk and the CF-IDE adapter. Once
+the partitions are done I have never had a problem with the CF-IDE
+adapter. I.e. running mke2fs, mkdosfs, lilo, syslinux, etc all works fine.
+
+I have not come across any CF-IDE adapters that are hotswap yet. This is a
+big disadvantage when developing. That's another reason I try to stick
+with the USB adapter (Sandisk SDDR-31 works well) for loading the CF on
+the development system.
+
+If the system is to be ramdisk based I think syslinux and an initrd are
+the way to go. 
+
+TTYL,
+Adi
+
+On Mon, 9 Jul 2001, Matthew Schumacher wrote:
+
+&gt;<i> Adi,
+</I>&gt;<i> 
+</I>&gt;<i> I didn't know that you are the one that put together peeweelinux.  If I
+</I>&gt;<i> had known I would have bought the cf adapter from you because I like to
+</I>&gt;<i> support linux.  Anyway.....
+</I>&gt;<i> 
+</I>&gt;<i> I did a fdisk /mbr using a windows 98 boot disk and that seems to work
+</I>&gt;<i> fine, but when I run fdisk I get error reading fixed disk.  I got this
+</I>&gt;<i> error before the boot problem but didn't worry about it because it
+</I>&gt;<i> booted fine.  I can read the disk with partition magic.  I can make a
+</I>&gt;<i> dos partition and format it.  I can also see the formated disk and copy
+</I>&gt;<i> data to and from it, but still can't boot.
+</I>&gt;<i> 
+</I>&gt;<i> Any other ideas?  I am thinking about trying syslinux to make it boot.
+</I>&gt;<i> 
+</I>&gt;<i> Also, what is the correct way to put linux on a compact flash anyway? 
+</I>&gt;<i> Syslinux, with a initrd?
+</I>&gt;<i> 
+</I>&gt;<i> schu
+</I>&gt;<i> 
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000340.html">compact flash woes
+</A></li>
+	<LI> Next message: <A HREF="000342.html">compact flash woes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#341">[ date ]</a>
+              <a href="thread.html#341">[ thread ]</a>
+              <a href="subject.html#341">[ subject ]</a>
+              <a href="author.html#341">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

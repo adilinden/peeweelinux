@@ -1,0 +1,1118 @@
+From PeeWeeLinux@adis.on.ca  Thu May 18 23:45:02 2000
+From: PeeWeeLinux@adis.on.ca (Mattias Sjogren)
+Date: Fri, 19 May 2000 00:45:02 +0200
+Subject: Uncompressed root fs to ramdisk.
+Message-ID: <web-200150@voxway.com>
+
+Hi all!
+
+I have just got going with PeeWee Linux and it looks great
+so far... My only problem is that I want to load the
+uncompressed root filesystem to ram to avoid corruption on
+sudden power failures. I know that this is easily done with
+a compressed root fs but that makes it so hard to change so
+I don't want that.
+
+I'm booting from a 16MB Flash pcmcia card in an ide adaptor
+using LILO. 
+
+Another small question... How do I get the statup scripts to
+automatically run fsck on the root fs? I have a '1' at the
+right place in fstab but that doesn't help and I get no
+errors...
+
+Thanks for your time.. 
+
+/Mattias
+
+http://www.docs.uu.se/robocup/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri May 19 14:39:53 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 19 May 2000 06:39:53 -0700 (PDT)
+Subject: Uncompressed root fs to ramdisk.
+Message-ID: <20000519133953.20923.qmail@web1106.mail.yahoo.com>
+
+Hi,
+
+The solution I used to protect the system (copied from some other
+distributions):
+
+Format the Compact Flash as follows:
+1. hdx1 Create a boot partition (~1MB)
+2. hdx2 Create a Read Only partition (~28MB)
+3. hdx3 Create a Read/Write partition (~1MB)
+
+Now load each partition:
+1. hdx1 Copy boot.b and kernel-2.2.14 (or whatever your image is)
+2. hdx2 Copy all files here
+3. hdx3 format/erase
+
+Now run LiLo and tell it where the boot image is (/dev/hdx1) 
+and where the file system is (root=/dev/hdx2)
+
+Note fstab never has to mount the boot partition. All system files are
+maintained on the read only partition and never get corrupted. User files are
+vulenerable, but can be backed up on-to the Read only partition as required.
+
+The trickery is all in rc.sysinit. At boot up, you have to mount everything
+and then load the default files to the read/write partition. This
+needs to be checked and reformatted if it gets corrupted.
+I also create a ramdisk to store the /tmp /var /whatever files in.
+this gives about 4MB of space to let the system store stuff.
+
+
+Some files on the Read Only partition may need to be updated on
+occasion.  A simple script will allow access to do this 
+(mount -o remount...).
+
+So far, this works for me, doesn't take much ram.  I don't know how
+to get the permissions set properly, how to get the devices to work
+everytime and other little problems....
+
+The applications I have working (on 32MB CF) so far:
+Netscape 4.7/Citrix/x3270/fvwm95
+
+All system configuration is done through fvwm scripts (clock, mouse,
+keyboard, beep, network, startup applications, screen background).
+
+Hope this helps,
+Ralph
+
+--- Mattias Sjogren <mattias@voxway.com> wrote:
+> Hi all!
+> 
+> I have just got going with PeeWee Linux and it looks great
+> so far... My only problem is that I want to load the
+> uncompressed root filesystem to ram to avoid corruption on
+> sudden power failures. I know that this is easily done with
+> a compressed root fs but that makes it so hard to change so
+> I don't want that.
+> 
+> I'm booting from a 16MB Flash pcmcia card in an ide adaptor
+> using LILO. 
+> 
+> Another small question... How do I get the statup scripts to
+> automatically run fsck on the root fs? I have a '1' at the
+> right place in fstab but that doesn't help and I get no
+> errors...
+> 
+Don't know, I have the same problem...some option in mount I suppose...
+
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages & get email alerts with Yahoo! Messenger.
+http://im.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Tue May 23 20:49:45 2000
+From: PeeWeeLinux@adis.on.ca (Mattias Sjogren)
+Date: Tue, 23 May 2000 21:49:45 +0200
+Subject: Uncompressed root fs to ramdisk.
+In-Reply-To: <20000519133953.20923.qmail@web1106.mail.yahoo.com>
+Message-ID: <web-200913@voxway.com>
+
+After some minor initial problems we're now up and
+running... Our only remaining problem is that mingetty does
+not like to be run from the read-only disk. Init says that
+it respawned too many times.
+
+I have /var (inc a touched run/utmp), /tmp and /root as
+mounted ramdisks. I boot of one big partition that I want
+read-only.
+
+/Mattias
+
+Ralph Stickley <r_stickley@yahoo.com> skrev:
+> Hi,
+> 
+> The solution I used to protect the system (copied from
+> some other
+> distributions):
+> 
+> Format the Compact Flash as follows:
+> 1. hdx1 Create a boot partition (~1MB)
+> 2. hdx2 Create a Read Only partition (~28MB)
+> 3. hdx3 Create a Read/Write partition (~1MB)
+> 
+> Now load each partition:
+> 1. hdx1 Copy boot.b and kernel-2.2.14 (or whatever your
+> image is)
+> 2. hdx2 Copy all files here
+> 3. hdx3 format/erase
+> 
+> Now run LiLo and tell it where the boot image is
+> (/dev/hdx1) 
+> and where the file system is (root=/dev/hdx2)
+> 
+> Note fstab never has to mount the boot partition. All
+> system files are
+> maintained on the read only partition and never get
+> corrupted. User files are
+> vulenerable, but can be backed up on-to the Read only
+> partition as required.
+> 
+> The trickery is all in rc.sysinit. At boot up, you have
+> to mount everything
+> and then load the default files to the read/write
+> partition. This
+> needs to be checked and reformatted if it gets corrupted.
+> I also create a ramdisk to store the /tmp /var /whatever
+> files in.
+> this gives about 4MB of space to let the system store
+> stuff.
+> 
+> 
+> Some files on the Read Only partition may need to be
+> updated on
+> occasion.  A simple script will allow access to do this 
+> (mount -o remount...).
+> 
+> So far, this works for me, doesn't take much ram.  I
+> don't know how
+> to get the permissions set properly, how to get the
+> devices to work
+> everytime and other little problems....
+> 
+> The applications I have working (on 32MB CF) so far:
+> Netscape 4.7/Citrix/x3270/fvwm95
+> 
+> All system configuration is done through fvwm scripts
+> (clock, mouse,
+> keyboard, beep, network, startup applications, screen
+> background).
+> 
+> Hope this helps,
+> Ralph
+> 
+> --- Mattias Sjogren <mattias@voxway.com> wrote:
+> > Hi all!
+> > 
+> > I have just got going with PeeWee Linux and it looks
+> great
+> > so far... My only problem is that I want to load the
+> > uncompressed root filesystem to ram to avoid corruption
+> on
+> > sudden power failures. I know that this is easily done
+> with
+> > a compressed root fs but that makes it so hard to
+> change so
+> > I don't want that.
+> > 
+> > I'm booting from a 16MB Flash pcmcia card in an ide
+> adaptor
+> > using LILO. 
+> > 
+> > Another small question... How do I get the statup
+> scripts to
+> > automatically run fsck on the root fs? I have a '1' at
+> the
+> > right place in fstab but that doesn't help and I get no
+> > errors...
+> > 
+> Don't know, I have the same problem...some option in
+> mount I suppose...
+> 
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Send instant messages & get email alerts with Yahoo!
+> Messenger.
+> http://im.yahoo.com/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+
+http://www.docs.uu.se/robocup/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Tue May 23 21:23:49 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Tue, 23 May 2000 13:23:49 -0700 (PDT)
+Subject: Uncompressed root fs to ramdisk.
+Message-ID: <20000523202349.3626.qmail@web1101.mail.yahoo.com>
+
+Good Job!
+
+Not sure about the minigetty thing.  I think the /dev/tty things (are they
+files , pipes ? does anybody know ?? ) have to be in R/W partition. I just
+linked to my ram disk:
+
+mount /dev/ram /var
+/tmp -> /var
+/dev/tty0 -> /tmp/tty0
+...
+
+Where /tmp is a link to the /var mount point for the ram disk. That might help
+?
+
+Do you create more than one ramdisk ? How do you specify the size of your ram
+disk ?
+
+BTW, If I don't login with root privledge, I can never get my console window to
+open. (Something to do with ttyP0 and ptyp0 I think...)
+
+Little bits here and there to clean up yet....so little time :-)
+
+Good luck,
+Ralph
+
+--- Mattias Sjogren <mattias@voxway.com> wrote:
+> After some minor initial problems we're now up and
+> running... Our only remaining problem is that mingetty does
+> not like to be run from the read-only disk. Init says that
+> it respawned too many times.
+> 
+> I have /var (inc a touched run/utmp), /tmp and /root as
+> mounted ramdisks. I boot of one big partition that I want
+> read-only.
+> 
+> /Mattias
+> 
+> Ralph Stickley <r_stickley@yahoo.com> skrev:
+> > Hi,
+> > 
+> > The solution I used to protect the system (copied from
+> > some other
+> > distributions):
+> > 
+> > Format the Compact Flash as follows:
+> > 1. hdx1 Create a boot partition (~1MB)
+> > 2. hdx2 Create a Read Only partition (~28MB)
+> > 3. hdx3 Create a Read/Write partition (~1MB)
+> > 
+> > Now load each partition:
+> > 1. hdx1 Copy boot.b and kernel-2.2.14 (or whatever your
+> > image is)
+> > 2. hdx2 Copy all files here
+> > 3. hdx3 format/erase
+> > 
+> > Now run LiLo and tell it where the boot image is
+> > (/dev/hdx1) 
+> > and where the file system is (root=/dev/hdx2)
+> > 
+> > Note fstab never has to mount the boot partition. All
+> > system files are
+> > maintained on the read only partition and never get
+> > corrupted. User files are
+> > vulenerable, but can be backed up on-to the Read only
+> > partition as required.
+> > 
+> > The trickery is all in rc.sysinit. At boot up, you have
+> > to mount everything
+> > and then load the default files to the read/write
+> > partition. This
+> > needs to be checked and reformatted if it gets corrupted.
+> > I also create a ramdisk to store the /tmp /var /whatever
+> > files in.
+> > this gives about 4MB of space to let the system store
+> > stuff.
+> > 
+> > 
+> > Some files on the Read Only partition may need to be
+> > updated on
+> > occasion.  A simple script will allow access to do this 
+> > (mount -o remount...).
+> > 
+> > So far, this works for me, doesn't take much ram.  I
+> > don't know how
+> > to get the permissions set properly, how to get the
+> > devices to work
+> > everytime and other little problems....
+> > 
+> > The applications I have working (on 32MB CF) so far:
+> > Netscape 4.7/Citrix/x3270/fvwm95
+> > 
+> > All system configuration is done through fvwm scripts
+> > (clock, mouse,
+> > keyboard, beep, network, startup applications, screen
+> > background).
+> > 
+> > Hope this helps,
+> > Ralph
+> > 
+> > --- Mattias Sjogren <mattias@voxway.com> wrote:
+> > > Hi all!
+> > > 
+> > > I have just got going with PeeWee Linux and it looks
+> > great
+> > > so far... My only problem is that I want to load the
+> > > uncompressed root filesystem to ram to avoid corruption
+> > on
+> > > sudden power failures. I know that this is easily done
+> > with
+> > > a compressed root fs but that makes it so hard to
+> > change so
+> > > I don't want that.
+> > > 
+> > > I'm booting from a 16MB Flash pcmcia card in an ide
+> > adaptor
+> > > using LILO. 
+> > > 
+> > > Another small question... How do I get the statup
+> > scripts to
+> > > automatically run fsck on the root fs? I have a '1' at
+> > the
+> > > right place in fstab but that doesn't help and I get no
+> > > errors...
+> > > 
+> > Don't know, I have the same problem...some option in
+> > mount I suppose...
+> > 
+> > 
+> > __________________________________________________
+> > Do You Yahoo!?
+> > Send instant messages & get email alerts with Yahoo!
+> > Messenger.
+> > http://im.yahoo.com/
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://embedded.adis.on.ca
+> > ---------------------------------------------------
+> 
+> http://www.docs.uu.se/robocup/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages & get email alerts with Yahoo! Messenger.
+http://im.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Tue May 23 22:07:46 2000
+From: PeeWeeLinux@adis.on.ca (Mattias Sjogren)
+Date: Tue, 23 May 2000 23:07:46 +0200
+Subject: Uncompressed root fs to ramdisk.
+In-Reply-To: <20000523202349.3626.qmail@web1101.mail.yahoo.com>
+Message-ID: <web-200928@voxway.com>
+
+Alright! I'll give it a try in a minute, we have to sort out
+some problem with the powersupply (batteries) to our
+computer first...
+
+We have the default 4 MB's ramdisks. As far as I know the
+ramdisks are created at boot (16 at 4MB a piece). I just
+create them with mke2fs -m0 /dev/ram0...2.
+
+I'll see if I can login with an ordinary user...
+
+/Mattias
+
+Ralph Stickley <r_stickley@yahoo.com> skrev:
+> Good Job!
+> 
+> Not sure about the minigetty thing.  I think the /dev/tty
+> things (are they
+> files , pipes ? does anybody know ?? ) have to be in R/W
+> partition. I just
+> linked to my ram disk:
+> 
+> mount /dev/ram /var
+> /tmp -> /var
+> /dev/tty0 -> /tmp/tty0
+> ...
+> 
+> Where /tmp is a link to the /var mount point for the ram
+> disk. That might help
+> ?
+> 
+> Do you create more than one ramdisk ? How do you specify
+> the size of your ram
+> disk ?
+> 
+> BTW, If I don't login with root privledge, I can never
+> get my console window to
+> open. (Something to do with ttyP0 and ptyp0 I think...)
+> 
+> Little bits here and there to clean up yet....so little
+> time :-)
+> 
+> Good luck,
+> Ralph
+> 
+> --- Mattias Sjogren <mattias@voxway.com> wrote:
+> > After some minor initial problems we're now up and
+> > running... Our only remaining problem is that mingetty
+> does
+> > not like to be run from the read-only disk. Init says
+> that
+> > it respawned too many times.
+> > 
+> > I have /var (inc a touched run/utmp), /tmp and /root as
+> > mounted ramdisks. I boot of one big partition that I
+> want
+> > read-only.
+> > 
+> > /Mattias
+> > 
+> > Ralph Stickley <r_stickley@yahoo.com> skrev:
+> > > Hi,
+> > > 
+> > > The solution I used to protect the system (copied
+> from
+> > > some other
+> > > distributions):
+> > > 
+> > > Format the Compact Flash as follows:
+> > > 1. hdx1 Create a boot partition (~1MB)
+> > > 2. hdx2 Create a Read Only partition (~28MB)
+> > > 3. hdx3 Create a Read/Write partition (~1MB)
+> > > 
+> > > Now load each partition:
+> > > 1. hdx1 Copy boot.b and kernel-2.2.14 (or whatever
+> your
+> > > image is)
+> > > 2. hdx2 Copy all files here
+> > > 3. hdx3 format/erase
+> > > 
+> > > Now run LiLo and tell it where the boot image is
+> > > (/dev/hdx1) 
+> > > and where the file system is (root=/dev/hdx2)
+> > > 
+> > > Note fstab never has to mount the boot partition. All
+> > > system files are
+> > > maintained on the read only partition and never get
+> > > corrupted. User files are
+> > > vulenerable, but can be backed up on-to the Read only
+> > > partition as required.
+> > > 
+> > > The trickery is all in rc.sysinit. At boot up, you
+> have
+> > > to mount everything
+> > > and then load the default files to the read/write
+> > > partition. This
+> > > needs to be checked and reformatted if it gets
+> corrupted.
+> > > I also create a ramdisk to store the /tmp /var
+> /whatever
+> > > files in.
+> > > this gives about 4MB of space to let the system store
+> > > stuff.
+> > > 
+> > > 
+> > > Some files on the Read Only partition may need to be
+> > > updated on
+> > > occasion.  A simple script will allow access to do
+> this 
+> > > (mount -o remount...).
+> > > 
+> > > So far, this works for me, doesn't take much ram.  I
+> > > don't know how
+> > > to get the permissions set properly, how to get the
+> > > devices to work
+> > > everytime and other little problems....
+> > > 
+> > > The applications I have working (on 32MB CF) so far:
+> > > Netscape 4.7/Citrix/x3270/fvwm95
+> > > 
+> > > All system configuration is done through fvwm scripts
+> > > (clock, mouse,
+> > > keyboard, beep, network, startup applications, screen
+> > > background).
+> > > 
+> > > Hope this helps,
+> > > Ralph
+> > > 
+> > > --- Mattias Sjogren <mattias@voxway.com> wrote:
+> > > > Hi all!
+> > > > 
+> > > > I have just got going with PeeWee Linux and it
+> looks
+> > > great
+> > > > so far... My only problem is that I want to load
+> the
+> > > > uncompressed root filesystem to ram to avoid
+> corruption
+> > > on
+> > > > sudden power failures. I know that this is easily
+> done
+> > > with
+> > > > a compressed root fs but that makes it so hard to
+> > > change so
+> > > > I don't want that.
+> > > > 
+> > > > I'm booting from a 16MB Flash pcmcia card in an ide
+> > > adaptor
+> > > > using LILO. 
+> > > > 
+> > > > Another small question... How do I get the statup
+> > > scripts to
+> > > > automatically run fsck on the root fs? I have a '1'
+> at
+> > > the
+> > > > right place in fstab but that doesn't help and I
+> get no
+> > > > errors...
+> > > > 
+> > > Don't know, I have the same problem...some option in
+> > > mount I suppose...
+> > > 
+> > > 
+> > > __________________________________________________
+> > > Do You Yahoo!?
+> > > Send instant messages & get email alerts with Yahoo!
+> > > Messenger.
+> > > http://im.yahoo.com/
+> > > ---------------------------------------------------
+> > > See the list archives at http://adis.on.ca/archives/
+> > > See the PWL homepage at  http://embedded.adis.on.ca
+> > > ---------------------------------------------------
+> > 
+> > http://www.docs.uu.se/robocup/
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://embedded.adis.on.ca
+> > ---------------------------------------------------
+> 
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Send instant messages & get email alerts with Yahoo!
+> Messenger.
+> http://im.yahoo.com/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+
+http://www.docs.uu.se/robocup/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed May 24 02:22:27 2000
+From: PeeWeeLinux@adis.on.ca (Kyle Harris)
+Date: Tue, 23 May 2000 21:22:27 -0400
+Subject: Uncompressed root fs to ramdisk.
+References: <20000523202349.3626.qmail@web1101.mail.yahoo.com>
+Message-ID: <392B2ED3.89035798@nexus-tech.net>
+
+Ralph,
+
+Please see below.
+
+Ralph Stickley wrote:
+
+> Not sure about the minigetty thing.  I think the /dev/tty things (are they
+> files , pipes ? does anybody know ?? ) have to be in R/W partition. I just
+> linked to my ram disk:
+
+/dev/xxx are special "files" called nodes. It provides a mechanism for
+accessing devices through a major and minor number.
+
+> 
+> mount /dev/ram /var
+> /tmp -> /var
+> /dev/tty0 -> /tmp/tty0
+> ...
+>
+
+I like this idea of having /dev in the ramdisk. But how does this work
+since you need /dev/ram in order to create and mount /var? And the
+kernel wants a console early in the boot sequence.
+
+> Where /tmp is a link to the /var mount point for the ram disk. That might help
+> ?
+> 
+> Do you create more than one ramdisk ? How do you specify the size of your ram
+> disk ?
+
+for a 2 MB disk, I use mke2fs -m0 /dev/ram0 2048
+
+Kyle.
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed May 24 14:52:19 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Wed, 24 May 2000 06:52:19 -0700 (PDT)
+Subject: Uncompressed root fs to ramdisk.
+Message-ID: <20000524135219.3724.qmail@web1103.mail.yahoo.com>
+
+Kyle,
+Thanks for the help!  
+
+--- Kyle Harris <kharris@nexus-tech.net> wrote:
+> Ralph,
+> 
+> Please see below.
+> 
+> Ralph Stickley wrote:
+> 
+> > Not sure about the minigetty thing.  I think the /dev/tty things (are they
+> > files , pipes ? does anybody know ?? ) have to be in R/W partition. I just
+> > linked to my ram disk:
+> 
+> /dev/xxx are special "files" called nodes. It provides a mechanism for
+> accessing devices through a major and minor number.
+> 
+Ahhh! thats the mknod thing does ... Still not sure how the permissions 
+get changed on these files even with a read-only file system...
+
+Of course, init finds rc.sysinit before I execute a mount...
+
+Hey, does the kernel mount the "root=/dev/hdx" device specified to Lilo?
+Then it can read inittab and use the /dev stuff.  Then rc.sysinit
+mounts this as read only.
+Only guessing here, then why doesn't my initial console work ?
+Does this mean my file system is mounted read/write at boot time ?
+
+Hmmmm...I guess I'd have to study the kernel source code to find this...
+any clues ?
+
+> > 
+> > mount /dev/ram /var
+> > /tmp -> /var
+> > /dev/tty0 -> /tmp/tty0
+> > ...
+> >
+> 
+> I like this idea of having /dev in the ramdisk. 
+
+Only some items are linked...others seem to work even though they are in 
+read only file system...(like /dev/ram :)
+
+> But how does this work
+> since you need /dev/ram in order to create and mount /var? And the
+> kernel wants a console early in the boot sequence.
+> 
+
+Oops...caught me :-)  I get a nasty message from the kernel at boot time.
+Something about not being able to open initial console. Ok. Tough! Hmmmm...
+wonder if that screws up other stuff ??  I have no clue whats going on 
+here with these /dev/ node things...
+
+> > Where /tmp is a link to the /var mount point for the ram disk. That might
+> help
+> > ?
+> > 
+> > Do you create more than one ramdisk ? How do you specify the size of your
+> ram
+> > disk ?
+> 
+> for a 2 MB disk, I use mke2fs -m0 /dev/ram0 2048
+> 
+Ah...another flag!  Should have figured..Thanks for the help :-)
+
+Later,
+Ralph
+
+> Kyle.
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages & get email alerts with Yahoo! Messenger.
+http://im.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed May 24 15:12:04 2000
+From: PeeWeeLinux@adis.on.ca (Mattias Sjogren)
+Date: Wed, 24 May 2000 16:12:04 +0200
+Subject: Uncompressed root fs to ramdisk.
+In-Reply-To: <20000524135219.3724.qmail@web1103.mail.yahoo.com>
+Message-ID: <web-202090@voxway.com>
+
+Another thing to try... Mount the filesystem in synch-mode
+and no curruption should occur on a suden power failure. Or,
+does anyone know any better?
+
+/Mattias
+
+Ralph Stickley <r_stickley@yahoo.com> skrev:
+> Kyle,
+> Thanks for the help!  
+> 
+> --- Kyle Harris <kharris@nexus-tech.net> wrote:
+> > Ralph,
+> > 
+> > Please see below.
+> > 
+> > Ralph Stickley wrote:
+> > 
+> > > Not sure about the minigetty thing.  I think the
+> /dev/tty things (are they
+> > > files , pipes ? does anybody know ?? ) have to be in
+> R/W partition. I just
+> > > linked to my ram disk:
+> > 
+> > /dev/xxx are special "files" called nodes. It provides
+> a mechanism for
+> > accessing devices through a major and minor number.
+> > 
+> Ahhh! thats the mknod thing does ... Still not sure how
+> the permissions 
+> get changed on these files even with a read-only file
+> system...
+> 
+> Of course, init finds rc.sysinit before I execute a
+> mount...
+> 
+> Hey, does the kernel mount the "root=/dev/hdx" device
+> specified to Lilo?
+> Then it can read inittab and use the /dev stuff.  Then
+> rc.sysinit
+> mounts this as read only.
+> Only guessing here, then why doesn't my initial console
+> work ?
+> Does this mean my file system is mounted read/write at
+> boot time ?
+> 
+> Hmmmm...I guess I'd have to study the kernel source code
+> to find this...
+> any clues ?
+> 
+> > > 
+> > > mount /dev/ram /var
+> > > /tmp -> /var
+> > > /dev/tty0 -> /tmp/tty0
+> > > ...
+> > >
+> > 
+> > I like this idea of having /dev in the ramdisk. 
+> 
+> Only some items are linked...others seem to work even
+> though they are in 
+> read only file system...(like /dev/ram :)
+> 
+> > But how does this work
+> > since you need /dev/ram in order to create and mount
+> /var? And the
+> > kernel wants a console early in the boot sequence.
+> > 
+> 
+> Oops...caught me :-)  I get a nasty message from the
+> kernel at boot time.
+> Something about not being able to open initial console.
+> Ok. Tough! Hmmmm...
+> wonder if that screws up other stuff ??  I have no clue
+> whats going on 
+> here with these /dev/ node things...
+> 
+> > > Where /tmp is a link to the /var mount point for the
+> ram disk. That might
+> > help
+> > > ?
+> > > 
+> > > Do you create more than one ramdisk ? How do you
+> specify the size of your
+> > ram
+> > > disk ?
+> > 
+> > for a 2 MB disk, I use mke2fs -m0 /dev/ram0 2048
+> > 
+> Ah...another flag!  Should have figured..Thanks for the
+> help :-)
+> 
+> Later,
+> Ralph
+> 
+> > Kyle.
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://embedded.adis.on.ca
+> > ---------------------------------------------------
+> 
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Send instant messages & get email alerts with Yahoo!
+> Messenger.
+> http://im.yahoo.com/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+
+http://www.docs.uu.se/robocup/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed May 24 15:53:23 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Wed, 24 May 2000 07:53:23 -0700 (PDT)
+Subject: Uncompressed root fs to ramdisk.
+Message-ID: <20000524145323.12127.qmail@web1106.mail.yahoo.com>
+
+Mattias,
+
+I use sync flag in my fstab...seems to help, but I think it only 
+forces the writes to occur as quickly as possible - flush buffer 
+or something like that.  However, if power fails while you are
+writing things will get corrupted
+
+Ralph
+
+
+--- Mattias Sjogren <mattias@voxway.com> wrote:
+> Another thing to try... Mount the filesystem in synch-mode
+> and no curruption should occur on a suden power failure. Or,
+> does anyone know any better?
+> 
+> /Mattias
+> 
+
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages & get email alerts with Yahoo! Messenger.
+http://im.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri May 26 16:37:40 2000
+From: PeeWeeLinux@adis.on.ca (Kyle Harris)
+Date: Fri, 26 May 2000 11:37:40 -0400
+Subject: Uncompressed root fs to ramdisk.
+References: <20000524135219.3724.qmail@web1103.mail.yahoo.com>
+Message-ID: <392E9A44.95F693D6@nexus-tech.net>
+
+Ralph,
+
+I found that I can remount / read-only after mingetty runs and
+everything works fine. No more errors when trying to spawn mingetty on a
+write only device. Once they're open it appears making them ro has no
+effect. I added the following line to the very end of /etc/inittab.
+
+tk:23:once:/bin/mount -n -o remount,ro /
+
+Ralph Stickley wrote:
+> 
+> Kyle,
+> Thanks for the help!
+> 
+> --- Kyle Harris <kharris@nexus-tech.net> wrote:
+> > Ralph,
+> >
+> > Please see below.
+> >
+> > Ralph Stickley wrote:
+> >
+> > > Not sure about the minigetty thing.  I think the /dev/tty things (are they
+> > > files , pipes ? does anybody know ?? ) have to be in R/W partition. I just
+> > > linked to my ram disk:
+> >
+> > /dev/xxx are special "files" called nodes. It provides a mechanism for
+> > accessing devices through a major and minor number.
+> >
+> Ahhh! thats the mknod thing does ... Still not sure how the permissions
+> get changed on these files even with a read-only file system...
+> 
+> Of course, init finds rc.sysinit before I execute a mount...
+> 
+> Hey, does the kernel mount the "root=/dev/hdx" device specified to Lilo?
+> Then it can read inittab and use the /dev stuff.  Then rc.sysinit
+> mounts this as read only.
+> Only guessing here, then why doesn't my initial console work ?
+> Does this mean my file system is mounted read/write at boot time ?
+> 
+> Hmmmm...I guess I'd have to study the kernel source code to find this...
+> any clues ?
+> 
+> > >
+> > > mount /dev/ram /var
+> > > /tmp -> /var
+> > > /dev/tty0 -> /tmp/tty0
+> > > ...
+> > >
+> >
+> > I like this idea of having /dev in the ramdisk.
+> 
+> Only some items are linked...others seem to work even though they are in
+> read only file system...(like /dev/ram :)
+> 
+> > But how does this work
+> > since you need /dev/ram in order to create and mount /var? And the
+> > kernel wants a console early in the boot sequence.
+> >
+> 
+> Oops...caught me :-)  I get a nasty message from the kernel at boot time.
+> Something about not being able to open initial console. Ok. Tough! Hmmmm...
+> wonder if that screws up other stuff ??  I have no clue whats going on
+> here with these /dev/ node things...
+> 
+> > > Where /tmp is a link to the /var mount point for the ram disk. That might
+> > help
+> > > ?
+> > >
+> > > Do you create more than one ramdisk ? How do you specify the size of your
+> > ram
+> > > disk ?
+> >
+> > for a 2 MB disk, I use mke2fs -m0 /dev/ram0 2048
+> >
+> Ah...another flag!  Should have figured..Thanks for the help :-)
+> 
+> Later,
+> Ralph
+> 
+> > Kyle.
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://embedded.adis.on.ca
+> > ---------------------------------------------------
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Send instant messages & get email alerts with Yahoo! Messenger.
+> http://im.yahoo.com/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri May 26 18:17:41 2000
+From: PeeWeeLinux@adis.on.ca (Kyle Harris)
+Date: Fri, 26 May 2000 13:17:41 -0400
+Subject: Uncompressed root fs to ramdisk.
+References: <20000524135219.3724.qmail@web1103.mail.yahoo.com> <392E9A44.95F693D6@nexus-tech.net>
+Message-ID: <392EB1B5.E9D641D2@nexus-tech.net>
+
+Oooops. Spoke too soon. Now if I login thru the console, then logout, I
+get the "respawning too fast" error. I guess /dev/tty must always be
+rw.  I wonder if /dev can be its own mount point, or does it have to be
+on /? There must be someway to make / ro and still have everything work!
+
+Kyle.
+
+Kyle Harris wrote:
+> 
+> Ralph,
+> 
+> I found that I can remount / read-only after mingetty runs and
+> everything works fine. No more errors when trying to spawn mingetty on a
+> write only device. Once they're open it appears making them ro has no
+> effect. I added the following line to the very end of /etc/inittab.
+> 
+> tk:23:once:/bin/mount -n -o remount,ro /
+> 
+> Ralph Stickley wrote:
+> >
+> > Kyle,
+> > Thanks for the help!
+> >
+> > --- Kyle Harris <kharris@nexus-tech.net> wrote:
+> > > Ralph,
+> > >
+> > > Please see below.
+> > >
+> > > Ralph Stickley wrote:
+> > >
+> > > > Not sure about the minigetty thing.  I think the /dev/tty things (are they
+> > > > files , pipes ? does anybody know ?? ) have to be in R/W partition. I just
+> > > > linked to my ram disk:
+> > >
+> > > /dev/xxx are special "files" called nodes. It provides a mechanism for
+> > > accessing devices through a major and minor number.
+> > >
+> > Ahhh! thats the mknod thing does ... Still not sure how the permissions
+> > get changed on these files even with a read-only file system...
+> >
+> > Of course, init finds rc.sysinit before I execute a mount...
+> >
+> > Hey, does the kernel mount the "root=/dev/hdx" device specified to Lilo?
+> > Then it can read inittab and use the /dev stuff.  Then rc.sysinit
+> > mounts this as read only.
+> > Only guessing here, then why doesn't my initial console work ?
+> > Does this mean my file system is mounted read/write at boot time ?
+> >
+> > Hmmmm...I guess I'd have to study the kernel source code to find this...
+> > any clues ?
+> >
+> > > >
+> > > > mount /dev/ram /var
+> > > > /tmp -> /var
+> > > > /dev/tty0 -> /tmp/tty0
+> > > > ...
+> > > >
+> > >
+> > > I like this idea of having /dev in the ramdisk.
+> >
+> > Only some items are linked...others seem to work even though they are in
+> > read only file system...(like /dev/ram :)
+> >
+> > > But how does this work
+> > > since you need /dev/ram in order to create and mount /var? And the
+> > > kernel wants a console early in the boot sequence.
+> > >
+> >
+> > Oops...caught me :-)  I get a nasty message from the kernel at boot time.
+> > Something about not being able to open initial console. Ok. Tough! Hmmmm...
+> > wonder if that screws up other stuff ??  I have no clue whats going on
+> > here with these /dev/ node things...
+> >
+> > > > Where /tmp is a link to the /var mount point for the ram disk. That might
+> > > help
+> > > > ?
+> > > >
+> > > > Do you create more than one ramdisk ? How do you specify the size of your
+> > > ram
+> > > > disk ?
+> > >
+> > > for a 2 MB disk, I use mke2fs -m0 /dev/ram0 2048
+> > >
+> > Ah...another flag!  Should have figured..Thanks for the help :-)
+> >
+> > Later,
+> > Ralph
+> >
+> > > Kyle.
+> > > ---------------------------------------------------
+> > > See the list archives at http://adis.on.ca/archives/
+> > > See the PWL homepage at  http://embedded.adis.on.ca
+> > > ---------------------------------------------------
+> >
+> > __________________________________________________
+> > Do You Yahoo!?
+> > Send instant messages & get email alerts with Yahoo! Messenger.
+> > http://im.yahoo.com/
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://embedded.adis.on.ca
+> > ---------------------------------------------------
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+

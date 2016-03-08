@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Almost working, newbie needs a couple of
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000780.html">
+   <LINK REL="Next"  HREF="000782.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Almost working, newbie needs a couple of
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Almost working, newbie needs a couple of">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 11 Sep 2002 09:20:54 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000780.html">[Peeweelinux] Almost working, newbie needs a couple of
+</A></li>
+        <LI> Next message: <A HREF="000782.html">[Peeweelinux] Network Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#781">[ date ]</a>
+              <a href="thread.html#781">[ thread ]</a>
+              <a href="subject.html#781">[ subject ]</a>
+              <a href="author.html#781">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>It seems to me that you have a couple of issues with this embedded board. 
+
+I would first try to bypass the DOS ROM if at all possible and try to boot natively off of the CF card. This is the intended way for peewee to boot. The stuff for Syslinux within the peewee project is intended to be installed on the same disk as the rest of the system, where what you are describing is using syslinux in a DOS ROM to boot Linux residing on another disk. 
+
+I know that embedded hardware at this scale can get pretty strange and proprietary, so you might want to check things such as can the motherboard in this device boot directly off of the CF card, is it really a CF card and not a Disk On Chip, etc etc. I could even imagine that the card has some kind of flash storage that linux doesn't have drivers built for it and it uses some kind of  BIOS code in order to make it work in DOS, similar to a SCSI or Promise card BIOS extension. But now when you boot linux the kernel cannot load, or has no idea of how to mount the root filesystem, etc. 
+
+I'm not saying this is the problem, but its a possibilty that there is something like this going on. 
+
+I have also had problems witht he 2.4 kernels and power management on some motherboards (media GX on an old compaq),  so there might be something going on there. 
+
+~Ken
+
+&gt;&gt;&gt;<i> Barry Gershenfeld &lt;<A HREF="mailto:barry_g@zmicro.com">barry_g@zmicro.com</A>&gt; 09/10 7:54 PM &gt;&gt;&gt;
+</I>
+&gt;<i>My build environment is a Red Hat 7.2 / 2.4.17 setup with an 
+</I>&gt;<i>ISA PCMCIA bridge. 
+</I>
+Have I got this right?  Your host is RH 7.2  Your target is peewee
+with the 6.2 packages, but you have a custom kernel that's 2.4.17
+
+
+&gt;<i>In my build script I've tried to include syslog and turn on as 
+</I>&gt;<i>much logging as possible but may have screwed that up. 
+</I>
+syslog is on my to-learn list.
+
+&gt;<i>loads the kernel 
+</I>&gt;<i>and gets it to a screen with a bunch of startup and routing (which is 
+</I>&gt;<i>strange because I've not installed any networking either in the kernel or 
+</I>&gt;<i>the packages) information but it halts there with no login prompt. I'm 
+</I>&gt;<i>guessing it's getting to a serial console? 
+</I>
+I would think it would go to a serial console (1) if you told it to,
+or (2) if it couldn't find the native (?) console.  Since you see 
+all those messages it must be that it knows how to talk to the
+native console (an LCD screen?)
+
+&gt;<i>if there is any trick to getting regular bootup information viewable 
+</I>&gt;<i>after a boot I'd sure love to hear about it.
+</I>
+There is a line in the scripts that checks for the existence of a
+file /etc/boot.silent and it looks like it would send output to
+/var/log/boot, otherwise the screen...That silent file doesn't
+appear so it should go to the screen.   Of course that is 
+for the init scripts that run after the kernel has come up.
+I did put an 'echo &quot;hi world&quot; ' in one of the init scripts and
+it does indeed show up on my screen.    Now that I've looked
+at what it actually does, maybe I should try creating the
+quiet file and see what I get...
+
+Which part of the sequence is missing?
+
+
+&gt;<i>2). (Intermediate) The 6100 has a dos 5.x ROM, so I think I have to use 
+</I>&gt;<i>loadlin as my bootloader: when I try to use the FAT 16 / ramdisk setup, 
+</I>&gt;<i>the unit won't seem to recognize the partition as bootable. Has anyone 
+</I>&gt;<i>used loadlin with pee wee? I looked at the FAT 12 partition that the 
+</I>&gt;<i>script is creating for the booting off of and it looks like something 
+</I>&gt;<i>similar is going on, but I think the norand hardware needs an autoexec.bat 
+</I>&gt;<i>file in order to get loadlin working.
+</I>
+In the beginning I was able to boot my system using loadlin.  What I
+was doing was making a &quot;floppy&quot; (actually writing the fat12 image
+to a hard drive partition).  The resulting syslinux.cfg file has
+all the parameter information you need to construct a loadlin command.
+You put the kernel image and the ramdisk image where you want to
+boot from and those filenames are the ones you use with loadlin.
+I haven't figured out what the other target image generating options
+in peewee do; unfortunately I don't know of any documentation about 
+that.  All I can do is select one of the Target image choices, let 
+it make it, and then inspect the results on a running system.
+
+I don't usually offer such dubious help, but it's pretty quiet
+here otherwise.  Hope it helps.
+
+Barry
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A> 
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000780.html">[Peeweelinux] Almost working, newbie needs a couple of
+</A></li>
+	<LI> Next message: <A HREF="000782.html">[Peeweelinux] Network Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#781">[ date ]</a>
+              <a href="thread.html#781">[ thread ]</a>
+              <a href="subject.html#781">[ subject ]</a>
+              <a href="author.html#781">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

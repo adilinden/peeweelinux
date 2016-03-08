@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] edit fstab doesn't 'stick'
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000553.html">
+   <LINK REL="Next"  HREF="000554.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] edit fstab doesn't 'stick'
+   </H1>
+    <B>jim barchuk
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] edit fstab doesn't 'stick'">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 3 Apr 2002 02:12:27 -0500 (EST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000553.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+        <LI> Next message: <A HREF="000554.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#555">[ date ]</a>
+              <a href="thread.html#555">[ thread ]</a>
+              <a href="subject.html#555">[ subject ]</a>
+              <a href="author.html#555">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Mark!
+
+&gt;<i> &gt; This has got to be some system design philosophical thing that I don't
+</I>&gt;<i> &gt; understand. Pwl has no idea what devices the target system has.
+</I>&gt;<i>
+</I>&gt;<i> True, but Pwl *does* know how your target file system is configured, and
+</I>&gt;<i> the various mount points.  It knows what devices your target has
+</I>&gt;<i> (/dev/fd0, /dev/ram, etc), the file system in question (ext2, FAT, etc),
+</I>&gt;<i> and where the various directories are mounted (/, /home, etc).
+</I>
+Yes, of the local/pwl filesystem, but not, in my case, of the hardware of
+the intended final system it'll run on.
+
+&gt;<i> For power users, this feature can be disabled:  After some poking around
+</I>&gt;<i> in the Embedded_Build/scripts directory, it looks like there is a script
+</I>&gt;<i> called &quot;pwl_defaults&quot; that you could run, and turn off the option
+</I>&gt;<i> (&quot;Modify System Boot Files&quot;) that causes fstab to be created.
+</I>
+I'll look into that, tnx! The docs are a little thin and there's 500k
+worth of ~/scripts in there. :)
+
+&gt;<i> &gt; I think I'm misunderstanding what 'target' means. I'm making a boot
+</I>&gt;<i> &gt; floppy for a box that has several hds.  For me the floppy is a
+</I>&gt;<i> &gt; transition/boot device. Pwl is unclear at several points what target
+</I>&gt;<i> &gt; means for it.
+</I>&gt;<i>
+</I>&gt;<i> Here's the philosophical part - to me, &quot;target&quot; implies an embedded
+</I>&gt;<i> system -- and not a floppy that boots Linux on a system with multiple
+</I>&gt;<i> hard drives.  This isn't to say the PWL is inapproriate for your
+</I>&gt;<i> particular application; just keep in mind that embedded systems
+</I>&gt;<i> &lt;usually&gt; don't include large hard drives.
+</I>
+I meant it on a simpler level. Try looking at it from a pwl-noobee's POV.
+Main Menu has Configure Target and Load File into Target options. Now the
+casual observer might think there's 'a' target.' But Confugre Target
+Hardware has options for 'floppy target / Floppy Device' and 'ide flash
+target (or HD) / Target Device / Boot Device on Target System.' -Very-
+unclear what each actually intends. By a little trial and error I figured
+out that the Load File Into Target -will- use the 'floppy target' setting.
+Grepping through 500k worth of scripts I could probably figure out a lot
+more but all the user really wants to do is 'make it do what I need it to
+do.'
+
+&gt;<i> In fact, I would argue that PWL does in fact &quot;know&quot; about the target
+</I>&gt;<i> system -- it knows it has a boot (target) device, and some RAM.  The
+</I>&gt;<i> biggest problem I've seen thus far was touched on earlier in this list
+</I>&gt;<i> -- how to configure a flash target with multiple partitions.
+</I>
+I've got the full archives and will look further for that.
+
+&gt;<i> &gt;From your initial posts, I recall that you are trying to install Redhat
+</I>&gt;<i> &gt;via the LAN.
+</I>&gt;<i> Wouldn't it be easier to use one of the various Redhat boot floppy images designed for
+</I>&gt;<i> that purpose?  These images will probably have kernels that know all about hard drives,
+</I>&gt;<i> network cards, and ext2/fat16 partitions.
+</I>
+I *seriously* distrust RH installations and won't risk it on drives that I
+intend to keep files. 7.2 -couldn't- recognise a very standard symbios
+53c875 /dev/sdb as a formatted and partitioned ext2 device. There were
+several bugzillas and ng posts. They offered a new boot/install floppy
+with zero positive effect. That, plus the way a 'server' install will grab
+every drive in the box makes me a little nervous. No, I don't intend a
+server install but once there are serious unfixed bugs all bets are off
+from my POV. Haven't checked in a couple of months, maybe the have a new
+boot image.
+
+&gt;<i> Disclaimer: I realize that the &quot;easiest&quot; way isn't necessarily the most
+</I>&gt;<i> *fun* or *educational* way ;-).
+</I>
+LOL! Yes, this is meant to be as much educational as functional. I know
+plenty about higher level operational stuff but not the real guts of the
+system. Pwl has been a real eye opener.
+
+&gt;<i> &gt; Related to fstab, what do I need to include to read fat16 and
+</I>&gt;<i> &gt; extended? Pwl fdisk -identifies- a partition but mount says it can't
+</I>&gt;<i> &gt; deal with them.
+</I>&gt;<i>
+</I>&gt;<i> You'll need to have fat16 and ext2 support either compiled into the
+</I>&gt;<i> kernel, or included as modules. If you're using the standard pwl kernel,
+</I>&gt;<i> you'll need to include the corresponding modules under
+</I>&gt;<i> &quot;kernel-basic-2.2.17&quot;.
+</I>
+Well gee I THOUGHT it ought to turn up in fat, vfat, or msdos, but
+nooooooo, rgrep -ir fat16 FINALLY found it in doc.o. Nope, that ain't
+right either. Finally found reference at google that I need to mount fat16
+as vfat. Seems to work, can ftp files out and such.
+
+Things are cranking along fine now, thanks for the clues.
+
+Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+<A HREF="mailto:jb@jbarchuk.com">jb@jbarchuk.com</A>
+
+
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000553.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+	<LI> Next message: <A HREF="000554.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#555">[ date ]</a>
+              <a href="thread.html#555">[ thread ]</a>
+              <a href="subject.html#555">[ subject ]</a>
+              <a href="author.html#555">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

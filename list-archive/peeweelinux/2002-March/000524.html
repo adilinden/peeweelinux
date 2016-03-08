@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] network
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000523.html">
+   <LINK REL="Next"  HREF="000525.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] network
+   </H1>
+    <B>Ricardo Trindade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] network">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 21 Mar 2002 16:41:51 -0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000523.html">[Peeweelinux] network
+</A></li>
+        <LI> Next message: <A HREF="000525.html">[Peeweelinux] network
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#524">[ date ]</a>
+              <a href="thread.html#524">[ thread ]</a>
+              <a href="subject.html#524">[ subject ]</a>
+              <a href="author.html#524">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>thank for your answer, but that wasn't what I meant.
+
+I know how to configure it for one client, I was just wondering if peewee
+had some feature to allow me to manage the distinct configuration files of
+several computer that are otherwise identical
+
+thanks!
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Mark Meade
+Sent: quinta-feira, 21 de Março de 2002 15:24
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: Re: [Peeweelinux] network
+
+
+Ricardo Trindade wrote:
+
+&gt;<i> I have to setup several embedded computers. The only difference between
+</I>&gt;<i> them is the IP address. How would one go about doing this in peewee ?
+</I>
+Hi Ricardo,
+
+Since Peewee is based on Redhat 6.2, I believe the IP address is set in a
+file called
+&quot;/etc/config/ifcfg-eth0&quot;.  A typical file might look like this:
+
+DEVICE=eth0
+IPADDR=192.168.1.1
+NETMASK=255.255.255.0
+NETWORK=192.168.1.0
+BROADCAST=192.168.1.255
+GATEWAY=192.168.1.254
+
+This file may be selected under the &quot;networkscripts&quot; package.  If the
+default settings
+aren't exactly what you need, you could create and include a custom file.
+
+Hope this helps,
+
+Mark
+
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000523.html">[Peeweelinux] network
+</A></li>
+	<LI> Next message: <A HREF="000525.html">[Peeweelinux] network
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#524">[ date ]</a>
+              <a href="thread.html#524">[ thread ]</a>
+              <a href="subject.html#524">[ subject ]</a>
+              <a href="author.html#524">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

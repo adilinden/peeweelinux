@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> making floppy systems
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000061.html">
+   <LINK REL="Next"  HREF="000065.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>making floppy systems
+   </H1>
+    <B>fred anger
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="making floppy systems">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 1 Sep 2000 15:59:47 -0700 (MST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000061.html">making floppy systems
+</A></li>
+        <LI> Next message: <A HREF="000065.html">making floppy systems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#63">[ date ]</a>
+              <a href="thread.html#63">[ thread ]</a>
+              <a href="subject.html#63">[ subject ]</a>
+              <a href="author.html#63">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>So, assuming I have a bootable floppy and some means of transferring a
+tarred-up filesystem image to the embedded system's harddrive, how do I go
+about getting that image out of PWL?  Simply tar up the
+./Embedded_Build/projects/blah/mnt directory?  Then once I partition and
+format the embedded system's hard drive, I untar the file system on to it,
+but how do I get a boot loader installed (lilo)?  Would I make the
+appropriate changes to the ramdisked /etc/lilo.conf and run lilo, or would
+I have to make a lilo boot disk to boot from the newly-created hard-drive
+filesystem first?
+
+-fa
+
+On Fri, 1 Sep 2000, Ralph Stickley wrote:
+
+&gt;<i> Fred,
+</I>&gt;<i> 
+</I>&gt;<i> --- fred anger &lt;<A HREF="mailto:anger@rightarm.org">anger@rightarm.org</A>&gt; wrote:
+</I>&gt;<i> &gt; On Fri, 1 Sep 2000, Ralph Stickley wrote:
+</I>&gt;<i> &gt; &gt; Yes...So far, all my development has been on DOC flash (M-Systems
+</I>&gt;<i> &gt; Disk-On-Chip
+</I>&gt;<i> &gt; &gt; which was quickly abanonded for cost reasons) and Compact Flash (PCMCIA
+</I>&gt;<i> &gt; Adaptor
+</I>&gt;<i> &gt; &gt; and USB/CF adaptor).  These are all &quot;integrated&quot; hard drives available
+</I>&gt;<i> &gt; directly
+</I>&gt;<i> &gt; &gt; to pwlconfig.  
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Those devices still require you to detach them from the &quot;embedded&quot; system,
+</I>&gt;<i> &gt; and to the machine running pwlconfig though.  That's what I was hoping to
+</I>&gt;<i> &gt; get around.  I don't think it's possible with PWL.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Hmmmm...I see your point. I my systems, the actual device that is embedded is
+</I>&gt;<i> physically mounted on my development box then transfered to the embedded
+</I>&gt;<i> system.
+</I>&gt;<i> 
+</I>&gt;<i> If you exract the file system then compress that to one file. Put that one file
+</I>&gt;<i> on your boot floppy and then extract it to the embedded hard drive. (you may
+</I>&gt;<i> have to boot off a floppy that loads the &quot;boot&quot; filesystem into ramdisk - then
+</I>&gt;<i> insert the new file system from a floppy created by pwlconfig.  
+</I>&gt;<i> 1. build a boot floppy include tar/gzip/cp/lilo/mkfs/..etc.. utilities
+</I>&gt;<i> 2. create a working file system using pwlconfig
+</I>&gt;<i> 3. Boot the embedded target with the boot floppy - run system out of a ramdisk
+</I>&gt;<i> 4. Isert the pwlconfig filesystem and copy the files to the embedded hard disk.
+</I>&gt;<i> 
+</I>&gt;<i> Is there a way to automate this ? If your only interface to the embedded system
+</I>&gt;<i> is a floppies I don't know what else could be done.
+</I>&gt;<i> 
+</I>&gt;<i> However,
+</I>&gt;<i> 
+</I>&gt;<i> Is there any way you can have the Embedded system boot and access a network ?
+</I>&gt;<i> Then you could ftp files from your pwl development system. (Or better yet,
+</I>&gt;<i> mount the embedded system as a disk - NFS or something like that).  
+</I>&gt;<i> I'm guessing here, but something like this:
+</I>&gt;<i> 
+</I>&gt;<i> Embedded box 
+</I>&gt;<i> - partition 1 - boot and allow access via network
+</I>&gt;<i> - partition 2 - system application - erased/replaced as requested remotely
+</I>&gt;<i>  
+</I>&gt;<i> &gt; &gt; Hope this help. Also, Adi is approaching the boot/ramdisk file system
+</I>&gt;<i> &gt; support.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; That would be incredibly useful :)
+</I>&gt;<i> &gt;
+</I>&gt;<i> I think this is mostly working but not integrated into pwlconfig.  Maybe next
+</I>&gt;<i> week will see a flurry of activity on this...let me know if anything else would
+</I>&gt;<i> be helpful here...
+</I>&gt;<i> 
+</I>&gt;<i> Enjoy the weekend,
+</I>&gt;<i> Ralph
+</I>&gt;<i> 
+</I>&gt;<i>  
+</I>&gt;<i> &gt; Thanks for your help.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; -fa
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> &gt; See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> &gt; See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> __________________________________________________
+</I>&gt;<i> Do You Yahoo!?
+</I>&gt;<i> Yahoo! Mail - Free email you can access from anywhere!
+</I>&gt;<i> <A HREF="http://mail.yahoo.com/">http://mail.yahoo.com/</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> 
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000061.html">making floppy systems
+</A></li>
+	<LI> Next message: <A HREF="000065.html">making floppy systems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#63">[ date ]</a>
+              <a href="thread.html#63">[ thread ]</a>
+              <a href="subject.html#63">[ subject ]</a>
+              <a href="author.html#63">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

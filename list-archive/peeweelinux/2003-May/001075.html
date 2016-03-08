@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] AutoBoot and X windows project !!!!
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001074.html">
+   <LINK REL="Next"  HREF="001076.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] AutoBoot and X windows project !!!!
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] AutoBoot and X windows project !!!!">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 09 May 2003 09:38:38 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001074.html">[Peeweelinux] AutoBoot and X windows project !!!!
+</A></li>
+        <LI> Next message: <A HREF="001076.html">[Peeweelinux] problems setting up telnet daemon
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1075">[ date ]</a>
+              <a href="thread.html#1075">[ thread ]</a>
+              <a href="subject.html#1075">[ subject ]</a>
+              <a href="author.html#1075">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ITs better not to run your app as root, as you know, so you would need some way of performing root operations in order to change IP address dynamically maybe the SUDO program could help here. Or, better yet, if you could change it in a startup script as root before the autologin user takes charge. Just put a script in custom/etc/rcS.d  in order to do this. Just be wary of other network config scripts that may start before or after it. 
+
+If you need to change the application only once at setup, then you can change it in the config files. I think I setup autobootX so that it relies on a DHCP server, but you can muck around with the config files in etc in order to change this. 
+
+Mouse and keyboard I think can be disabled in XFree86 .. I think the mouse is somehting like &quot;AllowMouseOpenFail&quot; or some option like that. Maybe there is something similar for keyboard as well. 
+
+~Ken
+
+&gt;&gt;&gt;<i> &quot;zyfeng&quot; &lt;<A HREF="mailto:voiptime@hotmail.com">voiptime@hotmail.com</A>&gt; 05/08 10:33 PM &gt;&gt;&gt;
+</I>Hello ken Emmons,
+
+   I had used your AutoBootX, It is a good  Project.
+with your help ,I had get more than 16 colors and 800*600.
+
+    Thank you for your work.
+I have two questions:
+ 
+ 1.I want a remote client  app to change the IP address and such,but the autologin user no power to do this. the user root can change the IP address,but root can not auto login and auto
+ fire up the Gtk App.
+  2.how to disable the mouse and keyboard.
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A> 
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001074.html">[Peeweelinux] AutoBoot and X windows project !!!!
+</A></li>
+	<LI> Next message: <A HREF="001076.html">[Peeweelinux] problems setting up telnet daemon
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1075">[ date ]</a>
+              <a href="thread.html#1075">[ thread ]</a>
+              <a href="subject.html#1075">[ subject ]</a>
+              <a href="author.html#1075">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

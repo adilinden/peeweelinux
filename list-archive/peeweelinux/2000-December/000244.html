@@ -1,0 +1,514 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Read only filesystem size issues.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000241.html">
+   <LINK REL="Next"  HREF="000245.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Read only filesystem size issues.
+   </H1>
+    <B>Dean Brown
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Read only filesystem size issues.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 12 Dec 2000 22:00:17 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000241.html">Read only filesystem size issues.
+</A></li>
+        <LI> Next message: <A HREF="000245.html">Read only filesystem size issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#244">[ date ]</a>
+              <a href="thread.html#244">[ thread ]</a>
+              <a href="subject.html#244">[ subject ]</a>
+              <a href="author.html#244">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a multi-part message in MIME format.
+--------------606A77B606D468CCCDA4194C
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Adi,
+I've attached the portion of the pwl_target_load script that I've
+studied in detail with comments starting in the first column. I believe
+I noted all the issues that I found. Feel free to question any
+assumptions I have made.
+
+Adi Linden wrote:
+&gt;<i> 
+</I>&gt;<i> Hi Dean,
+</I>&gt;<i> 
+</I>&gt;<i> I am just looking at bugfixes for PeeWeeLinux.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt; &gt; 1) When calculating the size of the / filesystem, the /home and /root
+</I>&gt;<i> &gt; &gt; &gt; directories are included. These directories are then separated out and
+</I>&gt;<i> &gt; &gt; &gt; placed in the second partition. The size of the /home and /root
+</I>&gt;<i> &gt; &gt; &gt; directories are not subtracted from the / filesystem. This overestimates
+</I>&gt;<i> &gt; &gt; &gt; the size of the / filesystem by the size of the /home and /root
+</I>&gt;<i> &gt; &gt; &gt; directories.
+</I>&gt;<i> 
+</I>&gt;<i> I looked at the pwl_target_load script. The filesystem size calculated is
+</I>&gt;<i> compared to the total device space available. Since both /root and /home
+</I>&gt;<i> are placed on the target device both need to be considered when
+</I>&gt;<i> calculating if the extracted system will fit onto the target device.
+</I>
+I agree, though I believe they are being considered twice.
+ 
+&gt;<i> I did however miss to deduct the sizes of /etc, /var and /dev from the
+</I>&gt;<i> root partition. Those three directories are placed in a ramdisk and the
+</I>&gt;<i> size of the compressed ramdisk is already taken into consideration when
+</I>&gt;<i> calculating the root filesystem sizes.
+</I>
+-- 
+Dean Brown
+--------------606A77B606D468CCCDA4194C
+Content-Type: text/plain; charset=us-ascii;
+ name=&quot;pwl_target_load_backup&quot;
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline;
+ filename=&quot;pwl_target_load_backup&quot;
+
+######################################################################
+#
+# func_rd_build_ro_root_rd
+#
+# This function will create a target device with a large root
+# partition. The /etc, /dev and /home aprtitions are stored
+# in compressed ramdisks. 
+#
+# The /root directory is linked to /home/root. The /tmp and /var
+# directories are linked to /dev/var and /dev/var/tmp respectively.
+#
+# Chain of events:
+# ================
+#
+# 1.  Sanity Checks
+#   a.  Check for binaries and files
+#   b.  Make sure we have a flash device
+#   c.  Make sure no flash partition is mounted
+# 2.  Create initrd
+# 3.  Calculate
+#   a.  /dev filesystem size
+#   b.  /etc filesystem size
+# 4.  Create /dev ramdisk
+#   a.  Create loopback device
+#   b.  Mount loop device
+#   c.  Copy files
+#   d.  Unmount loop device
+#   e.  Compress loop device into a ramdisk
+#   f.  Decomission loop device
+# 5.  Create /etc ramdisk
+#       Just like the /dev ramdisk
+#       Except relocate ld.so.cache
+# 7.  Calculate
+#   a.  Available space
+#   b.  Root partition including kernel, boot.b and ramdisks
+#   c.  Home partition
+#   d.  See if things fit
+# 8.  Partition target device
+#   a.  /
+#   b.  /home
+#   c.  /mnt/flash
+# 9.  Create filesystems on target partitions
+# 10. Mount partitions
+#   a.  Mount /
+#   b.  Create /dev, /etc, /home and /mnt/flash
+#   c.  Create /tmp and /var symlinks
+#   d.  Mount /home
+#   e.  Mount /mnt/flash
+# 11. Copy files except for /dev, /etc, /tmp, /var
+# 12. Copy files necessary for booting in /dev, /etc, /var
+# 13. Run ldconfig
+# 14. Bootloader
+#   a.  copy boot.b
+#   b.  create lilo.conf
+#   c.  run lilo
+# 15. Unmount all partitions
+# 16. Remove temporary files
+
+
+func_rd_build_ro_root_rd () {
+
+    # sanity check
+    func_rd_sanity || return 1
+
+    # create the linuxrc script that initrd needs
+    func_rd_action m &quot;Creating linuxrc...&quot;
+    func_rd_linuxrc_ro_root_rd &gt; $rd_tmp/linuxrc
+    func_rd_action test
+
+    # build the initrd and store temporarily
+    func_rd_boot_initrd || return 1
+
+    # calculate the /dev filesystem size
+    rd_size_fs_var=`du -s -k --exclude=$rd_kernel $rd_projectroot/var | cut -f 1`
+    rd_size_fs_dev=`du -s -k --exclude=$rd_kernel $rd_projectroot/dev | cut -f 1`
+    rd_size_fs_dev=$((rd_size_fs_dev + rd_size_fs_var))
+    rd_size_fs_dev=$((rd_size_fs_dev + rd_dev_free))
+
+    # calculate the /etc filesystem size
+    rd_size_fs_etc=`du -s -k --exclude=$rd_kernel $rd_projectroot/etc | cut -f 1`
+    rd_size_fs_etc=$((rd_size_fs_etc + rd_etc_free))
+
+    # create the dev ramdisk
+    # create loopback device
+    func_rd_make_loopback $rd_size_fs_dev 1024
+
+    # mount loop device
+    func_rd_action m &quot;Mounting loopback device for /dev filesystem...&quot;
+    mount -t ext2 $rd_loop_dev $rd_mount
+    func_rd_action test
+
+    # remove lost+found
+    rm -rf $rd_mount/lost+found
+
+    # copy files nothing to exclude might as well use cp -a
+    func_rd_action m &quot;Copying files...&quot;
+    cp -a $rd_projectroot/dev/* $rd_mount
+
+    # remember we need to copy /var here too!
+    mkdir -p $rd_mount/var
+    cp -a $rd_projectroot/var/* $rd_mount/var
+    func_rd_action test
+
+    # unmount loop device
+    func_rd_action m &quot;Unmounting loopback device...&quot;
+    umount $rd_loop_dev
+    func_rd_action test
+
+    # compress the loop device into a ramdisk
+    func_rd_action m &quot;Compressing loopback device into ramdisk.dev...&quot;
+    { dd if=$rd_loop_dev bs=1k count=$rd_size_fs_dev | gzip -v9 &gt; $rd_tmp/ramdisk.dev } &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+
+    # decomission ramdisk
+    func_rd_break_loopback
+
+    # create the etc ramdisk
+    # create loopback device
+    func_rd_make_loopback $rd_size_fs_etc 1024
+
+    # mount loop device
+    func_rd_action m &quot;Mounting loopback device for /etc filesystem...&quot;
+    mount -t ext2 $rd_loop_dev $rd_mount
+    func_rd_action test
+
+    # remove lost+found
+    rm -rf $rd_mount/lost+found
+
+    # copy files nothing to exclude might as well use cp -a
+    func_rd_action m &quot;Copying files...&quot;
+    cp -a $rd_projectroot/etc/* $rd_mount
+
+    # relocate the ld.so.cahe to /lib/ld.so.cache
+    rm -f $rd_mount/etc/ld.so.cache
+    ln -sf /lib/ld.so.cache $rd_mount/ld.so.cache
+    func_rd_action test
+
+    # add fstab
+
+    # make some noise
+    func_rd_action m &quot;Creating fstab...&quot;
+
+    # see if we're allowed to
+    if [ &quot;$rd_initscripts&quot; = &quot;y&quot; ]; then
+
+        # lets do it!
+        func_rd_fstab_ro_root_rd &gt; $rd_mount/fstab
+
+        # send the ok
+        func_rd_action s
+    else
+
+        # duh we're not configured print a warning
+        func_rd_action w
+    fi
+
+    # fix inittab
+    func_rd_fix_inittab
+
+    # unmount loop device
+    func_rd_action m &quot;Unmounting loopback device...&quot;
+    umount $rd_loop_dev
+    func_rd_action test
+
+    # compress the loop device into a ramdisk
+    func_rd_action m &quot;Compressing loopback device into ramdisk.etc...&quot;
+    { dd if=$rd_loop_dev bs=1k count=$rd_size_fs_etc | gzip -v9 &gt; $rd_tmp/ramdisk.etc } &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+
+    # decomission ramdisk
+    func_rd_break_loopback
+
+    # get flash size
+    func_rd_action m &quot;Determining space on target device...&quot;
+    rd_size_avail=`sfdisk -s $rd_target`
+
+# here you calculate the size of the entire filesystem including /home, /root, /dev, and /etc
+    # calculate the required root fs space
+    rd_size_fs=`du -s -k $rd_projectroot | cut -f 1`
+# these are the compressed images of the /dev and /etc directories
+    # add the ramdisk sizes
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.dev | cut -f 1`))
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.etc | cut -f 1`))
+    # add the bootloader
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_bootb | cut -f 1`))
+    # add a few kB for a margin
+    rd_size_fs=$((rd_size_fs + rd_size_boot_margin))
+
+# this block calculates the size of the /hom and /root directories that are also a part of 
+# the above calculations.
+    # calculate the home partition size
+    rd_size_home=`du -s -k $rd_projectroot/home | cut -f 1`
+    # add /root
+    rd_size_home=$((rd_size_home + `du -s -k $rd_projectroot/root | cut -f 1`))
+    # add the desired free space
+    rd_size_home=$((rd_size_home + rd_home_free))
+
+    ##########
+    #
+    # Note:  sfdisk is screwy when it comes to creating partitions
+    #        based on blocks. Specifying in MB seems to work alright.
+    #
+    #        The solution... calculate sizes in MB. Since bash truncates
+    #        floating point numbers at we add 1 to round up at all times.
+    #        Except for the available space... we don't want to oversize!
+    #
+    #        The rd_size_boot_margin is taken off sinze we're rounding
+    #        up anyways. Hopefully there'll be a fix for this soon!
+    #
+
+    rd_size_fs=$((rd_size_fs - rd_size_boot_margin))
+# from above
+#  this is the entire ./projects/&lt;proj_name&gt;/mnt directory
+    rd_size_fs=$((rd_size_fs / 1024 + 1))
+#  this is the /home and /root included in the rd_size_fs number above
+    rd_size_home=$((rd_size_home / 1024 + 1))
+#  this is the available size of the Compact Flash as reported by sfdisk.
+#  NOTE that this does not match the actual device size as there appears
+#  to be space reserved for bad block mapping (I assume)
+#  The effective result of this is that the value that rd_size_avail contains
+#  is essentially rounded down to the next lowest MByte.
+    rd_size_avail=$((rd_size_avail / 1024))
+
+    #
+    ##########
+
+    # check if things will fit
+    # also take our /home partition into consideration
+# Here is where your calculation double includes the /home and /root directories.
+    if [ $((rd_size_fs + rd_size_home)) -gt $rd_size_avail ]
+    then
+        func_rd_action f
+        echo &quot;  +Available Space: $rd_size_avail&quot;
+        echo &quot;  +Required Space:  $((rd_size_fs + rd_size_home))&quot;
+        return 1
+    else
+        func_rd_action s
+    fi
+
+    # partition our target device
+    func_rd_action m &quot;Partitioning target davice $rd_target...&quot;
+    # /dev/hda1 will be a ext2 partition
+    # /dev/hda2 will be a ext2 partition
+    # /dev/hda3 will be a ext2 partition
+    # both partitions sized per previous calculations
+    # /dev/hda3 will be what's left
+    sfdisk -uM $rd_target &gt;&gt;$rd_log 2&gt;&amp;1 &lt;&lt;-EOF
+,${rd_size_fs},83,*
+,${rd_size_home},83
+,,83
+;
+EOF
+    func_rd_action test
+
+    # create filesystems
+    func_rd_action m &quot;Creating ext2 filesystem on ${rd_target}1...&quot;
+    mke2fs -b 1024 -m0 ${rd_target}1 &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+    func_rd_action m &quot;Creating ext2 filesystem on ${rd_target}2...&quot;
+    mke2fs -b 1024 -m0 ${rd_target}2 &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+    func_rd_action m &quot;Creating ext2 filesystem on ${rd_target}3...&quot;
+    mke2fs -b 1024 -m0 ${rd_target}3 &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+
+    # mount /
+    func_rd_action m &quot;Mounting root partition ${rd_target}1...&quot;
+    mount -t ext2 ${rd_target}1 $rd_mount
+    func_rd_action test
+
+    # create mount points for partitions
+    mkdir -p $rd_mount/home
+    mkdir -p $rd_mount/mnt/flash
+
+    # create mount points for ramdisks
+    mkdir -p $rd_mount/dev
+    mkdir -p $rd_mount/etc
+
+    # mount remaining partitions
+    func_rd_action m &quot;Mounting /home partition ${rd_target}2...&quot;
+    mount -t ext2 ${rd_target}2 $rd_mount/home
+    func_rd_action test
+    func_rd_action m &quot;Mounting /mnt/flash partition ${rd_target}3...&quot;
+    mount -t ext2 ${rd_target}3 $rd_mount/mnt/flash
+    func_rd_action test
+
+    func_rd_action m &quot;Copying files...&quot;
+    # copy files
+    for i in $rd_projectroot/*; do
+
+        # clear the flag
+        rd_status=
+
+# you are not copying /root here, but you are copying /home, but by mounting /home
+# the space taken by this copy is wasted.
+
+        # mark any directories we don't want to copy
+        for j in dev etc root tmp var; do
+            if [ `basename $i` = $j ]; then
+                rd_status=no
+            fi
+        done
+
+        # copy if we're clear
+        if [ ! $rd_status ]; then
+            cp -a $i $rd_mount 
+        fi
+    done
+
+    # copy whatever is in /root to /home/root
+    cp -a $rd_projectroot/root $rd_mount/home
+        
+    # create symlinks for our new file locations
+    ln -sf /dev/var $rd_mount/var
+    ln -sf /dev/var/tmp $rd_mount/tmp
+    ln -sf /home/root $rd_mount/root
+
+    # copy ramdisk, initrd, boot.b
+    cp -f $rd_tmp/ramdisk.dev $rd_mount/boot/ramdisk.dev
+    cp -f $rd_tmp/ramdisk.etc $rd_mount/boot/ramdisk.etc
+    cp -f $rd_tmp/$rd_initrd $rd_mount/boot/$rd_initrd
+    cp -f $rd_bootb $rd_mount/boot/boot.b
+
+    # create devices required before anything is mounted
+    cp -a $rd_projectroot/dev/console $rd_mount/dev/console
+    cp -a $rd_projectroot/dev/systty $rd_mount/dev/systty
+    cp -a $rd_projectroot/dev/null $rd_mount/dev/null
+    cp -a $rd_projectroot/dev/ram $rd_mount/dev/ram
+    cp -a $rd_projectroot/dev/ram0 $rd_mount/dev/ram0
+# can this be modified to only copy the devices actually in rd_projectroot/dev?
+    for i in 1 2 3 4 5 6 7 8 9; do
+        cp -a $rd_projectroot${rd_boot}${i} ${rd_mount}${rd_boot}${i}
+        cp -a $rd_projectroot/dev/ram$i ${rd_mount}/dev/ram$i
+    done
+    for i in 0 1 2 3 4; do
+        cp -a $rd_projectroot/dev/tty$i $rd_mount/dev/tty$i
+    done
+
+    # copy our modified inittab to the root directory
+    cp -f $rd_tmp/inittab $rd_mount/etc/inittab
+    func_rd_action test
+
+    # add rc.init
+
+    # make some noise
+    func_rd_action m &quot;Creating fstab and rc.init...&quot;
+
+# There is no way that I can see to modify this flag in pwl
+    # see if we're allowed to
+    if [ &quot;$rd_initscripts&quot; = &quot;y&quot; ]; then
+
+        # lets do it!
+        func_rd_fstab_ro_root_rd &gt; $rd_mount/etc/fstab
+        func_rd_init_ro_root_rd &gt; $rd_mount/rc.init
+
+        # make sure rc.init is executable
+        chmod 755 $rd_mount/rc.init
+
+        # send the ok
+        func_rd_action s
+    else
+
+        # duh we're not configured print a warning
+        func_rd_action w
+    fi
+
+# in the XFree86 package there is a ld.so.conf file that accomplishes the
+# the linking of /usr/X11R6/lib. Is there a reason you have it hard coded here as well?
+    # run library loader and include XFree86 lib directory
+    # remember it's been relocated to /lib/ld.so.cache
+    func_rd_action m &quot;Creating ld.so.cache...&quot;
+    ldconfig -v -C /lib/ld.so.cache -r $rd_mount /usr/X11R6/lib &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+    
+    # create lilo.conf
+    func_rd_action m &quot;Creating lilo.conf...&quot;
+    # lets amend the ramdisk size and make sure the kernel
+    # will boot the ramdisk without complaining
+    rd_bp_map=$rd_mount/boot/map
+    rd_bp_bootb=$rd_mount/boot/boot.b
+    rd_bp_kernel=$rd_mount/boot/$rd_kernel
+    rd_bp_initrd=$rd_mount/boot/$rd_initrd
+    rd_bp_root=${rd_boot}1
+    rd_bp_rd=20000
+    func_rd_boot_lilo &gt; $rd_tmp/lilo.conf
+    func_rd_action test
+
+    # run lilo
+    func_rd_action m &quot;Installing lilo bootloader...&quot;
+    lilo -v -C $rd_tmp/lilo.conf &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+
+    # umount partitions
+    func_rd_action m &quot;Unmounting the /mnt/flash partition ${rd_target}3...&quot;
+    umount ${rd_target}3
+    func_rd_action test
+
+    func_rd_action m &quot;Unmounting the /home partition ${rd_target}2...&quot;     
+    umount ${rd_target}2
+    func_rd_action test
+ 
+    func_rd_action m &quot;Unmounting the / partition ${rd_target}1...&quot;
+    umount ${rd_target}1
+    func_rd_action test
+
+}
+
+
+--------------606A77B606D468CCCDA4194C--
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000241.html">Read only filesystem size issues.
+</A></li>
+	<LI> Next message: <A HREF="000245.html">Read only filesystem size issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#244">[ date ]</a>
+              <a href="thread.html#244">[ thread ]</a>
+              <a href="subject.html#244">[ subject ]</a>
+              <a href="author.html#244">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

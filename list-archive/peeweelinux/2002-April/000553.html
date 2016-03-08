@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] edit fstab doesn't 'stick'
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000552.html">
+   <LINK REL="Next"  HREF="000555.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] edit fstab doesn't 'stick'
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] edit fstab doesn't 'stick'">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 2 Apr 2002 14:57:29 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000552.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+        <LI> Next message: <A HREF="000555.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#553">[ date ]</a>
+              <a href="thread.html#553">[ thread ]</a>
+              <a href="subject.html#553">[ subject ]</a>
+              <a href="author.html#553">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>jim barchuk wrote:
+
+&gt;<i> This has got to be some system design philosophical thing that I don't
+</I>&gt;<i> understand. Pwl has no idea what devices the target system has.
+</I>
+True, but Pwl *does* know how your target file system is configured, and the various mount
+points.  It knows what devices your target has (/dev/fd0, /dev/ram, etc), the file system
+in question (ext2, FAT, etc), and where the various directories are mounted (/, /home,
+etc).
+
+&gt;<i> Why would it overwrite what -I- tell it it has?
+</I>
+For power users, this feature can be disabled:  After some poking around in the
+Embedded_Build/scripts directory, it looks like there is a script called &quot;pwl_defaults&quot;
+that you could run, and turn off the option (&quot;Modify System Boot Files&quot;) that causes fstab
+to be created.
+
+&gt;<i> I think I'm misunderstanding what 'target' means. I'm making a boot floppy
+</I>&gt;<i> for a box that has several hds.  For me the floppy is a transition/boot
+</I>&gt;<i> device. Pwl is unclear at several points what target means for it.
+</I>
+Here's the philosophical part - to me, &quot;target&quot; implies an embedded system -- and not a
+floppy that boots Linux on a system with multiple hard drives.  This isn't to say the PWL
+is inapproriate for your particular application; just keep in mind that embedded systems
+&lt;usually&gt; don't include large hard drives.
+
+In fact, I would argue that PWL does in fact &quot;know&quot; about the target system -- it knows it
+has a boot (target) device, and some RAM.  The biggest problem I've seen thus far was
+touched on earlier in this list -- how to configure a flash target with multiple
+partitions.
+
+&gt;<i>From your initial posts, I recall that you are trying to install Redhat via the LAN.
+</I>Wouldn't it be easier to use one of the various Redhat boot floppy images designed for
+that purpose?  These images will probably have kernels that know all about hard drives,
+network cards, and ext2/fat16 partitions.
+
+Disclaimer: I realize that the &quot;easiest&quot; way isn't necessarily the most *fun* or
+*educational* way ;-).
+
+&gt;<i> Related to fstab, what do I need to include to read fat16 and extended?
+</I>&gt;<i> Pwl fdisk -identifies- a partition but mount says it can't deal with them.
+</I>
+You'll need to have fat16 and ext2 support either compiled into the kernel, or included as
+modules. If you're using the standard pwl kernel, you'll need to include the corresponding
+modules under &quot;kernel-basic-2.2.17&quot;.
+
+Regards,
+
+Mark
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000552.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+	<LI> Next message: <A HREF="000555.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#553">[ date ]</a>
+              <a href="thread.html#553">[ thread ]</a>
+              <a href="subject.html#553">[ subject ]</a>
+              <a href="author.html#553">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

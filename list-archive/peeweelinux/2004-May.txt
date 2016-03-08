@@ -1,0 +1,370 @@
+From peeweelinux@adis.on.ca  Tue May  4 15:08:32 2004
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: Tue, 4 May 2004 15:08:32 +0100
+Subject: [Peeweelinux] Couldn't find valid ramdisk image
+Message-ID: <009b01c431e1$48557820$0601a8c0@SATPRO>
+
+Hi,
+
+I have been having a problem with my peewee project. I have added many new
+custom files and packages to this project.
+
+Where normally during boot I would get a 'Compressed RAMDISK image found at
+block 0' I now get 'RAMDISK: Couldn't find valid RAM disk image starting at
+0' followed by a Kernel Panic due to not being able to mount the root file
+system.
+
+This happens when my RAMDISK image reaches a certain size I believe (i can
+stop it happening by removing packages, and start it happening by adding
+ones).
+
+I am using a 128mb compact flash card and I am nowhere near that limit.
+
+Any ideas on what could be causing this problem in the peewee installer? Or
+has anyone else had this problem and knows of a fix?
+
+On another note, I am adding an ftp server to my system. What is the best
+way of creating a partition on my compact flash card that will be
+*persistant* for files that users upload using the ftp server?
+
+Cheers
+
+Ashley Rolleston
+Software Engineer
+ashley@smartsw.co.uk
+
+
+
+From peeweelinux@adis.on.ca  Tue May  4 17:29:19 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 04 May 2004 09:29:19 -0700
+Subject: [Peeweelinux] Couldn't find valid ramdisk image
+In-Reply-To: <009b01c431e1$48557820$0601a8c0@SATPRO>
+References: <009b01c431e1$48557820$0601a8c0@SATPRO>
+Message-ID: <4097C4DF.4010002@fluid.com>
+
+Ashley Rolleston wrote:
+> 
+> On another note, I am adding an ftp server to my system. What is the best
+> way of creating a partition on my compact flash card that will be
+> *persistant* for files that users upload using the ftp server?
+
+(Can't help with the RAMDISK, sorry - knowledge on that area is minimal)
+
+I use ext3 fs for my persistant partition on 128m CF card. The initial 
+build target is "Uncompressed ramdisk, boot from ext2 partition". This 
+makes a sdb1 and sdb2, leaving the rest of the CF card blank. (Note that 
+it will *erase* the card when building, so you want to post-populate the 
+ext3 partition with stock data)
+
+Then, after that build I have another script which formats the extra 
+portion as ext3 (I have upgraded to 2.4 kernel) like so:
+
+   echo "Creating filesystem..."
+   mke2fs -j -b 1024 -m0 /dev/sdb3
+   mount -t ext3 /dev/sdb3 /mnt/usbdev
+
+...and then populate it with some precocked data. Then, I do a little 
+trickery to mount it on boot -- first, extract and copy rc.modules to 
+your custom/ folder, then add the lines:
+
+   # this is so we can mount our ext3 /opt
+   mkdir /opt
+   echo "/dev/hdc3 /opt ext3 defaults 1 2" >> /etc/fstab
+
+at the end. Add it as a custom script, and the boot order of PWL will 
+ensure that it's mounted before the rc scripts run (ie, your FTP server) 
+so it'll be ready to go.
+
+hth!
+-te
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | http://www.fluid.com
+
+From peeweelinux@adis.on.ca  Thu May 20 13:13:29 2004
+From: peeweelinux@adis.on.ca (=?big5?q?=20=20=20?=)
+Date: Thu, 20 May 2004 20:13:29 +0800 (CST)
+Subject: [Peeweelinux] peeweelinux & redhat 9
+Message-ID: <20040520121329.28589.qmail@web17006.mail.tpe.yahoo.com>
+
+--0-1113910859-1085055209=:24037
+Content-Type: text/plain; charset=big5
+Content-Transfer-Encoding: 8bit
+
+Does peeweelinux can't run in redhat 9, the problem such as when you 
+ 
+select a package , and you find that the details list were blank, also, 
+ 
+when you extract the packages, it shows file not found error, can 
+ 
+someone explains this?
+                                        thank you very much.
+
+
+
+---------------------------------
+й隔Email矪矪Μ
+Yahoo!集倍畖 禣更
+--0-1113910859-1085055209=:24037
+Content-Type: text/html; charset=big5
+Content-Transfer-Encoding: 8bit
+
+<DIV>Does peeweelinux can't run in redhat 9, the problem such as when you </DIV>
+<DIV>&nbsp;</DIV>
+<DIV>select a package , and you find that the details list were blank, also, </DIV>
+<DIV>&nbsp;</DIV>
+<DIV>when you extract the packages, it shows file not found error, can </DIV>
+<DIV>&nbsp;</DIV>
+<DIV>someone explains this?</DIV>
+<DIV>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; thank you very much.</DIV><p><br><hr size=1>й隔Email矪矪Μ<br>
+Yahoo!集倍畖 <a href="http://tw.rd.yahoo.com/referurl/companion/mail_signature/*http://tw.companion.yahoo.com/">禣更</a>
+--0-1113910859-1085055209=:24037--
+
+From peeweelinux@adis.on.ca  Thu May 20 15:31:19 2004
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: 20 May 2004 14:31:19 -0000
+Subject: [Peeweelinux] Glibc linked binary
+Message-ID: <20040520153119.smartsw+ashley@Plus.Net(pop)>
+
+Hi,
+
+Thanks for your reply on the ramdisk thread Troy, it worked a treat :)
+
+Well I have found that the flash 5 plugin that macromedia have provides does not work in that it cannot provide XML sockets ( a crucial feature ).
+
+I have upgraded to using Opera 6.12 which supports the flash 6 plugin.
+
+However, the flash 6 plugin needs glibc 2.2.x and peewee only has 2.1.3! EEK.
+
+I found this thread that has some suggestions but no responses : http://mail.adis.on.ca/pipermail/peeweelinux/2003-January/000907.html
+
+Is there a way of fudging the library dependencies of the macromedia released plugin so that it will work?
+
+If not what is the best way of handling upgrading glibc because it seems like a mammoth job and I don't really know where to start.
+
+Thanks in advance for any advice,
+
+Ashley Rolleston
+Software Engineer
+ashley AT smartsw DOT co DOT uk
+
+
+
+
+
+From peeweelinux@adis.on.ca  Thu May 20 17:21:17 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Thu, 20 May 2004 09:21:17 -0700
+Subject: [Peeweelinux] Glibc linked binary
+In-Reply-To: <20040520153119.smartsw+ashley@Plus.Net(pop)>
+References: <20040520153119.smartsw+ashley@Plus.Net(pop)>
+Message-ID: <40ACDAFD.4080202@fluid.com>
+
+ashley@smartsw.co.uk wrote:
+> 
+> Thanks for your reply on the ramdisk thread Troy, it worked a treat :)
+
+Awesome. ;)
+
+> Is there a way of fudging the library dependencies of the macromedia released plugin so that it will work?
+
+Yeah, it is a mammoth job. If I run ldd on my local flash plugin .so, I see:
+
+libstdc++-libc6.2-2.so.3 => /usr/lib/libstdc++-libc6.2-2.so.3 (0x4039c000)
+libc.so.6 => /lib/tls/libc.so.6 (0x42000000)
+
+So my gut instinct is that you can't fudge it -- the binary *is* looking 
+for the c++ libs by name, but the c lib by symlink. If you could somehow 
+get the flash plugin to look for something like 'libc-2.3.2.so' you'd 
+have a chance, but not likely. :(
+
+-te
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | http://www.fluid.com
+
+From peeweelinux@adis.on.ca  Thu May 20 18:09:33 2004
+From: peeweelinux@adis.on.ca (Hanoi Santos Hung)
+Date: Thu, 20 May 2004 13:09:33 -0400
+Subject: [Peeweelinux] peeweelinux & redhat 9
+In-Reply-To: <200405201701.i4KH1GS12896@yoda.adis.on.ca>
+References: <200405201701.i4KH1GS12896@yoda.adis.on.ca>
+Message-ID: <9310045549.20040520130933@icid.edu.cu>
+
+Hello,
+
+I have a similar problem with Mandrake 9.
+the problem was in the rpm that comes with peewee, you have to replace
+it with the one that is in your system and reinstall peewee.
+
+
+Thursday, May 20, 2004, 1:01:17 PM, you wrote:
+praoc> Does peeweelinux can't run in redhat 9, the problem such as when you
+ 
+praoc> select a package , and you find that the details list were blank, also,
+ 
+praoc> when you extract the packages, it shows file not found error, can
+ 
+praoc> someone explains this?
+praoc>                                         thank you very much.
+
+
+
+-- 
+Best regards,
+ Hanoi                            mailto:hanoi@icid.edu.cu
+
+
+From peeweelinux@adis.on.ca  Fri May 21 17:01:26 2004
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: 21 May 2004 16:01:26 -0000
+Subject: [Peeweelinux] Glibc linked binary
+Message-ID: <20040521170126.smartsw+ashley@Plus.Net(pop)>
+
+>ashley@smartsw.co.uk wrote:
+>> 
+>> Thanks for your reply on the ramdisk thread Troy, it worked a treat :)
+>
+>Awesome. ;)
+>
+>> Is there a way of fudging the library dependencies of the macromedia released plugin so that it will work?
+>
+>Yeah, it is a mammoth job. If I run ldd on my local flash plugin .so, I see:
+>
+>libstdc++-libc6.2-2.so.3 => /usr/lib/libstdc++-libc6.2-2.so.3 (0x4039c000)
+>libc.so.6 => /lib/tls/libc.so.6 (0x42000000)
+>
+>So my gut instinct is that you can't fudge it -- the binary *is* looking 
+>for the c++ libs by name, but the c lib by symlink. If you could somehow 
+>get the flash plugin to look for something like 'libc-2.3.2.so' you'd 
+>have a chance, but not likely. :(
+>
+>-te
+>
+>-- 
+>Troy Engel | Systems Engineer
+>Fluid, Inc | http://www.fluid.com
+
+Well I can't rename the symlinks for the libraries libflashplayer.so needs because this breaks other bits of the system. I also tried setting LD_LIBRARY_PATH for a completely serperate lib directory with the correct libraries in. 
+
+So ditch the idea of fudging it :(
+
+The only option I can see then is upgrading the glibc to a 2.2.x version. Not quite sure where to start going about this, it's quite a major job! 
+
+Any ideas?
+
+The best I can think of so far is to build the new glibc sources in a clean directory on my dev machine and then create a peewee package and use this instead of the glibc that is included with peeweelinux? Something tells me that there are complex dependencies and this will require me adding other pieces to the system as well (such as binutils maybe?).
+
+Have a good weekend all,
+
+Thanks again in advance for any help
+
+Ashley Rolleston
+Software Engineer
+ashley AT smartsw DOT co DOT uk
+
+
+
+From peeweelinux@adis.on.ca  Fri May 21 18:38:29 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Fri, 21 May 2004 10:38:29 -0700
+Subject: [Peeweelinux] Glibc linked binary
+In-Reply-To: <20040521170126.smartsw+ashley@Plus.Net(pop)>
+References: <20040521170126.smartsw+ashley@Plus.Net(pop)>
+Message-ID: <40AE3E95.8020100@fluid.com>
+
+ashley@smartsw.co.uk wrote:
+> 
+> The only option I can see then is upgrading the glibc to a 2.2.x version. Not quite sure where to start going about this, it's quite a major job! 
+
+Were *I* going to undertake the task, my method would be to take a 
+recent distro (RH9? FC2?) and basically start over. It seems rather 
+fruitless to waste time recompiling ever PWL app against a newer glibc, 
+when you could just extract all the binaries from RPMs that are already 
+done.
+
+In essance, just replacing all binary bits of the RH62 PWL with RH9 
+(sic) bits, and run with it. You'd get a nice 2.4 kernel along the way 
+as well. ;)
+
+-te
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | http://www.fluid.com
+
+From peeweelinux@adis.on.ca  Fri May 21 19:21:21 2004
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 21 May 2004 13:21:21 -0500 (CDT)
+Subject: [Peeweelinux] Glibc linked binary
+In-Reply-To: <40AE3E95.8020100@fluid.com>
+Message-ID: <Pine.LNX.4.44.0405211318580.2099-100000@adibox.knet.ca>
+
+> In essance, just replacing all binary bits of the RH62 PWL with RH9 
+> (sic) bits, and run with it. You'd get a nice 2.4 kernel along the way 
+> as well. ;)
+
+Except that the binary rpms from a recent RedHat distro have a lot more 
+dependencies than the PWL binaries. Going this route (without recompiling) 
+would create a system with a much larger footprint. Having said that, 
+given the storage capacities available now this shouldn't really matter 
+all that much.
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Mon May 24 12:50:06 2004
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: Mon, 24 May 2004 12:50:06 +0100
+Subject: [Peeweelinux] Glibc linked binary
+References: <20040521170126.smartsw+ashley@Plus.Net(pop)> <40AE3E95.8020100@fluid.com>
+Message-ID: <004501c44185$5fdc85c0$0701a8c0@banzaimonkey>
+
+Is glibc2.2 not backward compatible with glibc2.1? I thought that a program
+compiled against 2.1 would still work using 2.2 glibc libraries? This would
+mean I wouldn't have to replace every binary in the system.
+
+I had this impression because of :-
+
+"Since glibc-2.1.95, glibc is reliable enough and binary compatible with
+glibc-2.1"
+http://www.haible.de/bruno/glibc22snapshot-HOWTO.html
+
+I have spent months on this system so the idea of starting afresh is pretty
+scary! I have already updated the kernel and various other bits of the old
+peewee system.
+
+Ashley Rolleston
+Software Engineer
+ashley AT smartsw DOT co DOT uk
+
+> > The only option I can see then is upgrading the glibc to a 2.2.x
+version. Not quite sure where to start going about this, it's quite a major
+job!
+>
+> Were *I* going to undertake the task, my method would be to take a
+> recent distro (RH9? FC2?) and basically start over. It seems rather
+> fruitless to waste time recompiling ever PWL app against a newer glibc,
+> when you could just extract all the binaries from RPMs that are already
+> done.
+>
+> In essance, just replacing all binary bits of the RH62 PWL with RH9
+> (sic) bits, and run with it. You'd get a nice 2.4 kernel along the way
+> as well. ;)
+>
+> -te
+>
+> -- 
+> Troy Engel | Systems Engineer
+> Fluid, Inc | http://www.fluid.com
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+

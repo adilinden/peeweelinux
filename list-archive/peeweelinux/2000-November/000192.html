@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> DOC quandry
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000191.html">
+   <LINK REL="Next"  HREF="000194.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>DOC quandry
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="DOC quandry">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 21 Nov 2000 14:13:32 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000191.html">DOC quandry
+</A></li>
+        <LI> Next message: <A HREF="000194.html">DOC quandry
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#192">[ date ]</a>
+              <a href="thread.html#192">[ thread ]</a>
+              <a href="subject.html#192">[ subject ]</a>
+              <a href="author.html#192">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, Nov 21, 2000 at 01:58:11PM -0500, David Hamm wrote:
+&gt;<i> Following the PeeWeeLinux-3.html doc I have the DOC mountable.  But pwlconfig
+</I>&gt;<i> doesn't seem to see it.  I've added links in /dev/ for the devices listed in
+</I>&gt;<i> /dev/msys/* and still don't have a main menu choice of Erase-Disk-On-Chip.  Any
+</I>&gt;<i> suggestions?
+</I>&gt;<i>
+</I>I just got done doing this last weekend.
+1) do you have version 4.2 of the drivers from M-Sys?
+This is kind of important
+2) Did you compile support into the kernel or are you using a modual?
+You need to have one of these going before the system can see the DOC
+
+The way I ended up doing this over all was to use pwlconfig to setup a system
+on a 16M hdd partition (the size of my DOC).  I then 'tweeked' it get to get
+my moduals and everything else up and running the way I wanted.
+Then out side of pwl I just copied everything to the DOC
+mount /dev/msys/fla1 /mnt/flash
+cp -dpR /&lt;insert pwl partion name here&gt; /mnt/flash
+
+I then put doc.b in /mtn/flash/boot and doc-lilo in /mnt/flash/etc
+
+I then had to reboot into dos to run there dos utils (dupdate) to update the
+firmware for the last time, and rebooted.
+
+I understand that this is doing things outside of plwconfig which is probably
+to be avoided, but it did work.
+All of what I've just talked about is fairly well listed in the docs for the 
+4.2 version of the firmware on the M-Sys site.  I typed all of this up from 
+memory so I wouldn't follow it as a step by step but rather a guide to looking
+through the offical docs.
+
+If I can be of any more help let me know.
+
+M@
+ 
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000191.html">DOC quandry
+</A></li>
+	<LI> Next message: <A HREF="000194.html">DOC quandry
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#192">[ date ]</a>
+              <a href="thread.html#192">[ thread ]</a>
+              <a href="subject.html#192">[ subject ]</a>
+              <a href="author.html#192">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

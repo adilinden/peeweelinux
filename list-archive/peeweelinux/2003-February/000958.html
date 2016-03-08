@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] How to compile module for peeweelinux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000957.html">
+   <LINK REL="Next"  HREF="000959.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] How to compile module for peeweelinux
+   </H1>
+    <B>Leif Steinhour
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] How to compile module for peeweelinux">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sat, 22 Feb 2003 12:20:59 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000957.html">[Peeweelinux] How to compile module for peeweelinux
+</A></li>
+        <LI> Next message: <A HREF="000959.html">[Peeweelinux] How to compile module for peeweelinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#958">[ date ]</a>
+              <a href="thread.html#958">[ thread ]</a>
+              <a href="subject.html#958">[ subject ]</a>
+              <a href="author.html#958">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Two options:
+
+1). You can follow the 2.4 kernel HOWTO (which you can find in the pwl 
+archives) and build a custom kernel. The newer versions of the 2.4.x 
+series all have that option included. This will definitely work.
+
+2). You could also try building it using the 
+/usr/i386-glibc21-linux/bin/i386-glibc21-linux-env.sh script to get your 
+shell setup and using kgcc instead of gcc for the compiler. There have 
+been a fair amount of previous posts on running pee wee on RH 7.1 &amp; 7.2 
+that you should refer to if you want to go this route. You would then have 
+to make install_modules and tell it where you want them and then copy them 
+to the /lib/modules/{kernel_version} directory of the target device. What 
+I don't know is whether or not the kernel needs to have compiled-in 
+information regarding modules available or whether it's okay to build them 
+externally and use insmod.
+
+
+On 2003.02.21 21:32 <A HREF="mailto:burzin@bigpond.net.au">burzin@bigpond.net.au</A> wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> I have built a module mod_quickcam from sourceforge project qce-ga-0.40c,
+</I>&gt;<i> and
+</I>&gt;<i> included it as a custom file on a peeweelinux system When I insmod or
+</I>&gt;<i> modprobe it I get unresolved symbols errors. I 'make' it on a Redhat 7.3
+</I>&gt;<i> box.
+</I>&gt;<i> 
+</I>&gt;<i> Can anyone tell me the correct procedure to include a module on a peewee
+</I>&gt;<i> system?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks,
+</I>&gt;<i> 
+</I>&gt;<i> burzin
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000957.html">[Peeweelinux] How to compile module for peeweelinux
+</A></li>
+	<LI> Next message: <A HREF="000959.html">[Peeweelinux] How to compile module for peeweelinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#958">[ date ]</a>
+              <a href="thread.html#958">[ thread ]</a>
+              <a href="subject.html#958">[ subject ]</a>
+              <a href="author.html#958">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

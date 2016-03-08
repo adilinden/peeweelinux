@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Error loading file system to target
+ compactflashcard
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001187.html">
+   <LINK REL="Next"  HREF="001189.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Error loading file system to target
+ compactflashcard
+   </H1>
+    <B>Ashley Rolleston
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Error loading file system to target
+ compactflashcard">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>25 Aug 2003 18:48:54 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001187.html">[Peeweelinux] Error loading file system to target
+ compactflashcard
+</A></li>
+        <LI> Next message: <A HREF="001189.html">[Peeweelinux] Adi's Electronics
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1188">[ date ]</a>
+              <a href="thread.html#1188">[ thread ]</a>
+              <a href="subject.html#1188">[ subject ]</a>
+              <a href="author.html#1188">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Edit the XF86Config file in the project directory. ITs under the &quot;custom&quot; directory in your project. 
+</I>&gt;<i> 
+</I>&gt;<i> Edit etc/X11/XF86Config  for your particular mouse options. By default, the mouse is set up for PS/2 protocol on the /dev/psaux  device. Make sure these things are OK. 
+</I>&gt;<i> 
+</I>
+Yep checked these, all is OK.
+
+&gt;<i> Try doing the following at your prompt:
+</I>&gt;<i> 
+</I>&gt;<i> dmesg | grep Detected
+</I>&gt;<i> 
+</I>&gt;<i> You should see a line saying &quot;Detected PS/2 Mouse&quot; or similar. 
+</I>&gt;<i> 
+</I>
+When I execute this command it shows nothing, just returns me to the
+command prompt again. 
+
+On looking in /proc/interrupts there is no entry on IRQ 12, where the
+mouse should be assigned. This is despite the fact that the BIOS detects
+the mouse on boot-up and initialises. IRQ 12 is not reserved in the
+BIOS.
+
+-- 
+Ashley Rolleston
+aka Onyx^
+<A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001187.html">[Peeweelinux] Error loading file system to target
+ compactflashcard
+</A></li>
+	<LI> Next message: <A HREF="001189.html">[Peeweelinux] Adi's Electronics
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1188">[ date ]</a>
+              <a href="thread.html#1188">[ thread ]</a>
+              <a href="subject.html#1188">[ subject ]</a>
+              <a href="author.html#1188">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

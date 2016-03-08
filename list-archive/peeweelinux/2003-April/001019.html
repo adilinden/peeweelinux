@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] how to creat a standalone image file on my HD
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001018.html">
+   <LINK REL="Next"  HREF="001020.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] how to creat a standalone image file on my HD
+   </H1>
+    <B>Yuval Yohai
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] how to creat a standalone image file on my HD">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 3 Apr 2003 12:39:26 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001018.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+        <LI> Next message: <A HREF="001020.html">[Peeweelinux] AutoBoot and X windows project release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1019">[ date ]</a>
+              <a href="thread.html#1019">[ thread ]</a>
+              <a href="subject.html#1019">[ subject ]</a>
+              <a href="author.html#1019">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>That is vary interesting and gives me some vary important points to
+think about.
+
+That means I will have to install lilo on my friend's machine
+manually and then add the root filesystem. Doesn't it?
+
+My other option looks like using syslinux somehow. (i think !??)
+
+Thanks,
+Yuval
+
+--- Leif Steinhour &lt;<A HREF="mailto:grnwrnch@attbi.com">grnwrnch@attbi.com</A>&gt; wrote:
+&gt;<i> 
+</I>&gt;<i> I could be wrong about this, but I think there's a practical
+</I>&gt;<i> difficulty 
+</I>&gt;<i> associated with doing that. It's my understanding that the boot
+</I>&gt;<i> image has 
+</I>&gt;<i> hard coded in it the specific spot on the partition table where the
+</I>&gt;<i> root 
+</I>&gt;<i> image lives, and so you'd have to redo that for each new device.
+</I>&gt;<i> Otherwise 
+</I>&gt;<i> we wouldn't need lilo at all. By forcing you to install to an
+</I>&gt;<i> actual 
+</I>&gt;<i> device, pee wee assures itself that all of the relevant information
+</I>&gt;<i> is 
+</I>&gt;<i> available to it during the install. There may be a way to set up a 
+</I>&gt;<i> loopback device with a number of virtual cylinders, heads, etc., 
+</I>&gt;<i> concurrent with your freind's harware, I haven't explored this
+</I>&gt;<i> option.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> On 2003.04.03 02:32 Yuval Yohai wrote:
+</I>&gt;<i> &gt; that's a nice idea. I even got a zip drive already on my comp.
+</I>&gt;<i> Yet it
+</I>&gt;<i> &gt; could be nice to have it as an option called, let's say,
+</I>&gt;<i> 'compressed
+</I>&gt;<i> &gt; image with bootloadre to a file'.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Thanks,
+</I>&gt;<i> &gt; Yuval
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; --- vwbug19 &lt;<A HREF="mailto:vwbug19@worldnetoh.com">vwbug19@worldnetoh.com</A>&gt; wrote:
+</I>&gt;<i> &gt; &gt; try the  ide internal zipdrive it holds up to 100mb
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; ----- Original Message -----
+</I>&gt;<i> &gt; &gt; From: &quot;Yuval Yohai&quot; &lt;<A HREF="mailto:yuval_yohai@yahoo.com">yuval_yohai@yahoo.com</A>&gt;
+</I>&gt;<i> &gt; &gt; To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+</I>&gt;<i> &gt; &gt; Sent: Thursday, April 03, 2003 1:43 AM
+</I>&gt;<i> &gt; &gt; Subject: Re: [Peeweelinux] how to creat a standalone image file
+</I>&gt;<i> on
+</I>&gt;<i> &gt; &gt; my HD
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Thanks, but that I know, the problem I need an image larger
+</I>&gt;<i> that
+</I>&gt;<i> &gt; &gt; a
+</I>&gt;<i> &gt; &gt; &gt; floppy size.
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Yuval
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; --- Troy Engel &lt;<A HREF="mailto:tengel@fluid.com">tengel@fluid.com</A>&gt; wrote:
+</I>&gt;<i> &gt; &gt; &gt; &gt; Do it to an actual floppy, then use 'dd' to pull it off the
+</I>&gt;<i> &gt; &gt; floppy
+</I>&gt;<i> &gt; &gt; &gt; &gt; to a
+</I>&gt;<i> &gt; &gt; &gt; &gt; file. Something like 'dd if=/dev/fd0 of=/var/tmp/floppy.img
+</I>&gt;<i> &gt; &gt; &gt; &gt; bs=2048'
+</I>&gt;<i> &gt; &gt; &gt; &gt; should do the trick (check that for errors first).
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; -te
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; Yuval Yohai wrote:
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; Hello,
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; I'm trying to create an floppy image file on my HD and
+</I>&gt;<i> then
+</I>&gt;<i> &gt; &gt; send
+</I>&gt;<i> &gt; &gt; &gt; &gt; it
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; to a friend. But I am not able to it since the only
+</I>&gt;<i> options i
+</I>&gt;<i> &gt; &gt; see
+</I>&gt;<i> &gt; &gt; &gt; &gt; in
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; the pwlconfig is doing it into a partition or a device. I
+</I>&gt;<i> &gt; &gt; tried
+</I>&gt;<i> &gt; &gt; &gt; &gt; to
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; attach a loop device with no luck.
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; Any suggestions?
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; Thanks,
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; Yuval
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; __________________________________________________
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; Do you Yahoo!?
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; Yahoo! Tax Center - File online, calculators, forms, and
+</I>&gt;<i> more
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; <A HREF="http://tax.yahoo.com">http://tax.yahoo.com</A>
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; &gt; &gt; &gt; &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; --
+</I>&gt;<i> &gt; &gt; &gt; &gt; Troy Engel, Systems Engineer
+</I>&gt;<i> &gt; &gt; &gt; &gt; &quot;Now, Beakie, we'll just flip this switch and 60,000
+</I>&gt;<i> refreshing
+</I>&gt;<i> &gt; &gt; &gt; &gt;   volts of electricity will surge through your body.
+</I>&gt;<i> Ready?&quot;
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; &gt; &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; &gt; &gt; &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; &gt; &gt; &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; __________________________________________________
+</I>&gt;<i> &gt; &gt; &gt; Do you Yahoo!?
+</I>&gt;<i> &gt; &gt; &gt; Yahoo! Tax Center - File online, calculators, forms, and more
+</I>&gt;<i> &gt; &gt; &gt; <A HREF="http://tax.yahoo.com">http://tax.yahoo.com</A>
+</I>&gt;<i> &gt; &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; &gt; &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; &gt; &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; __________________________________________________
+</I>&gt;<i> &gt; Do you Yahoo!?
+</I>&gt;<i> &gt; Yahoo! Tax Center - File online, calculators, forms, and more
+</I>&gt;<i> &gt; <A HREF="http://tax.yahoo.com">http://tax.yahoo.com</A>
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt; 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Tax Center - File online, calculators, forms, and more
+<A HREF="http://tax.yahoo.com">http://tax.yahoo.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001018.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+	<LI> Next message: <A HREF="001020.html">[Peeweelinux] AutoBoot and X windows project release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1019">[ date ]</a>
+              <a href="thread.html#1019">[ thread ]</a>
+              <a href="subject.html#1019">[ subject ]</a>
+              <a href="author.html#1019">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

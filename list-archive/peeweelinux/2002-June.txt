@@ -1,0 +1,3824 @@
+From peeweelinux@adis.on.ca  Sun Jun  2 12:30:48 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Sun, 2 Jun 2002 12:30:48 +0100
+Subject: [Peeweelinux] newbie questions
+In-Reply-To: <3CF79C9E.80006@fluid.com>
+Message-ID: <000001c20ba7$dd2aaa40$0201a8c0@ricardo>
+
+yes, I include the jdk directory in the custom files of peeweelinux.
+I'm going to explore the possibility of including it as a RPM, but I didn't
+test that yet.
+
+One issue is that on version 1.3.x the script that launches the JVM depends
+on head, cut and other unix tools (they are included in peewee).
+
+If you use version 1.4, those issues don't happen (I'm using 1.3.1_03).
+
+Another issue is libnsl. This is necessary to run java, and isn't included
+in peewee, so you have to add it as a custom file. the library version of
+recent distributions (GBLIC2_2) is different from peewee (GBLIC2_1), so you
+probably won't be able to copy it from your desktop, but at least in RH7.2
+there's a directory with compatibility libs and you can just copy it from
+there.
+
+In terms of speed, I haven't run many tests yet, but I don't think it will
+be very slow. Running from ramdisk would be a good choice, but with JDK at
++50M, that would leave little ram for your programs...
+
+One issue I'm pursuing is that I want to mount the filesystem readonly,
+would that interest you ?
+
+Another thing I'm trying to do is to use ext3, but for that I'm going to
+have to use another kernel. (if the above option works, I'm not going to
+follow this one, of course).
+
+Hope you keep in touch, as I haven't found a lot of people interested in
+embedded java...
+
+bye
+Ricardo
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Troy Engel
+Sent: sexta-feira, 31 de Maio de 2002 16:54
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] newbie questions
+
+
+Hi Ricardo,
+
+Cool!  Our device is booting (yay!), now it's on to even more fun stuff.
+  Do you have a methodology for installing the jvm, and where do you put
+your code?
+
+I was thinking of formatting and mounting sda3 (rest of CF card) as
+/opt, and putting the JVM and our code over there.  See any downsides to
+that?  Is it too slow to run right off CF, and should I be installing it
+with PeeWee, and having it load into ramdisk?
+
+thx,
+-te
+
+Ricardo Trindade wrote:
+> Hi,
+>
+> 	I'm using peewee on a 128Mb CF and sun's jre 1.3 fits in there. takes
+> almost half the card, but at least it's a full jvm
+>
+> ricardo
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Troy Engel
+> Sent: quinta-feira, 30 de Maio de 2002 22:02
+> To: peeweelinux
+> Subject: [Peeweelinux] newbie questions
+>
+>
+> Hiya folks, I have a few minor questions re: PWL if someone has a few
+> minutes.  We're building the prototype hardware right now, and I've got
+> a custom kernel (need >4 serial ports, shared IRQ) built and the PWL
+> filesystem onto my CF. yay!
+>
+> I'm new to embedded/flash stuff, so sorry if this is basic.
+>
+> 1) /dev/sda1 contains the boot files, sda2 contains the OS. there's a
+> sda3 partition on the rest of the CF card (128meg card), which I want to
+> utilize as my own personal scratch space (this device reads from serial
+> ports and stores logfiles for later upload).  Can i just make ext2 on
+> /dev/sda3, and mount it in sda3/etc/fstab as hda3?  is it that simple?
+>
+> sda2/etc/fstab looks like:
+>
+> /dev/ram0       /               ext2    defaults
+> /dev/hda2       /mnt/flash      ext2    ro,noauto,defaults
+> none            /proc           proc    defaults
+>
+> 2) anyone have some quick primers on setting up the dhcpd/pump and ppp
+> with this distro?  I'm sure I could noodle around and figure out what to
+> put where, but it'd help if someone else had an example. ;)
+>
+> 3) java vm -- anyone gone through the pain and found a good one? (we're
+> looking at Waba, I think)
+>
+> Any other wonderful words of advice would be great, so far I'm cruising
+> along with only a few hurdles.  I'm just beginning to get the hang of
+> how things work in the embedded space....
+>
+> oh! with CF media, can I just use dd to dump the entire card to a file,
+> so I can duplicate it onto other cards? (ala a normal harddrive, block
+> device, etc)
+>
+> thanks!
+> -te
+>
+> --
+> Troy Engel, Systems Engineer
+> Hockey. Kinda like Figure Skating in a War Zone.
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+--
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Jun  4 10:37:25 2002
+From: peeweelinux@adis.on.ca (=?iso-8859-1?q?Jonathan=20E.=20Paton?=)
+Date: Tue, 4 Jun 2002 10:37:25 +0100 (BST)
+Subject: [Peeweelinux] newbie questions
+In-Reply-To: <000001c20ba7$dd2aaa40$0201a8c0@ricardo>
+Message-ID: <20020604093725.24337.qmail@web14602.mail.yahoo.com>
+
+> Hope you keep in touch, as I haven't found a lot of people interested in
+> embedded java...
+
+Snippet from a bug report I did on the 1.4 series:
+
+    "... Also, I believe this issue will not be fixed as the future
+     releases of JDK i.e. 1.4.x and higher will be compiled on 586
+     platforms i.e. minimum requirement would be a pentium."
+                     - Girish.Manwani@sun.com (
+
+I suggest you learn another language - you could be investing in a
+technology that will leave you in the lurch.  This is a problem for
+the managers to resolve, but I think Java might be a poor solution.
+There are non-Sun implementations of Java/JVM, but at various stages
+of readiness.
+
+I occasionally use Java on a 486/66 with 16 Mb ram, and found it
+not a particularly pleasent experience - lots of swapping required.
+
+Jonathan Paton
+
+=====
+s''-//--/\\///|-\/\|--\--/-\-/\-//\-|/\\\|/\///|-\--\\\\',
+s''/-\\\/|///|-|/|/--\--/--//\|\/\||/|/-/\\\-/\///|-\-\-',
+y'|\/-'3210',$_=join qq\\,map{s|2|10|||s|3|11|||s|^|0|;$_}
+m|.|g;map{print chr unpack'N',pack'B32','0'x24 .$_}/.{8}/g
+
+__________________________________________________
+Do You Yahoo!?
+Everything you'll ever need on one web page
+from News and Sport to Email and Music Charts
+http://uk.my.yahoo.com
+
+From peeweelinux@adis.on.ca  Tue Jun  4 12:40:40 2002
+From: peeweelinux@adis.on.ca (Marc Wiz)
+Date: Tue, 4 Jun 2002 06:40:40 -0500 (CDT)
+Subject: [Peeweelinux] newbie questions
+In-Reply-To: <000001c20ba7$dd2aaa40$0201a8c0@ricardo> from "Ricardo Trindade" at Jun 02, 2002 12:30:48 PM
+Message-ID: <200206041140.g54BegO01691@freshaire.wiz.com>
+
+> Hope you keep in touch, as I haven't found a lot of people interested in
+> embedded java...
+
+I would tend to disagree about embedded Java.  I know there is interest 
+in it.  Where I work we are very interested in it.
+
+Marc
+
+-- 
+Marc Wiz
+marc@wiz.com
+Yes, that really is my last name.
+
+From peeweelinux@adis.on.ca  Tue Jun  4 13:25:44 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Tue, 4 Jun 2002 08:25:44 -0400
+Subject: [Peeweelinux] newbie questions
+In-Reply-To: <000001c20ba7$dd2aaa40$0201a8c0@ricardo>
+References: <000001c20ba7$dd2aaa40$0201a8c0@ricardo>
+Message-ID: <200206040824578.SM02488@there>
+
+> Hope you keep in touch, as I haven't found a lot of people interested in
+> embedded java...
+
+FWIW, we've had good luck so far with Java on the Sharp Zaurus SL-5500 PDA 
+(16MB Flash, 64MB RAM, Linux based!).  
+
+The JVM is Insignia's "Jeode" -- not full-blown Java, but "PersonalJava" 
+compatible.  Supposedly, this only requires ~4MB ROM, and 2-4 MB RAM.  
+Doesn't seem to have an open-source / GPL license.
+
+I also have an Arcom board (300 MHz Geode/16M flash/64M ram) that supports 
+the IBM J9 VM.  This also doesn't seem to be GPL.
+
+Does anybody know of a GPL embedded Java effort?  Maybe a "Peewee Java"?? ;-)
+
+Mark
+
+
+From peeweelinux@adis.on.ca  Tue Jun  4 16:53:42 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 04 Jun 2002 08:53:42 -0700
+Subject: [Peeweelinux] newbie questions
+References: <000001c20ba7$dd2aaa40$0201a8c0@ricardo>
+Message-ID: <3CFCE286.2070708@fluid.com>
+
+Hi Ricardo,
+> 
+> Another issue is libnsl. This is necessary to run java, and isn't included
+> in peewee, so you have to add it as a custom file. the library version of
+> recent distributions (GBLIC2_2) is different from peewee (GBLIC2_1), so you
+> probably won't be able to copy it from your desktop, but at least in RH7.2
+> there's a directory with compatibility libs and you can just copy it from
+> there.
+
+Aha!  Very good, I had thought I needed to rebuild an entire glibc-2.1 
+in order to get this, but I'll just try grabbing it from a RH62 
+compatible set of libraries. Nice tip, thanks!
+
+> One issue I'm pursuing is that I want to mount the filesystem readonly,
+> would that interest you ?
+> 
+> Another thing I'm trying to do is to use ext3, but for that I'm going to
+> have to use another kernel. (if the above option works, I'm not going to
+> follow this one, of course).
+
+I'm actually going to do the same -- try and build a 2.4.18 kernel with 
+ext3 and 'emlog' support.  I am going to start that today, trying to 
+figure out how to get it to integrate into peeweelinux build system 
+(anyone have any pointers?)
+
+> Hope you keep in touch, as I haven't found a lot of people interested in
+> embedded java...
+
+We're workin on it!  Right now we're trying different JDKs (sorta), 
+there's this nifty micro-java called 'Wonka' that's being tested by the 
+coding crew.  But, if I can get that libnsl working, maybe we can go 
+back to IBM JDK 1.3 instead....
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Tue Jun  4 16:57:07 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 04 Jun 2002 08:57:07 -0700
+Subject: [Peeweelinux] newbie questions
+References: <000001c20ba7$dd2aaa40$0201a8c0@ricardo> <200206040824578.SM02488@there>
+Message-ID: <3CFCE353.1000107@fluid.com>
+
+Mark Meade wrote:
+> 
+> Does anybody know of a GPL embedded Java effort?  Maybe a "Peewee Java"?? ;-)
+
+I mentioned this in my other post -- we're evaluating it right now 
+(we've already found one limitation, it only supports 4 COM ports, we 
+need 8 port support!).
+
+   Wonka: http://wonka.acunia.com/
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Tue Jun  4 17:12:33 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Tue, 4 Jun 2002 17:12:33 +0100
+Subject: [Peeweelinux] newbie questions
+In-Reply-To: <3CFCE286.2070708@fluid.com>
+Message-ID: <001001c20be2$a31c71e0$018ea8c0@ricardo>
+
+Hi,
+
+	Just a couple of questions ?
+
+	Why IBM instead of sun ? speed ?
+	what's emlog ?
+
+thanks
+Ricardo
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Troy Engel
+Sent: terca-feira, 4 de Junho de 2002 16:54
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] newbie questions
+
+
+Hi Ricardo,
+>
+> Another issue is libnsl. This is necessary to run java, and isn't included
+> in peewee, so you have to add it as a custom file. the library version of
+> recent distributions (GBLIC2_2) is different from peewee (GBLIC2_1), so
+you
+> probably won't be able to copy it from your desktop, but at least in RH7.2
+> there's a directory with compatibility libs and you can just copy it from
+> there.
+
+Aha!  Very good, I had thought I needed to rebuild an entire glibc-2.1
+in order to get this, but I'll just try grabbing it from a RH62
+compatible set of libraries. Nice tip, thanks!
+
+> One issue I'm pursuing is that I want to mount the filesystem readonly,
+> would that interest you ?
+>
+> Another thing I'm trying to do is to use ext3, but for that I'm going to
+> have to use another kernel. (if the above option works, I'm not going to
+> follow this one, of course).
+
+I'm actually going to do the same -- try and build a 2.4.18 kernel with
+ext3 and 'emlog' support.  I am going to start that today, trying to
+figure out how to get it to integrate into peeweelinux build system
+(anyone have any pointers?)
+
+> Hope you keep in touch, as I haven't found a lot of people interested in
+> embedded java...
+
+We're workin on it!  Right now we're trying different JDKs (sorta),
+there's this nifty micro-java called 'Wonka' that's being tested by the
+coding crew.  But, if I can get that libnsl working, maybe we can go
+back to IBM JDK 1.3 instead....
+
+-te
+
+--
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Jun  4 17:38:04 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 04 Jun 2002 09:38:04 -0700
+Subject: [Peeweelinux] newbie questions
+References: <001001c20be2$a31c71e0$018ea8c0@ricardo>
+Message-ID: <3CFCECEC.4060309@fluid.com>
+
+Ricardo Trindade wrote:
+> 
+> 	Why IBM instead of sun ? speed ?
+
+Mainly because they have this nifty serial package that would support 
+all kinds of stuff -- our particular project requires reading from 5-7 
+serial ports to gather data, and spit it back out (upstream) via PPP or 
+ethernet.  So, the initial research made them stick out (and, a much 
+smaller footprint?)
+
+> 	what's emlog ?
+
+It's this "fake" /var/log/messages subsystem.  Basically, 
+/var/log/messages is actually a device node, and you insmod emlog.o on 
+bootup (you have to build it into your kernel, the options for emlog are 
+present in the "stock" 2.2.17 kernel provided by PWL).  What happens is 
+that it uses some sort of buffered, circular "last process only" stuff 
+(I'm not sure 100% the details), so that /var/log/messages is never a 
+real file, and therefore can't fill up your ram filesystem! tada. ;) 
+Very cool....
+
+http://www.circlemud.org/~jelson/software/emlog/
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Tue Jun  4 21:53:02 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 4 Jun 2002 15:53:02 -0500 (CDT)
+Subject: [Peeweelinux] bug in libstdc++ tarball
+In-Reply-To: <3CF7BCFF.7000902@fluid.com>
+Message-ID: <Pine.LNX.4.33.0206041552300.22749-100000@adibox.knet.ca>
+
+Hi,
+
+Thank you for pointing this out. I will add a note to my todo list to 
+build a new fixed rpm...
+
+Thanks,
+Adi
+
+
+On Fri, 31 May 2002, Troy Engel wrote:
+
+> Hiya all,
+> 
+> I'm going through all the tarballs, replacing the defaults with my own 
+> stuff, and there's a bug in the supplied libstdc++ (peewee-0.61.1) build:
+> 
+> libstdc++-libc6.1-1.so.2 -> 
+> /var/tmp/egcs-1.1.2-root/usr/lib/libstdc++-2-libc6.1-1-2.9.0.so
+> 
+> which, of course, should be just a simple symlink without the (/var/tmp) 
+> path.
+> 
+> -te
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Wed Jun  5 00:24:31 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 04 Jun 2002 16:24:31 -0700
+Subject: [Peeweelinux] kernel 2.4, panic on boot
+Message-ID: <3CFD4C2F.7030506@fluid.com>
+
+Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all 
+sorts of custom packages with the new kernel (modutils, etc), but on 
+boot I am getting an inability to mount the root partition:
+
+Copying filesystem /dev/hdc2 to /dev/ram2...
+kmod: failed to exec /sbin/modprobe -s -k block-major-22, errno = 2
+/dev/hdc2Flushing buffers to disk...
+tcsetpgrp: Inappropriate ioctl for device
+kernel panic: VFS: Unable to mount root fs on 01:02
+
+The cause seems straightforward(?), but /sbin/modprobe is there and 
+should be working...?  Anyone seen this before?
+
+thx!
+-te
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Wed Jun  5 02:05:16 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Tue, 4 Jun 2002 21:05:16 -0400
+Subject: [Peeweelinux] kernel 2.4, panic on boot
+In-Reply-To: <3CFD4C2F.7030506@fluid.com>
+References: <3CFD4C2F.7030506@fluid.com>
+Message-ID: <200206042102531.SM02488@there>
+
+Hi Troy,
+
+Thanks for the embedded Java (Wonka) link.  
+
+I've had 2.4.18 working with Peewee and a DiskOnChip Millennium, although I 
+didn't use modprobe.  I found it much easier to build everything I needed 
+into the kernel, instead of using modules and/or initrd.
+
+Mark
+
+On Tuesday 04 June 2002 07:24 pm, Troy Engel wrote:
+> Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all
+> sorts of custom packages with the new kernel (modutils, etc), but on
+> boot I am getting an inability to mount the root partition:
+
+
+From peeweelinux@adis.on.ca  Wed Jun  5 02:22:07 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 04 Jun 2002 18:22:07 -0700
+Subject: [Peeweelinux] kernel 2.4, panic on boot
+References: <3CFD4C2F.7030506@fluid.com> <200206042102531.SM02488@there>
+Message-ID: <3CFD67BF.8020700@fluid.com>
+
+Cool Mark, hope it works! (wonka)  I *think* the guys did a field test 
+of it today, and it passed with flying colours -- will let ya know.
+
+Hmmmmmmmm on 2.4.18 -- well, can you even begin to guess what it's 
+trying to modprobe for?  ext2 is built in, only ext3 is outside.  I do 
+have to build ppp as modules (can't remember why, read it somewhere?) 
+but I could go back and build a monolithic kernel.
+
+Sure would like to know what the heck it's trying to load...
+
+-te
+
+Mark Meade wrote:
+> Hi Troy,
+> 
+> Thanks for the embedded Java (Wonka) link.  
+> 
+> I've had 2.4.18 working with Peewee and a DiskOnChip Millennium, although I 
+> didn't use modprobe.  I found it much easier to build everything I needed 
+> into the kernel, instead of using modules and/or initrd.
+> 
+> Mark
+> 
+> On Tuesday 04 June 2002 07:24 pm, Troy Engel wrote:
+> 
+>>Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all
+>>sorts of custom packages with the new kernel (modutils, etc), but on
+>>boot I am getting an inability to mount the root partition:
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Wed Jun  5 10:54:01 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 5 Jun 2002 10:54:01 +0100
+Subject: [Peeweelinux] kernel 2.4, panic on boot
+In-Reply-To: <3CFD67BF.8020700@fluid.com>
+Message-ID: <004d01c20c76$ec3cd880$018ea8c0@ricardo>
+
+I didn't follow all of your discussion, but I think that if you have ext3 fs
+root, you must have ext3 in the kernel, not in a module, because it can't
+mount the fs to load the module... I think
+
+bye
+Ricardo Trindade
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Troy Engel
+Sent: quarta-feira, 5 de Junho de 2002 2:22
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] kernel 2.4, panic on boot
+
+
+Cool Mark, hope it works! (wonka)  I *think* the guys did a field test
+of it today, and it passed with flying colours -- will let ya know.
+
+Hmmmmmmmm on 2.4.18 -- well, can you even begin to guess what it's
+trying to modprobe for?  ext2 is built in, only ext3 is outside.  I do
+have to build ppp as modules (can't remember why, read it somewhere?)
+but I could go back and build a monolithic kernel.
+
+Sure would like to know what the heck it's trying to load...
+
+-te
+
+Mark Meade wrote:
+> Hi Troy,
+>
+> Thanks for the embedded Java (Wonka) link.
+>
+> I've had 2.4.18 working with Peewee and a DiskOnChip Millennium, although
+I
+> didn't use modprobe.  I found it much easier to build everything I needed
+> into the kernel, instead of using modules and/or initrd.
+>
+> Mark
+>
+> On Tuesday 04 June 2002 07:24 pm, Troy Engel wrote:
+>
+>>Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all
+>>sorts of custom packages with the new kernel (modutils, etc), but on
+>>boot I am getting an inability to mount the root partition:
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+--
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Jun  5 19:22:26 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Wed, 05 Jun 2002 11:22:26 -0700
+Subject: [Peeweelinux] kernel 2.4, panic on boot
+References: <3CFD4C2F.7030506@fluid.com> <200206042102531.SM02488@there>
+Message-ID: <3CFE56E2.1050409@fluid.com>
+
+FYI only -- building the 2.4 kernel with no modules (all internal) did 
+the trick, my ext3 partition mounts, emlog loads, ppp/eth0 still work 
+and everything.
+
+I had to build a whole bunch of stuff in a neato way for a 2.4 kernel 
+that was uber easy to integrate -- if anyone is interested, gimme a 
+holler and I'll cobble together a basic HowTo.
+
+-te
+
+Mark Meade wrote:
+> Hi Troy,
+> 
+> Thanks for the embedded Java (Wonka) link.  
+> 
+> I've had 2.4.18 working with Peewee and a DiskOnChip Millennium, although I 
+> didn't use modprobe.  I found it much easier to build everything I needed 
+> into the kernel, instead of using modules and/or initrd.
+> 
+> Mark
+> 
+> On Tuesday 04 June 2002 07:24 pm, Troy Engel wrote:
+> 
+>>Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all
+>>sorts of custom packages with the new kernel (modutils, etc), but on
+>>boot I am getting an inability to mount the root partition:
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Wed Jun  5 19:22:34 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 5 Jun 2002 19:22:34 +0100
+Subject: [Peeweelinux] kernel 2.4, panic on boot
+In-Reply-To: <3CFE56E2.1050409@fluid.com>
+Message-ID: <000901c20cbd$f719a340$0201a8c0@ricardo>
+
+Hi,
+
+	Is it possible to use ext3 with the 2.2.x series ?
+
+thanks
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Troy Engel
+Sent: quarta-feira, 5 de Junho de 2002 19:22
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] kernel 2.4, panic on boot
+
+
+FYI only -- building the 2.4 kernel with no modules (all internal) did
+the trick, my ext3 partition mounts, emlog loads, ppp/eth0 still work
+and everything.
+
+I had to build a whole bunch of stuff in a neato way for a 2.4 kernel
+that was uber easy to integrate -- if anyone is interested, gimme a
+holler and I'll cobble together a basic HowTo.
+
+-te
+
+Mark Meade wrote:
+> Hi Troy,
+>
+> Thanks for the embedded Java (Wonka) link.
+>
+> I've had 2.4.18 working with Peewee and a DiskOnChip Millennium, although
+I
+> didn't use modprobe.  I found it much easier to build everything I needed
+> into the kernel, instead of using modules and/or initrd.
+>
+> Mark
+>
+> On Tuesday 04 June 2002 07:24 pm, Troy Engel wrote:
+>
+>>Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all
+>>sorts of custom packages with the new kernel (modutils, etc), but on
+>>boot I am getting an inability to mount the root partition:
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+--
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Jun  5 19:39:57 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Wed, 05 Jun 2002 11:39:57 -0700
+Subject: [Peeweelinux] kernel 2.4, panic on boot
+References: <000901c20cbd$f719a340$0201a8c0@ricardo>
+Message-ID: <3CFE5AFD.3000800@fluid.com>
+
+Well, I looked here:
+
+   ftp://ftp.kernel.org/pub/linux/kernel/people/sct/ext3/
+
+and saw how low the version number was on it, and the date, so I didn't 
+even bother.  It's more important for me to have a known good 
+implementation of a stable kernel - I need that data on that partition 
+to be as reliable as possible...
+
+-te
+
+Ricardo Trindade wrote:
+> Hi,
+> 
+> 	Is it possible to use ext3 with the 2.2.x series ?
+> 
+> thanks
+> 
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Troy Engel
+> Sent: quarta-feira, 5 de Junho de 2002 19:22
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] kernel 2.4, panic on boot
+> 
+> 
+> FYI only -- building the 2.4 kernel with no modules (all internal) did
+> the trick, my ext3 partition mounts, emlog loads, ppp/eth0 still work
+> and everything.
+> 
+> I had to build a whole bunch of stuff in a neato way for a 2.4 kernel
+> that was uber easy to integrate -- if anyone is interested, gimme a
+> holler and I'll cobble together a basic HowTo.
+> 
+> -te
+> 
+> Mark Meade wrote:
+> 
+>>Hi Troy,
+>>
+>>Thanks for the embedded Java (Wonka) link.
+>>
+>>I've had 2.4.18 working with Peewee and a DiskOnChip Millennium, although
+> 
+> I
+> 
+>>didn't use modprobe.  I found it much easier to build everything I needed
+>>into the kernel, instead of using modules and/or initrd.
+>>
+>>Mark
+>>
+>>On Tuesday 04 June 2002 07:24 pm, Troy Engel wrote:
+>>
+>>
+>>>Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all
+>>>sorts of custom packages with the new kernel (modutils, etc), but on
+>>>boot I am getting an inability to mount the root partition:
+>>
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> 
+> --
+> Troy Engel, Systems Engineer
+> Hockey. Kinda like Figure Skating in a War Zone.
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Wed Jun  5 14:42:46 2002
+From: peeweelinux@adis.on.ca (Tom Genereaux)
+Date: 05 Jun 2002 13:42:46 +0000
+Subject: [Peeweelinux] kernel 2.4, panic on boot
+In-Reply-To: <3CFE56E2.1050409@fluid.com>
+References: <3CFD4C2F.7030506@fluid.com> <200206042102531.SM02488@there>
+ <3CFE56E2.1050409@fluid.com>
+Message-ID: <1023284566.18394.1015.camel@dharma.lawrence.ks.us>
+
+I for one am interested in such a how-to.
+
+Tom
+
+
+
+On Wed, 2002-06-05 at 18:22, Troy Engel wrote:
+> FYI only -- building the 2.4 kernel with no modules (all internal) did 
+> the trick, my ext3 partition mounts, emlog loads, ppp/eth0 still work 
+> and everything.
+> 
+> I had to build a whole bunch of stuff in a neato way for a 2.4 kernel 
+> that was uber easy to integrate -- if anyone is interested, gimme a 
+> holler and I'll cobble together a basic HowTo.
+> 
+> -te
+> 
+> Mark Meade wrote:
+> > Hi Troy,
+> > 
+> > Thanks for the embedded Java (Wonka) link.  
+> > 
+> > I've had 2.4.18 working with Peewee and a DiskOnChip Millennium, although I 
+> > didn't use modprobe.  I found it much easier to build everything I needed 
+> > into the kernel, instead of using modules and/or initrd.
+> > 
+> > Mark
+> > 
+> > On Tuesday 04 June 2002 07:24 pm, Troy Engel wrote:
+> > 
+> >>Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all
+> >>sorts of custom packages with the new kernel (modutils, etc), but on
+> >>boot I am getting an inability to mount the root partition:
+> > 
+> > 
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> -- 
+> Troy Engel, Systems Engineer
+> Hockey. Kinda like Figure Skating in a War Zone.
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+
+From peeweelinux@adis.on.ca  Thu Jun  6 00:36:51 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Thu, 6 Jun 2002 09:36:51 +1000
+Subject: [Peeweelinux] kernel 2.4, panic on boot
+Message-ID: <OF2BB2378A.6D96CBEA-ON4A256BCF.0081B2FC@juptech.com>
+
+I'll second that motion..  :)
+
+
+                                                                                                                        
+                    Tom Genereaux                                                                                       
+                    <entropy@sunflower        To:     peeweelinux@adis.on.ca                                            
+                    .com>                     cc:                                                                       
+                    Sent by:                    Subject:   Re: [Peeweelinux] kernel 2.4, panic on boot                  
+                    peeweelinux-admin@                                                                                  
+                    adis.on.ca               Project:                                                                   
+                                                                                                                        
+                                                                                                                        
+                    05/06/2002 11:42                                                                                    
+                    PM                                                                                                  
+                    Please respond to                                                                                   
+                    peeweelinux                                                                                         
+                                                                                                                        
+                                                                                                                        
+
+
+
+
+I for one am interested in such a how-to.
+
+Tom
+
+
+
+On Wed, 2002-06-05 at 18:22, Troy Engel wrote:
+> FYI only -- building the 2.4 kernel with no modules (all internal) did
+> the trick, my ext3 partition mounts, emlog loads, ppp/eth0 still work
+> and everything.
+>
+> I had to build a whole bunch of stuff in a neato way for a 2.4 kernel
+> that was uber easy to integrate -- if anyone is interested, gimme a
+> holler and I'll cobble together a basic HowTo.
+>
+> -te
+>
+> Mark Meade wrote:
+> > Hi Troy,
+> >
+> > Thanks for the embedded Java (Wonka) link.
+> >
+> > I've had 2.4.18 working with Peewee and a DiskOnChip Millennium,
+although I
+> > didn't use modprobe.  I found it much easier to build everything I
+needed
+> > into the kernel, instead of using modules and/or initrd.
+> >
+> > Mark
+> >
+> > On Tuesday 04 June 2002 07:24 pm, Troy Engel wrote:
+> >
+> >>Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all
+> >>sorts of custom packages with the new kernel (modutils, etc), but on
+> >>boot I am getting an inability to mount the root partition:
+> >
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+> --
+> Troy Engel, Systems Engineer
+> Hockey. Kinda like Figure Skating in a War Zone.
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+
+*********************************************************************
+This email message (and attachments) may contain information 
+that is confidential to Jupiters Technology. If you are not the 
+intended recipient you cannot use, distribute or copy the message 
+or attachments. In such a case, please notify the sender by return 
+email immediately and erase all copies of the message and 
+attachments. Opinions, conclusions and other information in this 
+message and attachments that do not relate to the official business 
+of Jupiters Technology are neither given nor endorsed by it.
+*********************************************************************
+
+
+From peeweelinux@adis.on.ca  Thu Jun  6 02:43:53 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Thu, 6 Jun 2002 11:43:53 +1000
+Subject: [Peeweelinux] selecting a compact flash reader
+Message-ID: <OF98CD5B1D.8528F45A-ON4A256BD0.0008E17B@juptech.com>
+
+Hi All,
+
+I am currently working on a project which uses an IDE-->Compact Flash
+converter on the main board to treat the compact flash as /dev/hdc.
+Techs in the field will need to update both to and from this device using a
+USB compact flash reader, which can be attached as required.
+
+I have been using a Sandisk ImageMate SDDR-05 reader during development
+which is occasionally flaky. (Could be the way I have it running that is
+flaky :)
+
+
+Having made a short story longer than it needs to be, has anyone any
+experience using USB compact flash readers ?
+Can anyone recommend a robust one to run under a 2.4 kernel ?
+
+All suggestions appreciated,
+
+Kind regards,
+
+Delaney.
+
+
+
+*********************************************************************
+This email message (and attachments) may contain information 
+that is confidential to Jupiters Technology. If you are not the 
+intended recipient you cannot use, distribute or copy the message 
+or attachments. In such a case, please notify the sender by return 
+email immediately and erase all copies of the message and 
+attachments. Opinions, conclusions and other information in this 
+message and attachments that do not relate to the official business 
+of Jupiters Technology are neither given nor endorsed by it.
+*********************************************************************
+
+
+From peeweelinux@adis.on.ca  Thu Jun  6 02:58:20 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Wed, 05 Jun 2002 18:58:20 -0700
+Subject: [Peeweelinux] selecting a compact flash reader
+References: <OF98CD5B1D.8528F45A-ON4A256BD0.0008E17B@juptech.com>
+Message-ID: <3CFEC1BC.8080805@fluid.com>
+
+We bought the "IOGear MemoryBank USB 2.0 Flash Card Reader" (model 
+gfr201) and it's working 100% on my 2.4.18 kernel. Nary a lick of a 
+problem operationally. (I already own an Archos jukebox and Sony DSC 
+digcam, so I had generic scsi/etc built into the kernel)
+
+It's easy, though, to slip the CF card in backwards -- I did, and it 
+jammed.  An hour and a bunch of screwdrivers later, I had repaired the 
+situation.  Be careful, the CF card sits in the device with it's back 
+towards you, opposite what you'd think it should be.
+
+-te
+
+drowe@juptech.com wrote:
+> Hi All,
+> 
+> I am currently working on a project which uses an IDE-->Compact Flash
+> converter on the main board to treat the compact flash as /dev/hdc.
+> Techs in the field will need to update both to and from this device using a
+> USB compact flash reader, which can be attached as required.
+> 
+> I have been using a Sandisk ImageMate SDDR-05 reader during development
+> which is occasionally flaky. (Could be the way I have it running that is
+> flaky :)
+> 
+> 
+> Having made a short story longer than it needs to be, has anyone any
+> experience using USB compact flash readers ?
+> Can anyone recommend a robust one to run under a 2.4 kernel ?
+> 
+> All suggestions appreciated,
+> 
+> Kind regards,
+> 
+> Delaney.
+> 
+> 
+> 
+> *********************************************************************
+> This email message (and attachments) may contain information 
+> that is confidential to Jupiters Technology. If you are not the 
+> intended recipient you cannot use, distribute or copy the message 
+> or attachments. In such a case, please notify the sender by return 
+> email immediately and erase all copies of the message and 
+> attachments. Opinions, conclusions and other information in this 
+> message and attachments that do not relate to the official business 
+> of Jupiters Technology are neither given nor endorsed by it.
+> *********************************************************************
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Wed Jun  5 22:25:56 2002
+From: peeweelinux@adis.on.ca (Tom Genereaux)
+Date: 05 Jun 2002 21:25:56 +0000
+Subject: [Peeweelinux] selecting a compact flash reader
+In-Reply-To: <3CFEC1BC.8080805@fluid.com>
+References: <OF98CD5B1D.8528F45A-ON4A256BD0.0008E17B@juptech.com>
+ <3CFEC1BC.8080805@fluid.com>
+Message-ID: <1023312356.1396.4.camel@dharma.lawrence.ks.us>
+
+Hmmmmmmmmmmm...I'm using the Imagemate on my development system with no
+problems. Have you got the scsi-ide parameter set and the right driver
+loaded? 
+
+Tom
+
+> 
+> drowe@juptech.com wrote:
+> > Hi All,
+> > 
+> > I am currently working on a project which uses an IDE-->Compact Flash
+> > converter on the main board to treat the compact flash as /dev/hdc.
+> > Techs in the field will need to update both to and from this device using a
+> > USB compact flash reader, which can be attached as required.
+> > 
+> > I have been using a Sandisk ImageMate SDDR-05 reader during development
+> > which is occasionally flaky. (Could be the way I have it running that is
+> > flaky :)
+> > 
+> > 
+> > Having made a short story longer than it needs to be, has anyone any
+> > experience using USB compact flash readers ?
+> > Can anyone recommend a robust one to run under a 2.4 kernel ?
+> > 
+> > All suggestions appreciated,
+> > 
+> > Kind regards,
+> > 
+> > Delaney.
+> > 
+> > 
+> > 
+> > *********************************************************************
+> > This email message (and attachments) may contain information 
+> > that is confidential to Jupiters Technology. If you are not the 
+> > intended recipient you cannot use, distribute or copy the message 
+> > or attachments. In such a case, please notify the sender by return 
+> > email immediately and erase all copies of the message and 
+> > attachments. Opinions, conclusions and other information in this 
+> > message and attachments that do not relate to the official business 
+> > of Jupiters Technology are neither given nor endorsed by it.
+> > *********************************************************************
+> > 
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> -- 
+> Troy Engel, Systems Engineer
+> Hockey. Kinda like Figure Skating in a War Zone.
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+
+From peeweelinux@adis.on.ca  Thu Jun  6 03:34:14 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 5 Jun 2002 21:34:14 -0500 (CDT)
+Subject: [Peeweelinux] selecting a compact flash reader
+In-Reply-To: <OF98CD5B1D.8528F45A-ON4A256BD0.0008E17B@juptech.com>
+Message-ID: <Pine.LNX.4.33.0206052133130.27363-100000@big.adis.on.ca>
+
+Using the Sandisk SDDR-31. Works like a charm with 2.4.x kernel as well as
+2.2.17 with the USB backport.
+
+Adi
+
+On Thu, 6 Jun 2002 drowe@juptech.com wrote:
+
+> Hi All,
+>
+> I am currently working on a project which uses an IDE-->Compact Flash
+> converter on the main board to treat the compact flash as /dev/hdc.
+> Techs in the field will need to update both to and from this device using a
+> USB compact flash reader, which can be attached as required.
+>
+> I have been using a Sandisk ImageMate SDDR-05 reader during development
+> which is occasionally flaky. (Could be the way I have it running that is
+> flaky :)
+>
+>
+> Having made a short story longer than it needs to be, has anyone any
+> experience using USB compact flash readers ?
+> Can anyone recommend a robust one to run under a 2.4 kernel ?
+>
+> All suggestions appreciated,
+>
+> Kind regards,
+>
+> Delaney.
+>
+>
+>
+> *********************************************************************
+> This email message (and attachments) may contain information
+> that is confidential to Jupiters Technology. If you are not the
+> intended recipient you cannot use, distribute or copy the message
+> or attachments. In such a case, please notify the sender by return
+> email immediately and erase all copies of the message and
+> attachments. Opinions, conclusions and other information in this
+> message and attachments that do not relate to the official business
+> of Jupiters Technology are neither given nor endorsed by it.
+> *********************************************************************
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Thu Jun  6 04:11:06 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Thu, 6 Jun 2002 13:11:06 +1000
+Subject: [Peeweelinux] selecting a compact flash reader
+Message-ID: <OF3C0F071E.198AF738-ON4A256BD0.0010FB0F@juptech.com>
+
+Hi Tom,
+
+which driver do you refer to ?
+I am just loading usc-core, and sd_mod (generic scsi support ?) and acces
+the imagemate as /dev/sda
+
+
+
+
+
+
+                                                                                                                        
+                    Tom Genereaux                                                                                       
+                    <entropy@sunflower        To:     peeweelinux@adis.on.ca                                            
+                    .com>                     cc:                                                                       
+                    Sent by:                    Subject:   Re: [Peeweelinux] selecting a compact flash reader           
+                    peeweelinux-admin@                                                                                  
+                    adis.on.ca               Project:                                                                   
+                                                                                                                        
+                                                                                                                        
+                    06/06/2002 07:25                                                                                    
+                    AM                                                                                                  
+                    Please respond to                                                                                   
+                    peeweelinux                                                                                         
+                                                                                                                        
+                                                                                                                        
+
+
+
+
+Hmmmmmmmmmmm...I'm using the Imagemate on my development system with no
+problems. Have you got the scsi-ide parameter set and the right driver
+loaded?
+
+Tom
+
+>
+> drowe@juptech.com wrote:
+> > Hi All,
+> >
+> > I am currently working on a project which uses an IDE-->Compact Flash
+> > converter on the main board to treat the compact flash as /dev/hdc.
+> > Techs in the field will need to update both to and from this device
+using a
+> > USB compact flash reader, which can be attached as required.
+> >
+> > I have been using a Sandisk ImageMate SDDR-05 reader during development
+> > which is occasionally flaky. (Could be the way I have it running that
+is
+> > flaky :)
+> >
+> >
+> > Having made a short story longer than it needs to be, has anyone any
+> > experience using USB compact flash readers ?
+> > Can anyone recommend a robust one to run under a 2.4 kernel ?
+> >
+> > All suggestions appreciated,
+> >
+> > Kind regards,
+> >
+> > Delaney.
+> >
+> >
+> >
+> > *********************************************************************
+> > This email message (and attachments) may contain information
+> > that is confidential to Jupiters Technology. If you are not the
+> > intended recipient you cannot use, distribute or copy the message
+> > or attachments. In such a case, please notify the sender by return
+> > email immediately and erase all copies of the message and
+> > attachments. Opinions, conclusions and other information in this
+> > message and attachments that do not relate to the official business
+> > of Jupiters Technology are neither given nor endorsed by it.
+> > *********************************************************************
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+> --
+> Troy Engel, Systems Engineer
+> Hockey. Kinda like Figure Skating in a War Zone.
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+From peeweelinux@adis.on.ca  Wed Jun  5 23:36:27 2002
+From: peeweelinux@adis.on.ca (Tom Genereaux)
+Date: 05 Jun 2002 22:36:27 +0000
+Subject: [Peeweelinux] selecting a compact flash reader
+In-Reply-To: <OF3C0F071E.198AF738-ON4A256BD0.0010FB0F@juptech.com>
+References: <OF3C0F071E.198AF738-ON4A256BD0.0010FB0F@juptech.com>
+Message-ID: <1023316587.1421.27.camel@dharma.lawrence.ks.us>
+
+Here is the driver stack I have loaded:
+
+usb-core
+usb-uhci (this drives the USB chip - you may need OHCI)
+scsi-mod
+ide-scsi
+
+Note, this is under Redhat 7.3...but the same stack was being used 
+under Mandrake 8.0 and below. 
+
+Tom
+
+On Thu, 2002-06-06 at 03:11, drowe@juptech.com wrote:
+> 
+> Hi Tom,
+> 
+> which driver do you refer to ?
+> I am just loading usc-core, and sd_mod (generic scsi support ?) and acces
+> the imagemate as /dev/sda
+> 
+> 
+> 
+> 
+> 
+> 
+>                                                                                                                         
+>                     Tom Genereaux                                                                                       
+>                     <entropy@sunflower        To:     peeweelinux@adis.on.ca                                            
+>                     .com>                     cc:                                                                       
+>                     Sent by:                    Subject:   Re: [Peeweelinux] selecting a compact flash reader           
+>                     peeweelinux-admin@                                                                                  
+>                     adis.on.ca               Project:                                                                   
+>                                                                                                                         
+>                                                                                                                         
+>                     06/06/2002 07:25                                                                                    
+>                     AM                                                                                                  
+>                     Please respond to                                                                                   
+>                     peeweelinux                                                                                         
+>                                                                                                                         
+>                                                                                                                         
+> 
+> 
+> 
+> 
+> Hmmmmmmmmmmm...I'm using the Imagemate on my development system with no
+> problems. Have you got the scsi-ide parameter set and the right driver
+> loaded?
+> 
+> Tom
+> 
+> >
+> > drowe@juptech.com wrote:
+> > > Hi All,
+> > >
+> > > I am currently working on a project which uses an IDE-->Compact Flash
+> > > converter on the main board to treat the compact flash as /dev/hdc.
+> > > Techs in the field will need to update both to and from this device
+> using a
+> > > USB compact flash reader, which can be attached as required.
+> > >
+> > > I have been using a Sandisk ImageMate SDDR-05 reader during development
+> > > which is occasionally flaky. (Could be the way I have it running that
+> is
+> > > flaky :)
+> > >
+> > >
+> > > Having made a short story longer than it needs to be, has anyone any
+> > > experience using USB compact flash readers ?
+> > > Can anyone recommend a robust one to run under a 2.4 kernel ?
+> > >
+> > > All suggestions appreciated,
+> > >
+> > > Kind regards,
+> > >
+> > > Delaney.
+> > >
+> > >
+> > >
+> > > *********************************************************************
+> > > This email message (and attachments) may contain information
+> > > that is confidential to Jupiters Technology. If you are not the
+> > > intended recipient you cannot use, distribute or copy the message
+> > > or attachments. In such a case, please notify the sender by return
+> > > email immediately and erase all copies of the message and
+> > > attachments. Opinions, conclusions and other information in this
+> > > message and attachments that do not relate to the official business
+> > > of Jupiters Technology are neither given nor endorsed by it.
+> > > *********************************************************************
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> >
+> > --
+> > Troy Engel, Systems Engineer
+> > Hockey. Kinda like Figure Skating in a War Zone.
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+
+From peeweelinux@adis.on.ca  Thu Jun  6 04:44:21 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Thu, 6 Jun 2002 13:44:21 +1000
+Subject: [Peeweelinux] selecting a compact flash reader
+Message-ID: <OFC7A1A77B.0C100727-ON4A256BD0.00144ABE@juptech.com>
+
+Hi Tom,
+I am using Mandrake 8.1
+
+>usb-core
+>usb-uhci (this drives the USB chip - you may need OHCI)
+>scsi-mod
+>ide-scsi
+
+I wasn't loading the ide-scsi module, I'll add this.
+
+
+Thanks for the tip,
+
+(and thanks to everyone for their responses on the different CF readers)
+
+Delaney
+
+
+
+*********************************************************************
+This email message (and attachments) may contain information 
+that is confidential to Jupiters Technology. If you are not the 
+intended recipient you cannot use, distribute or copy the message 
+or attachments. In such a case, please notify the sender by return 
+email immediately and erase all copies of the message and 
+attachments. Opinions, conclusions and other information in this 
+message and attachments that do not relate to the official business 
+of Jupiters Technology are neither given nor endorsed by it.
+*********************************************************************
+
+
+From peeweelinux@adis.on.ca  Wed Jun  5 22:53:22 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 5 Jun 2002 22:53:22 +0100
+Subject: [Peeweelinux] kernel 2.4, panic on boot
+In-Reply-To: <3CFE5AFD.3000800@fluid.com>
+Message-ID: <000001c20d3d$5f5d6e80$0201a8c0@ricardo>
+
+What I meant to ask was if it comes included on 2.2.x sources... I haven't
+compiled a kernel in a couple of years :))
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Troy Engel
+Sent: quarta-feira, 5 de Junho de 2002 19:40
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] kernel 2.4, panic on boot
+
+
+Well, I looked here:
+
+   ftp://ftp.kernel.org/pub/linux/kernel/people/sct/ext3/
+
+and saw how low the version number was on it, and the date, so I didn't
+even bother.  It's more important for me to have a known good
+implementation of a stable kernel - I need that data on that partition
+to be as reliable as possible...
+
+-te
+
+Ricardo Trindade wrote:
+> Hi,
+>
+> 	Is it possible to use ext3 with the 2.2.x series ?
+>
+> thanks
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Troy Engel
+> Sent: quarta-feira, 5 de Junho de 2002 19:22
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] kernel 2.4, panic on boot
+>
+>
+> FYI only -- building the 2.4 kernel with no modules (all internal) did
+> the trick, my ext3 partition mounts, emlog loads, ppp/eth0 still work
+> and everything.
+>
+> I had to build a whole bunch of stuff in a neato way for a 2.4 kernel
+> that was uber easy to integrate -- if anyone is interested, gimme a
+> holler and I'll cobble together a basic HowTo.
+>
+> -te
+>
+> Mark Meade wrote:
+>
+>>Hi Troy,
+>>
+>>Thanks for the embedded Java (Wonka) link.
+>>
+>>I've had 2.4.18 working with Peewee and a DiskOnChip Millennium, although
+>
+> I
+>
+>>didn't use modprobe.  I found it much easier to build everything I needed
+>>into the kernel, instead of using modules and/or initrd.
+>>
+>>Mark
+>>
+>>On Tuesday 04 June 2002 07:24 pm, Troy Engel wrote:
+>>
+>>
+>>>Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all
+>>>sorts of custom packages with the new kernel (modutils, etc), but on
+>>>boot I am getting an inability to mount the root partition:
+>>
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+>
+> --
+> Troy Engel, Systems Engineer
+> Hockey. Kinda like Figure Skating in a War Zone.
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+--
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Jun  6 10:43:10 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 6 Jun 2002 10:43:10 +0100
+Subject: [Peeweelinux] selecting a compact flash reader
+In-Reply-To: <1023316587.1421.27.camel@dharma.lawrence.ks.us>
+Message-ID: <001a01c20d3e$91e01370$0201a8c0@ricardo>
+
+I think you are missing usb-storage. I have one and it works great, I just
+"mount /dev/sda1 /mnt" and it finds all dependencies on RH7.2
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Tom Genereaux
+Sent: quarta-feira, 5 de Junho de 2002 23:36
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] selecting a compact flash reader
+
+
+Here is the driver stack I have loaded:
+
+usb-core
+usb-uhci (this drives the USB chip - you may need OHCI)
+scsi-mod
+ide-scsi
+
+Note, this is under Redhat 7.3...but the same stack was being used
+under Mandrake 8.0 and below.
+
+Tom
+
+On Thu, 2002-06-06 at 03:11, drowe@juptech.com wrote:
+>
+> Hi Tom,
+>
+> which driver do you refer to ?
+> I am just loading usc-core, and sd_mod (generic scsi support ?) and acces
+> the imagemate as /dev/sda
+>
+>
+>
+>
+>
+>
+>
+>                     Tom Genereaux
+>                     <entropy@sunflower        To:
+peeweelinux@adis.on.ca
+>                     .com>                     cc:
+>                     Sent by:                    Subject:   Re:
+[Peeweelinux] selecting a compact flash reader
+>                     peeweelinux-admin@
+>                     adis.on.ca               Project:
+>
+>
+>                     06/06/2002 07:25
+>                     AM
+>                     Please respond to
+>                     peeweelinux
+>
+>
+>
+>
+>
+>
+> Hmmmmmmmmmmm...I'm using the Imagemate on my development system with no
+> problems. Have you got the scsi-ide parameter set and the right driver
+> loaded?
+>
+> Tom
+>
+> >
+> > drowe@juptech.com wrote:
+> > > Hi All,
+> > >
+> > > I am currently working on a project which uses an IDE-->Compact Flash
+> > > converter on the main board to treat the compact flash as /dev/hdc.
+> > > Techs in the field will need to update both to and from this device
+> using a
+> > > USB compact flash reader, which can be attached as required.
+> > >
+> > > I have been using a Sandisk ImageMate SDDR-05 reader during
+development
+> > > which is occasionally flaky. (Could be the way I have it running that
+> is
+> > > flaky :)
+> > >
+> > >
+> > > Having made a short story longer than it needs to be, has anyone any
+> > > experience using USB compact flash readers ?
+> > > Can anyone recommend a robust one to run under a 2.4 kernel ?
+> > >
+> > > All suggestions appreciated,
+> > >
+> > > Kind regards,
+> > >
+> > > Delaney.
+> > >
+> > >
+> > >
+> > > *********************************************************************
+> > > This email message (and attachments) may contain information
+> > > that is confidential to Jupiters Technology. If you are not the
+> > > intended recipient you cannot use, distribute or copy the message
+> > > or attachments. In such a case, please notify the sender by return
+> > > email immediately and erase all copies of the message and
+> > > attachments. Opinions, conclusions and other information in this
+> > > message and attachments that do not relate to the official business
+> > > of Jupiters Technology are neither given nor endorsed by it.
+> > > *********************************************************************
+> > >
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> >
+> > --
+> > Troy Engel, Systems Engineer
+> > Hockey. Kinda like Figure Skating in a War Zone.
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Jun  6 17:33:15 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Thu, 06 Jun 2002 09:33:15 -0700
+Subject: [Peeweelinux] kernel 2.4, panic on boot
+References: <000001c20d3d$5f5d6e80$0201a8c0@ricardo>
+Message-ID: <3CFF8ECB.9000000@fluid.com>
+
+Nope, afraid not -- I'm not exactly sure, but I *think* it went into the 
+official kernel sources at 2.4.18; the last patch released was 
+2.4.18pre3 (http://www.zipworld.com.au/~akpm/linux/ext3/), which tends 
+to support my guess....
+
+-te
+
+Ricardo Trindade wrote:
+> What I meant to ask was if it comes included on 2.2.x sources... I haven't
+> compiled a kernel in a couple of years :))
+> 
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Troy Engel
+> Sent: quarta-feira, 5 de Junho de 2002 19:40
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] kernel 2.4, panic on boot
+> 
+> 
+> Well, I looked here:
+> 
+>    ftp://ftp.kernel.org/pub/linux/kernel/people/sct/ext3/
+> 
+> and saw how low the version number was on it, and the date, so I didn't
+> even bother.  It's more important for me to have a known good
+> implementation of a stable kernel - I need that data on that partition
+> to be as reliable as possible...
+> 
+> -te
+> 
+> Ricardo Trindade wrote:
+> 
+>>Hi,
+>>
+>>	Is it possible to use ext3 with the 2.2.x series ?
+>>
+>>thanks
+>>
+>>-----Original Message-----
+>>From: peeweelinux-admin@adis.on.ca
+>>[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Troy Engel
+>>Sent: quarta-feira, 5 de Junho de 2002 19:22
+>>To: peeweelinux@adis.on.ca
+>>Subject: Re: [Peeweelinux] kernel 2.4, panic on boot
+>>
+>>
+>>FYI only -- building the 2.4 kernel with no modules (all internal) did
+>>the trick, my ext3 partition mounts, emlog loads, ppp/eth0 still work
+>>and everything.
+>>
+>>I had to build a whole bunch of stuff in a neato way for a 2.4 kernel
+>>that was uber easy to integrate -- if anyone is interested, gimme a
+>>holler and I'll cobble together a basic HowTo.
+>>
+>>-te
+>>
+>>Mark Meade wrote:
+>>
+>>
+>>>Hi Troy,
+>>>
+>>>Thanks for the embedded Java (Wonka) link.
+>>>
+>>>I've had 2.4.18 working with Peewee and a DiskOnChip Millennium, although
+>>
+>>I
+>>
+>>
+>>>didn't use modprobe.  I found it much easier to build everything I needed
+>>>into the kernel, instead of using modules and/or initrd.
+>>>
+>>>Mark
+>>>
+>>>On Tuesday 04 June 2002 07:24 pm, Troy Engel wrote:
+>>>
+>>>
+>>>
+>>>>Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all
+>>>>sorts of custom packages with the new kernel (modutils, etc), but on
+>>>>boot I am getting an inability to mount the root partition:
+>>>
+>>>
+>>>_______________________________________________
+>>>Peeweelinux mailing list
+>>>Peeweelinux@adis.on.ca
+>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+>>
+>>
+>>--
+>>Troy Engel, Systems Engineer
+>>Hockey. Kinda like Figure Skating in a War Zone.
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> 
+> --
+> Troy Engel, Systems Engineer
+> Hockey. Kinda like Figure Skating in a War Zone.
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Thu Jun  6 18:27:52 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Thu, 06 Jun 2002 10:27:52 -0700
+Subject: [Peeweelinux] kernel 2.4 mini-howto
+Message-ID: <3CFF9B98.2030902@fluid.com>
+
+Below follows my basic method for integrating a 2.4 kernel into the 
+peeweelinux distro; some steps may be missing, so may not be needed, 
+some may not be efficient.  Hey, I was winging it. ;)  Adjust as 
+appropriate/necessary.
+
+My build scenario is /usr/local/pwl/Embedded_Build/ - referred to as 
+$PWL from now on.
+
+Step 1 - Build yourself the new Kernel (2.4.18)
+===============================================
+1) Build a custom kernel of the existing 2.2.17 sources.  This ensures 
+that you can properly build and deploy a custom kernel on your dev box 
+(eg, on RedHat 7.2 you have all the compat-* RPMS installed and know how 
+to use them).
+
+2) create a subdir in the PWL build scenario to hold all your nifty 
+files -- for me, it's:  $PWL/custom_kernel (referred to as $CUSTOM from 
+here on)
+
+3) create $CUSTOM/usr/src, and untar the kernel sources into there. 
+Rename "linux" to "linux-2.4.18" (eg), and symlink linux to it.  Just 
+like you would in a real kernel build.
+
+4) cd to $CUSTOM/usr/src/linux, run "make mrproper"
+
+5) copy $PWL/kernelbuild/usr/src/linux/.config (notice the dot) to 
+$CUSTOM/usr/src/linux/
+
+6) run "make oldconfig", then run "make menuconfig".  choose kernel 
+options as appropriate.
+
+7) edit "Makefile" and change "gcc" to "kgcc" (I'm on RH72, using the 
+RH62 compat packages)
+
+8) run "make dep", "make bzImage", and "make modules" as normal. 
+(remember to source the compat-* script if you need to first!)
+
+9) mkdir -p $CUSTOM/kernel-root/boot and mkdir -p 
+$CUSTOM/kernel-root/lib/modules
+
+10) cp arch/i386/boot/bzImage $CUSTOM/kernel-root/boot
+
+11) "make INSTALL_MOD_PATH=$CUSTOM/kernel-root modules_install"
+
+
+Step 2 - Build the kernel package
+=================================
+1) cd $CUSTOM/kernel-root
+
+2) cp -a $PWL/kernelbuild/kernel-buildroot/dev .  (I don't know what 
+these devices are used for, but figured it couldn't hurt to drag 'em 
+along for the ride)
+
+
+NOTE: at this point, add your custom devices -- eg, the watchdog device. 
+  For example, "cd $CUSTOM/kernel-root/dev, mknod watchdog c 10 130"
+
+
+3) find dev > kernel-2.4.18.list, find boot >> kernel-2.4.18.list, find 
+lib >> kernel-2.4.18.list
+
+4) edit kernel-2.4.18.list and add trailing slashes to *all* directory 
+names!  Very important that you do this.
+
+5) tar -cf kernel-2.4.18.tar boot/ dev/ lib/
+
+6) cp kernel-2.4.18.* $PWL/packages/Kernel_Custom/
+
+
+Now, at this point all you need to do is run pwlconfig, go into the 
+kernel-custom stuff, and use your new kernel instead of the old one. 
+Pretty simple.  However, as suggested in the Changes file, you want to 
+update some other files as well (eg, "su" from busybox doesn't work as 
+well as insmod).  So, I also built custom packages of the following:
+
+   e2fsprogs-1.27
+   emlog-0.40
+   modutils-2.4.16
+   ppp-2.4.1
+   util-linux-2.11r
+
+The exact same scenario as above is used to build these custom packages; 
+let's use emlog as an example, as many folks will want that with their 
+new kernel.
+
+Step 3 - Build supporting packages (emlog used as example)
+==========================================================
+1) cd $CUSTOM/usr/src
+
+2) untar emlog-0.40 package
+
+3) cd emlog-0.40, edit "Makefile" to set the path to kernel sources 
+(eg,/usr/local/pwl/Embedded_Build/custom_kernel/linux).  Also edit "gcc" 
+to use "kgcc" like you did for the kernel above -- not sure if it's 
+necessary, but I figured it couldn't hurt.
+
+4) run 'make'
+
+5) mkdir -p $CUSTOM/emlog-root/lib/modules/2.4.18/kernel/drivers/misc/, 
+mkdir -p $CUSTOM/emlog-root/usr/bin, mkdir -p $CUSTOM/emlog-root/var/log
+
+6) cp emlog.o 
+$CUSTOM/emlog-root/lib/modules/2.4.18/kernel/drivers/misc/, cp nbcat 
+$CUSTOM/emlog-root/usr/bin
+
+7) cd $CUSTOM/emlog-root/var/log, mknod messages c 241 8
+
+8) find lib > emlog-0.40-2.4.18.list, find usr >> 
+emlog-0.40-2.4.18.list, find var >> emlog-0.40-2.4.18.list
+
+9) edit emlog-0.40-2.4.18.list and add trailing slashes to paths
+
+10) tar -cf emlog-0.40-2.4.18.tar lib/ usr/ var/
+
+11) cp emlog-0.40-2.4.18.* $PWL/packages/Kernel_Custom/
+
+
+Now you can do like you did for the kernel, and just go select the new 
+emlog package (don't forget to deselect the old kernel-2.2.17 one!) to 
+get the module installed.  You still need to deploy your own 
+'rc.modules' script to actually "insmod emlog" on boot.
+
+NOTE: you *must* build the modutils and use that insmod to load emlog.o 
+-- I found that trying to use the 'old' one symlinked to busybox didn't 
+work due to unresolved dependancies.
+
+The only other real custom thing with the supporting packages was the 
+ppp device; you need to make sure you "mknod ppp c 108 0" in a dev/ tree 
+and add that to your ppp-2.4.1.list packaging.  This is buried in some 
+doc somewhere that I found.
+
+Errors, omissions, etc - please feel free to correct and enhance.  I've 
+replaced and rebuilt and customized so much, I'm not sure what I could 
+have missed here.... (eg, lots of crap to suppport Unix98 ptys so telnet 
+logins work)
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Thu Jun  6 22:27:22 2002
+From: peeweelinux@adis.on.ca (K West)
+Date: Thu, 06 Jun 2002 16:27:22 -0500
+Subject: [Peeweelinux] DiskOnChip Boot Problems
+Message-ID: <F252k38dWMJ69ik6kvX0001b160@hotmail.com>
+
+For anyone that may be interested, I answered my own question.  The problem 
+is the sfdisk command in the PeeWee script pwl_target_load.  The sfdisk 
+command attempts to create a partition on the DiskOnChip (DOC) but it 
+corrupts the partition table (I think) and renders it unbootable instead.
+
+Be advised that the PeeWee documentation that suggests that all you have to 
+do is get the DOC to mount on your development system and PeeWee will do the 
+rest is incorrect.  Several script mods are required.
+
+>
+>
+>I have a PWL file system built and working on a CompactFLASH device.  > I 
+>am now trying to move to a DiskOnChip (DOC) device.
+>
+>I used the latest driver from M-Systems (5.04) and have it working fine on 
+>my development system.  I can mount the DOC and PeeWee can build the 
+>filesystem on it just like it does on the CFLASH.  The problem occurs when 
+>I reboot.  The system displays 'dLIL' and stops.
+>
+>I've read the 'Bootdisk HOWTO' which indicates that LILO may have a problem 
+>with the system map file.  If this is true, I haven't figured out how to 
+>correct the problem.
+>
+>Has anyone else had this experience and managed to solve the problem.
+>
+>Any suggestions would be appreciated.
+
+
+_________________________________________________________________
+Send and receive Hotmail on your mobile device: http://mobile.msn.com
+
+
+From peeweelinux@adis.on.ca  Fri Jun  7 10:08:56 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Fri, 7 Jun 2002 11:08:56 +0200
+Subject: [Peeweelinux] autostart
+Message-ID: <C1256BD1.00327D66.00@vzmta01.netfr.alcatel.fr>
+
+
+Hi all,
+
+Here is a very easy question : I don't know much about Linux :-(.
+
+I would like to run a short script at the boot of PeeWee (example : loadkmap <
+azerty.map, run my soft, etc ...)
+
+I think that juste like in every Linux, I have to add some lines in a special
+file. But what is this file ?
+
+Thank you.
+
+Guillaume PREVOST
+
+
+
+
+
+From peeweelinux@adis.on.ca  Fri Jun  7 14:15:58 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Fri, 07 Jun 2002 09:15:58 -0400
+Subject: [Peeweelinux] autostart
+Message-ID: <sd0079dd.006@qatech.com>
+
+Hi Guillaume,
+
+I have added my stuff to the end of the /etc/rc.sysinit script. In my case I load modules for RTLinux RTOS, but you could launch any programs or scripts. These are launched as root, so just be aware of any security issues. To modify the rc.sysinit you need to go to the project folder under peewee and then into a folder called "custom" Then do this:
+
+mkdir etc
+cp ../mnt/etc/rc.sysinit  ./etc
+
+
+then you can edit your custom/etc/rc.sysinit file and it will be copied to your target.
+
+hope this helps,
+
+~Ken 
+
+
+From peeweelinux@adis.on.ca  Fri Jun  7 15:10:14 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Fri, 7 Jun 2002 16:10:14 +0200
+Subject: [Peeweelinux] autostart
+Message-ID: <C1256BD1.00512422.00@vzmta01.netfr.alcatel.fr>
+
+--0__=KNVs8UvzEIetfZHrOd5CXh87a1xJOaNt8LLbJXbIqW4xpxRQHLXptOEm
+Content-type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-transfer-encoding: quoted-printable
+
+
+
+
+Thank you Ken for those detailed information. I will try your solution =
+which
+seems to fulfil my dreams.
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+"Ken Emmons, Jr." <KEN@qatech.com> on 07/06/2002 15:15:58
+
+Veuillez r=E9pondre =E0 peeweelinux@adis.on.ca
+
+Pour :    peeweelinux@adis.on.ca
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] autostart
+
+
+=
+
+--0__=KNVs8UvzEIetfZHrOd5CXh87a1xJOaNt8LLbJXbIqW4xpxRQHLXptOEm
+Content-type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+Hi Guillaume,
+
+I have added my stuff to the end of the /etc/rc.sysinit script. In my case I
+load modules for RTLinux RTOS, but you could launch any programs or scripts.
+These are launched as root, so just be aware of any security issues. To modify
+the rc.sysinit you need to go to the project folder under peewee and then into a
+folder called "custom" Then do this:
+
+mkdir etc
+cp ../mnt/etc/rc.sysinit  ./etc
+
+
+then you can edit your custom/etc/rc.sysinit file and it will be copied to your
+target.
+
+hope this helps,
+
+~Ken
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+
+
+
+
+
+
+
+
+--0__=KNVs8UvzEIetfZHrOd5CXh87a1xJOaNt8LLbJXbIqW4xpxRQHLXptOEm--
+
+
+From peeweelinux@adis.on.ca  Fri Jun  7 15:57:52 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Fri, 7 Jun 2002 09:57:52 -0500
+Subject: [Peeweelinux] autostart
+Message-ID: <288CE32ECA452B4A95748FF0BCAD29E6020C7D82@AUSXMPC103.aus.amer.dell.com>
+
+Please remove me from your email chain.  I have no idea what is being
+discussed - I am not part of your company/group.
+
+Thanks,
+Randy Howard
+Dell Professional Services
+Qualifying Services Consultant, MCSE/DBA W2K
+Tel:  1.512.724.1249
+Fax: 1.512.283.1249
+Randy_Howard@dell.com
+
+
+
+
+
+-----Original Message-----
+From: Guillaume.Prevost@space.alcatel.fr
+[mailto:Guillaume.Prevost@space.alcatel.fr]
+Sent: Friday, June 07, 2002 9:10 AM
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] autostart
+
+
+
+
+
+Thank you Ken for those detailed information. I will try your solution which
+seems to fulfil my dreams.
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+"Ken Emmons, Jr." <KEN@qatech.com> on 07/06/2002 15:15:58
+
+Veuillez répondre à peeweelinux@adis.on.ca
+
+Pour :    peeweelinux@adis.on.ca
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] autostart
+
+
+
+From peeweelinux@adis.on.ca  Fri Jun  7 16:39:48 2002
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Fri, 07 Jun 2002 16:39:48 +0100
+Subject: [Peeweelinux] Ethernet over USB
+Message-ID: <3D00D3C4.C3268D36@h2eye.com>
+
+
+Hi,
+
+I would like to know whether anybody has got ethernet working over USB with 
+PWL. I have been using PWL for a while now in a standalone unit running 
+from compact flash. I was using 2.2.19. Now I need to get USB support, and
+usbnet working on it, and I'd like to know whether PWL will support that,
+and what to include in the project. 
+While I am carrying out my own tests, if somebody out there has done it, 
+it would be great to get some help. Ultimately, I need to set up an ftp
+and/or http server over the USB connection. Hence, if somebody has some
+pointers on how to do that, it would be great also.
+I am still running 0.53, but I guess I will be downloading 0.61 soon.
+
+Thanks in advance,
+
+Jaime
+
+
+From peeweelinux@adis.on.ca  Fri Jun  7 17:23:38 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Fri, 07 Jun 2002 12:23:38 -0400
+Subject: [Peeweelinux] Ethernet over USB
+Message-ID: <sd00a5ed.094@qatech.com>
+
+HEllo Jaime,
+
+I have never done ethernet over USB, but I would imagine that an adapter that is supported by the 2.4 kernel would work for you. You can build your own custom kernel with Peewee and copy it to the custom/boot folder of your project. it has to be named /boot/bzImage to work witht he default pwl build. 
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Fri Jun  7 17:27:35 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Fri, 07 Jun 2002 09:27:35 -0700
+Subject: [Peeweelinux] autostart
+References: <C1256BD1.00512422.00@vzmta01.netfr.alcatel.fr>
+Message-ID: <3D00DEF7.2030904@fluid.com>
+
+Guillaume,
+
+If you've built your PWL with "SysV support" (most likely you have), 
+then the easiest (and more correct) thing to do is create a script that 
+lives in /etc/rcS.d/ directory (eg, "90mystuff").
+
+On boot, the subsystem walks through this directory and executes all 
+scripts in order numerically, lowest to highest.  The problem with 
+rc.sysinit is that it's executed before any /etc/rcS.d/ scripts, which 
+may adversely affect your application.
+
+It's then easy to do a Custom File Add on your initscript and keep it 
+seperate from the core PWL stuff.  I note, though, that loading modules 
+should take place in /etc/rc.modules, which is sourced by rc.sysinit if 
+it exists.
+
+-te
+
+Guillaume.Prevost@space.alcatel.fr wrote:
+> 
+> 
+> Thank you Ken for those detailed information. I will try your solution which
+> seems to fulfil my dreams.
+> 
+> 
+> Guillaume PREVOST
+> 
+> 
+> 
+> 
+> 
+> 
+> "Ken Emmons, Jr." <KEN@qatech.com> on 07/06/2002 15:15:58
+> 
+> Veuillez répondre à peeweelinux@adis.on.ca
+> 
+> Pour :    peeweelinux@adis.on.ca
+> cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+> Objet :   Re: [Peeweelinux] autostart
+> 
+> 
+> 
+> 
+> ------------------------------------------------------------------------
+> 
+> 
+> Hi Guillaume,
+> 
+> I have added my stuff to the end of the /etc/rc.sysinit script. In my case I
+> load modules for RTLinux RTOS, but you could launch any programs or scripts.
+> These are launched as root, so just be aware of any security issues. To modify
+> the rc.sysinit you need to go to the project folder under peewee and then into a
+> folder called "custom" Then do this:
+> 
+> mkdir etc
+> cp ../mnt/etc/rc.sysinit  ./etc
+> 
+> 
+> then you can edit your custom/etc/rc.sysinit file and it will be copied to your
+> target.
+> 
+> hope this helps,
+> 
+> ~Ken
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+> 
+
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Fri Jun  7 17:27:53 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Fri, 7 Jun 2002 11:27:53 -0500
+Subject: [Peeweelinux] Ethernet over USB
+Message-ID: <288CE32ECA452B4A95748FF0BCAD29E6020C7D8D@AUSXMPC103.aus.amer.dell.com>
+
+PLEASE remove me from this email
+chain!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+Randy Howard
+
+-----Original Message-----
+From: Ken Emmons, Jr. [mailto:KEN@qatech.com]
+Sent: Friday, June 07, 2002 11:24 AM
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] Ethernet over USB
+
+
+HEllo Jaime,
+
+I have never done ethernet over USB, but I would imagine that an adapter
+that is supported by the 2.4 kernel would work for you. You can build your
+own custom kernel with Peewee and copy it to the custom/boot folder of your
+project. it has to be named /boot/bzImage to work witht he default pwl
+build. 
+
+~Ken
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+From peeweelinux@adis.on.ca  Fri Jun  7 17:40:55 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Fri, 07 Jun 2002 12:40:55 -0400
+Subject: [Peeweelinux] autostart
+Message-ID: <sd00a9e9.096@qatech.com>
+
+Thanks Troy,
+
+I will update my scripts. I try to stay in touch with the most correct way but it seems my ignorance has gotten the better of me.
+
+:o)
+
+thanks,
+~Ken
+
+
+From peeweelinux@adis.on.ca  Fri Jun  7 17:52:43 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Fri, 07 Jun 2002 09:52:43 -0700
+Subject: [Peeweelinux] autostart
+References: <sd00a9e9.096@qatech.com>
+Message-ID: <3D00E4DB.1090301@fluid.com>
+
+Hi!
+
+Well, 'correct' is always a subjective thing. ;)  My way is only valid 
+for a SysV style setup (which RedHat is); if you've built a BSD style 
+setup then files like /etc/rc.sysinit, /etc/rc.local, and so on are the 
+more correct way.
+
+Yeesh, as always 800million ways to do the same thing...
+-te
+
+Ken Emmons, Jr. wrote:
+> Thanks Troy,
+> 
+> I will update my scripts. I try to stay in touch with the most correct way but it seems my ignorance has gotten the better of me.
+> 
+> :o)
+> 
+> thanks,
+> ~Ken
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Mon Jun 10 10:56:18 2002
+From: peeweelinux@adis.on.ca (Thanomsak Liumsuwan)
+Date: Mon, 10 Jun 2002 02:56:18 -0700 (PDT)
+Subject: [Peeweelinux] no bzImage in kernel-full-2.2.17 packges
+Message-ID: <20020610095618.44169.qmail@web10106.mail.yahoo.com>
+
+but do exist in  kernel minimum packages , where can I
+d/l this full packages ?
+
+Thanks
+
+Thanomsak Liumsuwan
+Bangkok , Thailand
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! - Official partner of 2002 FIFA World Cup
+http://fifaworldcup.yahoo.com
+
+From peeweelinux@adis.on.ca  Mon Jun 10 12:00:00 2002
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Mon, 10 Jun 2002 12:00:00 +0100
+Subject: [Peeweelinux] no bzImage in kernel-full-2.2.17 packges
+References: <20020610095618.44169.qmail@web10106.mail.yahoo.com>
+Message-ID: <3D0486B0.BBD64B92@h2eye.com>
+
+
+I had the same problem. Seems to be down to the kernel image
+being called bzImage-Full instead of what the script expects, 
+i.e., bzImage.
+You can extract your file system, and then manually change
+the name (in_your_project_dir/mnt/boot). Then copy it 
+onto your target and it should work. It did for me.
+
+Jaime
+
+
+Thanomsak Liumsuwan wrote:
+> 
+> but do exist in  kernel minimum packages , where can I
+> d/l this full packages ?
+> 
+> Thanks
+> 
+> Thanomsak Liumsuwan
+> Bangkok , Thailand
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Yahoo! - Official partner of 2002 FIFA World Cup
+> http://fifaworldcup.yahoo.com
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Mon Jun 10 16:38:16 2002
+From: peeweelinux@adis.on.ca (Thanomsak Liumsuwan)
+Date: Mon, 10 Jun 2002 08:38:16 -0700 (PDT)
+Subject: [Peeweelinux] no bzImage in kernel-full-2.2.17 packges
+In-Reply-To: <3D0486B0.BBD64B92@h2eye.com>
+Message-ID: <20020610153816.42782.qmail@web10101.mail.yahoo.com>
+
+Yes , It's should be bzImage-full , thanks for advise
+, I've changed name in config target menu
+
+
+--- "Dr Jaime V. Miro" <j.v.miro@h2eye.com> wrote:
+> 
+> 
+> I had the same problem. Seems to be down to the
+> kernel image
+> being called bzImage-Full instead of what the script
+> expects, 
+> i.e., bzImage.
+> You can extract your file system, and then manually
+> change
+> the name (in_your_project_dir/mnt/boot). Then copy
+> it 
+> onto your target and it should work. It did for me.
+> 
+> Jaime
+> 
+> 
+> Thanomsak Liumsuwan wrote:
+> > 
+> > but do exist in  kernel minimum packages , where
+> can I
+> > d/l this full packages ?
+> > 
+> > Thanks
+> > 
+> > Thanomsak Liumsuwan
+> > Bangkok , Thailand
+> > 
+> > __________________________________________________
+> > Do You Yahoo!?
+> > Yahoo! - Official partner of 2002 FIFA World Cup
+> > http://fifaworldcup.yahoo.com
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! - Official partner of 2002 FIFA World Cup
+http://fifaworldcup.yahoo.com
+
+From peeweelinux@adis.on.ca  Tue Jun 11 09:25:16 2002
+From: peeweelinux@adis.on.ca (Justin Fretwell)
+Date: Tue, 11 Jun 2002 09:25:16 +0100
+Subject: [Peeweelinux] adding the message in lilo howto?
+In-Reply-To: <200206101702.g5AH2A319573@yoda.adis.on.ca>
+References: <200206101702.g5AH2A319573@yoda.adis.on.ca>
+Message-ID: <200206110821.IAA13435@hamster.akhter.com>
+
+I wish i had known that a couple of months ago.  as it is i am using 2.4.18 
+now.
+
+i have a question:  i want to display a logo using the message option in 
+lilo, how can i do this, obviously this field doesnt exist in the setup, so 
+where can i add it manually?
+
+thanks
+justin
+
+On Monday 10 Jun 2002 6:02 pm, you wrote:
+> Send Peeweelinux mailing list submissions to
+> 	peeweelinux@adis.on.ca
+>
+> To subscribe or unsubscribe via the World Wide Web, visit
+> 	http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> or, via email, send a message with subject or body 'help' to
+> 	peeweelinux-request@adis.on.ca
+>
+> You can reach the person managing the list at
+> 	peeweelinux-admin@adis.on.ca
+>
+> When replying, please edit your Subject line so it is more specific
+> than "Re: Contents of Peeweelinux digest..."
+>
+>
+> Today's Topics:
+>
+>    1. no bzImage in kernel-full-2.2.17 packges (Thanomsak Liumsuwan)
+>    2. Re: no bzImage in kernel-full-2.2.17 packges (Dr Jaime V. Miro)
+>    3. Re: no bzImage in kernel-full-2.2.17 packges (Thanomsak Liumsuwan)
+>
+> --__--__--
+>
+> Message: 1
+> Date: Mon, 10 Jun 2002 02:56:18 -0700 (PDT)
+> From: Thanomsak Liumsuwan <thanomsk@yahoo.com>
+> To: peeweelinux@adis.on.ca
+> Subject: [Peeweelinux] no bzImage in kernel-full-2.2.17 packges
+> Reply-To: peeweelinux@adis.on.ca
+>
+> but do exist in  kernel minimum packages , where can I
+> d/l this full packages ?
+>
+> Thanks
+>
+> Thanomsak Liumsuwan
+> Bangkok , Thailand
+>
+> __________________________________________________
+> Do You Yahoo!?
+> Yahoo! - Official partner of 2002 FIFA World Cup
+> http://fifaworldcup.yahoo.com
+>
+> --__--__--
+>
+> Message: 2
+> Date: Mon, 10 Jun 2002 12:00:00 +0100
+> From: "Dr Jaime V. Miro" <j.v.miro@h2eye.com>
+> Organization: H2eye Ltd
+> To: peeweelinux@adis.on.ca, thanomsk@yahoo.com
+> Subject: Re: [Peeweelinux] no bzImage in kernel-full-2.2.17 packges
+> Reply-To: peeweelinux@adis.on.ca
+>
+>
+>
+> I had the same problem. Seems to be down to the kernel image
+> being called bzImage-Full instead of what the script expects,
+> i.e., bzImage.
+> You can extract your file system, and then manually change
+> the name (in_your_project_dir/mnt/boot). Then copy it
+> onto your target and it should work. It did for me.
+>
+> Jaime
+>
+> Thanomsak Liumsuwan wrote:
+> > but do exist in  kernel minimum packages , where can I
+> > d/l this full packages ?
+> >
+> > Thanks
+> >
+> > Thanomsak Liumsuwan
+> > Bangkok , Thailand
+> >
+> > __________________________________________________
+> > Do You Yahoo!?
+> > Yahoo! - Official partner of 2002 FIFA World Cup
+> > http://fifaworldcup.yahoo.com
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> --__--__--
+>
+> Message: 3
+> Date: Mon, 10 Jun 2002 08:38:16 -0700 (PDT)
+> From: Thanomsak Liumsuwan <thanomsk@yahoo.com>
+> Subject: Re: [Peeweelinux] no bzImage in kernel-full-2.2.17 packges
+> To: peeweelinux@adis.on.ca
+> Reply-To: peeweelinux@adis.on.ca
+>
+> Yes , It's should be bzImage-full , thanks for advise
+> , I've changed name in config target menu
+>
+> --- "Dr Jaime V. Miro" <j.v.miro@h2eye.com> wrote:
+> > I had the same problem. Seems to be down to the
+> > kernel image
+> > being called bzImage-Full instead of what the script
+> > expects,
+> > i.e., bzImage.
+> > You can extract your file system, and then manually
+> > change
+> > the name (in_your_project_dir/mnt/boot). Then copy
+> > it
+> > onto your target and it should work. It did for me.
+> >
+> > Jaime
+> >
+> > Thanomsak Liumsuwan wrote:
+> > > but do exist in  kernel minimum packages , where
+> >
+> > can I
+> >
+> > > d/l this full packages ?
+> > >
+> > > Thanks
+> > >
+> > > Thanomsak Liumsuwan
+> > > Bangkok , Thailand
+> > >
+> > > __________________________________________________
+> > > Do You Yahoo!?
+> > > Yahoo! - Official partner of 2002 FIFA World Cup
+> > > http://fifaworldcup.yahoo.com
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> __________________________________________________
+> Do You Yahoo!?
+> Yahoo! - Official partner of 2002 FIFA World Cup
+> http://fifaworldcup.yahoo.com
+>
+>
+> --__--__--
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+> End of Peeweelinux Digest
+
+From peeweelinux@adis.on.ca  Tue Jun 11 14:31:47 2002
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Tue, 11 Jun 2002 14:31:47 +0100
+Subject: [Peeweelinux] ftp server
+References: <sd00a9e9.096@qatech.com> <3D00E4DB.1090301@fluid.com>
+Message-ID: <3D05FBC3.C9C33736@h2eye.com>
+
+
+hi,
+
+I am running pwl-0.61.1. I've generated a project with everything except X stuff. 
+However, there is no ftpd (although the entry is there in inetd.conf). An entry 
+in the mailing list from Dec'01 claims that there should be an ftpd bundled with 
+PWL, but I can't find it. inetd.conf points to /usr/sbin/ftpd, and that is 
+definitely not there. I can't find it in the obvious places in the pwl web page. 
+Any pointers?
+
+(I've also tried some of the RPM's in http://adis.on.ca/pub/Projects/MyRPMS/, but 
+my rpm - RH6.1 - always complains that these packages have a major version > 3 
+I can't read them, so I don't know whether it's true or my RPM is playing up. ???
+
+
+Thanks
+
+
+Jaime
+
+
+From peeweelinux@adis.on.ca  Tue Jun 11 16:02:23 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 11 Jun 2002 10:02:23 -0500 (CDT)
+Subject: [Peeweelinux] ftp server
+In-Reply-To: <3D05FBC3.C9C33736@h2eye.com>
+Message-ID: <Pine.LNX.4.33.0206111001500.16249-100000@adibox.knet.ca>
+
+Hi,
+
+The netkit-ftp package contains the ftp server and client. Another client 
+is available in the ncftp package...
+
+Adi
+
+
+On Tue, 11 Jun 2002, Dr Jaime V. Miro wrote:
+
+> 
+> 
+> hi,
+> 
+> I am running pwl-0.61.1. I've generated a project with everything except X stuff. 
+> However, there is no ftpd (although the entry is there in inetd.conf). An entry 
+> in the mailing list from Dec'01 claims that there should be an ftpd bundled with 
+> PWL, but I can't find it. inetd.conf points to /usr/sbin/ftpd, and that is 
+> definitely not there. I can't find it in the obvious places in the pwl web page. 
+> Any pointers?
+> 
+> (I've also tried some of the RPM's in http://adis.on.ca/pub/Projects/MyRPMS/, but 
+> my rpm - RH6.1 - always complains that these packages have a major version > 3 
+> I can't read them, so I don't know whether it's true or my RPM is playing up. ???
+> 
+> 
+> Thanks
+> 
+> 
+> Jaime
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Tue Jun 11 23:10:28 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Wed, 12 Jun 2002 08:10:28 +1000
+Subject: [Peeweelinux] ftp server
+Message-ID: <OF3940BD4A.B0ED34CE-ON4A256BD5.0078F62F@juptech.com>
+
+Hi Adi,
+
+I have checked my 0.61 binary download of peewee, and the netkit-ftp rpm
+contained within only has an ftp client (/usr/bin/ftp), the daemon doesn't
+seem to be present.
+
+I am using my own (severely mangled to allow it to work :) 'version' of
+wu-ftpd at the moment - but I would prefer to use the peewee daemon if it
+is available.
+(that way I don't have to kludge up pam stuff)
+
+Kind regards,
+Delaney.
+
+
+
+
+
+
+
+                                                                                                                        
+                    Adi Linden                                                                                          
+                    <adi@adis.on.ca>          To:     "Dr Jaime V. Miro" <j.v.miro@h2eye.com>                           
+                    Sent by:                  cc:     <peeweelinux@adis.on.ca>                                          
+                    peeweelinux-admin@          Subject:   Re: [Peeweelinux] ftp server                                 
+                    adis.on.ca                                                                                          
+                                             Project:                                                                   
+                                                                                                                        
+                    12/06/2002 01:02                                                                                    
+                    AM                                                                                                  
+                    Please respond to                                                                                   
+                    peeweelinux                                                                                         
+                                                                                                                        
+                                                                                                                        
+
+
+
+
+Hi,
+
+The netkit-ftp package contains the ftp server and client. Another client
+is available in the ncftp package...
+
+Adi
+
+
+On Tue, 11 Jun 2002, Dr Jaime V. Miro wrote:
+
+>
+>
+> hi,
+>
+> I am running pwl-0.61.1. I've generated a project with everything except
+X stuff.
+> However, there is no ftpd (although the entry is there in inetd.conf). An
+entry
+> in the mailing list from Dec'01 claims that there should be an ftpd
+bundled with
+> PWL, but I can't find it. inetd.conf points to /usr/sbin/ftpd, and that
+is
+> definitely not there. I can't find it in the obvious places in the pwl
+web page.
+> Any pointers?
+>
+> (I've also tried some of the RPM's in
+http://adis.on.ca/pub/Projects/MyRPMS/, but
+> my rpm - RH6.1 - always complains that these packages have a major
+version > 3
+> I can't read them, so I don't know whether it's true or my RPM is playing
+up. ???
+>
+>
+> Thanks
+>
+>
+> Jaime
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+
+*********************************************************************
+This email message (and attachments) may contain information 
+that is confidential to Jupiters Technology. If you are not the 
+intended recipient you cannot use, distribute or copy the message 
+or attachments. In such a case, please notify the sender by return 
+email immediately and erase all copies of the message and 
+attachments. Opinions, conclusions and other information in this 
+message and attachments that do not relate to the official business 
+of Jupiters Technology are neither given nor endorsed by it.
+*********************************************************************
+
+
+From peeweelinux@adis.on.ca  Wed Jun 12 09:06:07 2002
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Wed, 12 Jun 2002 09:06:07 +0100
+Subject: [Peeweelinux] ftp server
+References: <Pine.LNX.4.33.0206111001500.16249-100000@adibox.knet.ca>
+Message-ID: <3D0700EF.9864FEBC@h2eye.com>
+
+
+
+
+Hi Adi,
+
+I am sorry, but I can't see it there. It was the first obvious place to look for 
+it, but that is only the client /usr/bin/ftp. I have re-extracted the binary RPM 
+that came with 0.61.1 to the PWL binary package again, and it is the same. I have
+also downloaded the netkit-ftp-0.10-1.i386.rpm from your web page, and it is the 
+same: only the client. (as well as the ncftp)
+
+J.
+
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> The netkit-ftp package contains the ftp server and client. Another client
+> is available in the ncftp package...
+> 
+> Adi
+> 
+> On Tue, 11 Jun 2002, Dr Jaime V. Miro wrote:
+> 
+> >
+> >
+> > hi,
+> >
+> > I am running pwl-0.61.1. I've generated a project with everything except X stuff.
+> > However, there is no ftpd (although the entry is there in inetd.conf). An entry
+> > in the mailing list from Dec'01 claims that there should be an ftpd bundled with
+> > PWL, but I can't find it. inetd.conf points to /usr/sbin/ftpd, and that is
+> > definitely not there. I can't find it in the obvious places in the pwl web page.
+> > Any pointers?
+> >
+> > (I've also tried some of the RPM's in http://adis.on.ca/pub/Projects/MyRPMS/, but
+> > my rpm - RH6.1 - always complains that these packages have a major version > 3
+> > I can't read them, so I don't know whether it's true or my RPM is playing up. ???
+> >
+> >
+> > Thanks
+> >
+> >
+> > Jaime
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+
+
+From peeweelinux@adis.on.ca  Wed Jun 12 09:21:17 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Wed, 12 Jun 2002 10:21:17 +0200
+Subject: [Peeweelinux] autostart
+Message-ID: <C1256BD6.002DD868.00@vzmta01.netfr.alcatel.fr>
+
+
+Hi,
+
+Thank you for your solution, Troy, it works fine !
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+Troy Engel <tengel@fluid.com> on 07/06/2002 18:27:35
+
+Veuillez répondre à peeweelinux@adis.on.ca
+
+Pour :    peeweelinux@adis.on.ca
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] autostart
+
+
+
+Guillaume,
+
+If you've built your PWL with "SysV support" (most likely you have),
+then the easiest (and more correct) thing to do is create a script that
+lives in /etc/rcS.d/ directory (eg, "90mystuff").
+
+On boot, the subsystem walks through this directory and executes all
+scripts in order numerically, lowest to highest.  The problem with
+rc.sysinit is that it's executed before any /etc/rcS.d/ scripts, which
+may adversely affect your application.
+
+It's then easy to do a Custom File Add on your initscript and keep it
+seperate from the core PWL stuff.  I note, though, that loading modules
+should take place in /etc/rc.modules, which is sourced by rc.sysinit if
+it exists.
+
+-te
+
+Guillaume.Prevost@space.alcatel.fr wrote:
+>
+>
+> Thank you Ken for those detailed information. I will try your solution which
+> seems to fulfil my dreams.
+>
+>
+> Guillaume PREVOST
+>
+>
+>
+>
+>
+>
+> "Ken Emmons, Jr." <KEN@qatech.com> on 07/06/2002 15:15:58
+>
+> Veuillez répondre à peeweelinux@adis.on.ca
+>
+> Pour :    peeweelinux@adis.on.ca
+> cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+> Objet :   Re: [Peeweelinux] autostart
+>
+>
+>
+>
+> ------------------------------------------------------------------------
+>
+>
+> Hi Guillaume,
+>
+> I have added my stuff to the end of the /etc/rc.sysinit script. In my case I
+> load modules for RTLinux RTOS, but you could launch any programs or scripts.
+> These are launched as root, so just be aware of any security issues. To modify
+> the rc.sysinit you need to go to the project folder under peewee and then into
+a
+> folder called "custom" Then do this:
+>
+> mkdir etc
+> cp ../mnt/etc/rc.sysinit  ./etc
+>
+>
+> then you can edit your custom/etc/rc.sysinit file and it will be copied to
+your
+> target.
+>
+> hope this helps,
+>
+> ~Ken
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+>
+
+
+--
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+
+
+
+
+
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Jun 13 23:25:08 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 13 Jun 2002 23:25:08 +0100
+Subject: [Peeweelinux] peewee version on the server
+Message-ID: <000101c21384$c3d481d0$0201a8c0@ricardo>
+
+Hi,
+
+	Yesterday I downloaded the mailing list archive and read through it. I
+understood that peewee doesn't use CVS, and instead the latest version is
+available from a server.
+
+	Is the version currently available the latest release, or has work been
+done on it that hasn't been released ? should I upgrade with rsync ?
+
+thanks
+Ricardo Trindade
+
+
+From peeweelinux@adis.on.ca  Fri Jun 14 01:37:48 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Fri, 14 Jun 2002 01:37:48 +0100
+Subject: [Peeweelinux] problems with "read only root with multiple ramdisks" target
+Message-ID: <000201c21384$c58b0b70$0201a8c0@ricardo>
+
+Hi,
+
+	I'm having a problem with the "read only root with multiple ramdisks". The
+size of one of the partitions it creates is being miscalculated (I think),
+because one it tries to copy the files there, it runs out of disk space.
+
+	I'm also going to need an extra (4th ?) parition, that will be read-write.
+any ideas on how to configure this ?
+
+thanks
+Ricardo Trindade
+
+
+From peeweelinux@adis.on.ca  Fri Jun 14 14:05:24 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Fri, 14 Jun 2002 09:05:24 -0400
+Subject: [Peeweelinux] problems with "read only root with multiple
+ ramdisks" target
+Message-ID: <sd09b1ec.068@qatech.com>
+
+Hello,
+
+I have had a problem with read only with multiple RAM disks also. I had to modify one of the scripts and have it reserve an extra chunk of disk for my installation. I couldn't figure out why it was miscalculating the size that the disk needs.
+
+~Ken
+
+
+
+
+From peeweelinux@adis.on.ca  Mon Jun 17 10:32:40 2002
+From: peeweelinux@adis.on.ca (Justin Fretwell)
+Date: Mon, 17 Jun 2002 10:32:40 +0100
+Subject: [Peeweelinux] problems with "read only root with multiple ramdisks"
+In-Reply-To: <200206141701.g5EH1I320500@yoda.adis.on.ca>
+References: <200206141701.g5EH1I320500@yoda.adis.on.ca>
+Message-ID: <200206170931.JAA11164@hamster.akhter.com>
+
+I trust you have added the correct sizes in the configure target hardware at 
+the bottom?
+
+>
+> --__--__--
+>
+> Message: 2
+> From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> To: <peeweelinux@adis.on.ca>
+> Date: Fri, 14 Jun 2002 01:37:48 +0100
+> Subject: [Peeweelinux] problems with "read only root with multiple
+> ramdisks" target Reply-To: peeweelinux@adis.on.ca
+>
+> Hi,
+>
+> 	I'm having a problem with the "read only root with multiple ramdisks". The
+> size of one of the partitions it creates is being miscalculated (I think),
+> because one it tries to copy the files there, it runs out of disk space.
+>
+> 	I'm also going to need an extra (4th ?) parition, that will be read-write.
+> any ideas on how to configure this ?
+>
+> thanks
+> Ricardo Trindade
+>
+>
+> --__--__--
+>
+> Message: 3
+> Date: Fri, 14 Jun 2002 09:05:24 -0400
+> From: "Ken Emmons, Jr." <KEN@qatech.com>
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] problems with "read only root with multiple
+> 	ramdisks" target
+> Reply-To: peeweelinux@adis.on.ca
+>
+> Hello,
+>
+> I have had a problem with read only with multiple RAM disks also. I had to
+> modify one of the scripts and have it reserve an extra chunk of disk for my
+> installation. I couldn't figure out why it was miscalculating the size that
+> the disk needs.
+>
+> ~Ken
+>
+>
+>
+>
+>
+> --__--__--
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+> End of Peeweelinux Digest
+
+From peeweelinux@adis.on.ca  Mon Jun 17 11:39:37 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Mon, 17 Jun 2002 11:39:37 +0100
+Subject: [Peeweelinux] problems with "read only root with multiple ramdisks"
+In-Reply-To: <200206170931.JAA11164@hamster.akhter.com>
+Message-ID: <000301c215eb$47d84990$0201a8c0@ricardo>
+
+no, from what I saw in the scripts and other targets I assumed they were
+calculated automatically. where can I set them ?
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Justin Fretwell
+Sent: segunda-feira, 17 de Junho de 2002 10:33
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] problems with "read only root with multiple
+ramdisks"
+
+
+I trust you have added the correct sizes in the configure target hardware at
+the bottom?
+
+>
+> --__--__--
+>
+> Message: 2
+> From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+> To: <peeweelinux@adis.on.ca>
+> Date: Fri, 14 Jun 2002 01:37:48 +0100
+> Subject: [Peeweelinux] problems with "read only root with multiple
+> ramdisks" target Reply-To: peeweelinux@adis.on.ca
+>
+> Hi,
+>
+> 	I'm having a problem with the "read only root with multiple ramdisks".
+The
+> size of one of the partitions it creates is being miscalculated (I think),
+> because one it tries to copy the files there, it runs out of disk space.
+>
+> 	I'm also going to need an extra (4th ?) parition, that will be
+read-write.
+> any ideas on how to configure this ?
+>
+> thanks
+> Ricardo Trindade
+>
+>
+> --__--__--
+>
+> Message: 3
+> Date: Fri, 14 Jun 2002 09:05:24 -0400
+> From: "Ken Emmons, Jr." <KEN@qatech.com>
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] problems with "read only root with multiple
+> 	ramdisks" target
+> Reply-To: peeweelinux@adis.on.ca
+>
+> Hello,
+>
+> I have had a problem with read only with multiple RAM disks also. I had to
+> modify one of the scripts and have it reserve an extra chunk of disk for
+my
+> installation. I couldn't figure out why it was miscalculating the size
+that
+> the disk needs.
+>
+> ~Ken
+>
+>
+>
+>
+>
+> --__--__--
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+> End of Peeweelinux Digest
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Jun 19 10:10:57 2002
+From: peeweelinux@adis.on.ca (Thanomsak Liumsuwan)
+Date: Wed, 19 Jun 2002 02:10:57 -0700 (PDT)
+Subject: [Peeweelinux] How to start telnetd in PeeWee ????
+Message-ID: <20020619091057.4201.qmail@web10101.mail.yahoo.com>
+
+I've seen telnetd in pwlconfig , but how to start it
+on target machine ? 
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! - Official partner of 2002 FIFA World Cup
+http://fifaworldcup.yahoo.com
+
+From peeweelinux@adis.on.ca  Wed Jun 19 14:03:08 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Wed, 19 Jun 2002 09:03:08 -0400
+Subject: [Peeweelinux] How to start telnetd in PeeWee ????
+In-Reply-To: <20020619091057.4201.qmail@web10101.mail.yahoo.com>
+References: <20020619091057.4201.qmail@web10101.mail.yahoo.com>
+Message-ID: <200206190900187.SM02488@there>
+
+Thanomsak Liumsuwan wrote:
+> I've seen telnetd in pwlconfig , but how to start it
+> on target machine ?
+
+It should be started using "inetd" -- there should be a line in 
+/etc/inetd.conf like this:
+
+telnet	stream	tcp	nowait	root	/usr/sbin/telnetd	telnetd
+
+If I remember correctly, selecting Network->netkit-telnet and all the 
+packages under Network_Base should handle this automatically.
+
+
+
+From peeweelinux@adis.on.ca  Wed Jun 19 17:30:21 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Wed, 19 Jun 2002 09:30:21 -0700
+Subject: [Peeweelinux] How to start telnetd in PeeWee ????
+References: <20020619091057.4201.qmail@web10101.mail.yahoo.com> <200206190900187.SM02488@there>
+Message-ID: <3D10B19D.7010609@fluid.com>
+
+On my end, I wasn't able to get telnetd to allow logins until I:
+
+a) built a kernel with Unix98 PTY support
+b) create the device /dev/ptmx (mknod ptmx c 5 2)
+c) make the directory /dev/pts
+d) add "none /dev/pts devpts gid=5,mode=622 0 0" to /etc/fstab
+
+A was done as part of the kernel 2.4 (see my howto), B and C I edited 
+the various PWL packages and retar'd, for D I added a line to my custom 
+rc.modules like so:
+
+   # this is for telnetd to allocate ptys to allow login
+   echo "none /dev/pts devpts gid=5,mode=622 0 0" >> /etc/fstab
+
+So, your mileage may vary.  Hey, for those interested -- the rapid 
+protoype we built/fabbed and flew out the the client's site last week 
+(using PWL) was awesome; the client wants to sign a contract for us to 
+keep on rockin' and build the production models, etc. for them.
+
+Thanks PWL team!
+-te
+
+
+Mark Meade wrote:
+> Thanomsak Liumsuwan wrote:
+> 
+>>I've seen telnetd in pwlconfig , but how to start it
+>>on target machine ?
+> 
+> 
+> It should be started using "inetd" -- there should be a line in 
+> /etc/inetd.conf like this:
+> 
+> telnet	stream	tcp	nowait	root	/usr/sbin/telnetd	telnetd
+> 
+> If I remember correctly, selecting Network->netkit-telnet and all the 
+> packages under Network_Base should handle this automatically.
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+From peeweelinux@adis.on.ca  Wed Jun 19 17:53:02 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 19 Jun 2002 17:53:02 +0100
+Subject: [Peeweelinux] How to start telnetd in PeeWee ????
+In-Reply-To: <3D10B19D.7010609@fluid.com>
+Message-ID: <000701c217b1$c6c47810$0201a8c0@ricardo>
+
+telnetd worked fine for me, without any configuration , you just need to
+include the right packages (telnet-kit, I think)
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Troy Engel
+Sent: quarta-feira, 19 de Junho de 2002 17:30
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] How to start telnetd in PeeWee ????
+
+
+On my end, I wasn't able to get telnetd to allow logins until I:
+
+a) built a kernel with Unix98 PTY support
+b) create the device /dev/ptmx (mknod ptmx c 5 2)
+c) make the directory /dev/pts
+d) add "none /dev/pts devpts gid=5,mode=622 0 0" to /etc/fstab
+
+A was done as part of the kernel 2.4 (see my howto), B and C I edited
+the various PWL packages and retar'd, for D I added a line to my custom
+rc.modules like so:
+
+   # this is for telnetd to allocate ptys to allow login
+   echo "none /dev/pts devpts gid=5,mode=622 0 0" >> /etc/fstab
+
+So, your mileage may vary.  Hey, for those interested -- the rapid
+protoype we built/fabbed and flew out the the client's site last week
+(using PWL) was awesome; the client wants to sign a contract for us to
+keep on rockin' and build the production models, etc. for them.
+
+Thanks PWL team!
+-te
+
+
+Mark Meade wrote:
+> Thanomsak Liumsuwan wrote:
+>
+>>I've seen telnetd in pwlconfig , but how to start it
+>>on target machine ?
+>
+>
+> It should be started using "inetd" -- there should be a line in
+> /etc/inetd.conf like this:
+>
+> telnet	stream	tcp	nowait	root	/usr/sbin/telnetd	telnetd
+>
+> If I remember correctly, selecting Network->netkit-telnet and all the
+> packages under Network_Base should handle this automatically.
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+--
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Jun 21 09:28:32 2002
+From: peeweelinux@adis.on.ca (Jan De Geeter)
+Date: Fri, 21 Jun 2002 10:28:32 +0200
+Subject: [Peeweelinux] M-systems Disk-On-Chip installation instructions?
+Message-ID: <1179FFD5B43CD4118D220050042A54142C5821@www.krypton.be>
+
+Dear all, 
+
+I have been using Peewee Linux for some time now with an M-systems Disk On
+Module, with great satisfaction. Thanks to anyone who contributed to
+PeeweeLinux!
+
+Now, I would like to install PeeWeeLinux on an M-systems Disk-On-Chip. I am
+using redhat 7.2 with kernel version 2.4.2 as a development platform. The
+PeeWeeLinux kernel version I am using is 2.2.17. I have pwlconfig 0.61.
+
+Can anyone point me to an up-to-date instruction set on how to do this?
+
+I found some information in the mailing list archives which is a bit
+confusing and might be out of date.
+
+Thanks,
+
+Jan De Geeter
+
+ ____________________________________
+
+  Krypton n.v. - Industrial Metrology
+
+  Research Park Z1
+  Interleuvenlaan 86
+  B-3001 Leuven
+  Belgium
+
+  Tel: +32 (0)16 / 400.410
+  Fax: +32 (0)16 / 400.386
+  http://www.krypton.be
+  email: jan.degeeter@krypton.be
+ ______________________________________
+
+
+From peeweelinux@adis.on.ca  Fri Jun 21 14:22:15 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Fri, 21 Jun 2002 09:22:15 -0400
+Subject: [Peeweelinux] M-systems Disk-On-Chip installation instructions?
+In-Reply-To: <1179FFD5B43CD4118D220050042A54142C5821@www.krypton.be>
+References: <1179FFD5B43CD4118D220050042A54142C5821@www.krypton.be>
+Message-ID: <20020621092031.SM02488@there>
+
+Jan De Geeter wrote:
+> Now, I would like to install PeeWeeLinux on an M-systems Disk-On-Chip. I am
+> using redhat 7.2 with kernel version 2.4.2 as a development platform. The
+> PeeWeeLinux kernel version I am using is 2.2.17. I have pwlconfig 0.61.
+>
+> Can anyone point me to an up-to-date instruction set on how to do this?
+
+Hi Jan,
+
+My understanding of the DiskOnChip/Linux situation is that there are two ways 
+to accomplish this:
+
+1.  Use M-Systems "TrueFFS v5.0 for Linux (x86)", from www.m-sys.com.
+2.  Use the Memory Technology Device (MTD) Subsystem for Linux:
+
+	http://www.linux-mtd.infradead.org/
+	http://www.linux-mtd.infradead.org/doc2000.html
+
+It's been my experience that using the MTD option is much easier.  Also, the 
+M-Systems option is a binary-only driver, and can only be used as a loadable 
+module.  From their installation instructions:
+
+	This installation manual will guide through the process installing the
+	DiskOnChip TrueFFS driver for Linux as a loadubale module (GPL complient).
+
+	Note: Installing this driver as part of the Linux kernel is NOT GPL complient
+	and should only be used for testing or R&D purposes.
+
+In other words, you don't get the source code when using TrueFFS.  The MTD 
+source is part of the Linux kernel itself; you don't need to use "initrd" in 
+order to boot from the DoC.  
+
+Anyway, I typed up some instructions on using Peewee to configure a bootable 
+DoC, using MTD and a 2.4 kernel.  I'm not sure how things would work with a 
+2.2.17 kernel, but I believe there may be MTD patches available for 2.2. 
+kernels if needed.  For now, these instructions are at:
+
+	http://www.lakeshoremicro.com/peeweedoc.txt
+
+Additionally, if you decide to use a 2.4 kernel,  Troy Engel's kernel 2.4 
+mini-howto might help:
+
+	http://mail.adis.on.ca/pipermail/peeweelinux/2002-June/000608.html
+
+If your feeling adventurous, I also wrote up some instructions on using GRUB 
+(rather than LILO) to boot a DiskOnChip:
+
+	http://lists.infradead.org/pipermail/linux-mtd/2002-June/005240.html
+
+I hope this helps.
+
+Mark
+
+From peeweelinux@adis.on.ca  Fri Jun 21 23:26:30 2002
+From: peeweelinux@adis.on.ca (Oliver Ertl)
+Date: Sat, 22 Jun 2002 00:26:30 +0200 (CEST)
+Subject: [Peeweelinux] Adding packages
+Message-ID: <62810.80.128.149.9.1024698390.squirrel@oliver-ertl.de>
+
+Hi,
+
+I try to build a car mp3 player with Peewee. The target device a CF disk is
+booting the minimal example. This is working fine.
+
+Now, what are the steps to in include for example the MySQL database in the
+filesystem. I can get it as RPM or .tar.gz . Or how can I build RPM packages
+for Peewee ?
+
+
+Thanks for your help.
+
+Oliver
+
+
+
+From peeweelinux@adis.on.ca  Thu Jun 27 09:52:43 2002
+From: peeweelinux@adis.on.ca (Justin Fretwell)
+Date: Thu, 27 Jun 2002 09:52:43 +0100
+Subject: [Peeweelinux] perl program on peewee.
+In-Reply-To: <200206221701.g5MH1A320774@yoda.adis.on.ca>
+References: <200206221701.g5MH1A320774@yoda.adis.on.ca>
+Message-ID: <200206270850.IAA08376@hamster.akhter.com>
+
+Hi all,
+
+I am trying to get a perl script program (that uses Tk and a widget) working 
+using peewee.  The problem that I am having is this:
+
+
+a:  there is no perl libraries on peewee, so can i just use the content of 
+/usr/lib/perl5/5.6.1/i386-linux and hope that works? is there a small perl 
+distribution?
+
+b: will i have to do the same for Tk and the widget?
+
+c: i want to update the libs that peewee uses (i dont want to use the 2.1.3's 
+that come with peewee, i want to use 2.2.4's that come with redhat 7.2) and 
+addes to /lib and /lib/i686, where can i do this?
+
+any help appreciated.
+
+thanks
+Justin
+
+From peeweelinux@adis.on.ca  Thu Jun 27 14:35:50 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Thu, 27 Jun 2002 09:35:50 -0400
+Subject: [Peeweelinux] perl program on peewee.
+Message-ID: <sd1adc7c.043@qatech.com>
+
+HEllo
+
+I would also like to upgrade my glibc and also add GTK libs to my custom peewee. If I do this, will I have to rebuild all the packages in peewee by hand, or is glibc backwards compatable??
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Thu Jun 27 23:18:44 2002
+From: peeweelinux@adis.on.ca (=?iso-8859-1?q?Jonathan=20E.=20Paton?=)
+Date: Thu, 27 Jun 2002 23:18:44 +0100 (BST)
+Subject: [Peeweelinux] perl program on peewee.
+In-Reply-To: <sd1adc7c.043@qatech.com>
+Message-ID: <20020627221844.97038.qmail@web14601.mail.yahoo.com>
+
+ --- "Ken Emmons, Jr." <KEN@qatech.com> wrote:
+> Hello
+> 
+> I would also like to upgrade my glibc and also add GTK
+> libs to my custom peewee. If I do this, will I have to
+> rebuild all the packages in peewee by hand, or is glibc
+> backwards compatable??
+
+Rebuild a system from sources if you upgrade glibc, just
+about EVERYTHING uses it - and the build choices software
+makes changes depending on versions etc.  Most likely,
+they will only run with the exact version they were
+compiled against.  If the kernel is the "engine" of a Linux
+system, then glibc is the nuts and bolts that hold the
+chasis together!
+
+Adding libs is less drastic, compile & install.
+
+If you are doing a lot of stuff, why not try:
+
+   www.linuxfromscratch.org
+
+which is exactly what it says on the tin - namely building
+a Linux system from sources.  You can go as new as you like,
+and because they explain what (just about) everything is for,
+you can decide whether you need it in the final installation.
+[much of it is compiler related stuff].  Of course, substitue
+Busybox for most of the tools they use.
+
+Jonathan Paton
+
+=====
+s''! v+v+v+v+  J r e P    h+h+h+h+ !s`\x21`~`g,s`^ . | ~.*``mg,$v=q.
+ P ! v-v-v-v-  u l r e r  h-h-h-   !12.,@.=m`.`g;do{$.=$2.$1,$.=~s`h
+ E !   v+v+v+  s     k e  h+h+     !`2`x,$.=~s`v`31`,print$.[$v+=$.]
+ R !     v-v-  t H a c h  h-       !}while/([hv])([+-])/g;print"\xA"
+ L !             A n o t           !';$..=$1while/([^!]*)$/mg;eval$.
+
+__________________________________________________
+Do You Yahoo!?
+Everything you'll ever need on one web page
+from News and Sport to Email and Music Charts
+http://uk.my.yahoo.com
+
+From peeweelinux@adis.on.ca  Thu Jun 27 23:49:26 2002
+From: peeweelinux@adis.on.ca (Marc Wiz)
+Date: Thu, 27 Jun 2002 17:49:26 -0500 (CDT)
+Subject: [Peeweelinux] perl program on peewee.
+In-Reply-To: <20020627221844.97038.qmail@web14601.mail.yahoo.com> from "=?iso-8859-1?q?Jonathan=20E.=20Paton?=" at Jun 27, 2002 11:18:44 PM
+Message-ID: <200206272249.g5RMnRW10711@freshaire.wiz.com>
+
+Stuff deleted.
+
+> 
+> If you are doing a lot of stuff, why not try:
+> 
+>    www.linuxfromscratch.org
+> 
+> which is exactly what it says on the tin - namely building
+> a Linux system from sources.  You can go as new as you like,
+> and because they explain what (just about) everything is for,
+> you can decide whether you need it in the final installation.
+> [much of it is compiler related stuff].  Of course, substitue
+> Busybox for most of the tools they use.
+> 
+
+Or try gentoo.org
+
+Marc
+
+-- 
+Marc Wiz
+marc@wiz.com
+Yes, that really is my last name.
+
+From peeweelinux@adis.on.ca  Fri Jun 28 09:22:04 2002
+From: peeweelinux@adis.on.ca (Justin Fretwell)
+Date: Fri, 28 Jun 2002 09:22:04 +0100
+Subject: [Peeweelinux] Re: Peeweelinux digest, Vol 1 #91 - 2 msgs
+In-Reply-To: <200206271702.g5RH1E328068@yoda.adis.on.ca>
+References: <200206271702.g5RH1E328068@yoda.adis.on.ca>
+Message-ID: <200206280819.IAA21679@hamster.akhter.com>
+
+glibc is backward compatable but only as far as when it started before it 
+used to be libc5.  libc6 is what glibc is called afaik.  so any programs you 
+have that only like libc5 probably wont run on glibc.
+
+On Thursday 27 Jun 2002 6:02 pm, peeweelinux-request@adis.on.ca wrote:
+> Send Peeweelinux mailing list submissions to
+> 	peeweelinux@adis.on.ca
+>
+> To subscribe or unsubscribe via the World Wide Web, visit
+> 	http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> or, via email, send a message with subject or body 'help' to
+> 	peeweelinux-request@adis.on.ca
+>
+> You can reach the person managing the list at
+> 	peeweelinux-admin@adis.on.ca
+>
+> When replying, please edit your Subject line so it is more specific
+> than "Re: Contents of Peeweelinux digest..."
+>
+>
+> Today's Topics:
+>
+>    1. perl program on peewee. (Justin Fretwell)
+>    2. Re: perl program on peewee. (Ken Emmons, Jr.)
+>
+> --__--__--
+>
+> Message: 1
+> From: Justin Fretwell <justinf@akhter.co.uk>
+> Organization: Akhter Computers Ltd
+> To: peeweelinux@adis.on.ca
+> Date: Thu, 27 Jun 2002 09:52:43 +0100
+> Subject: [Peeweelinux] perl program on peewee.
+> Reply-To: peeweelinux@adis.on.ca
+>
+> Hi all,
+>
+> I am trying to get a perl script program (that uses Tk and a widget)
+> working using peewee.  The problem that I am having is this:
+>
+>
+> a:  there is no perl libraries on peewee, so can i just use the content of
+> /usr/lib/perl5/5.6.1/i386-linux and hope that works? is there a small perl
+> distribution?
+>
+> b: will i have to do the same for Tk and the widget?
+>
+> c: i want to update the libs that peewee uses (i dont want to use the
+> 2.1.3's that come with peewee, i want to use 2.2.4's that come with redhat
+> 7.2) and addes to /lib and /lib/i686, where can i do this?
+>
+> any help appreciated.
+>
+> thanks
+> Justin
+>
+> --__--__--
+>
+> Message: 2
+> Date: Thu, 27 Jun 2002 09:35:50 -0400
+> From: "Ken Emmons, Jr." <KEN@qatech.com>
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] perl program on peewee.
+> Reply-To: peeweelinux@adis.on.ca
+>
+> HEllo
+>
+> I would also like to upgrade my glibc and also add GTK libs to my custom
+> peewee. If I do this, will I have to rebuild all the packages in peewee by
+> hand, or is glibc backwards compatable??
+>
+> ~Ken
+>
+>
+>
+> --__--__--
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+> End of Peeweelinux Digest
+

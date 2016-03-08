@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] background thread exits with telnet end
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001022.html">
+   <LINK REL="Next"  HREF="001024.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] background thread exits with telnet end
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] background thread exits with telnet end">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sun, 13 Apr 2003 09:56:14 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001022.html">[Peeweelinux] background thread exits with telnet end
+</A></li>
+        <LI> Next message: <A HREF="001024.html">[Peeweelinux] Peewee for rtai linux on flash disk?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1023">[ date ]</a>
+              <a href="thread.html#1023">[ thread ]</a>
+              <a href="subject.html#1023">[ subject ]</a>
+              <a href="author.html#1023">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sunday 13 April 2003 12:30 am, Ricardo Trindade wrote:
+&gt;<i> 	I run my program with ./program&amp; on a telnet session, but it exits when
+</I>&gt;<i> the telnet session ends. Isn't linux supposed do daemonize background
+</I>&gt;<i> threads ? If not, how can I do it ? should I use nohup ?
+</I>
+Hi Ricardo,
+
+Linux doesn't daemonize in this case -- your program is still attached to its 
+parent (your telnet session), and it will exit when the parent exits.
+
+If your are programming in C, the following is a good example of how to 
+&quot;daemonize&quot; a process, using the fork() system call.
+
+<A HREF="http://www.enderunix.org/docs/eng/daemon.php">http://www.enderunix.org/docs/eng/daemon.php</A>
+
+Mark
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001022.html">[Peeweelinux] background thread exits with telnet end
+</A></li>
+	<LI> Next message: <A HREF="001024.html">[Peeweelinux] Peewee for rtai linux on flash disk?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1023">[ date ]</a>
+              <a href="thread.html#1023">[ thread ]</a>
+              <a href="subject.html#1023">[ subject ]</a>
+              <a href="author.html#1023">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

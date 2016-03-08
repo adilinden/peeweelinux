@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> FlashDisk vs RamDisk+FlashDisk partitions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000291.html">
+   <LINK REL="Next"  HREF="000273.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>FlashDisk vs RamDisk+FlashDisk partitions
+   </H1>
+    <B>Andrei Bulucea
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="FlashDisk vs RamDisk+FlashDisk partitions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 5 Jan 2001 15:35:58 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000291.html">pwlconfig custom file problem
+</A></li>
+        <LI> Next message: <A HREF="000273.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#272">[ date ]</a>
+              <a href="thread.html#272">[ thread ]</a>
+              <a href="subject.html#272">[ subject ]</a>
+              <a href="author.html#272">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Happy New Year everybody! 
+
+While reading your postings I noticed  some
+messges related to fsck/journaling filesystem
+implementations for PeeWeeLinux. 
+
+How about having the folowing ramdisk/flashdisk arrangement
+thus avoiding running fsck based on the assumption that
+fsck gets invoked due to a *modified* filesystem, not corruption,
+(CF doesn't get corrupted on power off)
+
+1) I think it is quite possible to have your / partition
+,read only, mounted on the FlashDisk and something like
+/var mounted on a ramdisk. So your endless logging and 
+'scratchpad area' will be volatile, therefore each time the 
+machine crashes or is powered off, /var will be lost, but no 
+changes will be recorded on &quot;/&quot; filesystem, therefore fsck 
+will not be invoked.
+
+2) Compress the entire filesystem into the FlashDisk and
+then load it into RamDisk. This consumes more RAM, but it 
+seems to be the fastest, however costly due to the fact 
+that the compression radio is 1:3 and CF/RAM price ratio 
+is only 1:2...  
+
+Am I missing something? I prefer #1, Which one would you choose?
+
+Best Regards and thank you in advance,
+Andrei
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000291.html">pwlconfig custom file problem
+</A></li>
+	<LI> Next message: <A HREF="000273.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#272">[ date ]</a>
+              <a href="thread.html#272">[ thread ]</a>
+              <a href="subject.html#272">[ subject ]</a>
+              <a href="author.html#272">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

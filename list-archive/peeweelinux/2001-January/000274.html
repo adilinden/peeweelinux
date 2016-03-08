@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> FlashDisk vs RamDisk+FlashDisk partitions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000273.html">
+   <LINK REL="Next"  HREF="000275.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>FlashDisk vs RamDisk+FlashDisk partitions
+   </H1>
+    <B>Andrei Bulucea
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="FlashDisk vs RamDisk+FlashDisk partitions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 5 Jan 2001 16:18:01 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000273.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+        <LI> Next message: <A HREF="000275.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#274">[ date ]</a>
+              <a href="thread.html#274">[ thread ]</a>
+              <a href="subject.html#274">[ subject ]</a>
+              <a href="author.html#274">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thank you for the info. I like the mixed aproach because it tends to
+save RAM. In my case, my flash build is quite large 64Mb (not because
+of peewee), therefore I need to allocate another 64RAM for ramdisk
+plus some for the OS...
+
+The trick is mount/unmounting the /etc flash partition in order   
+to save changes, if any. I suspect that changes on /etc
+are not as dynamic (system settings), hence mounting/unmounting 
+can be done on demand. 
+
+&gt;<i> Future kernel releases will include devfs and reiserfs or ext3. devfs
+</I>&gt;<i> allows for a virtual device filesystem, similar to how /proc works.
+</I>
+Excellent! Will this be on 2.4 or 2.2.x? Just curious... (very)
+
+Thank you so much!
+
+------------------------------------------------------------------
+Andrei Bulucea				Ituner Network Operations
+Ituner Networks Corp.			Email: <A HREF="mailto:andrewb@ituner.com">andrewb@ituner.com</A>
+3071 Southwycke Terrace			Voice: 800-97-TUNER
+Fremont, CA 94536			Fax:   510-795-8855 
+U.S.A. 					<A HREF="http://www.ituner.com">http://www.ituner.com</A>
+------------------------------------------------------------------
+
+
+On Fri, 5 Jan 2001, Adi Linden wrote:
+
+&gt;<i> Hi Andrei,
+</I>&gt;<i> 
+</I>&gt;<i> PeeWeeLinux supports different ways of loading a target device. This
+</I>&gt;<i> includes having a single large partition on the flash drive (ext2 or FAT)
+</I>&gt;<i> that contains the kernel and ramdisk image (compressed filesystem). In
+</I>&gt;<i> this arrangement there is no easy way to save anything, though.
+</I>&gt;<i> 
+</I>&gt;<i> Another alternative (already in PeeWeeLinux) is to have an uncompressed
+</I>&gt;<i> filesystem on flash which is loaded into memory and run from a ramdisk.
+</I>&gt;<i> This allows for the flash to be mounted (read-write) and changes to be
+</I>&gt;<i> made that will take effect once the system is rebooted.
+</I>&gt;<i> 
+</I>&gt;<i> Lastly there is a mixed approach. Quite close to your #1 suggestion. Have
+</I>&gt;<i> a read-only root partition on flash. Load /etc, /dev/ and /var into 
+</I>&gt;<i> ramdisks. The reason for /etc is that the system needs write access to
+</I>&gt;<i> some files in /etc, the reason for /dev is that in order to write to
+</I>&gt;<i> devices the partition the node is created on needs to be writable. And
+</I>&gt;<i> /var you've explained already. Depending on how the /etc branch is created
+</I>&gt;<i> it could be saved to flash by mounting the appropriate partition
+</I>&gt;<i> read/write.
+</I>&gt;<i> 
+</I>&gt;<i> Future kernel releases will include devfs and reiserfs or ext3. devfs
+</I>&gt;<i> allows for a virtual device filesystem, similar to how /proc works. This
+</I>&gt;<i> would eliminate the need for a /dev ramdisk and preserve a moderate amount
+</I>&gt;<i> of memory and flash since each device currently consumes one inode on the
+</I>&gt;<i> filesystem it resides on.
+</I>&gt;<i> 
+</I>&gt;<i> You can corrupt flash if you remove power during a write operation.
+</I>&gt;<i> Apparently ext3 and reiserfs would automatically recover and fall back to
+</I>&gt;<i> a last known good state. Now that's my understanding based on rumours
+</I>&gt;<i> rather than research on my part.
+</I>&gt;<i> 
+</I>&gt;<i> The read-only root filesystem with ramdisks for /etc, /var and /dev
+</I>&gt;<i> that's implementedin PeeWeeLinux works but it could use some more fine
+</I>&gt;<i> tuning, I think.
+</I>&gt;<i> 
+</I>&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i>   
+</I>&gt;<i> 
+</I>&gt;<i> On Fri, 5 Jan 2001, Andrei Bulucea wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Happy New Year everybody! 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; While reading your postings I noticed  some
+</I>&gt;<i> &gt; messges related to fsck/journaling filesystem
+</I>&gt;<i> &gt; implementations for PeeWeeLinux. 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; How about having the folowing ramdisk/flashdisk arrangement
+</I>&gt;<i> &gt; thus avoiding running fsck based on the assumption that
+</I>&gt;<i> &gt; fsck gets invoked due to a *modified* filesystem, not corruption,
+</I>&gt;<i> &gt; (CF doesn't get corrupted on power off)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 1) I think it is quite possible to have your / partition
+</I>&gt;<i> &gt; ,read only, mounted on the FlashDisk and something like
+</I>&gt;<i> &gt; /var mounted on a ramdisk. So your endless logging and 
+</I>&gt;<i> &gt; 'scratchpad area' will be volatile, therefore each time the 
+</I>&gt;<i> &gt; machine crashes or is powered off, /var will be lost, but no 
+</I>&gt;<i> &gt; changes will be recorded on &quot;/&quot; filesystem, therefore fsck 
+</I>&gt;<i> &gt; will not be invoked.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 2) Compress the entire filesystem into the FlashDisk and
+</I>&gt;<i> &gt; then load it into RamDisk. This consumes more RAM, but it 
+</I>&gt;<i> &gt; seems to be the fastest, however costly due to the fact 
+</I>&gt;<i> &gt; that the compression radio is 1:3 and CF/RAM price ratio 
+</I>&gt;<i> &gt; is only 1:2...  
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Am I missing something? I prefer #1, Which one would you choose?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Best Regards and thank you in advance,
+</I>&gt;<i> &gt; Andrei
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> &gt; See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> &gt; See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> 
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000273.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+	<LI> Next message: <A HREF="000275.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#274">[ date ]</a>
+              <a href="thread.html#274">[ thread ]</a>
+              <a href="subject.html#274">[ subject ]</a>
+              <a href="author.html#274">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

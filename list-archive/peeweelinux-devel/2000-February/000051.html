@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> RPM Loader Script - V0.1
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000050.html">
+   <LINK REL="Next"  HREF="000052.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>RPM Loader Script - V0.1
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="RPM Loader Script - V0.1">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Thu, 3 Feb 2000 08:45:39 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000050.html">RPM Loader Script - V0.1
+</A></li>
+        <LI> Next message: <A HREF="000052.html">RPM Loader Script - V0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#51">[ date ]</a>
+              <a href="thread.html#51">[ thread ]</a>
+              <a href="subject.html#51">[ subject ]</a>
+              <a href="author.html#51">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+&gt;<i> &gt; The problem with using binary rpms is that they might require PAM and/or
+</I>&gt;<i> &gt; ncurses...
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> awww..geeze, hadn't though of that...well, this might work for *Some* rpms...
+</I>&gt;<i> If you get a chance to run:
+</I>&gt;<i> ./scripts/pwl_rpmload EXE fvwm2
+</I>&gt;<i> 
+</I>&gt;<i> maybe you could tell me what needs to be done here (or script it :-))
+</I>&gt;<i> to build all the files I need.  I was going to install the package
+</I>&gt;<i> tomorrow and see if it works (slow, painful process for me).
+</I>
+Here's what I am doing. I'd like PeeWeeLinux to become a platform that can
+be build entirely from sources. My goal would be a distibution where you
+can run a single script to build all packages from sources.
+
+Still the question is if PeeWeeLinux should be based on Redhat source RPMS
+or generic tar balls and patches of packes.
+
+Until then I am building packages more for my own consumption. I guess how
+you build them shouldn't matter. The way I did the original packages was
+to simply copy libs and binaries from my running Redhat systems
+directories into the Embedded_Build/mnt directory. The I wrote my own
+startup scripts which were much less complex than what RedHat has done.
+
+&gt;<i> &gt; You do 'ldd binary_name' or 'ldd lib_name'. That will result in a bunch of
+</I>&gt;<i> &gt; libs required for those libs and binaries to function. The 'file' command
+</I>&gt;<i> &gt; will tell you if the libs or binaries are stripped. The stripping can be
+</I>&gt;<i> &gt; done with 'objcopy' or 'strip'...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Hmmmm...I got statically linked on a few of them...I think this is 
+</I>&gt;<i> going to be a manual process for a while. I'll build the depends file, 
+</I>&gt;<i> if you can think of any other automation I can add, let me know..
+</I>&gt;<i> PWL Package building...job security for linux hackers!
+</I>
+Makes them pretty big! Your X is 16M? Yup, it's a painstaking manual
+process. Scripting would be a bit of a pain since you would need a custom
+script for each package. It makes reproducing the package easier. But
+then, that why I did PWL in the very beginning, so I didn't have to do the
+manual prosess of selecting and stripping executables and checking for
+dependencies every single time I build a project.
+
+PeeWeeLinux has met it's original goal of why I build it. I still think
+that it's worthwhile to develop it further by automating the build from
+sources once the original build has been done. That would also make it
+possible to establish guidelines for contributed packages and what's
+expected from them....
+
+&gt;<i> &gt; &gt; To Do: load the source rpm, install it, copy the source files
+</I>&gt;<i> &gt; &gt; and compile everything.  Then copy the binaries from the SRC 
+</I>&gt;<i> &gt; &gt; directory into the pkg.files directory.....
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Yup, that would be the best way of doing it. Or... download the original
+</I>&gt;<i> &gt; sources and compile from scratch. Then make a build script and a patch
+</I>&gt;<i> &gt; file... Otherwise it might get messy if we build some packages from rpm
+</I>&gt;<i> &gt; and others from tar...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Hey, if you have a link to each of the source files...we can ftp them
+</I>&gt;<i> over instead of using the RH CD...not bad...I guess RH does some 
+</I>&gt;<i> changes from the originals, not sure of other advantages of ftp vs RH RPM...
+</I>
+The changes Redhat did to the Redhat RPMS are in the form of patches.
+Sooo, it's easy to build whatever you like from the source rpm because the
+original tar ball is still there (plus a number patches, some redhat some
+not).
+
+I guess one way to build packages would be to take the source rpm and
+extract the original tarball and non-redhat specific patches... Then keep
+these as the PWL sources and build our packages from the tar files...
+
+Or use rpm and build redhat rpms for every package that's not part of
+RedHat (elvis-tiny, busybox, tinylogin, to name a few that instantly come
+to mind)
+
+The nice thin about Redhat rpms is they compile as is. With orignal tar
+balls quite often they have to be 'fixed' before they will compile....
+
+&gt;<i> Anyhow, I guess this is the &quot;idiots tool for package building&quot; (just 
+</I>&gt;<i> my speed :-) your packages are still the best! But, Hey, if you 
+</I>&gt;<i> have 128MB flash disk...
+</I>
+Almost fit a Gnome workstation on that sucker... Just have to rmember not
+to use swap space on flash then :) 
+
+BTW, someone asked me that question... seriously! If 32MB of RAM isn't
+enough, couldn't we use a 64MB flash drive and make a 32MB swap partition?
+Interesting thought, eh...?  Ouch... :)
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000050.html">RPM Loader Script - V0.1
+</A></li>
+	<LI> Next message: <A HREF="000052.html">RPM Loader Script - V0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#51">[ date ]</a>
+              <a href="thread.html#51">[ thread ]</a>
+              <a href="subject.html#51">[ subject ]</a>
+              <a href="author.html#51">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

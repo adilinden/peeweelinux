@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] How to start telnetd in PeeWee ????
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000636.html">
+   <LINK REL="Next"  HREF="000638.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] How to start telnetd in PeeWee ????
+   </H1>
+    <B>Ricardo Trindade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] How to start telnetd in PeeWee ????">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 19 Jun 2002 17:53:02 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000636.html">[Peeweelinux] How to start telnetd in PeeWee ????
+</A></li>
+        <LI> Next message: <A HREF="000638.html">[Peeweelinux] M-systems Disk-On-Chip installation instructions?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#637">[ date ]</a>
+              <a href="thread.html#637">[ thread ]</a>
+              <a href="subject.html#637">[ subject ]</a>
+              <a href="author.html#637">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>telnetd worked fine for me, without any configuration , you just need to
+include the right packages (telnet-kit, I think)
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Troy Engel
+Sent: quarta-feira, 19 de Junho de 2002 17:30
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: Re: [Peeweelinux] How to start telnetd in PeeWee ????
+
+
+On my end, I wasn't able to get telnetd to allow logins until I:
+
+a) built a kernel with Unix98 PTY support
+b) create the device /dev/ptmx (mknod ptmx c 5 2)
+c) make the directory /dev/pts
+d) add &quot;none /dev/pts devpts gid=5,mode=622 0 0&quot; to /etc/fstab
+
+A was done as part of the kernel 2.4 (see my howto), B and C I edited
+the various PWL packages and retar'd, for D I added a line to my custom
+rc.modules like so:
+
+   # this is for telnetd to allocate ptys to allow login
+   echo &quot;none /dev/pts devpts gid=5,mode=622 0 0&quot; &gt;&gt; /etc/fstab
+
+So, your mileage may vary.  Hey, for those interested -- the rapid
+protoype we built/fabbed and flew out the the client's site last week
+(using PWL) was awesome; the client wants to sign a contract for us to
+keep on rockin' and build the production models, etc. for them.
+
+Thanks PWL team!
+-te
+
+
+Mark Meade wrote:
+&gt;<i> Thanomsak Liumsuwan wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i>I've seen telnetd in pwlconfig , but how to start it
+</I>&gt;&gt;<i>on target machine ?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> It should be started using &quot;inetd&quot; -- there should be a line in
+</I>&gt;<i> /etc/inetd.conf like this:
+</I>&gt;<i>
+</I>&gt;<i> telnet	stream	tcp	nowait	root	/usr/sbin/telnetd	telnetd
+</I>&gt;<i>
+</I>&gt;<i> If I remember correctly, selecting Network-&gt;netkit-telnet and all the
+</I>&gt;<i> packages under Network_Base should handle this automatically.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+
+--
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000636.html">[Peeweelinux] How to start telnetd in PeeWee ????
+</A></li>
+	<LI> Next message: <A HREF="000638.html">[Peeweelinux] M-systems Disk-On-Chip installation instructions?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#637">[ date ]</a>
+              <a href="thread.html#637">[ thread ]</a>
+              <a href="subject.html#637">[ subject ]</a>
+              <a href="author.html#637">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

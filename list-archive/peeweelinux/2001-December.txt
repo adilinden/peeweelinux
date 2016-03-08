@@ -1,0 +1,1975 @@
+From peeweelinux@adis.on.ca  Sat Dec  1 14:59:38 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Sat, 1 Dec 2001 22:59:38 +0800 (CST)
+Subject: [Peeweelinux] how to do with my custom kernel's system.map
+Message-ID: <20011201145938.15797.qmail@web9009.mail.yahoo.com>
+
+--0-1422962525-1007218778=:13499
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+I'm using peeweelinux-0.61.0,I want to use kernel-2.2.5-15. I compiled it as custom files,I think it should include two files:bzImage and system.map.From my experience I know that the map in boot directory is different from the compiled System.map,is it?how to set my system.map as a custom file?
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1422962525-1007218778=:13499
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+I'm using peeweelinux-0.61.0,I want to use kernel-2.2.5-15. I compiled it as custom files,I think it should include two files:bzImage and system.map.From my experience I know that the map in boot directory is different from the compiled System.map,is it?how to set my system.map as a custom file?<BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1422962525-1007218778=:13499--
+
+From peeweelinux@adis.on.ca  Mon Dec  3 07:19:50 2001
+From: peeweelinux@adis.on.ca (Bill Wimsatt)
+Date: Mon, 3 Dec 2001 00:19:50 -0700
+Subject: [Peeweelinux] First Try Failures
+Message-ID: <000001c17bca$e67ee290$230110ac@bach>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0001_01C17B90.3A200A90
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+I am investigating use of PeeWeeLinux and have run into a couple of
+problems:
+1) I have used the minimal config as a base and added all of X packages.
+However, on boot, I get a message "VM: do_try_to_free_pages failed for
+swapper.". Any ideas?
+2) When I choose full kernel then the system does not build.
+ 
+I am basically trying to create a basic build with X support and
+Netscape, so any help is greatly appreciated.
+ 
+Regards,
+Bill Wimsatt
+ 
+
+------=_NextPart_000_0001_01C17B90.3A200A90
+Content-Type: text/html;
+	charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:st1=3D"urn:schemas-microsoft-com:office:smarttags" =
+xmlns=3D"http://www.w3.org/TR/REC-html40">
+
+<head>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Dus-ascii">
+
+
+<meta name=3DProgId content=3DWord.Document>
+<meta name=3DGenerator content=3D"Microsoft Word 10">
+<meta name=3DOriginator content=3D"Microsoft Word 10">
+<link rel=3DFile-List href=3D"cid:filelist.xml@01C17B90.257EF970">
+<o:SmartTagType =
+namespaceuri=3D"urn:schemas-microsoft-com:office:smarttags"
+ name=3D"PersonName"/>
+<!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:DoNotRelyOnCSS/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:DocumentKind>DocumentEmail</w:DocumentKind>
+  <w:EnvelopeVis/>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if !mso]>
+<style>
+st1\:*{behavior:url(#default#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoAutoSig, li.MsoAutoSig, div.MsoAutoSig
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	mso-style-noshow:yes;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	color:windowtext;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */=20
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]-->
+</head>
+
+<body lang=3DEN-US link=3Dblue vlink=3Dpurple =
+style=3D'tab-interval:.5in'>
+
+<div class=3DSection1>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span =
+style=3D'font-size:10.0pt;
+font-family:Arial'>I am investigating use of <span =
+class=3DSpellE>PeeWeeLinux</span>
+and have run into a couple of problems:<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span =
+style=3D'font-size:10.0pt;
+font-family:Arial'>1) I have used the minimal <span =
+class=3DSpellE>config</span>
+as a base and added all of X packages. However, on boot, I get a message =
+&#8220;VM:
+<span class=3DSpellE>do_try_to_free_pages</span> failed for =
+swapper&#8230;<span
+class=3DGramE>&#8221;.</span> <span class=3DGramE>Any =
+ideas?</span><o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span =
+style=3D'font-size:10.0pt;
+font-family:Arial'>2) When I choose full kernel then the system does not =
+build.<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span =
+style=3D'font-size:10.0pt;
+font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span =
+style=3D'font-size:10.0pt;
+font-family:Arial'>I am basically trying to create a basic build with X =
+support
+and Netscape, so any help is greatly =
+appreciated.<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span =
+style=3D'font-size:10.0pt;
+font-family:Arial'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoAutoSig><font size=3D3 face=3DArial><span =
+style=3D'font-size:12.0pt;
+font-family:Arial;mso-no-proof:yes'>Regards,<o:p></o:p></span></font></p>=
+
+
+<p class=3DMsoAutoSig><st1:PersonName><font size=3D3 face=3DArial><span
+ style=3D'font-size:12.0pt;font-family:Arial;mso-no-proof:yes'>Bill =
+Wimsatt</span></font></st1:PersonName><font
+face=3DArial><span =
+style=3D'font-family:Arial;mso-no-proof:yes'><o:p></o:p></span></font></p=
+>
+
+<p class=3DMsoNormal><font size=3D3 face=3D"Times New Roman"><span =
+style=3D'font-size:
+12.0pt'><o:p>&nbsp;</o:p></span></font></p>
+
+</div>
+
+</body>
+
+</html>
+
+------=_NextPart_000_0001_01C17B90.3A200A90--
+
+
+From peeweelinux@adis.on.ca  Tue Dec  4 15:35:22 2001
+From: peeweelinux@adis.on.ca (Bill Wimsatt)
+Date: Tue, 4 Dec 2001 08:35:22 -0700
+Subject: [Peeweelinux] RE: First Try Failures
+Message-ID: <000b01c17cd9$4bdfcc30$230110ac@bach>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_000C_01C17C9E.9F80F430
+Content-Type: text/plain;
+	charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+
+I have looked through the Linux boards and have seen that the error I am
+receiving is a known problem in 2.1 and 2.2 kernels. There is a problem
+in the VM. There is a patch available but I have no idea how to apply
+the patch. Anyone else seen this? Any work arounds?
+ 
+Also, Since everything is run from Ramdisk, how can changes made on the
+platform be saved?
+ 
+Regards,
+Bill Wimsatt
+VP, Engineering
+CorAccess Systems
+2525 15th St. Suite 1B
+Denver, Co 80211
+303 477 7757 (o)
+720 480 2985 (c)
+ 
+http://www.coraccess.com
+ 
+-----Original Message-----
+From: Bill Wimsatt [mailto:bwimsatt@1783.com] 
+Sent: Monday, December 03, 2001 12:20 AM
+To: 'peeweelinux@adis.on.ca'
+Subject: First Try Failures
+ 
+I am investigating use of PeeWeeLinux and have run into a couple of
+problems:
+1) I have used the minimal config as a base and added all of X packages.
+However, on boot, I get a message "VM: do_try_to_free_pages failed for
+swapper.". Any ideas?
+2) When I choose full kernel then the system does not build.
+ 
+I am basically trying to create a basic build with X support and
+Netscape, so any help is greatly appreciated.
+ 
+Regards,
+Bill Wimsatt
+ 
+
+------=_NextPart_000_000C_01C17C9E.9F80F430
+Content-Type: text/html;
+	charset="US-ASCII"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns:st1=3D"urn:schemas-microsoft-com:office:smarttags" =
+xmlns=3D"http://www.w3.org/TR/REC-html40">
+
+<head>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Dus-ascii">
+
+
+<meta name=3DProgId content=3DWord.Document>
+<meta name=3DGenerator content=3D"Microsoft Word 10">
+<meta name=3DOriginator content=3D"Microsoft Word 10">
+<link rel=3DFile-List href=3D"cid:filelist.xml@01C17C9E.9D130170">
+<o:SmartTagType =
+namespaceuri=3D"urn:schemas-microsoft-com:office:smarttags"
+ name=3D"Street"/>
+<o:SmartTagType =
+namespaceuri=3D"urn:schemas-microsoft-com:office:smarttags"
+ name=3D"time"/>
+<o:SmartTagType =
+namespaceuri=3D"urn:schemas-microsoft-com:office:smarttags"
+ name=3D"address"/>
+<o:SmartTagType =
+namespaceuri=3D"urn:schemas-microsoft-com:office:smarttags"
+ name=3D"date"/>
+<o:SmartTagType =
+namespaceuri=3D"urn:schemas-microsoft-com:office:smarttags"
+ name=3D"PersonName"/>
+<!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:DoNotRelyOnCSS/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:DocumentKind>DocumentEmail</w:DocumentKind>
+  <w:EnvelopeVis/>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]--><!--[if !mso]>
+<style>
+st1\:*{behavior:url(#default#ieooui) }
+</style>
+<![endif]-->
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:553679495 -2147483648 8 0 66047 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p.MsoAutoSig, li.MsoAutoSig, div.MsoAutoSig
+	{margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+span.EmailStyle18
+	{mso-style-type:personal;
+	mso-style-noshow:yes;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	color:windowtext;}
+span.EmailStyle19
+	{mso-style-type:personal-reply;
+	mso-style-noshow:yes;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	color:navy;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */=20
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]-->
+</head>
+
+<body lang=3DEN-US link=3Dblue vlink=3Dpurple =
+style=3D'tab-interval:.5in'>
+
+<div class=3DSection1>
+
+<p class=3DMsoNormal><font size=3D2 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+10.0pt;font-family:Arial;color:navy'>I have looked through the Linux =
+boards and
+have seen that the error I am receiving is a known problem in 2.1 and =
+2.2
+kernels. There is a problem in the VM. There is a patch available but I =
+have no
+idea how to apply the patch. Anyone else seen this? Any work <span
+class=3DSpellE>arounds</span>?<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+10.0pt;font-family:Arial;color:navy'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+10.0pt;font-family:Arial;color:navy'>Also, <span =
+class=3DGramE>Since</span>
+everything is run from <span class=3DSpellE>Ramdisk</span>, how can =
+changes made
+on the platform be saved?<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+10.0pt;font-family:Arial;color:navy'><o:p>&nbsp;</o:p></span></font></p>
+
+<div>
+
+<p class=3DMsoAutoSig><font size=3D3 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:navy;mso-no-proof:yes'>Regards,<o:p></o:p>=
+</span></font></p>
+
+<p class=3DMsoAutoSig><st1:PersonName><font size=3D3 color=3Dnavy =
+face=3DArial><span
+ =
+style=3D'font-size:12.0pt;font-family:Arial;color:navy;mso-no-proof:yes'>=
+Bill
+ Wimsatt</span></font></st1:PersonName><font color=3Dnavy =
+face=3DArial><span
+style=3D'font-family:Arial;color:navy;mso-no-proof:yes'><o:p></o:p></span=
+></font></p>
+
+<p class=3DMsoAutoSig><font size=3D3 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:navy;mso-no-proof:yes'>VP, =
+Engineering<o:p></o:p></span></font></p>
+
+<p class=3DMsoAutoSig><font size=3D3 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:navy;mso-no-proof:yes'>CorAccess =
+Systems<o:p></o:p></span></font></p>
+
+<p class=3DMsoAutoSig><st1:Street><st1:address><font size=3D3 =
+color=3Dnavy
+  face=3DArial><span =
+style=3D'font-size:12.0pt;font-family:Arial;color:navy;
+  mso-no-proof:yes'>2525 15th St. Suite =
+1B</span></font></st1:address></st1:Street><font
+color=3Dnavy face=3DArial><span =
+style=3D'font-family:Arial;color:navy;mso-no-proof:
+yes'><o:p></o:p></span></font></p>
+
+<p class=3DMsoAutoSig><font size=3D3 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:navy;mso-no-proof:yes'>Denver, Co =
+80211<o:p></o:p></span></font></p>
+
+<p class=3DMsoAutoSig><font size=3D3 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:navy;mso-no-proof:yes'>303 477 7757 =
+(o)<o:p></o:p></span></font></p>
+
+<p class=3DMsoAutoSig><font size=3D3 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:navy;mso-no-proof:yes'>720 480 2985 =
+(c)<o:p></o:p></span></font></p>
+
+<p class=3DMsoAutoSig><font size=3D3 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:navy;mso-no-proof:yes'><o:p>&nbsp;</o:p></=
+span></font></p>
+
+<p class=3DMsoAutoSig><font size=3D3 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:navy;mso-no-proof:yes'>http://www.coracces=
+s.com<o:p></o:p></span></font></p>
+
+</div>
+
+<p class=3DMsoNormal><font size=3D2 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+10.0pt;font-family:Arial;color:navy'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:.5in'><font size=3D2 =
+face=3DTahoma><span
+style=3D'font-size:10.0pt;font-family:Tahoma'>-----Original =
+Message-----<br>
+<b><span style=3D'font-weight:bold'>From:</span></b> Bill Wimsatt =
+[mailto:bwimsatt@1783.com]
+<br>
+<b><span style=3D'font-weight:bold'>Sent:</span></b> =
+</span></font><st1:date
+Month=3D"12" Day=3D"3" Year=3D"2001"><font size=3D2 face=3DTahoma><span =
+style=3D'font-size:
+ 10.0pt;font-family:Tahoma'>Monday, December 03, =
+2001</span></font></st1:date><font
+size=3D2 face=3DTahoma><span =
+style=3D'font-size:10.0pt;font-family:Tahoma'> </span></font><st1:time
+Hour=3D"0" Minute=3D"20"><font size=3D2 face=3DTahoma><span =
+style=3D'font-size:10.0pt;
+ font-family:Tahoma'>12:20 AM</span></font></st1:time><font size=3D2 =
+face=3DTahoma><span
+style=3D'font-size:10.0pt;font-family:Tahoma'><br>
+<b><span style=3D'font-weight:bold'>To:</span></b> =
+'peeweelinux@adis.on.ca'<br>
+<b><span style=3D'font-weight:bold'>Subject:</span></b> First Try =
+Failures</span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:.5in'><font size=3D3 =
+face=3D"Times New Roman"><span
+style=3D'font-size:12.0pt'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:.5in'><font size=3D2 =
+face=3DArial><span
+style=3D'font-size:10.0pt;font-family:Arial'>I am investigating use of =
+PeeWeeLinux
+and have run into a couple of problems:<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:.5in'><font size=3D2 =
+face=3DArial><span
+style=3D'font-size:10.0pt;font-family:Arial'>1) I have used the minimal =
+config as
+a base and added all of X packages. However, on boot, I get a message
+&#8220;VM: do_try_to_free_pages failed for swapper&#8230;&#8221;. Any =
+ideas?<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:.5in'><font size=3D2 =
+face=3DArial><span
+style=3D'font-size:10.0pt;font-family:Arial'>2) When I choose full =
+kernel then
+the system does not build.<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:.5in'><font size=3D2 =
+face=3DArial><span
+style=3D'font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></fo=
+nt></p>
+
+<p class=3DMsoNormal style=3D'margin-left:.5in'><font size=3D2 =
+face=3DArial><span
+style=3D'font-size:10.0pt;font-family:Arial'>I am basically trying to =
+create a
+basic build with X support and Netscape, so any help is greatly =
+appreciated.<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:.5in'><font size=3D2 =
+face=3DArial><span
+style=3D'font-size:10.0pt;font-family:Arial'><o:p>&nbsp;</o:p></span></fo=
+nt></p>
+
+<p class=3DMsoAutoSig style=3D'margin-left:.5in'><font size=3D3 =
+face=3DArial><span
+style=3D'font-size:12.0pt;font-family:Arial;mso-no-proof:yes'>Regards,<o:=
+p></o:p></span></font></p>
+
+<p class=3DMsoAutoSig style=3D'margin-left:.5in'><font size=3D3 =
+face=3DArial><span
+style=3D'font-size:12.0pt;font-family:Arial;mso-no-proof:yes'>Bill =
+Wimsatt<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal style=3D'margin-left:.5in'><font size=3D3 =
+face=3D"Times New Roman"><span
+style=3D'font-size:12.0pt'><o:p>&nbsp;</o:p></span></font></p>
+
+</div>
+
+</body>
+
+</html>
+
+------=_NextPart_000_000C_01C17C9E.9F80F430--
+
+
+From peeweelinux@adis.on.ca  Tue Dec  4 23:11:22 2001
+From: peeweelinux@adis.on.ca (Tim Westbrook)
+Date: Tue, 4 Dec 2001 15:11:22 -0800 (PST)
+Subject: [Peeweelinux] RE: First Try Failures
+In-Reply-To: <000b01c17cd9$4bdfcc30$230110ac@bach>
+Message-ID: <20011204231122.75089.qmail@web13509.mail.yahoo.com>
+
+
+
+> the patch. Anyone else seen this? Any work arounds?
+
+I'd start with
+http://linuxdoc.org/HOWTO/Kernel-HOWTO.html
+
+
+> Also, Since everything is run from Ramdisk, how can
+> changes made on the
+> platform be saved?
+
+Then , 
+http://www.linuxdoc.org/HOWTO/Bootdisk-HOWTO/
+
+These documents might help you out.
+
+-Tim
+
+__________________________________________________
+Do You Yahoo!?
+Buy the perfect holiday gifts at Yahoo! Shopping.
+http://shopping.yahoo.com
+
+From peeweelinux@adis.on.ca  Tue Dec  4 11:11:30 2001
+From: peeweelinux@adis.on.ca (dano)
+Date: Tue, 04 Dec 2001 04:11:30 -0700
+Subject: [Peeweelinux] pwlconfig problem.
+Message-ID: <3C0CAF62.5070103@netscape.net>
+
+Hi, When I try to run pwlconfig I get two dots then it does nothing. 
+whats the problem?
+I'm using RedHat 7.1, thank you.
+
+
+Daniel
+
+
+From peeweelinux@adis.on.ca  Wed Dec  5 00:41:05 2001
+From: peeweelinux@adis.on.ca (Tim Westbrook)
+Date: Tue, 4 Dec 2001 16:41:05 -0800 (PST)
+Subject: [Peeweelinux] pwlconfig problem.
+In-Reply-To: <3C0CAF62.5070103@netscape.net>
+Message-ID: <20011205004105.30689.qmail@web13505.mail.yahoo.com>
+
+Found in the mail archives
+
+http://mail.adis.on.ca/pipermail/peeweelinux/2001-August/000357.html
+
+u must install ncurses in redhat
+
+-Tim
+--- dano <dano1nr@netscape.net> wrote:
+> Hi, When I try to run pwlconfig I get two dots then
+> it does nothing. 
+> whats the problem?
+> I'm using RedHat 7.1, thank you.
+> 
+> 
+> Daniel
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________________________
+Do You Yahoo!?
+Buy the perfect holiday gifts at Yahoo! Shopping.
+http://shopping.yahoo.com
+
+From peeweelinux@adis.on.ca  Wed Dec  5 15:59:28 2001
+From: peeweelinux@adis.on.ca (Tim Westbrook)
+Date: Wed, 5 Dec 2001 07:59:28 -0800 (PST)
+Subject: [Peeweelinux] RE: First Try Failures
+In-Reply-To: <000b01c17cd9$4bdfcc30$230110ac@bach>
+Message-ID: <20011205155928.61082.qmail@web13508.mail.yahoo.com>
+
+Oh yes , and I found this one very helpful too
+
+http://linuxdoc.org/HOWTO/mini/Loopback-Root-FS.html
+
+-Tim
+
+--- Bill Wimsatt <bwimsatt@1783.com> wrote:
+> I have looked through the Linux boards and have seen
+> that the error I am
+> receiving is a known problem in 2.1 and 2.2 kernels.
+> There is a problem
+> in the VM. There is a patch available but I have no
+> idea how to apply
+> the patch. Anyone else seen this? Any work arounds?
+>  
+> Also, Since everything is run from Ramdisk, how can
+> changes made on the
+> platform be saved?
+>  
+> Regards,
+> Bill Wimsatt
+> VP, Engineering
+> CorAccess Systems
+> 2525 15th St. Suite 1B
+> Denver, Co 80211
+> 303 477 7757 (o)
+> 720 480 2985 (c)
+>  
+> http://www.coraccess.com
+>  
+> -----Original Message-----
+> From: Bill Wimsatt [mailto:bwimsatt@1783.com] 
+> Sent: Monday, December 03, 2001 12:20 AM
+> To: 'peeweelinux@adis.on.ca'
+> Subject: First Try Failures
+>  
+> I am investigating use of PeeWeeLinux and have run
+> into a couple of
+> problems:
+> 1) I have used the minimal config as a base and
+> added all of X packages.
+> However, on boot, I get a message "VM:
+> do_try_to_free_pages failed for
+> swapper.". Any ideas?
+> 2) When I choose full kernel then the system does
+> not build.
+>  
+> I am basically trying to create a basic build with X
+> support and
+> Netscape, so any help is greatly appreciated.
+>  
+> Regards,
+> Bill Wimsatt
+>  
+> 
+
+
+__________________________________________________
+Do You Yahoo!?
+Buy the perfect holiday gifts at Yahoo! Shopping.
+http://shopping.yahoo.com
+
+From peeweelinux@adis.on.ca  Wed Dec  5 17:02:29 2001
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Wed, 05 Dec 2001 12:02:29 -0500
+Subject: [Peeweelinux] pwlconfig problem.
+Message-ID: <2C5203CE.117C8FD7.001DC1BB@netscape.net>
+
+nucrses 5.2-8 is installed.
+
+
+Tim Westbrook <iondiode@yahoo.com> wrote:
+
+>Found in the mail archives
+>
+>http://mail.adis.on.ca/pipermail/peeweelinux/2001-August/000357.html
+>
+>u must install ncurses in redhat
+>
+>-Tim
+>--- dano <dano1nr@netscape.net> wrote:
+>> Hi, When I try to run pwlconfig I get two dots then
+>> it does nothing. 
+>> whats the problem?
+>> I'm using RedHat 7.1, thank you.
+>> 
+>> 
+>> Daniel
+>> 
+>> _______________________________________________
+>> Peeweelinux mailing list
+>> Peeweelinux@adis.on.ca
+>> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+>__________________________________________________
+>Do You Yahoo!?
+>Buy the perfect holiday gifts at Yahoo! Shopping.
+>http://shopping.yahoo.com
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+-- 
+
+
+
+
+__________________________________________________________________
+Your favorite stores, helpful shopping tools and great gift ideas. Experience the convenience of buying online with Shop@Netscape! http://shopnow.netscape.com/
+
+Get your own FREE, personal Netscape Mail account today at http://webmail.netscape.com/
+
+
+From peeweelinux@adis.on.ca  Wed Dec  5 22:25:42 2001
+From: peeweelinux@adis.on.ca (Tim Westbrook)
+Date: Wed, 5 Dec 2001 14:25:42 -0800 (PST)
+Subject: [Peeweelinux] pwlconfig problem.
+In-Reply-To: <2C5203CE.117C8FD7.001DC1BB@netscape.net>
+Message-ID: <20011205222542.16010.qmail@web13508.mail.yahoo.com>
+
+mmm, 
+ how about this one?
+
+  
+http://mail.adis.on.ca/pipermail/peeweelinux/2001-June/000334.html
+
+
+-Tim
+
+--- dano1nr@netscape.net wrote:
+> nucrses 5.2-8 is installed.
+> 
+> 
+> Tim Westbrook <iondiode@yahoo.com> wrote:
+> 
+> >Found in the mail archives
+> >
+>
+>http://mail.adis.on.ca/pipermail/peeweelinux/2001-August/000357.html
+> >
+> >u must install ncurses in redhat
+> >
+> >-Tim
+> >--- dano <dano1nr@netscape.net> wrote:
+> >> Hi, When I try to run pwlconfig I get two dots
+> then
+> >> it does nothing. 
+> >> whats the problem?
+> >> I'm using RedHat 7.1, thank you.
+> >> 
+> >> 
+> >> Daniel
+> >> 
+> >> _______________________________________________
+> >> Peeweelinux mailing list
+> >> Peeweelinux@adis.on.ca
+> >> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> >
+> >__________________________________________________
+> >Do You Yahoo!?
+> >Buy the perfect holiday gifts at Yahoo! Shopping.
+> >http://shopping.yahoo.com
+> >_______________________________________________
+> >Peeweelinux mailing list
+> >Peeweelinux@adis.on.ca
+> >http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> -- 
+> 
+> 
+> 
+> 
+>
+__________________________________________________________________
+> Your favorite stores, helpful shopping tools and
+> great gift ideas. Experience the convenience of
+> buying online with Shop@Netscape!
+> http://shopnow.netscape.com/
+> 
+> Get your own FREE, personal Netscape Mail account
+> today at http://webmail.netscape.com/
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________________________
+Do You Yahoo!?
+Send your FREE holiday greetings online!
+http://greetings.yahoo.com
+
+From peeweelinux@adis.on.ca  Thu Dec  6 19:12:13 2001
+From: peeweelinux@adis.on.ca (Michal Verner)
+Date: Thu, 6 Dec 2001 20:12:13 +0100
+Subject: [Peeweelinux] pwlconfig problem.
+In-Reply-To: <20011205222542.16010.qmail@web13508.mail.yahoo.com>
+Message-ID: <!~!UENERkVCMDkAAQACAAAAAAAAAAAAAAAAABgAAAAAAAAAxaaUe8CgmE6VqFXITO6ZWMKAAAAQAAAA28j9Fo2iOE+95IH6lW3qsAEAAAAA@pctrade.cz>
+
+The same problem, but http://adis.on.ca/archives/ does not work to find
+a solution...
+
+
+Michal Verner
+michal.verner@pctrade.cz
+------------------------------------------------
+Pra¾ská 264
+29471 Benátky nad Jizerou II
+T/F: +420-326-362394
+www.pctrade.cz
+
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]
+On Behalf Of Tim Westbrook
+Sent: Wednesday, December 05, 2001 11:26 PM
+To: peeweelinux@adis.on.ca
+Subject: RE: Re: [Peeweelinux] pwlconfig problem.
+
+mmm, 
+ how about this one?
+
+  
+http://mail.adis.on.ca/pipermail/peeweelinux/2001-June/000334.html
+
+
+-Tim
+
+--- dano1nr@netscape.net wrote:
+> nucrses 5.2-8 is installed.
+> 
+> 
+> Tim Westbrook <iondiode@yahoo.com> wrote:
+> 
+> >Found in the mail archives
+> >
+>
+>http://mail.adis.on.ca/pipermail/peeweelinux/2001-August/000357.html
+> >
+> >u must install ncurses in redhat
+> >
+> >-Tim
+> >--- dano <dano1nr@netscape.net> wrote:
+> >> Hi, When I try to run pwlconfig I get two dots
+> then
+> >> it does nothing. 
+> >> whats the problem?
+> >> I'm using RedHat 7.1, thank you.
+> >> 
+> >> 
+> >> Daniel
+> >> 
+> >> _______________________________________________
+> >> Peeweelinux mailing list
+> >> Peeweelinux@adis.on.ca
+> >> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> >
+> >__________________________________________________
+> >Do You Yahoo!?
+> >Buy the perfect holiday gifts at Yahoo! Shopping.
+> >http://shopping.yahoo.com
+> >_______________________________________________
+> >Peeweelinux mailing list
+> >Peeweelinux@adis.on.ca
+> >http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> -- 
+> 
+> 
+> 
+> 
+>
+__________________________________________________________________
+> Your favorite stores, helpful shopping tools and
+> great gift ideas. Experience the convenience of
+> buying online with Shop@Netscape!
+> http://shopnow.netscape.com/
+> 
+> Get your own FREE, personal Netscape Mail account
+> today at http://webmail.netscape.com/
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________________________
+Do You Yahoo!?
+Send your FREE holiday greetings online!
+http://greetings.yahoo.com
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+From peeweelinux@adis.on.ca  Thu Dec  6 08:42:57 2001
+From: peeweelinux@adis.on.ca (dano)
+Date: Thu, 06 Dec 2001 01:42:57 -0700
+Subject: [Peeweelinux] pwlconfig problem.
+References: <!~!UENERkVCMDkAAQACAAAAAAAAAAAAAAAAABgAAAAAAAAAxaaUe8CgmE6VqFXITO6ZWMKAAAAQAAAA28j9Fo2iOE+95IH6lW3qsAEAAAAA@pctrade.cz>
+Message-ID: <3C0F2F91.6000809@netscape.net>
+
+--------------020202050304010008020104
+Content-Type: text/plain; charset=ISO-8859-2; format=flowed
+Content-Transfer-Encoding: 8bit
+
+I cant find the solution to the pwlconfig "dot dot" problem with redhat 
+7.1 becuase the link that has the solution is broken -- 
+http:/adis.on.ca/archives -- thanks for any help.
+
+Daniel
+
+michal.verner@pctrade.cz wrote:
+
+>The same problem, but http://adis.on.ca/archives/ does not work to find
+>a solution...
+>
+>
+>Michal Verner
+>michal.verner@pctrade.cz
+>------------------------------------------------
+>Pra¾ská 264
+>29471 Benátky nad Jizerou II
+>T/F: +420-326-362394
+>www.pctrade.cz
+>
+>
+>-----Original Message-----
+>From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]
+>On Behalf Of Tim Westbrook
+>Sent: Wednesday, December 05, 2001 11:26 PM
+>To: peeweelinux@adis.on.ca
+>Subject: RE: Re: [Peeweelinux] pwlconfig problem.
+>
+>mmm, 
+> how about this one?
+>
+>  
+>http://mail.adis.on.ca/pipermail/peeweelinux/2001-June/000334.html
+>
+>
+>-Tim
+>
+>--- dano1nr@netscape.net wrote:
+>
+>>nucrses 5.2-8 is installed.
+>>
+>>
+>>Tim Westbrook <iondiode@yahoo.com> wrote:
+>>
+>>>Found in the mail archives
+>>>
+>>http://mail.adis.on.ca/pipermail/peeweelinux/2001-August/000357.html
+>>
+>>>u must install ncurses in redhat
+>>>
+>>>-Tim
+>>>--- dano <dano1nr@netscape.net> wrote:
+>>>
+>>>>Hi, When I try to run pwlconfig I get two dots
+>>>>
+>>then
+>>
+>>>>it does nothing. 
+>>>>whats the problem?
+>>>>I'm using RedHat 7.1, thank you.
+>>>>
+>>>>
+>>>>Daniel
+>>>>
+>>>>_______________________________________________
+>>>>Peeweelinux mailing list
+>>>>Peeweelinux@adis.on.ca
+>>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>>
+>>>
+>>>__________________________________________________
+>>>Do You Yahoo!?
+>>>Buy the perfect holiday gifts at Yahoo! Shopping.
+>>>http://shopping.yahoo.com
+>>>_______________________________________________
+>>>Peeweelinux mailing list
+>>>Peeweelinux@adis.on.ca
+>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>
+>>-- 
+>>
+>>
+>>
+>>
+>>
+>__________________________________________________________________
+>
+>>Your favorite stores, helpful shopping tools and
+>>great gift ideas. Experience the convenience of
+>>buying online with Shop@Netscape!
+>>http://shopnow.netscape.com/
+>>
+>>Get your own FREE, personal Netscape Mail account
+>>today at http://webmail.netscape.com/
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+>
+>
+>__________________________________________________
+>Do You Yahoo!?
+>Send your FREE holiday greetings online!
+>http://greetings.yahoo.com
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+--------------020202050304010008020104
+Content-Type: text/html; charset=ISO-8859-2
+Content-Transfer-Encoding: 8bit
+
+<html>
+<head>
+</head>
+<body>
+I cant find the solution to the pwlconfig "dot dot" problem with redhat 7.1
+becuase the link that has the solution is broken -- <a class="moz-txt-link-freetext" href="http:/adis.on.ca/archives">http:/adis.on.ca/archives</a>
+-- thanks for any help.<br>
+<br>
+Daniel<br>
+<br>
+<a class="moz-txt-link-abbreviated" href="mailto:michal.verner@pctrade.cz">michal.verner@pctrade.cz</a> wrote:<br>
+<blockquote type="cite" cite="mid:md5%3A64756D6D79206D657373616765206964">
+  <pre wrap="">The same problem, but <a class="moz-txt-link-freetext" href="http://adis.on.ca/archives/">http://adis.on.ca/archives/</a> does not work to find<br>a solution...<br><br><br>Michal Verner<br><a class="moz-txt-link-abbreviated" href="mailto:michal.verner@pctrade.cz">michal.verner@pctrade.cz</a><br>------------------------------------------------<br>Pra¾ská 264<br>29471 Benátky nad Jizerou II<br>T/F: +420-326-362394<br><a class="moz-txt-link-abbreviated" href="http://www.pctrade.cz">www.pctrade.cz</a><br><br><br>-----Original Message-----<br>From: <a class="moz-txt-link-abbreviated" href="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</a> [<a class="moz-txt-link-freetext" href="mailto:peeweelinux-admin@adis.on.ca">mailto:peeweelinux-admin@adis.on.ca</a>]<br>On Behalf Of Tim Westbrook<br>Sent: Wednesday, December 05, 2001 11:26 PM<br>To: <a class="moz-txt-link-abbreviated" href="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</a><br>Subject:
+ RE: Re: [Peeweelinux] pwlconfig problem.<br><br>mmm, <br> how about this one?<br><br>  <br><a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/pipermail/peeweelinux/2001-June/000334.html">http://mail.adis.on.ca/pipermail/peeweelinux/2001-June/000334.html</a><br><br><br>-Tim<br><br>--- <a class="moz-txt-link-abbreviated" href="mailto:dano1nr@netscape.net">dano1nr@netscape.net</a> wrote:<br></pre>
+  <blockquote type="cite">
+    <pre wrap="">nucrses 5.2-8 is installed.<br><br><br>Tim Westbrook <a class="moz-txt-link-rfc2396E" href="mailto:iondiode@yahoo.com">&lt;iondiode@yahoo.com&gt;</a> wrote:<br><br></pre>
+    <blockquote type="cite">
+      <pre wrap="">Found in the mail archives<br><br></pre>
+      </blockquote>
+      <pre wrap=""><a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/pipermail/peeweelinux/2001-August/000357.html">http://mail.adis.on.ca/pipermail/peeweelinux/2001-August/000357.html</a><br></pre>
+      <blockquote type="cite">
+        <pre wrap="">u must install ncurses in redhat<br><br>-Tim<br>--- dano <a class="moz-txt-link-rfc2396E" href="mailto:dano1nr@netscape.net">&lt;dano1nr@netscape.net&gt;</a> wrote:<br></pre>
+        <blockquote type="cite">
+          <pre wrap="">Hi, When I try to run pwlconfig I get two dots<br></pre>
+          </blockquote>
+          </blockquote>
+          <pre wrap="">then<br></pre>
+          <blockquote type="cite">
+            <blockquote type="cite">
+              <pre wrap="">it does nothing. <br>whats the problem?<br>I'm using RedHat 7.1, thank you.<br><br><br>Daniel<br><br>_______________________________________________<br>Peeweelinux mailing list<br><a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a><br><a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a><br></pre>
+              </blockquote>
+              <pre wrap=""><br>__________________________________________________<br>Do You Yahoo!?<br>Buy the perfect holiday gifts at Yahoo! Shopping.<br><a class="moz-txt-link-freetext" href="http://shopping.yahoo.com">http://shopping.yahoo.com</a><br>_______________________________________________<br>Peeweelinux mailing list<br><a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a><br><a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a><br><br></pre>
+              </blockquote>
+              <pre wrap="">-- <br><br><br><br><br><br></pre>
+              </blockquote>
+              <pre wrap=""><!---->__________________________________________________________________<br></pre>
+              <blockquote type="cite">
+                <pre wrap="">Your favorite stores, helpful shopping tools and<br>great gift ideas. Experience the convenience of<br>buying online with Shop@Netscape!<br><a class="moz-txt-link-freetext" href="http://shopnow.netscape.com/">http://shopnow.netscape.com/</a><br><br>Get your own FREE, personal Netscape Mail account<br>today at <a class="moz-txt-link-freetext" href="http://webmail.netscape.com/">http://webmail.netscape.com/</a><br><br>_______________________________________________<br>Peeweelinux mailing list<br><a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a><br><a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a><br></pre>
+                </blockquote>
+                <pre wrap=""><!----><br><br>__________________________________________________<br>Do You Yahoo!?<br>Send your FREE holiday greetings online!<br><a class="moz-txt-link-freetext" href="http://greetings.yahoo.com">http://greetings.yahoo.com</a><br>_______________________________________________<br>Peeweelinux mailing list<br><a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a><br><a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a><br><br><br>_______________________________________________<br>Peeweelinux mailing list<br><a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a><br><a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a><br></pre>
+                </blockquote>
+                <br>
+                </body>
+                </html>
+
+--------------020202050304010008020104--
+
+From peeweelinux@adis.on.ca  Thu Dec  6 20:37:47 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 6 Dec 2001 14:37:47 -0600 (CST)
+Subject: [Peeweelinux] pwlconfig problem.
+In-Reply-To: <3C0F2F91.6000809@netscape.net>
+Message-ID: <Pine.LNX.4.33.0112061434140.16339-100000@adibox.knet.ca>
+
+The list archve has moved to http://mail.adis.on.ca/pipermail/peeweelinux/
+
+The .. problem is discussed here 
+http://mail.adis.on.ca/pipermail/peeweelinux/2001-March/thread.html
+http://mail.adis.on.ca/pipermail/peeweelinux/2001-March/000311.html
+
+Adi
+
+
+On Thu, 6 Dec 2001, dano wrote:
+
+> I cant find the solution to the pwlconfig "dot dot" problem with redhat 
+> 7.1 becuase the link that has the solution is broken -- 
+> http:/adis.on.ca/archives -- thanks for any help.
+> 
+> Daniel
+> 
+> michal.verner@pctrade.cz wrote:
+> 
+> >The same problem, but http://adis.on.ca/archives/ does not work to find
+> >a solution...
+> >
+> >
+> >Michal Verner
+> >michal.verner@pctrade.cz
+> >------------------------------------------------
+> >Pra¾ská 264
+> >29471 Benátky nad Jizerou II
+> >T/F: +420-326-362394
+> >www.pctrade.cz
+> >
+> >
+> >-----Original Message-----
+> >From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]
+> >On Behalf Of Tim Westbrook
+> >Sent: Wednesday, December 05, 2001 11:26 PM
+> >To: peeweelinux@adis.on.ca
+> >Subject: RE: Re: [Peeweelinux] pwlconfig problem.
+> >
+> >mmm, 
+> > how about this one?
+> >
+> >  
+> >http://mail.adis.on.ca/pipermail/peeweelinux/2001-June/000334.html
+> >
+> >
+> >-Tim
+> >
+> >--- dano1nr@netscape.net wrote:
+> >
+> >>nucrses 5.2-8 is installed.
+> >>
+> >>
+> >>Tim Westbrook <iondiode@yahoo.com> wrote:
+> >>
+> >>>Found in the mail archives
+> >>>
+> >>http://mail.adis.on.ca/pipermail/peeweelinux/2001-August/000357.html
+> >>
+> >>>u must install ncurses in redhat
+> >>>
+> >>>-Tim
+> >>>--- dano <dano1nr@netscape.net> wrote:
+> >>>
+> >>>>Hi, When I try to run pwlconfig I get two dots
+> >>>>
+> >>then
+> >>
+> >>>>it does nothing. 
+> >>>>whats the problem?
+> >>>>I'm using RedHat 7.1, thank you.
+> >>>>
+> >>>>
+> >>>>Daniel
+> >>>>
+> >>>>_______________________________________________
+> >>>>Peeweelinux mailing list
+> >>>>Peeweelinux@adis.on.ca
+> >>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >>>>
+> >>>
+> >>>__________________________________________________
+> >>>Do You Yahoo!?
+> >>>Buy the perfect holiday gifts at Yahoo! Shopping.
+> >>>http://shopping.yahoo.com
+> >>>_______________________________________________
+> >>>Peeweelinux mailing list
+> >>>Peeweelinux@adis.on.ca
+> >>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >>>
+> >>-- 
+> >>
+> >>
+> >>
+> >>
+> >>
+> >__________________________________________________________________
+> >
+> >>Your favorite stores, helpful shopping tools and
+> >>great gift ideas. Experience the convenience of
+> >>buying online with Shop@Netscape!
+> >>http://shopnow.netscape.com/
+> >>
+> >>Get your own FREE, personal Netscape Mail account
+> >>today at http://webmail.netscape.com/
+> >>
+> >>_______________________________________________
+> >>Peeweelinux mailing list
+> >>Peeweelinux@adis.on.ca
+> >>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >>
+> >
+> >
+> >__________________________________________________
+> >Do You Yahoo!?
+> >Send your FREE holiday greetings online!
+> >http://greetings.yahoo.com
+> >_______________________________________________
+> >Peeweelinux mailing list
+> >Peeweelinux@adis.on.ca
+> >http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> >
+> >_______________________________________________
+> >Peeweelinux mailing list
+> >Peeweelinux@adis.on.ca
+> >http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Tue Dec 11 13:40:56 2001
+From: peeweelinux@adis.on.ca (SY Meta)
+Date: Tue, 11 Dec 2001 16:40:56 +0300
+Subject: [Peeweelinux] pwlconfig problem.
+References: <Pine.LNX.4.33.0112061434140.16339-100000@adibox.knet.ca>
+Message-ID: <3C160CE8.8050103@malagasy.com>
+
+Still have problem with pwlconfig. While i'm trying to run lxdialog, i 
+got core dump.
+
+Any ideas?
+
+Meta
+
+Adi Linden wrote:
+
+> The list archve has moved to http://mail.adis.on.ca/pipermail/peeweelinux/
+> 
+> The .. problem is discussed here 
+> http://mail.adis.on.ca/pipermail/peeweelinux/2001-March/thread.html
+> http://mail.adis.on.ca/pipermail/peeweelinux/2001-March/000311.html
+> 
+> Adi
+> 
+> 
+> On Thu, 6 Dec 2001, dano wrote:
+> 
+> 
+>>I cant find the solution to the pwlconfig "dot dot" problem with redhat 
+>>7.1 becuase the link that has the solution is broken -- 
+>>http:/adis.on.ca/archives -- thanks for any help.
+>>
+>>Daniel
+>>
+>>michal.verner@pctrade.cz wrote:
+>>
+>>
+>>>The same problem, but http://adis.on.ca/archives/ does not work to find
+>>>a solution...
+>>>
+>>>
+>>>Michal Verner
+>>>michal.verner@pctrade.cz
+>>>------------------------------------------------
+>>>Pra¾ská 264
+>>>29471 Benátky nad Jizerou II
+>>>T/F: +420-326-362394
+>>>www.pctrade.cz
+>>>
+>>>
+>>>-----Original Message-----
+>>>From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]
+>>>On Behalf Of Tim Westbrook
+>>>Sent: Wednesday, December 05, 2001 11:26 PM
+>>>To: peeweelinux@adis.on.ca
+>>>Subject: RE: Re: [Peeweelinux] pwlconfig problem.
+>>>
+>>>mmm, 
+>>>how about this one?
+>>>
+>>> 
+>>>http://mail.adis.on.ca/pipermail/peeweelinux/2001-June/000334.html
+>>>
+>>>
+>>>-Tim
+>>>
+>>>--- dano1nr@netscape.net wrote:
+>>>
+>>>
+>>>>nucrses 5.2-8 is installed.
+>>>>
+>>>>
+>>>>Tim Westbrook <iondiode@yahoo.com> wrote:
+>>>>
+>>>>
+>>>>>Found in the mail archives
+>>>>>
+>>>>>
+>>>>http://mail.adis.on.ca/pipermail/peeweelinux/2001-August/000357.html
+>>>>
+>>>>
+>>>>>u must install ncurses in redhat
+>>>>>
+>>>>>-Tim
+>>>>>--- dano <dano1nr@netscape.net> wrote:
+>>>>>
+>>>>>
+>>>>>>Hi, When I try to run pwlconfig I get two dots
+>>>>>>
+>>>>>>
+>>>>then
+>>>>
+>>>>
+>>>>>>it does nothing. 
+>>>>>>whats the problem?
+>>>>>>I'm using RedHat 7.1, thank you.
+>>>>>>
+>>>>>>
+>>>>>>Daniel
+>>>>>>
+>>>>>>_______________________________________________
+>>>>>>Peeweelinux mailing list
+>>>>>>Peeweelinux@adis.on.ca
+>>>>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>>>>
+>>>>>>
+>>>>>__________________________________________________
+>>>>>Do You Yahoo!?
+>>>>>Buy the perfect holiday gifts at Yahoo! Shopping.
+>>>>>http://shopping.yahoo.com
+>>>>>_______________________________________________
+>>>>>Peeweelinux mailing list
+>>>>>Peeweelinux@adis.on.ca
+>>>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>>>
+>>>>>
+>>>>-- 
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>>
+>>>__________________________________________________________________
+>>>
+>>>
+>>>>Your favorite stores, helpful shopping tools and
+>>>>great gift ideas. Experience the convenience of
+>>>>buying online with Shop@Netscape!
+>>>>http://shopnow.netscape.com/
+>>>>
+>>>>Get your own FREE, personal Netscape Mail account
+>>>>today at http://webmail.netscape.com/
+>>>>
+>>>>_______________________________________________
+>>>>Peeweelinux mailing list
+>>>>Peeweelinux@adis.on.ca
+>>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>>
+>>>>
+>>>
+>>>__________________________________________________
+>>>Do You Yahoo!?
+>>>Send your FREE holiday greetings online!
+>>>http://greetings.yahoo.com
+>>>_______________________________________________
+>>>Peeweelinux mailing list
+>>>Peeweelinux@adis.on.ca
+>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>
+>>>
+>>>_______________________________________________
+>>>Peeweelinux mailing list
+>>>Peeweelinux@adis.on.ca
+>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>
+>>>
+>>
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+
+
+-- 
+SY Meta
+Blueline, Antananarivo, Madagascar
+Tel: +261 20 22 676 96
+http://www.malagasy.com/blueline/
+
+
+From peeweelinux@adis.on.ca  Thu Dec 13 03:09:01 2001
+From: peeweelinux@adis.on.ca (root)
+Date: Thu, 13 Dec 2001 11:09:01 +0800
+Subject: [Peeweelinux] Creating password
+Message-ID: <01121311090100.11017@Patrick>
+
+The default login name and password for peeweelinux is
+loginname: admin
+password: admin
+Because all embedded OS have same login name and pass word, it seems that the 
+security issue is a main problem for us.
+How can I change the login name and pass word in the peewee configuration 
+tools?
+
+thank you for your atttention.
+
+
+From peeweelinux@adis.on.ca  Thu Dec 13 03:11:16 2001
+From: peeweelinux@adis.on.ca (root)
+Date: Thu, 13 Dec 2001 11:11:16 +0800
+Subject: [Peeweelinux] Creating password
+Message-ID: <01121311111601.11017@Patrick>
+
+
+The default login name and password for peeweelinux is
+loginname: admin
+password: admin
+Because all embedded OS have same login name and pass word, it seems that the
+security issue is a main problem for us.
+How can I change the login name and pass word in the peewee configuration
+tools?
+
+thank you for your atttention.
+
+
+From peeweelinux@adis.on.ca  Thu Dec 13 04:33:15 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 12 Dec 2001 22:33:15 -0600 (CST)
+Subject: [Peeweelinux] Creating password
+In-Reply-To: <01121311090100.11017@Patrick>
+Message-ID: <Pine.LNX.4.10.10112122232310.21318-100000@trix.myknet.org>
+
+Hi,
+
+The standard 'passwd' command should be available to change passwords on
+the system.
+
+Adi
+
+On Thu, 13 Dec 2001, root wrote:
+
+> The default login name and password for peeweelinux is
+> loginname: admin
+> password: admin
+> Because all embedded OS have same login name and pass word, it seems that the 
+> security issue is a main problem for us.
+> How can I change the login name and pass word in the peewee configuration 
+> tools?
+> 
+> thank you for your atttention.
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Dec 13 05:01:19 2001
+From: peeweelinux@adis.on.ca (root)
+Date: Thu, 13 Dec 2001 13:01:19 +0800
+Subject: [Peeweelinux] Re: Creating Password
+Message-ID: <01121313011900.12820@Patrick>
+
+Thank you for you kindly reply.
+I can use the standard "passwd" command to change pass word, but it will be 
+reset to "admin" again after power off the hardware.
+I must change the passwd before loading the configuration to the flash.
+After reading thousands of script lines, I still can't find which parts of 
+scripts can change the passwd before loading into the flash.
+can anyone tell me how to change?
+
+thank you for your attention
+Patrick
+
+>Hi,
+>
+>The standard 'passwd' command should be available to change passwords on
+>the system.
+>
+>Adi
+>
+>On Thu, 13 Dec 2001, root wrote:
+>
+> The default login name and password for peeweelinux is
+> loginname: admin
+> password: admin
+> Because all embedded OS have same login name and pass word, it seems that 
+the 
+> security issue is a main problem for us.
+> How can I change the login name and pass word in the peewee configuration 
+> tools?
+> 
+> thank you for your atttention.
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+
+From peeweelinux@adis.on.ca  Thu Dec 13 07:41:40 2001
+From: peeweelinux@adis.on.ca (root)
+Date: Thu, 13 Dec 2001 15:41:40 +0800
+Subject: [Peeweelinux] queston about FTP server
+Message-ID: <01121315414000.01361@Patrick>
+
+Hi,
+
+It seems that peeweelinux supports standard command "ftp" to FTP server when 
+it works as client. Now, I doubt whether it can works as FTP server to 
+receive other's request? 
+
+if it can't work as server, how can I install ftp server in the peeweelinux?
+
+Best Regards,
+Patrick
+
+From peeweelinux@adis.on.ca  Thu Dec 13 07:57:15 2001
+From: peeweelinux@adis.on.ca (Guillaume Sisteron)
+Date: Thu, 13 Dec 2001 08:57:15 +0100
+Subject: [Peeweelinux] Re: Creating Password
+References: <01121313011900.12820@Patrick>
+Message-ID: <001b01c183ab$c831d5c0$1f0aa8c0@ars.fr>
+
+You have to change the /etc/passwd file with th correct one (that is to say
+with the news password you want), and then put this file in your custom
+directory.
+
+
+----- Original Message -----
+From: "root" <patrick@hkite.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Thursday, December 13, 2001 6:01 AM
+Subject: [Peeweelinux] Re: Creating Password
+
+
+> Thank you for you kindly reply.
+> I can use the standard "passwd" command to change pass word, but it will
+be
+> reset to "admin" again after power off the hardware.
+> I must change the passwd before loading the configuration to the flash.
+> After reading thousands of script lines, I still can't find which parts of
+> scripts can change the passwd before loading into the flash.
+> can anyone tell me how to change?
+>
+> thank you for your attention
+> Patrick
+>
+> >Hi,
+> >
+> >The standard 'passwd' command should be available to change passwords on
+> >the system.
+> >
+> >Adi
+> >
+> >On Thu, 13 Dec 2001, root wrote:
+> >
+> > The default login name and password for peeweelinux is
+> > loginname: admin
+> > password: admin
+> > Because all embedded OS have same login name and pass word, it seems
+that
+> the
+> > security issue is a main problem for us.
+> > How can I change the login name and pass word in the peewee
+configuration
+> > tools?
+> >
+> > thank you for your atttention.
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+
+From peeweelinux@adis.on.ca  Fri Dec 14 08:23:25 2001
+From: peeweelinux@adis.on.ca (Tobias Henle)
+Date: Fri, 14 Dec 2001 09:23:25 +0100
+Subject: [Peeweelinux] newbee question about linkng against peewee linux
+Message-ID: <3C19B6FD.4080606@thiesen.com>
+
+Hi List,
+
+i am a "newbee" to peewee-linux and have tow general question about 
+linking programms with the libs distributed with peeweelnx.
+
+(1) is ist possible to link programms against the peewee libs?
+
+(2) if it is can you give me some information about how i can do this?
+
+thx for ur help
+
+cu (mit freundlichen Grüßen)
+
+ps. i have basically some experience with compiling programms on linux 
+but i do not know anything about X-Compiling :(
+
+-Tobias Henle
+                          _   _    _
+  __ __ ____ __ ____ __ _| |_| |_ (_)___ ___ ___ _ _    __ ___ _ __
+  \ V  V /\ V  V /\ V  V /  _| ' \| / -_|_-</ -_) ' \ _/ _/ _ \ '  \
+   \_/\_/  \_/\_/  \_/\_(_)__|_||_|_\___/__/\___|_||_(_)__\___/_|_|_|
+--
+________E-Mail________________________URL____________________________
+	mailto:t.henle@thiesen.com    http://www.thiesen.com
+_____________________________________________________________________
+
+
+From peeweelinux@adis.on.ca  Sat Dec 15 15:44:13 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 15 Dec 2001 09:44:13 -0600 (CST)
+Subject: [Peeweelinux] queston about FTP server
+In-Reply-To: <01121315414000.01361@Patrick>
+Message-ID: <Pine.LNX.4.33.0112150943140.1282-100000@adibox.knet.ca>
+
+> It seems that peeweelinux supports standard command "ftp" to FTP server when 
+> it works as client. Now, I doubt whether it can works as FTP server to 
+> receive other's request? 
+> 
+> if it can't work as server, how can I install ftp server in the peeweelinux?
+
+An ftp serve is available in one of the packages. The server is run 
+through inetd adn has to be turned on in /etc/inetd.conf
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Sat Dec 15 16:23:28 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 15 Dec 2001 10:23:28 -0600 (CST)
+Subject: [Peeweelinux] newbee question about linkng against peewee linux
+In-Reply-To: <3C19B6FD.4080606@thiesen.com>
+Message-ID: <Pine.LNX.4.33.0112151020570.1282-100000@adibox.knet.ca>
+
+Hi,
+
+PeeWeeLinux binaries were linked agaist standard RedHat 6.2 libraries. So 
+if your build system is a RedHat 6.2 system and you only link against the 
+libs actually available in PWL things should work. I am woking on going to 
+a dedicated build environment for PeeWeeLinux but there is nothing worth 
+showing yet.
+
+Adi
+
+On Fri, 14 Dec 2001, Tobias Henle wrote:
+
+> Hi List,
+> 
+> i am a "newbee" to peewee-linux and have tow general question about 
+> linking programms with the libs distributed with peeweelnx.
+> 
+> (1) is ist possible to link programms against the peewee libs?
+> 
+> (2) if it is can you give me some information about how i can do this?
+> 
+> thx for ur help
+> 
+> cu (mit freundlichen Grüßen)
+> 
+> ps. i have basically some experience with compiling programms on linux 
+> but i do not know anything about X-Compiling :(
+> 
+> -Tobias Henle
+>                           _   _    _
+>   __ __ ____ __ ____ __ _| |_| |_ (_)___ ___ ___ _ _    __ ___ _ __
+>   \ V  V /\ V  V /\ V  V /  _| ' \| / -_|_-</ -_) ' \ _/ _/ _ \ '  \
+>    \_/\_/  \_/\_/  \_/\_(_)__|_||_|_\___/__/\___|_||_(_)__\___/_|_|_|
+> --
+> ________E-Mail________________________URL____________________________
+> 	mailto:t.henle@thiesen.com    http://www.thiesen.com
+> _____________________________________________________________________
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Dec 17 07:54:32 2001
+From: peeweelinux@adis.on.ca (Tobias Henle)
+Date: Mon, 17 Dec 2001 08:54:32 +0100
+Subject: [Peeweelinux] newbee question about linkng against peewee linux
+References: <Pine.LNX.4.33.0112151020570.1282-100000@adibox.knet.ca>
+Message-ID: <3C1DA4B8.8030305@thiesen.com>
+
+Hi Adi,
+
+first thanx for your fast response :)
+
+Adi Linden wrote:
+
+> Hi,
+> 
+> PeeWeeLinux binaries were linked agaist standard RedHat 6.2 libraries. So 
+> if your build system is a RedHat 6.2 system and you only link against the 
+> libs actually available in PWL things should work.
+
+
+Thats pitty, we work on SuSe 7.3 and so i can not link against a RedHat 
+6.2 but i will have a look at peewee linux and maybe I install rh for peewee
+
+> I am working on going to 
+> a dedicated build environment for PeeWeeLinux but there is nothing worth 
+> showing yet.
+> 
+
+
+I think that is a real _good_ idea course there are many linux 
+distributions out there :)
+
+cu (mit freundlichen Grüßen)
+
+-Tobias Henle
+                          _   _    _
+  __ __ ____ __ ____ __ _| |_| |_ (_)___ ___ ___ _ _    __ ___ _ __
+  \ V  V /\ V  V /\ V  V /  _| ' \| / -_|_-</ -_) ' \ _/ _/ _ \ '  \
+   \_/\_/  \_/\_/  \_/\_(_)__|_||_|_\___/__/\___|_||_(_)__\___/_|_|_|
+--
+________E-Mail________________________URL____________________________
+	mailto:t.henle@thiesen.com    http://www.thiesen.com
+_____________________________________________________________________
+
+
+From peeweelinux@adis.on.ca  Mon Dec 17 19:19:43 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 17 Dec 2001 13:19:43 -0600 (CST)
+Subject: [Peeweelinux] newbee question about linkng against peewee linux
+In-Reply-To: <3C1DA4B8.8030305@thiesen.com>
+Message-ID: <Pine.LNX.4.33.0112171315000.9662-100000@adibox.knet.ca>
+
+Hi Tobias,
+
+> I think that is a real _good_ idea course there are many linux 
+> distributions out there :)
+
+That should fix many of theproblems encounterred when not using rh 6.2 as 
+development environment.
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Tue Dec 18 16:16:29 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 18 Dec 2001 10:16:29 -0600 (CST)
+Subject: [Peeweelinux] Re: Using DOC
+In-Reply-To: <000e01c18799$72505d60$0d01a8c0@cameron>
+Message-ID: <Pine.LNX.4.33.0112181003200.10165-100000@adibox.knet.ca>
+
+Hi David,
+
+> I would rather use an uncompressed filesystem (I know this adds some
+> confusion), as I want to be able to save configuration changes and new
+> files, etc... I do not know how the compressed disk is made, or how I would
+> edit a particular file within the compressed disk... Anyways...
+
+pwlconfig has an option available which will create 2 partitions on the 
+target device, a bootable  FAT partition with kernel and an ext2 partition 
+with an uncompressed filesystem which is copied into a RAM disk at boot 
+time. This option should work with the DOC.
+
+> I am running pwlconfig from an HDD (/dev/hda) on the Wafer board with the
+> DOC. I can mount and the pwlconfig works just fine.
+
+I have never tried running pwlconfig on the same platform as my target, so 
+I never attempted to actually have pwlconfig load a filesystem onto an 
+attached DOC. I always used the intermediate step of loading a CF and 
+moving files from it to the DOC once its running on the target system.
+
+> Can you set the target device as /dev/msys/fla1? How id your syslinux.cfg
+> file setup? Does it somehow load that doc.b or something?
+
+I think /dev/fla or /dev/msys/fla should work. pwlconfig works on the 
+complete target device, not a single partition. It will use fdisk and 
+filesystem tools to prepare and load the device.
+
+> What should the root= parameter be set to in the syslinux.cfg?
+
+Not sure, it's been a while since I manually tweaked syslinux.cfg. 
+pwlconfig should do all that for you...
+
+> I am a little lost when it comes to syslinux. I was just so impressed at how
+> easy it was to do with CF, that this DOC system is almost making me cry :(.
+
+Yup, been there, done that. In my opinion getting DOC to support an ext2 
+filesystem to boot from is nothing short of a nightmare. I would avoid 
+that scenario at all costs. Keeping the bootpartition FAT and using 
+syslinux should be quite doable and fairly easy to reproduce once 
+succeeded.
+
+BTW, I think you had asked me to be added to the PWL mailing list. I just 
+added you manually. Hope this is ok.
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Fri Dec 28 20:58:34 2001
+From: peeweelinux@adis.on.ca (Steve Rodgers)
+Date: Fri, 28 Dec 2001 12:58:34 -0800
+Subject: [Peeweelinux] Problems running version 0.61 on Redhat 7.2 system
+Message-ID: <20011228205804.GQIW15906.femail44.sdc1.sfba.home.com@there>
+
+I have a few questions about PeeWee linux. I've been able to get the basic 
+kernel in version 0.61 to boot on my X86 embedded board using a 8MB compact 
+flash card but there are a number of issues I am tryng to resolve. I beleive 
+all of my problems can be traced to installing PeeWee on a Redhat 7.2 system
+but I am not completely convinced.
+
+First, the problems-
+
+The kernel seems slow to boot (abt. 1 min). I am using a compressed bzImage 
+and a compressed file system  on a single ext2 partition with LILO. I am 
+passing append="console=ttyS1,9600n8" to the kernel 
+which should re-direct all the boot info to the ttyS1 device. Could it be that
+the lilo binary in the Redhat 7.2 system is causing this problem? The 
+initialization sequence also indicates there is a PC keyboard timeout.
+Since I don't have hardware for a PC keyboard, should I be looking here?
+
+I can't seem to compile any custom kernel without the make bzImage failing
+with a problem in checksum.s. Is this because the assember installed on the
+redhat 7.2 system has been changed in some manner to not allow the checksum/s 
+file to be assembled cleanly? Is it possible to install and run PeeWee 
+version 0.61 on a sysem running version a version 2.4 kernel  such as Redhat 
+7.2 without modifications?
+
+If modifications are required to make Pee Wee Linux version 0.61 run cleanly 
+on a Redhat 7.2 box. Would the procedure make it work be more painful than
+getting a new hard disk and installing Redhat 6.2 on it?
+
+Thanks,
+
+Steve Rodgers
+San Diego, CA
+
+
+
+
+
+
+
+

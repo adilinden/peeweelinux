@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> libpthreads OK!
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000083.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>libpthreads OK!
+   </H1>
+    <B>Richard Jennings
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="libpthreads OK!">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Tue, 19 Sep 2000 23:02:42 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000083.html">libpthreads OK!
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#84">[ date ]</a>
+              <a href="thread.html#84">[ thread ]</a>
+              <a href="subject.html#84">[ subject ]</a>
+              <a href="author.html#84">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Haven't gone back to do the docs... still trying to figure out what we should
+</I>&gt;<i>be doing/showing to the user...
+</I>
+
+I thought I'd start with a few graphics / screenshots to make things 
+a little clearer.  picture ==1k words ;)
+
+I also  thought I could go through the postings to the list and see 
+if I couldn't put the answers to some of those questions in the docs.
+
+Finally I thought I'd try to answer some of the obvious questions 
+like &quot;How do you get your application to start up at boot up?&quot; and 
+any other questions we can think of answers to.
+
+I finally worked out a solution to getting my X-based application to 
+start at boot time. I'll try to explain the solution and what I think 
+are the causes. Let me know if I'm off track or if you have any extra 
+insight.
+
+I'm using Ash with BusyBox. BusyBox can provide INIT capabilities and 
+it comes with its own initab file which is pretty descriptive. I have 
+a basic initab file which looks something like this:
+
+# initialize system - execute all the scripts in /etc/init.d/rcS
+::<i>sysinit:/etc/init.d/rcS
+</I>
+# start a shell
+::<i>respawn:/bin/sh
+</I>
+# start a shell on tty2
+tty2::respawn:/bin/sh
+
+# start my application by calling a script in the /bin directory
+tty1::once:/bin/.setpath
+
+Note that there is no login being used and I am starting two shells. 
+I think, but I'm probably wrong, that each shell is it's own process 
+and environment variables are not shared between the two processes. I 
+have tried sourcing (.scriptfile) any script files and exporting the 
+PATH but this did not have the desired effect of making the path 
+change in the &quot;parent&quot; process. I'm beginning to think that the 
+default path of &quot;/usr/bin:/bin:/usr/sbin:/sbin&quot; is hard coded into 
+the shell but I haven't explored this yet. I tried commenting out and 
+changing the PATH statement in every startup script without making 
+any difference to the PATH that is initially available to me. man ash 
+lists a switch (-) which will cause the .profile to be used for 
+environment variables but I could never get it to work.
+
+My solution was to call a script that I had placed into a directory 
+in ash's search path. The script is :
+
+# /bin/.setpath
+export PATH=$PATH:/usr/X11R6/bin:/etc/X11
+
+#clean up any lock files
+rm -rf /tmp/.X0-lock
+
+# call startx which configures X and calls my application
+startx
+
+I don't know how or why it works but it works and right now that's 
+good enough for me ;-)
+
+&gt;<i>
+</I>&gt;<i>Are you tracking the free version ?
+</I>&gt;<i><A HREF="http://www.freemware.org">http://www.freemware.org</A>
+</I>
+
+I hadn't heard of them. I'll have to keep an eye on it - looks pretty alpha
+
+&gt;<i>
+</I>&gt;<i>One of my goals with the Main Menu of PeeWee Linux was to show, in 
+</I>&gt;<i>general, the
+</I>&gt;<i>process required to embed linux.  We are generally hiding all of the command
+</I>&gt;<i>line stuff, but not what is actually being done. (Thats why the Erase and Load
+</I>&gt;<i>are two seperate operations :)  Any suggestions on how to improve this to make
+</I>&gt;<i>it clearer would be appreciated!
+</I>&gt;<i>
+</I>You guys are doing an awesome job on pwlconfig. I had a working 
+system up and going in less than a day and that's fantastic! Could it 
+be smoother? sure.
+
+When I was trying to figure out how to to accomplish this on my own I 
+was considering using RPMs and one of the graphical package managers 
+that come with KDE as a starting place. Have you seen NT Embedded's 
+target designer? It's a Windows Explorer-like configuration utility 
+that lets you rapidly pick and chose which components to use in your 
+embedded system.
+I had envisioned using an Explorer type interface to move through the 
+package hierarchy in a rapid manner selecting the components needed. 
+Once this was working it might not be too far of a stretch to add 
+menu items and &quot;browse dialogs&quot; for selecting targets based on 
+devices, partitions, mount points, etc... But I'm afraid that my 
+dreams often exceed my reality ;-))
+
+See ya'
+
+Richard
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000083.html">libpthreads OK!
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#84">[ date ]</a>
+              <a href="thread.html#84">[ thread ]</a>
+              <a href="subject.html#84">[ subject ]</a>
+              <a href="author.html#84">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

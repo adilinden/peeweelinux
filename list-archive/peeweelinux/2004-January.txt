@@ -1,0 +1,1129 @@
+From peeweelinux@adis.on.ca  Mon Jan  5 04:31:19 2004
+From: peeweelinux@adis.on.ca (Jonathan Sturges)
+Date: Sun, 4 Jan 2004 23:31:19 -0500
+Subject: [Peeweelinux] RH62 compat. question
+Message-ID: <038601c3d344$c43c7840$e001a8c0@cuba>
+
+Hi,
+I'm learning how to compile apps for use in PWL systems.  My host is running
+RH8 but I've got the compat-* RPMs from RH73, so I have (in theory) the
+ability to build RH62-compatible apps.
+
+My question is, is there any steps other than just running the
+/usr/i386-glibc21-linux/bin/i386-glibc21-linux-env.sh script before
+compiling the applications?  When I take this script into my shell with ".
+/usr/i386-glibc21-linux/bin/i386-glibc21-linux-env.sh", and then do
+configure/make/etc, the resulting binaries are still linked against the
+glibc from RH8.  Are there additional env. variables to make gcc/ld find the
+older libraries?
+
+Also, I'm using the "kgcc" compiler, FWIW.
+
+If anyone could fill me in on what I need to do to get these apps. linked
+agains glibc 2.1, it would be greatly appreciated.
+
+thanks,
+Jonathan
+
+
+
+From peeweelinux@adis.on.ca  Mon Jan  5 12:55:22 2004
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Mon, 5 Jan 2004 07:55:22 -0500
+Subject: [Peeweelinux] RH62 compat. question
+In-Reply-To: <038601c3d344$c43c7840$e001a8c0@cuba>
+References: <038601c3d344$c43c7840$e001a8c0@cuba>
+Message-ID: <200401050755.23066.mark@lakeshoremicro.com>
+
+On Sunday 04 January 2004 11:31 pm, Jonathan Sturges wrote:
+> My question is, is there any steps other than just running the
+> /usr/i386-glibc21-linux/bin/i386-glibc21-linux-env.sh script before
+> compiling the applications?  When I take this script into my shell with ".
+> /usr/i386-glibc21-linux/bin/i386-glibc21-linux-env.sh", and then do
+> configure/make/etc, the resulting binaries are still linked against the
+> glibc from RH8.  Are there additional env. variables to make gcc/ld find
+> the older libraries?
+
+Hi Jonathan,
+
+I had similar problems, although I was using RH7.2.  Take a look at:
+http://mail.adis.on.ca/pipermail/peeweelinux/2002-April/000569.html
+
+Mark
+
+
+
+From peeweelinux@adis.on.ca  Tue Jan  6 18:44:24 2004
+From: peeweelinux@adis.on.ca (Jonathan Sturges)
+Date: Tue, 6 Jan 2004 13:44:24 -0500
+Subject: [Peeweelinux] RH62 compat. question
+References: <038601c3d344$c43c7840$e001a8c0@cuba> <200401050755.23066.mark@lakeshoremicro.com>
+Message-ID: <056801c3d485$1bbd3730$e001a8c0@cuba>
+
+Hmmm.  I'm doing it right but it doesn't link properly.  The two variables
+defined by the script are set properly and exported, but they don't appear
+to affect anything.  BTW, I'm trying to compile nptd-4.2.0.
+
+After playing around, I found that if I set LDFLAGS to "-Xlinker -m -Xlinker
+elf_i386_glibc21" (which should accomplish the same results with ld that
+setting LDEMULATION does), it does "something" different because linking now
+fails when linking the ntpd binary, whereas before it linked it successfully
+to the RH8 glibc.
+
+I'll play with it some more, but it's kinda frustrating for now.
+
+thanks for any more tips,
+Jonathan
+
+
+----- Original Message ----- 
+From: "Mark Meade" <mark@lakeshoremicro.com>
+To: <peeweelinux@adis.on.ca>; "Jonathan Sturges" <jonathan@sprintmail.com>
+Sent: Monday, January 05, 2004 7:55 AM
+Subject: Re: [Peeweelinux] RH62 compat. question
+
+
+> On Sunday 04 January 2004 11:31 pm, Jonathan Sturges wrote:
+> > My question is, is there any steps other than just running the
+> > /usr/i386-glibc21-linux/bin/i386-glibc21-linux-env.sh script before
+> > compiling the applications?  When I take this script into my shell with
+".
+> > /usr/i386-glibc21-linux/bin/i386-glibc21-linux-env.sh", and then do
+> > configure/make/etc, the resulting binaries are still linked against the
+> > glibc from RH8.  Are there additional env. variables to make gcc/ld find
+> > the older libraries?
+>
+> Hi Jonathan,
+>
+> I had similar problems, although I was using RH7.2.  Take a look at:
+> http://mail.adis.on.ca/pipermail/peeweelinux/2002-April/000569.html
+>
+> Mark
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+
+From peeweelinux@adis.on.ca  Fri Jan 16 01:40:51 2004
+From: peeweelinux@adis.on.ca (John Pennock)
+Date: Thu, 15 Jan 2004 19:40:51 -0600 (CST)
+Subject: [Peeweelinux] login problem . . .
+Message-ID: <3309.67.95.2.181.1074217251.squirrel@www.thepennocks.com>
+
+I just got my system booting off my compact flash card, and the console
+displays 'pc 104 login:'.
+I can type anything at this point, and when I hit 'enter', I get the
+response 'Login Incorrect', and am prompted again for a username.
+I have edited the passwd file to remove the passwords, but I never get to
+the point where I am prompted for one.
+Does anyone have any ideas?
+I'm new to the embedded side of linux, and after much work am so excited to
+actually finally see a login prompt.  I believe if I can get over this
+hurdle, my project may sail along fairly smoothly.
+
+Thanks in advance.
+
+John Pennock
+
+Linux is user friendly, it's just picky as to who it calls a friend.
+
+From peeweelinux@adis.on.ca  Fri Jan 16 17:48:06 2004
+From: peeweelinux@adis.on.ca (Wang Ke)
+Date: Fri, 16 Jan 2004 19:48:06 +0200
+Subject: [Peeweelinux] about autologin again
+Message-ID: <Law15-F113uR8bAYkWA00044edd@hotmail.com>
+
+I am a newbie in Embedded Linux world.
+
+I run minimal example nicely on a pc/104 via CompactFlash. Thank you for 
+this wonderful tool!
+
+
+Now i want to enable the Autologin ability to my system.
+
+I checked the mailing list. And tried to modify the /etc/inittab file from 
+one instruction.
+
+Create a file named autologin.c add this to the file: int main () { execlp 
+("login", "login", "-f", "root", 0); }
+
+Now gcc -o autologin autologin.c Now cp autologin /sbin Now edit  
+etc/inittab file, look for the line that looks like this: 
+1:345:respawn:/sbin/getty 38400 tty1 and change to 
+1:2345:respawn:/sbin/getty -n -l /sbin/autologin 38400 tty1
+
+
+but the system is still asking for password!
+
+Do you have any other approach to do Autologin? How about by "tinylogin" in 
+./pwlconfig
+and can you tell me? Or some one would send me the bootx.gz file?
+
+Thank you very much.
+
+
+---------------------------------------------
+
+Wang Ke
+
+Adress:
+Voyrinkatu 6 AS 2
+Vaasa 65100
+Finland
+
+_________________________________________________________________
+Help STOP SPAM with the new MSN 8 and get 2 months FREE*  
+http://join.msn.com/?page=features/junkmail
+
+
+From peeweelinux@adis.on.ca  Fri Jan 16 18:18:23 2004
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Fri, 16 Jan 2004 13:18:23 -0500
+Subject: [Peeweelinux] about autologin again
+Message-ID: <02BEBC25B1C59E438F3ECB8342F50F5B044B3E@qafs2.qatech.com>
+
+I've created an example project that Autoboots, and also fires up a generic X windows for any machine. 
+
+It sounds like you are happy with the minimal setup, so all you need is how to autologin.
+
+Basically, you need to add these two lines to your inittab file:
+
+#Runlevel 4 is for auto login user. 
+#It can also be used to start X if "startx" is put in ~/.bashrc
+id:4:initdefault:
+
+#if in runlevel 4 change to autologin user
+1:4:respawn:su -l autologin
+
+Put any startup stuff in the "autologin" users bashrc. 
+
+Hope this helps...
+~Ken
+
+
+
+> -----Original Message-----
+> From: Wang Ke [mailto:wangke1980@hotmail.com]
+> Sent: Friday, January 16, 2004 12:48 PM
+> To: peeweelinux@adis.on.ca
+> Subject: [Peeweelinux] about autologin again
+> 
+> 
+> 
+> I am a newbie in Embedded Linux world.
+> 
+> I run minimal example nicely on a pc/104 via CompactFlash. 
+> Thank you for 
+> this wonderful tool!
+> 
+> 
+> Now i want to enable the Autologin ability to my system.
+> 
+> I checked the mailing list. And tried to modify the 
+> /etc/inittab file from 
+> one instruction.
+> 
+> Create a file named autologin.c add this to the file: int 
+> main () { execlp 
+> ("login", "login", "-f", "root", 0); }
+> 
+> Now gcc -o autologin autologin.c Now cp autologin /sbin Now edit  
+> etc/inittab file, look for the line that looks like this: 
+> 1:345:respawn:/sbin/getty 38400 tty1 and change to 
+> 1:2345:respawn:/sbin/getty -n -l /sbin/autologin 38400 tty1
+> 
+> 
+> but the system is still asking for password!
+> 
+> Do you have any other approach to do Autologin? How about by 
+> "tinylogin" in 
+> ./pwlconfig
+> and can you tell me? Or some one would send me the bootx.gz file?
+> 
+> Thank you very much.
+> 
+> 
+> ---------------------------------------------
+> 
+> Wang Ke
+> 
+> Adress:
+> Voyrinkatu 6 AS 2
+> Vaasa 65100
+> Finland
+> 
+> _________________________________________________________________
+> Help STOP SPAM with the new MSN 8 and get 2 months FREE*  
+> http://join.msn.com/?page=features/junkmail
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Fri Jan 16 23:08:27 2004
+From: peeweelinux@adis.on.ca (Jonathan Sturges)
+Date: Fri, 16 Jan 2004 18:08:27 -0500
+Subject: [Peeweelinux] login problem . . .
+References: <3309.67.95.2.181.1074217251.squirrel@www.thepennocks.com>
+Message-ID: <004e01c3dc85$a6d2f4b0$e001a8c0@cuba>
+
+Did you try the PWL default root passwd of "redhat"?
+
+Your passwd file is probably getting over-written by one of the PWL scripts.
+Search the list archives and/or the scripts themselves to track it down.
+
+good luck,
+Jonathan
+
+----- Original Message ----- 
+From: "John Pennock" <jpennock@thepennocks.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Thursday, January 15, 2004 8:40 PM
+Subject: [Peeweelinux] login problem . . .
+
+
+> I just got my system booting off my compact flash card, and the console
+> displays 'pc 104 login:'.
+> I can type anything at this point, and when I hit 'enter', I get the
+> response 'Login Incorrect', and am prompted again for a username.
+> I have edited the passwd file to remove the passwords, but I never get to
+> the point where I am prompted for one.
+> Does anyone have any ideas?
+> I'm new to the embedded side of linux, and after much work am so excited
+to
+> actually finally see a login prompt.  I believe if I can get over this
+> hurdle, my project may sail along fairly smoothly.
+>
+> Thanks in advance.
+>
+> John Pennock
+>
+> Linux is user friendly, it's just picky as to who it calls a friend.
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+
+From peeweelinux@adis.on.ca  Fri Jan 16 23:30:34 2004
+From: peeweelinux@adis.on.ca (John Pennock)
+Date: Fri, 16 Jan 2004 17:30:34 -0600 (CST)
+Subject: [Peeweelinux] login problem . . .
+Message-ID: <1541.67.95.2.181.1074295834.squirrel@www.thepennocks.com>
+
+I 'figured' out my problem(s).
+I was using a debian development system and things just didn't work right.
+I rebuilt the system as a RH6.2 box, and voila! all was well.
+I now have a system that boots off my CF card and runs like it should.
+Now to write the software that I want to run on it.
+
+Thanks for all the ideas and help.
+
+John
+
+From peeweelinux@adis.on.ca  Tue Jan 20 12:44:13 2004
+From: peeweelinux@adis.on.ca (Wang Ke)
+Date: Tue, 20 Jan 2004 14:44:13 +0200
+Subject: [Peeweelinux] Asking for bootx.gz
+Message-ID: <Law15-F59kTrH9FUHUd0003a78f@hotmail.com>
+
+Hi, thanks for your reply, Ken.
+
+Would anyone send  "bootx.tgz" project to me.
+
+my mailbox is wangke1980@hotmail.com
+
+Thank you very much.
+
+---------------------------------------------
+
+Wang Ke
+
+Adress:
+Voyrinkatu 6 AS 2
+Vaasa 65100
+Finland
+
+_________________________________________________________________
+Protect your PC - get McAfee.com VirusScan Online 
+http://clinic.mcafee.com/clinic/ibuy/campaign.asp?cid=3963
+
+
+From peeweelinux@adis.on.ca  Tue Jan 20 12:44:13 2004
+From: peeweelinux@adis.on.ca (Wang Ke)
+Date: Tue, 20 Jan 2004 14:44:13 +0200
+Subject: [Peeweelinux] Asking for bootx.gz
+Message-ID: <Law15-F550hyiqLQxDq00056218@hotmail.com>
+
+Hi, thanks for your reply, Ken.
+
+Would anyone send  "bootx.tgz" project to me.
+
+my mailbox is wangke1980@hotmail.com
+
+Thank you very much.
+
+---------------------------------------------
+
+Wang Ke
+
+Adress:
+Voyrinkatu 6 AS 2
+Vaasa 65100
+Finland
+
+_________________________________________________________________
+Protect your PC - get McAfee.com VirusScan Online 
+http://clinic.mcafee.com/clinic/ibuy/campaign.asp?cid=3963
+
+
+From peeweelinux@adis.on.ca  Tue Jan 20 13:38:22 2004
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: Tue, 20 Jan 2004 13:38:22 -0000
+Subject: [Peeweelinux] Asking for bootx.gz
+References: <Law15-F59kTrH9FUHUd0003a78f@hotmail.com>
+Message-ID: <002f01c3df5a$ac749cc0$0201a8c0@SATPRO>
+
+I have sent this to you now Wang Ke.
+
+Regards,
+
+Ashley Rolleston
+
+> Hi, thanks for your reply, Ken.
+> 
+> Would anyone send  "bootx.tgz" project to me.
+> 
+> my mailbox is wangke1980@hotmail.com
+> 
+> Thank you very much.
+> 
+> ---------------------------------------------
+> 
+> Wang Ke
+> 
+> Adress:
+> Voyrinkatu 6 AS 2
+> Vaasa 65100
+> Finland
+> 
+> _________________________________________________________________
+> Protect your PC - get McAfee.com VirusScan Online 
+> http://clinic.mcafee.com/clinic/ibuy/campaign.asp?cid=3963
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Tue Jan 20 17:10:19 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 20 Jan 2004 09:10:19 -0800
+Subject: [Peeweelinux] Asking for bootx.gz
+In-Reply-To: <002f01c3df5a$ac749cc0$0201a8c0@SATPRO>
+References: <Law15-F59kTrH9FUHUd0003a78f@hotmail.com> <002f01c3df5a$ac749cc0$0201a8c0@SATPRO>
+Message-ID: <400D60FB.2040504@fluid.com>
+
+I have all kinds of places I can make this available for easy 
+downloading; if you or Ken wants to upload not only the bootx.tgz sample 
+project, but also a quick readme I'd be happy to host on our anon FTP 
+server.
+
+Just upload to ftp.fluid.com /incoming, then drop me an email. I'll move 
+it to a home in /outgoing and we're done.
+
+-te
+
+Ashley Rolleston wrote:
+> I have sent this to you now Wang Ke.
+> 
+> Regards,
+> 
+> Ashley Rolleston
+> 
+> 
+>>Hi, thanks for your reply, Ken.
+>>
+>>Would anyone send  "bootx.tgz" project to me.
+>>
+>>my mailbox is wangke1980@hotmail.com
+>>
+>>Thank you very much.
+>>
+>>---------------------------------------------
+>>
+>>Wang Ke
+>>
+>>Adress:
+>>Voyrinkatu 6 AS 2
+>>Vaasa 65100
+>>Finland
+>>
+>>_________________________________________________________________
+>>Protect your PC - get McAfee.com VirusScan Online 
+>>http://clinic.mcafee.com/clinic/ibuy/campaign.asp?cid=3963
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | http://www.fluid.com
+
+
+From peeweelinux@adis.on.ca  Wed Jan 21 14:53:40 2004
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Wed, 21 Jan 2004 09:53:40 -0500
+Subject: [Peeweelinux] Asking for bootx.gz
+Message-ID: <02BEBC25B1C59E438F3ECB8342F50F5B044B3F@qafs2.qatech.com>
+
+Hello, I've added this to Troy's Server. 
+
+I tried to create a folder for it, but botched it up a bit. The "bootx.tgz" and "README" files in the incoming folder belong to the project. 
+
+If you would be kind enough to put this in a accessable directory and post a link to the list, I would appreciate it. 
+
+Thanks,
+~Ken
+
+
+
+> -----Original Message-----
+> From: Troy Engel [mailto:tengel@fluid.com]
+> Sent: Tuesday, January 20, 2004 12:10 PM
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] Asking for bootx.gz
+> 
+> 
+> I have all kinds of places I can make this available for easy 
+> downloading; if you or Ken wants to upload not only the 
+> bootx.tgz sample 
+> project, but also a quick readme I'd be happy to host on our anon FTP 
+> server.
+> 
+> Just upload to ftp.fluid.com /incoming, then drop me an 
+> email. I'll move 
+> it to a home in /outgoing and we're done.
+> 
+> -te
+> 
+> Ashley Rolleston wrote:
+> > I have sent this to you now Wang Ke.
+> > 
+> > Regards,
+> > 
+> > Ashley Rolleston
+> > 
+> > 
+> >>Hi, thanks for your reply, Ken.
+> >>
+> >>Would anyone send  "bootx.tgz" project to me.
+> >>
+> >>my mailbox is wangke1980@hotmail.com
+> >>
+> >>Thank you very much.
+> >>
+> >>---------------------------------------------
+> >>
+> >>Wang Ke
+> >>
+> >>Adress:
+> >>Voyrinkatu 6 AS 2
+> >>Vaasa 65100
+> >>Finland
+> >>
+> >>_________________________________________________________________
+> >>Protect your PC - get McAfee.com VirusScan Online 
+> >>http://clinic.mcafee.com/clinic/ibuy/campaign.asp?cid=3963
+> >>
+> >>_______________________________________________
+> >>Peeweelinux mailing list
+> >>Peeweelinux@adis.on.ca
+> >>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >>
+> > 
+> > 
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> -- 
+> Troy Engel | Systems Engineer
+> Fluid, Inc | http://www.fluid.com
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Wed Jan 21 14:54:04 2004
+From: peeweelinux@adis.on.ca (Ken Kirchner)
+Date: Wed, 21 Jan 2004 17:54:04 +0300
+Subject: [Peeweelinux] Project: Linux powered picture frame. PWL a good match?
+Message-ID: <A7D7EEA8-4C21-11D8-8854-000A95A08488@shreve.net>
+
+Hi all,
+
+    I am in the process of making my own digital picture frame using an 
+old laptop (IBM Thinkpad X20).  Here's basically what I want the system 
+to do on bootup:
+
+	1 - Load the system into RAM
+	2 - Initialize the WiFi LAN card (Prism based) and get a DHCP address 
+(or static, not too important which)
+	3 - Mount an NFS partition
+	4 - Start a slideshow using 'zgv' and SVGAlib reading jpg's from the 
+NFS mounted dir
+	5 - Continue step 4 until the universe collapses.
+
+The Thinkpad has been fitted with a 128MB CF card and adaptor. It is 
+successfully booting to a DOS prompt currently.  I have another X20 
+laptop which I plan to use as a development system for this project. It 
+is ideally suited IMHO since it has Redhat 9 installed and a built in 
+CF slot.
+
+I dont know if PWL is really suited for this or not.  I cant find much 
+about it's WiFi PCMCIA support in the archives.  My other idea is to 
+strip down a RH9 install and use a heavily stripped down kernel.  I am 
+reading the bootdisk HOW-TO and it doesnt seem extremely complicated, 
+but I dont want to re-invent the wheel or delay the project so long I 
+forget about it (like a lot of my projects end up <sigh>).
+
+What do you all recommend?
+
+-Ken
+
+
+From peeweelinux@adis.on.ca  Wed Jan 21 15:30:10 2004
+From: peeweelinux@adis.on.ca (Brian Andrus)
+Date: Wed, 21 Jan 2004 07:30:10 -0800
+Subject: [Peeweelinux] Project: Linux powered picture frame. PWL a good match?
+In-Reply-To: <A7D7EEA8-4C21-11D8-8854-000A95A08488@shreve.net>
+Message-ID: <200401210729609.SM01380@daddy>
+
+Well, my 2 cents ...
+
+I tried to get pwl to work as a similar platform and eventually gave up. I
+ended up doing a fresh install of RH 9 and stripping it back. I need to
+strip more or figure out pwl better, but for now it works.
+
+The pros:
+
+It is quick and relatively simple to do
+Easy to replicate if you need to start all over
+I have it all fitting on a 128 mb CF card (I have perl, apache and a few
+other RPMs installed too, you can probably fit it on a smaller one)
+
+The cons: 
+You need at least 500 MB to do a minimal install from the RH 9 CDs.
+There are a lot of superfluous programs and files installed.
+
+
+What I did was to install everything to a 512 mb CF, strip it down and then
+cp everything to a smaller CF, run lilo on it and swap it out.
+
+ 
+All The Best,
+ 
+Brian Andrus
+Millenia Internet Services, Inc.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca] On
+Behalf Of Ken Kirchner
+Sent: Wednesday, January 21, 2004 6:54 AM
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] Project: Linux powered picture frame. PWL a good
+match?
+
+Hi all,
+
+    I am in the process of making my own digital picture frame using an old
+laptop (IBM Thinkpad X20).  Here's basically what I want the system to do on
+bootup:
+
+	1 - Load the system into RAM
+	2 - Initialize the WiFi LAN card (Prism based) and get a DHCP
+address (or static, not too important which)
+	3 - Mount an NFS partition
+	4 - Start a slideshow using 'zgv' and SVGAlib reading jpg's from the
+NFS mounted dir
+	5 - Continue step 4 until the universe collapses.
+
+The Thinkpad has been fitted with a 128MB CF card and adaptor. It is
+successfully booting to a DOS prompt currently.  I have another X20 laptop
+which I plan to use as a development system for this project. It is ideally
+suited IMHO since it has Redhat 9 installed and a built in CF slot.
+
+I dont know if PWL is really suited for this or not.  I cant find much about
+it's WiFi PCMCIA support in the archives.  My other idea is to strip down a
+RH9 install and use a heavily stripped down kernel.  I am reading the
+bootdisk HOW-TO and it doesnt seem extremely complicated, but I dont want to
+re-invent the wheel or delay the project so long I forget about it (like a
+lot of my projects end up <sigh>).
+
+What do you all recommend?
+
+-Ken
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Jan 21 17:08:55 2004
+From: peeweelinux@adis.on.ca (Chris Roger)
+Date: Wed, 21 Jan 2004 11:08:55 -0600
+Subject: [Peeweelinux] Project: Linux powered picture frame. PWL a
+ good match?
+In-Reply-To: <200401210729609.SM01380@daddy>
+References: <A7D7EEA8-4C21-11D8-8854-000A95A08488@shreve.net>
+Message-ID: <5.2.0.9.0.20040121105404.00a926f0@165.212.14.253>
+
+At 09:30 AM 1/21/2004, Brian Andrus wrote:
+>Well, my 2 cents ...
+>
+>I tried to get pwl to work as a similar platform and eventually gave up. I
+>ended up doing a fresh install of RH 9 and stripping it back. I need to
+>strip more or figure out pwl better, but for now it works.
+>
+>The pros:
+>
+>It is quick and relatively simple to do
+>Easy to replicate if you need to start all over
+>I have it all fitting on a 128 mb CF card (I have perl, apache and a few
+>other RPMs installed too, you can probably fit it on a smaller one)
+>
+>The cons:
+>You need at least 500 MB to do a minimal install from the RH 9 CDs.
+>There are a lot of superfluous programs and files installed.
+>
+>
+>What I did was to install everything to a 512 mb CF, strip it down and then
+>cp everything to a smaller CF, run lilo on it and swap it out.
+>
+>
+
+Could this be done on 2 different computers?
+ie, install RH on a HD from CDs, strip it down, then copy everything to a 
+CF card (dd?).
+A second computer (no CD or HD) will boot off of the CF.
+
+...I guess that is the way PWL does it... build a directory structure with 
+the stripped-down
+OS in it and load that onto the CF.
+
+-Chris Roger 
+
+
+From peeweelinux@adis.on.ca  Wed Jan 21 17:37:01 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Wed, 21 Jan 2004 09:37:01 -0800
+Subject: [Peeweelinux] Asking for bootx.gz
+In-Reply-To: <02BEBC25B1C59E438F3ECB8342F50F5B044B3F@qafs2.qatech.com>
+References: <02BEBC25B1C59E438F3ECB8342F50F5B044B3F@qafs2.qatech.com>
+Message-ID: <400EB8BD.5030700@fluid.com>
+
+Heya Ken,
+
+I reformatted your README for linebreaks (so it's pretty when viewed in 
+Mozilla), added your email address. It's home is:
+
+   ftp://ftp.fluid.com/outgoing/pwl/bootx/
+   http://ftp.fluid.com/outgoing/pwl/bootx/
+
+When I get time, I think I may throw up some of my custom stuff (don't 
+hold your breath ;) ).
+
+-te
+
+Ken Emmons, Jr. wrote:
+> Hello, I've added this to Troy's Server. 
+> 
+> I tried to create a folder for it, but botched it up a bit. The "bootx.tgz" and "README" files in the incoming folder belong to the project. 
+> 
+> If you would be kind enough to put this in a accessable directory and post a link to the list, I would appreciate it. 
+> 
+> Thanks,
+> ~Ken
+> 
+> 
+> 
+> 
+>>-----Original Message-----
+>>From: Troy Engel [mailto:tengel@fluid.com]
+>>Sent: Tuesday, January 20, 2004 12:10 PM
+>>To: peeweelinux@adis.on.ca
+>>Subject: Re: [Peeweelinux] Asking for bootx.gz
+>>
+>>
+>>I have all kinds of places I can make this available for easy 
+>>downloading; if you or Ken wants to upload not only the 
+>>bootx.tgz sample 
+>>project, but also a quick readme I'd be happy to host on our anon FTP 
+>>server.
+>>
+>>Just upload to ftp.fluid.com /incoming, then drop me an 
+>>email. I'll move 
+>>it to a home in /outgoing and we're done.
+>>
+>>-te
+>>
+>>Ashley Rolleston wrote:
+>>
+>>>I have sent this to you now Wang Ke.
+>>>
+>>>Regards,
+>>>
+>>>Ashley Rolleston
+>>>
+>>>
+>>>
+>>>>Hi, thanks for your reply, Ken.
+>>>>
+>>>>Would anyone send  "bootx.tgz" project to me.
+>>>>
+>>>>my mailbox is wangke1980@hotmail.com
+>>>>
+>>>>Thank you very much.
+>>>>
+>>>>---------------------------------------------
+>>>>
+>>>>Wang Ke
+>>>>
+>>>>Adress:
+>>>>Voyrinkatu 6 AS 2
+>>>>Vaasa 65100
+>>>>Finland
+>>>>
+>>>>_________________________________________________________________
+>>>>Protect your PC - get McAfee.com VirusScan Online 
+>>>>http://clinic.mcafee.com/clinic/ibuy/campaign.asp?cid=3963
+>>>>
+>>>>_______________________________________________
+>>>>Peeweelinux mailing list
+>>>>Peeweelinux@adis.on.ca
+>>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>>
+>>>
+>>>
+>>>_______________________________________________
+>>>Peeweelinux mailing list
+>>>Peeweelinux@adis.on.ca
+>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+>>-- 
+>>Troy Engel | Systems Engineer
+>>Fluid, Inc | http://www.fluid.com
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | http://www.fluid.com
+
+
+From peeweelinux@adis.on.ca  Wed Jan 21 18:19:58 2004
+From: peeweelinux@adis.on.ca (Brian Andrus)
+Date: Wed, 21 Jan 2004 10:19:58 -0800
+Subject: [Peeweelinux] Project: Linux powered picture frame. PWL a  good match?
+In-Reply-To: <5.2.0.9.0.20040121105404.00a926f0@165.212.14.253>
+Message-ID: <20040121101915.SM01380@daddy>
+
+Yes. But.. There can be issues if the hardware is not the same. I happen to
+be making a few of my devices and used one to set it up, so the hardware is
+the same for all of them.
+ 
+dd for some reason did not work for me with the CF. I have in the past used
+it with HDs.
+
+So long as you have all the right drivers on the CF, you should be fine tho.
+I would say, install RH9 onto a HD in the laptop, strip it down, then put it
+on the CF in the laptop and remove the HD.
+
+ 
+All The Best,
+ 
+Brian Andrus
+Millenia Internet Services, Inc.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca] On
+Behalf Of Chris Roger
+Sent: Wednesday, January 21, 2004 9:09 AM
+To: peeweelinux@adis.on.ca
+Subject: RE: [Peeweelinux] Project: Linux powered picture frame. PWL a good
+match?
+
+
+
+Could this be done on 2 different computers?
+ie, install RH on a HD from CDs, strip it down, then copy everything to a CF
+card (dd?).
+A second computer (no CD or HD) will boot off of the CF.
+
+...I guess that is the way PWL does it... build a directory structure with
+the stripped-down OS in it and load that onto the CF.
+
+-Chris Roger 
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Jan 23 10:00:57 2004
+From: peeweelinux@adis.on.ca (Wang Ke)
+Date: Fri, 23 Jan 2004 12:00:57 +0200
+Subject: [Peeweelinux] My little poor experience
+Message-ID: <Law15-F58FHmxYqMgzB000011be@hotmail.com>
+
+Thanks for the great help from Ashley Rolleston and Ken Emmons.
+
+Here is my little poor experience :-)  :
+
+Now i am using a PCM5335-B10 PC/104 board as platform. and it has a 
+CompactFlash socket, treats it as HardDisk.
+
+Of course, I am using SanDisk 64MB CF card. My expericence is that don't use 
+a flash multi-reader, using a single CF card reader ( SDDR-91 USB reader ) 
+makes things easier.
+
+RedHat 9 didn't support PeeWeeLinux well, it always made installation 
+failure. The Redhat 7 is a very nice version for PeeWee.
+
+Powered by PeeWeeLinux, the development became really easy. As i got 
+bootx.tgz, I only tried twice of installation and then the system could run 
+on the board!
+
+As PCM5335-B10 is a poewerful PC/104 board, and it supports CF strongly,  I 
+used "Read-Write as root on Single partition", and boots fast.
+
+Now, here are some questions again:
+
+Teacher asked me do a application on it. And the application have to use 
+Imlib and GTK+, since the CF card still a lot space left (about 45MB), i 
+wanna these libraries included on my target Linux.
+
+I tried application once, the error is:
+
+libgtk-x11-2.0.so.0
+libgdk_imbib.so.1
+
+Can anybody tell me how to do it? Thank you :-)
+
+---------------------------------------------
+
+Wang Ke
+
+Adress:
+Voyrinkatu 6 AS 2
+Vaasa 65100
+Finland
+
+GSM: +358442688889
+
+Email: wangke1980@hotmail.com
+
+_________________________________________________________________
+Add photos to your e-mail with MSN 8. Get 2 months FREE*. 
+http://join.msn.com/?page=features/featuredemail
+
+
+From peeweelinux@adis.on.ca  Fri Jan 23 21:40:03 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Fri, 23 Jan 2004 13:40:03 -0800
+Subject: [Peeweelinux] My little poor experience
+In-Reply-To: <Law15-F58FHmxYqMgzB000011be@hotmail.com>
+References: <Law15-F58FHmxYqMgzB000011be@hotmail.com>
+Message-ID: <401194B3.9070502@fluid.com>
+
+Wang Ke wrote:
+> 
+> Teacher asked me do a application on it. And the application have to use 
+> Imlib and GTK+, since the CF card still a lot space left (about 45MB), i 
+> wanna these libraries included on my target Linux.
+> 
+> libgtk-x11-2.0.so.0
+> libgdk_imbib.so.1
+
+If you're just messing around (ie, not building a real device for 
+deployment) then the easiest thing to do is find yourself a RedHat 6.2 
+machine, and get the libraries for <anything> off of it. PeeWee is 
+basically a super-mini RH62 machine.
+
+-te
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | http://www.fluid.com
+
+
+From peeweelinux@adis.on.ca  Sat Jan 24 13:39:53 2004
+From: peeweelinux@adis.on.ca (Wang Ke)
+Date: Sat, 24 Jan 2004 15:39:53 +0200
+Subject: [Peeweelinux] My little poor experience
+Message-ID: <Law15-F38yVpONSgm2y0002c445@hotmail.com>
+
+So you mean that: I compiled my application on RedHat6.2 , and just copy 
+those needed libraries from it to my target CF card, right? they are all 
+under /usr/lib ?
+
+
+Wang Ke wrote:
+>
+>Teacher asked me do a application on it. And the application have to use 
+>Imlib and GTK+, since the CF card still a lot space left (about 45MB), i 
+>wanna these libraries included on my target Linux.
+>
+>libgtk-x11-2.0.so.0
+>libgdk_imbib.so.1
+
+If you're just messing around (ie, not building a real device for
+deployment) then the easiest thing to do is find yourself a RedHat 6.2
+machine, and get the libraries for <anything> off of it. PeeWee is
+basically a super-mini RH62 machine.
+
+
+
+---------------------------------------------
+
+Wang Ke
+
+Adress:
+Voyrinkatu 6 AS 2
+Vaasa 65100
+Finland
+
+GSM: +358442688889
+
+Email: wangke1980@hotmail.com
+
+_________________________________________________________________
+Help STOP SPAM with the new MSN 8 and get 2 months FREE*  
+http://join.msn.com/?page=features/junkmail
+
+
+From peeweelinux@adis.on.ca  Mon Jan 26 09:07:06 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Mon, 26 Jan 2004 01:07:06 -0800 (PST)
+Subject: [Peeweelinux] My little poor experience
+In-Reply-To: <Law15-F38yVpONSgm2y0002c445@hotmail.com>
+References: <Law15-F38yVpONSgm2y0002c445@hotmail.com>
+Message-ID: <38141.209.204.178.13.1075108026.squirrel@mail.fluid.com>
+
+Yes, exactly. You can use ldd ("ldd /path/to/file") to have the system
+show you what libraries it's linked to, and use that list to copy to your
+CF device. Use the PWL custom files feature and let PeeWee do the work for
+you.
+
+Pay extra care when copying, so that you get the symlinks and such
+(typically libfooo.so is a symlink to libfoo.so.3.2 (eg)).
+
+As you get more familiar with PWL and how it works, you can build packages
+instead and have them show up in the package management section just like
+everything else.
+
+-te
+
+Wang Ke said:
+> So you mean that: I compiled my application on RedHat6.2 , and just copy
+>  those needed libraries from it to my target CF card, right? they are
+> all  under /usr/lib ?
+
+-- 
+Troy Engel,
+Systemingenieur
+
+
+
+
+From peeweelinux@adis.on.ca  Tue Jan 27 23:38:20 2004
+From: peeweelinux@adis.on.ca (Jonathan Sturges)
+Date: Tue, 27 Jan 2004 18:38:20 -0500
+Subject: [Peeweelinux] Still having compilation problems
+Message-ID: <013c01c3e52e$a5e7e400$e001a8c0@cuba>
+
+Hi,
+I hate to beg, but I'm still having problems compiling apps. for PWL using
+my RH8 host system.  I have read the archives about the compat-* RPMs and I
+have them and am using them properly.
+
+Would some kind soul be able to help me out?  I'm really stuck.  I cannot
+get anything to compile that doesn't end up linked against the RH8 glibc.
+
+My host systems are running in VMWare, FWIW.  In desperation, I even created
+a RH6.2 virtual machine, but the 2.2 kernels don't have good USB support.
+This has left me with no way to write to CF cards from the RH6.2 VM.  Hence,
+I would really like to make this work under RH8.
+
+Please send me e-mail directly (off-list) if you can help:
+jonathan@sprintmail.com
+
+thanks!
+Jonathan
+
+
+
+From peeweelinux@adis.on.ca  Wed Jan 28 18:04:38 2004
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Wed, 28 Jan 2004 10:04:38 -0800
+Subject: [Peeweelinux] Still having compilation problems
+In-Reply-To: <013c01c3e52e$a5e7e400$e001a8c0@cuba>
+References: <013c01c3e52e$a5e7e400$e001a8c0@cuba>
+Message-ID: <4017F9B6.6070004@fluid.com>
+
+(not a real answer, just an idea)
+
+Jonathan Sturges wrote:
+> 
+> My host systems are running in VMWare, FWIW.  In desperation, I even created
+> a RH6.2 virtual machine, but the 2.2 kernels don't have good USB support.
+
+Try using RH72 or RH73 -- that's my build system, and has good enough 
+support to write to the USB CF writer. The compat-* packages work as 
+expected and everything is fine.
+
+RH8+ completely changed things around, it's not surprising the older 6.2 
+based PWL won't compile correctly. Someday someone will take up the 
+project of revamping PWL into this century.
+
+-te
+
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | http://www.fluid.com
+

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] thttpd web server Q+A, net-pf-10
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000739.html">
+   <LINK REL="Next"  HREF="000741.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] thttpd web server Q+A, net-pf-10
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] thttpd web server Q+A, net-pf-10">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 13 Aug 2002 16:49:09 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000739.html">[Peeweelinux] EXTRAVERSION
+</A></li>
+        <LI> Next message: <A HREF="000741.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#740">[ date ]</a>
+              <a href="thread.html#740">[ thread ]</a>
+              <a href="subject.html#740">[ subject ]</a>
+              <a href="author.html#740">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>With my embedded system actually running, I try to start
+the web server.  From the command prompt, I type thttpd
+and I get:
+
+  modprobe: modprobe: Can't locate module net-pf-10
+
+(Your mileage may vary on this one, since I have a funny 
+configuration issue at this time: depmod needs to be run
+first, but it doesn't; then something tries to modprobe
+and I don't know who (probably network) is doing it).  
+
+Anyway, research on net-pf-10 turns out to be a reference
+to IPV6, which is something thttpd claims to be capable of,
+so I believe it.  Further research claims the fix is 
+to &quot;alias net-pf-10 off&quot;.
+
+The problem with this is, the shell I get (ash?) does not 
+support aliases, and the shell is apparently where aliases 
+come from.   Attempts to put bash on there gives me a 
+different shell, but prompts, command history, aliases, and 
+so on don't work.  (Probably a configuration issue but
+I'm in too deep already).  Maybe if I could get rid of
+the attempt to access net-pf-10 I could dispense with all
+this alias stuff.
+
+But all the above is not real.  Such is the price of trying
+to build these things  yourself.   After repeatedly trying
+to run ps I finally got that put into the target, and once
+I was able to do ps ax, I found that thttpd was running
+already, and had been the whole time.   In fact, the 
+error I get is from running it at the command line when 
+it's running already, and though I don't know why it says
+what it says, it is a non-problem since the server's already
+running.
+
+I still have to start eth0 by hand, but that's next on the list.
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000739.html">[Peeweelinux] EXTRAVERSION
+</A></li>
+	<LI> Next message: <A HREF="000741.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#740">[ date ]</a>
+              <a href="thread.html#740">[ thread ]</a>
+              <a href="subject.html#740">[ subject ]</a>
+              <a href="author.html#740">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

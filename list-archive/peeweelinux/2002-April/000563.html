@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] DiskOnChip Boot Problems
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000562.html">
+   <LINK REL="Next"  HREF="000564.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] DiskOnChip Boot Problems
+   </H1>
+    <B>Adilson Oliveira
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] DiskOnChip Boot Problems">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 16 Apr 2002 21:38:30 -0300</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000562.html">[Peeweelinux] DiskOnChip Boot Problems
+</A></li>
+        <LI> Next message: <A HREF="000564.html">[Peeweelinux] Remote server boot system
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>K West wrote:
+&gt;<i> 
+</I>&gt;<i> I have a PWL file system built and working on a CompactFLASH device.  I 
+</I>&gt;<i> am now trying to move to a DiskOnChip (DOC) device.
+</I>&gt;<i> 
+</I>&gt;<i> I used the latest driver from M-Systems (5.04) and have it working fine 
+</I>&gt;<i> on my development system.  I can mount the DOC and PeeWee can build the 
+</I>&gt;<i> filesystem on it just like it does on the CFLASH.  The problem occurs 
+</I>&gt;<i> when I reboot.  The system displays 'dLIL' and stops.
+</I>&gt;<i> 
+</I>&gt;<i> I've read the 'Bootdisk HOWTO' which indicates that LILO may have a 
+</I>&gt;<i> problem with the system map file.  If this is true, I haven't figured 
+</I>&gt;<i> out how to correct the problem.
+</I>&gt;<i> 
+</I>&gt;<i> Has anyone else had this experience and managed to solve the problem.
+</I>&gt;<i> 
+</I>&gt;<i> Any suggestions would be appreciated.
+</I>
+Hello!
+
+Try to use lba=32 on /etc/lilo.conf or remove the indication 0x80
+
+[]s
+
+Adilson.
+
+P.S. Don't use the 5 version unless you needed it. Stick with the 4.3
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000562.html">[Peeweelinux] DiskOnChip Boot Problems
+</A></li>
+	<LI> Next message: <A HREF="000564.html">[Peeweelinux] Remote server boot system
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#563">[ date ]</a>
+              <a href="thread.html#563">[ thread ]</a>
+              <a href="subject.html#563">[ subject ]</a>
+              <a href="author.html#563">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

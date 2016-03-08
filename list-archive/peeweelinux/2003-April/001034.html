@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Adding nfsroot parameters to lilo
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001033.html">
+   <LINK REL="Next"  HREF="001030.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Adding nfsroot parameters to lilo
+   </H1>
+    <B>Stephen Lee
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Adding nfsroot parameters to lilo">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>17 Apr 2003 10:10:03 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001033.html">[Peeweelinux] Adding nfsroot parameters to lilo
+</A></li>
+        <LI> Next message: <A HREF="001030.html">[Peeweelinux] CF card problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1034">[ date ]</a>
+              <a href="thread.html#1034">[ thread ]</a>
+              <a href="subject.html#1034">[ subject ]</a>
+              <a href="author.html#1034">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Thu, 2003-04-17 at 07:47, Dennis W. Tokarski wrote:
+&gt;<i> Stephen Lee wrote:
+</I>&gt;<i> &gt; I added the following bits to the lilo.conf portion in
+</I>&gt;<i> &gt; pwl_target_functions:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; image = $rd_bp_kernel
+</I>&gt;<i> &gt; root = /dev/nfs
+</I>&gt;<i> &gt; label = nfs
+</I>&gt;<i> &gt; vga = 768
+</I>&gt;<i> &gt; append = &quot;console=tty2 ip=bootp  \
+</I>&gt;<i> &gt;           nfsroot=192.168.1.200:/export/linux/root&quot;
+</I>&gt;<i> 
+</I>&gt;<i> [snip]
+</I>&gt;<i> 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; According to nfsroot.txt in the kernel docs (2.4.20), you're suppose to
+</I>&gt;<i> &gt; create a dummy device (mknod /dev/boot255 c 0 255) to satisfy the
+</I>&gt;<i> &gt; root=/dev/nfs requirement. I created the device on the system hosting
+</I>&gt;<i> &gt; prior to runnig pwlconfig but that didn't help lilo recognize /dev/nfs.
+</I>&gt;<i> &gt; How do  I do this with pwlconfig or manually. 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Right, but the device you name in &quot;root=&quot; needs to be the same
+</I>&gt;<i> as the dummy device you created. So either say &quot;root=/dev/boot255&quot;
+</I>&gt;<i> or rename the device to &quot;/dev/nfs&quot;.
+</I>&gt;<i> 
+</I>I gotcha, thanks Dennis.  In the mean time, I added root=/dev/nfs to the
+append line and that seemed fix the problem.
+
+Stephen
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001033.html">[Peeweelinux] Adding nfsroot parameters to lilo
+</A></li>
+	<LI> Next message: <A HREF="001030.html">[Peeweelinux] CF card problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1034">[ date ]</a>
+              <a href="thread.html#1034">[ thread ]</a>
+              <a href="subject.html#1034">[ subject ]</a>
+              <a href="author.html#1034">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

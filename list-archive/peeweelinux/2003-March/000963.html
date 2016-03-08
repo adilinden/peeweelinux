@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] password problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000962.html">
+   <LINK REL="Next"  HREF="000964.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] password problem
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] password problem">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue,  4 Mar 2003 20:31:27 CET</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000962.html">[Peeweelinux] ....
+</A></li>
+        <LI> Next message: <A HREF="000964.html">[Peeweelinux] su problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#963">[ date ]</a>
+              <a href="thread.html#963">[ thread ]</a>
+              <a href="subject.html#963">[ subject ]</a>
+              <a href="author.html#963">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>hi,
+I suppose you're French, but in doubt I'll answer in english ;)
+I don't know much about peeweelinux, so I'll tell you what I would try...
+1)Concerning the root password problem:
+edit the file etc/shadow (should be in ...Embedded_Build/projects/minimal/mnt/etc or something similar). There you should find a line like this:
+root:$1$suMKaTdx$f34uNmwell.xiznODhCka0:11970:0:99999:7::: or admin or whatever...
+(this one's fake of course :) )
+now erase the characters $1$suMKaTdx$f34uNmwell.xiznODhCka0 and save the file. Once you reboot you'll just have to login as root without any password and then put one by using passwd.
+
+2)to login directly as root:
+in the file etc/inittab you should have a line such as:
+c1:12345:respawn:/sbin/getty 38400 tty1 linux
+which loads the program getty (login program) and again after you close a session.
+It concerns console number 1. So if you don't want this just erase this line and add something like sh or bash at the end of the rc.M script.
+
+hope this helps,
+François
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000962.html">[Peeweelinux] ....
+</A></li>
+	<LI> Next message: <A HREF="000964.html">[Peeweelinux] su problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#963">[ date ]</a>
+              <a href="thread.html#963">[ thread ]</a>
+              <a href="subject.html#963">[ subject ]</a>
+              <a href="author.html#963">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

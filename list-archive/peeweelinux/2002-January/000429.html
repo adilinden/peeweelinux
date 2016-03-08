@@ -1,0 +1,95 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] RE lilo compact flash prob
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000428.html">
+   <LINK REL="Next"  HREF="000430.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] RE lilo compact flash prob
+   </H1>
+    <B>root
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] RE lilo compact flash prob">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 10 Jan 2002 10:54:24 -0500 (EST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000428.html">[Peeweelinux] RE lilo compact flash prob
+</A></li>
+        <LI> Next message: <A HREF="000430.html">[Peeweelinux] RE lilo compact flash prob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#429">[ date ]</a>
+              <a href="thread.html#429">[ thread ]</a>
+              <a href="subject.html#429">[ subject ]</a>
+              <a href="author.html#429">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adi Linden wrote:
+&gt;<i>
+</I>&gt;<i> What does your lilo.conf file look like?
+</I>&gt;<i>
+</I>&gt;<i> Adi
+</I>&gt;<i>
+</I>&gt;<i> On Thu, 10 Jan 2002, Daniel Hennessey wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; I have a Sandisk SDDR-31 connected to my USB port and am trying to write the
+</I>&gt;<i> &gt; filesystem to this target. Everything appears to go OK, the files are
+</I>&gt;<i> &gt; transferred and it says that it has run lilo on /dev/sda, but when I try and
+</I>&gt;<i> &gt; boot off it (as /dev/hda using a cf-ide converter), the furthest I have got
+</I>&gt;<i> &gt; is to the dreaded 'LI.......'. Is there anything that I should check before
+</I>&gt;<i> &gt; condemning the cheapo flash card I bought as dud. If you require any further
+</I>&gt;<i> &gt; info I would be glad to oblige.
+</I>&gt;<i> &gt;
+</I>
+I think Dan's basic problem is running lilo on a device
+(/dev/sda) which is not known to the bios at boot time.
+During boot, the bios probably regards the Sandisk as
+an IDE device and thinks of it as the C drive.
+
+Try telling lilo that it should play along with the
+bios' assumptions. In lilo.conf, you probably have:
+
+boot=/dev/sda
+
+Right after that add:
+
+disk=/dev/sda
+&lt;TAB&gt;bios=0x80
+
+This will tell lilo to have the first stage boot loader
+use bios disk 0x80 instead of whatever drive number
+it previously thought /dev/sda to be.
+
+Good luck.
+
+  --Dennis
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000428.html">[Peeweelinux] RE lilo compact flash prob
+</A></li>
+	<LI> Next message: <A HREF="000430.html">[Peeweelinux] RE lilo compact flash prob
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#429">[ date ]</a>
+              <a href="thread.html#429">[ thread ]</a>
+              <a href="subject.html#429">[ subject ]</a>
+              <a href="author.html#429">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Compact Flash newbie
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000572.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Compact Flash newbie
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Compact Flash newbie">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 30 Apr 2002 09:00:40 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000572.html">[Peeweelinux] Compact Flash newbie
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#573">[ date ]</a>
+              <a href="thread.html#573">[ thread ]</a>
+              <a href="subject.html#573">[ subject ]</a>
+              <a href="author.html#573">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+The lilo thing is a bit confusing. Because lilo.conf is as much relevant 
+during install as it is at runtime, it has to reference both /dev/hda and 
+/dev/sda. A USB reader attached CompactFlash card appears to the system as 
+/dev/sda. That's why there are all the references to /dev/sda. If you 
+change those to /dev/hda the installation of lilo on flash fails. Instead 
+it would install lilo on you physical /dev/hda HDD, breaking your running 
+system.
+
+&gt;<i>   bios=0x80
+</I>&gt;<i>   heads=4
+</I>&gt;<i>   sectors=32
+</I>&gt;<i>   cylinders=490
+</I>
+This tells lilo to boot off the first HDD it finds when actually booting 
+the embedded system on the target platform. 
+
+&gt;<i>From your earlier post I assume that lilo is functioning correctly. It 
+</I>does find the root filesystem and dies after mounting the root filesystem.
+
+Can you mount /dev/sda1 on your development system and see if there 
+actually is a /sbin/init? It looks to me like you're missing something in 
+your filesystem.
+
+Adi
+
+
+
+On Mon, 29 Apr 2002 <A HREF="mailto:kevin1a@linuxprof.homelinux.com">kevin1a@linuxprof.homelinux.com</A> wrote:
+
+&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Do you have &quot;/sbin/init&quot; in your filesystem? Have you tried using the
+</I>&gt;<i> &gt; &quot;minimal&quot; project, it should be already to go and get you to a login
+</I>&gt;<i> &gt; and  shell prompt.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Adi
+</I>&gt;<i> &gt;
+</I>&gt;<i> [snipped but on the thread]
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> Thanks fof the reply.
+</I>&gt;<i> 
+</I>&gt;<i> I do have /sbin/init when I extract the project to the development system's
+</I>&gt;<i> drive.
+</I>&gt;<i> I did notice that when I extract it and look in /etc/lilo.conf it shows that
+</I>&gt;<i> it wants to boot /dev/sda
+</I>&gt;<i> which it the device I'm creating PWL on but then when I move the CF card to
+</I>&gt;<i> the other PC
+</I>&gt;<i> it is supposed to boot as /dev/hda.  Am I on the right track?
+</I>&gt;<i> Making changes in the 'Target Hardware' section causes PWL not to build if I
+</I>&gt;<i> change 'Target Device' to /dev/hda.  I'll post the lilo.conf from the
+</I>&gt;<i> ..mnt/etc/lilo.conf and below that the results of the successfull build.
+</I>&gt;<i> 
+</I>&gt;<i> Thank you
+</I>&gt;<i> 
+</I>&gt;<i> Kevin B.
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> disk=/dev/sda    &lt;&lt;&lt;----  sda
+</I>&gt;<i>   bios=0x80
+</I>&gt;<i>   heads=4
+</I>&gt;<i>   sectors=32
+</I>&gt;<i>   cylinders=490
+</I>&gt;<i> 
+</I>&gt;<i> boot=/dev/sda    &lt;&lt;&lt;---sda
+</I>&gt;<i> map=/boot/map
+</I>&gt;<i> install=/boot/boot.b
+</I>&gt;<i> compact
+</I>&gt;<i> prompt
+</I>&gt;<i> timeout=20
+</I>&gt;<i> default=linux
+</I>&gt;<i> 
+</I>&gt;<i> image=/boot/bzImage
+</I>&gt;<i>         label=linux
+</I>&gt;<i>         read-only
+</I>&gt;<i>         root=/dev/hda1   &lt;&lt;&lt;---HDA!
+</I>&gt;<i>         vga=0x317
+</I>&gt;<i> -------------------------------------------------------
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000572.html">[Peeweelinux] Compact Flash newbie
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#573">[ date ]</a>
+              <a href="thread.html#573">[ thread ]</a>
+              <a href="subject.html#573">[ subject ]</a>
+              <a href="author.html#573">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

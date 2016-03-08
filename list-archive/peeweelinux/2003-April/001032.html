@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] CF Problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001036.html">
+   <LINK REL="Next"  HREF="001035.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] CF Problem
+   </H1>
+    <B>Stefan Willmert
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] CF Problem">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 17 Apr 2003 09:02:12 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001036.html">[Peeweelinux] CF card problem
+</A></li>
+        <LI> Next message: <A HREF="001035.html">[Peeweelinux] CF Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1032">[ date ]</a>
+              <a href="thread.html#1032">[ thread ]</a>
+              <a href="subject.html#1032">[ subject ]</a>
+              <a href="author.html#1032">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hey guys,
+This isn't specifically a PWL problem, but i'm hoping with everyone's
+experience in cf cards, someone may have run across this issue.
+
+I have an advantech board, which uses a CF card for the system. I load the
+filesystem and partitions onto the cf card from a desktop computer using a
+cf Card reader. I then insert the cf card into the advantech board, and
+occasionally, notice that one file may inadvertantly become a block device
+file. (Marked with a 'b'). This doesn't always happen, and only seems to
+happen when first creating the card. Once things are booted on the advantech
+board correctly, it always works correctly.
+
+file on CF via Advantech board
+brwxrwxrwx            1, 2  Apr 1  2003 mymodule.so
+file on CF via CF Card Reader
+-rwxrwxrwx		  300567  Apr 1  2003 mymodule.so
+
+
+I have noticed an inconvenient way of fixing the problem.
+Scenario:
+	Load CF card from desktop machine.
+	Boot card from Advantech board.
+	Notice a particular file has become a block device file.
+	Shutdown system.
+	Mount partition on CF card from my desktop machine using a CF card reader.
+	copy (not move) the offending file (*Note: the file appears correctly when
+mounted through the CF Card Reader on my desktop)
+	remove original file
+	rename copy to original file name.
+	boot card from advantech board.
+	All is well!
+
+I suspect something about a file residing on a particular sector that
+doesn't get read correctly when mounted through the advantech board? I'm
+trying to learn about how files are stored on disk, etc, to see if there is
+a way to repair it.
+
+I have been hunting for information regarding this problem with no luck.
+Advantech suggested trying a different brand of cf cards as the chipsets may
+be different than what they have tested. I have tried a few so far, with no
+luck. I'll keep trying brands they have suggested.
+
+Anyone else ever have an issue like this?
+Any suggestions on repairing the block device file automatically?
+Can Anyone with disk file experience explain what changes may occur to cause
+a file to become a block device file?
+
+This bug is really starting to get to me. Any suggestions anyone may have
+would be greatly appreciated.
+
+Thank you
+
+-stefan willmert
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001036.html">[Peeweelinux] CF card problem
+</A></li>
+	<LI> Next message: <A HREF="001035.html">[Peeweelinux] CF Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1032">[ date ]</a>
+              <a href="thread.html#1032">[ thread ]</a>
+              <a href="subject.html#1032">[ subject ]</a>
+              <a href="author.html#1032">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

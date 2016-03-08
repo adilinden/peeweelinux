@@ -1,0 +1,179 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> More pwlconfig stuff
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000026.html">
+   <LINK REL="Next"  HREF="000028.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>More pwlconfig stuff
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="More pwlconfig stuff">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 26 Jan 2000 13:04:08 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000026.html">More pwlconfig stuff
+</A></li>
+        <LI> Next message: <A HREF="000028.html">V0.19 and pwlconfig design notes...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> I wondered about that...I suppose including it is no problem (have to include
+</I>&gt;<i> the source also ?)
+</I>
+Under GPL the sources have to be available. I would imagine them being
+part of the kernel source would be sufficient. Perhaps just indicate in
+the README.pwlconfig where the sources for lxdialog can be found.
+
+&gt;<i> Where I'm headed now, the device is specified in the configuration file
+</I>&gt;<i> deviceType=&quot;DOC&quot; 
+</I>&gt;<i> deviceName=&quot;Disk-On-Chip&quot;
+</I>&gt;<i> -or-
+</I>&gt;<i> deviceTYPE=&quot;FLASH&quot;
+</I>&gt;<i> deviceName=&quot;Sandisk Flash Disk (IDE)&quot;
+</I>
+Ok, there are several different possibilities in loading stuff into the
+machine. You can simply use the flash like a HD. The disadvantage is that
+with limited write cycles to the flash it has a predefined lifespan.
+
+Then it's possible to create a ramdisk image. The ramdisk image on it's
+own doesn't do much. It needs a kernel (seperate) and a bootloader, lilo
+for an ext2 filesystem on flash, syslinux for a FAT filesystem on flash
+and loadlin if the DOS operating system is on flash, too. The last one
+wouldn't make sense but its on option (I don't care about supporting it
+though).
+
+If I am right, here are the steps required for each setup.
+
+'Live' filesystem on flash (no ramdisk)
+---------------------------------------
+1. Erase the flash (IDE or DOC)
+2. Make ext2 filesystem on flash
+3. Copy the filesystem to flash
+4. Run lilo (plilo for DOC, normal lilo for IDE FLASH)
+
+Ramdisk with LILO
+-----------------
+1. Create ramdisk from filesystem (w/o kernel)
+2. Make ext2 filesystem on FLASH or DOC
+3. Copy necessary files to FLASH or DOC
+    - Kernel
+    - Ramdisk image
+    - lilo &amp; support files
+4. Run lilo (plilo for DOC)
+
+Ramdisk with SYSLINUX
+---------------------
+1. Create ramdisk from filesystem (w/o kernel)
+2. Make FAT12 or FAT16 filesystem on FLASH or DOC
+3. Install bootloader (syslinux)
+4. Copy necessary files to FLASH or DOC
+    - Kernel
+    - Ramdisk image
+    - syslinux.cfg
+
+The above covers an original install. If you change the ramdisk image or
+kernel the syslinux solution just shine. All you need to do is copy the
+new kernel and/or ramdisk to the FLASH or DOC. That's it. No running lilo
+or anything else!
+
+The bootable CD is fairly easy. Unfortunaltely the 'easy' solution
+requires a floppy image with MS-DOS 6.22 and CD-ROM drives. A tough
+solution for anything but personal use. Thinking about it in retrospect it
+might be an idea not to support it until we figure out how to do it
+without MS-DOS.
+
+The above solutions assume the FLASH or DOC is available on the running
+development platform. In my case this doesn't work. I boot the target
+system using a floppy and then ftp the files onto the target drive. 
+
+So I think there needs to be an immediate step that allows you to create a
+tar.gz archive, as an example, which contains everything to be transferred
+to the target drive.
+
+&gt;<i> where the Name is assigned by the user for their specific device.  So,
+</I>&gt;<i> I am building the menu items as follows:
+</I>&gt;<i> 
+</I>&gt;<i>        Erase $deviceName ---&gt;
+</I>&gt;<i>        Load File System onto $deviceName ---&gt;
+</I>&gt;<i>        Install LInux LOader (LILO) to $deviceName
+</I>
+If you're using a ramdisk system the above wouldn't work...
+
+&gt;<i> For the ram disk, I was planning on including another line in the main menu
+</I>&gt;<i> (if the projectCompress parameter = &quot;YES&quot; )
+</I>&gt;<i> 
+</I>&gt;<i>       Configure Project File System ---&gt;
+</I>&gt;<i>       Compress FIle System --&gt;
+</I>&gt;<i>       Extract File System for Project ---&gt;
+</I>&gt;<i>       ----
+</I>&gt;<i>
+</I>&gt;<i> Selecting Compress File System will allow you to specify which files are
+</I>&gt;<i> included in the compressed image and which ones get copied without change.
+</I>&gt;<i> Then when you select &quot;Extract the file system image gets built and 
+</I>&gt;<i> then the compressed image gets made.
+</I>
+The ramdisk isn't just a tar file type of thing. The boot loader needs to
+be configured to support a ramdisk of the desired size (My router does a
+12MB ramdisk but the kernel default is 4MB max). Then the process of
+creating the ramdisk determines the size of the ramdisk when it's loaded
+into memory.
+
+When I build the script for the router it was run like this:
+   build_router [site] [ramdisk size] [ live | ramdisk | cd ]
+This is a script for a very specific purpose, though and not what I am
+planning now.
+
+I just think doing the ramdisk business should be a choice of menus all on
+its own. It's a process requiring different configurations options then
+the 'live' filesystem approach.
+
+So what I'll do is build the script to create the ramdisk. I'll email it
+to you when it's done with usage instructions. I did want to use command
+line switches, though. Still got to figure out how to do that without
+requiring options to be passed in a specific order.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000026.html">More pwlconfig stuff
+</A></li>
+	<LI> Next message: <A HREF="000028.html">V0.19 and pwlconfig design notes...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#27">[ date ]</a>
+              <a href="thread.html#27">[ thread ]</a>
+              <a href="subject.html#27">[ subject ]</a>
+              <a href="author.html#27">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

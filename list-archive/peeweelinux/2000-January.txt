@@ -1,0 +1,168 @@
+From adi@adis.on.ca  Mon Jan 10 14:28:27 2000
+From: adi@adis.on.ca (Adi Linden)
+Date: Mon, 10 Jan 2000 08:28:27 -0600 (CST)
+Subject: Test
+Message-ID: <Pine.LNX.4.10.10001100827570.14285-100000@localhost.localdomain>
+
+Testing 1... 2... 3...
+Testing 1... 2... 3...
+Testing 1... 2... 3...
+Testing 1... 2... 3...
+Testing 1... 2... 3...
+Testing 1... 2... 3...
+Testing 1... 2... 3...
+Testing 1... 2... 3...
+Testing 1... 2... 3...
+Testing 1... 2... 3...
+Testing 1... 2... 3...
+
+Adi
+
+
+From adi@adis.on.ca  Mon Jan 10 14:43:00 2000
+From: adi@adis.on.ca (Adi Linden)
+Date: Mon, 10 Jan 2000 08:43:00 -0600 (CST)
+Subject: Testing
+Message-ID: <Pine.LNX.4.10.10001100842210.14285-100000@localhost.localdomain>
+
+1...
+2...
+3...
+
+Testing...
+Testing...
+Testing...
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+
+From adi@adis.on.ca  Tue Jan 11 07:32:36 2000
+From: adi@adis.on.ca (Adi Linden)
+Date: Tue, 11 Jan 2000 01:32:36 -0600 (CST)
+Subject: Did it work?
+Message-ID: <Pine.LNX.4.10.10001110131500.14772-100000@localhost.localdomain>
+
+Hi,
+
+Just wondering if it did work after all... this mailing list thing...
+
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+Download PWL at http://projects.adis.on.ca/Embedded
+
+From soffi@console.gagnaveitan.is  Sat Jan 15 04:33:36 2000
+From: soffi@console.gagnaveitan.is (soffi)
+Date: Sat, 15 Jan 2000 04:33:36 +0000
+Subject: root login on boot disk
+In-Reply-To: <200001150427.WAA04860@gizmo.adis.on.ca>; from Majordomo@adis.on.ca on Fri, Jan 14, 2000 at 10:27:23PM -0600
+References: <200001150427.WAA04860@gizmo.adis.on.ca>
+Message-ID: <20000115043336.A10437@console.gagnaveitan.is>
+
+Hi,
+
+does someone know the default login and password on the boot disk provided from the website ??
+
+-kristinn-
+
+-- 
+Kristinn Soffanias Runarsson
+Systems Administrator
+Gagnaveitan ehf.
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+Download PWL at http://projects.adis.on.ca/Embedded
+
+From PeeWeeLinux@adis.on.ca  Sun Jan 23 18:45:49 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Sun, 23 Jan 2000 12:45:49 -0600 (CST)
+Subject: PeeWeeLinux Documentation
+Message-ID: <Pine.LNX.4.10.10001231241560.1365-100000@localhost.localdomain>
+
+Hi,
+
+I just posted the first draft of the PeeWeeLinux Documention. It's
+available at http://embedded.adis.on.ca/Documentation/PeeWeeLinux.html or
+within a few hours at 
+http://embedded.sourceforge.net/Documentation/PeeWeeLinux.html
+
+JFYI...
+
+Adi
+
+
+From PeeWeeLinux@adis.on.ca  Mon Jan 24 07:27:28 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Mon, 24 Jan 2000 01:27:28 -0600 (CST)
+Subject: embedded-0.19 is available!
+Message-ID: <Pine.LNX.4.10.10001240124520.1365-100000@localhost.localdomain>
+
+Hi,
+
+A new version of PeeWeeLinux is out. Find it at:
+
+ftp://projects.adis.on.ca/Embedded/embedded-0.19-src.tar.gz   18242 Kb
+ftp://projects.adis.on.ca/Embedded/embedded-0.19-bin.tar.gz    3758 Kb
+
+   - or -
+
+http://projects.adis.on.ca/Embedded/embedded-0.19-src.tar.gz
+http://projects.adis.on.ca/Embedded/embedded-0.19-bin.tar.gz
+
+The stuff will be up on source forge hopefully by Monday evening.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Jan 24 21:18:36 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Mon, 24 Jan 2000 15:18:36 -0600 (CST)
+Subject: Broken ftp
+Message-ID: <Pine.LNX.4.10.10001241516530.3916-100000@direcpc.adis.on.ca>
+
+Hi,
+
+The ftp server broke. Until I get things fixed files are only available
+via http. The path on the new ftp server will change from what it was
+before.
+
+Sorry,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Tue Jan 25 18:53:33 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Tue, 25 Jan 2000 12:53:33 -0600 (CST)
+Subject: New ftp site at adis.on.ca
+Message-ID: <Pine.LNX.4.10.10001251250540.4816-100000@direcpc.adis.on.ca>
+
+Hi,
+
+Sorry for any confusion. The ftp server broke. Now I am running wu-ftpd.
+But the path has changed from what's been posted. So here are the new ftp
+paths for the latest PeeWeeLinux files...
+
+ftp://adis.on.ca/pub/Projects/Embedded/embedded-0.19-bin.tar.gz    3758 Kb
+ftp://adis.on.ca/pub/Projects/Embedded/embedded-0.19-src.tar.gz   18242 Kb
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+

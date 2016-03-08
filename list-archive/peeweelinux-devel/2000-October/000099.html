@@ -1,0 +1,177 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Todo
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000093.html">
+   <LINK REL="Next"  HREF="000092.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Todo
+   </H1>
+    <B>Dennis W. Tokarski
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Todo">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Sat, 21 Oct 2000 20:33:59 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000093.html">Todo
+</A></li>
+        <LI> Next message: <A HREF="000092.html">Todo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#99">[ date ]</a>
+              <a href="thread.html#99">[ thread ]</a>
+              <a href="subject.html#99">[ subject ]</a>
+              <a href="author.html#99">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Adi,
+
+Adi Linden wrote:
+&gt;<i> 
+</I>
+&gt;<i> I have a question, how much code is added to the kernel for an option
+</I>&gt;<i> build as module? Is all the code for a particular ethernet driver for
+</I>&gt;<i> example contained in the driver module?
+</I>
+Yes, all the code for a particular driver is in the module. At least
+that's the case in every one I've looked at or written. There is just
+a little bit of extra code needed in a driver to make it a loadable
+module, but I bet it's less than 1 or 2K. Mostly it's its a matter of
+slightly different organization.
+
+There is a little bit of overhead in the kernel itself to support
+modules
+at all. It seems to amount to about 10K in the compressed bzImage, and
+about 25K in the uncompressed, stripped kernel image:
+
+With module support in kernel but no kernel module loader
+
+[<A HREF="mailto:root@Chiron">root@Chiron</A> linux]# f vmlinux arch/i386/boot/bzImage
+-rw-rw-r--    1 root     root       480799 Oct 20 18:07
+arch/i386/boot/bzImage
+-rwxr-xr-x    1 root     root      5033263 Oct 20 18:07 vmlinux
+[<A HREF="mailto:root@Chiron">root@Chiron</A> linux]# strip ./vmlinux
+[<A HREF="mailto:root@Chiron">root@Chiron</A> linux]# f vmlinux
+-rwxr-xr-x    1 root     root       974252 Oct 20 18:09 vmlinux
+[<A HREF="mailto:root@Chiron">root@Chiron</A> linux]# 
+
+
+Without module support in kernel
+
+[<A HREF="mailto:root@Chiron">root@Chiron</A> linux]# f vmlinux arch/i386/boot/bzImage
+-rw-rw-r--    1 root     root       469013 Oct 20 17:56
+arch/i386/boot/bzImage
+-rwxr-xr-x    1 root     root      4823133 Oct 20 17:56 vmlinux
+[<A HREF="mailto:root@Chiron">root@Chiron</A> linux]# strip ./vmlinux
+[<A HREF="mailto:root@Chiron">root@Chiron</A> linux]# f vmlinux
+-rwxr-xr-x    1 root     root       949412 Oct 20 17:59 vmlinux
+[<A HREF="mailto:root@Chiron">root@Chiron</A> linux]# 
+
+&gt;<i> &gt; An embedded systems designer would have the same advantages that Red Hat
+</I>&gt;<i> &gt; has, too: by putting a selection of modules, not all of which are always
+</I>&gt;<i> &gt; needed, on a compressed initrd the final kernel RAM footprint might be
+</I>&gt;<i> &gt; a bit smaller.
+</I>&gt;<i> 
+</I>&gt;<i> The initrd is only required if the kernel is needed before mounting the
+</I>&gt;<i> partition containing the modules (i.e. RAID, SCSI). pwlconfig would allow
+</I>&gt;<i> to select which modules to make part of the filesystem.
+</I>
+That's one way, certainly. But there are two reasons for using an initrd
+even if it's not necessary. First, and the reason Red Hat does it, is to
+have an initial root device containing more modules than you will need
+on
+every system, and just load the ones you find necessary based on what
+hardware
+you find you're running on. That having been done, the initrd can be
+released
+and all those modules you don't need aren't taking up space on your
+working root
+device. So, you can have one bootable DOC, say, useable on a several
+different
+hardware configurations. That is sometimes convenient.
+
+The second reason is more for saving space. Because an initrd can be
+compressed,
+the set of modules you include (whether needed or not for a particular
+hardware
+platform) take up less space on your boot medium. For this reason alone
+I'd be
+inclined to put all my modules in an initrd and not have any on the
+runtime root
+file system.
+
+The main reason for not using an initrd is if you have modules that
+you'll
+want to load, unload, and reload occasionally.
+
+
+&gt;<i> I am thinking of adding the 2.4 kernel as an enhancement in addition to
+</I>&gt;<i> the latest 2.2.x kernel. 
+</I>
+Whew!
+
+&gt;<i> As I understand the 2.4 kernel contains some things that might make
+</I>&gt;<i> embedded life much easier, like the virtual dev filesystem.
+</I>
+Yes, I am looking forward to that one.
+
+&gt;<i> 
+</I>&gt;<i> To start I'd like to add a dependency check routine that merely lists libs
+</I>&gt;<i> which are either needed and not present or present and not needed. Perhaps
+</I>&gt;<i> with an option to update the package list automatically.
+</I>&gt;<i> 
+</I>
+Well, ldd will tell you the *libraries* an executable will want to link
+to.
+Not which procedures in the libraries though. But that should be enough
+for what you want to do. Just run ldd on the executables you propose to
+include in the target system, run it's output through grep, sed, sort,
+and
+uniq with appropriate options, and you have a complete list of required
+libs. Then you can diff that against the list of libs alread included
+and
+make the necessarey additions and deletions.
+
+One caveat, I've had some experience lately to suggest that ldd is not
+completely authoritative. That is, some programs link at run time to
+shared libraries which ldd does not mention. This doesn't seem to be
+very
+common, though.
+
+Later,
+
+  --Dennis
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000093.html">Todo
+</A></li>
+	<LI> Next message: <A HREF="000092.html">Todo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#99">[ date ]</a>
+              <a href="thread.html#99">[ thread ]</a>
+              <a href="subject.html#99">[ subject ]</a>
+              <a href="author.html#99">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

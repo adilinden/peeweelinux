@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] rc.pcmcia fails
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000774.html">
+   <LINK REL="Next"  HREF="000776.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] rc.pcmcia fails
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] rc.pcmcia fails">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 6 Sep 2002 11:39:02 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000774.html">[Peeweelinux] Get rid of PeeWee login
+</A></li>
+        <LI> Next message: <A HREF="000776.html">[Peeweelinux] rc.pcmcia fails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#775">[ date ]</a>
+              <a href="thread.html#775">[ thread ]</a>
+              <a href="subject.html#775">[ subject ]</a>
+              <a href="author.html#775">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I &quot;grepped grep&quot; and found this, on a RH7.3 system.
+
+  Fgrep is the same as grep -F.
+
+  -F, --fixed-strings
+         Interpret PATTERN as a list of fixed strings, sepa-
+         rated  by  newlines, any of which is to be matched.
+         -P, --perl-regexp Interpret PATTERN as a Perl regu-
+         lar expression.
+
+I'd be surprised if these were &quot;just added&quot; but the man page does
+say Jan 2002, so it could be.
+
+Here is another trick for strange messages from scripts:
+
+  sh -x pcmcia
+
+will echo everything going in and out of the script so you can
+see the command that caused the 'Syntax error: Bad substitution'
+error.
+
+Barry
+
+
+
+At 08:04 PM 9/4/02 -0700, you wrote:
+&gt;<i>'grep -F'.  When
+</I>&gt;<i>I look at the web page for busybox there isn't an '-F' listed, nor is there
+</I>&gt;<i>one listed on grep on my Redhat 7.2 box.  The other problem is in the last
+</I>&gt;<i>line of the script, I get a 'Syntax error: Bad substitution'
+</I>&gt;<i>
+</I>&gt;<i>Randy Torgerson
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000774.html">[Peeweelinux] Get rid of PeeWee login
+</A></li>
+	<LI> Next message: <A HREF="000776.html">[Peeweelinux] rc.pcmcia fails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#775">[ date ]</a>
+              <a href="thread.html#775">[ thread ]</a>
+              <a href="subject.html#775">[ subject ]</a>
+              <a href="author.html#775">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

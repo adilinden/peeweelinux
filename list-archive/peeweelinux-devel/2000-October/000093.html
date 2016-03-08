@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Todo
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000091.html">
+   <LINK REL="Next"  HREF="000099.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Todo
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Todo">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Fri, 13 Oct 2000 10:43:40 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000091.html">Todo
+</A></li>
+        <LI> Next message: <A HREF="000099.html">Todo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#93">[ date ]</a>
+              <a href="thread.html#93">[ thread ]</a>
+              <a href="subject.html#93">[ subject ]</a>
+              <a href="author.html#93">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> That's certainly a problem, and one which grows out of the kernel's
+</I>&gt;<i> monolithic architecture. The best you can do is make everything that
+</I>&gt;<i> might be optional a module, as you suggest below.
+</I>
+I have a question, how much code is added to the kernel for an option
+build as module? Is all the code for a particular ethernet driver for
+example contained in the driver module?
+
+&gt;<i> &gt; Another option would be to reduce the number of special purpose kernels
+</I>&gt;<i> &gt; and insead build a highly modularized kernel with virtually all options.
+</I>&gt;<i> &gt; Very similar to the stock RedHat kernel.
+</I>&gt;<i> 
+</I>&gt;<i> An embedded systems designer would have the same advantages that Red Hat
+</I>&gt;<i> has, too: by putting a selection of modules, not all of which are always
+</I>&gt;<i> needed, on a compressed initrd the final kernel RAM footprint might be
+</I>&gt;<i> a bit smaller.
+</I>
+The initrd is only required if the kernel is needed before mounting the
+partition containing the modules (i.e. RAID, SCSI). pwlconfig would allow
+to select which modules to make part of the filesystem.
+
+&gt;<i> layer more often than some people change socks, and of course don't 
+</I>&gt;<i> document them. Going from 2.2 to 2.4 is reportedly not so traumatic as
+</I>&gt;<i> 2.0 to 2.2, but still...defer the pain if you can.
+</I>
+I am thinking of adding the 2.4 kernel as an enhancement in addition to
+the latest 2.2.x kernel. I.e. the K-Net Router I am maintaining contains
+modules that are available in binary only. So switching it to 2.4 isn't
+an option. I wouldn't want to make future PeeWeeLinux releases useless for
+a developer stuck with a 2.2.x kernel for some other reason. I will try to
+switch to the latest 2.2.x kernel, though.
+
+As I understand the 2.4 kernel contains some things that might make
+embedded life much easier, like the virtual dev filesystem.
+
+&gt;<i> Embeddix, I think. They have a utility which can look at an executable
+</I>&gt;<i> --or maybe a set of executables--which you propose to put in your target
+</I>&gt;<i> system, then construct a custom library containing only the stuff you
+</I>&gt;<i> really need. I think that's how it works. For good reason they call it
+</I>&gt;<i> 'lipo'. I've been trying to figure out how they do that. 'ldd' can tell
+</I>&gt;<i> you which libs an executable needs, but not which routines in the libs
+</I>&gt;<i> it links to.
+</I>
+To start I'd like to add a dependency check routine that merely lists libs
+which are either needed and not present or present and not needed. Perhaps
+with an option to update the package list automatically.
+
+I've looked at tiny libs. But most of them require binaries to be compiled
+against them. That would require compiling on the fly... maybe some day...
+
+TTYL,
+Adi
+
+
+
+
+
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000091.html">Todo
+</A></li>
+	<LI> Next message: <A HREF="000099.html">Todo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#93">[ date ]</a>
+              <a href="thread.html#93">[ thread ]</a>
+              <a href="subject.html#93">[ subject ]</a>
+              <a href="author.html#93">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

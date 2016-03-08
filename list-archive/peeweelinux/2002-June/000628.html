@@ -1,0 +1,182 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] autostart
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000626.html">
+   <LINK REL="Next"  HREF="000629.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] autostart
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] autostart">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 12 Jun 2002 10:21:17 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000626.html">[Peeweelinux] ftp server
+</A></li>
+        <LI> Next message: <A HREF="000629.html">[Peeweelinux] peewee version on the server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#628">[ date ]</a>
+              <a href="thread.html#628">[ thread ]</a>
+              <a href="subject.html#628">[ subject ]</a>
+              <a href="author.html#628">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi,
+
+Thank you for your solution, Troy, it works fine !
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+Troy Engel &lt;<A HREF="mailto:tengel@fluid.com">tengel@fluid.com</A>&gt; on 07/06/2002 18:27:35
+
+Veuillez répondre à <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+
+Pour :    <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] autostart
+
+
+
+Guillaume,
+
+If you've built your PWL with &quot;SysV support&quot; (most likely you have),
+then the easiest (and more correct) thing to do is create a script that
+lives in /etc/rcS.d/ directory (eg, &quot;90mystuff&quot;).
+
+On boot, the subsystem walks through this directory and executes all
+scripts in order numerically, lowest to highest.  The problem with
+rc.sysinit is that it's executed before any /etc/rcS.d/ scripts, which
+may adversely affect your application.
+
+It's then easy to do a Custom File Add on your initscript and keep it
+seperate from the core PWL stuff.  I note, though, that loading modules
+should take place in /etc/rc.modules, which is sourced by rc.sysinit if
+it exists.
+
+-te
+
+<A HREF="mailto:Guillaume.Prevost@space.alcatel.fr">Guillaume.Prevost@space.alcatel.fr</A> wrote:
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Thank you Ken for those detailed information. I will try your solution which
+</I>&gt;<i> seems to fulfil my dreams.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Guillaume PREVOST
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &quot;Ken Emmons, Jr.&quot; &lt;<A HREF="mailto:KEN@qatech.com">KEN@qatech.com</A>&gt; on 07/06/2002 15:15:58
+</I>&gt;<i>
+</I>&gt;<i> Veuillez répondre à <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i>
+</I>&gt;<i> Pour :    <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+</I>&gt;<i> Objet :   Re: [Peeweelinux] autostart
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi Guillaume,
+</I>&gt;<i>
+</I>&gt;<i> I have added my stuff to the end of the /etc/rc.sysinit script. In my case I
+</I>&gt;<i> load modules for RTLinux RTOS, but you could launch any programs or scripts.
+</I>&gt;<i> These are launched as root, so just be aware of any security issues. To modify
+</I>&gt;<i> the rc.sysinit you need to go to the project folder under peewee and then into
+</I>a
+&gt;<i> folder called &quot;custom&quot; Then do this:
+</I>&gt;<i>
+</I>&gt;<i> mkdir etc
+</I>&gt;<i> cp ../mnt/etc/rc.sysinit  ./etc
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> then you can edit your custom/etc/rc.sysinit file and it will be copied to
+</I>your
+&gt;<i> target.
+</I>&gt;<i>
+</I>&gt;<i> hope this helps,
+</I>&gt;<i>
+</I>&gt;<i> ~Ken
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+--
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000626.html">[Peeweelinux] ftp server
+</A></li>
+	<LI> Next message: <A HREF="000629.html">[Peeweelinux] peewee version on the server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#628">[ date ]</a>
+              <a href="thread.html#628">[ thread ]</a>
+              <a href="subject.html#628">[ subject ]</a>
+              <a href="author.html#628">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

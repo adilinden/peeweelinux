@@ -1,0 +1,241 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Kernel Compile failure
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000387.html">
+   <LINK REL="Next"  HREF="000388.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Kernel Compile failure
+   </H1>
+    <B>Sudhanshu Tewari
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Kernel Compile failure">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 7 Nov 2001 13:15:22 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000387.html">[Peeweelinux] Kernel Compile failure
+</A></li>
+        <LI> Next message: <A HREF="000388.html">[Peeweelinux] Init Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#386">[ date ]</a>
+              <a href="thread.html#386">[ thread ]</a>
+              <a href="subject.html#386">[ subject ]</a>
+              <a href="author.html#386">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+------_=_NextPart_001_01C167C8.EE2A8586
+Content-Type: text/plain;
+	charset=&quot;iso-8859-1&quot;
+
+
+Hi,
+
+I am using 7.1
+I will try with 6.2 and let you know ...
+
+thanks
+Sudhanshu
+
+-----Original Message-----
+From: Adi Linden [mailto:<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>]
+Sent: Wednesday, November 07, 2001 9:54 AM
+To: Sudhanshu Tewari
+Cc: '<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>'
+Subject: Re: [Peeweelinux] Kernel Compile failure
+
+
+Hi,
+
+What Linux flavour are you using for development purposes? I have tested
+the kernel compiling on on RedHat 6.1 and RedHat 6.2...
+
+Adi
+
+On Wed, 7 Nov 2001, Sudhanshu Tewari wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I am Sudhanshu from Boulder CO
+</I>&gt;<i> Using successfully the latest version of Peewee LInux.
+</I>&gt;<i> Thanks for the good work !!
+</I>&gt;<i>
+</I>&gt;<i> Recently i tried compiling the the custum kernel using pwlconfig menu.
+</I>&gt;<i> I did't add any thing custum but just took the 2.2.17-13 code used
+</I>standard
+&gt;<i> peeweelinux-basic configuration.
+</I>&gt;<i> and compiled the kernel.
+</I>&gt;<i>
+</I>&gt;<i> The Problem is the scripts comes out with kernel compiled successful after
+</I>&gt;<i> creating custom kernel package, But there is no bzImage file in the boot
+</I>&gt;<i> directory.
+</I>&gt;<i> The modules are getting compiled fine.
+</I>&gt;<i>
+</I>&gt;<i> when i tried compiling using make dep;make clean;make bzImage in the
+</I>&gt;<i> .../usr/src/linux/* directory.
+</I>&gt;<i>
+</I>&gt;<i> the make bzImage fails at Checksum.S at line 234 complaining badly
+</I>puntuated
+&gt;<i> parameter in #define.
+</I>&gt;<i>
+</I>&gt;<i> The #define problem gets fixed if i remove option -traditional from the
+</I>make
+&gt;<i> file but then it crashes in get_address.c in line 177 &amp; 187 complaining
+</I>&gt;<i> invalid lvalue in asm statement.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Any idead what i am missing !!!
+</I>&gt;<i>
+</I>&gt;<i> Thanks
+</I>&gt;<i> Sudhanshu
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+------_=_NextPart_001_01C167C8.EE2A8586
+Content-Type: text/html;
+	charset=&quot;iso-8859-1&quot;
+Content-Transfer-Encoding: quoted-printable
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;META HTTP-EQUIV=3D&quot;Content-Type&quot; CONTENT=3D&quot;text/html; =
+charset=3Diso-8859-1&quot;&gt;
+&lt;META NAME=3D&quot;Generator&quot; CONTENT=3D&quot;MS Exchange Server version =
+5.5.2650.12&quot;&gt;
+&lt;TITLE&gt;RE: [Peeweelinux] Kernel Compile failure&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;BR&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;Hi,&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;I am using 7.1&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;I will try with 6.2 and let you know ...&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;thanks&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Sudhanshu&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;-----Original Message-----&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;From: Adi Linden [&lt;A =
+HREF=3D&quot;mailto:<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&quot;&gt;mailto:<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&lt;/A&gt;]&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Sent: Wednesday, November 07, 2001 9:54 AM&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;To: Sudhanshu Tewari&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Cc: '<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>'&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Subject: Re: [Peeweelinux] Kernel Compile =
+failure&lt;/FONT&gt;
+&lt;/P&gt;
+&lt;BR&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;Hi,&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;What Linux flavour are you using for development =
+purposes? I have tested&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;the kernel compiling on on RedHat 6.1 and RedHat =
+6.2...&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;Adi&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;On Wed, 7 Nov 2001, Sudhanshu Tewari wrote:&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; Hi,&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt;&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; I am Sudhanshu from Boulder CO&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; Using successfully the latest version of Peewee =
+LInux.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; Thanks for the good work !!&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt;&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; Recently i tried compiling the the custum =
+kernel using pwlconfig menu.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; I did't add any thing custum but just took the =
+2.2.17-13 code used standard&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; peeweelinux-basic configuration.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; and compiled the kernel.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt;&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; The Problem is the scripts comes out with =
+kernel compiled successful after&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; creating custom kernel package, But there is no =
+bzImage file in the boot&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; directory.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; The modules are getting compiled fine.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt;&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; when i tried compiling using make dep;make =
+clean;make bzImage in the&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; .../usr/src/linux/* directory.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt;&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; the make bzImage fails at Checksum.S at line =
+234 complaining badly puntuated&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; parameter in #define.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt;&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; The #define problem gets fixed if i remove =
+option -traditional from the make&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; file but then it crashes in get_address.c in =
+line 177 &amp;amp; 187 complaining&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; invalid lvalue in asm statement.&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt;&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt;&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; Any idead what i am missing !!!&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt;&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; Thanks&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt; Sudhanshu&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt;&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;gt;&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT =
+SIZE=3D2&gt;_______________________________________________&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Peeweelinux mailing list&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&lt;A =
+HREF=3D&quot;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux"">http://mail.adis.on.ca/lists/listinfo/peeweelinux&quot;</A> =
+TARGET=3D&quot;_blank&quot;&gt;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux</A">http://mail.adis.on.ca/lists/listinfo/peeweelinux&lt;/A</A>&gt;&lt;=
+/FONT&gt;
+&lt;/P&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+------_=_NextPart_001_01C167C8.EE2A8586--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000387.html">[Peeweelinux] Kernel Compile failure
+</A></li>
+	<LI> Next message: <A HREF="000388.html">[Peeweelinux] Init Problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#386">[ date ]</a>
+              <a href="thread.html#386">[ thread ]</a>
+              <a href="subject.html#386">[ subject ]</a>
+              <a href="author.html#386">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] =?iso-8859-1?Q?Re:_Re:_[Peeweelinux]_embedded_linux_for_robots..._newbie=09?=
+ =?iso-8859-1?Q?questions?=
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000807.html">
+   <LINK REL="Next"  HREF="000809.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Re: [Peeweelinux] embedded linux for robots... newbie	
+ questions
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Re: [Peeweelinux] embedded linux for robots... newbie	
+ questions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sat, 19 Oct 2002 00:20:23 CEST</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000807.html">[Peeweelinux] embedded linux for robots... newbie
+ questions
+</A></li>
+        <LI> Next message: <A HREF="000809.html">[Peeweelinux] Continued boot problems - Compactflash Corruption?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#808">[ date ]</a>
+              <a href="thread.html#808">[ thread ]</a>
+              <a href="subject.html#808">[ subject ]</a>
+              <a href="author.html#808">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>thanks for this help. I'll first try the PCMCIA and if I can't have it work (or boot...) then I'll try to convince my teachers to change the adapter for a more 'standard' one like for the flash cards as you said. So the ramdisk seems a good idea, great, I'll try this too. But I'll probably have to set a writeable fs on the flash too, to store some data like pictures or data concerning the average speed, the track that the robot followed, etc. But let's don't hurry too much! I must admit I didn't really
+meant to install peeweelinux, but rather build the system from scratch, but after all I'll give it a try in the next few days to get confident about the embedded world!
+thanks again guys!
+François
+
+----Message d'origine----
+&gt;<i>De: &quot;Ken Emmons, Jr.&quot; &lt;<A HREF="mailto:KEN@qatech.com">KEN@qatech.com</A>&gt;
+</I>&gt;<i>A: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i>Sujet: Re: [Peeweelinux] embedded linux for robots... newbie
+</I>&gt;<i>Date: Fri, 18 Oct 2002 16:17:45 -0400
+</I>&gt;<i>
+</I>&gt;<i>Salut,
+</I>&gt;<i>
+</I>&gt;<i>I would be careful witht he PCMCIA adapter for the flash disk, see previous posts. 
+</I>&gt;<i>
+</I>&gt;<i>Multiple Ramdisks like in peewee are pretty nice since you can just shut the power off and everythign will execute and load faster out of RAM instead of loading form a slow falsh device. The compressed RAm images are even faster booting because they read less information form the slow flash drive.
+</I>&gt;<i>
+</I>&gt;<i>Don't sweat the NAND and NOR stuff, jsut use a good SanDisk Compact Flash card with a good ATA to Compact Flash adapter (I don't recommend PCMCIA at all....). You can find adapters on the peeweelinux page and other sources.
+</I>&gt;<i>
+</I>&gt;<i>You don't seem to care about the disk size,s o use XFree86 and regular glibc that comes with peewee, you;ll be surprised at how much you can fit on a 32mb card ;-)
+</I>&gt;<i>
+</I>&gt;<i>If you are to run your host for development you may want to consider setting up a mainstream distro with a hard disk and get that working first before trying to embed it. You can always take your application and compile it as static if there are some funky incompatabilities with what peewee installs (for instance, I compile a GTK+ program as static, and it si 3MB in size but I don't have to install GTK+ on the embedded system..)
+</I>&gt;<i>
+</I>&gt;<i>Hope this helps,
+</I>&gt;<i>
+</I>&gt;<i>~Ken
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Peeweelinux mailing list
+</I>&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000807.html">[Peeweelinux] embedded linux for robots... newbie
+ questions
+</A></li>
+	<LI> Next message: <A HREF="000809.html">[Peeweelinux] Continued boot problems - Compactflash Corruption?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#808">[ date ]</a>
+              <a href="thread.html#808">[ thread ]</a>
+              <a href="subject.html#808">[ subject ]</a>
+              <a href="author.html#808">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,235 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> More pwlconfig stuff
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000029.html">
+   <LINK REL="Next"  HREF="000032.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>More pwlconfig stuff
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="More pwlconfig stuff">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Thu, 27 Jan 2000 01:02:40 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000029.html">More pwlconfig stuff
+</A></li>
+        <LI> Next message: <A HREF="000032.html">pwlconfig update *real soon now*
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#31">[ date ]</a>
+              <a href="thread.html#31">[ thread ]</a>
+              <a href="subject.html#31">[ subject ]</a>
+              <a href="author.html#31">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi again...
+
+&gt;<i> The limit is about 100,000 ...don't think loading the file system will be a
+</I>&gt;<i> problem, its not until you start using the flash for run-time file storage...
+</I>&gt;<i> DOC has wear leveling that helps too...
+</I>
+So how long would a flash last if it's running a 'regular' read-write
+filesystem? I did a hybrid solution at one point where part of the
+filsystem was copied into a ramdisk at boot. It worked soso. I much prefer
+the all ramdisk solution, as long as it fits into ram...
+
+&gt;<i> &gt; Then it's possible to create a ramdisk image. The ramdisk image on it's
+</I>&gt;<i> &gt; own doesn't do much. It needs a kernel (seperate) and a bootloader, lilo
+</I>&gt;<i> &gt; for an ext2 filesystem on flash, syslinux for a FAT filesystem on flash
+</I>&gt;<i> &gt; and loadlin if the DOS operating system is on flash, too. The last one
+</I>&gt;<i> &gt; wouldn't make sense but its on option (I don't care about supporting it
+</I>&gt;<i> &gt; though).
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; If I am right, here are the steps required for each setup.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 'Live' filesystem on flash (no ramdisk)
+</I>&gt;<i> &gt; ---------------------------------------
+</I>&gt;<i> &gt; 1. Erase the flash (IDE or DOC)
+</I>&gt;<i> &gt; 2. Make ext2 filesystem on flash
+</I>&gt;<i> &gt; 3. Copy the filesystem to flash
+</I>&gt;<i> &gt; 4. Run lilo (plilo for DOC, normal lilo for IDE FLASH)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Ok..I think these are handled now with the &quot;xxx Disk-On-Chip&quot; main menu
+</I>&gt;<i> items...
+</I>
+Yup...
+
+&gt;<i> &gt; Ramdisk with LILO
+</I>&gt;<i> &gt; -----------------
+</I>&gt;<i> &gt; 1. Create ramdisk from filesystem (w/o kernel)
+</I>&gt;<i> &gt; 2. Make ext2 filesystem on FLASH or DOC
+</I>&gt;<i> &gt; 3. Copy necessary files to FLASH or DOC
+</I>&gt;<i> &gt;     - Kernel
+</I>&gt;<i> &gt;     - Ramdisk image
+</I>&gt;<i> &gt;     - lilo &amp; support files
+</I>&gt;<i> &gt; 4. Run lilo (plilo for DOC)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> What I was thinking for the compressed system:
+</I>&gt;<i> 
+</I>&gt;<i> 1. configure your project file system, independent of ram disk
+</I>&gt;<i> 2. Configure the compressed file system...ie specify files that are not
+</I>&gt;<i> compressed, all others will be compressed
+</I>&gt;<i> 3. Extract will extract the file system as it does now..THEN it will compress
+</I>&gt;<i> all the required files.  The compressed image and the uncompressed files will
+</I>&gt;<i> be  loaded into another location.  The compress will actually use the &quot;dd&quot;
+</I>&gt;<i> command stuff you have in one of your shell scripts already...
+</I>&gt;<i> 
+</I>&gt;<i> After this step, files will be stored as follows:
+</I>&gt;<i> 
+</I>&gt;<i> projects/ralph/mnt     &lt;&lt;--normal uncompressed files
+</I>&gt;<i> projects/ralph/cmpmnt  &lt;&lt;--final disk image with compressed file + others
+</I>&gt;<i> 
+</I>&gt;<i> Now, when you load the Disk-On-Chip, the files will be copied from the &quot;cmpmnt&quot;
+</I>&gt;<i> point, not the &quot;mnt&quot; directory.
+</I>&gt;<i> 
+</I>&gt;<i> 4. run Lilo as before, but insert some ram disk parameters if required, in the
+</I>&gt;<i> &quot;lilo.conf.doc&quot; file
+</I>
+Yup, that would do.
+
+&gt;<i> &gt; Ramdisk with SYSLINUX
+</I>&gt;<i> &gt; ---------------------
+</I>&gt;<i> &gt; 1. Create ramdisk from filesystem (w/o kernel)
+</I>&gt;<i> &gt; 2. Make FAT12 or FAT16 filesystem on FLASH or DOC
+</I>&gt;<i> &gt; 3. Install bootloader (syslinux)
+</I>&gt;<i> &gt; 4. Copy necessary files to FLASH or DOC
+</I>&gt;<i> &gt;     - Kernel
+</I>&gt;<i> &gt;     - Ramdisk image
+</I>&gt;<i> &gt;     - syslinux.cfg
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; The above covers an original install. If you change the ramdisk image or
+</I>&gt;<i> &gt; kernel the syslinux solution just shine. All you need to do is copy the
+</I>&gt;<i> &gt; new kernel and/or ramdisk to the FLASH or DOC. That's it. No running lilo
+</I>&gt;<i> &gt; or anything else!
+</I>&gt;<i> 
+</I>&gt;<i> Ok..haven't played with syslinux yet...
+</I>
+It's easier than the ext2 filesystem on flash with lilo...
+
+&gt;<i> &gt; The bootable CD is fairly easy. Unfortunaltely the 'easy' solution
+</I>&gt;<i> &gt; requires a floppy image with MS-DOS 6.22 and CD-ROM drives. A tough
+</I>&gt;<i> &gt; solution for anything but personal use. Thinking about it in retrospect it
+</I>&gt;<i> &gt; might be an idea not to support it until we figure out how to do it
+</I>&gt;<i> &gt; without MS-DOS.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> There's a how-to on building CD-ROMS that boot, and I know someone who has done
+</I>&gt;<i> this...this is lowest on my priority list, something to shoot for though.
+</I>
+The problem is booting without dos. With booteable CD's the bios loads a
+floppy image from the CD and redirects system calls to the image instead
+of the physical floppy. Unfortunately the Linux kernel doesn't use the
+bios to access drives after it has booted. Soooo... the kernel boots and
+then it can't find the ramdisk because there is no real floppy drive
+there. Considering that syslinux loads the kernel and the ramdisk it
+should work with a bootable CD, too. But then there needs to be a way to
+probe for the place the CD is connected to.
+
+I think with the newer boxes and booteable ATAPI drives there is point in
+supporting it. But I don't have any need for it now. There isn't any time
+in my life to work on the syslinux bootable CD business right now.
+
+&gt;<i> &gt; The above solutions assume the FLASH or DOC is available on the running
+</I>&gt;<i> &gt; development platform. In my case this doesn't work. I boot the target
+</I>&gt;<i> &gt; system using a floppy and then ftp the files onto the target drive. 
+</I>&gt;<i> 
+</I>&gt;<i> Hmmmm....I hadn't thought of this...perhaps if the target is mounted with nfs,
+</I>&gt;<i> then the copy from &quot;projects/ralph/mnt&quot; (or &quot;projects/ralph/cmpmnt&quot;) would just
+</I>&gt;<i> work..I guess this assumes that a working file system is already on the
+</I>&gt;<i> target...not sure if LILO works over this method either...hmmmmm
+</I>
+Like I mentioned, I am bringing the target system up with a floppy that
+has networking and a ftp client. It uses dhcp for a network number and
+goes about downloading the image and installing it on flash. Depending on
+the RAM/flash configuration its possible to download a .tgz file with all
+the files into the ramdisk and then uncompress them onto flash.
+
+This works great with 8MB flash and 64MB RAM. It even squeezes into 32MB
+RAM. Booting from a floppy the filesystem expands to about 3MB. If the
+ramdisk was build to be 20MB in size that leaves 17MB to buffer the
+downloaded file(s) to be installed. 12MB to run a minimal networked Linux
+is plenty... 
+
+&gt;<i> &gt; So I think there needs to be an immediate step that allows you to create a
+</I>&gt;<i> &gt; tar.gz archive, as an example, which contains everything to be transferred
+</I>&gt;<i> &gt; to the target drive.
+</I>&gt;<i> 
+</I>&gt;<i> Ahhh...just archiving (tar/zipping) the entire file structure...hmmmm... this
+</I>&gt;<i> is a seperate issue from just archiving a project...more to do...
+</I>
+See below:
+
+ &gt; projects/ralph/mnt     &lt;&lt;--normal uncompressed files
+ &gt; projects/ralph/cmpmnt  &lt;&lt;--final disk image with compressed file + others
+ &gt; 
+ &gt; Now, when you load the Disk-On-Chip, the files will be copied from the&quot;cmpmnt&quot;
+ &gt; point, not the &quot;mnt&quot; directory.
+
+A step to compress the 'projects/ralph/cmpmnt' directory. So there is on
+file that contains everything that needs to go onto the target device.
+
+One more note about the syslinux - lilo thing. If you use a ramdisk the
+files required on the target are VERY different between lilo and syslinux.
+The only thing in common are the ramdisk image and the kernel image.
+
+&gt;<i> Anyhow, seeing something working is a lot better than just me gassing (and
+</I>&gt;<i> guessing) about what *I* think should happen :-)  
+</I>
+This is defenitely so. I am hoping to start this ramdisk script first
+thing in the morning. My original plan of doing it this evening just
+didn't fly.
+
+My little brother (14 year old) decided to format the drive on his
+computer and do some partitioning to do a dual boot Windows/Linux box.
+When he was visiting he thought the Gnome desktop was sooo cool. He just
+had to have. I burned him copies of all the important Linux stuff...
+
+It was a loooong phonecall walking him through a Win98 install first and
+then a Redhat 6.1 Gnome workstation. I guess the first time in his live
+he installed an operating system and had to use fdisk and format. Now he
+needs a new modem since his box has a Winmodem. Oh well...
+
+He lives out in BC so walking over there to show him isn't really an
+option...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000029.html">More pwlconfig stuff
+</A></li>
+	<LI> Next message: <A HREF="000032.html">pwlconfig update *real soon now*
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#31">[ date ]</a>
+              <a href="thread.html#31">[ thread ]</a>
+              <a href="subject.html#31">[ subject ]</a>
+              <a href="author.html#31">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

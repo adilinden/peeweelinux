@@ -1,0 +1,310 @@
+From peeweelinux@adis.on.ca  Tue Jun  5 16:43:03 2001
+From: peeweelinux@adis.on.ca (Silvio Sancese)
+Date: Tue, 05 Jun 2001 17:43:03 +0200
+Subject: Custom patched kernel
+Message-ID: <3B1CFE07.49A5E249@Sancese.com>
+
+Sorry if this subject has already come up in the past. I browsed the
+archives but could not find it.
+
+I'd like to add a custom kernel to peewee, built from a vanilla 2.2.17
+(not 2.2.17-13) and patched with RTAI real-time extensions. I have the
+complete (patched) source tree ready, but I don't know where to put it
+for PeeWee to recognize it (maybe create a tar.gz or rpm??).
+
+I know, the question is dumb.... :-)
+Thanks in advance.
+
+Ciao,
+Silvio
+
+P.S. Great work, Adi!
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Jun  9 05:27:18 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 8 Jun 2001 23:27:18 -0500 (CDT)
+Subject: Custom patched kernel
+In-Reply-To: <3B1CFE07.49A5E249@Sancese.com>
+Message-ID: <Pine.LNX.4.10.10106082326210.9379-100000@big.adis.on.ca>
+
+Hi,
+
+I would manually build the kernel and modules and include them as a custom
+files.
+
+TTYL,
+Adi
+
+On Tue, 5 Jun 2001, Silvio Sancese wrote:
+
+> Sorry if this subject has already come up in the past. I browsed the
+> archives but could not find it.
+> 
+> I'd like to add a custom kernel to peewee, built from a vanilla 2.2.17
+> (not 2.2.17-13) and patched with RTAI real-time extensions. I have the
+> complete (patched) source tree ready, but I don't know where to put it
+> for PeeWee to recognize it (maybe create a tar.gz or rpm??).
+> 
+> I know, the question is dumb.... :-)
+> Thanks in advance.
+> 
+> Ciao,
+> Silvio
+> 
+> P.S. Great work, Adi!
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Jun 11 16:48:27 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 11 Jun 2001 10:48:27 -0500 (CDT)
+Subject: Question PeeWeeLinux
+In-Reply-To: <APEAKMNADCLIFBNOPKEDIEAJCAAA.jmashburn@ubtanet.com>
+Message-ID: <Pine.LNX.4.10.10106111045380.10731-100000@adibox.knet.on.ca>
+
+Hi,
+
+The peeweelinux list address is peeweelinux@adis.on.ca.
+
+It sounds like you're running RedHat7.1. The problem you see is an
+incompatability between the lxdialog binary included with PeeWeeLinux and
+the libraries installed with RedHat7.1.
+
+The solution to the problem has been posted to the list previously. The
+archive is at http://adis.on.ca/archives/
+
+TTYL,
+Adi 
+
+On Mon, 11 Jun 2001, Jared Mashburn wrote:
+
+> Hi, Im sorry to bother you, I was want to post a question to the mailing
+> list, but I just signed up and I don't know where to send the email.. My
+> problem is, when I Install PeeWeeLinux. It seems to go just fine.. It makes
+> the Embedded_Build subdirectory. But when I go into run the "pwlconfig"
+> command to configure a package.  It just drops down a line and gives me to
+> dots
+> ..
+> 
+> 
+> and it just sits there.. Can you tell me am I doing somthing wrong, or tell
+> me the address to send my question to?  Thanks alot for any direction...
+> 
+> Jared
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Jun 11 18:32:48 2001
+From: peeweelinux@adis.on.ca (Tim Westbrook)
+Date: Mon, 11 Jun 2001 10:32:48 -0700 (PDT)
+Subject: low "Low" dos memory error
+Message-ID: <20010611173248.73999.qmail@web13504.mail.yahoo.com>
+
+Hello,
+   Peeweelinux rules!
+   After choosing the FAT16 (compressed or
+uncompressed) to build the 'minimal' project. SYSLINUX
+reports that I don't have enought low dos memory to
+continue. 
+   I am running a DOC that i had previously
+successfully configured to boot with doc-lilo using
+the MSYS instructions for a ext2 scheme.
+
+   I tried playing with the free ramdisk section of
+the hardware configuration page, but for lack of
+expertise I failed miserably :-( . I also looked at
+the generated syslinux.cfg , the only number i saw in
+the configation was ~11000. I suppose this is
+calculated from the freespace requested in pwl_config.
+ 
+  Is this a bios problem?
+  Is it possible to use doc-lilo instead of lilo to
+configure my DOC?
+
+
+__________________________________________________
+Do You Yahoo!?
+Get personalized email addresses from Yahoo! Mail - only $35 
+a year!  http://personal.mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Jun 12 05:11:36 2001
+From: peeweelinux@adis.on.ca (Tim Westbrook)
+Date: Mon, 11 Jun 2001 21:11:36 -0700 (PDT)
+Subject: low "Low" dos memory error
+Message-ID: <20010612041136.58567.qmail@web13509.mail.yahoo.com>
+
+Well, 
+   I was able to get minimal to load after replacing
+every execution of lilo in pwl_target_load with
+doc-lilo ( from Msys driver ). The doc configuration
+took place with no problem , I even saw the penguin.
+Great!
+   I don't know what was wrong with the SYSLINUX
+configuration but I will keep my eyes peeled for an
+answer.
+   Somebody had mentioned creating a FAQ . While I am
+no document writer , I could probably put together
+alot of questions with relevant answers from the email
+archive. I'd rather not do this without the support of
+the list so please respond on this note.
+
+Thanks 
+Tim
+
+--- Tim Westbrook <iondiode@yahoo.com> wrote:
+> Date: Mon, 11 Jun 2001 10:32:48 -0700 (PDT)
+> From: Tim Westbrook <iondiode@yahoo.com>
+> Subject: low "Low" dos memory error 
+> To: peeweelinux@adis.on.ca
+> 
+> Hello,
+>    Peeweelinux rules!
+>    After choosing the FAT16 (compressed or
+> uncompressed) to build the 'minimal' project.
+> SYSLINUX
+> reports that I don't have enought low dos memory to
+> continue. 
+>    I am running a DOC that i had previously
+> successfully configured to boot with doc-lilo using
+> the MSYS instructions for a ext2 scheme.
+> 
+>    I tried playing with the free ramdisk section of
+> the hardware configuration page, but for lack of
+> expertise I failed miserably :-( . I also looked at
+> the generated syslinux.cfg , the only number i saw
+> in
+> the configation was ~11000. I suppose this is
+> calculated from the freespace requested in
+> pwl_config.
+>  
+>   Is this a bios problem?
+>   Is it possible to use doc-lilo instead of lilo to
+> configure my DOC?
+> 
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Get personalized email addresses from Yahoo! Mail -
+> only $35 
+> a year!  http://personal.mail.yahoo.com/
+> 
+
+
+__________________________________________________
+Do You Yahoo!?
+Get personalized email addresses from Yahoo! Mail - only $35 
+a year!  http://personal.mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Jun 12 14:44:59 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 12 Jun 2001 08:44:59 -0500 (CDT)
+Subject: low "Low" dos memory error
+In-Reply-To: <20010612041136.58567.qmail@web13509.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10106120843550.10731-100000@adibox.knet.on.ca>
+
+Hi Tim,
+
+There is defenitely a need for documentation. A FAQ would be a great
+start!
+
+TTYL,
+Adi
+
+On Mon, 11 Jun 2001, Tim Westbrook wrote:
+
+> Well, 
+>    I was able to get minimal to load after replacing
+> every execution of lilo in pwl_target_load with
+> doc-lilo ( from Msys driver ). The doc configuration
+> took place with no problem , I even saw the penguin.
+> Great!
+>    I don't know what was wrong with the SYSLINUX
+> configuration but I will keep my eyes peeled for an
+> answer.
+>    Somebody had mentioned creating a FAQ . While I am
+> no document writer , I could probably put together
+> alot of questions with relevant answers from the email
+> archive. I'd rather not do this without the support of
+> the list so please respond on this note.
+> 
+> Thanks 
+> Tim
+> 
+> --- Tim Westbrook <iondiode@yahoo.com> wrote:
+> > Date: Mon, 11 Jun 2001 10:32:48 -0700 (PDT)
+> > From: Tim Westbrook <iondiode@yahoo.com>
+> > Subject: low "Low" dos memory error 
+> > To: peeweelinux@adis.on.ca
+> > 
+> > Hello,
+> >    Peeweelinux rules!
+> >    After choosing the FAT16 (compressed or
+> > uncompressed) to build the 'minimal' project.
+> > SYSLINUX
+> > reports that I don't have enought low dos memory to
+> > continue. 
+> >    I am running a DOC that i had previously
+> > successfully configured to boot with doc-lilo using
+> > the MSYS instructions for a ext2 scheme.
+> > 
+> >    I tried playing with the free ramdisk section of
+> > the hardware configuration page, but for lack of
+> > expertise I failed miserably :-( . I also looked at
+> > the generated syslinux.cfg , the only number i saw
+> > in
+> > the configation was ~11000. I suppose this is
+> > calculated from the freespace requested in
+> > pwl_config.
+> >  
+> >   Is this a bios problem?
+> >   Is it possible to use doc-lilo instead of lilo to
+> > configure my DOC?
+> > 
+> > 
+> > __________________________________________________
+> > Do You Yahoo!?
+> > Get personalized email addresses from Yahoo! Mail -
+> > only $35 
+> > a year!  http://personal.mail.yahoo.com/
+> > 
+> 
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Get personalized email addresses from Yahoo! Mail - only $35 
+> a year!  http://personal.mail.yahoo.com/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

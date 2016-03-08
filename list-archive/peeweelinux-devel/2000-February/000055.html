@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> List File Search Utility
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000054.html">
+   <LINK REL="Next"  HREF="000056.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>List File Search Utility
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="List File Search Utility">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Thu, 3 Feb 2000 14:20:39 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000054.html">RPM Loader Script - V0.1
+</A></li>
+        <LI> Next message: <A HREF="000056.html">PeeWeeLinux - pwlconfig behavior (fwd)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#55">[ date ]</a>
+              <a href="thread.html#55">[ thread ]</a>
+              <a href="subject.html#55">[ subject ]</a>
+              <a href="author.html#55">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--0-846930886-949616439=:20035
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+Ok,
+I've re-named generate_list.sh to pwl_lister and added the folloing:
+
+--find filename1...  searches for all given filenames in all .list files
+--remove             deletes all .list files
+&lt;no args&gt;            generates all .list files from all .tar files
+
+Now, to see what files are in what packages:
+
+cat xx.depends | xargs ./scripts/pwl_lister --find 2&gt; xx
+
+any files not found are copied off the error stream into the xx file.
+Files found are listed by packagename:filename, so we can parse this.
+
+Let me know what you think...
+Enjoy,
+Ralph
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+--0-846930886-949616439=:20035
+Content-Type: application/x-gzip-compressed; name=&quot;pwl_lister.gz&quot;
+Content-Transfer-Encoding: base64
+Content-Description: pwl_lister.gz
+Content-Disposition: attachment; filename=&quot;pwl_lister.gz&quot;
+
+H4sICB99mTgAA3B3bF9saXN0ZXIAnVVNT9tAEL37Vwy21UNVOyFHqiC1UqBV
+kYiAlgNFiROP41Wdddhdtzn0x3d21x9rJxSEJcDMx9s382bHwcloxfholcjc
+C7wAYI4I9/RzxXi1h4JJBRkrEPKEpwUKHVJJBFWe6Vd6LpGjSBRCbINFuYVY
+JcKkyTroBrflb6SXuEVsXBeMp9YAjPf9FIF7XFcErnImQa4F29VHzLYrTFNM
+F6uKFSmUorN81paRDdYoP2Y3i/n91eLq6+3d7GY6jica2pt/u1zMP919mfq7
+ZP0r2aD0PZbBA5xAlELYuOERPtLxyD0i2+XE8ahLy9iLmbjOS5jXGcBLKqOs
+eGpce6ZaCD889WEKfhTlWOz8Q4wIwf/Jv0vCOYMlCYc82SKE4yVlP0RR1vTT
+mB/iOH4kkL/kjCJhZSCDP8Cj/+pU/UhMxDonnklRdDMgibIwpg37jbw9RPbA
+AHwDJhrJUyxQ1VhUqlSMbxzQI8nO00yXPEZDT1kngh4XM0zlTrGSQ1SXMSiC
+4rAYtFoX3m91YH65CDa5cdUAEwPQT32FUMdUqjU5kOX2DVq4IPR+XaldpWSd
+2M4eUJNmQhCOVAKTrVWikFhDBM3fo43Ut1UbUiZwrUrBHE4tG8tugPcn1+l1
++07a/qWl18pu+F1znI5dm4BCqguuT16aBnZXLTJ9fG/Wx7KP5ZxsH9JuI3AH
+0RNEDMIJhBa2J+EhldOhJzgwNI1q+sC4VAlfUx/KrFOb6Jt11rbyRWCNZ3jU
+xVv6DvclHNT8HJYlumm29i4RMlmRHjvBuCor9WoQM2G+Pf8srOn5w8i05P36
+aNE94zR3Kmz6rS/W+OBmNfzRmdsPIPCpQqnQuVK9DTvkTHN3/m7ijJbDSeYs
+U7ZFCjjuVYepSkdgr18CQRzuFbsDj24WqPfjkY3YRr1p4hutTKnmu6vRzY21
+WtV+sYUoc0ymEL0b7f0PwH5Y3Y2jv7vdl91lSdb/s6SA3ozSsfNE5dMlrQ+7
+Fg3EsnNf8GlYR42c7WlPMni+qd0/Vrc/FyVdO0mlx3q32jKbUF2Dyhqs82ET
+tJSB9w8u2pXuGgkAAA==
+
+--0-846930886-949616439=:20035--
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000054.html">RPM Loader Script - V0.1
+</A></li>
+	<LI> Next message: <A HREF="000056.html">PeeWeeLinux - pwlconfig behavior (fwd)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#55">[ date ]</a>
+              <a href="thread.html#55">[ thread ]</a>
+              <a href="subject.html#55">[ subject ]</a>
+              <a href="author.html#55">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

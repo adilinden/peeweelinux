@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux-devel] Kernel panic: No init found.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000144.html">
+   <LINK REL="Next"  HREF="000146.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux-devel] Kernel panic: No init found.
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux-devel%40adis.on.ca"
+       TITLE="[Peeweelinux-devel] Kernel panic: No init found.">peeweelinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 21 Nov 2001 18:13:50 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000144.html">[Peeweelinux-devel] Kernel panic: No init found.
+</A></li>
+        <LI> Next message: <A HREF="000146.html">[Peeweelinux-devel] Kernel panic: No init found.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#145">[ date ]</a>
+              <a href="thread.html#145">[ thread ]</a>
+              <a href="subject.html#145">[ subject ]</a>
+              <a href="author.html#145">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+The kernel ill mount the root filesystem read-only. Init will run the
+system startup scripts which in turn will remount the root filesystem
+read-write (if this is the intend).
+
+The &quot;VFS: Mounted root (ext2 filesystem) readonly.&quot; line indicates that a
+rootfs was indeed found. The question would be, does it contain
+&quot;/sbin/init&quot;?
+
+Adi
+
+On Wed, 21 Nov 2001, Steve Isaacs wrote:
+
+&gt;<i> Help!
+</I>&gt;<i>
+</I>&gt;<i> When attempting to boot from compact flash connected via an IDE interface
+</I>&gt;<i> (dev/hda) on our target board I get the message &quot;Kernel panic: No init
+</I>&gt;<i> found.&quot;. I've tried a number of init= kernel options with no success. Prior
+</I>&gt;<i> to this message the message &quot;VFS: Mounted root (ext2 filesystem) readonly.&quot;
+</I>&gt;<i> was displayed. I find it odd that the file system was mounted readonly (not
+</I>&gt;<i> the intent -- I was expecting read/write). Could this have something to do
+</I>&gt;<i> with the panic message?
+</I>&gt;<i>
+</I>&gt;<i> I'm using PeeWee Linux version 0.61 to build on a SuSE 7.3 system. The
+</I>&gt;<i> compact flash was formatted using a SanDisk SDDR-31 reader/writer connected
+</I>&gt;<i> via a USB interface.
+</I>&gt;<i>
+</I>&gt;<i> Any suggestions to get me past this will be appreciated.
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Steve
+</I>&gt;<i>
+</I>&gt;<i> ============
+</I>&gt;<i> Steve Isaacs
+</I>&gt;<i> Itron Inc.
+</I>&gt;<i> ============
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux-devel mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux-devel@adis.on.ca">Peeweelinux-devel@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel">http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel</A>
+</I>&gt;<i>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000144.html">[Peeweelinux-devel] Kernel panic: No init found.
+</A></li>
+	<LI> Next message: <A HREF="000146.html">[Peeweelinux-devel] Kernel panic: No init found.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#145">[ date ]</a>
+              <a href="thread.html#145">[ thread ]</a>
+              <a href="subject.html#145">[ subject ]</a>
+              <a href="author.html#145">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

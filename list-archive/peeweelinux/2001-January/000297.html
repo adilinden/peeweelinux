@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> New Feature? Configuration for ramdisks/hdd...
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000296.html">
+   <LINK REL="Next"  HREF="000298.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>New Feature? Configuration for ramdisks/hdd...
+   </H1>
+    <B>Dean Brown
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="New Feature? Configuration for ramdisks/hdd...">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 19 Jan 2001 08:58:51 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000296.html">New Feature? Configuration for ramdisks/hdd...
+</A></li>
+        <LI> Next message: <A HREF="000298.html">New Feature? Configuration for ramdisks/hdd...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#297">[ date ]</a>
+              <a href="thread.html#297">[ thread ]</a>
+              <a href="subject.html#297">[ subject ]</a>
+              <a href="author.html#297">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ralph Stickley wrote:
+&gt;<i> 
+</I>&gt;<i> Adi,
+</I>&gt;<i> We are in the process of switching to the new-improved-latest version
+</I>&gt;<i> of PeeWee linux.  One problem occured which I may have a solution for
+</I>&gt;<i> (or you may have a better solution) is trying to build our own unique
+</I>&gt;<i> filesystem - one that doesn't match the one built by pwl_target*
+</I>&gt;<i> scripts...
+</I>&gt;<i> 
+</I>&gt;<i> If you recall, our system contains the following partitions:
+</I>&gt;<i> 1. boot/root partition (ro)
+</I>&gt;<i> 2. user partition (rw)
+</I>&gt;<i> 3. Ramdisk for /etc
+</I>&gt;<i> 4. Ramdisk for /dev
+</I>&gt;<i> 
+</I>&gt;<i> So, using the new target hardware we select the &quot;read only root&quot;
+</I>&gt;<i> with multiple ramdisks..
+</I>&gt;<i> 
+</I>&gt;<i> However, the pwl_target* scripts force us to use the /home directory
+</I>&gt;<i> as a ramdisk, mirrored from another partition.  While this may be a
+</I>&gt;<i> good choice, it seems that the configuration tool should not dictate
+</I>&gt;<i> the file system (since everything else is configurable).
+</I>&gt;<i> 
+</I>&gt;<i> Anyhow, I have have been hacking on pwl_target* scripts (without GUI
+</I>&gt;<i> support yet) for the following:
+</I>&gt;<i> ...in some init function for now (will be default parameters)...
+</I>&gt;<i>    hd_mnt_0=/
+</I>&gt;<i>    hd_mnt_1=
+</I>&gt;<i>    ...
+</I>&gt;<i>    hd_mnt_7=
+</I>&gt;<i>    rd_mnt_0=
+</I>&gt;<i>    rd_mnt_1=/dev
+</I>&gt;<i>    rd_mnt_2=/etc
+</I>&gt;<i>    rd_mnt_3=/tmp
+</I>&gt;<i>    ...
+</I>&gt;<i>    rd_mnt_7=
+</I>&gt;<i> 
+</I>&gt;<i> So, with these variables, I can specify which directories are
+</I>&gt;<i> compressed into ramdisk image files and load them at boot time.
+</I>&gt;<i> Also, these variables allowed me to remove all of pre-defined
+</I>&gt;<i> directories (/etc, /dev, ...) from the pwl_target* scripts.  Only the
+</I>&gt;<i> initrd directories are built as required to make it boot.
+</I>&gt;<i> 
+</I>&gt;<i> Also, by specifying the partitions, we should be able to boot this
+</I>&gt;<i> from a small partition on the development drive...have to work out
+</I>&gt;<i> the lilo thing, but this looks like it would work...
+</I>&gt;<i> 
+</I>&gt;<i> Now, using these variables, the scripts build the following:
+</I>&gt;<i>   ramdisk.1  (compressed image of the $rd_mnt_1 variable)
+</I>&gt;<i>   ramdisk.2  (  &quot;&quot;                            2  &quot;&quot;     )
+</I>&gt;<i>   ramdisk.3  (  &quot;&quot;                            3  &quot;&quot;     )
+</I>&gt;<i>   linuxrc    (loads ramdisks ramdisk.1 ramdisk.2 ramdisk.3)
+</I>&gt;<i>   initrd     (as configured by linuxrc)
+</I>&gt;<i>   fstab      (filesystem table matches ramdisks as configured)
+</I>&gt;<i>   rc.init    (builds mtab to match the configuration)
+</I>&gt;<i>   lilo.conf (no change)
+</I>&gt;<i> 
+</I>&gt;<i> So far so good. The files seem to look like the previous files but
+</I>&gt;<i> match the configuration for the ramdisks.  I copied nearly all of
+</I>&gt;<i> your code or the at least the spirit of your code - of course,
+</I>&gt;<i> instead of the single 300+ line function, I have lots of little
+</I>&gt;<i> functions (sorry, old habits die hard :)
+</I>&gt;<i> 
+</I>&gt;<i> Still to do:
+</I>&gt;<i> 1. make this system boot
+</I>&gt;<i> -- have to build the ld.so.cache thing too
+</I>&gt;<i> 2. verify the size thing
+</I>&gt;<i> 3. add support for configured hard drive partitions
+</I>&gt;<i> 4. add the parameter setups
+</I>&gt;<i> 5. rework the other target devices that require ramdisks
+</I>&gt;<i> 
+</I>&gt;<i> And some questions:
+</I>&gt;<i> Is there some reason that /var is linked under /dev ?
+</I>&gt;<i> 
+</I>&gt;<i> Does the initrd use the same fstab (why is fstab built twice in the
+</I>&gt;<i> build_ro_root function ?)
+</I>&gt;<i> 
+</I>&gt;<i> Is the /home directory mirrored from a partition a common/desirable
+</I>&gt;<i> thing to do ?
+</I>&gt;<i> -- I'd need to define someway to specify that ramdisk=/home is not
+</I>&gt;<i> compressed by pwlconfig but copied at boot time from some other
+</I>&gt;<i> configured partition
+</I>
+I've modified the scripts to remove the /home partition and just leave
+it in with the root fs. In my case I want the /home directory structure
+to be read only in order to eliminate any possibility of the application
+getting trashed. For permanent writable store, I create custom symbolic
+links that point to the last partition that I mount as read write. What
+you have described looks like it goes a long ways towards being able to
+implement what I need in a generic fashion.
+ 
+&gt;<i> Your thoughts ? Is this interesting or just something we need ?
+</I>&gt;<i> I'll try to get a system to boot today and send you a copy - or
+</I>&gt;<i> anyone else who is very brave, let me know...(of course, I'm out to
+</I>&gt;<i> BIOS world next week, so we can just let the code fester for a while
+</I>&gt;<i> :)
+</I>
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000296.html">New Feature? Configuration for ramdisks/hdd...
+</A></li>
+	<LI> Next message: <A HREF="000298.html">New Feature? Configuration for ramdisks/hdd...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#297">[ date ]</a>
+              <a href="thread.html#297">[ thread ]</a>
+              <a href="subject.html#297">[ subject ]</a>
+              <a href="author.html#297">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

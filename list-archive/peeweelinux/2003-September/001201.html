@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] resolve a domain name
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001199.html">
+   <LINK REL="Next"  HREF="001200.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] resolve a domain name
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] resolve a domain name">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 15 Sep 2003 15:09:16 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001199.html">[Peeweelinux] resolve a domain name
+</A></li>
+        <LI> Next message: <A HREF="001200.html">[Peeweelinux] Getting Started
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1201">[ date ]</a>
+              <a href="thread.html#1201">[ thread ]</a>
+              <a href="subject.html#1201">[ subject ]</a>
+              <a href="author.html#1201">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Barry Gershenfeld wrote:
+&gt;<i> 
+</I>&gt;&gt;<i>search foo.com
+</I>&gt;<i> 
+</I>&gt;<i> What is the purpose of the &quot;search&quot; lines, especially if
+</I>&gt;<i> it needs to resolve foo.com or bar.com to even be able
+</I>&gt;<i> to use them?  Or are they assumed to be in hosts?
+</I>
+This is for when you want to use short notation for a machine -- ie, 
+with &quot;search fluid.com&quot; I can then say &quot;ping www&quot; and it knows to search 
+the fluid.com domain for the rest, resulting in www.fluid.com.
+
+&gt;<i> I read that libresolv does the name lookups.  I don't have
+</I>&gt;<i> libnss_dns installed.   I installed nslookup.  When I
+</I>&gt;<i> run it, it does not complain about any libraries missing.
+</I>&gt;<i> The result of nslookup is:
+</I>
+Well, I can't sepak for nslookup but it sounds about right -- when in 
+doubt, use &quot;ldd &lt;foo&gt;&quot; to query a binary to see all it's dynamically 
+linked libs (and handy if you have multiple versions of a lib, it'll 
+tell you exactly which one the program is using).
+
+On my PeeWee instance, nslookup is just a symlink over to busybox. On a 
+real RH62 system (which PeeWee is based on):
+
+# ldd `which nslookup`
+   libdns.so.5 =&gt; /usr/lib/libdns.so.5 (0x4001c000)
+   libcrypto.so.0 =&gt; /usr/lib/libcrypto.so.0 (0x40105000)
+   libisc.so.4 =&gt; /usr/lib/libisc.so.4 (0x401be000)
+   libnsl.so.1 =&gt; /lib/libnsl.so.1 (0x401f0000)
+   libpthread.so.0 =&gt; /lib/libpthread.so.0 (0x40207000)
+   libc.so.6 =&gt; /lib/libc.so.6 (0x4021a000)
+   /lib/ld-linux.so.2 =&gt; /lib/ld-linux.so.2 (0x40000000)
+
+So, obviously your mileage may vary. ;) I don't use nslookup in the PWL 
+systems, the apps themselves know how to use the C api and call 
+gethostbyname(), etc normally. Even the java stuff.
+
+&gt;<i> Finally I want so clarify my intent which is to be able to
+</I>&gt;<i> use a domain name, for instance, if I want to fetch a package
+</I>&gt;<i> off a site somewhere.  So it's not a manual operation, 
+</I>&gt;<i> rather some other program would be thinking it could use
+</I>&gt;<i> a URL.  Although, if it's possible to run the output of 
+</I>&gt;<i> nslookup through a shell script to get this done instead of 
+</I>&gt;<i> having to install some other program, that would be 
+</I>&gt;<i> interesting.
+</I>
+On my PWL boxes, it works just fine -- they are stationed throught the 
+USA, and talk to a home server based on it's name, not IP. Never had a 
+problem. They all have the same nameservers in /etc/resolv.conf - some 
+use PPP, some DHCP, etc.
+
+Methinks something's not quite right on your PWL instance...?
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+...his bash-fu is great.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001199.html">[Peeweelinux] resolve a domain name
+</A></li>
+	<LI> Next message: <A HREF="001200.html">[Peeweelinux] Getting Started
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1201">[ date ]</a>
+              <a href="thread.html#1201">[ thread ]</a>
+              <a href="subject.html#1201">[ subject ]</a>
+              <a href="author.html#1201">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

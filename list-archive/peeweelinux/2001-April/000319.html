@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> pwlconfig broken?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000318.html">
+   <LINK REL="Next"  HREF="000320.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>pwlconfig broken?
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="pwlconfig broken?">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 3 Apr 2001 08:33:24 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000318.html">pwlconfig broken?
+</A></li>
+        <LI> Next message: <A HREF="000320.html">Subsidies, Grants, Loans, Financing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#319">[ date ]</a>
+              <a href="thread.html#319">[ thread ]</a>
+              <a href="subject.html#319">[ subject ]</a>
+              <a href="author.html#319">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Are you running pwlconfig as root? It sounds like you don't have
+permissions to create the proper files...
+
+&gt;<i> Alright, RH 6.1 system on 2.2.18 kernel.
+</I>
+That's what it's being developed on and tested on.
+
+&gt;<i> [<A HREF="mailto:root@coral">root@coral</A> Embedded_Build]# ./pwlconfig -n dpn
+</I>&gt;<i> Error: -n:  not a valid pwlconfig option 
+</I>&gt;<i> 
+</I>&gt;<i> [<A HREF="mailto:root@coral">root@coral</A> Embedded_Build]# ./pwlconfig
+</I>&gt;<i> .../scripts/pwl_create: .select.lst: Permission denied
+</I>&gt;<i> ./scripts/pwl_create: .select.lst: Permission denied
+</I>&gt;<i> ./scripts/pwl_create: .select.lst: Permission denied
+</I>&gt;<i> ./scripts/pwl_create: .select.lst: Permission denied
+</I>&gt;<i> ./scripts/pwl_create: .select.lst: Permission denied
+</I>&gt;<i> ./scripts/pwl_create: .result: Permission denied
+</I>&gt;<i> ./scripts/pwl_create: .result: No such file or directory
+</I>&gt;<i> .
+</I>&gt;<i> Pee Wee Linux System Configuration - Version 0.61.0
+</I>&gt;<i> Error: No Project
+</I>&gt;<i> 
+</I>&gt;<i> bash$ rpm -qa | grep curses
+</I>&gt;<i> ncurses-4.2-25
+</I>&gt;<i> ncurses-devel-4.2-25
+</I>&gt;<i> ncurses3-1.9.9e-9
+</I>&gt;<i> 
+</I>&gt;<i> So, either the docs are wrong or pwlconfig doesn't work.
+</I>&gt;<i> The only options it seems to know about are -n, -b and
+</I>&gt;<i> -h. Putting the project name on the command line, sans
+</I>&gt;<i> -n option, generates the same error.
+</I>&gt;<i> 
+</I>&gt;<i> Did I miss something here? And where are docs for doing
+</I>&gt;<i> this by hand, since I would actually like to know?
+</I>
+The docs aren't very helpful there have been many changes sonce the docs
+were done...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000318.html">pwlconfig broken?
+</A></li>
+	<LI> Next message: <A HREF="000320.html">Subsidies, Grants, Loans, Financing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#319">[ date ]</a>
+              <a href="thread.html#319">[ thread ]</a>
+              <a href="subject.html#319">[ subject ]</a>
+              <a href="author.html#319">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Disk on Chip 2000 questions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000934.html">
+   <LINK REL="Next"  HREF="000933.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Disk on Chip 2000 questions
+   </H1>
+    <B>Slim
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Disk on Chip 2000 questions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 12 Feb 2003 08:32:28 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000934.html">[Peeweelinux] Disk on Chip 2000 questions
+</A></li>
+        <LI> Next message: <A HREF="000933.html">[Peeweelinux] how to use a host?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#942">[ date ]</a>
+              <a href="thread.html#942">[ thread ]</a>
+              <a href="subject.html#942">[ subject ]</a>
+              <a href="author.html#942">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Using redhat 8.0, I copied the /usr/src tree to a temp space to compile.
+Everything went ok until make install.  While it ran the install script:
+
++ exec /sinb/installkernel 2.4.18-14custom bzImage
+/mnt/b/kernel/linux-2.4.18-14/System.map
+All of your loopback devices are in use.
+make[1]:  *** [install] Error 1
+
+I tried manually copying the bzImage to /boot, and adding a second entry in
+grub.conf:
+
+title Red Hat Linux (2.4.18-14) Disk On Chip 2000
+        root (hd0,0)
+        kernel /bzImage.doc ro root=LABEL=/
+        initrd /initrd-2.4.18-14.img
+
+this I copied from the original entry and changed only the name of the 
+image file from vmlinuz-2.4.18-14 to bzImage.doc.
+
+On boot, the kernel panics with:
+
+Mounting root filesystem
+kmod: failed to exec /sbin/modprobe -s -k ext3, errno = 2
+kmod: failed to exec /sbin/modprobe -s -k freeext3, errno = 2
+pivotroot: pivot_root(/sysroot,/sysroot/initrd) failed: 2
+umount /initrd/proc failed: 2
+Freeing unused kernel memory: 164k freed
+Kernel painc: No init found. Try passing init= option to kernel.
+
+What did I miss?  Did the failed make install cause the kernel root filesystem
+problem?
+
+Thanks,
+Slim
+
+
+
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Shopping - Send Flowers for Valentine's Day
+<A HREF="http://shopping.yahoo.com">http://shopping.yahoo.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000934.html">[Peeweelinux] Disk on Chip 2000 questions
+</A></li>
+	<LI> Next message: <A HREF="000933.html">[Peeweelinux] how to use a host?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#942">[ date ]</a>
+              <a href="thread.html#942">[ thread ]</a>
+              <a href="subject.html#942">[ subject ]</a>
+              <a href="author.html#942">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

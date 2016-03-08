@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Glibc linked binary
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001272.html">
+   <LINK REL="Next"  HREF="001274.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Glibc linked binary
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Glibc linked binary">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>21 May 2004 16:01:26 -0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001272.html">[Peeweelinux] peeweelinux &amp; redhat 9
+</A></li>
+        <LI> Next message: <A HREF="001274.html">[Peeweelinux] Glibc linked binary
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1273">[ date ]</a>
+              <a href="thread.html#1273">[ thread ]</a>
+              <a href="subject.html#1273">[ subject ]</a>
+              <a href="author.html#1273">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i><A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A> wrote:
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Thanks for your reply on the ramdisk thread Troy, it worked a treat :)
+</I>&gt;<i>
+</I>&gt;<i>Awesome. ;)
+</I>&gt;<i>
+</I>&gt;&gt;<i> Is there a way of fudging the library dependencies of the macromedia released plugin so that it will work?
+</I>&gt;<i>
+</I>&gt;<i>Yeah, it is a mammoth job. If I run ldd on my local flash plugin .so, I see:
+</I>&gt;<i>
+</I>&gt;<i>libstdc++-libc6.2-2.so.3 =&gt; /usr/lib/libstdc++-libc6.2-2.so.3 (0x4039c000)
+</I>&gt;<i>libc.so.6 =&gt; /lib/tls/libc.so.6 (0x42000000)
+</I>&gt;<i>
+</I>&gt;<i>So my gut instinct is that you can't fudge it -- the binary *is* looking 
+</I>&gt;<i>for the c++ libs by name, but the c lib by symlink. If you could somehow 
+</I>&gt;<i>get the flash plugin to look for something like 'libc-2.3.2.so' you'd 
+</I>&gt;<i>have a chance, but not likely. :(
+</I>&gt;<i>
+</I>&gt;<i>-te
+</I>&gt;<i>
+</I>&gt;<i>-- 
+</I>&gt;<i>Troy Engel | Systems Engineer
+</I>&gt;<i>Fluid, Inc | <A HREF="http://www.fluid.com">http://www.fluid.com</A>
+</I>
+Well I can't rename the symlinks for the libraries libflashplayer.so needs because this breaks other bits of the system. I also tried setting LD_LIBRARY_PATH for a completely serperate lib directory with the correct libraries in. 
+
+So ditch the idea of fudging it :(
+
+The only option I can see then is upgrading the glibc to a 2.2.x version. Not quite sure where to start going about this, it's quite a major job! 
+
+Any ideas?
+
+The best I can think of so far is to build the new glibc sources in a clean directory on my dev machine and then create a peewee package and use this instead of the glibc that is included with peeweelinux? Something tells me that there are complex dependencies and this will require me adding other pieces to the system as well (such as binutils maybe?).
+
+Have a good weekend all,
+
+Thanks again in advance for any help
+
+Ashley Rolleston
+Software Engineer
+ashley AT smartsw DOT co DOT uk
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001272.html">[Peeweelinux] peeweelinux &amp; redhat 9
+</A></li>
+	<LI> Next message: <A HREF="001274.html">[Peeweelinux] Glibc linked binary
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1273">[ date ]</a>
+              <a href="thread.html#1273">[ thread ]</a>
+              <a href="subject.html#1273">[ subject ]</a>
+              <a href="author.html#1273">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

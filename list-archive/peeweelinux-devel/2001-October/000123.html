@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux-devel] read-only system
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000122.html">
+   <LINK REL="Next"  HREF="000124.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux-devel] read-only system
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux-devel%40adis.on.ca"
+       TITLE="[Peeweelinux-devel] read-only system">peeweelinux-devel@adis.on.ca
+       </A><BR>
+    <I>Tue, 23 Oct 2001 20:00:33 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000122.html">[Peeweelinux-devel] read-only system
+</A></li>
+        <LI> Next message: <A HREF="000124.html">[Peeweelinux-devel] how to embed linux with a 8mb disk on module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#123">[ date ]</a>
+              <a href="thread.html#123">[ thread ]</a>
+              <a href="subject.html#123">[ subject ]</a>
+              <a href="author.html#123">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Adi, my experience is the same as yours and Derek's. I was working with
+</I>&gt;<i> a client to develop a product using a read-only cramfs file system
+</I>&gt;<i> on a flash cartridge. We wound up making /dev a symlink to /initrd/dev,
+</I>&gt;<i> and put the &quot;real&quot; device nodes in the dev directory of a persistent
+</I>&gt;<i> initrd. Rather inconvenient, but we needed the initrd anyway so not
+</I>&gt;<i> too bad.
+</I>
+Hi Dennis,
+
+Apparently the 2.4 kernel supports a virtual device filesystem similar to
+the way the /proc filesystem works. I hope to add a 2.4 kernel soon and
+take advantage of that kernel feature.
+
+Adi
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000122.html">[Peeweelinux-devel] read-only system
+</A></li>
+	<LI> Next message: <A HREF="000124.html">[Peeweelinux-devel] how to embed linux with a 8mb disk on module
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#123">[ date ]</a>
+              <a href="thread.html#123">[ thread ]</a>
+              <a href="subject.html#123">[ subject ]</a>
+              <a href="author.html#123">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

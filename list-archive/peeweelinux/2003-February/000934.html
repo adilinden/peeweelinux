@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Disk on Chip 2000 questions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000932.html">
+   <LINK REL="Next"  HREF="000942.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Disk on Chip 2000 questions
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Disk on Chip 2000 questions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 7 Feb 2003 18:17:44 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000932.html">[Peeweelinux] Disk on Chip 2000 questions
+</A></li>
+        <LI> Next message: <A HREF="000942.html">[Peeweelinux] Disk on Chip 2000 questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#934">[ date ]</a>
+              <a href="thread.html#934">[ thread ]</a>
+              <a href="subject.html#934">[ subject ]</a>
+              <a href="author.html#934">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Friday 07 February 2003 03:36 pm, Slim wrote:
+&gt;<i> I found Mark Meade's <A HREF="http://www.lakeshoremicro.com/peewee.doc">http://www.lakeshoremicro.com/peewee.doc</A>
+</I>&gt;<i> I'll give that a try if I can get a kernel built.  Looks like
+</I>&gt;<i> I may need to buy a pci carrier board to speed this up.
+</I>&gt;<i> I'll check the HOWTO you mentioned - thanks.
+</I>
+&gt;<i> &gt; On 2003.02.07 10:28 Slim wrote:
+</I>&gt;<i> &gt; &gt; I've built the custom kernel with M-systems support, and
+</I>&gt;<i> &gt; &gt; booted my pc/104 cpu via floppy.  I see /dev/fla* devices,
+</I>&gt;<i> &gt; &gt; but now I'm not sure how to access them.  My goal is booting
+</I>&gt;<i> &gt; &gt; from the doc 2000, with read/write access to it for logging.
+</I>&gt;<i> &gt; &gt; The cpu is Real Time Devices CMM6686GX233.  I'd like to be
+</I>&gt;<i> &gt; &gt; able to install the system without resorting to a hard drive
+</I>&gt;<i> &gt; &gt; if possible.  I do have an ethernet board I can use though.
+</I>&gt;<i> &gt; &gt; Any advice appreciated.
+</I>
+FWIW, keep in mind that my instructions use the open-source &quot;MTD&quot; parts of the 
+Linux kernel for DiskOnChip support.  This has a number of advantages over 
+using the M-Sys binary-only drivers: access to the source code, support on 
+the Linux MTD mailing list, etc.
+
+Also, I have had better luck using GRUB rather than Lilo.  There are patches 
+available for adding DiskOnChip support to Grub, but the procedure is 
+somewhat complex.  
+
+The ISA or PCI eval board sure comes in handy.  Highly recommended!
+
+Mark
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000932.html">[Peeweelinux] Disk on Chip 2000 questions
+</A></li>
+	<LI> Next message: <A HREF="000942.html">[Peeweelinux] Disk on Chip 2000 questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#934">[ date ]</a>
+              <a href="thread.html#934">[ thread ]</a>
+              <a href="subject.html#934">[ subject ]</a>
+              <a href="author.html#934">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

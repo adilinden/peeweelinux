@@ -1,0 +1,350 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> An 'early' morning thought about the future of PWL
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000010.html">
+   <LINK REL="Next"  HREF="000012.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>An 'early' morning thought about the future of PWL
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="An 'early' morning thought about the future of PWL">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Sun, 23 Jan 2000 00:04:58 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000010.html">An 'early' morning thought about the future of PWL
+</A></li>
+        <LI> Next message: <A HREF="000012.html">An 'early' morning thought about the future of PWL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> Sounds like your on to something here...except for building the pwlconfig
+</I>&gt;<i> packages (either tar or RPMs) I think most of this is done with pwlconfig
+</I>&gt;<i> now...maybe I missed something...
+</I>
+Yup, just use rpm instead of tar...
+
+&gt;<i> RH RPM 6.x--&gt; manual process --&gt; PWL-RPM.patch file --&gt; PWL-RPM
+</I>&gt;<i> 
+</I>&gt;<i> then
+</I>&gt;<i> 
+</I>&gt;<i> RH RPM 6.x --&gt; RPM process with PWL-RPM.patch file -&gt; PWL-RPM
+</I>&gt;<i> 
+</I>&gt;<i> the &quot;PWL-RPM.patch_file&quot; plus the RH source disk is all you need...
+</I>&gt;<i> sounds good.
+</I>
+Right... So the initial build of a package is manual, then create a patch
+based on the changes made to the original rpm.
+
+pwlconfig would apply the patch to an original source rpm to create a pwl
+source rpm...
+
+Then pwlconfig would run rpm with compile options to create a pwl rpm (no
+longer a source but a binary rpm)
+
+The pwl extracts the selected binaries (or the whole rpm) into the build
+filesystem... 
+
+&gt;<i> &gt; Use a defined mount point for the PeeWeeLinux filesystem being build
+</I>&gt;<i> &gt; independed of where PeeWeeLinux has been extracted to. I.e. /mnt/PWL.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Hmmm...shouldn't keep this within the development environment ??
+</I>&gt;<i> ...maybe Embedded-Build/projects/xxx/mnt...why would you use the same
+</I>&gt;<i> mount point for a project specific filesystem  ??
+</I>
+Don't know why I thought that. Too early in the morning, not enough coffee
+yet when I came up with it :)
+
+&gt;<i> Ohhh...wait...you want to basically extract all the tar files we have now
+</I>&gt;<i> into one pwl file system, then let the user pick from this file system???
+</I>&gt;<i> Seems like an added step, not sure of any advantages...
+</I>&gt;<i> Ok, I'm confussed...
+</I>
+Nope... The user would pick the files extracted from the rpm so the
+filesystem would only contain the selected binaries.
+
+&gt;<i> &gt; Use rpm in a similar mode as the RedHat install disks do. That is install
+</I>&gt;<i> &gt; the PWL specific rpms in /mnt/PWL rather than the current file system.
+</I>&gt;<i> 
+</I>&gt;<i> Ok, not sure what RH does with the RPMS..I thought they just got extracted
+</I>&gt;<i> into the /usr/src/linux/ directory structure..again, I think I'd prefer to keep
+</I>&gt;<i> everything within the &quot;Embedded-Build&quot; structure, however, any good reason
+</I>&gt;<i> not to would sway me :-)
+</I>
+rpm usually uses an absolute path. We need to extract the binary rpm into
+/home/adi/Embedded_Build/projects/mnt as a root directory for example...
+
+&gt;<i> ...this creates the PWL-RPM.patch files for each rpm..ok..I envision these
+</I>&gt;<i> fitting into the project as follows:
+</I>&gt;<i> 
+</I>&gt;<i> Embedded-Build/source/patches
+</I>
+We wouldn't need sources any longer as the RedHat source rpms are our
+sources... For things that RedHat doesn't provide we would need to create
+our own source rpms.
+
+&gt;<i> Scripts or patches or whatever, that are used to turn a lowly source file
+</I>&gt;<i> (RH RPM or whatever) into a PWL-RPM file.  After processing these are
+</I>&gt;<i> stored in the packages directory:
+</I>&gt;<i> 
+</I>&gt;<i> Embedded-Build/packages
+</I>&gt;<i> Embedded-Build/packages/package A
+</I>&gt;<i> Embedded-Build/packages/package B     
+</I>&gt;<i> 
+</I>&gt;<i> These are the &quot;global&quot; optimized binaries used for every
+</I>&gt;<i> project...these can be tar or RPM files, shouldn't be hard to switch...
+</I>
+The use of rpm would make dependencies easier to follow... I think rpm
+uses some predetermined build environment (directory structure) under
+/usr/src/
+
+&gt;<i> This is where the RPM files reside after being &quot;processed&quot; by the PWL-RPM.patch
+</I>&gt;<i> files. The pwlconfig menu item (yet to be added :-) &quot;Build PWL-RPM&quot; would
+</I>&gt;<i> let you pick a patch file and generate the PWL-RPM file.  This would
+</I>&gt;<i> be inserted into the packages directory.
+</I>
+After the source rpm has been patched it still needs to be compiled by
+rpm...
+
+So we have to deal with the following files in the order of creation:
+
+RedHat source rpm  +  PWL patch  =  PWL source rpm
+PWL source rpm processed by rpm  =  PWL binary rpm
+
+PWL binary rpm is similar to the existing package.tar
+
+&gt;<i> &gt; 6. Condition the /mnt/PWL filesystem for the new system
+</I>&gt;<i> 
+</I>&gt;<i> not sure what this is..
+</I>
+Deleting old files from a previous build.
+
+&gt;<i> &gt; 7. Install the selected files from PWL rpms in /mnt/PWL
+</I>&gt;<i> &gt; 8. Install any custom config files into /mnt/PWL, overwriting any existing
+</I>&gt;<i> &gt; configuration
+</I>&gt;<i> 
+</I>&gt;<i> I think these should be project specific...I could be building a router and
+</I>&gt;<i> a print server and a thin client..these are all in seperate directories.
+</I>&gt;<i> 
+</I>&gt;<i> I think this is the process I'm doing now with the tar files, only each project
+</I>&gt;<i> 
+</I>&gt;<i> keeps their file system seperate within the project directory:
+</I>&gt;<i> 
+</I>&gt;<i> Embedded-Build/projects/router_486/mnt                    
+</I>&gt;<i> Embedded-Build/projects/thin_client/mnt                    
+</I>&gt;<i> 
+</I>&gt;<i> This is a &quot;mount point&quot; where the project (ie. &quot;router_486&quot;) gets built from
+</I>&gt;<i> the project specific configuration files. All files are extracted and allows
+</I>&gt;<i> the user to tweak the project before it is loaded on to some device. at this
+</I>&gt;<i> point, we are device independent.
+</I>
+Right!
+
+&gt;<i> Embedded-Build/mnt
+</I>&gt;<i> 
+</I>&gt;<i> When you load a device, it gets mounted in the &quot;Embedded-Build/mnt&quot; directory
+</I>&gt;<i> until you unmount it and go to another project.  This mount directory is
+</I>&gt;<i> bascially a temporary mount point used for every project, but can be used
+</I>&gt;<i> to mount any device.
+</I>
+Right!
+
+&gt;<i> &gt; 8. Offer choice of what to do with the newly created system, i.e. build a
+</I>&gt;<i> &gt; ramdisk, load a DOC, make a bootable CD...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Almost got this working...I have a new script that does DOC and flash disk...
+</I>&gt;<i> Adding the ramdisk and bootable CD should be easy, once I know what needs
+</I>&gt;<i> to be done.
+</I>
+Yup... I still have to figure out the loopback device.
+
+&gt;<i> &gt; The advantages I can see:
+</I>&gt;<i> &gt; - The PWL distribution would no longer require any sources but only patch
+</I>&gt;<i> &gt; files containing package description, help information (things that could
+</I>&gt;<i> &gt; be displayed by pwlconfig) and the actual patch to the RH source rpm.
+</I>&gt;<i> 
+</I>&gt;<i> Yes...I have the source, I shouldn't have to download it again...
+</I>
+Actually the sources are only needed to build the PWL binary rpms once.
+After that the sources are no longer needed. In fact PWL could still be
+distributed in a binary realease with only binary rpm since they don't
+change between projects.
+
+&gt;<i> &gt; - Perhaps eases the migration to newer RH versions as they are released.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; The disadvantages:
+</I>&gt;<i> &gt; - Building an initial PWL development environment could be 'very' time
+</I>&gt;<i> &gt; consuming and diskspace consuming since everything has to be compiled
+</I>&gt;<i> &gt; first.
+</I>&gt;<i> &gt; - Defenitely RH specific!
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Only RH specific where the patches to the RPMS are concerned. After we
+</I>&gt;<i> have built our RPMS (or tar files), the configuration tool does not care 
+</I>&gt;<i> what order the files are in or what the directory structure is....
+</I>
+The patches would be RedHat release specific. A RedHat environment would
+be needed to build the PWL binary rpms from RedHat source rpms.
+
+The PWL binary release would be distribution independent.
+
+&gt;<i> I'm not sure how this differs from what you have done to build the
+</I>&gt;<i> existing tar files.  Now, (or planned real soon now) we do the RPM extract to
+</I>&gt;<i> our &quot;Embedded-Build/source&quot; file system, then apply the patches and build tar
+</I>&gt;<i> files ...But instead of building tar files, create new RPM files...
+</I>
+Well, the rpms would be extracted to wherever rpms are extracted. Apply
+the patch and compile using rpm to build a PWL binary rpm. Coming to think
+of it, we would have a source distribution that doesn't have any sources
+:<i>). That is, the Redhat RPMS would have to be provided by the user. 
+</I>
+Hmmm... Perhaps only a single menu item would be required in pwlconfig:
+
+Create PWL binary RPMS from Redhat source RPMS
+
+On second thought, some config options like where the RedHat sources are
+wouls also be necessary.
+
+&gt;<i> Is there an advantage to building the RPM as opposed to the tar files? maybe
+</I>&gt;<i> processing them might be easier...
+</I>
+rpm files have provisins for showing file information and file listing of
+files being installed by an 'rpm -ivh &lt;filename&gt;'. I am not that familiar
+with rpm other than how to install, upgrade and uninstall binary rpms.
+
+But rpm also has build functions that compile a source rpm to a binary rpm
+based on the spec file.
+
+&gt;<i> Shouldn't matter if these are RPMs or TARS, but processing them into specific
+</I>&gt;<i> projects should be able to use the same pwlconfig as now, just change from
+</I>&gt;<i> tar file processing to RPM file processing ???
+</I>
+That's correct.
+
+&gt;<i> Either way, each project is unique, and built from some &quot;pwl&quot; source
+</I>&gt;<i> repository,I guess I need to get up to speed on the RPM stuff too.
+</I>
+Build from the PWL binary rpms. The PWL source rpms are an immediate step.
+I don't see any reason for keeping them around. They'd just waste disk
+space...
+
+&gt;<i> On a seperate note, I noticed that Transmeta is desiging their Linux to
+</I>&gt;<i> work for &quot;Mobile&quot; applications.  OK, that to me means embedded (what else is
+</I>&gt;<i> low power for :-)
+</I>
+Yup... 
+
+&gt;<i> Anyhow, while they haven't released anything yet, they have &quot;hinted&quot; that
+</I>&gt;<i> they have spent time doing special programs like &quot;touch screen keyboard&quot;
+</I>&gt;<i> and &quot;handwritting recognition&quot; (ie.palm pilot work alike programs).
+</I>&gt;<i> 
+</I>&gt;<i> Also, these are supposedly built from the Debian distribution.
+</I>&gt;<i> 
+</I>&gt;<i> Soooooo....Assuming that Transmetta has not built any sort of development 
+</I>&gt;<i> environment (which true UNIX people *NEVER* do), I think it would be nice
+</I>&gt;<i> to be able to get these programs and add them to our embedded RH environment.
+</I>&gt;<i> 
+</I>&gt;<i> Thus, get their RPM (or whatever Debian uses) and process them into 
+</I>&gt;<i> our tar (or RPM) format.  Now you can add these to your project and they
+</I>&gt;<i> should just work....
+</I>
+Except Redhat and debian use different patches. So it's not possible to
+(in most cases) to use a Debian rpm in a Redhat system (or the other way
+around). That said... we manually patch the source rpm prior to building a
+PWL source rpm and from that the PWL binary rpm... That patching job would
+certainly fix any incompatibilities.
+
+&gt;<i> pwlconfig should allow you to work with applications from any distribution.
+</I>&gt;<i> There is nothing specific in &quot;pwlconfig&quot; that would prevent this from 
+</I>&gt;<i> working.
+</I>&gt;<i> 
+</I>&gt;<i> The PeeWee Distribution is useable when we can :
+</I>&gt;<i> 
+</I>&gt;<i> 1. Create several default projects 
+</I>&gt;<i>    (ie. Embedded-Build/projects/[router|thinclient|server|print server|...])
+</I>&gt;<i> 
+</I>&gt;<i> 2. Create project configurations for each of these projects 
+</I>&gt;<i>    (ie. use pwlconfig V1.0 for each of the default projects listed above)
+</I>
+This is distribution independent.
+
+&gt;<i> 3. Process &quot;source files&quot; into optimized binaries 
+</I>&gt;<i>    (ie.fill up the Embedded-Build/patches with the PWL-patches_for_RPM_x)
+</I>
+This will most like require a specific Redhat distribution to work
+properly. 
+
+A PeeWeeLinux binary distribution would be distribution independent. In
+fact, it is now. I build a PeeWeeLinux system on a Redhat 5.2 development
+platform.
+
+&gt;<i> On going work is to:
+</I>&gt;<i> 
+</I>&gt;<i> A. refine pwlconfig for more devices and features
+</I>&gt;<i> B. keep building patch files for each new version of RH
+</I>&gt;<i> C. build patch files for special applications
+</I>&gt;<i> 
+</I>&gt;<i> If we can do this, it will be a very usable (and unique) environment for
+</I>&gt;<i> embedded Linux development ( and World Domination will be at hand :-)) !!!
+</I>
+:<i>) I see the IPO... opening March 19, 2002 at $20 a share closing on March
+</I>20, 2002 at $200 a share... Doing the old RedHat and VALinux stunt... :)
+
+&gt;<i> Hmmm...Let me know if we're on the same page here...I could be missing
+</I>&gt;<i> something
+</I>
+Yup... I think we have the same ideas. Like I said at the very beginning
+this is dreaming today. For now I think it's important to get what's there
+running solid. And I think we'll stick with the manual tar file build dor
+now.
+
+However, I found out the hard way (with the router project) that it's
+necessary to stay at the 'cutting edge' of development. As USB developes,
+etc it is essential to support the 2.4.x kernels, etc. Once a complete
+overhaul (recompile) of the PeeWeeLinux binaries is necessary it would be
+wise to implement a more streamlined approach. Soooo, this is where my
+dreaming comes in. Once that times arrives I want to have made a decision
+and a firm plan on how to proceed. Do the brainstorming while my brain is
+in creative storming mode. The day will come again soon when my mind is in
+the take instructions-do-it mode. No creativity then. 
+
+TTYL,
+Adi
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000010.html">An 'early' morning thought about the future of PWL
+</A></li>
+	<LI> Next message: <A HREF="000012.html">An 'early' morning thought about the future of PWL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

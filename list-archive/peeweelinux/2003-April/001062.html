@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Kernel Panic
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001061.html">
+   <LINK REL="Next"  HREF="001063.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Kernel Panic
+   </H1>
+    <B>Correy Edmed
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Kernel Panic">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 29 Apr 2003 17:58:10 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001061.html">[Peeweelinux] tcsetpgrp: Inappropriate ioctl for device error
+</A></li>
+        <LI> Next message: <A HREF="001063.html">[Peeweelinux] Kernel Panic
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1062">[ date ]</a>
+              <a href="thread.html#1062">[ thread ]</a>
+              <a href="subject.html#1062">[ subject ]</a>
+              <a href="author.html#1062">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Troy and Adi and Ricardo and Leif and PWL archive
+
+**********************************************************************
+Target System = PCM-3350 GX1 300MHz
+Developement PC = Redhat 6.2 with all the rpm's installed as specified 
+in Reference
+**********************************************************************
+
+Troy has helped me so far with this problem but I noticed in the 
+peewelinux archives that you all seem to know a bit in this area so any 
+help you can give me would be much appreciated.
+
+Thankyou for your answer Troy (attached at bottom) I have another CF 
+that is branded Sandisk Ultra 256M compact flash. That I tried instead 
+of the Kodac 128M CF
+
+I have recompiled the kernel and made sure that all of the filesystems 
+including ext2 fat16 and all the other ones are compiled in and not only 
+as modules.
+
+The things that I notice as fishy are
+
+when PWL configures it it creates 3 partitions
+
+Partition        Contents
+hdc1               boot.b    bzImage    initrd    map
+hdc2                bin    boot     dev    etc    lib    mnt    proc    
+rc.init    root    sbin    tmp    usr    var
+hdc3                **Is there but I can't mount it and no documentation 
+about formating it during target install**
+
+I then have a look at /etc/lilo.conf and find the following which seems 
+really wacky so I have included the lines that I changed in bold
+*********************************
+disk=/dev/sda    *disk=/dev/hdc*
+    bios=0x80
+    heads=4
+    sectors=32
+    cylinders=490
+
+boot=/dev/sda        *disk=/dev/hdc*
+map=/boot/map
+install=/boot/boot.b
+compact
+prompt
+timeout=20
+default=linux
+
+image=/boot/bzImage-ipx    *image=/boot/bzImage*
+    label=linux
+    read-only
+    root=/dev/hda1                *root=/dev/hdc2*
+    vga=0x317
+***************************************
+However i don't even think it is accessing this file yet.
+
+After these changes (new kernel, updated lilo.conf file) I get the same 
+errors as before (ioctl) plus more errors I am thinking because of all 
+the extra file systems I built into the kernel that try and recognise it 
+but fail.
+I have tried using the kernels supplied with pwl such as bzImage-full 
+and selecting modules but no go there either.
+
+Incase some more of the errors being produced would be helpful here they 
+are:
+
+*********************************************
+Partition check:
+hdc: hdc1 hdc2 hdc3
+RAMDISK: Compressed image found at block 0
+VFS: Mounted root (ext2 filesystem).
+Copying filesystem /dev/hda2 to /dev/ram2.....
+/dev/hda2Flushing buffers to disk....
+tcsetpgrp: Inappropriate ioctl for device
+Invalid session number or type of track
+Kernel panic: VFS: Unable to mount root fs on 01:02
+*********************************************
+
+I am able to get it to work when I use a Compressed ramdisk on ext2 
+partition however that is not practical because it installs it all on 
+hdc1 with no other partitions. I need it Uncompressed on ext2 partition 
+so that I can write data to the hdc2 partition.
+
+Do you know what hdc3 is used for is it meant to be a swap or something? 
+I tried partitioning it,(mke2fs) so that I could mount it and everything 
+however to no avail at bootup.
+
+I have been reading the Bootdisk HOWTO and they have this error under 
+their troubleshooting and say there is only a few problems here and to 
+check the rdev -R on /dev/hdc1/bzImage. I followed through this 
+possibility but it did nothing.
+
+Apparently you can look up what device 01:02 is in the format XX:YY in 
+/usr/src/linux/Documentation/devices.txt however I didn't understand this.
+
+Thankyou for any help you can give me,  I will document any successful 
+help I am given in my writeup.
+
+Correy
+
+
+Troy Engel wrote:
+
+&gt;<i>Hiya,
+</I>&gt;<i>
+</I>&gt;<i>Correy Edmed said:
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>tcsetpgrp: Inappropriate ioctl for device
+</I>&gt;&gt;<i>kernel panic: VFS: Unable to mount root fs on 01:02
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>I saw this thread, but I'm not part of it I think? In any case, I'll try
+</I>&gt;<i>to help...
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>/dev/hda2Flushing buffers to disk....
+</I>&gt;&gt;<i>tcsetpgrp: Inappropriate ioctl for device
+</I>&gt;&gt;<i>Kernel panic: VFS: Unable to mount root fs on 01:02
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>This smells like a CF error, or something in the subsystem like that. Do
+</I>&gt;<i>you have any other flash chips to try and use, besides this one? Likewise,
+</I>&gt;<i>do you have a different CF reader/writer to try?
+</I>&gt;<i>
+</I>&gt;<i>Under normal circumstances, this is the kind of error I would expect when
+</I>&gt;<i>trying to mount a bad disk (or possibly a disk with a filesystem the
+</I>&gt;<i>kernel doesn't have compiled in? like Sun or SGI disk, etc)
+</I>&gt;<i>
+</I>&gt;<i>Hope that helps some....
+</I>&gt;<i>-te
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001061.html">[Peeweelinux] tcsetpgrp: Inappropriate ioctl for device error
+</A></li>
+	<LI> Next message: <A HREF="001063.html">[Peeweelinux] Kernel Panic
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1062">[ date ]</a>
+              <a href="thread.html#1062">[ thread ]</a>
+              <a href="subject.html#1062">[ subject ]</a>
+              <a href="author.html#1062">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

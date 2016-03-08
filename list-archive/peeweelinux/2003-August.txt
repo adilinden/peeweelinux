@@ -1,0 +1,2147 @@
+From peeweelinux@adis.on.ca  Mon Aug  4 16:21:25 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Mon, 4 Aug 2003 10:21:25 -0500
+Subject: [Peeweelinux] CF Read Write Partition
+Message-ID: <028e01c35a9c$11fa7310$02fea8c0@jcairns>
+
+Berry,
+
+I have create a CF with 2 partitions I have the first partition setup
+with the compressed images and the second partition is where my
+application will go. I have verified that everything copied ok by
+mounting it on my host computer and doing a ls.
+
+The system boots just fine but the second partition does not mount. You
+stated that you changed the fstab file, I have tried that but it still
+does not mount.
+
+Both partitions are ext2 type filesystems.
+
+Could you send me a sample of what the fstab needs to look like?
+
+Thanks,
+
+Joe
+
+
+From peeweelinux@adis.on.ca  Mon Aug  4 16:44:17 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Mon, 04 Aug 2003 12:44:17 -0300
+Subject: [Peeweelinux] CF Read Write Partition
+In-Reply-To: <028e01c35a9c$11fa7310$02fea8c0@jcairns>
+References: <028e01c35a9c$11fa7310$02fea8c0@jcairns>
+Message-ID: <3F2E7F51.8080105@tutopia.com.br>
+
+Joe A Cairns wrote:
+> Berry,
+> 
+> I have create a CF with 2 partitions I have the first partition setup
+> with the compressed images and the second partition is where my
+> application will go. I have verified that everything copied ok by
+> mounting it on my host computer and doing a ls.
+> 
+> The system boots just fine but the second partition does not mount. You
+> stated that you changed the fstab file, I have tried that but it still
+> does not mount.
+> 
+> Both partitions are ext2 type filesystems.
+> 
+> Could you send me a sample of what the fstab needs to look like?
+
+You said it does not mount but have you tried to mount by hand? What 
+happens?
+I did this lask week, unfortunatly I don't have the fstab with me right 
+now but all I had to do was to create an entry point (/config in my 
+case) and add something like this /dev/hda2 /config ext2 defaults 1 2 in 
+the fstab.
+
+[]s
+
+Adilson.
+
+
+
+From peeweelinux@adis.on.ca  Mon Aug  4 17:53:24 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Mon, 4 Aug 2003 11:53:24 -0500
+Subject: [Peeweelinux] CF Read Write Partition
+In-Reply-To: <3F2E7F51.8080105@tutopia.com.br>
+Message-ID: <02b601c35aa8$ebb77420$02fea8c0@jcairns>
+
+Adilson,
+
+When I try to mount it states that /dev/hda2 is not a valid block
+device.
+
+Joe
+
+
+
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca 
+> [mailto:peeweelinux-admin@adis.on.ca] On Behalf Of Adilson Oliveira
+> Sent: Monday, August 04, 2003 10:44 AM
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] CF Read Write Partition
+> 
+> 
+> Joe A Cairns wrote:
+> > Berry,
+> > 
+> > I have create a CF with 2 partitions I have the first 
+> partition setup 
+> > with the compressed images and the second partition is where my 
+> > application will go. I have verified that everything copied ok by 
+> > mounting it on my host computer and doing a ls.
+> > 
+> > The system boots just fine but the second partition does not mount. 
+> > You stated that you changed the fstab file, I have tried 
+> that but it 
+> > still does not mount.
+> > 
+> > Both partitions are ext2 type filesystems.
+> > 
+> > Could you send me a sample of what the fstab needs to look like?
+> 
+> You said it does not mount but have you tried to mount by hand? What 
+> happens?
+> I did this lask week, unfortunatly I don't have the fstab 
+> with me right 
+> now but all I had to do was to create an entry point (/config in my 
+> case) and add something like this /dev/hda2 /config ext2 
+> defaults 1 2 in 
+> the fstab.
+> 
+> []s
+> 
+> Adilson.
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca 
+> http://mail.adis.on.ca/lists/listinfo/peeweeli> nux
+> 
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Aug  4 18:15:30 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Mon, 04 Aug 2003 14:15:30 -0300
+Subject: [Peeweelinux] CF Read Write Partition
+In-Reply-To: <02b601c35aa8$ebb77420$02fea8c0@jcairns>
+References: <02b601c35aa8$ebb77420$02fea8c0@jcairns>
+Message-ID: <3F2E94B2.9040208@tutopia.com.br>
+
+Joe A Cairns wrote:
+> Adilson,
+> 
+> When I try to mount it states that /dev/hda2 is not a valid block
+> device.
+> 
+
+Did you create the partition manualy with fdisk or cfdisk I believe. 
+After that, did you formated it using mke2fs?
+
+
+
+
+From peeweelinux@adis.on.ca  Mon Aug  4 18:36:02 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Mon, 4 Aug 2003 12:36:02 -0500
+Subject: [Peeweelinux] CF Read Write Partition
+In-Reply-To: <3F2E94B2.9040208@tutopia.com.br>
+Message-ID: <02c701c35aae$e07a59f0$02fea8c0@jcairns>
+
+Adilson,
+
+First thing thanks for you help.
+
+I am using a 128 mb CF card.
+
+What I did was modify the pwl_target_load scripts. Here is what mine
+looks like:
+
+func_rd_build_comp_rd_ext2 () {
+
+    # sanity check
+    func_rd_sanity || return 1
+
+    # determine filesystem size (w/o kernel)
+    rd_size_fs=`du -s -k --exclude=$rd_kernel $rd_projectroot | cut -f
+1`
+    # add free space
+    rd_size_fs=$((rd_size_fs + rd_ramdisk_free))
+
+    # create loopback and format
+    func_rd_make_loopback $rd_size_fs || return 1
+
+    # mount loopback
+    func_rd_action m "Mounting loopback device..."
+    mount -t ext2 $rd_loop_dev $rd_mount
+    func_rd_action test || return 1
+
+    # remove the lost+found directory
+    rm -rf $rd_mount/lost+found
+
+    # copy files using tar since tar makes it easy to exclude things
+    func_rd_action m "Copying files to loopback device..."
+    tar cp \
+        --exclude=$rd_kernel \
+        --directory=$rd_projectroot ./ | tar xp --directory=$rd_mount
+    if [ "$?" = "0" ]; then
+        func_rd_action s
+    else
+        func_rd_action w
+    fi
+
+    # add fstab and rc.init
+
+    # make some noise
+    func_rd_action m "Creating fstab and rc.init..."
+
+    # see if we're allowed to
+    if [ "$rd_initscripts" = "y" ]; then
+
+        # lets do it!
+        func_rd_fstab_comp_rd_ext2 > $rd_mount/etc/fstab
+        func_rd_init_rd > $rd_mount/rc.init
+
+        # make sure rc.init is executable
+        chmod 755 $rd_mount/rc.init
+
+        # send the ok
+        func_rd_action s
+    else
+
+        # duh we're not configured print a warning
+        func_rd_action w
+    fi
+
+    # fix inittab
+    func_rd_fix_inittab etc
+
+    # run library loader and include XFree86 lib directory
+    func_rd_action m "Building ld.so.cache..."
+    ldconfig -v -r $rd_mount /usr/X11R6/lib >>$rd_log 2>&1
+    func_rd_action test
+
+    # unmount loopback
+    func_rd_action m "Unmounting loopback device..."
+    umount $rd_loop_dev
+    func_rd_action test
+
+    # compress the ramdisk
+    func_rd_action m "Compressing $rd_loop_dev into $rd_ramdisk..."
+    { dd if=$rd_loop_dev bs=1k count=$rd_size_fs | gzip -v9 >
+$rd_tmp/$rd_ramdisk; } >>$rd_log 2>&1
+    func_rd_action test
+
+    # free the loopback device
+    func_rd_break_loopback
+
+    # calculate size
+    func_rd_action m "Determining space on target device..."
+    # get flash size
+    rd_size_avail=`sfdisk -s $rd_target`
+    # get ramdisk size
+    rd_size_ramdisk=`du -s -k $rd_tmp/$rd_ramdisk | cut -f 1`
+    # get kernel size
+    rd_size_kernel=`du -s -k $rd_projectroot/boot/$rd_kernel | cut -f 1`
+
+    # Do we have enough room?
+    if [ $((rd_size_kernel + rd_size_ramdisk + rd_size_margin)) -ge
+$rd_size_avail ]; then
+        func_rd_action f
+        echo "  +Available Space: $rd_size_avail"
+        echo "  +Required Space:  $((rd_size_kernel + rd_size_ramdisk +
+rd_size_margin))"
+        echo "  +Available Space: $rd_size_avail" >>$rd_log
+        echo "  +Required Space:  $((rd_size_kernel + rd_size_ramdisk +
+rd_size_margin))" >>$rd_log
+        return 1
+    else
+        func_rd_action s
+    fi
+
+    # fdisk target device
+    func_rd_action m "Partition traget device $rd_target..."
+#    sfdisk $rd_target >>$rd_log 2>&1 <<-EOF
+#,,83,*
+    sfdisk -uM $rd_target >>$rd_log 2>&1 <<-EOF
+,100,83,*
+,,83
+;
+EOF
+    func_rd_action test
+
+    # create the ext2 filesystem
+    func_rd_action m "Creating ext2 filesystem on ${rd_target}1..."
+    mke2fs -b 4096 -m0 ${rd_target}1 >>$rd_log 2>&1
+    func_rd_action test
+    func_rd_action m "Creating ext2 filesystem on ${rd_target}2..."
+    mke2fs -b 1024 -m0 ${rd_target}2 >>$rd_log 2>&1
+    func_rd_action test
+#    func_rd_action m "Creating ext2 filesystem..."
+#    mke2fs -i 8192 -b 4096 -m0 ${rd_target}1 >>$rd_log 2>&1
+#    func_rd_action test
+    sleep 1
+
+    # mount target
+    func_rd_action m "Mount the target device ${rd_target}1..."
+    mount -t ext2 ${rd_target}1 $rd_mount
+    func_rd_action test
+
+    # remove the lost+found directory
+    rm -rf $rd_mount/lost+found
+
+    # copy files
+    func_rd_action m "Copying ramdisk, kernel and boot.b..."
+    cp -f $rd_tmp/$rd_ramdisk $rd_mount/$rd_ramdisk
+    cp -f $rd_projectroot/boot/$rd_kernel $rd_mount/$rd_kernel
+    cp -f $rd_bootb $rd_mount/boot.b
+    func_rd_action test
+
+    # create lilo.conf
+    func_rd_action m "Creating lilo.conf in a temporary location..."
+    # lets amend the ramdisk size and make sure the kernel
+    # will boot the ramdisk without complaining
+    rd_bp_initrd=$rd_mount/$rd_ramdisk
+    rd_bp_root=/dev/ram0
+    rd_bp_rd=$((rd_size_fs + rd_bp_rd_margin))
+    func_rd_boot_lilo > $rd_tmp/lilo.conf
+    func_rd_action test
+
+    # run lilo
+    func_rd_action m "Installing lilo bootloader..."
+    lilo -v -C $rd_tmp/lilo.conf >>$rd_log 2>&1
+    func_rd_action test
+
+    # optionally we create the config.tgz file from config.lst
+
+    # unmount target
+    func_rd_action m "Unmounting target device ${rd_target}1..."
+    umount ${rd_target}1
+    func_rd_action test
+
+    # mount target
+    func_rd_action m "Mount the target device ${rd_target}2..."
+    mount -t ext2 ${rd_target}2 $rd_mount
+    func_rd_action test
+
+    # remove the lost+found directory
+    rm -rf $rd_mount/lost+found
+
+    # copy files
+    func_rd_action m "Copying Application $rd_projectroot/MTAtm to
+$rd_mount..."
+    cp -r $rd_projectroot/../MTAtm  $rd_mount
+#    tar cp \
+#        --directory=$rd_projectroot/MTAtm ./ | tar xp
+--directory=$rd_mount
+    func_rd_action test
+
+    # unmount target
+    func_rd_action m "Unmounting target device ${rd_target}2..."
+    umount ${rd_target}2
+    func_rd_action test
+
+    # clean up
+}
+
+
+Thanks,
+
+Joe
+
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca 
+> [mailto:peeweelinux-admin@adis.on.ca] On Behalf Of Adilson Oliveira
+> Sent: Monday, August 04, 2003 12:16 PM
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] CF Read Write Partition
+> 
+> 
+> Joe A Cairns wrote:
+> > Adilson,
+> > 
+> > When I try to mount it states that /dev/hda2 is not a valid block 
+> > device.
+> > 
+> 
+> Did you create the partition manualy with fdisk or cfdisk I believe. 
+> After that, did you formated it using mke2fs?
+> 
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca 
+> http://mail.adis.on.ca/lists/listinfo/peeweeli> nux
+> 
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Aug  4 18:54:28 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Mon, 04 Aug 2003 14:54:28 -0300
+Subject: [Peeweelinux] CF Read Write Partition
+In-Reply-To: <02c701c35aae$e07a59f0$02fea8c0@jcairns>
+References: <02c701c35aae$e07a59f0$02fea8c0@jcairns>
+Message-ID: <3F2E9DD4.5080304@tutopia.com.br>
+
+Joe A Cairns wrote:
+> Adilson,
+> 
+> First thing thanks for you help.
+> 
+> I am using a 128 mb CF card.
+> 
+> What I did was modify the pwl_target_load scripts. Here is what mine
+> looks like:
+
+In a quick, looks ok but when it's done, did you tried to do an fdisk -l 
+to see if the partitions are ok?
+
+
+From peeweelinux@adis.on.ca  Mon Aug  4 20:04:51 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Mon, 4 Aug 2003 14:04:51 -0500
+Subject: [Peeweelinux] CF Read Write Partition
+In-Reply-To: <3F2E9DD4.5080304@tutopia.com.br>
+Message-ID: <02e401c35abb$48855e30$02fea8c0@jcairns>
+
+Yes and everything looks good.
+
+Here is the output when I ran it on the host.
+
+Device Boot    Start       End    Blocks   Id  System
+/dev/hdc1   *         1       800    102399+  83  Linux
+/dev/hdc2           801       978     22784   83  Linux
+
+Joe
+
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca 
+> [mailto:peeweelinux-admin@adis.on.ca] On Behalf Of Adilson Oliveira
+> Sent: Monday, August 04, 2003 12:54 PM
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] CF Read Write Partition
+> 
+> 
+> Joe A Cairns wrote:
+> > Adilson,
+> > 
+> > First thing thanks for you help.
+> > 
+> > I am using a 128 mb CF card.
+> > 
+> > What I did was modify the pwl_target_load scripts. Here is 
+> what mine 
+> > looks like:
+> 
+> In a quick, looks ok but when it's done, did you tried to do 
+> an fdisk -l 
+> to see if the partitions are ok?
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca 
+> http://mail.adis.on.ca/lists/listinfo/peeweeli> nux
+> 
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Aug  4 22:53:40 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Mon, 04 Aug 2003 18:53:40 -0300
+Subject: [Peeweelinux] CF Read Write Partition
+In-Reply-To: <02e401c35abb$48855e30$02fea8c0@jcairns>
+References: <02e401c35abb$48855e30$02fea8c0@jcairns>
+Message-ID: <3F2ED5E4.8080109@tutopia.com.br>
+
+Joe A Cairns wrote:
+> Yes and everything looks good.
+> 
+> Here is the output when I ran it on the host.
+> 
+> Device Boot    Start       End    Blocks   Id  System
+> /dev/hdc1   *         1       800    102399+  83  Linux
+> /dev/hdc2           801       978     22784   83  Linux
+> 
+
+That's funny as should work. Are you sure the second partition is formated?
+If you try to mount /dev/hdc2 by hadn you got the same error?
+
+[]s
+
+Adilson.
+
+
+From peeweelinux@adis.on.ca  Mon Aug  4 23:02:02 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Mon, 4 Aug 2003 17:02:02 -0500
+Subject: [Peeweelinux] CF Read Write Partition
+In-Reply-To: <3F2ED5E4.8080109@tutopia.com.br>
+Message-ID: <032b01c35ad4$095ecc00$02fea8c0@jcairns>
+
+Adilson,
+
+I do
+ 
+   #mount -n /MTAtm
+
+And I get the same message. Should I be doing the mount command
+different?
+
+Thanks,
+
+Joe 
+
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca 
+> [mailto:peeweelinux-admin@adis.on.ca] On Behalf Of Adilson Oliveira
+> Sent: Monday, August 04, 2003 4:54 PM
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] CF Read Write Partition
+> 
+> 
+> Joe A Cairns wrote:
+> > Yes and everything looks good.
+> > 
+> > Here is the output when I ran it on the host.
+> > 
+> > Device Boot    Start       End    Blocks   Id  System
+> > /dev/hdc1   *         1       800    102399+  83  Linux
+> > /dev/hdc2           801       978     22784   83  Linux
+> > 
+> 
+> That's funny as should work. Are you sure the second 
+> partition is formated? If you try to mount /dev/hdc2 by hadn 
+> you got the same error?
+> 
+> []s
+> 
+> Adilson.
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca 
+> http://mail.adis.on.ca/lists/listinfo/peeweeli> nux
+> 
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Aug  4 23:06:20 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Mon, 4 Aug 2003 17:06:20 -0500
+Subject: [Peeweelinux] CF Read Write Partition
+In-Reply-To: <3F2ED5E4.8080109@tutopia.com.br>
+Message-ID: <033001c35ad4$a2e614a0$02fea8c0@jcairns>
+
+Adilson,
+
+Here is my lilo.conf
+
+boot=/dev/hda
+map=/boot/map
+install=/boot/boot-bmp.b
+bitmap=/boot/logo64a.bmp
+compact
+prompt
+timeout=20
+default=linux
+
+image=/boot/bzImage
+	label=linux
+      read-only
+	root=/dev/hda1
+      vga = normal
+
+Here is my fstab
+
+/dev/ram        /            ext2    defaults        1 1
+/dev/hda2       /MTAtm       ext2    defaults        1 2
+none            /proc        proc    defaults        0 0
+
+Do you know of anything else I need to look at?
+
+Thanks for all your help.
+
+Joe
+
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca 
+> [mailto:peeweelinux-admin@adis.on.ca] On Behalf Of Adilson Oliveira
+> Sent: Monday, August 04, 2003 4:54 PM
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] CF Read Write Partition
+> 
+> 
+> Joe A Cairns wrote:
+> > Yes and everything looks good.
+> > 
+> > Here is the output when I ran it on the host.
+> > 
+> > Device Boot    Start       End    Blocks   Id  System
+> > /dev/hdc1   *         1       800    102399+  83  Linux
+> > /dev/hdc2           801       978     22784   83  Linux
+> > 
+> 
+> That's funny as should work. Are you sure the second 
+> partition is formated? If you try to mount /dev/hdc2 by hadn 
+> you got the same error?
+> 
+> []s
+> 
+> Adilson.
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca 
+> http://mail.adis.on.ca/lists/listinfo/peeweeli> nux
+> 
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Aug  4 23:12:22 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Mon, 04 Aug 2003 19:12:22 -0300
+Subject: [Peeweelinux] CF Read Write Partition
+In-Reply-To: <032b01c35ad4$095ecc00$02fea8c0@jcairns>
+References: <032b01c35ad4$095ecc00$02fea8c0@jcairns>
+Message-ID: <3F2EDA46.5030308@tutopia.com.br>
+
+Joe A Cairns wrote:
+> Adilson,
+> 
+> I do
+>  
+>    #mount -n /MTAtm
+> 
+
+Well, if it's formated, should work. Try this: login as root, create a 
+dummy directory under root lets say mkdir /root/x and do a mount 
+/dev/hda2 /mnt/x just to see what happens.
+
+[]s
+
+Adilson.
+
+
+From peeweelinux@adis.on.ca  Tue Aug  5 17:39:58 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Tue, 05 Aug 2003 13:39:58 -0300
+Subject: [Peeweelinux] Problems with ICA (Citrix) client 7.0?
+Message-ID: <3F2FDDDE.9050807@tutopia.com.br>
+
+Hello.
+
+I'm having some problems using the new 7.0 ICA client with a peewee 
+linux build.
+The 6.3 versions look to work ok but the 7.0 sometimes fails with a seg 
+fault after the login into the windows server. If I start the client 
+again I can get the connection back but I got some flaws on icons 
+specialy the little banner on the "start" buttom what makes me wonder if 
+can't be some sort of incompatibility with XFree 3.3.6.
+Does anyone have this problem?
+
+[]s
+
+Adilson.
+
+
+From peeweelinux@adis.on.ca  Tue Aug  5 17:42:04 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Tue, 05 Aug 2003 13:42:04 -0300
+Subject: [Peeweelinux] Upgrading XFree
+Message-ID: <3F2FDE5C.3040505@tutopia.com.br>
+
+Hi again.
+
+Somewhat related to my problem with the ICA client, I do like to 
+experiment with a newer XFree. Dows anyone here tried to update the 
+XFree 3.3.6 to anything newer? How did you do?
+My problem is trying to figure out waht libs I have to take with the 
+core server.
+
+[]s
+
+Adilson.
+
+
+From peeweelinux@adis.on.ca  Tue Aug  5 17:45:49 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Tue, 05 Aug 2003 13:45:49 -0300
+Subject: [Peeweelinux] Other browser?
+Message-ID: <3F2FDF3D.3000203@tutopia.com.br>
+
+Hi once more :)
+
+I'm thinking about trying to use a newer browser with peewee. Looks like 
+the major contender now is Firebird but albeit small compared to the 
+full ones, this baby still has almost 20Mb. Does anyone have an idea how 
+to shrink it? I need to run java and, if possible, flash. Opera is 
+another contender but a free one would be much better.
+
+[]s and TIA
+
+Adilson.
+
+
+From peeweelinux@adis.on.ca  Sat Aug  9 00:07:25 2003
+From: peeweelinux@adis.on.ca (Robbie)
+Date: Fri, 8 Aug 2003 16:07:25 -0700 (PDT)
+Subject: [Peeweelinux] Extracting 2.2.17-13 kernel source error
+Message-ID: <20030808230725.23956.qmail@web10205.mail.yahoo.com>
+
+G'day folks,
+
+Myself and a few mates are in the process of
+developing a small embedded system using a PCM-3350
+GX1 PC/104 board with the OS to boot off compact
+flash. 
+
+I'm currently using RH 9 on a xp2200 with plently of
+HDD space. The PeeWeeLinux 0.61.1 package was d/loaded
+and successfully installed, but... on attempting to
+extract the supplied kernel source the following error
+is displayed:
+
+./scripts/pwl_kernel: line 931: 23823 Segmentation
+fault      $RPM -i --root $rootDir $rpmOptions
+$srcFile
+ln: creating symbolic link
+`/usr/local/Embedded_Build/kernelbuild/usr/src/linux' 
+                           to
+`/usr/local/Embedded_Build/kernelbuild/usr/src/linux-2.2.17-13':
+No such file or directory
+
+I've complied my own 2.4.20 kernel and had the PC/104
+booting successfully, however I would much prefer to
+use PWL in terms of managing files <translation: looks
+so much easier>. 
+
+I guess i'm 'still' a novice, maybe missing some
+fundamental step in the process....
+
+Any assistance would be greatly appreciated.
+
+Kind Regards,
+
+- Rob Ravlic
+
+__________________________________
+Do you Yahoo!?
+Yahoo! SiteBuilder - Free, easy-to-use web site design software
+http://sitebuilder.yahoo.com
+
+From peeweelinux@adis.on.ca  Mon Aug 11 21:38:00 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 11 Aug 2003 13:38:00 -0700 (PDT)
+Subject: [Peeweelinux] Extracting 2.2.17-13 kernel source error
+Message-ID: <2.2.16.20030811133800.52dfb346@zmicro.com>
+
+>Myself and a few mates are in the process of
+>developing a small embedded system using a PCM-3350
+>GX1 PC/104 board with the OS to boot off compact
+>flash. 
+
+MP3 player?  :-)
+
+>I'm currently using RH 9 on a xp2200....on attempting to
+>extract the supplied kernel source the following error
+
+I don't know, but RedHat keeps "improving" things, and
+rpm went from version 3 to version 4 in the interim.
+
+>I've complied my own 2.4.20 kernel and had the PC/104
+>booting successfully, however I would much prefer to
+>use PWL...
+
+The good news is that several folks have built a 2.4 kernel
+for PeeWee, so you can have your kernel, and pwl, too.  The
+mini howto can be found here: 
+
+http://mail.adis.on.ca/pipermail/peeweelinux/2002-June/000608.html
+
+Now, since you already have a kernel, you could skip almost
+all that, and just figure out where to put it so PeeWee will
+make a system with it.   If you've built one of PeeWee's 2.2
+you already have it.  I you haven't this might be the best
+way to see how it is done.
+
+I have notes on this...here it is...look in 
+
+Embedded_Build/packages/Kernel_Custom/
+
+With that set up properly, you can pick your kernel right off
+the menus!
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Mon Aug 11 23:37:25 2003
+From: peeweelinux@adis.on.ca (Robbie)
+Date: Mon, 11 Aug 2003 15:37:25 -0700 (PDT)
+Subject: [Peeweelinux] Extracting 2.2.17-13 kernel source error
+In-Reply-To: <2.2.16.20030811133800.52dfb346@zmicro.com>
+Message-ID: <20030811223725.18775.qmail@web10208.mail.yahoo.com>
+
+Thanks Barry,
+
+"MP3 player?  :-)"  
+heee, not quite...
+
+RH 9 wasn't doin' it for me so I switched back to RH
+7.3 with moderate success. PWL works fine with the
+packaged kernel. However... i till not satisfied with
+the final result (ie kernel problems etc).
+
+We'll keep working on it but...
+
+Cheers,
+
+- rob
+
+--- Barry Gershenfeld <barry_g@zmicro.com> wrote:
+> >Myself and a few mates are in the process of
+> >developing a small embedded system using a PCM-3350
+> >GX1 PC/104 board with the OS to boot off compact
+> >flash. 
+> 
+> MP3 player?  :-)
+> 
+> >I'm currently using RH 9 on a xp2200....on
+> attempting to
+> >extract the supplied kernel source the following
+> error
+> 
+> I don't know, but RedHat keeps "improving" things,
+> and
+> rpm went from version 3 to version 4 in the interim.
+> 
+> >I've complied my own 2.4.20 kernel and had the
+> PC/104
+> >booting successfully, however I would much prefer
+> to
+> >use PWL...
+> 
+> The good news is that several folks have built a 2.4
+> kernel
+> for PeeWee, so you can have your kernel, and pwl,
+> too.  The
+> mini howto can be found here: 
+> 
+>
+http://mail.adis.on.ca/pipermail/peeweelinux/2002-June/000608.html
+> 
+> Now, since you already have a kernel, you could skip
+> almost
+> all that, and just figure out where to put it so
+> PeeWee will
+> make a system with it.   If you've built one of
+> PeeWee's 2.2
+> you already have it.  I you haven't this might be
+> the best
+> way to see how it is done.
+> 
+> I have notes on this...here it is...look in 
+> 
+> Embedded_Build/packages/Kernel_Custom/
+> 
+> With that set up properly, you can pick your kernel
+> right off
+> the menus!
+> 
+> Barry
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________
+Do you Yahoo!?
+Yahoo! SiteBuilder - Free, easy-to-use web site design software
+http://sitebuilder.yahoo.com
+
+From peeweelinux@adis.on.ca  Tue Aug 12 00:51:21 2003
+From: peeweelinux@adis.on.ca (dan latham)
+Date: Mon, 11 Aug 2003 19:51:21 -0400
+Subject: [Peeweelinux] Pee Wee conference?
+Message-ID: <5.1.1.6.2.20030811194447.01e2c278@pop.earthlink.net>
+
+Kind of a general question. Has anybody ever thought (or attempted) to
+put together a Pee Wee conference or workshop? I'm curious, because I've
+been playing for a while and have hit a roadblock. I could really benefit from
+spending a few hours with someone who knows what they are doing. Plus,
+it might be a good opportunity to exchange ideas. I'm not talking one of these
+things that cost a thousand bucks, perhaps something more informal with
+volunteers. Anyway, I'd be interested in one near Boston if anyone is keeping
+track of this sort  of stuff. - dan
+
+
+From peeweelinux@adis.on.ca  Thu Aug 14 20:50:43 2003
+From: peeweelinux@adis.on.ca (Michael Hancock)
+Date: Thu, 14 Aug 2003 17:20:43 -0230
+Subject: [Peeweelinux] newbie question
+Message-ID: <001e01c3629d$5c527080$d23dc5c0@mhancock>
+
+Hi PeeWee'ers:
+
+I've been asked to setup a development environment for PeeWee.  The boss is
+thinking it would be great for an upcoming project.  I read on the site that
+PeeWee was developed under 6.2.
+
+Does my development machine have to be 6.2?  Any conflicts in going with a
+newer version of Linux (8.0 in particular).  The USB support under 6.2 is a
+real PITA.
+
+Thanks,
+Mike
+
+
+From peeweelinux@adis.on.ca  Sat Aug 16 02:05:20 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Fri, 15 Aug 2003 18:05:20 -0700 (PDT)
+Subject: [Peeweelinux] newbie question
+Message-ID: <2.2.16.20030815180523.194f9c16@zmicro.com>
+
+>Does my development machine have to be 6.2?  
+
+The short answer is "yes".  A slightly longer answer is, "no, if
+you do not need to modify anything".
+
+>Any conflicts in going with a newer version of Linux (8.0 
+>in particular).  The USB support under 6.2 is a real PITA.
+
+Well, here's the long story.  Assuming you don't run afoul
+of rpm (I've seen messages to this effect), you can set up
+and use a PeeWee system on a newer distro.  My own dev
+environment is run under RH 7.3
+
+Everything is fine until you want to add your own programs
+or build a new kernel.  You clearly want USB so you are
+going to need a version 2.4 kernel.   We do have a sort
+of HowTo in the archives for doing that.  As usual, you
+have to use the older version of gcc to build it.  Then
+you maneuver the resulting kernel into the right place
+so PWL will build it into your system.
+
+That's reasonably cool because the kernel is in effect a
+statically linked program.
+
+But I bet you will need some other utilities to use with
+the USB.  When you compile new programs, you have these
+choices:
+ - Statically link everthing so it doesn't care what
+   version libraries are present on the target. 
+ - Build them dynamic and arrange to also install the
+   necessary libraries along with the programs.  And
+   hope the two lib versions don't get confused.
+ - Get a RH6.2 system, build them there, then bring
+   the results over to your normal development system
+   and turn PWL loose on them.
+
+I did that last one in order to build the latest PHP engine.
+
+My experience is that you can start by building targets, and
+"grow into" the more involved stuff as you go along and need
+to do more special things.
+
+Hope this provides some elightenment.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Mon Aug 18 17:17:44 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 18 Aug 2003 17:17:44 +0100
+Subject: [Peeweelinux] PeeweeLinux + Xwindows booting from Compact Flash
+Message-ID: <1061223464.2150.67.camel@localhost.localdomain>
+
+Hi there,
+
+I am currently working on a project that requires linux (with xwindows
+and mozilla/flash) to boot from a 128mb flash card and run on an i486
+based 133mhz CPU in under 60 seconds.
+
+PeeweeLinux looks like a possibility, as I see you can add X windows to
+it (the only reason i need flash and mozilla is because the embedded
+device I am developing for is a touchscreen and the flash will provide a
+nice pretty front end for our users).
+
+-	Is Peewee Linux suitable for this development ?
+-	What steps would be needed to get a peewee linux based system up
+	running ?
+
+If anyone needs any further information about my setup to be able to
+help me out just shout and I will provide it. Any advice would be
+greatly appreciated as I want to get this system up and running within
+two weeks for an upcoming tradeshow we have booked floor space at.
+
+Thanks in advance
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+
+From peeweelinux@adis.on.ca  Mon Aug 18 20:39:58 2003
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Mon, 18 Aug 2003 15:39:58 -0400
+Subject: [Peeweelinux] PeeweeLinux + Xwindows booting from Compact
+ Flash
+Message-ID: <sf40f35d.043@qatech.com>
+
+Hello,
+
+I've been able to boot to X in under 60 seconds and run a GUI application with Peewee. 
+
+I recommend doing the following:
+
+- Develop an application and user interface code using the fltk C++ libraries. Get it working on your development linux machine. Once you like how it runs you can compile it as static, which means it will run on peewee wihtout having to install the libraries on your peewee machine (which can be a pain). The reason I suggest FLTK ist hat it builds really small static executeables. 
+- Build a peeweeLinux compact flash card image that boots to X windows. (I have such a thing already I can send to you...)
+- So now you have peewee working and an application working (You can develop these in parallel to help with your deadline if you can get someone to help you out). All you should have to do is to copy your statically built FLTK executeable to peewee and it should work well. 
+
+I have a project which should boot automatically to X windows and fire up an application automatically, so if you can get your GUI application running on a development system, you should be all set. Let me know if you wnat the Peewee X windows boot project to get started and I'll email it to you. 
+
+- Depending on what you have installed on peewee, it will boot at different speeds. For a fairly large system, such as with X installed and normal unix utilities, it is probably quickest to boot with a Read only root filesystem with multiple ramdisk in the peewee options. Give it a try and see how it works for you. 
+
+If you really need to use Flash for some reason (I don't recommend it) I am not sure what you will need to do. Mozilla will probably cripple a 486 computer. It'd probably take 60 seconds to run mozilla even after bootup. FLTK stands for "Fast and Light Toolkit" so it should be OK on 486. Your flash card will probably only need to be 16-32MB max.
+
+~Ken
+
+
+
+>>> Ashley Rolleston <ashley@smartsw.co.uk> 08/18 12:17 PM >>>
+Hi there,
+
+I am currently working on a project that requires linux (with xwindows
+and mozilla/flash) to boot from a 128mb flash card and run on an i486
+based 133mhz CPU in under 60 seconds.
+
+PeeweeLinux looks like a possibility, as I see you can add X windows to
+it (the only reason i need flash and mozilla is because the embedded
+device I am developing for is a touchscreen and the flash will provide a
+nice pretty front end for our users).
+
+-	Is Peewee Linux suitable for this development ?
+-	What steps would be needed to get a peewee linux based system up
+	running ?
+
+If anyone needs any further information about my setup to be able to
+help me out just shout and I will provide it. Any advice would be
+greatly appreciated as I want to get this system up and running within
+two weeks for an upcoming tradeshow we have booked floor space at.
+
+Thanks in advance
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk 
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca 
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Aug 19 10:08:09 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 19 Aug 2003 10:08:09 +0100
+Subject: [Peeweelinux] PeeweeLinux + Xwindows booting from Compact Flash
+In-Reply-To: <sf40f35d.043@qatech.com>
+References: <sf40f35d.043@qatech.com>
+Message-ID: <1061284088.22746.36.camel@localhost.localdomain>
+
+Ken,
+
+Thanks very much for your information, it has been a great help! Enough
+of a help infact for me to decide to switch development from building my
+own LFS system ( http://www.linuxfromscratch.org/ ) to using
+peeweeLinux. I am meeting with our client this morning to talk about
+possible changes to the design specification (IE not using mozilla/flash
+and using a custom built GUI).
+
+I would love to have a copy of your bootable peeweeLinux X Windows
+project, it would be very useful. I am about to leave for this meeting,
+but will get back to you later on today privately.
+
+For the lists information, the specification of the hardware that I will
+be developing for is here...
+
+http://www.dspdesign.com/products/product_detail?product_id=99
+
+Thanks again Ken, and I will keep the list posted on my progress.
+
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+On Mon, 2003-08-18 at 20:39, Ken Emmons, Jr. wrote:
+> Hello,
+> 
+> I've been able to boot to X in under 60 seconds and run a GUI application with Peewee. 
+> 
+> I recommend doing the following:
+> 
+> - Develop an application and user interface code using the fltk C++ libraries. Get it working on your development linux machine. Once you like how it runs you can compile it as static, which means it will run on peewee wihtout having to install the libraries on your peewee machine (which can be a pain). The reason I suggest FLTK ist hat it builds really small static executeables. 
+> - Build a peeweeLinux compact flash card image that boots to X windows. (I have such a thing already I can send to you...)
+> - So now you have peewee working and an application working (You can develop these in parallel to help with your deadline if you can get someone to help you out). All you should have to do is to copy your statically built FLTK executeable to peewee and it should work well. 
+http://www.dspdesign.com/products/product_detail?product_id=99
+> I have a project which should boot automatically to X windows and fire up an application automatically, so if you can get your GUI application running on a development system, you should be all set. Let me know if you wnat the Peewee X windows boot project to get started and I'll email it to you. 
+> 
+> - Depending on what you have installed on peewee, it will boot at different speeds. For a fairly large system, such as with X installed and normal unix utilities, it is probably quickest to boot with a Read only root filesystem with multiple ramdisk in the peewee options. Give it a try and see how it works for you. 
+> 
+> If you really need to use Flash for some reason (I don't recommend it) I am not sure what you will need to do. Mozilla will probably cripple a 486 computer. It'd probably take 60 seconds to run mozilla even after bootup. FLTK stands for "Fast and Light Toolkit" so it should be OK on 486. Your flash card will probably only need to be 16-32MB max.
+> 
+> ~Ken
+
+
+
+From peeweelinux@adis.on.ca  Tue Aug 19 14:09:59 2003
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Tue, 19 Aug 2003 09:09:59 -0400
+Subject: [Peeweelinux] Tarantella client
+Message-ID: <auto-000025000356@frontend04.cg.ifxnetworks.com>
+
+Hi.
+
+Does anyone here was able to put a tarantella client on peewee distro?
+I tried but when I try to login into a test server, the client just core dumps.
+Doesn't looks like lack of libs as ldd just shows glibc as necessary.
+Any ideas? I'm going crazy about this.
+
+TIA and []s
+
+Adilson.
+
+
+
+From peeweelinux@adis.on.ca  Tue Aug 19 14:13:31 2003
+From: peeweelinux@adis.on.ca (Scott MacKay)
+Date: Tue, 19 Aug 2003 06:13:31 -0700 (PDT)
+Subject: [Peeweelinux] Up to date Peewee?
+In-Reply-To: <1061284088.22746.36.camel@localhost.localdomain>
+Message-ID: <20030819131331.44640.qmail@web13906.mail.yahoo.com>
+
+I was wondering, has anyone built an up to date peewee
+linux distro?  Something using the 2.4.20+/RH distro
+plus updates on the sample configurations?
+
+-Scott
+
+__________________________________
+Do you Yahoo!?
+Yahoo! SiteBuilder - Free, easy-to-use web site design software
+http://sitebuilder.yahoo.com
+
+From peeweelinux@adis.on.ca  Tue Aug 19 14:52:07 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 19 Aug 2003 14:52:07 +0100
+Subject: [Peeweelinux] PeeweeLinux + Xwindows booting from Compact Flash
+In-Reply-To: <1061284088.22746.36.camel@localhost.localdomain>
+References: <sf40f35d.043@qatech.com>
+ <1061284088.22746.36.camel@localhost.localdomain>
+Message-ID: <1061301127.2151.17.camel@localhost.localdomain>
+
+Ok meeting over,
+
+As much as would like to code my own GUI using fltk c++, it doesn't fit
+in with the product specification. peeweeLinux + xwindows will remain
+the base linux system, but the flash GUI aspect of the front-end is one
+of the sale-able features, so cannot be changed.
+
+The browser on the peeweeLinux will need to connect to a central web
+server which will host the controls. Not just the touchscreen project
+will be interfacing with this server (which is already coded) users can
+also access it from their desktops etc.
+
+Therefore my final system requires
+	-	TCP/IP Networking capability
+	-	A flash capable browser (mozilla?)
+
+Can I still meet these requirements using peeweeLinux as the base OS?
+They are prepared to bend the 60 second booting time, as I mentioned
+this was unrealistic, although keeping boot time down is still of
+importance.
+
+Personally I detest flash, however my vote doesn't get very far on this
+one, I am just the developer... (/me wonders how many other people have
+experienced this before) :)
+
+Thanks,
+
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+On Tue, 2003-08-19 at 10:08, Ashley Rolleston wrote:
+> Ken,
+> 
+> Thanks very much for your information, it has been a great help! Enough
+> of a help infact for me to decide to switch development from building my
+> own LFS system ( http://www.linuxfromscratch.org/ ) to using
+> peeweeLinux. I am meeting with our client this morning to talk about
+> possible changes to the design specification (IE not using mozilla/flash
+> and using a custom built GUI).
+> 
+> I would love to have a copy of your bootable peeweeLinux X Windows
+> project, it would be very useful. I am about to leave for this meeting,
+> but will get back to you later on today privately.
+> 
+> For the lists information, the specification of the hardware that I will
+> be developing for is here...
+> 
+> http://www.dspdesign.com/products/product_detail?product_id=99
+> 
+> Thanks again Ken, and I will keep the list posted on my progress.
+> 
+> Ashley Rolleston
+> aka Onyx^
+> ashley@smartsw.co.uk
+> 
+
+
+
+From peeweelinux@adis.on.ca  Tue Aug 19 15:04:08 2003
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Tue, 19 Aug 2003 10:04:08 -0400
+Subject: [Peeweelinux] PeeweeLinux + Xwindows booting from Compact
+ Flash
+Message-ID: <sf41f633.039@qatech.com>
+
+I'm not familiar with using browsers on peewee. I'd recommend one of the PIII boards running the old version of netscape (4.7 ish??) that comes with Peewee. Then you can use a compatable version of macromedia flash and it will be real fast. Thats probably the quickest and easiest option. Other than that I can't help you there.
+
+I agree, Flash is pretty gross for embedded stuff, and for most things in general. 
+
+Well, good luck.
+~Ken
+
+>>> Ashley Rolleston <ashley@smartsw.co.uk> 08/19 9:52 AM >>>
+Ok meeting over,
+
+As much as would like to code my own GUI using fltk c++, it doesn't fit
+in with the product specification. peeweeLinux + xwindows will remain
+the base linux system, but the flash GUI aspect of the front-end is one
+of the sale-able features, so cannot be changed.
+
+The browser on the peeweeLinux will need to connect to a central web
+server which will host the controls. Not just the touchscreen project
+will be interfacing with this server (which is already coded) users can
+also access it from their desktops etc.
+
+Therefore my final system requires
+	-	TCP/IP Networking capability
+	-	A flash capable browser (mozilla?)
+
+Can I still meet these requirements using peeweeLinux as the base OS?
+They are prepared to bend the 60 second booting time, as I mentioned
+this was unrealistic, although keeping boot time down is still of
+importance.
+
+Personally I detest flash, however my vote doesn't get very far on this
+one, I am just the developer... (/me wonders how many other people have
+experienced this before) :)
+
+Thanks,
+
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk 
+
+On Tue, 2003-08-19 at 10:08, Ashley Rolleston wrote:
+> Ken,
+> 
+> Thanks very much for your information, it has been a great help! Enough
+> of a help infact for me to decide to switch development from building my
+> own LFS system ( http://www.linuxfromscratch.org/ ) to using
+> peeweeLinux. I am meeting with our client this morning to talk about
+> possible changes to the design specification (IE not using mozilla/flash
+> and using a custom built GUI).
+> 
+> I would love to have a copy of your bootable peeweeLinux X Windows
+> project, it would be very useful. I am about to leave for this meeting,
+> but will get back to you later on today privately.
+> 
+> For the lists information, the specification of the hardware that I will
+> be developing for is here...
+> 
+> http://www.dspdesign.com/products/product_detail?product_id=99 
+> 
+> Thanks again Ken, and I will keep the list posted on my progress.
+> 
+> Ashley Rolleston
+> aka Onyx^
+> ashley@smartsw.co.uk 
+> 
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca 
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Aug 20 20:56:21 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 20 Aug 2003 12:56:21 -0700 (PDT)
+Subject: [Peeweelinux] PeeweeLinux + Xwindows booting from Compact
+ Flash
+Message-ID: <2.2.16.20030820125627.71c755fc@zmicro.com>
+
+>	-	A flash capable browser (mozilla?)
+
+Mozilla is so huge I won't even put it on my desktop machine.
+But there is a browser-only version called Firebird.  
+Browser only?  Yes, no page composer, no email client, no newsreader, etc.
+And there are other browsers, like Opera.
+
+>this was unrealistic, although keeping boot time down is still of
+>importance.
+
+On my app (server, no X) about half the boot time is in the
+board's POST and BIOS.  Something to shop for.
+
+>Personally I detest flash, however my vote doesn't get very far on this
+
+Flash is a good technology.  Horribly misused 95% of the time.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Wed Aug 20 23:46:22 2003
+From: peeweelinux@adis.on.ca (Daniel Purcell)
+Date: Wed, 20 Aug 2003 16:46:22 -0600
+Subject: [Peeweelinux] PeeweeLinux + Xwindows booting from Compact  Flash
+In-Reply-To: <2.2.16.20030820125627.71c755fc@zmicro.com>
+References: <2.2.16.20030820125627.71c755fc@zmicro.com>
+Message-ID: <3F43FA3E.9010901@stoneflytech.com>
+
+Ashley,
+
+I have been following the discussion about your project to build a kiosk 
+with a web interface for a convention.  I have been working on a similar 
+project using PeeWeeLinux, and I think I may be of a little help.
+
+I'm working on a project for my company.  We call it the SolarKiosk.  We 
+have some government grant money to build little solar-powered kiosk 
+computers out in the desert in Utah.  The kiosks provide weather 
+information and water information to mostly farmers who depend very much 
+on weather and water information so that they know how much to irrigate 
+their crops.  It's called the SolarKiosk because the kiosks will be 
+powered by solar panels and batteries.  They each have a low-speed 
+wireless internet link, as well.
+
+The project isn't 100% completed yet, but we have a working prototype in 
+our office.
+
+I chose to use the PeeWeeLinux distribution as the base operating 
+system.  We bought one of those Geode 300X "brick" SBCs because we 
+wanted video and sound capabilities on our kiosks.  I installed a 2.4.18 
+kernel (using the howto in this mailing-list archive -- big thanks to 
+the author!), and instead of running X windows and then a web browser on 
+top of that, I found a version of the  Konqueror web browser will run 
+without X Windows - using the frame buffer device instead.  This saved a 
+lot of hassle and ramdisk space.
+
+The "embedded" Konqueror browser is HTML 4.01 compliant, does CCS, 
+JavaScript, and does Gif/Jpeg/Png just like the regular X11 browser 
+does.  It also comes with support for a Flash plugin (I couldn't get it 
+to compile, though, but I'm sure its very possible .. perhaps I should 
+read more in the Konqueror/Embedded newsgroups for directions on how to 
+compile it.).  Best of all, the Konq/e browser stripped is just under 3 
+megabytes.  Konq/e also has a configure option, where you can specify it 
+to run in a Kiosk mode -- fullscreen, without the window resizing, 
+menubar, toolbar, navigation bar, etc.  It's exactly what we needed for 
+the SolarKiosk.  Konqeuror also is fully keyboard navigatable, so we 
+could set up the Kiosk without a mouse and it will still be usable by 
+the users.
+
+For the Konqueror browser to work, all I had to do was to install the 
+Qt/Embedded libraries.  These take up about 5 megabytes, plus font files 
+(which can be from 1 meg to 10 megs, depending on what fonts you want to 
+make available for the web browser).
+
+We wanted the SolarKiosk to also be able to run perl programs, so we got 
+Perl 5.0005 running.  We even got Perl/Tk running successfully. The 
+SolarKiosk has sshd running on it, so you can scp files and ssh into the 
+SolarKiosk from remote locations.  The SolarKiosk also has rsync, to 
+syncronize files (or the "content") that will display the weather 
+information to the kiosk users.
+
+Because the SolarKiosks won't have a very fast internet link, we wanted 
+to slowly "trickle" the content and cache it on the SolarKiosk. I 
+installed Apache 1.3.27 + PHP 4.3.2 (just under 2 megabytes), so that 
+the Konq/E browser points to its own localhost and displays the web 
+pages from its own memory.
+
+For the sound, I got the appropriate kernel modules for my soundcard on 
+the SBC (soundblaster 2.0 + compatable in my case), and I use the mpg123 
+program that comes with PeeWeeLinux.  We would then generate mp3 files 
+on a separate machine, and "trickle" mp3 files to the SolarKiosk, so 
+when a user clicks on certain pages, the audio bytes can be heard from 
+the Kiosk as well as read on the screen.
+
+I used the "autobootx" from ... (I hope I get my credits right) .. was 
+it Barry that created that? Anyway, I set it up so that it autoboots the 
+Konqeuror Browser in Kiosk mode, pointing to http://localhost/ .
+
+We bought one of those keyboard encoders two weeks ago, too.  With a 
+keyboard encoder, you can map a switch or a button to a keyboard key.  
+Our SolarKiosk has only three buttons (no keyboard, no mouse), and is 
+fully navigatable.  I mapped one pushbutton to tab (for Konq/e to go to 
+the next link / page down), another pushbutton to shift+tab (for Konq/e 
+to go to the previous link/page up), and the third button to enter 
+("click" on the selected link).
+
+The SolarKiosk itself is pretty much complete.  The website and the 
+server-side content-generating programs are my current tasks.  The 
+website isn't complete, but you're welcome to go see and download  a 
+version of the SolarKiosk and try it out on your system.
+
+The website URL is: http://www.picklebone.com/solarkiosk/
+
+If anyone else is interested in this project, please let me know! 
+
+-Daniel Purcell
+StoneFly Technology
+St. George, UT
+
+Barry Gershenfeld wrote:
+
+>>	-	A flash capable browser (mozilla?)
+>>    
+>>
+>
+>Mozilla is so huge I won't even put it on my desktop machine.
+>But there is a browser-only version called Firebird.  
+>Browser only?  Yes, no page composer, no email client, no newsreader, etc.
+>And there are other browsers, like Opera.
+>
+>  
+>
+>>this was unrealistic, although keeping boot time down is still of
+>>importance.
+>>    
+>>
+>
+>On my app (server, no X) about half the boot time is in the
+>board's POST and BIOS.  Something to shop for.
+>
+>  
+>
+>>Personally I detest flash, however my vote doesn't get very far on this
+>>    
+>>
+>
+>Flash is a good technology.  Horribly misused 95% of the time.
+>
+>Barry
+>  
+>
+
+
+From peeweelinux@adis.on.ca  Thu Aug 21 00:58:11 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Wed, 20 Aug 2003 20:58:11 -0300
+Subject: [Peeweelinux] PeeweeLinux + Xwindows booting from Compact  Flash
+In-Reply-To: <3F43FA3E.9010901@stoneflytech.com>
+References: <2.2.16.20030820125627.71c755fc@zmicro.com> <3F43FA3E.9010901@stoneflytech.com>
+Message-ID: <3F440B13.5020406@tutopia.com.br>
+
+Daniel Purcell wrote:
+> Ashley,
+> 
+> I have been following the discussion about your project to build a kiosk 
+> with a web interface for a convention.  I have been working on a similar 
+> project using PeeWeeLinux, and I think I may be of a little help.
+> 
+
+Hi there.
+
+Very interesting stuff. Can you point us to where did you found the 
+embedded konqueror sources? I'm interested on building on for use with X.
+
+Thanks
+
+Adilson.
+
+
+From peeweelinux@adis.on.ca  Thu Aug 21 11:41:49 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 21 Aug 2003 11:41:49 +0100
+Subject: [Peeweelinux] PeeweeLinux + Xwindows booting from Compact
+ Flash
+In-Reply-To: <3F43FA3E.9010901@stoneflytech.com>
+References: <2.2.16.20030820125627.71c755fc@zmicro.com>
+ <3F43FA3E.9010901@stoneflytech.com>
+Message-ID: <1061462509.2146.52.camel@localhost.localdomain>
+
+On Wed, 2003-08-20 at 23:46, Daniel Purcell wrote:
+> Ashley,
+> 
+> I have been following the discussion about your project to build a kiosk 
+> with a web interface for a convention.  I have been working on a similar 
+> project using PeeWeeLinux, and I think I may be of a little help.
+
+Thanks Daniel, thats interesting stuff. Lots of information for me to
+consider that is applicable to my project.
+
+Im currently trying to decide which is the best browser to display the
+flash GUI :-
+
+-	Firebird
+-	Netscape 4.8
+-	Konqueror
+-	Konqueror/Embedded
+
+Since I am using a low spec system, the most crucial factor is resource
+usage, but stability and ease of installation/setup are also important.
+
+Thanks for all the replies, i will let you all know how things progress.
+
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+ 
+
+
+
+
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Aug 21 15:44:47 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 21 Aug 2003 15:44:47 +0100
+Subject: [Peeweelinux] Error loading file system to target compact flash card
+Message-ID: <1061477086.10481.33.camel@localhost.localdomain>
+
+Hi,
+
+My flash card hardware arrived today but I'm having a problem. I'm using
+the bootx project kindly supplied to me by Ken Emmons, Jr. 
+
+Results of the failure are as shown after trying to write to target
+device as shown in pwlconfig. All goes ok until ...
+
+************
+
+Editing inittab...ok                                                   
+Building ld.so.cache...ldconfig: Can't stat /lib: No such file or direc 
+ldconfig: Can't stat /usr/lib: No such file or directory                
+ldconfig: Can't open configuration file /etc/ld.so.conf: No such file o 
+/usr/X11R6/lib:                                                           ldconfig: Can't open directory /usr/X11R6/lib: No such file or director
+ok                                                                        Unmounting loopback device...ok  
+
+************
+
+then it carries on fine and creates the partitions on /dev/sda without
+any other problem
+
+the terminal output during creation is all ok until ...
+
+************
+
+Determining space on target device...  du:
+`./projects/bootx/mnt/boot/bzImage-full': No such file or directory
+                                                           [  ok  ]
+Partition traget device /dev/sda...                        [  ok  ]
+Creating ext2 filesystem...                                [  ok  ]
+Mount the target device /dev/sda1...                       [  ok  ]
+Copying ramdisk, kernel and boot.b...  cp: cannot stat
+`./projects/bootx/mnt/boot/bzImage-full': No such file or directory
+                                                           [  ok  ]
+Creating lilo.conf in a temporary location...              [  ok  ]
+Installing lilo bootloader...                              [failed]
+Unmounting target device /dev/sda1...                      [  ok  ]
+
+************
+
+I searched the archives and found the following mail describing what
+appears to be the same problem
+
+http://mail.adis.on.ca/pipermail/peeweelinux/2002-February/000478.html
+
+QUOTE FROM REPLY TO ABOVE MAIL
+" Check to make sure that you have selected "etc/" under Project File
+System --> System
+Base --> file system, and also "etc/inittab" under initscripts.  You may 
+have selected another package (sysvinit, for example) that requires this 
+file. "
+
+I have checked this, under these options it just says 'estimated total 
+from selected files 0' even when I choose 'select all files from 
+package'. I also tried just using minimal project (to /dev/sda/) , but 
+the same errors occur.
+
+When I try and 'Extract File System for Project' it just gives me lots
+of 'Not found in Archive' messages for all of the files.
+
+Can anyone see what I am doing wrong here ? Is there any other
+information I can provide to aid the problem diagnosis ? Any help would
+be appreciated :)
+
+Thanks           
+-- 
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+
+From peeweelinux@adis.on.ca  Fri Aug 22 01:09:48 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 21 Aug 2003 17:09:48 -0700 (PDT)
+Subject: [Peeweelinux] Error loading file system to target compact
+ flash card
+Message-ID: <2.2.16.20030821170954.78773d54@zmicro.com>
+
+I don't have an answer, but as much as I have been studying (or is
+that playing with?) the internals of PeeWeeLinux, maybe this could
+help.
+
+
+>Editing inittab...ok                                                   
+>Building ld.so.cache...ldconfig: Can't stat /lib: No such file or direc 
+>ldconfig: Can't stat /usr/lib: No such file or directory                
+
+This won't necessarily break your system.  I get these a lot and
+while it may be my fault, it hasn't hurt.    If there were a 
+problem it would show up after you booted and tried to run some
+program that needed a particular library.
+
+>************
+>`./projects/bootx/mnt/boot/bzImage-full': No such file or directory
+
+>`./projects/bootx/mnt/boot/bzImage-full': No such file or directory
+
+PeeWeeLinux (PWL) is the Embedded_Build directory and everything
+below.  There's a projects directory, and I see you made a project
+called bootx.  All the stuff you do happens within the bootx
+directory.  If you look in mnt (that's projects/bootx/mnt which
+is different from /mnt) what you see there is a replica of
+what is supposed to go onto your target.  If it's not there,
+it won't be in your target either.
+
+>>Check to make sure that you have selected "etc/" ...
+
+>I have checked this, under these options it just says 'estimated total 
+>from selected files 0' even when I choose 'select all files from 
+>package'. 
+
+That's ok.  If you are selecting directories (and you do have
+to sometimes, to ensure that the directories themselves get
+created) the directories themselves don't take up any space.
+So what you saw is right.
+
+
+>When I try and 'Extract File System for Project' it just gives me lots
+>of 'Not found in Archive' messages for all of the files.
+
+This looks like the first error.  Meaning that you need to get this
+fixed first.  This is the step that creates your target's file
+tree on project/bootx/mnt
+
+I wonder if you managed to be missing the packages?  I did this once.
+Extracting them is supposed to happen automatically the first
+time it PWL is run.  I think a few others have managed this stunt
+as well.  Have a look in the Embedded_Build/packages directory
+and see if you see directories corresponding to PWL choices (I
+have about 24 of them).  In each of those directories you 
+should see pairs of files named .tar and .list
+If you don't, that's the first step.
+
+BTW, 'bzImage-full' is a kernel.  And Kernel is one of the packages.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Fri Aug 22 15:50:43 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 22 Aug 2003 15:50:43 +0100
+Subject: [Peeweelinux] Error loading file system to target compact
+ flash card
+In-Reply-To: <2.2.16.20030821170954.78773d54@zmicro.com>
+References: <2.2.16.20030821170954.78773d54@zmicro.com>
+Message-ID: <1061563842.2742.11.camel@localhost.localdomain>
+
+> >When I try and 'Extract File System for Project' it just gives me lots
+> >of 'Not found in Archive' messages for all of the files.
+> 
+> This looks like the first error.  Meaning that you need to get this
+> fixed first.  This is the step that creates your target's file
+> tree on project/bootx/mnt
+> 
+> I wonder if you managed to be missing the packages?  I did this once.
+> Extracting them is supposed to happen automatically the first
+> time it PWL is run.  I think a few others have managed this stunt
+> as well.  Have a look in the Embedded_Build/packages directory
+> and see if you see directories corresponding to PWL choices (I
+> have about 24 of them).  In each of those directories you 
+> should see pairs of files named .tar and .list
+> If you don't, that's the first step.
+
+Thanks Barry,
+
+Well, all the .tar and .list files are there. I agree that the fact that
+the file system wont extract is the problem, but can't understand why.
+I'm thinking more and more that it is my host development system setup.
+I am using Red Hat 9.0, and possibly the reason it will not extract is
+due to factors such as incorrect permissions etc. I am currently logging
+on as a user, then 'su root' and unpacking in my '/home/user/' directory
+before running ./pwlconfig . 
+
+The bootx project has been tested out and works fine on other systems
+(Ken, the gentleman who sent me the file bootx.tgz extracted and put to
+target flash card with the exact same file to check for me).
+
+/me keeps plugging away :)
+
+-- 
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+
+From peeweelinux@adis.on.ca  Fri Aug 22 16:17:45 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 22 Aug 2003 16:17:45 +0100
+Subject: [Peeweelinux] Error loading file system to target compact
+ flash card
+In-Reply-To: <1061563842.2742.11.camel@localhost.localdomain>
+References: <2.2.16.20030821170954.78773d54@zmicro.com>
+ <1061563842.2742.11.camel@localhost.localdomain>
+Message-ID: <1061565464.2742.20.camel@localhost.localdomain>
+
+Ok,
+
+All the extracted .rpm files that are created in the
+Embedded_Build/packages directory when I first run pwlconfig are 10 k
+(and empty...), and all the .list files are 0 k. Surely this must be the
+problem, the files are not being extracted correctly when pwlconfig is
+run for the first time.
+
+What could cause this problem, and how can i fix it ? (i suppose i could
+manually extract each .rpm package...)
+
+-- 
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+
+From peeweelinux@adis.on.ca  Fri Aug 22 20:51:58 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Fri, 22 Aug 2003 12:51:58 -0700 (PDT)
+Subject: [Peeweelinux] Error loading file system to target
+ compactflash card
+Message-ID: <2.2.16.20030822125202.66b71552@zmicro.com>
+
+>I am using Red Hat 9.0, and possibly the reason it will not extract is
+>due to factors such as incorrect permissions etc. 
+
+Good idea but I wouldn't expect root to have any problems with
+permissions.  You do have to run it as root.  I tried getting
+around that requirment and guess what it got me--no packages! :-)
+
+
+>All the extracted .rpm files that are created in the
+>Embedded_Build/packages directory when I first run pwlconfig are 10 k
+>(and empty...), and all the .list files are 0 k. 
+
+
+You gave me an idea, and I tried it, and it worked.  Wipe out
+the packages directory.  (Or rename it if you are shy).  Make
+sure the packages directory does not exist.  When you run
+pwlconfig, you will get the "extract packages" prompt again.
+
+Hopefully RH9 rpm isn't broken (but it's only a hope)
+
+The rpm's that are to be extracted are in 
+Embedded_Build/src/RPMS/i386
+and they should have come straight from the PeeWeeLinux install.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Mon Aug 25 17:27:10 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 25 Aug 2003 17:27:10 +0100
+Subject: [Peeweelinux] Error loading file system to target compactflash
+ card
+In-Reply-To: <2.2.16.20030822125202.66b71552@zmicro.com>
+References: <2.2.16.20030822125202.66b71552@zmicro.com>
+Message-ID: <1061828829.4949.21.camel@localhost.localdomain>
+
+> >All the extracted .rpm files that are created in the
+> >Embedded_Build/packages directory when I first run pwlconfig are 10 k
+> >(and empty...), and all the .list files are 0 k. 
+
+Thanks Barry,
+
+Well I ran the ./pwlconfig on a colleagues machine and it created the
+packages directory with correctly sized files. I copied that packages
+back to my development machine, and VOILA, now its all working :)
+
+Who knows what caused the auto-extraction to fail on my machine (maybe
+something RH9 related?), but at least I am over this stumbling block.
+
+The compact flash I have is now bootable on my target hardware despite
+one small error message I did get during extracting the files described
+as follows...
+
+*************
+
+ncurses.tar            bootx/ncurses.list                              
+tar: usr/bin/clear: Could not create file: File exists
+
+*************
+
+QUOTE : Ncurses (new curses) ... It is a library of functions that
+manage an application's display on character-cell terminals.
+
+My system boots fine as mentioned before, but I am having a little
+problem getting into X windows (is it related to the ncurses problem?)
+
+It tries and fails to get into X windows 'Cannot Open Mouse (no such
+device)' despite XF86Config showing protocol ps/2 and /dev/psaux. There
+are no interrupt conflicts and mouse is detected fine in the bios so it
+has me a little stuck. Any ideas ?
+
+Getting there, deadline is approaching *gulp*!
+-- 
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+
+From peeweelinux@adis.on.ca  Mon Aug 25 18:01:51 2003
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Mon, 25 Aug 2003 13:01:51 -0400
+Subject: [Peeweelinux] Error loading file system to target
+ compactflashcard
+Message-ID: <sf4a092f.029@qatech.com>
+
+HEllo,
+
+Edit the XF86Config file in the project directory. ITs under the "custom" directory in your project. 
+
+Edit etc/X11/XF86Config  for your particular mouse options. By default, the mouse is set up for PS/2 protocol on the /dev/psaux  device. Make sure these things are OK. 
+
+Try doing the following at your prompt:
+
+dmesg | grep Detected
+
+You should see a line saying "Detected PS/2 Mouse" or similar. 
+
+Do a "Alt-F2" or "CTRL-ALT-F2" to get to a terminal if you are stuck in some error state when X fails.
+
+~Ken
+
+> -----Original Message-----
+> From: Ashley Rolleston <ashley@smartsw.co.uk> 
+> Sent: Monday, August 25, 2003 12:27 PM
+> To: ashley@smartsw.co.uk; peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] Error loading file system to target
+> compactflashcard
+> 
+> 
+> > >All the extracted .rpm files that are created in the
+> > >Embedded_Build/packages directory when I first run 
+> pwlconfig are 10 k
+> > >(and empty...), and all the .list files are 0 k. 
+> 
+> Thanks Barry,
+> 
+> Well I ran the ./pwlconfig on a colleagues machine and it created the
+> packages directory with correctly sized files. I copied that packages
+> back to my development machine, and VOILA, now its all working :)
+> 
+> Who knows what caused the auto-extraction to fail on my machine (maybe
+> something RH9 related?), but at least I am over this stumbling block.
+> 
+> The compact flash I have is now bootable on my target hardware despite
+> one small error message I did get during extracting the files 
+> described
+> as follows...
+> 
+> *************
+> 
+> ncurses.tar            bootx/ncurses.list                     
+>          
+> tar: usr/bin/clear: Could not create file: File exists
+> 
+> *************
+> 
+> QUOTE : Ncurses (new curses) ... It is a library of functions that
+> manage an application's display on character-cell terminals.
+> 
+> My system boots fine as mentioned before, but I am having a little
+> problem getting into X windows (is it related to the ncurses problem?)
+> 
+> It tries and fails to get into X windows 'Cannot Open Mouse (no such
+> device)' despite XF86Config showing protocol ps/2 and 
+> /dev/psaux. There
+> are no interrupt conflicts and mouse is detected fine in the 
+> bios so it
+> has me a little stuck. Any ideas ?
+> 
+> Getting there, deadline is approaching *gulp*!
+> -- 
+> Ashley Rolleston
+> aka Onyx^
+> ashley@smartsw.co.uk
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Aug 25 18:48:54 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 25 Aug 2003 18:48:54 +0100
+Subject: [Peeweelinux] Error loading file system to target
+ compactflashcard
+In-Reply-To: <sf4a092f.029@qatech.com>
+References: <sf4a092f.029@qatech.com>
+Message-ID: <1061833733.4949.29.camel@localhost.localdomain>
+
+> Edit the XF86Config file in the project directory. ITs under the "custom" directory in your project. 
+> 
+> Edit etc/X11/XF86Config  for your particular mouse options. By default, the mouse is set up for PS/2 protocol on the /dev/psaux  device. Make sure these things are OK. 
+> 
+
+Yep checked these, all is OK.
+
+> Try doing the following at your prompt:
+> 
+> dmesg | grep Detected
+> 
+> You should see a line saying "Detected PS/2 Mouse" or similar. 
+> 
+
+When I execute this command it shows nothing, just returns me to the
+command prompt again. 
+
+On looking in /proc/interrupts there is no entry on IRQ 12, where the
+mouse should be assigned. This is despite the fact that the BIOS detects
+the mouse on boot-up and initialises. IRQ 12 is not reserved in the
+BIOS.
+
+-- 
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+
+From peeweelinux@adis.on.ca  Mon Aug 25 18:49:52 2003
+From: peeweelinux@adis.on.ca (Stephen Lee)
+Date: 25 Aug 2003 10:49:52 -0700
+Subject: [Peeweelinux] Adi's Electronics
+Message-ID: <1061833792.20347.101.camel@ralph.plexio.private>
+
+Hi,
+
+Does Adi's Electronics still exist? I have submitted questions on
+products using their web form but haven't gotten any response. One of my
+questions was how or where do you mount a "3.5" Adapter cfdisk.1c"
+module inside a case? I've long forgotten my other question. My goal is
+to build some thin client boxes using the mini ITX platform.
+
+Thanks,
+Stephen
+
+
+From peeweelinux@adis.on.ca  Mon Aug 25 19:19:43 2003
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Mon, 25 Aug 2003 14:19:43 -0400
+Subject: [Peeweelinux] Error loading file system to
+ targetcompactflashcard
+Message-ID: <sf4a1b77.050@qatech.com>
+
+Sounds like an issue with the 2.2 kernel and your hardware. IF nothing else, see if you can plug in a serial mouse and try that route to get you going until you can debug why the kernel is not cooperating with your PS/2 port.
+
+~Ken 
+
+> -----Original Message-----
+> From: Ashley Rolleston <ashley@smartsw.co.uk> 
+> Sent: Monday, August 25, 2003 1:48 PM
+> To: ashley@smartsw.co.uk; peeweelinux@adis.on.ca
+> Subject: RE: [Peeweelinux] Error loading file system to
+> targetcompactflashcard
+> 
+> 
+> > Edit the XF86Config file in the project directory. ITs 
+> under the "custom"
+> directory in your project. 
+> > 
+> > Edit etc/X11/XF86Config  for your particular mouse options. 
+> By default, the
+> mouse is set up for PS/2 protocol on the /dev/psaux  device. 
+> Make sure these
+> things are OK. 
+> > 
+> 
+> Yep checked these, all is OK.
+> 
+> > Try doing the following at your prompt:
+> > 
+> > dmesg | grep Detected
+> > 
+> > You should see a line saying "Detected PS/2 Mouse" or similar. 
+> > 
+> 
+> When I execute this command it shows nothing, just returns me to the
+> command prompt again. 
+> 
+> On looking in /proc/interrupts there is no entry on IRQ 12, where the
+> mouse should be assigned. This is despite the fact that the 
+> BIOS detects
+> the mouse on boot-up and initialises. IRQ 12 is not reserved in the
+> BIOS.
+> 
+> -- 
+> Ashley Rolleston
+> aka Onyx^
+> ashley@smartsw.co.uk
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Tue Aug 26 11:19:49 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 26 Aug 2003 11:19:49 +0100
+Subject: [Peeweelinux] Error loading file system to
+ targetcompactflashcard
+In-Reply-To: <sf4a1b77.050@qatech.com>
+References: <sf4a1b77.050@qatech.com>
+Message-ID: <1061893188.2950.5.camel@localhost.localdomain>
+
+On Mon, 2003-08-25 at 19:19, Ken Emmons, Jr. wrote:
+> Sounds like an issue with the 2.2 kernel and your hardware. IF nothing else, see if you can plug in a serial mouse and try that route to get you going until you can debug why the kernel is not cooperating with your PS/2 port.
+> 
+> ~Ken 
+
+I agree with your conclusion about kernel/hardware incompatibility. I
+don't have the time to upgrade the kernel, so I am just going to press
+ahead using a serial mouse as suggested. Fingers crossed I will not run
+into a third hardware issue argh! :)
+-- 
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+
+From peeweelinux@adis.on.ca  Wed Aug 27 09:26:20 2003
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 27 Aug 2003 09:26:20 +0100
+Subject: [Peeweelinux] Error loading file system totargetcompactflashcard
+In-Reply-To: <1061893188.2950.5.camel@localhost.localdomain>
+Message-ID: <PPEJJDOIBFJHGGGEELNNMEJAFMAA.Ricardo.Trindade@myrealbox.com>
+
+just for the record I am able to use a ps/2 mouse with peewee.
+
+-----Mensagem original-----
+De: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]Em
+nome de Ashley Rolleston
+Enviada: terça-feira, 26 de Agosto de 2003 11:20
+Para: Peewee Linux
+Assunto: RE: [Peeweelinux] Error loading file system
+totargetcompactflashcard
+
+
+On Mon, 2003-08-25 at 19:19, Ken Emmons, Jr. wrote:
+> Sounds like an issue with the 2.2 kernel and your hardware. IF nothing
+else, see if you can plug in a serial mouse and try that route to get you
+going until you can debug why the kernel is not cooperating with your PS/2
+port.
+>
+> ~Ken
+
+I agree with your conclusion about kernel/hardware incompatibility. I
+don't have the time to upgrade the kernel, so I am just going to press
+ahead using a serial mouse as suggested. Fingers crossed I will not run
+into a third hardware issue argh! :)
+--
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Aug 27 11:56:21 2003
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 27 Aug 2003 11:56:21 +0100
+Subject: [Peeweelinux] Adi's Electronics
+In-Reply-To: <1061833792.20347.101.camel@ralph.plexio.private>
+Message-ID: <PPEJJDOIBFJHGGGEELNNGEJBFMAA.Ricardo.Trindade@myrealbox.com>
+
+Hi,
+
+	This is just from looking at the site, could be wrong.
+
+	Looks like the one you're after doesn't have any way to plug into a
+standard board.
+
+	Howerver, the Plugin CompactFlash to IDE Adapter apparently attaches to the
+IDE connector.
+
+	You better check these with adi, though.
+
+	If don't have the pc yet, why not buy one small form factor, they usually
+include the cf reader. Try www.advantech.com for starters.
+
+
+
+-----Mensagem original-----
+De: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]Em
+nome de Stephen Lee
+Enviada: segunda-feira, 25 de Agosto de 2003 18:50
+Para: peewee
+Assunto: [Peeweelinux] Adi's Electronics
+
+
+Hi,
+
+Does Adi's Electronics still exist? I have submitted questions on
+products using their web form but haven't gotten any response. One of my
+questions was how or where do you mount a "3.5" Adapter cfdisk.1c"
+module inside a case? I've long forgotten my other question. My goal is
+to build some thin client boxes using the mini ITX platform.
+
+Thanks,
+Stephen
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+

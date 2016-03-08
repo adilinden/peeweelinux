@@ -1,0 +1,2934 @@
+From peeweelinux@adis.on.ca  Tue Jul  1 13:15:26 2003
+From: peeweelinux@adis.on.ca (Scott MacKay)
+Date: Tue, 1 Jul 2003 05:15:26 -0700 (PDT)
+Subject: [Peeweelinux] RH8 Packages
+In-Reply-To: <1179FFD5B43CD4118D220050042A5414663015@www.krypton.be>
+Message-ID: <20030701121526.37881.qmail@web13901.mail.yahoo.com>
+
+Hiyas,
+    I am upgrading my peewee distro to use the
+packages from the RH8 CDs, including the kernel dist
+from that.
+Since I have the original tar, I blew away the
+provided RPMs and resultant tar/list files, then
+copied the RH8 RPMs into the RPM directory.  Using the
+pwlconfig, I told it to regenerate the packages, but
+for some reason every tar file is 10240 bytes, all the
+same, and the list files are empty (tho it was able to
+extract the category from the package to make the
+directory tree under packages).  Any ideas on why it
+is not extracting the package contents?
+
+-Scott
+
+__________________________________
+Do you Yahoo!?
+SBC Yahoo! DSL - Now only $29.95 per month!
+http://sbc.yahoo.com
+
+From peeweelinux@adis.on.ca  Tue Jul  1 23:48:16 2003
+From: peeweelinux@adis.on.ca (Didier Solheid)
+Date: Wed, 2 Jul 2003 00:48:16 +0200
+Subject: [Peeweelinux] About inittab .. failed
+Message-ID: <CBENLFGIJHILPELNGJKAOEJMCAAA.didier.solheid@skynet.be>
+
+Hi all,
+
+I'm just discovering PeeWeeLinux ... and first of all, thanks for this great
+Job.
+The reason of this post, is a problem encountered during the 'Load File
+System onto Target ....' operation.
+
+Infos on my project :
+
+Target: /dev/hdc (a 64Mb CF on a IDE adapter)
+Packages: want XWindow running ...
+
+Report:
+
+.... all ok ....
+Creating fstab and rc.init .... ok
+Editing inittab .... failed
+Building ld.so.cache .... ldconfig: Can't stat /lib: No such file or
+directory
+ldconfig: Can't stat /usr/lib: No such file or directory
+ldconfig: Can't open configuration file /etc/ld.so.conf: No such file or
+directory
+....
+...
+...
+
+
+1) Is anyone know how to solve this problem?
+
+2) Is a normal situation that the <projet_dir>/mnt is always empty after a
+'Load file onto Target...' ?
+
+3) What are the packages mandatory to build a minimum image?
+   (no one are checked by default) ...
+
+4) Is someone writting a 'real' and 'complete' documentation web-site? or
+pdf .. ?
+
+
+In advance, thanks a lot
+
+Have a nice day,
+
+Didier
+
+didier.solheid@skynet.be
+
+
+From peeweelinux@adis.on.ca  Wed Jul  2 00:12:26 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Tue, 01 Jul 2003 20:12:26 -0300
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <CBENLFGIJHILPELNGJKAOEJMCAAA.didier.solheid@skynet.be>
+References: <CBENLFGIJHILPELNGJKAOEJMCAAA.didier.solheid@skynet.be>
+Message-ID: <3F02155A.4060809@tutopia.com.br>
+
+Didier Solheid wrote:
+> Hi all,
+> 
+> I'm just discovering PeeWeeLinux ... and first of all, thanks for this great
+> Job.
+> The reason of this post, is a problem encountered during the 'Load File
+> System onto Target ....' operation.
+> 
+> Infos on my project :
+> 
+> Target: /dev/hdc (a 64Mb CF on a IDE adapter)
+> Packages: want XWindow running ...
+> 
+> Report:
+> 
+> .... all ok ....
+> Creating fstab and rc.init .... ok
+> Editing inittab .... failed
+> Building ld.so.cache .... ldconfig: Can't stat /lib: No such file or
+> directory
+> ldconfig: Can't stat /usr/lib: No such file or directory
+> ldconfig: Can't open configuration file /etc/ld.so.conf: No such file or
+> directory
+> ....
+> ...
+> ...
+
+Look like you didn't extracted the files before load to the target.
+
+[]s
+
+Adilson.
+
+
+From peeweelinux@adis.on.ca  Wed Jul  2 09:08:57 2003
+From: peeweelinux@adis.on.ca (Didier Solheid)
+Date: Wed, 2 Jul 2003 10:08:57 +0200
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <3F02155A.4060809@tutopia.com.br>
+Message-ID: <CBENLFGIJHILPELNGJKAOEJNCAAA.didier.solheid@skynet.be>
+
+Hi Adilson,
+
+When I run the pwlConfig (PeeWee ver: 0.61.1)
+
+Here is what I do (in order) to try to have the image:
+
+I didn't' touch at all on the 'Create Custom Kernel Package', I don't really
+see the utility right now?
+
+1) "Configure the Project File System"
+	... selection of packages ...
+	Comment : the 'Search available packages' doesn't work at all ...
+
+then
+2) "Extract File System for project: test_2"
+	... Selection of the path : ./projects/test/mnt (by default)
+then a window 'Extracted file system' is displayed.
+Where different tar files are on the left, and .list file are on the right.
+But strangely, if i have a look in the ./projects/test_2/mnt, nothing is
+generated :/
+
+then
+3) I configure the Target Hardware ...
+
+4) Load file system onto Target .... etc ..
+
+
+Apparently, the problem comes from the point [2] ..
+
+Any suggestion about a path problem?
+
+What you mean with 'you didn't extracted the files ....' ?.
+
+Thanks,
+
+Didier
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Adilson Oliveira
+Sent: mercredi 2 juillet 2003 1:12
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] About inittab .. failed
+
+
+Didier Solheid wrote:
+> Hi all,
+>
+> I'm just discovering PeeWeeLinux ... and first of all, thanks for this
+great
+> Job.
+> The reason of this post, is a problem encountered during the 'Load File
+> System onto Target ....' operation.
+>
+> Infos on my project :
+>
+> Target: /dev/hdc (a 64Mb CF on a IDE adapter)
+> Packages: want XWindow running ...
+>
+> Report:
+>
+> .... all ok ....
+> Creating fstab and rc.init .... ok
+> Editing inittab .... failed
+> Building ld.so.cache .... ldconfig: Can't stat /lib: No such file or
+> directory
+> ldconfig: Can't stat /usr/lib: No such file or directory
+> ldconfig: Can't open configuration file /etc/ld.so.conf: No such file or
+> directory
+> ....
+> ...
+> ...
+
+Look like you didn't extracted the files before load to the target.
+
+[]s
+
+Adilson.
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Jul  2 12:24:48 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Wed, 02 Jul 2003 08:24:48 -0300
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <CBENLFGIJHILPELNGJKAOEJNCAAA.didier.solheid@skynet.be>
+References: <CBENLFGIJHILPELNGJKAOEJNCAAA.didier.solheid@skynet.be>
+Message-ID: <3F02C100.7080108@tutopia.com.br>
+
+Didier Solheid wrote:
+> Hi Adilson,
+> 
+> ... snip ...
+> 
+> Apparently, the problem comes from the point [2] ..
+> 
+> Any suggestion about a path problem?
+> 
+> What you mean with 'you didn't extracted the files ....' ?.
+
+Hello.
+
+I was talking about the step 2 you already made.
+
+Taht's strange as should work. Look at the name of the directories, 
+maybe something was mispelled.
+
+[]s
+
+Adilson.
+
+
+From peeweelinux@adis.on.ca  Wed Jul  2 12:51:45 2003
+From: peeweelinux@adis.on.ca (Scott MacKay)
+Date: Wed, 2 Jul 2003 04:51:45 -0700 (PDT)
+Subject: [Peeweelinux] Re: RH8, plus no lilo.conf?
+In-Reply-To: <3F02C100.7080108@tutopia.com.br>
+Message-ID: <20030702115145.1424.qmail@web13905.mail.yahoo.com>
+
+Hiyas,
+    Well, after upgrading all the packages to ones
+from the RH8 CD, I believe my problem with loading
+them was that the distributed rpm does not work with
+em.  Changing it to use the /bin/rpm extracted all the
+package info properly.
+
+On a different note, I am building the 'ro + multiple
+ramdisk' option and seem to have a problem.  It all
+pulls the ramdisks and the filesystem properly (onto a
+IDEish flash card), but dies during boot.  It says I
+need to specify an 'init='.  I mounted up the
+ramdisk.etc from boot and noticed there was no
+lilo.conf in that ramdisk.  Should there be a
+lilo.conf there auto-generated?  I tried adding one to
+my base 'mnt/' image and it showed up in the ramdisk
+after rebuilding, but it still would not boot.  Seems
+to uncompress and mount the filesystems OK, though. 
+Any thoughts?
+
+-Scott
+
+__________________________________
+Do you Yahoo!?
+SBC Yahoo! DSL - Now only $29.95 per month!
+http://sbc.yahoo.com
+
+From peeweelinux@adis.on.ca  Wed Jul  2 13:06:05 2003
+From: peeweelinux@adis.on.ca (Didier Solheid)
+Date: Wed, 2 Jul 2003 14:06:05 +0200
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <3F02C100.7080108@tutopia.com.br>
+Message-ID: <CBENLFGIJHILPELNGJKAOEJOCAAA.didier.solheid@skynet.be>
+
+Hi Adilson,
+
+During the 'Extracted file system' phase ...
+The 'PeeWee Configurator' display differents .tar and .list files name ...
+
+All these .list files are copied to the project dir (in my case named
+'test_3').
+
+If I show the content of one of these file (ie: test_3/vim.list), the file
+is empty :/ and all the others too..
+only the custom.list content more/less 500 lines of paths ...
+
+I have to do something special after the installation? Settings a path or
+installing something else ?
+
+The only step I made after installation was 'Extract All Binary RPM files'
+in the 'Manage Package Files Menu' (I'm using the Bin distrib).
+
+Something strange too, is the fact that no files are displayed when I press
+ENTER to show the files contented into a Package in the 'Configure Project
+File System Menu' ?
+In the 'Embedded_Linux/packages' dir, ... all the .list files are empty ...
+
+So, I already reinstalled 4 times .. the bin or src distrib ...
+
+Impossible to have the small PeeWee running :]
+
+Have a nice day,
+
+Here 15?Celcius, and rain
+
+Didier
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Adilson Oliveira
+Sent: mercredi 2 juillet 2003 13:25
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] About inittab .. failed
+
+
+Didier Solheid wrote:
+> Hi Adilson,
+>
+> ... snip ...
+>
+> Apparently, the problem comes from the point [2] ..
+>
+> Any suggestion about a path problem?
+>
+> What you mean with 'you didn't extracted the files ....' ?.
+
+Hello.
+
+I was talking about the step 2 you already made.
+
+Taht's strange as should work. Look at the name of the directories,
+maybe something was mispelled.
+
+[]s
+
+Adilson.
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Jul  2 13:21:54 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Wed, 02 Jul 2003 09:21:54 -0300
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <CBENLFGIJHILPELNGJKAOEJOCAAA.didier.solheid@skynet.be>
+References: <CBENLFGIJHILPELNGJKAOEJOCAAA.didier.solheid@skynet.be>
+Message-ID: <3F02CE62.4060202@tutopia.com.br>
+
+Didier Solheid wrote:
+> Hi Adilson,
+> 
+> During the 'Extracted file system' phase ...
+> The 'PeeWee Configurator' display differents .tar and .list files name ...
+
+Looks good.
+
+> All these .list files are copied to the project dir (in my case named
+> 'test_3').
+
+> The only step I made after installation was 'Extract All Binary RPM files'
+> in the 'Manage Package Files Menu' (I'm using the Bin distrib).
+
+Ooops. This step should be done *before* anything. It will extract the 
+rpm to an equivalent .tar that will be used to create the image
+
+
+> So, I already reinstalled 4 times .. the bin or src distrib ...
+
+Really no need for it.
+
+> Impossible to have the small PeeWee running :]
+
+If it was, I wasn't doing my work with it ;)
+
+Try this way (I don't have peewee with me right now so I'll try to do by 
+heart)
+
+Install.
+Use the Extract All Binary RPM files
+Load one sample project
+Extract the files for the project
+Load into the target.
+
+If you need a more direct help, I'm looking for a job in the EU ;)
+
+> Have a nice day,
+> 
+> Here 15?Celcius, and rain
+
+Here 18 (it's winter but it's Brazil ;) and sun
+
+[]s
+
+Adilson.
+
+
+From peeweelinux@adis.on.ca  Wed Jul  2 13:54:32 2003
+From: peeweelinux@adis.on.ca (Didier Solheid)
+Date: Wed, 2 Jul 2003 14:54:32 +0200
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <3F02CE62.4060202@tutopia.com.br>
+Message-ID: <CBENLFGIJHILPELNGJKAMEJPCAAA.didier.solheid@skynet.be>
+
+1) Installation of the BIN distrib
+	in /root ... a dir Embedded_Build is created.
+
+2) ./pwlconfig launched
+
+3) Manage Package Files Menu -->> Extract All Binary RPM files
+   (i let the Location path by default, that point to
+/root/Embedded_Build/src/RPMS/i386
+	This process display :
+		Reloading all packages from Binary RPMS ...
+		Extracting /root/Embedded_Build/src/RPMS/i386/.......
+so, seems correct ...
+
+4) creation of a new project, i selected the 'minimal' sample that is
+located in ./examples/minimal.tgz
+
+5) then i select the 'Extract File System for Project' item
+default path  ./projects/minimal/mnt (i didn't change)
+
+And here, in the result, a problem =>
+
+ee.tar	minimal/ee.list
+tar: usr/bin/ee: Not found in archive
+tar: Error exot delayed from previous errors
+kernel-basic-2.2.17.tar		minimal/kernel-basic-2.2.17.list
+tar: boot/bzImage: Not found in archive
+tar: dev/fla: Not found in archive
+...
+...
+...
+
+
+for instance, the minimal/ee.list content :
+usr
+usr/bin
+usr/bin/ee
+
+
+
+
+I'm jobless ..., so I can not help u in our job query :)
+But, a lot of website exist here ... like www.references.be or
+http://www.jobscareer.be/
+
+
+Anyway, Thanks for your help
+
+Didier
+
+ps: here it's summer ... ;)
+
+
+
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Adilson Oliveira
+Sent: mercredi 2 juillet 2003 14:22
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] About inittab .. failed
+
+
+Didier Solheid wrote:
+> Hi Adilson,
+>
+> During the 'Extracted file system' phase ...
+> The 'PeeWee Configurator' display differents .tar and .list files name ...
+
+Looks good.
+
+> All these .list files are copied to the project dir (in my case named
+> 'test_3').
+
+> The only step I made after installation was 'Extract All Binary RPM files'
+> in the 'Manage Package Files Menu' (I'm using the Bin distrib).
+
+Ooops. This step should be done *before* anything. It will extract the
+rpm to an equivalent .tar that will be used to create the image
+
+
+> So, I already reinstalled 4 times .. the bin or src distrib ...
+
+Really no need for it.
+
+> Impossible to have the small PeeWee running :]
+
+If it was, I wasn't doing my work with it ;)
+
+Try this way (I don't have peewee with me right now so I'll try to do by
+heart)
+
+Install.
+Use the Extract All Binary RPM files
+Load one sample project
+Extract the files for the project
+Load into the target.
+
+If you need a more direct help, I'm looking for a job in the EU ;)
+
+> Have a nice day,
+>
+> Here 15?Celcius, and rain
+
+Here 18 (it's winter but it's Brazil ;) and sun
+
+[]s
+
+Adilson.
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Jul  2 14:21:17 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Wed, 02 Jul 2003 10:21:17 -0300
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <CBENLFGIJHILPELNGJKAMEJPCAAA.didier.solheid@skynet.be>
+References: <CBENLFGIJHILPELNGJKAMEJPCAAA.didier.solheid@skynet.be>
+Message-ID: <3F02DC4D.5060306@tutopia.com.br>
+
+Didier Solheid wrote:
+
+> And here, in the result, a problem =>
+> 
+> ee.tar	minimal/ee.list
+> tar: usr/bin/ee: Not found in archive
+> tar: Error exot delayed from previous errors
+> kernel-basic-2.2.17.tar		minimal/kernel-basic-2.2.17.list
+> tar: boot/bzImage: Not found in archive
+> tar: dev/fla: Not found in archive
+
+That's strange... maybe someelse can help you further because it should 
+work.
+
+> I'm jobless ..., so I can not help u in our job query :)
+> But, a lot of website exist here ... like www.references.be or
+> http://www.jobscareer.be/
+
+Despite *I am* looking for a job overseas, Belgium was not in my plans 
+as I don't speak any of the official languages but thank you anywany ;)
+
+> ps: here it's summer ... ;)
+
+Yes, I know. ;)
+
+
+From peeweelinux@adis.on.ca  Wed Jul  2 18:52:00 2003
+From: peeweelinux@adis.on.ca (Daniel Purcell)
+Date: Wed, 2 Jul 2003 11:52:00 -0600
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <3F02DC4D.5060306@tutopia.com.br>
+References: <CBENLFGIJHILPELNGJKAMEJPCAAA.didier.solheid@skynet.be> <3F02DC4D.5060306@tutopia.com.br>
+Message-ID: <200307021152.00148.dan@stoneflytech.com>
+
+Are permissions set right?
+
+On Wednesday 02 July 2003 7:21 am, Adilson Oliveira wrote:
+> Didier Solheid wrote:
+> > And here, in the result, a problem =>
+> >
+> > ee.tar	minimal/ee.list
+> > tar: usr/bin/ee: Not found in archive
+> > tar: Error exot delayed from previous errors
+> > kernel-basic-2.2.17.tar		minimal/kernel-basic-2.2.17.list
+> > tar: boot/bzImage: Not found in archive
+> > tar: dev/fla: Not found in archive
+>
+> That's strange... maybe someelse can help you further because it should
+> work.
+>
+> > I'm jobless ..., so I can not help u in our job query :)
+> > But, a lot of website exist here ... like www.references.be or
+> > http://www.jobscareer.be/
+>
+> Despite *I am* looking for a job overseas, Belgium was not in my plans
+> as I don't speak any of the official languages but thank you anywany ;)
+>
+> > ps: here it's summer ... ;)
+>
+> Yes, I know. ;)
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Jul  2 19:10:21 2003
+From: peeweelinux@adis.on.ca (Didier Solheid)
+Date: Wed, 2 Jul 2003 20:10:21 +0200
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <200307021152.00148.dan@stoneflytech.com>
+Message-ID: <CBENLFGIJHILPELNGJKAOEKACAAA.didier.solheid@skynet.be>
+
+Hello,
+
+Yep, all rights are ok ..
+
+An other thing, is the fact that all .tar files in Embedded_Build/packages/
+have a size of 10240 bytes ... all .list are empty file.
+
+This is a normal situation ?
+
+Didier
+
+
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Daniel Purcell
+Sent: mercredi 2 juillet 2003 19:52
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] About inittab .. failed
+
+
+Are permissions set right?
+
+On Wednesday 02 July 2003 7:21 am, Adilson Oliveira wrote:
+> Didier Solheid wrote:
+> > And here, in the result, a problem =>
+> >
+> > ee.tar	minimal/ee.list
+> > tar: usr/bin/ee: Not found in archive
+> > tar: Error exot delayed from previous errors
+> > kernel-basic-2.2.17.tar		minimal/kernel-basic-2.2.17.list
+> > tar: boot/bzImage: Not found in archive
+> > tar: dev/fla: Not found in archive
+>
+> That's strange... maybe someelse can help you further because it should
+> work.
+>
+> > I'm jobless ..., so I can not help u in our job query :)
+> > But, a lot of website exist here ... like www.references.be or
+> > http://www.jobscareer.be/
+>
+> Despite *I am* looking for a job overseas, Belgium was not in my plans
+> as I don't speak any of the official languages but thank you anywany ;)
+>
+> > ps: here it's summer ... ;)
+>
+> Yes, I know. ;)
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Jul  2 19:54:17 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Wed, 02 Jul 2003 15:54:17 -0300
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <CBENLFGIJHILPELNGJKAOEKACAAA.didier.solheid@skynet.be>
+References: <CBENLFGIJHILPELNGJKAOEKACAAA.didier.solheid@skynet.be>
+Message-ID: <3F032A59.60802@tutopia.com.br>
+
+Didier Solheid wrote:
+> Hello,
+> 
+> Yep, all rights are ok ..
+> 
+> An other thing, is the fact that all .tar files in Embedded_Build/packages/
+> have a size of 10240 bytes ... all .list are empty file.
+> 
+> This is a normal situation ?
+> 
+
+No it is not.
+
+What distro are you using? Maybe your distro can't open the rpms..
+
+[]s
+
+Adilson.
+
+
+
+From peeweelinux@adis.on.ca  Wed Jul  2 20:02:17 2003
+From: peeweelinux@adis.on.ca (Scott MacKay)
+Date: Wed, 2 Jul 2003 12:02:17 -0700 (PDT)
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <CBENLFGIJHILPELNGJKAOEKACAAA.didier.solheid@skynet.be>
+Message-ID: <20030702190217.45628.qmail@web13906.mail.yahoo.com>
+
+The distributed 'rpm' program does not work on newer
+packages.  You need to edit the scripts/pwl_functions
+(i think that is the one) to change it to something
+like /bin/rpm instead.  I had the same problem with RH
+8 CD packages and it was happy after I used the native
+rpm instead of the one distributed
+
+
+--- Didier Solheid <didier.solheid@skynet.be> wrote:
+> Hello,
+> 
+> Yep, all rights are ok ..
+> 
+> An other thing, is the fact that all .tar files in
+> Embedded_Build/packages/
+> have a size of 10240 bytes ... all .list are empty
+> file.
+> 
+> This is a normal situation ?
+> 
+> Didier
+> 
+> 
+> 
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of
+> Daniel Purcell
+> Sent: mercredi 2 juillet 2003 19:52
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] About inittab .. failed
+> 
+> 
+> Are permissions set right?
+> 
+> On Wednesday 02 July 2003 7:21 am, Adilson Oliveira
+> wrote:
+> > Didier Solheid wrote:
+> > > And here, in the result, a problem =>
+> > >
+> > > ee.tar	minimal/ee.list
+> > > tar: usr/bin/ee: Not found in archive
+> > > tar: Error exot delayed from previous errors
+> > > kernel-basic-2.2.17.tar	
+> minimal/kernel-basic-2.2.17.list
+> > > tar: boot/bzImage: Not found in archive
+> > > tar: dev/fla: Not found in archive
+> >
+> > That's strange... maybe someelse can help you
+> further because it should
+> > work.
+> >
+> > > I'm jobless ..., so I can not help u in our job
+> query :)
+> > > But, a lot of website exist here ... like
+> www.references.be or
+> > > http://www.jobscareer.be/
+> >
+> > Despite *I am* looking for a job overseas, Belgium
+> was not in my plans
+> > as I don't speak any of the official languages but
+> thank you anywany ;)
+> >
+> > > ps: here it's summer ... ;)
+> >
+> > Yes, I know. ;)
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________
+Do you Yahoo!?
+SBC Yahoo! DSL - Now only $29.95 per month!
+http://sbc.yahoo.com
+
+From peeweelinux@adis.on.ca  Wed Jul  2 22:23:04 2003
+From: peeweelinux@adis.on.ca (Didier Solheid)
+Date: Wed, 2 Jul 2003 23:23:04 +0200
+Subject: [Peeweelinux] About inittab .. failed
+In-Reply-To: <20030702190217.45628.qmail@web13906.mail.yahoo.com>
+Message-ID: <CBENLFGIJHILPELNGJKAIEKBCAAA.didier.solheid@skynet.be>
+
+Great <:))
+
+It works ... :)
+
+The problem was the 'rpm' tool distributed with the PeeWee ..
+
+I changed to the /bin/rpm of my RedHat 9 ..
+and now, the packages tree is complet (all the files are there)
+
+So, thanks a lot to all of you for your help
+
+Kind Regards,
+
+Didier
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Scott MacKay
+Sent: mercredi 2 juillet 2003 21:02
+To: peeweelinux@adis.on.ca
+Subject: RE: [Peeweelinux] About inittab .. failed
+
+
+The distributed 'rpm' program does not work on newer
+packages.  You need to edit the scripts/pwl_functions
+(i think that is the one) to change it to something
+like /bin/rpm instead.  I had the same problem with RH
+8 CD packages and it was happy after I used the native
+rpm instead of the one distributed
+
+
+--- Didier Solheid <didier.solheid@skynet.be> wrote:
+> Hello,
+> 
+> Yep, all rights are ok ..
+> 
+> An other thing, is the fact that all .tar files in
+> Embedded_Build/packages/
+> have a size of 10240 bytes ... all .list are empty
+> file.
+> 
+> This is a normal situation ?
+> 
+> Didier
+> 
+> 
+> 
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of
+> Daniel Purcell
+> Sent: mercredi 2 juillet 2003 19:52
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] About inittab .. failed
+> 
+> 
+> Are permissions set right?
+> 
+> On Wednesday 02 July 2003 7:21 am, Adilson Oliveira
+> wrote:
+> > Didier Solheid wrote:
+> > > And here, in the result, a problem =>
+> > >
+> > > ee.tar	minimal/ee.list
+> > > tar: usr/bin/ee: Not found in archive
+> > > tar: Error exot delayed from previous errors
+> > > kernel-basic-2.2.17.tar	
+> minimal/kernel-basic-2.2.17.list
+> > > tar: boot/bzImage: Not found in archive
+> > > tar: dev/fla: Not found in archive
+> >
+> > That's strange... maybe someelse can help you
+> further because it should
+> > work.
+> >
+> > > I'm jobless ..., so I can not help u in our job
+> query :)
+> > > But, a lot of website exist here ... like
+> www.references.be or
+> > > http://www.jobscareer.be/
+> >
+> > Despite *I am* looking for a job overseas, Belgium
+> was not in my plans
+> > as I don't speak any of the official languages but
+> thank you anywany ;)
+> >
+> > > ps: here it's summer ... ;)
+> >
+> > Yes, I know. ;)
+> >
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________
+Do you Yahoo!?
+SBC Yahoo! DSL - Now only $29.95 per month!
+http://sbc.yahoo.com
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Jul  3 20:00:27 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Thu, 3 Jul 2003 14:00:27 -0500
+Subject: [Peeweelinux] (no subject)
+Message-ID: <013001c34195$6e990340$02fea8c0@jcairns>
+
+Help,
+
+I have created a 2.4.20 image and loaded it on to a compact flash card
+and my system boots up just fine. But if I make any changes to any
+scripts I have on the compact flash and reboot the changes are gone.
+What can I do to prevent that from happing. I need the ability to write
+out log files on my system and have then not lost when the system is
+rebooted.
+
+I am using peeweelinux 0.61.1.
+
+Thanks,
+
+
+Joe
+
+
+From peeweelinux@adis.on.ca  Thu Jul  3 21:06:22 2003
+From: peeweelinux@adis.on.ca (Daniel Purcell)
+Date: Thu, 03 Jul 2003 14:06:22 -0600
+Subject: [Peeweelinux] (no subject)
+In-Reply-To: <013001c34195$6e990340$02fea8c0@jcairns>
+References: <013001c34195$6e990340$02fea8c0@jcairns>
+Message-ID: <3F048CBE.1090500@stoneflytech.com>
+
+Joe,
+
+That's a great question.  Has anyone developed a script or program that 
+will save changes to the filesystem?  The LEAF/Bering distribution (and 
+the LRP Distribution) come with a utility that will do this thing.
+
+I guess for this to work, the script would have to create a loopback 
+device, compress its current ramdisk to the loopback device, and 
+compress it down and save it to the /dev/hda1 or wherever the ramdisk 
+file is located.
+
+-Daniel
+
+Joe A Cairns wrote:
+
+>Help,
+>
+>I have created a 2.4.20 image and loaded it on to a compact flash card
+>and my system boots up just fine. But if I make any changes to any
+>scripts I have on the compact flash and reboot the changes are gone.
+>What can I do to prevent that from happing. I need the ability to write
+>out log files on my system and have then not lost when the system is
+>rebooted.
+>
+>I am using peeweelinux 0.61.1.
+>
+>Thanks,
+>
+>
+>Joe
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>  
+>
+
+
+
+From peeweelinux@adis.on.ca  Thu Jul  3 21:13:12 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Thu, 03 Jul 2003 17:13:12 -0300
+Subject: [Peeweelinux] (no subject)
+In-Reply-To: <3F048CBE.1090500@stoneflytech.com>
+References: <013001c34195$6e990340$02fea8c0@jcairns> <3F048CBE.1090500@stoneflytech.com>
+Message-ID: <3F048E58.2020208@tutopia.com.br>
+
+Daniel Purcell wrote:
+> Joe,
+> 
+> That's a great question.  Has anyone developed a script or program that 
+> will save changes to the filesystem?  The LEAF/Bering distribution (and 
+> the LRP Distribution) come with a utility that will do this thing.
+> 
+> I guess for this to work, the script would have to create a loopback 
+> device, compress its current ramdisk to the loopback device, and 
+> compress it down and save it to the /dev/hda1 or wherever the ramdisk 
+> file is located.
+> 
+
+Don't you think it's better to have a separate small filesystem on the 
+device and an adicional line on the /etc/fstab so everything you write 
+on the mounted directory goes to this partition?
+
+[]s
+
+Adilson.
+
+
+From peeweelinux@adis.on.ca  Thu Jul  3 21:35:24 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Thu, 3 Jul 2003 15:35:24 -0500
+Subject: [Peeweelinux] (no subject)
+In-Reply-To: <3F048E58.2020208@tutopia.com.br>
+Message-ID: <015501c341a2$a36b9530$02fea8c0@jcairns>
+
+That is a good idea, how would I set that up?
+
+Thanks,
+
+Joe
+
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca 
+> [mailto:peeweelinux-admin@adis.on.ca] On Behalf Of Adilson Oliveira
+> Sent: Thursday, July 03, 2003 3:13 PM
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] (no subject)
+> 
+> 
+> Daniel Purcell wrote:
+> > Joe,
+> > 
+> > That's a great question.  Has anyone developed a script or program 
+> > that
+> > will save changes to the filesystem?  The LEAF/Bering 
+> distribution (and 
+> > the LRP Distribution) come with a utility that will do this thing.
+> > 
+> > I guess for this to work, the script would have to create a loopback
+> > device, compress its current ramdisk to the loopback device, and 
+> > compress it down and save it to the /dev/hda1 or wherever 
+> the ramdisk 
+> > file is located.
+> > 
+> 
+> Don't you think it's better to have a separate small 
+> filesystem on the 
+> device and an adicional line on the /etc/fstab so everything 
+> you write 
+> on the mounted directory goes to this partition?
+> 
+> []s
+> 
+> Adilson.
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Jul  3 21:43:07 2003
+From: peeweelinux@adis.on.ca (Carlos Roberto Rabelo Machado)
+Date: Thu, 3 Jul 2003 16:43:07 -0400
+Subject: [Peeweelinux] (no subject)
+Message-ID: <006d01c341a3$b5361140$25ccfcc8@carlos>
+
+
+
+From peeweelinux@adis.on.ca  Thu Jul  3 22:02:52 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Thu, 03 Jul 2003 18:02:52 -0300
+Subject: [Peeweelinux] (no subject)
+In-Reply-To: <015501c341a2$a36b9530$02fea8c0@jcairns>
+References: <015501c341a2$a36b9530$02fea8c0@jcairns>
+Message-ID: <3F0499FC.201@tutopia.com.br>
+
+Joe A Cairns wrote:
+> That is a good idea, how would I set that up?
+> 
+
+Well, never tried but I guess you can manualy create 2 partitions, them 
+create an custom fstab pointing, say /data to this second partition.
+Manualy copy the suitable files to the first and use syslinux to make 
+the partition bootable.
+
+Adilson.
+
+
+
+From peeweelinux@adis.on.ca  Fri Jul  4 12:56:51 2003
+From: peeweelinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Fri, 04 Jul 2003 12:56:51 +0100
+Subject: [Peeweelinux] (no subject)
+References: <013001c34195$6e990340$02fea8c0@jcairns> <3F048CBE.1090500@stoneflytech.com>
+Message-ID: <3F056B83.F9DEA8F5@h2eye.com>
+
+
+Hi,
+
+I might be missing something here, but if your root system is not mounted
+as read-only (not "ro" in lilo parameters, in /etc/lilo.conf)), then any modifications 
+on your flash should remain there. Mounting as "rw" should make / non-volatile.
+
+Jaime
+
+
+
+Daniel Purcell wrote:
+> 
+> Joe,
+> 
+> That's a great question.  Has anyone developed a script or program that
+> will save changes to the filesystem?  The LEAF/Bering distribution (and
+> the LRP Distribution) come with a utility that will do this thing.
+> 
+> I guess for this to work, the script would have to create a loopback
+> device, compress its current ramdisk to the loopback device, and
+> compress it down and save it to the /dev/hda1 or wherever the ramdisk
+> file is located.
+> 
+> -Daniel
+> 
+> Joe A Cairns wrote:
+> 
+> >Help,
+> >
+> >I have created a 2.4.20 image and loaded it on to a compact flash card
+> >and my system boots up just fine. But if I make any changes to any
+> >scripts I have on the compact flash and reboot the changes are gone.
+> >What can I do to prevent that from happing. I need the ability to write
+> >out log files on my system and have then not lost when the system is
+> >rebooted.
+> >
+> >I am using peeweelinux 0.61.1.
+> >
+> >Thanks,
+> >
+> >
+> >Joe
+> >
+> >_______________________________________________
+> >Peeweelinux mailing list
+> >Peeweelinux@adis.on.ca
+> >http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> >
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Dr Jaime V. Miro
+Sw and control systems analyst
+H2eye Ltd
+24-28 Hatton Wall
+London EC1N 8JH
+
+Tel:020-7404 9600
+Fax:020-7404 9490
+j.v.miro@h2eye.com
+
+
+Copyright © H2Eye International Ltd. 2000/2001. All rights reserved.
+
+From peeweelinux@adis.on.ca  Mon Jul  7 05:02:28 2003
+From: peeweelinux@adis.on.ca (Correy Edmed)
+Date: Mon, 07 Jul 2003 14:02:28 +1000
+Subject: [Peeweelinux] ftpd and telnet are slow
+References: <CBENLFGIJHILPELNGJKAOEJMCAAA.didier.solheid@skynet.be> <3F02155A.4060809@tutopia.com.br>
+Message-ID: <3F08F0D4.6080805@iinet.net.au>
+
+Hi
+
+I am using the telnet server that comes with PWL and I have installed 
+troll-ftpd-1.27. I am using a simple crossover cable between two 
+computers. When I telnet or ftp on the embedded computer everything 
+works very quickly. However when I telnet from another computer 
+everything is very slow even though I have tried passive and active modes.
+
+When I ping it I get
+PING 192.168.1.2 (192.168.1.2) from 192.168.1.1 : 56(84) bytes of data.
+64 bytes from 192.168.1.2: icmp_seq=1 ttl=255 time=0.283 ms
+64 bytes from 192.168.1.2: icmp_seq=2 ttl=255 time=0.290 ms
+
+which looks prety fast to me
+It is nearly impossible to get a 37k file and takes ages to get a file 
+that is 1k. listing the files is not to fast either.
+
+Any ideas??
+
+correy
+
+
+From peeweelinux@adis.on.ca  Mon Jul  7 12:52:11 2003
+From: peeweelinux@adis.on.ca (Scott MacKay)
+Date: Mon, 7 Jul 2003 04:52:11 -0700 (PDT)
+Subject: [Peeweelinux] stable RH 8.0 project?
+Message-ID: <20030707115211.71504.qmail@web13906.mail.yahoo.com>
+
+I was wondering, has anyone made a stable RH8.0
+project, either an updated 'minimal' or other?  I was
+looking for a good starting point and was hoping
+someone could send me a tar (except for the mnt, of
+course) of a working project...
+
+
+-Scott
+
+__________________________________
+Do you Yahoo!?
+SBC Yahoo! DSL - Now only $29.95 per month!
+http://sbc.yahoo.com
+
+From peeweelinux@adis.on.ca  Mon Jul  7 19:38:01 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 7 Jul 2003 11:38:01 -0700 (PDT)
+Subject: [Peeweelinux] Re: RH8, plus no lilo.conf?
+Message-ID: <2.2.16.20030707113735.602fa318@zmicro.com>
+
+>I mounted up the
+>ramdisk.etc from boot and noticed there was no
+>lilo.conf in that ramdisk.  Should there be a
+>lilo.conf there auto-generated?  I tried adding one to
+>my base 'mnt/' image and it showed up in the ramdisk
+>after rebuilding, but it still would not boot. 
+>Any thoughts?
+>-Scott
+
+lilo.conf is not used during boot, so anything you do to
+it will have no effect.  The file is used only when 
+installing the loader, so the "magic" happens when you 
+create the target (peewee does it all for you).  I don't 
+have any idea how to alter this (I would have to know
+how the peewee scripts work), other than changing things
+in the "configure target" step.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Mon Jul  7 20:31:31 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 7 Jul 2003 12:31:31 -0700 (PDT)
+Subject: [Peeweelinux] (no subject)
+Message-ID: <2.2.16.20030707123105.848fda0e@zmicro.com>
+
+>I might be missing something here, but if your root system is not mounted
+>as read-only (not "ro" in lilo parameters, in /etc/lilo.conf)), then any
+modifications 
+>on your flash should remain there. Mounting as "rw" should make / non-volatile.
+>
+>Jaime
+
+What you're missing is that some (or all?) of the configurations create
+a ramdisk, copy the file system to that and then run from RAM.  So 
+the changes aren't being made to the disk.  Also some of the 
+configurations create a compressed image that is uncompressed at
+boot time, so writing to the disk, even if you mount it, is not
+as simple as it looks.
+
+On my system, peewee creates two partitions and one unused one, so I
+mke2fs a file system on the unused partition and mount that after
+booting, to have something permanent to read and write.
+
+Barry
+
+
+
+
+From peeweelinux@adis.on.ca  Tue Jul  8 00:39:30 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 7 Jul 2003 16:39:30 -0700 (PDT)
+Subject: [Peeweelinux] FTP server & Web Server
+Message-ID: <2.2.16.20030707163905.1fdf3f18@zmicro.com>
+
+Daniel,
+
+That was some pretty useful information in your recent post about
+creating packages.  Due to sparse documentation--and lack of
+equivalent experience--I am trying to work out how the packages
+are built (and creative uses for rpm & tar).
+
+I am trying to follow your suggestions with rpm and I ran into 
+some difficulty.
+
+I downloaded a small package at random to try this with.
+I made a few tweaks to your sample command line:
+
+>shell $ rpm -i --root /temporary/directory/to/install --nodeps 
+>--noscripts --force --nodeps --notriggers --dbpath= ./rpm.db 
+>--ignorearch --ignoreos myftppackage-i386.rpm
+
+1. --nodeps is mentioned twice.
+2. dbpath shouldn't have an = sign after it.
+3. dbpath is a directory, not a file.
+4. from what I can tell, --dbpath is relative to --root.  In
+   fact, rpm version 3 demands both paths start with /
+
+I created a directory in my home directory called tarpit.
+I created a directory in that directory called rdata.
+I issued this command:
+
+$  rpm -i --root /home/phpmaker/tarpit/ --nodeps --noscripts --notriggers
+--force --dbpath /rdata --ignorearch --ignoreos gtactoe-0.2.1-1.i386.rpm
+
+  error: cannot open Basenames index using db3 - No such file or directory (2)
+
+I tried an init db (an effort left over from earlier difficulties)
+$ rpm -initdb --root /home/phpmaker/tarpit/ --dbpath /rdata
+
+It doesn't help.
+
+The rpm -i did create two files (Name and Packages) in the rdata
+directory so I think it is interpreting the command as I intend.
+
+I have done all my peewee work on a RH7.3 system (never had trouble
+except I had to discover kgcc when building a kernel), but
+given Scott McKay's recent problems with rpm, I booted up
+6.2 and tried this there.  (7.3 uses rpm 4; 6.2 has rpm 3.)
+On 6.2 I get similar results, but for the install I actually 
+get no error messages.  But I don't get any files extracted, either!
+
+I wonder if you could actually try the command and see what happens.
+
+At least the tar command in the second step doesn't look exotic.  And I
+may have to build the file trees by hand if I can't get this rpm
+trick to work.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Tue Jul  8 19:03:54 2003
+From: peeweelinux@adis.on.ca (Daniel Purcell)
+Date: Tue, 8 Jul 2003 12:03:54 -0600
+Subject: [Peeweelinux] FTP server & Web Server
+In-Reply-To: <2.2.16.20030707163905.1fdf3f18@zmicro.com>
+References: <2.2.16.20030707163905.1fdf3f18@zmicro.com>
+Message-ID: <200307081203.54436.dan@stoneflytech.com>
+
+Barry,
+
+Thank you for the e-mail.  I'll e-mail you later this day with the information 
+you requested.  The previous post with those commands were (unfortunately) 
+off the top of my head; I'll e-mail you the correct commands.  I did it all 
+on my RedHat 8.0 machine.  Redhat 8.0 uses RPM version 4.1.
+
+-Daniel
+
+On Monday 07 July 2003 5:39 pm, Barry Gershenfeld wrote:
+> Daniel,
+>
+> That was some pretty useful information in your recent post about
+> creating packages.  Due to sparse documentation--and lack of
+> equivalent experience--I am trying to work out how the packages
+> are built (and creative uses for rpm & tar).
+>
+> I am trying to follow your suggestions with rpm and I ran into
+> some difficulty.
+>
+> I downloaded a small package at random to try this with.
+>
+> I made a few tweaks to your sample command line:
+> >shell $ rpm -i --root /temporary/directory/to/install --nodeps
+> >--noscripts --force --nodeps --notriggers --dbpath= ./rpm.db
+> >--ignorearch --ignoreos myftppackage-i386.rpm
+>
+> 1. --nodeps is mentioned twice.
+> 2. dbpath shouldn't have an = sign after it.
+> 3. dbpath is a directory, not a file.
+> 4. from what I can tell, --dbpath is relative to --root.  In
+>    fact, rpm version 3 demands both paths start with /
+>
+> I created a directory in my home directory called tarpit.
+> I created a directory in that directory called rdata.
+> I issued this command:
+>
+> $  rpm -i --root /home/phpmaker/tarpit/ --nodeps --noscripts --notriggers
+> --force --dbpath /rdata --ignorearch --ignoreos gtactoe-0.2.1-1.i386.rpm
+>
+>   error: cannot open Basenames index using db3 - No such file or directory
+> (2)
+>
+> I tried an init db (an effort left over from earlier difficulties)
+> $ rpm -initdb --root /home/phpmaker/tarpit/ --dbpath /rdata
+>
+> It doesn't help.
+>
+> The rpm -i did create two files (Name and Packages) in the rdata
+> directory so I think it is interpreting the command as I intend.
+>
+> I have done all my peewee work on a RH7.3 system (never had trouble
+> except I had to discover kgcc when building a kernel), but
+> given Scott McKay's recent problems with rpm, I booted up
+> 6.2 and tried this there.  (7.3 uses rpm 4; 6.2 has rpm 3.)
+> On 6.2 I get similar results, but for the install I actually
+> get no error messages.  But I don't get any files extracted, either!
+>
+> I wonder if you could actually try the command and see what happens.
+>
+> At least the tar command in the second step doesn't look exotic.  And I
+> may have to build the file trees by hand if I can't get this rpm
+> trick to work.
+>
+> Barry
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Jul  8 20:46:44 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 08 Jul 2003 12:46:44 -0700
+Subject: [Peeweelinux] FTP server & Web Server
+In-Reply-To: <200307081203.54436.dan@stoneflytech.com>
+References: <2.2.16.20030707163905.1fdf3f18@zmicro.com> <200307081203.54436.dan@stoneflytech.com>
+Message-ID: <3F0B1FA4.7080201@fluid.com>
+
+A HOWTO posted on the list would be rockin, you know.... :)
+
+nudge nudge,
+-te
+
+Daniel Purcell wrote:
+> Barry,
+> 
+> Thank you for the e-mail.  I'll e-mail you later this day with the information 
+> you requested.  The previous post with those commands were (unfortunately) 
+> off the top of my head; I'll e-mail you the correct commands.  I did it all 
+> on my RedHat 8.0 machine.  Redhat 8.0 uses RPM version 4.1.
+> 
+> -Daniel
+> 
+> On Monday 07 July 2003 5:39 pm, Barry Gershenfeld wrote:
+> 
+>>Daniel,
+>>
+>>That was some pretty useful information in your recent post about
+>>creating packages.  Due to sparse documentation--and lack of
+>>equivalent experience--I am trying to work out how the packages
+>>are built (and creative uses for rpm & tar).
+>>
+>>I am trying to follow your suggestions with rpm and I ran into
+>>some difficulty.
+>>
+>>I downloaded a small package at random to try this with.
+>>
+>>I made a few tweaks to your sample command line:
+>>
+>>>shell $ rpm -i --root /temporary/directory/to/install --nodeps
+>>>--noscripts --force --nodeps --notriggers --dbpath= ./rpm.db
+>>>--ignorearch --ignoreos myftppackage-i386.rpm
+>>
+>>1. --nodeps is mentioned twice.
+>>2. dbpath shouldn't have an = sign after it.
+>>3. dbpath is a directory, not a file.
+>>4. from what I can tell, --dbpath is relative to --root.  In
+>>   fact, rpm version 3 demands both paths start with /
+>>
+>>I created a directory in my home directory called tarpit.
+>>I created a directory in that directory called rdata.
+>>I issued this command:
+>>
+>>$  rpm -i --root /home/phpmaker/tarpit/ --nodeps --noscripts --notriggers
+>>--force --dbpath /rdata --ignorearch --ignoreos gtactoe-0.2.1-1.i386.rpm
+>>
+>>  error: cannot open Basenames index using db3 - No such file or directory
+>>(2)
+>>
+>>I tried an init db (an effort left over from earlier difficulties)
+>>$ rpm -initdb --root /home/phpmaker/tarpit/ --dbpath /rdata
+>>
+>>It doesn't help.
+>>
+>>The rpm -i did create two files (Name and Packages) in the rdata
+>>directory so I think it is interpreting the command as I intend.
+>>
+>>I have done all my peewee work on a RH7.3 system (never had trouble
+>>except I had to discover kgcc when building a kernel), but
+>>given Scott McKay's recent problems with rpm, I booted up
+>>6.2 and tried this there.  (7.3 uses rpm 4; 6.2 has rpm 3.)
+>>On 6.2 I get similar results, but for the install I actually
+>>get no error messages.  But I don't get any files extracted, either!
+>>
+>>I wonder if you could actually try the command and see what happens.
+>>
+>>At least the tar command in the second step doesn't look exotic.  And I
+>>may have to build the file trees by hand if I can't get this rpm
+>>trick to work.
+>>
+>>Barry
+>>
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Troy Engel, Systems Engineer
+...his bash-fu is great.
+
+
+From peeweelinux@adis.on.ca  Wed Jul  9 07:06:43 2003
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Wed, 09 Jul 2003 03:06:43 -0300
+Subject: [Peeweelinux] QVWM?
+Message-ID: <3F0BB0F3.60604@tutopia.com.br>
+
+Hello.
+
+I have a project here where I need to use some sort of "windows like" 
+window manager. QVWM would be great bue I always have problem with 
+fonts. Teh WM refuses to load saying things like "can't find 
+*-*-*-arial-12....", etc. I don't have the exact message here.
+Does anyone have used qvwm or other "windows like" WM with peeweelinux 
+or know what is going on with mine?
+
+[]s
+
+Adilson.
+
+
+From peeweelinux@adis.on.ca  Wed Jul  9 21:43:51 2003
+From: peeweelinux@adis.on.ca (Daniel Purcell)
+Date: Wed, 9 Jul 2003 14:43:51 -0600
+Subject: [Peeweelinux] Creating your own packages from RPMS Mini-HOWTO
+Message-ID: <200307091443.51850.dan@stoneflytech.com>
+
+For this Mini-HOWTO, I'll use the example of creating a custom package out of 
+the web browser konquerer.
+
+1.  First, create a temporary directory:
+
+dan@duck $ mkdir -p /tmp/rpmroot/
+
+This will become your root directory.  RPM will makes files from here on, such 
+as /tmp/rpmroot/usr/local/konquerer, or /tmp/rpmroot/var/log/konquerer.log, 
+etc.
+
+2.  Run this command (I'm using RPM version 4.1, but should work with RPM 3.0)
+
+dan@duck $ rpm -i --root /tmp/rpmroot --nodeps --noscripts --ignoreos \
+	--ignorearch --force --notriggers --dbpath ./rpm.db \
+	konquerer-i386.rpm
+
+where the --root points to where your temporary root directory is, and where 
+konquerer-i386.rpm is the path to the rpm you want to unpack.
+
+3.  Tar it up, and make a list file.
+
+dan@duck $ cd /tmp/rpmroot/
+
+dan@duck $ ls
+usr 			var
+
+dan@duck $ tar cvf konquerer.tar usr var >konquerer.list
+
+In this example, the rpm made usr and var subdirectories.  The above tar 
+command creates a tar archive, calls it konquerer.tar, and includes the usr 
+and var directories in its archive.  All the output that usually goes to the 
+screen is redirected to a file called konquerer.list.  
+
+It is important that the filenames are similar, meaning the file that contains 
+the tar archive be named the filename.tar, and the file containing a list of 
+what's in the tar archive with the name filename.list.  
+
+4.  Copy these files to your PeeWeeLinux packages subdiretory.
+
+dan@duck $ mkdir -p /root/Embedded_Build/packages/Web_Browsers/
+
+dan@duck $ cp konquerer.* /root/Embedded_Build/packages/Web_Browsers/
+
+5.  Load up ./pwlconfig, and in the Configure Project Filesystem, you should 
+have the option now of selecting the Web_Browsers option, and then following 
+that the konquerer option.
+
+-Daniel Purcell
+StoneFly Technology
+St. George, Utah
+
+From peeweelinux@adis.on.ca  Tue Jul 15 21:07:51 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Tue, 15 Jul 2003 15:07:51 -0500
+Subject: [Peeweelinux] Graphical Interface
+Message-ID: <01af01c34b0c$c546fb40$02fea8c0@jcairns>
+
+Hello Everyone,
+
+I am developing an embedded devices and need a graphical interface I
+really don't need a window manager per say but something that I can
+create a nice interface. I also would like to have a small footprint so
+that I will fit nicely on a CF devices.
+
+Does anyone know of any graphical interface libraries out that I thought
+of using X but I would like to find something smaller if possible?
+
+If X is the right thing to use has anyone gotten it to work with a CF
+card.
+
+Thanks,
+
+Joe
+
+
+From peeweelinux@adis.on.ca  Tue Jul 15 22:30:08 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 15 Jul 2003 14:30:08 -0700
+Subject: [Peeweelinux] Graphical Interface
+In-Reply-To: <01af01c34b0c$c546fb40$02fea8c0@jcairns>
+References: <01af01c34b0c$c546fb40$02fea8c0@jcairns>
+Message-ID: <3F147260.20501@fluid.com>
+
+I have never used this, but I hear a lot about it and it seems to be a 
+crowd favorite:
+
+   http://picogui.org/
+
+-te
+
+Joe A Cairns wrote:
+> Hello Everyone,
+> 
+> I am developing an embedded devices and need a graphical interface I
+> really don't need a window manager per say but something that I can
+> create a nice interface. I also would like to have a small footprint so
+> that I will fit nicely on a CF devices.
+> 
+> Does anyone know of any graphical interface libraries out that I thought
+> of using X but I would like to find something smaller if possible?
+> 
+> If X is the right thing to use has anyone gotten it to work with a CF
+> card.
+> 
+> Thanks,
+> 
+> Joe
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Troy Engel, Systems Engineer
+...his bash-fu is great.
+
+
+From peeweelinux@adis.on.ca  Wed Jul 16 10:55:52 2003
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Wed, 16 Jul 2003 09:55:52 CEST
+Subject: [Peeweelinux] Graphical Interface
+Message-ID: <mnet1.1058342152.14520.francois.seingier@club-internet.fr>
+
+you could give qt/embedded a try; I wanted to use it but unfortunatly never got the time to do so...
+http://www.trolltech.com/download/index.html
+
+
+----Message d'origine----
+>De: "Joe A Cairns" <jcairns@skyhighsoft.com>
+>A: <peeweelinux@adis.on.ca>
+>Sujet: [Peeweelinux] Graphical Interface
+>Date: Tue, 15 Jul 2003 15:07:51 -0500
+>
+>Hello Everyone,
+>
+>I am developing an embedded devices and need a graphical interface I
+>really don't need a window manager per say but something that I can
+>create a nice interface. I also would like to have a small footprint so
+>that I will fit nicely on a CF devices.
+>
+>Does anyone know of any graphical interface libraries out that I thought
+>of using X but I would like to find something smaller if possible?
+>
+>If X is the right thing to use has anyone gotten it to work with a CF
+>card.
+>
+>Thanks,
+>
+>Joe
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+
+
+From peeweelinux@adis.on.ca  Wed Jul 16 09:05:03 2003
+From: peeweelinux@adis.on.ca (Mateo Garcia, Carlos)
+Date: Wed, 16 Jul 2003 10:05:03 +0200
+Subject: [Peeweelinux] Graphical Interface
+Message-ID: <E7ABA0128F4BB9459611B12C98E9CE7CB263FA@MADTORMAIL.indra.es>
+
+I have been using FLTK.  It is fast and has a small footprint.
+www.fltk.org
+
+-----Mensaje original-----
+De: Joe A Cairns [mailto:jcairns@skyhighsoft.com]
+Enviado el: martes, 15 de julio de 2003 22:08
+Para: peeweelinux@adis.on.ca
+Asunto: [Peeweelinux] Graphical Interface
+
+
+Hello Everyone,
+
+I am developing an embedded devices and need a graphical interface I
+really don't need a window manager per say but something that I can
+create a nice interface. I also would like to have a small footprint so
+that I will fit nicely on a CF devices.
+
+Does anyone know of any graphical interface libraries out that I thought
+of using X but I would like to find something smaller if possible?
+
+If X is the right thing to use has anyone gotten it to work with a CF
+card.
+
+Thanks,
+
+Joe
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+From peeweelinux@adis.on.ca  Wed Jul 16 16:00:51 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Wed, 16 Jul 2003 10:00:51 -0500
+Subject: [Peeweelinux] Graphical Interface
+In-Reply-To: <E7ABA0128F4BB9459611B12C98E9CE7CB263FA@MADTORMAIL.indra.es>
+Message-ID: <015e01c34bab$0e4416e0$02fea8c0@jcairns>
+
+I want to thank everyone for there response I will be looking into these
+libraries.
+
+Joe
+
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca 
+> [mailto:peeweelinux-admin@adis.on.ca] On Behalf Of Mateo 
+> Garcia, Carlos
+> Sent: Wednesday, July 16, 2003 3:05 AM
+> To: peeweelinux@adis.on.ca
+> Subject: RE: [Peeweelinux] Graphical Interface
+> 
+> 
+> I have been using FLTK.  It is fast and has a small 
+> footprint. www.fltk.org
+> 
+> -----Mensaje original-----
+> De: Joe A Cairns [mailto:jcairns@skyhighsoft.com]
+> Enviado el: martes, 15 de julio de 2003 22:08
+> Para: peeweelinux@adis.on.ca
+> Asunto: [Peeweelinux] Graphical Interface
+> 
+> 
+> Hello Everyone,
+> 
+> I am developing an embedded devices and need a graphical 
+> interface I really don't need a window manager per say but 
+> something that I can create a nice interface. I also would 
+> like to have a small footprint so that I will fit nicely on a 
+> CF devices.
+> 
+> Does anyone know of any graphical interface libraries out 
+> that I thought of using X but I would like to find something 
+> smaller if possible?
+> 
+> If X is the right thing to use has anyone gotten it to work 
+> with a CF card.
+> 
+> Thanks,
+> 
+> Joe
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca 
+> http://mail.adis.on.ca/lists/listinfo/peeweeli> nux
+> 
+> _______________________________________________
+> 
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca 
+> http://mail.adis.on.ca/lists/listinfo/peeweeli> nux
+> 
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Wed Jul 16 16:02:15 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Wed, 16 Jul 2003 10:02:15 -0500
+Subject: [Peeweelinux] Silent Boot
+Message-ID: <015f01c34bab$3e821870$02fea8c0@jcairns>
+
+Hello,
+
+Is there any way to hide the Linux boot up information? I would like to
+have a graphical image displayed rather then the current Linux boot up
+information.
+
+Thanks,
+
+Joe
+
+
+From peeweelinux@adis.on.ca  Thu Jul 17 00:23:47 2003
+From: peeweelinux@adis.on.ca (correy)
+Date: Thu, 17 Jul 2003 09:23:47 +1000
+Subject: [Peeweelinux] lilo.conf hangs
+References: <mnet1.1058342152.14520.francois.seingier@club-internet.fr>
+Message-ID: <3F15DE83.1040206@iinet.net.au>
+
+I have been playing with lilo.conf to try another kernel image. I tried 
+the other image I made but it didn't work and then I tried to restore 
+the original one but it doesn't work so I am assuming it is a problem 
+with my lilo.conf file.
+
+I mount the compact flash and then chroot /mnt/cf2 (root filesystem on cf)
+I then mount the boot partition on hdc1 mount /mnt/cf1
+ls /mnt/cf1
+initrd    boot.b    bzImage    map
+
+My lilo.conf file looks like this.
+____________________________
+disk=/dev/hdc
+  bios=0x80
+  heads=4
+  sectors=32
+  cylinders=490
+
+boot=/dev/hdc
+map=/mnt/cf1/map
+install=/mnt/cf1/boot.b
+compact
+prompt
+timeout=20
+default=linux
+
+image=/mnt/cf1/vmlinuz
+        label=linux
+        initrd=/mnt/cf1/initrd
+        read-only
+        root=/dev/hdc2
+        vga=0x317
+-------------------------------------------------
+I then run lilo and it says
+Added linux *
+
+However after rebooting all I get is LI and the system hangs.
+
+What should I change in lilo.conf also I don't really understand about 
+initrd and what script causes it to load into ram2?
+
+Any help to get me booting again would be great.
+
+Correy
+
+
+From peeweelinux@adis.on.ca  Thu Jul 17 19:35:22 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 17 Jul 2003 11:35:22 -0700 (PDT)
+Subject: [Peeweelinux] lilo.conf hangs
+Message-ID: <2.2.16.20030717113504.6b4f16de@zmicro.com>
+
+>I have been playing with lilo.conf to try another kernel image. I tried 
+>the other image I made but it didn't work and then I tried to restore 
+>the original one but it doesn't work so I am assuming it is a problem 
+>with my lilo.conf file.
+
+It used to work?  Did you install lilo this way when you got
+it to work?  I am not familiar with installing from a chroot
+environment, nor do I use a CF disk, so while I would usually
+question entries in your lilo.conf file, they are probably
+right, if it used to work.
+
+So, which line(s) did you change?
+Or, what are you doing different?
+
+>I then run lilo and it says
+>Added linux *
+
+So lilo doesn't think you have any errors.
+
+>However after rebooting all I get is LI and the system hangs.
+
+This means that you did not get to load the kernel.  That 
+means you don't have to worry about 
+  -append arguments to the kernel
+  -initrd
+  -init
+  -startup scripts
+  -mounted drives
+because none of this will have happened yet.
+
+>also I don't really understand about 
+>initrd and what script causes it to load into ram2?
+
+The kernel, after it is running, after it has detected processor
+and hardware, wants to mount a root file
+system to work from.  This can be a ramdisk.  From watching it
+boot, it is apparent the code for mounting a ramdisk and even
+the copying-to-it part are in the kernel.
+
+Up until this point the kernel is a single piece of code doing
+its thing.  Once a root disk is mounted it (tries to) start init
+and from there inittab and all the other scripts start running
+and other processes can be created.
+
+
+More specifically, when you see "LI", code in the boot sector
+has executed, read what it thinks is the map file, loaded what
+it thinks is the kernel loader, and tried to jump to it.
+
+The most common problem is "geometry mismatch", which in a few
+words means that lilo (when you install it) has to be able
+to predict exactly what to feed the BIOS on boot up such
+that it will read the same device/sectors it found during
+the install.
+
+Well, you said "any help" :)
+
+Barry
+
+
+
+
+From peeweelinux@adis.on.ca  Fri Jul 18 03:06:24 2003
+From: peeweelinux@adis.on.ca (correy)
+Date: Fri, 18 Jul 2003 12:06:24 +1000
+Subject: [Peeweelinux] lilo.conf hangs
+References: <2.2.16.20030717113504.6b4f16de@zmicro.com>
+Message-ID: <3F175620.8080007@iinet.net.au>
+
+--------------090001040005010207000400
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hi there
+Thanks for the information it is always good to know what is going on. 
+ From what I gather the lilo.conf file is only in PWL for fun just 
+incase you use it later cause the one I originally had said stuff like 
+disk=/dev/sda which could never have worked since I have /dev/hdc so I 
+had to modify it but as from my first post I didn't modify it well 
+enough so now I have changed it from this -
+__________________________
+disk=/dev/hdc
+ bios=0x80
+ heads=4
+ sectors=32
+ cylinders=490
+
+boot=/dev/hdc
+map=/mnt/cf1/map
+install=/mnt/cf1/boot.b
+compact
+prompt
+timeout=20
+default=linux
+
+image=/mnt/cf1/vmlinuz
+       label=linux
+       initrd=/mnt/cf1/initrd
+       read-only
+       root=/dev/hdc2
+       vga=0x317
+--------------------------------------------------
+To This
+________________________________
+boot=/dev/hdc
+disk=/dev/hdc
+        bios=0x80
+
+linear
+map=/mnt/cf1/map
+install=/mnt/cf1/boot.b
+prompt
+timeout=50
+initrd=/mnt/cf1/initrd
+default=vmlinuz
+
+image=/mnt/cf1/vmlinuz
+        label=vmlinuz
+        root=/dev/hdc2
+#       ramdisk=9312
+        read-only
+image=/mnt/cf1/bzImage
+        label=bzImage
+        root=/dev/hdc2
+        read-only
+--------------------------------------------
+The important things are that I added initrd and got rid of a lot of 
+stuff that was causing grief I now have added another image.
+I am having problem with the eepro100 drivers for my ethernet intel 
+82559ER and alsa drivers and so I am now compiling a 2.4.9 kernel 
+instead of the 2.2.17 kernel so that they can all be 
+satisfied......finergers crossed.
+
+Correy
+
+
+Barry Gershenfeld wrote:
+
+>>I have been playing with lilo.conf to try another kernel image. I tried 
+>>the other image I made but it didn't work and then I tried to restore 
+>>the original one but it doesn't work so I am assuming it is a problem 
+>>with my lilo.conf file.
+>>    
+>>
+>
+>It used to work?  Did you install lilo this way when you got
+>it to work?  I am not familiar with installing from a chroot
+>environment, nor do I use a CF disk, so while I would usually
+>question entries in your lilo.conf file, they are probably
+>right, if it used to work.
+>
+>So, which line(s) did you change?
+>Or, what are you doing different?
+>
+>  
+>
+>>I then run lilo and it says
+>>Added linux *
+>>    
+>>
+>
+>So lilo doesn't think you have any errors.
+>
+>  
+>
+>>However after rebooting all I get is LI and the system hangs.
+>>    
+>>
+>
+>This means that you did not get to load the kernel.  That 
+>means you don't have to worry about 
+>  -append arguments to the kernel
+>  -initrd
+>  -init
+>  -startup scripts
+>  -mounted drives
+>because none of this will have happened yet.
+>
+>  
+>
+>>also I don't really understand about 
+>>initrd and what script causes it to load into ram2?
+>>    
+>>
+>
+>The kernel, after it is running, after it has detected processor
+>and hardware, wants to mount a root file
+>system to work from.  This can be a ramdisk.  From watching it
+>boot, it is apparent the code for mounting a ramdisk and even
+>the copying-to-it part are in the kernel.
+>
+>Up until this point the kernel is a single piece of code doing
+>its thing.  Once a root disk is mounted it (tries to) start init
+>and from there inittab and all the other scripts start running
+>and other processes can be created.
+>
+>
+>More specifically, when you see "LI", code in the boot sector
+>has executed, read what it thinks is the map file, loaded what
+>it thinks is the kernel loader, and tried to jump to it.
+>
+>The most common problem is "geometry mismatch", which in a few
+>words means that lilo (when you install it) has to be able
+>to predict exactly what to feed the BIOS on boot up such
+>that it will read the same device/sectors it found during
+>the install.
+>
+>Well, you said "any help" :)
+>
+>Barry
+>
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+>  
+>
+
+
+--------------090001040005010207000400
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+Hi there<br>
+Thanks for the information it is always good to know what is going on. From
+what I gather the lilo.conf file is only in PWL for fun just incase you use
+it later cause the one I originally had said stuff like disk=/dev/sda which
+could never have worked since I have /dev/hdc so I had to modify it but as
+from my first post I didn't modify it well enough so now I have changed it
+from this - <br>
+__________________________<br>
+disk=/dev/hdc <br>
+&nbsp;bios=0x80 <br>
+&nbsp;heads=4 <br>
+&nbsp;sectors=32 <br>
+&nbsp;cylinders=490 <br>
+ <br>
+boot=/dev/hdc <br>
+map=/mnt/cf1/map <br>
+install=/mnt/cf1/boot.b <br>
+compact <br>
+prompt <br>
+timeout=20 <br>
+default=linux <br>
+ <br>
+image=/mnt/cf1/vmlinuz <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; label=linux <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; initrd=/mnt/cf1/initrd <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read-only <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root=/dev/hdc2 <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; vga=0x317 <br>
+--------------------------------------------------<br>
+To This<br>
+________________________________<br>
+boot=/dev/hdc<br>
+disk=/dev/hdc<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; bios=0x80<br>
+<br>
+linear<br>
+map=/mnt/cf1/map<br>
+install=/mnt/cf1/boot.b<br>
+prompt<br>
+timeout=50<br>
+initrd=/mnt/cf1/initrd<br>
+default=vmlinuz<br>
+<br>
+image=/mnt/cf1/vmlinuz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; label=vmlinuz<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root=/dev/hdc2<br>
+#&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ramdisk=9312<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read-only<br>
+image=/mnt/cf1/bzImage<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; label=bzImage<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; root=/dev/hdc2<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; read-only<br>
+--------------------------------------------<br>
+The important things are that I added initrd and got rid of a lot of stuff
+that was causing grief I now have added another image.<br>
+I am having problem with the eepro100 drivers for my ethernet intel 82559ER
+and alsa drivers and so I am now compiling a 2.4.9 kernel instead of the
+2.2.17 kernel so that they can all be satisfied......finergers crossed.<br>
+<br>
+Correy<br>
+<br>
+<br>
+Barry Gershenfeld wrote:<br>
+<blockquote type="cite"
+ cite="mid2.2.16.20030717113504.6b4f16de@zmicro.com">
+  <blockquote type="cite">
+    <pre wrap="">I have been playing with lilo.conf to try another kernel image. I tried 
+the other image I made but it didn't work and then I tried to restore 
+the original one but it doesn't work so I am assuming it is a problem 
+with my lilo.conf file.
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+It used to work?  Did you install lilo this way when you got
+it to work?  I am not familiar with installing from a chroot
+environment, nor do I use a CF disk, so while I would usually
+question entries in your lilo.conf file, they are probably
+right, if it used to work.
+
+So, which line(s) did you change?
+Or, what are you doing different?
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">I then run lilo and it says
+Added linux *
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+So lilo doesn't think you have any errors.
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">However after rebooting all I get is LI and the system hangs.
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+This means that you did not get to load the kernel.  That 
+means you don't have to worry about 
+  -append arguments to the kernel
+  -initrd
+  -init
+  -startup scripts
+  -mounted drives
+because none of this will have happened yet.
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">also I don't really understand about 
+initrd and what script causes it to load into ram2?
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+The kernel, after it is running, after it has detected processor
+and hardware, wants to mount a root file
+system to work from.  This can be a ramdisk.  From watching it
+boot, it is apparent the code for mounting a ramdisk and even
+the copying-to-it part are in the kernel.
+
+Up until this point the kernel is a single piece of code doing
+its thing.  Once a root disk is mounted it (tries to) start init
+and from there inittab and all the other scripts start running
+and other processes can be created.
+
+
+More specifically, when you see "LI", code in the boot sector
+has executed, read what it thinks is the map file, loaded what
+it thinks is the kernel loader, and tried to jump to it.
+
+The most common problem is "geometry mismatch", which in a few
+words means that lilo (when you install it) has to be able
+to predict exactly what to feed the BIOS on boot up such
+that it will read the same device/sectors it found during
+the install.
+
+Well, you said "any help" :)
+
+Barry
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+<a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a>
+<a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a>
+
+
+  </pre>
+</blockquote>
+<br>
+</body>
+</html>
+
+--------------090001040005010207000400--
+
+
+From peeweelinux@adis.on.ca  Wed Jul 23 08:06:24 2003
+From: peeweelinux@adis.on.ca (correy)
+Date: Wed, 23 Jul 2003 17:06:24 +1000
+Subject: [Peeweelinux] rootfilesystem isn't free after flushing to ramdisk
+Message-ID: <3F1E33F0.2040006@iinet.net.au>
+
+Hi 
+My root filesystem isn't unmounted after the bootup. It use to free itself before I changed the kernel using lilo. 
+So the script that sets up lilo in the PeeWeeLinux install program must be doing something different in the way
+that it configures lilo I think.
+
+Below is my lilo file that works. Perhaps my new kernel has something to do with it however everything seems to work
+fine apart from this.
+
+Can you see anything wrong for example should I be telling root that it is at /dev/hdc2 or should I be telling it that
+it is in the ramdisk where the compact flash partition now resides after the boot sequence.
+
+________________________
+boot=/dev/hdc
+disk=/dev/hdc
+        bios=0x80
+
+linear
+map=/mnt/cf1/map
+install=/mnt/cf1/boot.b
+prompt
+timeout=50
+initrd=/mnt/cf1/initrd
+default=bzImage
+
+image=/mnt/cf1/bzImage
+        label=bzImage
+        root=/dev/hdc2
+        read-only
+-----------------------
+
+Any help is welcome
+
+Many thanks
+
+Correy
+
+
+
+From peeweelinux@adis.on.ca  Wed Jul 23 21:05:35 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 23 Jul 2003 13:05:35 -0700 (PDT)
+Subject: [Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+Message-ID: <2.2.16.20030723130517.735fa260@zmicro.com>
+
+I don't know if I have the answer but I have discovered some
+more things after looking at your question.
+
+First of all, the lilo.conf that is apparently used to generate
+the target system can be found in the /Embedded_Build/tmp/ 
+directory.  Any other lilo.conf files you find are probably
+not relevant.  You guessed correctly in your original post
+that the file doesn't do anything after the target is made.
+It is only used to install LILO, and isn't used at boot time.
+
+I ALSO discovered, in that same directory, the "linuxrc" file
+that the make-target scripts often talk about.  And the
+contents of that file are interesting:
+
+  echo "Copying filesystem /dev/hda2 to /dev/ram2...."
+  dd if=/dev/hda2 of=/dev/ram2
+  echo "Flushing buffers to disk...."
+  sync
+
+I said the other day this was built into the kernel--apparently
+not!  I am still trying to figure out how this script gets
+run before the real init is started.
+
+Anyway, the root line in my lilo.conf reads like this:
+
+  root      = /dev/ram2 
+
+also:
+
+ ramdisk   = 9556
+ 
+I can't be sure this is the answer for you, because none of the
+lilo.conf files you have posted (including the "before" example)
+show it this way.  But you can try it.   The number after "ramdisk"
+is the amount of memory needed to copy the ramdisk to.  It can be
+larger then needed.
+
+I would have to ask: Which of the target configurations did 
+you use?  Are you not using peeweelinux to generate your
+targets anymore?  Why not?  Do you need something they don't
+do?  Once you set out on your own you will find you have 
+to understand almost everything...
+
+Barry
+
+
+>My root filesystem isn't unmounted after the bootup. It use to free itself
+before I changed the kernel using lilo. 
+>So the script that sets up lilo in the PeeWeeLinux install program must be
+doing something different in the way
+>that it configures lilo I think.
+>
+>Below is my lilo file that works. Perhaps my new kernel has something to do
+with it however everything seems to work
+>fine apart from this.
+>
+>Can you see anything wrong for example should I be telling root that it is
+at /dev/hdc2 or should I be telling it that
+>it is in the ramdisk where the compact flash partition now resides after
+the boot sequence.
+>
+>________________________
+>boot=/dev/hdc
+>disk=/dev/hdc
+>        bios=0x80
+>
+>linear
+>map=/mnt/cf1/map
+>install=/mnt/cf1/boot.b
+>prompt
+>timeout=50
+>initrd=/mnt/cf1/initrd
+>default=bzImage
+>
+>image=/mnt/cf1/bzImage
+>        label=bzImage
+>        root=/dev/hdc2
+>        read-only
+>-----------------------
+>
+>Any help is welcome
+>
+>Many thanks
+>
+>Correy
+
+
+
+From peeweelinux@adis.on.ca  Wed Jul 23 21:15:21 2003
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 23 Jul 2003 15:15:21 -0500 (CDT)
+Subject: [Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+In-Reply-To: <2.2.16.20030723130517.735fa260@zmicro.com>
+Message-ID: <Pine.LNX.4.44.0307231511110.825-100000@adibox.knet.ca>
+
+> I ALSO discovered, in that same directory, the "linuxrc" file
+> that the make-target scripts often talk about.  And the
+> contents of that file are interesting:
+> 
+>   echo "Copying filesystem /dev/hda2 to /dev/ram2...."
+>   dd if=/dev/hda2 of=/dev/ram2
+>   echo "Flushing buffers to disk...."
+>   sync
+> 
+> I said the other day this was built into the kernel--apparently
+> not!  I am still trying to figure out how this script gets
+> run before the real init is started.
+
+The linuxrc file is part of the initrd mechanism. A really good 
+description of the initrd mechanism in in the kernel Documentation, 
+typically: /usr/src/linux/Documentation/initrd.txt
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Thu Jul 24 01:30:35 2003
+From: peeweelinux@adis.on.ca (correy)
+Date: Thu, 24 Jul 2003 10:30:35 +1000
+Subject: [Peeweelinux] Re: [Peeweelinux ] rootfilesystem isn't free after flushing to ramdisk
+References: <2AA4A15C835A1C49B9CF61F4490BB6EB45D837@bneprdmsg01.internal.qr.com.au>
+Message-ID: <3F1F28AB.9040109@iinet.net.au>
+
+--------------090509000400020407030907
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hi there I changed my lilo configuration to use the /dev/ram2
+
+
+image=/mnt/cf1/bzImage
+       label=bzImage
+       ramdisk=9556
+       root=/dev/ram2
+       read-only
+
+The error I get is this
+=====================
+/dev/ram2: No sapce left on device
+19113+0 records in
+19112+0 records out
+Flushing buffers to disk....
+tcsetpgrp: Inappropriate ioctl for device
+VFS: Mounted root (ext2 filesystem) readonly
+Trying to move old root to /initrd ... failed
+Unmounting old root
+Trying to free ramdisk memory .... okay
+Freeing unused kernel memory: 200k freed
+attempt to access beyond end of device
+01:02: rw=0, want=49158, limit=9556
+EXT2-fs error (device ramdisk(1,2)): ext2_read_inode: unable to read inode blod - inode=12001,block49157
+Warning: unable to open an initial console
+attempt to access beyond end of device
+01:02: rw=0, want=57351, limit=9556
+EXT2-fs error (device ramdisk(1,2)): ext2_read_inode: unable to read inode block - inode=14011, block=57350
+Kernel panic: No init found. Try passing int= option to kernel.
+========================
+
+I then changed ramdisk=57351 however it just took longer to flush and I still got /dev/ram2: No space left on device.
+
+The reason I need to be able to do this is that I want to be able to save the image of the cf card as a tar.gz file and then simply copy it across to the appropriate partion and then chroot to this filesystem type lilo and then reboot the system. I no longer have the pwl project that I used to create the fielsystem either. Surely there is something simple that I am missing here??
+
+Correy
+
+
+
+>I ALSO discovered, in that same directory, the "linuxrc" file
+>that the make-target scripts often talk about.  And the
+>contents of that file are interesting:
+>
+>  echo "Copying filesystem /dev/hda2 to /dev/ram2...."
+>  dd if=/dev/hda2 of=/dev/ram2
+>  echo "Flushing buffers to disk...."
+>  sync
+>
+>I said the other day this was built into the kernel--apparently
+>not!  I am still trying to figure out how this script gets
+>run before the real init is started.
+>
+>Anyway, the root line in my lilo.conf reads like this:
+>
+>  root      = /dev/ram2 
+>
+>also:
+>
+> ramdisk   = 9556
+> 
+>I can't be sure this is the answer for you, because none of the
+>lilo.conf files you have posted (including the "before" example)
+>show it this way.  But you can try it.   The number after "ramdisk"
+>is the amount of memory needed to copy the ramdisk to.  It can be
+>larger then needed.
+>
+>I would have to ask: Which of the target configurations did 
+>you use?  Are you not using peeweelinux to generate your
+>targets anymore?  Why not?  Do you need something they don't
+>do?  Once you set out on your own you will find you have 
+>to understand almost everything...
+>
+>Barry
+>
+>=====================================================================
+>  
+>
+>>I ALSO discovered, in that same directory, the "linuxrc" file
+>>that the make-target scripts often talk about.  And the
+>>contents of that file are interesting:
+>>
+>>  echo "Copying filesystem /dev/hda2 to /dev/ram2...."
+>>  dd if=/dev/hda2 of=/dev/ram2
+>>  echo "Flushing buffers to disk...."
+>>  sync
+>>
+>>I said the other day this was built into the kernel--apparently
+>>not!  I am still trying to figure out how this script gets
+>>run before the real init is started.
+>>    
+>>
+>
+>The linuxrc file is part of the initrd mechanism. A really good 
+>description of the initrd mechanism in in the kernel Documentation, 
+>typically: /usr/src/linux/Documentation/initrd.txt
+>
+>Adi
+>
+>
+>
+>
+>correy wrote:
+>  
+>
+>>Hi Troy
+>>
+>>Sorry for sending this email directly to you but it is just I bet you 
+>>would know the answer straight away. I sent it to the pwl mailing as well.
+>>
+>>My root filesystem isn't unmounted after the bootup. It use to free 
+>>itself before I changed the kernel using lilo. So the script that sets 
+>>up lilo in the PeeWeeLinux install program must be doing something 
+>>different in the way
+>>that it configures lilo I think.
+>>
+>>Below is my lilo file that works. Perhaps my new kernel has something to 
+>>do with it however everything seems to work
+>>fine apart from this.
+>>
+>>Can you see anything wrong for example should I be telling root that it 
+>>is at /dev/hdc2 or should I be telling it that
+>>it is in the ramdisk where the compact flash partition now resides after 
+>>the boot sequence.
+>>
+>>________________________
+>>boot=/dev/hdc
+>>disk=/dev/hdc
+>>       bios=0x80
+>>
+>>linear
+>>map=/mnt/cf1/map
+>>install=/mnt/cf1/boot.b
+>>prompt
+>>timeout=50
+>>initrd=/mnt/cf1/initrd
+>>default=bzImage
+>>
+>>image=/mnt/cf1/bzImage
+>>       label=bzImage
+>>       root=/dev/hdc2
+>>       read-only
+>>-----------------------
+>>
+>>Any help is welcome
+>>
+>>Many thanks
+>>
+>>Correy
+>>
+>>
+>>
+>>    
+>>
+>
+>  
+>
+
+
+--------------090509000400020407030907
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+Hi there I changed my lilo configuration to use the /dev/ram2<br>
+<pre wrap="">
+
+image=/mnt/cf1/bzImage
+       label=bzImage
+       ramdisk=9556
+       root=/dev/ram2
+       read-only
+
+The error I get is this
+=====================
+/dev/ram2: No sapce left on device
+19113+0 records in
+19112+0 records out
+Flushing buffers to disk....
+tcsetpgrp: Inappropriate ioctl for device
+VFS: Mounted root (ext2 filesystem) readonly
+Trying to move old root to /initrd ... failed
+Unmounting old root
+Trying to free ramdisk memory .... okay
+Freeing unused kernel memory: 200k freed
+attempt to access beyond end of device
+01:02: rw=0, want=49158, limit=9556
+EXT2-fs error (device ramdisk(1,2)): ext2_read_inode: unable to read inode blod - inode=12001,block49157
+Warning: unable to open an initial console
+attempt to access beyond end of device
+01:02: rw=0, want=57351, limit=9556
+EXT2-fs error (device ramdisk(1,2)): ext2_read_inode: unable to read inode block - inode=14011, block=57350
+Kernel panic: No init found. Try passing int= option to kernel.
+========================
+
+I then changed ramdisk=57351 however it just took longer to flush and I still got /dev/ram2: No space left on device.
+
+The reason I need to be able to do this is that I want to be able to save the image of the cf card as a tar.gz file and then simply copy it across to the appropriate partion and then chroot to this filesystem type lilo and then reboot the system. I no longer have the pwl project that I used to create the fielsystem either. Surely there is something simple that I am missing here??
+
+Correy
+
+</pre>
+<br>
+<blockquote type="cite"
+ cite="mid2AA4A15C835A1C49B9CF61F4490BB6EB45D837@bneprdmsg01.internal.qr.com.au">
+  <pre wrap="">I ALSO discovered, in that same directory, the "linuxrc" file
+that the make-target scripts often talk about.  And the
+contents of that file are interesting:
+
+  echo "Copying filesystem /dev/hda2 to /dev/ram2...."
+  dd if=/dev/hda2 of=/dev/ram2
+  echo "Flushing buffers to disk...."
+  sync
+
+I said the other day this was built into the kernel--apparently
+not!  I am still trying to figure out how this script gets
+run before the real init is started.
+
+Anyway, the root line in my lilo.conf reads like this:
+
+  root      = /dev/ram2 
+
+also:
+
+ ramdisk   = 9556
+ 
+I can't be sure this is the answer for you, because none of the
+lilo.conf files you have posted (including the "before" example)
+show it this way.  But you can try it.   The number after "ramdisk"
+is the amount of memory needed to copy the ramdisk to.  It can be
+larger then needed.
+
+I would have to ask: Which of the target configurations did 
+you use?  Are you not using peeweelinux to generate your
+targets anymore?  Why not?  Do you need something they don't
+do?  Once you set out on your own you will find you have 
+to understand almost everything...
+
+Barry
+
+=====================================================================
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">I ALSO discovered, in that same directory, the "linuxrc" file
+that the make-target scripts often talk about.  And the
+contents of that file are interesting:
+
+  echo "Copying filesystem /dev/hda2 to /dev/ram2...."
+  dd if=/dev/hda2 of=/dev/ram2
+  echo "Flushing buffers to disk...."
+  sync
+
+I said the other day this was built into the kernel--apparently
+not!  I am still trying to figure out how this script gets
+run before the real init is started.
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+The linuxrc file is part of the initrd mechanism. A really good 
+description of the initrd mechanism in in the kernel Documentation, 
+typically: /usr/src/linux/Documentation/initrd.txt
+
+Adi
+
+
+
+
+correy wrote:
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">Hi Troy
+
+Sorry for sending this email directly to you but it is just I bet you 
+would know the answer straight away. I sent it to the pwl mailing as well.
+
+My root filesystem isn't unmounted after the bootup. It use to free 
+itself before I changed the kernel using lilo. So the script that sets 
+up lilo in the PeeWeeLinux install program must be doing something 
+different in the way
+that it configures lilo I think.
+
+Below is my lilo file that works. Perhaps my new kernel has something to 
+do with it however everything seems to work
+fine apart from this.
+
+Can you see anything wrong for example should I be telling root that it 
+is at /dev/hdc2 or should I be telling it that
+it is in the ramdisk where the compact flash partition now resides after 
+the boot sequence.
+
+________________________
+boot=/dev/hdc
+disk=/dev/hdc
+       bios=0x80
+
+linear
+map=/mnt/cf1/map
+install=/mnt/cf1/boot.b
+prompt
+timeout=50
+initrd=/mnt/cf1/initrd
+default=bzImage
+
+image=/mnt/cf1/bzImage
+       label=bzImage
+       root=/dev/hdc2
+       read-only
+-----------------------
+
+Any help is welcome
+
+Many thanks
+
+Correy
+
+
+
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+  </pre>
+</blockquote>
+<br>
+</body>
+</html>
+
+--------------090509000400020407030907--
+
+
+From peeweelinux@adis.on.ca  Thu Jul 24 19:30:40 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 24 Jul 2003 11:30:40 -0700 (PDT)
+Subject: [Peeweelinux] Re: [Peeweelinux ] rootfilesystem isn't free after flushing to
+ ramdisk
+Message-ID: <2.2.16.20030724113023.69872064@zmicro.com>
+
+>Surely there is something simple that I am missing here??
+>Correy
+
+The "fix" is probably simple.   The knowledge required to determine
+the simple fix, is not. :-)
+
+First of all, you found out what happens when you take one 
+of my guesses and try it. :-)
+
+Is your cf partition really 57 MB?  How much memory do you have?
+Were you really using initrd on the system that worked?
+
+initrd is "interesting"... (I read the document)
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Mon Jul 28 17:20:41 2003
+From: peeweelinux@adis.on.ca (Joe A Cairns)
+Date: Mon, 28 Jul 2003 11:20:41 -0500
+Subject: [Peeweelinux] AutoBoot and X windows
+Message-ID: <012801c35524$30aa32f0$02fea8c0@jcairns>
+
+Hello Ken Emmons,
+
+I was wondering if you could send me your bootx script. I have been
+trying to get xserver running on my CF card am having lots of problems.
+
+Thanks,
+
+Joe
+
+
+From peeweelinux@adis.on.ca  Wed Jul 30 21:11:28 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 30 Jul 2003 13:11:28 -0700 (PDT)
+Subject: [Peeweelinux] Out of space, the 2003 remake
+Message-ID: <2.2.16.20030730131120.5ce789aa@zmicro.com>
+
+Trying to copy a 13 MB ramdisk into memory simply runs out of
+room on my 32 MB target.  So I switched the target model to:
+
+   Read-only root fs with multiple ramdisks
+
+This actually looks like a more efficient scheme.  In fact, I
+already had plans to make another disk partition to stick 
+all the static stuff into.  This does it for me.  But 
+there's a problem.  Peewee runs out of space while copying 
+to the initialized flash disk partition.  (This device is
+64 MB so the problem's in the size calculations.)
+
+I spent nearly a week trying to ascertain where the problem
+is.  I didn't know anything about the scripts but I'm somewhat
+familiar with the "target load" scripts now!  I have all the
+calculations traced, but not all the logic.  I also searched
+the archives, and the core of this adventure can be found
+around 12/2000 and 01/2001, there was lots of messing with it
+then.  There have been a few messages since then from other
+people bumping into this.  Mostly, they find a way and move
+on.
+
+Here is my latest take:  The total filesystem size may be
+calculated properly, but since the disk partition size
+resolution is in Megabytes, attempting to add 10K here 
+or 32k there just doesn't affect the final outcome.  
+Furthermore, none of the "reserve space" options have any 
+effect because they are only for the relocated ramdisk 
+portions and not the root fs.  I am not sure
+those calculations are correct either but I haven't worked
+through them all.  The etc and dev sizes are subtracted
+out but they are still contained in that root filesystem.
+Anyway, it doesn't miss by much!
+
+So, for archive purposes, I am passing along a reference 
+on how I made it work for now.  Open the file pwl_target_load,
+locate the function  func_rd_build_ro_root_rd () , then
+find where the MB sizes are calculated.  Find this line:
+
+    rd_size_fs=$((rd_size_fs / 1024 + 1))
+
+That +1 will do it most of the time but if you run out of
+space while copying, make the 1 a 2, or else add this 
+line under it:
+
+    # add one more
+    rd_size_fs=$((rd_size_fs + 1 ))
+
+And now, I, too, move on. :)
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Thu Jul 31 23:19:48 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 31 Jul 2003 15:19:48 -0700 (PDT)
+Subject: [Peeweelinux] Watching it run out of space
+Message-ID: <2.2.16.20030731151941.18e7dafa@zmicro.com>
+
+In my previous message, I forgot to mention the method I used
+to monitor the progress of pwl setting up the flash disk.  You
+can use the df command to track the progress of the scripts.
+
+Using the watch command lets you "animate" it:
+
+   watch -n 1 df
+
+Run this on another terminal/console/xterm and you will be able
+to see the target disk partitions get mounted, then watch as
+they fill up.  
+
+In one of the target models it takes a looong 
+time to compress the image, so I wanted to watch the process
+and at least see that it was still running and maybe see how
+long it had been running.  So I tacked on a ps command:
+
+   watch -n 1 "df; echo; ps axf | grep pts\/"
+
+The grep "pts/" shortens the ps list so it fits on the 
+screen--you should look at the TTY column of a conventional
+ps ax command to see what to grep on so you only see the peewee 
+processes.
+
+Barry
+
+
+

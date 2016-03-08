@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] RE compact flash partitions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000444.html">
+   <LINK REL="Next"  HREF="000446.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] RE compact flash partitions
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] RE compact flash partitions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 14 Jan 2002 11:05:34 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000444.html">[Peeweelinux] RE compact flash partitions
+</A></li>
+        <LI> Next message: <A HREF="000446.html">[Peeweelinux] support disks bigger than 15G ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#445">[ date ]</a>
+              <a href="thread.html#445">[ thread ]</a>
+              <a href="subject.html#445">[ subject ]</a>
+              <a href="author.html#445">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Dan,
+
+You're the first one reporting problems partitioning the CF Card using the 
+USB reader. Your description of the problem is very similar to what 
+prompted me to post the warning about using the CF-IDE adapter to 
+partition CF devices. This makes me wonder whether it is really an issue 
+with the adapter? I am using Sandisk and Kingston cards in 4MB, 16MB, 
+32MB, 64MB sizes and never had the problem described using the USB reader.
+
+I am using syslinux primarily because I find it more convenient. I don't 
+have to rerun lilo on the device when changing kernel or ramdisk image. In 
+fact, I can access the CF using another OS to replace kernel and ramdisk 
+if necessary. The syslinux approach isn't that good if you require an 
+uncompressed filesystem on the CF card.
+
+Regards,
+Adi  
+
+
+On Mon, 14 Jan 2002, Daniel Hennessey wrote:
+
+&gt;<i> I have considered using syslinux but it feels like a bit of a cop out. Why
+</I>&gt;<i> use a DOS partition (using up valuable blocks on my cf card) to work around
+</I>&gt;<i> problems that I don't understand? Seems like a bit of a Micro$haft approach!
+</I>&gt;<i> Why would a DOS partition behave when others don't? Is it the BIOS
+</I>&gt;<i> implementation on my mobo? I will persevere with what I am doing at the
+</I>&gt;<i> moment which is using sfdisk to partition the drive and dd to manipulate the
+</I>&gt;<i> bootsector. At least I am learning a hell of a lot about partitioning and
+</I>&gt;<i> bootloading.
+</I>&gt;<i> 
+</I>&gt;<i> By the way, I use the Sandisk USB flash reader/writer to partition the card
+</I>&gt;<i> 'cause I heard there were problems with the cf-ide adaptor.
+</I>&gt;<i> 
+</I>&gt;<i> Cheers y'all.
+</I>&gt;<i> 
+</I>&gt;<i> Dan
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000444.html">[Peeweelinux] RE compact flash partitions
+</A></li>
+	<LI> Next message: <A HREF="000446.html">[Peeweelinux] support disks bigger than 15G ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#445">[ date ]</a>
+              <a href="thread.html#445">[ thread ]</a>
+              <a href="subject.html#445">[ subject ]</a>
+              <a href="author.html#445">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

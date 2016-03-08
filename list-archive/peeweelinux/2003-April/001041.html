@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] gunzipping ramdisk
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001040.html">
+   <LINK REL="Next"  HREF="001042.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] gunzipping ramdisk
+   </H1>
+    <B>Stephen Lee
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] gunzipping ramdisk">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>18 Apr 2003 17:49:12 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001040.html">[Peeweelinux] gunzipping ramdisk
+</A></li>
+        <LI> Next message: <A HREF="001042.html">[Peeweelinux] gunzipping ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1041">[ date ]</a>
+              <a href="thread.html#1041">[ thread ]</a>
+              <a href="subject.html#1041">[ subject ]</a>
+              <a href="author.html#1041">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Fri, 2003-04-18 at 16:26, Barry Gershenfeld wrote:
+&gt;<i> &gt;I would like to mount the ramdisk residing on flash (running PWL on a
+</I>&gt;<i> &gt;DOC2000) so changes can be made and then saved again. After mounting the
+</I>&gt;<i> &gt;DOC under PWL, I tried to unzip the ramdisk so I could mount it for
+</I>&gt;<i> &gt;editing. What was a 1.3Meg file ballooned to more than 30Meg after
+</I>&gt;<i> &gt;unzipping the file. I wasn't sure of the exact size because it ran out
+</I>&gt;<i> &gt;of ramdisk space. Surely, 1.3Meg can possibly expand THAT much?!?. I had
+</I>&gt;<i> &gt;renamed &quot;ramdisk&quot; to &quot;ramdisk.gz&quot; and then tried running &quot;gunzip
+</I>&gt;<i> &gt;ramdisk.gz&quot; What is the correct command to unzip the ramdisk? 
+</I>&gt;<i> &gt;Thanks,
+</I>&gt;<i> &gt;Stephen 
+</I>&gt;<i> 
+</I>&gt;<i> gunzip file should do it.  These programs are generally smart 
+</I>&gt;<i> enough to tell you if your file isn't a zip file.   It _is_ possible
+</I>&gt;<i> to compress a file 100:1  especially if it is
+</I>&gt;<i> an empty file.
+</I>&gt;<i> 
+</I>&gt;<i> The file system that appears there should be the compressed version
+</I>&gt;<i> of the one pwl built.  cd to to the projects directory, to the
+</I>&gt;<i> name of your project, and then to mnt.    Then, issue the
+</I>&gt;<i> du -h    command to see how much got put in there.   It may
+</I>&gt;<i> be possible to create a lot of empty space through the pwl 
+</I>&gt;<i> configurations but I'm not sure of that and I'm not much good 
+</I>&gt;<i> looking at their scripts.
+</I>Thanks Barry. I was hoping to be able to make permanent changes to the
+ramdisk file while running pwl/doc. Is there any other way other than to
+uncompress the whole ramdisk file to the ramdisk? Ultimately I would
+like to make modifications to lilo.conf or any other file in pwl without
+having to pull out the DOC and doing it in a reader.
+
+Thanks,
+Stephen
+-- 
+<A HREF="mailto:splee@spl-linux.com">splee@spl-linux.com</A>
+www.spl-linux.com
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001040.html">[Peeweelinux] gunzipping ramdisk
+</A></li>
+	<LI> Next message: <A HREF="001042.html">[Peeweelinux] gunzipping ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1041">[ date ]</a>
+              <a href="thread.html#1041">[ thread ]</a>
+              <a href="subject.html#1041">[ subject ]</a>
+              <a href="author.html#1041">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,513 @@
+From peeweelinux@adis.on.ca  Wed Oct 10 01:14:36 2001
+From: peeweelinux@adis.on.ca (David Aitken)
+Date: Wed, 10 Oct 2001 10:14:36 +1000
+Subject: Audo login.
+References: <01090617500603.01042@gsisteron.local.com1.fr>
+Message-ID: <003901c15120$8c40e0f0$0100a8c0@amd650>
+
+Is it possible to make PeeWeeLinux boot into a XWindows without having to
+make the user login?  All I need is the user to be able to interact with my
+graphical XWindows based program on a touch screen computer.
+
+Thank You,
+David Aitken.
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Oct 10 13:00:03 2001
+From: peeweelinux@adis.on.ca (Thomas Boore)
+Date: Wed, 10 Oct 2001 08:00:03 -0400
+Subject: Audo login.
+Message-ID: <AB802CEF9C2DD411AA9800A0C9E927E762D15B@datalux_exc>
+
+Yes,  there is a way to do this.  I need to check the configuration I have.
+I will email to you.
+BY this weekend.
+
+Thomas Boore                                 
+155 Aviation Drive
+Winchester, VA 22602
+(540)-723-4230 Phone
+(540)-723-4602 Fax
+
+Microsoft Certified Professional
+A+ Service Technician 
+
+
+	-----Original Message-----
+	From:	David Aitken [SMTP:david@ahill.com]
+	Sent:	Tuesday, October 09, 2001 8:15 PM
+	To:	peeweelinux@adis.on.ca
+	Subject:	Audo login.
+
+	Is it possible to make PeeWeeLinux boot into a XWindows without
+having to
+	make the user login?  All I need is the user to be able to interact
+with my
+	graphical XWindows based program on a touch screen computer.
+
+	Thank You,
+	David Aitken.
+
+
+	---------------------------------------------------
+	See the list archives at http://adis.on.ca/archives/
+	See the PWL homepage at  http://peeweelinux.com
+	---------------------------------------------------
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Oct 10 14:41:17 2001
+From: peeweelinux@adis.on.ca (Terri Fischer)
+Date: Wed, 10 Oct 2001 09:41:17 -0400
+Subject: Audo login.
+In-Reply-To: Audo login. [from: David Aitken]
+References: <01090617500603.01042@gsisteron.local.com1.fr>
+ <003901c15120$8c40e0f0$0100a8c0@amd650>
+Message-ID: <15300.20477.37671.502038@wallaby.ner.com>
+
+
+David Aitken writes on Wed, 10 Oct 2001 10:14:36 +1000:
+
+DA> Is it possible to make PeeWeeLinux boot into a XWindows without having to
+DA> make the user login?  All I need is the user to be able to interact with my
+DA> graphical XWindows based program on a touch screen computer.
+
+DA> Thank You,
+DA> David Aitken.
+
+On mine, I created a shell script file:
+   /etc/rcS.d/95local
+
+to be the last thing run at boot time (so, the '95' is higher than any
+other file in rcS.d), containing as the final entry:
+
+  #!/bin/bash
+  echo starting X as root
+  su - root -c /root/my.autostart &
+
+Then, in the file /root/my.autostart:
+
+  #! /bin/bash
+  # Source /etc/profile since don't seem to automatically be getting the PATH
+  source /etc/profile
+  # /etc/X11/xinit/xinitrc has the startup for X and my program
+  startx
+
+Where /etc/X11/xinit/xinitrc launches the program I want to take over
+the screen as well as the window manager.
+
+I wouldn't be surprised if there's an easier way (like just running
+'startx' on the su line).  I did this a year or so ago and haven't
+changed it since.  I do mine as root, but you may not have to.
+
+Good luck,
+Terri
+
+-- 
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+Terri L. Fischer			terri@ner.com
+New England Research, Inc.		
+White River Jct., VT
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Oct 11 05:29:04 2001
+From: peeweelinux@adis.on.ca (David Aitken)
+Date: Thu, 11 Oct 2001 14:29:04 +1000
+Subject: Auto login.
+References: <01090617500603.01042@gsisteron.local.com1.fr><003901c15120$8c40e0f0$0100a8c0@amd650> <15300.20477.37671.502038@wallaby.ner.com>
+Message-ID: <000c01c1520d$5e64ee90$0100a8c0@amd650>
+
+Thank you very much.  That was quite helpful.
+
+David.
+----- Original Message -----
+From: "Terri Fischer" <terri@ner.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Wednesday, October 10, 2001 11:41 PM
+Subject: Audo login.
+
+
+>
+> David Aitken writes on Wed, 10 Oct 2001 10:14:36 +1000:
+>
+> DA> Is it possible to make PeeWeeLinux boot into a XWindows without having
+to
+> DA> make the user login?  All I need is the user to be able to interact
+with my
+> DA> graphical XWindows based program on a touch screen computer.
+>
+> DA> Thank You,
+> DA> David Aitken.
+>
+> On mine, I created a shell script file:
+>    /etc/rcS.d/95local
+>
+> to be the last thing run at boot time (so, the '95' is higher than any
+> other file in rcS.d), containing as the final entry:
+>
+>   #!/bin/bash
+>   echo starting X as root
+>   su - root -c /root/my.autostart &
+>
+> Then, in the file /root/my.autostart:
+>
+>   #! /bin/bash
+>   # Source /etc/profile since don't seem to automatically be getting the
+PATH
+>   source /etc/profile
+>   # /etc/X11/xinit/xinitrc has the startup for X and my program
+>   startx
+>
+> Where /etc/X11/xinit/xinitrc launches the program I want to take over
+> the screen as well as the window manager.
+>
+> I wouldn't be surprised if there's an easier way (like just running
+> 'startx' on the su line).  I did this a year or so ago and haven't
+> changed it since.  I do mine as root, but you may not have to.
+>
+> Good luck,
+> Terri
+>
+> --
+> =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+> Terri L. Fischer terri@ner.com
+> New England Research, Inc.
+> White River Jct., VT
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+>
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Oct 14 03:52:51 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 13 Oct 2001 21:52:51 -0500 (CDT)
+Subject: [Peeweelinux] New list manager
+Message-ID: <Pine.LNX.4.33.0110132146100.13826-100000@big.adis.on.ca>
+
+The list manager for the PeeWeeLinux@adis.on.ca mailing list has been
+changed from Majordomo to Mailman. The locations to edit list options are:
+
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel
+
+The archives have moved to:
+
+http://mail.adis.on.ca/pipermail/peeweelinux/
+http://mail.adis.on.ca/pipermail/peeweelinux-devel/
+
+Regards,
+Adi
+
+
+From peeweelinux@adis.on.ca  Wed Oct 17 07:16:00 2001
+From: peeweelinux@adis.on.ca (Steven Merrifield)
+Date: Wed, 17 Oct 2001 16:16:00 +1000
+Subject: [Peeweelinux] Re: compact flash woes
+Message-ID: <B1612D7A9C0ED41194F100D0B74CC32B43FDE3@ws12.tecom.com.au>
+
+Hi,
+
+I have no experience with CF yet, but I want to get started. Are the
+problems
+with the CF-IDE adapters due to people hot-swapping them? What if I *only*
+insert or remove the CF when the power is off? Am I still likely to have
+problems? Is this what others have done, or are you inserting/removing when 
+the power is applied?
+
+Many thanks,
+steve
+
+
+>Mon, 9 Jul 2001 12:48:02 -0500 (CDT) 
+
+>I have used the CF-IDE adapter quite successfully for installing syslinux
+>on a DOS formatted CF card. However, formatting a CF using the CF-IDE
+>adapter using linux fdisk seems to have its problems. 
+>
+>The trouble is very specific to using fdisk and the CF-IDE adapter. Once 
+>the partitions are done I have never had a problem with the CF-IDE 
+>adapter. I.e. running mke2fs, mkdosfs, lilo, syslinux, etc all works fine. 
+>
+>I have not come across any CF-IDE adapters that are hotswap yet. 
+
+
+
+
+From peeweelinux@adis.on.ca  Wed Oct 17 15:22:21 2001
+From: peeweelinux@adis.on.ca (Ralph Stickley)
+Date: Wed, 17 Oct 2001 07:22:21 -0700 (PDT)
+Subject: [Peeweelinux] Re: compact flash woes
+In-Reply-To: <B1612D7A9C0ED41194F100D0B74CC32B43FDE3@ws12.tecom.com.au>
+Message-ID: <20011017142221.29778.qmail@web9103.mail.yahoo.com>
+
+The IDE interface does not look like it would support hot swap. Each
+IDE device must be reset and configured before it can be used.  Not
+normally done except at power-up.
+
+The CF will not be harmed if plugged in hot - the ground pins on the
+CF connector are longer and make connection first.
+
+If you leave it installed, it works great - and it should always be
+the cheapest flash available.
+
+Good luck,
+Ralph
+
+
+--- Steven Merrifield <smerrifield@tecom.com.au> wrote:
+> Hi,
+> 
+> I have no experience with CF yet, but I want to get started. Are
+> the
+> problems
+> with the CF-IDE adapters due to people hot-swapping them? What if I
+> *only*
+> insert or remove the CF when the power is off? Am I still likely to
+> have
+> problems? Is this what others have done, or are you
+> inserting/removing when 
+> the power is applied?
+> 
+> Many thanks,
+> steve
+> 
+> 
+> >Mon, 9 Jul 2001 12:48:02 -0500 (CDT) 
+> 
+> >I have used the CF-IDE adapter quite successfully for installing
+> syslinux
+> >on a DOS formatted CF card. However, formatting a CF using the
+> CF-IDE
+> >adapter using linux fdisk seems to have its problems. 
+> >
+> >The trouble is very specific to using fdisk and the CF-IDE
+> adapter. Once 
+> >the partitions are done I have never had a problem with the CF-IDE
+> 
+> >adapter. I.e. running mke2fs, mkdosfs, lilo, syslinux, etc all
+> works fine. 
+> >
+> >I have not come across any CF-IDE adapters that are hotswap yet. 
+> 
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________________________
+Do You Yahoo!?
+Make a great connection at Yahoo! Personals.
+http://personals.yahoo.com
+
+From peeweelinux@adis.on.ca  Mon Oct 22 02:16:31 2001
+From: peeweelinux@adis.on.ca (Carl Walthall)
+Date: Sun, 21 Oct 2001 20:16:31 -0500
+Subject: [Peeweelinux] Manuals
+Message-ID: <3BD3736F.34D331D6@home.com>
+
+Can anyone tell me where to find a manual for peeweelinux?
+I am new to Linux and working on a embedded Linux project using 
+the TS2800 board. I would like to setup telnet and ftp on my embedded
+board. Also has anyone set dhcp for a cable connection?
+
+
+Thanks Carl
+
+From peeweelinux@adis.on.ca  Mon Oct 29 02:30:46 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?=BA=EA=20=D6=DC?=)
+Date: Mon, 29 Oct 2001 10:30:46 +0800 (CST)
+Subject: [Peeweelinux] how to embed linux with a 8mb disk on module
+Message-ID: <20011029023046.5160.qmail@web9003.mail.yahoo.com>
+
+I'm embedding linux in a  8mb disk on module to run a
+firewall.I have some questions on my experiencing:
+
+1.My kernel should support the RAMDISK?
+2.what is the user and passward of user login? How to
+set? how about the user and passward  written in the
+README file in peeweelinux? I think it should be set
+in the tinylogin.
+thanks very much.
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+
+From peeweelinux@adis.on.ca  Mon Oct 29 11:43:49 2001
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Mon, 29 Oct 2001 09:43:49 -0200
+Subject: [Peeweelinux] Floppy
+Message-ID: <200110291144.f9TBi0922655@gizmo.adis.on.ca>
+
+I am starting to use Linux embedded software. I downloaded the PeeWeeLinux 
+and I am trying to use it. 
+
+I read in the documentation that I can Load the file system only to a 
+Disk-On-Chip, but unfortunatelly I do not have one. 
+
+Is there anyway to load the file system to a Floppy disk? 
+
+I think I can do that by reading the Bootdisk-howto, but if anyone has some 
+experience on this issue, please, let me know. 
+
+Best regards, 
+
+Lourenço. 
+
+_________________________________________________________
+Oi! Você quer um iG-mail gratuito?
+Então clique aqui: http://registro.ig.com.br/
+
+
+From peeweelinux@adis.on.ca  Mon Oct 29 04:09:54 2001
+From: peeweelinux@adis.on.ca (Jason Bodnar)
+Date: Sun, 28 Oct 2001 22:09:54 -0600 (CST)
+Subject: [Peeweelinux] Using a different kernel source package
+Message-ID: <XFMail.20011028220954.jbodnar@buzzard.kdi.com>
+
+I'm trying to use a Mandrake 2.4.8 kernel-source package with PeeWeeLinux. I
+copied the rpm to Embedded_Build/RPMS. It shows up in the list of available
+kernels but when I try to extract the source files for the kernel the following
+error is flashed on the screen before it goes back to the regular blue PWL
+screen:
+
+ln: creating symbolic link '/tmp/Embedded_Build/kernelbuild/usr/src/linux/' to
+'/tmp/Embedded_Build/kernelbuild/usr/src/linux-2.4.8-26mdk': No such file or
+directory
+
+Do I need to do something other than putting my kernel RPM in
+Embedded_Build/RPMS?
+
+-- 
+Jason Bodnar
+jason@shakabuku.org
+
+From peeweelinux@adis.on.ca  Mon Oct 29 14:47:59 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 29 Oct 2001 08:47:59 -0600 (CST)
+Subject: [Peeweelinux] Floppy
+In-Reply-To: <200110291144.f9TBi0922655@gizmo.adis.on.ca>
+Message-ID: <Pine.LNX.4.33.0110290846110.19116-100000@adibox.knet.ca>
+
+> I read in the documentation that I can Load the file system only to a 
+> Disk-On-Chip, but unfortunatelly I do not have one. 
+
+The documantation is pretty outdated. You can load the image onto a 
+floppy, or an attached drive. Just keep in mind that the install process 
+will take over the entire drive and replace it's content with your 
+embedded system. 
+
+Regards,
+Adi
+
+
+From peeweelinux@adis.on.ca  Tue Oct 30 00:38:01 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?=BA=EA=20=D6=DC?=)
+Date: Tue, 30 Oct 2001 08:38:01 +0800 (CST)
+Subject: [Peeweelinux] Using a different kernel source package
+In-Reply-To: <XFMail.20011028220954.jbodnar@buzzard.kdi.com>
+Message-ID: <20011030003801.81131.qmail@web9007.mail.yahoo.com>
+
+run peewee,until appear the interface of "select a
+config",then you select one config,then you will find
+"make menuconfig",now you open other terminal,delete
+the /Embedded_Build/kernel/usr/src/linux,under the
+directory of src,tar -zxvf linux-2.4.8.tar.gz(you
+should have linux-2.4.8.tar.gz),ok,you back to the old
+terminal--peewee interface,now you perform "make
+menuconfig",you will find that you are configing the
+kernel 2.4.8.I config kernel 2.2.5 with this way is
+ok.
+
+
+
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+
+From peeweelinux@adis.on.ca  Tue Oct 30 04:16:25 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?=BA=EA=20=D6=DC?=)
+Date: Tue, 30 Oct 2001 12:16:25 +0800 (CST)
+Subject: [Peeweelinux] (no subject)
+Message-ID: <20011030041625.30089.qmail@web9010.mail.yahoo.com>
+
+I load the system into a 16mb dom with peewee,but it
+display:
+
+
+VFS: mounted root(ext2 filesystem).
+freeing unused kernel memory :32k freed
+bad inittab entry:id:3:initdefault
+device '/dev/si' does not exist . did you read the
+directions?
+bad inittab entry:si::sysinit:/rc.init
+device '/dev/l0' does not exist. did you read the
+directions?
+...................(many simaliar....)
+    sleeping forever
+
+then my pc died.can you tell me why ??thanks very
+much.
+
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+
+From peeweelinux@adis.on.ca  Tue Oct 30 05:05:03 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?=BA=EA=20=D6=DC?=)
+Date: Tue, 30 Oct 2001 13:05:03 +0800 (CST)
+Subject: [Peeweelinux] boot questions from a dom
+Message-ID: <20011030050503.96390.qmail@web9007.mail.yahoo.com>
+
+I load the system into a 16mb dom with peewee,but it
+display:
+
+
+VFS: mounted root(ext2 filesystem).
+freeing unused kernel memory :32k freed
+bad inittab entry:id:3:initdefault
+device '/dev/si' does not exist . did you read the
+directions?
+bad inittab entry:si::sysinit:/rc.init
+device '/dev/l0' does not exist. did you read the
+directions?
+...................(many simaliar....)
+    sleeping forever
+
+then my pc died.can you tell me why ??thanks very
+much.
+
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+

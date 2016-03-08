@@ -1,0 +1,152 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Continued boot problems - Compactflash Corruption?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000809.html">
+   <LINK REL="Next"  HREF="000811.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Continued boot problems - Compactflash Corruption?
+   </H1>
+    <B>Leif Steinhour
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Continued boot problems - Compactflash Corruption?">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 21 Oct 2002 10:58:31 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000809.html">[Peeweelinux] Continued boot problems - Compactflash Corruption?
+</A></li>
+        <LI> Next message: <A HREF="000811.html">[Peeweelinux] Continued boot problems - Compactflash
+ Corruption?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#813">[ date ]</a>
+              <a href="thread.html#813">[ thread ]</a>
+              <a href="subject.html#813">[ subject ]</a>
+              <a href="author.html#813">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>My 2¢, starting backwards:
+
+	For starters, running Red Hat 7.2, I had a lot of trouble getting 
+things to build properly, but once I got the right system libraries 
+installed I was able to get things working. I should add that I had a lot 
+of partial builds that looked right but weren't. I don't know whether that 
+translates to slackware, but for long term development my advice is to get 
+a small hard drive or extra partition set up on your host and put Red Hat 
+6.2 (what Adi used to develop Pee Wee) on it: telling Lilo about the extra 
+image should be no big deal. You probably already know this, but you can 
+download an image from Red Hat if you can't find a disk on ebay.
+	The other thing that I should add is that I think you should use 
+one of the 2.4 kernels: there have been a lot of posts in the archive 
+about how to do that, I'll refer you to those. I say that because I 
+suspect that more of the peculularities of the new architecture you're 
+interested in may mapped out. You might consider setting up a small 
+partition on your host disk as the target and trying to boot that and get 
+that booting before you move on to the Transmeta.
+	As far as the CRC errors go, I can tell you that I've had pretty 
+good luck with a PCMCIA writer, but that it took me a long time to get it 
+working properly. I don't have any experience with the IDE readers, so 
+won't comment on them, but was wondering if you were able to read and 
+write files properly outside of pee wee to them? By which I mean: putting 
+a filesystem on a flash disk, mounting the drive on your host, copying 
+something and typing &quot;ls -l&quot; to see how big it is. My understanding of dd 
+is that because it copies everything all of the filesystem placeholders 
+are copied as well, so it's not an accurate picture of the size of a 
+partition (supposedly you can defrag a disk and that will change it's size 
+for this reason).
+	My bet is that things are getting copied fine and that there's 
+something funky about what pee wee is doing. I would do that filesystem 
+test first and then go to work on your system libraries.
+
+On 2002.10.21 11:06 John Murphy wrote:
+&gt;<i> 
+</I>&gt;<i> I'm still having problems getting peewee to boot.  Let me
+</I>&gt;<i> describe my host and targets and see if anyone can offer
+</I>&gt;<i> some advice.  I've tried loading my own project and
+</I>&gt;<i> the wireless-isa without luck.
+</I>&gt;<i> 
+</I>&gt;<i> Host system: 586 w/ 128 MB, Running slackware 8.0,
+</I>&gt;<i>        PNY and Jumpshot compact flash reader/writers.
+</I>&gt;<i>        Running kernel 2.4.19
+</I>&gt;<i> 
+</I>&gt;<i> (Note that I'm not building any source yet).
+</I>&gt;<i> 
+</I>&gt;<i> Target #1: Transmeta 800Mhz, 256 MB, compact flash IDE adapter
+</I>&gt;<i> 
+</I>&gt;<i> Target #2: ZF Micro 386, 8MB, Compact flash built in.  Has booted
+</I>&gt;<i>      linux many months ago.  (home made distribution).
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> I've tried using both of the writers, a number of different
+</I>&gt;<i> flash cards, etc, to no avail.  Typically, the board
+</I>&gt;<i> loads the ramdisk, uncompresses linux, and then fails with
+</I>&gt;<i> a CRC error.
+</I>&gt;<i> 
+</I>&gt;<i> I switched to using a dosFS and syslinux on the flash cards, with
+</I>&gt;<i> the same result.  I did an MD5sum on the kernel from the extracted
+</I>&gt;<i> filesystem under peewee, and and md5sum on the mounted
+</I>&gt;<i> compactflash filesystem, and they differed.  (Should they?  I didn't
+</I>&gt;<i> know if a ramdisk word was set in there or something?) - Seeing the
+</I>&gt;<i> difference, I suspected that something about my system writing the
+</I>&gt;<i> kernel was not working quite right.  I copied the kernel from the
+</I>&gt;<i> extracted peewee filesystem to the mounted compact flash card, and
+</I>&gt;<i> things seemed to improve a bit.  This time, the
+</I>&gt;<i> system uncompressed the ramdisk, uncompressed the kernel,
+</I>&gt;<i> and got to &quot;Booting the Kernel&quot; at which point the
+</I>&gt;<i> keyboard lights were blinking on and off...
+</I>&gt;<i> 
+</I>&gt;<i> I get the same results using either my load or the wireless-isa
+</I>&gt;<i> example.
+</I>&gt;<i> 
+</I>&gt;<i> I've tried swapping RAM on both of the targets.  No dice.
+</I>&gt;<i> 
+</I>&gt;<i> Peewee looks great, and I'm sure things will work if I can
+</I>&gt;<i> get over this hump.  I suspect that parts of my compact flash
+</I>&gt;<i> image are corrupted during writing.  Any ideas on checks I can do?
+</I>&gt;<i> Can I push the system into a file and then do a md5sum comparison on
+</I>&gt;<i> that file and the output of a dd of the compactflash card?
+</I>&gt;<i> 
+</I>&gt;<i> Any thoughts would be greatly appreciated.  I'm thinking I'm going to
+</I>&gt;<i> try building a new host system, and was wondering what distribution
+</I>&gt;<i> you folks would recommend for doing a lot of peewee work; I'm partial
+</I>&gt;<i> to slackware, but I'll try anythig at this point.
+</I>&gt;<i> 
+</I>&gt;<i> Thanks,
+</I>&gt;<i> murph
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000809.html">[Peeweelinux] Continued boot problems - Compactflash Corruption?
+</A></li>
+	<LI> Next message: <A HREF="000811.html">[Peeweelinux] Continued boot problems - Compactflash
+ Corruption?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#813">[ date ]</a>
+              <a href="thread.html#813">[ thread ]</a>
+              <a href="subject.html#813">[ subject ]</a>
+              <a href="author.html#813">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

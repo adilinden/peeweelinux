@@ -1,0 +1,1727 @@
+From peeweelinux@adis.on.ca  Thu Jan 10 12:10:42 2002
+From: peeweelinux@adis.on.ca (Daniel Hennessey)
+Date: Thu, 10 Jan 2002 12:10:42 -0000
+Subject: [Peeweelinux] RE lilo compact flash prob
+Message-ID: <AAE57540F048D4118C8A0050047A2BD0580CA1@mail_lutt.xko.co.uk>
+
+I have a Sandisk SDDR-31 connected to my USB port and am trying to write the
+filesystem to this target. Everything appears to go OK, the files are
+transferred and it says that it has run lilo on /dev/sda, but when I try and
+boot off it (as /dev/hda using a cf-ide converter), the furthest I have got
+is to the dreaded 'LI.......'. Is there anything that I should check before
+condemning the cheapo flash card I bought as dud. If you require any further
+info I would be glad to oblige.
+
+Thanks in advance
+
+Dan Hennessey
+
+From peeweelinux@adis.on.ca  Thu Jan 10 14:59:16 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 10 Jan 2002 08:59:16 -0600 (CST)
+Subject: [Peeweelinux] RE lilo compact flash prob
+In-Reply-To: <AAE57540F048D4118C8A0050047A2BD0580CA1@mail_lutt.xko.co.uk>
+Message-ID: <Pine.LNX.4.33.0201100858580.3838-100000@adibox.knet.ca>
+
+What does your lilo.conf file look like?
+
+Adi
+
+On Thu, 10 Jan 2002, Daniel Hennessey wrote:
+
+> I have a Sandisk SDDR-31 connected to my USB port and am trying to write the
+> filesystem to this target. Everything appears to go OK, the files are
+> transferred and it says that it has run lilo on /dev/sda, but when I try and
+> boot off it (as /dev/hda using a cf-ide converter), the furthest I have got
+> is to the dreaded 'LI.......'. Is there anything that I should check before
+> condemning the cheapo flash card I bought as dud. If you require any further
+> info I would be glad to oblige.
+> 
+> Thanks in advance
+> 
+> Dan Hennessey
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Jan 10 15:54:24 2002
+From: peeweelinux@adis.on.ca (root)
+Date: Thu, 10 Jan 2002 10:54:24 -0500 (EST)
+Subject: [Peeweelinux] RE lilo compact flash prob
+Message-ID: <3C3DB314.6077E4C8-100000@PolTec.COM>
+
+Adi Linden wrote:
+>
+> What does your lilo.conf file look like?
+>
+> Adi
+>
+> On Thu, 10 Jan 2002, Daniel Hennessey wrote:
+>
+> > I have a Sandisk SDDR-31 connected to my USB port and am trying to write the
+> > filesystem to this target. Everything appears to go OK, the files are
+> > transferred and it says that it has run lilo on /dev/sda, but when I try and
+> > boot off it (as /dev/hda using a cf-ide converter), the furthest I have got
+> > is to the dreaded 'LI.......'. Is there anything that I should check before
+> > condemning the cheapo flash card I bought as dud. If you require any further
+> > info I would be glad to oblige.
+> >
+
+I think Dan's basic problem is running lilo on a device
+(/dev/sda) which is not known to the bios at boot time.
+During boot, the bios probably regards the Sandisk as
+an IDE device and thinks of it as the C drive.
+
+Try telling lilo that it should play along with the
+bios' assumptions. In lilo.conf, you probably have:
+
+boot=/dev/sda
+
+Right after that add:
+
+disk=/dev/sda
+<TAB>bios=0x80
+
+This will tell lilo to have the first stage boot loader
+use bios disk 0x80 instead of whatever drive number
+it previously thought /dev/sda to be.
+
+Good luck.
+
+  --Dennis
+
+
+From peeweelinux@adis.on.ca  Thu Jan 10 16:00:03 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 10 Jan 2002 10:00:03 -0600 (CST)
+Subject: [Peeweelinux] RE lilo compact flash prob
+In-Reply-To: <AAE57540F048D4118C8A0050047A2BD0580CA3@mail_lutt.xko.co.uk>
+Message-ID: <Pine.LNX.4.33.0201100957220.3838-100000@adibox.knet.ca>
+
+Hi,
+
+The "bios  = 0x80" refers to the bios disk the boot loader is to be booted 
+from. Without it lilo would assume "/dev/sda" which is incorrect since it 
+is actually "/dev/hda" in the actual target system. The boot loader is 
+actually installed on "/dev/sda".
+
+Adi
+
+
+On Thu, 10 Jan 2002, Daniel Hennessey wrote:
+
+> Adi,
+> 
+> the following is the contents of the file tmp/lilo.conf.
+> 
+> disk      = /dev/sda
+>     bios  = 0x80
+> boot      = /dev/sda
+> linear
+> backup    = /dev/null
+> map       = ./mnt/map
+> install   = ./mnt/boot.b
+> prompt
+> timeout   = 50
+> initrd    = ./mnt/initrd
+> 
+> image     = ./mnt/bzImage
+>     label     = linux
+>     root      = /dev/ram2
+>     vga       = normal
+>     ramdisk   = 9312
+>     read-only
+> 
+> I have tried changing the bios setting but I wasn't sure what context it is
+> used in. Does it refer to the bios disk that the bootloader is going to be
+> installed on (0x81) or the bios disk that is to be booted from (0x80).
+> 
+> Hope that makes sense.
+> 
+> Cheers again
+> 
+> Dan
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Jan 10 16:25:55 2002
+From: peeweelinux@adis.on.ca (SY Meta)
+Date: Thu, 10 Jan 2002 19:25:55 +0300
+Subject: [Peeweelinux] Freeswan
+Message-ID: <3C3DC093.4050005@malagasy.com>
+
+Hi all,
+
+I am new to this list.I want to build peeweelinux with freeswan support. 
+  Can someone point me out how to use my own kernel not kernel that 
+comes along with peeweelinux ?
+
+Thanks,
+
+Meta
+
+
+From peeweelinux@adis.on.ca  Thu Jan 10 16:51:49 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 10 Jan 2002 10:51:49 -0600 (CST)
+Subject: [Peeweelinux] Freeswan
+In-Reply-To: <3C3DC093.4050005@malagasy.com>
+Message-ID: <Pine.LNX.4.33.0201101047400.3838-100000@adibox.knet.ca>
+
+Hi,
+
+Look at the custom files in pwlconfig.  This allows you to add your own 
+files to the filesystem or replace files provided by peeweelinux...
+
+Adi
+
+
+On Thu, 10 Jan 2002, SY Meta wrote:
+
+> Hi all,
+> 
+> I am new to this list.I want to build peeweelinux with freeswan support. 
+>   Can someone point me out how to use my own kernel not kernel that 
+> comes along with peeweelinux ?
+> 
+> Thanks,
+> 
+> Meta
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Jan 10 19:50:19 2002
+From: peeweelinux@adis.on.ca (RDS)
+Date: Thu, 10 Jan 2002 20:50:19 +0100
+Subject: [Peeweelinux] Can i use an application compiled on a MANDRAKE 8.1 main system ?
+Message-ID: <000a01c19a10$09768100$635d0b50@rdspc>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0007_01C19A18.6A668200
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+
+I'am a beginner on LINUX and i would like to know if i could use my =
+custom MP3 player on the PeeWeeLinux. This player is compiled on the =
+MANDRAKE 8.1 distribution.
+I think that there will have a problem of compatibilities with library =
+with the PeeWeeLinux because the kernel version is different. Is my =
+think right ? I don't know exactly.=20
+If there are some incompatibilities, what is the correct solution to =
+devellop on a different version of kernel or distribution ?
+
+Best regards
+
+David ROCHE
+
+
+------=_NextPart_000_0007_01C19A18.6A668200
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.2600.0" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>Hello,</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>I'am a beginner on LINUX and i would =
+like to know=20
+if i could use my custom MP3 player on the PeeWeeLinux. This player is =
+compiled=20
+on the MANDRAKE 8.1 distribution.</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>I think that there will have a problem =
+of=20
+compatibilities with library with the PeeWeeLinux because the kernel =
+version is=20
+different.&nbsp;Is my think right ? I don't know exactly. </FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>If there&nbsp;are&nbsp;some =
+incompatibilities, what=20
+is the correct solution to devellop on a different version of =
+kernel&nbsp;or=20
+distribution ?</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Best regards</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>David ROCHE</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV></BODY></HTML>
+
+------=_NextPart_000_0007_01C19A18.6A668200--
+
+
+ 
+______________________________________________________________________________
+ifrance.com, l'email gratuit le plus complet de l'Internet !
+vos emails depuis un navigateur, en POP3, sur Minitel, sur le WAP...
+http://www.ifrance.com/_reloc/email.emailif
+
+
+
+From peeweelinux@adis.on.ca  Thu Jan 10 19:55:32 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 10 Jan 2002 13:55:32 -0600 (CST)
+Subject: [Peeweelinux] Can i use an application compiled on a MANDRAKE
+ 8.1 main system ?
+In-Reply-To: <000a01c19a10$09768100$635d0b50@rdspc>
+Message-ID: <Pine.LNX.4.33.0201101353170.3838-100000@adibox.knet.ca>
+
+Hi,
+
+The different kernel may be an issue. PWL was built on RedHat 6.2 with a 
+minimized glibc library of RedHat 6.2. It is quite possible that Mandrake 
+8.1 uses different libs than PWL which then could cause problems.
+
+A solution would be to compile your application static or use a RedHat 6.2 
+system for development.
+
+Adi
+
+On Thu, 10 Jan 2002, RDS wrote:
+
+> Hello,
+> 
+> I'am a beginner on LINUX and i would like to know if i could use my custom MP3 player on the PeeWeeLinux. This player is compiled on the MANDRAKE 8.1 distribution.
+> I think that there will have a problem of compatibilities with library with the PeeWeeLinux because the kernel version is different. Is my think right ? I don't know exactly. 
+> If there are some incompatibilities, what is the correct solution to devellop on a different version of kernel or distribution ?
+> 
+> Best regards
+> 
+> David ROCHE
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Fri Jan 11 07:31:49 2002
+From: peeweelinux@adis.on.ca (RESEARCH)
+Date: Fri, 11 Jan 2002 08:31:49 +0100
+Subject: [Peeweelinux] Can i configure the bash prompt like in the MANDRAKE 8.1 distribution and with the history file too ?
+Message-ID: <001201c19a72$0880e9e0$063321c0@SECOMAM>
+
+C'est un message de format MIME en plusieurs parties.
+
+------=_NextPart_000_000F_01C19A7A.69CFD3C0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+
+Concerning the custom MP3 program compiled with the MANDRAKE 8.1 =
+distribution, i will try this week-end to do the compilation in static =
+and test on PeeweeLinux.
+
+Just an other question:
+Can i configure the bash prompt like the MANDRAKE 8.1 distribution and =
+activate the history file ?
+If yes, witch file i have to modify ? (.profile ?)
+And what i have to add for having the bash like this : [user@domain]$  =
+(and the history file activated)
+
+best regards
+
+David ROCHE
+Electronic & Informatic Research Department Manager
+SECOMAM
+91, rue des pins d'Alep
+30100 ALES
+email: research@secomam.fr
+website: www.secomam.fr
+
+------=_NextPart_000_000F_01C19A7A.69CFD3C0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 5.50.4134.600" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#80a4c8>
+<DIV><FONT face=3DArial size=3D2>Hello,</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Concerning the custom MP3 program =
+compiled with the=20
+MANDRAKE 8.1 distribution, i will try this week-end to do the =
+compilation in=20
+static and test on PeeweeLinux.</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Just an other question:</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>Can i configure the bash prompt like =
+the MANDRAKE=20
+8.1 distribution and activate the history file ?</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>If yes, witch file i have to modify ? =
+(.profile=20
+?)</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>And what i have to add for having the =
+bash like=20
+this : [user@domain]$&nbsp; (and the history file =
+activated)</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>best regards</FONT></DIV>
+<DIV>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>David ROCHE<BR>Electronic &amp; =
+Informatic Research=20
+Department Manager<BR>SECOMAM<BR>91, rue des pins d'Alep<BR>30100 =
+ALES<BR>email:=20
+<A =
+href=3D"mailto:research@secomam.fr">research@secomam.fr</A><BR>website: =
+<A=20
+href=3D"http://www.secomam.fr">www.secomam.fr</A></FONT></DIV></BODY></HT=
+ML>
+
+------=_NextPart_000_000F_01C19A7A.69CFD3C0--
+
+
+From peeweelinux@adis.on.ca  Fri Jan 11 12:57:45 2002
+From: peeweelinux@adis.on.ca (Michael McManus)
+Date: Fri, 11 Jan 2002 12:57:45 -0000
+Subject: [Peeweelinux] new user
+Message-ID: <ELEFKMBNKNECGPOFIKHGCECGDOAA.Michael@durhamdomains.co.uk>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_000E_01C19A9F.902C8980
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+Hi all
+i am new to peeweelinux
+i am trying to building a wireless router using the Orinoco wireless cards
+but i cannot see any rpms for wireless tools.
+i will be running two wireless cards.
+So to the questions
+1 has peeweelinux got support wireless pcmcia cards (Orinoco)
+2 if not has anyone built a rpm for this or has anyone any suggestions
+
+ps great product
+
+
+Regards
+Michael McManus
+Michael@durhamdomains.co.uk
+michael.mcmanus3@btinternet.com
+-= i dont suffer from insanity i enjoy every minute of it =-
+
+
+------=_NextPart_000_000E_01C19A9F.902C8980
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 5.50.4616.200" name=3DGENERATOR></HEAD>
+<BODY>
+<DIV><SPAN class=3D630314912-11012002><FONT face=3DArial size=3D2>Hi=20
+all</FONT></SPAN></DIV>
+<DIV><SPAN class=3D630314912-11012002><FONT face=3DArial size=3D2>i am =
+new to=20
+peeweelinux</FONT></SPAN></DIV>
+<DIV><SPAN class=3D630314912-11012002><FONT face=3DArial size=3D2>i am =
+trying=20
+to&nbsp;building a wireless router using the Orinoco wireless cards but =
+i cannot=20
+see any rpms for wireless tools.</FONT></SPAN></DIV>
+<DIV><SPAN class=3D630314912-11012002><FONT face=3DArial size=3D2>i will =
+be running=20
+two wireless cards.</FONT></SPAN></DIV>
+<DIV><SPAN class=3D630314912-11012002><FONT face=3DArial size=3D2>So to =
+the=20
+questions</FONT></SPAN></DIV>
+<DIV><SPAN class=3D630314912-11012002><FONT face=3DArial =
+size=3D2>1&nbsp;has=20
+peeweelinux got&nbsp;support wireless pcmcia cards =
+(Orinoco)</FONT></SPAN></DIV>
+<DIV><SPAN class=3D630314912-11012002><FONT face=3DArial size=3D2>2 if =
+not has anyone=20
+built a rpm for this or has anyone any =
+suggestions&nbsp;</FONT></SPAN></DIV>
+<DIV><SPAN class=3D630314912-11012002><FONT face=3DArial=20
+size=3D2></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=3D630314912-11012002><FONT face=3DArial size=3D2>ps =
+great=20
+product</FONT></SPAN></DIV>
+<DIV><SPAN class=3D630314912-11012002><FONT face=3DArial=20
+size=3D2></FONT></SPAN>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Regards</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>Michael McManus</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2><A=20
+href=3D"mailto:Michael@durhamdomains.co.uk">Michael@durhamdomains.co.uk</=
+A></FONT></DIV>
+<DIV><FONT face=3DTahoma size=3D2><A=20
+href=3D"mailto:michael.mcmanus3@btinternet.com">michael.mcmanus3@btintern=
+et.com</A></FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>-=3D i dont suffer from insanity i =
+enjoy every minute=20
+of it =3D-</FONT></DIV>
+<DIV>&nbsp;</DIV></BODY></HTML>
+
+------=_NextPart_000_000E_01C19A9F.902C8980--
+
+
+From peeweelinux@adis.on.ca  Fri Jan 11 15:02:08 2002
+From: peeweelinux@adis.on.ca (SY Meta)
+Date: Fri, 11 Jan 2002 18:02:08 +0300
+Subject: [Peeweelinux] Compactflash
+Message-ID: <3C3EFE70.9070206@malagasy.com>
+
+Hi,
+
+While I am to "Load File System onto Target /dev/hdc" ( /dec/hdc is my 
+compactflash card ), i got this error:
+
+----
+Reading boot sector from /dev/hdc 
+ 
+
+Merging with ./mnt/boot.b 
+ 
+
+Boot image: ./mnt/bzImage 
+ 
+
+open ./mnt/bzImage: Input/output error 
+ 
+                failed
+
+---------
+
+Any ideas?
+
+Meta
+
+
+From peeweelinux@adis.on.ca  Sat Jan 12 18:35:26 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Sat, 12 Jan 2002 13:35:26 EST
+Subject: [Peeweelinux] new user
+Message-ID: <fd.120fd6ee.2971dbef@aol.com>
+
+Hi
+
+I am also interested in such a product, but with a few additions.  I would like to build one with 3 cards, 2 for 802.11b, one for 802.11a, and then a relay radio to act as the backbone between nodes.
+
+I am thinking that it would be great if it could also cache web pages as this would speed things up.  Then my friends could share a T1 connection in our area.
+
+This is probably more processing power than the orinoco solution has, maybe an AMD Athlon is needed.
+
+One of the challenges is the same that Adi ran into - heat - only my problem is worse, as I want to put it outside in CA, where it is 45 C in the summer.
+
+I think it may be easier to get drivers for proxim, as they sell a driver development kit, and seem open to working with people.  I live only 30 Km from their office in CA
+
+Thanks
+
+Harry Niedecken
+
+From peeweelinux@adis.on.ca  Mon Jan 14 09:30:38 2002
+From: peeweelinux@adis.on.ca (daniel hennessey)
+Date: Mon, 14 Jan 2002 09:30:38 +0000
+Subject: [Peeweelinux] RE compact flash partitions
+Message-ID: <20020114093038.B1558@localhost.localdomain>
+
+Hi all,
+
+I have found the reason why when I cannot boot from the peeweelinux installation on my compact flash card! Whenever I put the card in the cf-ide converter, it either cannot read or corrupts the partition table! I haven't worked out if it is the mobo, the cf-ide conv or the cf card itself. The other thing I cannot work out is what the geometry of the card should be. It is detected by the mobo bios as 4 heads 16 sectors and 500 cylinders, but cfdisk (or fdisk or sfdisk) SOMETIMES reported it as 2 x 16 x 500 or 2 x 8 x 1000 !!!
+
+In short, has anybody had similar problems with cf cards or does anybody know of a source of information for using cf cards under linux.
+
+Cheers
+
+Dan
+
+From peeweelinux@adis.on.ca  Mon Jan 14 15:10:56 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 14 Jan 2002 09:10:56 -0600 (CST)
+Subject: [Peeweelinux] RE compact flash partitions
+In-Reply-To: <20020114093038.B1558@localhost.localdomain>
+Message-ID: <Pine.LNX.4.33.0201140910320.17473-100000@adibox.knet.ca>
+
+Hi,
+
+What are you using to load the filesystem onto the card? What is the make 
+and model of the card?
+
+Adi
+
+
+On Mon, 14 Jan 2002, daniel hennessey wrote:
+
+> Hi all,
+> 
+> I have found the reason why when I cannot boot from the peeweelinux installation on my compact flash card! Whenever I put the card in the cf-ide converter, it either cannot read or corrupts the partition table! I haven't worked out if it is the mobo, the cf-ide conv or the cf card itself. The other thing I cannot work out is what the geometry of the card should be. It is detected by the mobo bios as 4 heads 16 sectors and 500 cylinders, but cfdisk (or fdisk or sfdisk) SOMETIMES reported it as 2 x 16 x 500 or 2 x 8 x 1000 !!!
+> 
+> In short, has anybody had similar problems with cf cards or does anybody know of a source of information for using cf cards under linux.
+> 
+> Cheers
+> 
+> Dan
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Jan 14 16:26:46 2002
+From: peeweelinux@adis.on.ca (Matthew Schumacher)
+Date: Mon, 14 Jan 2002 07:26:46 -0900
+Subject: [Peeweelinux] RE compact flash partitions
+References: <20020114093038.B1558@localhost.localdomain>
+Message-ID: <3C4306C6.18BB2A8A@schu.net>
+
+I had problems with my cf card and in the end I put a dos filesystem on
+it and used loadlin in the autoexec.bat to load the linux kernel. 
+
+I realize that this isn't the best way to to do this, but I just
+couldn't make it boot from a linux filesystem.
+
+Later,
+
+schu
+
+daniel hennessey wrote:
+> 
+> Hi all,
+> 
+> I have found the reason why when I cannot boot from the peeweelinux installation on my compact flash card! Whenever I put the card in the cf-ide converter, it either cannot read or corrupts the partition table! I haven't worked out if it is the mobo, the cf-ide conv or the cf card itself. The other thing I cannot work out is what the geometry of the card should be. It is detected by the mobo bios as 4 heads 16 sectors and 500 cylinders, but cfdisk (or fdisk or sfdisk) SOMETIMES reported it as 2 x 16 x 500 or 2 x 8 x 1000 !!!
+> 
+> In short, has anybody had similar problems with cf cards or does anybody know of a source of information for using cf cards under linux.
+> 
+> Cheers
+> 
+> Dan
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+From peeweelinux@adis.on.ca  Mon Jan 14 16:27:08 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 14 Jan 2002 10:27:08 -0600 (CST)
+Subject: [Peeweelinux] RE compact flash partitions
+In-Reply-To: <AAE57540F048D4118C8A0050047A2BD0580CAD@mail_lutt.xko.co.uk>
+Message-ID: <Pine.LNX.4.33.0201141024080.17473-100000@adibox.knet.ca>
+
+Hi Dan,
+
+Did you try forcing the geometry the BIOS reports onto the card? I would 
+suggest trying to manually fdisk the card to see if you can get it 
+partitioned, formatted and mounted.
+
+I take it you are using the cf card via a CF-IDE adapter?
+
+Adi
+
+On Mon, 14 Jan 2002, Daniel Hennessey wrote:
+
+> Adi,
+> 
+> Initially I was using pwlconfig to do everything, but after failing I have
+> tried (probably) every conceivable method of partitioning, formatting,
+> populating and bootsectoring (?) the cf card. The card is a PQI FC032 32Mb.
+> I have checked the web site but my Korean isn't up to much. 
+> 
+> Cheers
+> 
+> Dan
+> 
+> > -----Original Message-----
+> > From:	Adi Linden [SMTP:adi@adis.on.ca]
+> > Sent:	14 January 2002 15:11
+> > To:	daniel hennessey
+> > Cc:	peeweelinux@adis.on.ca
+> > Subject:	Re: [Peeweelinux] RE compact flash partitions
+> > 
+> > Hi,
+> > 
+> > What are you using to load the filesystem onto the card? What is the make 
+> > and model of the card?
+> > 
+> > Adi
+> > 
+> > 
+> > On Mon, 14 Jan 2002, daniel hennessey wrote:
+> > 
+> > > Hi all,
+> > > 
+> > > I have found the reason why when I cannot boot from the peeweelinux
+> > installation on my compact flash card! Whenever I put the card in the
+> > cf-ide converter, it either cannot read or corrupts the partition table! I
+> > haven't worked out if it is the mobo, the cf-ide conv or the cf card
+> > itself. The other thing I cannot work out is what the geometry of the card
+> > should be. It is detected by the mobo bios as 4 heads 16 sectors and 500
+> > cylinders, but cfdisk (or fdisk or sfdisk) SOMETIMES reported it as 2 x 16
+> > x 500 or 2 x 8 x 1000 !!!
+> > > 
+> > > In short, has anybody had similar problems with cf cards or does anybody
+> > know of a source of information for using cf cards under linux.
+> > > 
+> > > Cheers
+> > > 
+> > > Dan
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > > 
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Jan 14 16:28:41 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 14 Jan 2002 10:28:41 -0600 (CST)
+Subject: [Peeweelinux] RE compact flash partitions
+In-Reply-To: <3C4306C6.18BB2A8A@schu.net>
+Message-ID: <Pine.LNX.4.33.0201141027390.17473-100000@adibox.knet.ca>
+
+Hi,
+
+Have you considered syslinux as bootloader? It works from a DOS filesystem 
+but doesn't require any DOS related files.
+
+Adi
+
+
+On Mon, 14 Jan 2002, Matthew Schumacher wrote:
+
+> I had problems with my cf card and in the end I put a dos filesystem on
+> it and used loadlin in the autoexec.bat to load the linux kernel. 
+> 
+> I realize that this isn't the best way to to do this, but I just
+> couldn't make it boot from a linux filesystem.
+> 
+> Later,
+> 
+> schu
+> 
+> daniel hennessey wrote:
+> > 
+> > Hi all,
+> > 
+> > I have found the reason why when I cannot boot from the peeweelinux installation on my compact flash card! Whenever I put the card in the cf-ide converter, it either cannot read or corrupts the partition table! I haven't worked out if it is the mobo, the cf-ide conv or the cf card itself. The other thing I cannot work out is what the geometry of the card should be. It is detected by the mobo bios as 4 heads 16 sectors and 500 cylinders, but cfdisk (or fdisk or sfdisk) SOMETIMES reported it as 2 x 16 x 500 or 2 x 8 x 1000 !!!
+> > 
+> > In short, has anybody had similar problems with cf cards or does anybody know of a source of information for using cf cards under linux.
+> > 
+> > Cheers
+> > 
+> > Dan
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Jan 14 16:49:35 2002
+From: peeweelinux@adis.on.ca (Daniel Hennessey)
+Date: Mon, 14 Jan 2002 16:49:35 -0000
+Subject: [Peeweelinux] RE compact flash partitions
+Message-ID: <AAE57540F048D4118C8A0050047A2BD0580CAE@mail_lutt.xko.co.uk>
+
+I have considered using syslinux but it feels like a bit of a cop out. Why
+use a DOS partition (using up valuable blocks on my cf card) to work around
+problems that I don't understand? Seems like a bit of a Micro$haft approach!
+Why would a DOS partition behave when others don't? Is it the BIOS
+implementation on my mobo? I will persevere with what I am doing at the
+moment which is using sfdisk to partition the drive and dd to manipulate the
+bootsector. At least I am learning a hell of a lot about partitioning and
+bootloading.
+
+By the way, I use the Sandisk USB flash reader/writer to partition the card
+'cause I heard there were problems with the cf-ide adaptor.
+
+Cheers y'all.
+
+Dan
+
+> -----Original Message-----
+> From:	Adi Linden [SMTP:adi@adis.on.ca]
+> Sent:	14 January 2002 16:29
+> To:	Matthew Schumacher
+> Cc:	peeweelinux@adis.on.ca
+> Subject:	Re: [Peeweelinux] RE compact flash partitions
+> 
+> Hi,
+> 
+> Have you considered syslinux as bootloader? It works from a DOS filesystem
+> 
+> but doesn't require any DOS related files.
+> 
+> Adi
+> 
+> 
+> On Mon, 14 Jan 2002, Matthew Schumacher wrote:
+> 
+> > I had problems with my cf card and in the end I put a dos filesystem on
+> > it and used loadlin in the autoexec.bat to load the linux kernel. 
+> > 
+> > I realize that this isn't the best way to to do this, but I just
+> > couldn't make it boot from a linux filesystem.
+> > 
+> > Later,
+> > 
+> > schu
+> > 
+> > daniel hennessey wrote:
+> > > 
+> > > Hi all,
+> > > 
+> > > I have found the reason why when I cannot boot from the peeweelinux
+> installation on my compact flash card! Whenever I put the card in the
+> cf-ide converter, it either cannot read or corrupts the partition table! I
+> haven't worked out if it is the mobo, the cf-ide conv or the cf card
+> itself. The other thing I cannot work out is what the geometry of the card
+> should be. It is detected by the mobo bios as 4 heads 16 sectors and 500
+> cylinders, but cfdisk (or fdisk or sfdisk) SOMETIMES reported it as 2 x 16
+> x 500 or 2 x 8 x 1000 !!!
+> > > 
+> > > In short, has anybody had similar problems with cf cards or does
+> anybody know of a source of information for using cf cards under linux.
+> > > 
+> > > Cheers
+> > > 
+> > > Dan
+> > > _______________________________________________
+> > > Peeweelinux mailing list
+> > > Peeweelinux@adis.on.ca
+> > > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+From peeweelinux@adis.on.ca  Mon Jan 14 17:05:34 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 14 Jan 2002 11:05:34 -0600 (CST)
+Subject: [Peeweelinux] RE compact flash partitions
+In-Reply-To: <AAE57540F048D4118C8A0050047A2BD0580CAE@mail_lutt.xko.co.uk>
+Message-ID: <Pine.LNX.4.33.0201141057370.17473-100000@adibox.knet.ca>
+
+Hi Dan,
+
+You're the first one reporting problems partitioning the CF Card using the 
+USB reader. Your description of the problem is very similar to what 
+prompted me to post the warning about using the CF-IDE adapter to 
+partition CF devices. This makes me wonder whether it is really an issue 
+with the adapter? I am using Sandisk and Kingston cards in 4MB, 16MB, 
+32MB, 64MB sizes and never had the problem described using the USB reader.
+
+I am using syslinux primarily because I find it more convenient. I don't 
+have to rerun lilo on the device when changing kernel or ramdisk image. In 
+fact, I can access the CF using another OS to replace kernel and ramdisk 
+if necessary. The syslinux approach isn't that good if you require an 
+uncompressed filesystem on the CF card.
+
+Regards,
+Adi  
+
+
+On Mon, 14 Jan 2002, Daniel Hennessey wrote:
+
+> I have considered using syslinux but it feels like a bit of a cop out. Why
+> use a DOS partition (using up valuable blocks on my cf card) to work around
+> problems that I don't understand? Seems like a bit of a Micro$haft approach!
+> Why would a DOS partition behave when others don't? Is it the BIOS
+> implementation on my mobo? I will persevere with what I am doing at the
+> moment which is using sfdisk to partition the drive and dd to manipulate the
+> bootsector. At least I am learning a hell of a lot about partitioning and
+> bootloading.
+> 
+> By the way, I use the Sandisk USB flash reader/writer to partition the card
+> 'cause I heard there were problems with the cf-ide adaptor.
+> 
+> Cheers y'all.
+> 
+> Dan
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Jan 17 11:46:53 2002
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Thu, 17 Jan 2002 19:46:53 +0800 (CST)
+Subject: [Peeweelinux] support disks bigger than 15G ?
+Message-ID: <20020117114653.34097.qmail@web9008.mail.yahoo.com>
+
+--0-538393411-1011268013=:33584
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+hi,
+
+   peeweelinux can support a big disk? I used a disk of 15G,it runs rightly. it can support a disk of 20G?  or bigger than 15G ? 
+
+ thanks
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-538393411-1011268013=:33584
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>hi,</P>
+<P>&nbsp;&nbsp; peeweelinux can support a big disk? I used a disk of 15G,it runs rightly. it can support a disk of 20G?&nbsp; or bigger than 15G ? </P>
+<P>&nbsp;thanks</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-538393411-1011268013=:33584--
+
+From peeweelinux@adis.on.ca  Thu Jan 17 13:39:44 2002
+From: peeweelinux@adis.on.ca (michael mcmanus)
+Date: Thu, 17 Jan 2002 13:39:44 -0000
+Subject: [Peeweelinux] wireless cards and pcmcia
+Message-ID: <ELEFKMBNKNECGPOFIKHGIEDKDOAA.michael@durhamdomains.co.uk>
+
+Hi all 
+i am look for some help with a project i have been given :-(
+i have an SBC with pci slots a sandisk and a orinoco wireless card.
+
+1 does peewee support pcmcia ?
+2 does peewee support the orinoco card ?
+3 are there any examples that ican work from ?
+
+ Regards
+Michael McManus
+Michael@durhamdomains.co.uk
+michael.mcmanus3@btinternet.com
+-= i dont suffer from insanity i enjoy every minute of it =-
+ 
+
+From peeweelinux@adis.on.ca  Fri Jan 18 08:57:16 2002
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Fri, 18 Jan 2002 16:57:16 +0800 (CST)
+Subject: [Peeweelinux] hurry!!!boot error:L 00 00 00 00 00 00
+Message-ID: <20020118085716.25978.qmail@web9010.mail.yahoo.com>
+
+--0-242285403-1011344236=:25905
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+After loaded the system into my object disk,then boot the disk. when it should show the information : LILO,but it show error informations :L 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+
+ this phenomena appeared many times.it maybe because the disk has errors.can you tell me other possibe problems.
+
+thanks.
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-242285403-1011344236=:25905
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>After loaded the system into my object disk,then boot the disk. when it should show the information : LILO,but it show error informations :L 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 </P>
+<P>&nbsp;this phenomena appeared many times.it maybe because the disk has errors.can you tell me other possibe problems.</P>
+<P>thanks.</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-242285403-1011344236=:25905--
+
+From peeweelinux@adis.on.ca  Fri Jan 18 09:47:06 2002
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Fri, 18 Jan 2002 17:47:06 +0800 (CST)
+Subject: [Peeweelinux] boot error(hurry)
+Message-ID: <20020118094706.30497.qmail@web9007.mail.yahoo.com>
+
+--0-21349843-1011347226=:26677
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+After loaded the system into my object disk,then boot the disk. when it should show the information : LILO,but it show error informations :L 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+
+ this phenomena appeared many times.it maybe because the disk has errors.can you tell me other possibe problems.
+
+I add my custom files: bzImage and map,they works well in redhat 6.0 system.
+
+ 
+
+thanks.
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-21349843-1011347226=:26677
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>After loaded the system into my object disk,then boot the disk. when it should show the information : <STRONG>LILO</STRONG>,but it show error informations :<STRONG>L 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 </STRONG></P>
+<P>&nbsp;this phenomena appeared many times.it maybe because the disk has errors.can you tell me other possibe problems.</P>
+<P><STRONG>I add my custom files: bzImage and map</STRONG>,they works well in redhat 6.0 system.</P>
+<P>&nbsp;</P>
+<P>thanks.</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-21349843-1011347226=:26677--
+
+From peeweelinux@adis.on.ca  Fri Jan 18 14:28:32 2002
+From: peeweelinux@adis.on.ca (Terri Fischer)
+Date: Fri, 18 Jan 2002 09:28:32 -0500
+Subject: [Peeweelinux] boot error(hurry)
+In-Reply-To: [Peeweelinux] boot error(hurry) [from: =?gb2312?q?helen?=]
+References: <20020118094706.30497.qmail@web9007.mail.yahoo.com>
+Message-ID: <15432.12560.419734.708049@wallaby.ner.com>
+
+I had this trouble when the BIOS definition wasn't correct for my
+flash disk. I changed the BIOS appropriately and it booted fine.
+
+Terri.
+
+=helen=  writes on Fri, 18 Jan 2002 17:47:06 +0800 (CST):
+
+hz> After loaded the system into my object disk,then boot the
+hz> disk. when it should show the information : LILO,but it show error
+hz> informations :L 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+hz> 00 00 00 00 00 00
+
+hz> this phenomena appeared many times.it maybe because the disk has
+hz> errors.can you tell me other possibe problems.
+
+hz> I add my custom files: bzImage and map,they works well in redhat
+hz> 6.0 system.
+hz> thanks.
+
+hz> Thanks & Regards
+
+hz> Helen Zheng
+
+From peeweelinux@adis.on.ca  Sat Jan 19 02:39:40 2002
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Sat, 19 Jan 2002 10:39:40 +0800 (CST)
+Subject: [Peeweelinux] boot error(hurry)
+In-Reply-To: <15432.12560.419734.708049@wallaby.ner.com>
+Message-ID: <20020119023940.62615.qmail@web9006.mail.yahoo.com>
+
+--0-1236489712-1011407980=:58771
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+hi,
+
+  thank you. I used hard-disk.At one time,I load the system into a hard-disk,but it couldn't work,show L 00 00 00.this hard-disk is defined A .then I load system of A into another hard-disk(B) with ghost software. after B booted,it didn't show the same error information.
+
+ except that the BIOS, there has other possible cause?
+
+thanks
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1236489712-1011407980=:58771
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>hi,</P>
+<P>&nbsp; thank you. I used hard-disk.At one time,I load the system into a hard-disk,but it couldn't work,show L 00 00 00.this hard-disk is defined A .then I load system of A into another hard-disk(B) with ghost software. after B booted,it didn't show the same error information.</P>
+<P>&nbsp;except that the BIOS, there has other possible cause?</P>
+<P>thanks</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1236489712-1011407980=:58771--
+
+From peeweelinux@adis.on.ca  Sat Jan 19 05:36:12 2002
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Sat, 19 Jan 2002 13:36:12 +0800 (CST)
+Subject: [Peeweelinux] hurry!!!
+Message-ID: <20020119053612.75909.qmail@web9006.mail.yahoo.com>
+
+--0-110630206-1011418572=:72114
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+after I loaded the system into my hard-disk(B), my object hard-disk(B) is hdc. file /tmp/lilo.conf:
+
+this file is the one that system  is booting ? then BIOS is setted from hdd1(hdc),the system show the error information: L 00 00 00 
+
+or I make the hard-disk(B) hda ,BIOS is setted from hdd0(hda),it will appear the same trouble.
+
+adi,can you tell me some possible caustions ?
+
+thanks.
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-110630206-1011418572=:72114
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>after&nbsp;I loaded the system into my hard-disk(B), my object hard-disk(B) is hdc. file /tmp/lilo.conf:</P>
+<P>this file is the one that system&nbsp; is booting ? then BIOS is setted from hdd1(hdc),the system show the error information: L 00 00 00 </P>
+<P>or I make the hard-disk(B) hda ,BIOS is setted from hdd0(hda),it will appear the same trouble.</P>
+<P>adi,can you tell me some possible caustions ?</P>
+<P>thanks.</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-110630206-1011418572=:72114--
+
+From peeweelinux@adis.on.ca  Sat Jan 19 05:36:40 2002
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Sat, 19 Jan 2002 13:36:40 +0800 (CST)
+Subject: [Peeweelinux] adi,help me! hurry
+Message-ID: <20020119053640.24887.qmail@web9009.mail.yahoo.com>
+
+--0-1469990238-1011418600=:23956
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+after I loaded the system into my hard-disk(B), my object hard-disk(B) is hdc. file /tmp/lilo.conf:
+
+this file is the one that system  is booting ? then BIOS is setted from hdd1(hdc),the system show the error information: L 00 00 00 
+
+or I make the hard-disk(B) hda ,BIOS is setted from hdd0(hda),it will appear the same trouble.
+
+adi,can you tell me some possible caustions ?
+
+thanks.
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1469990238-1011418600=:23956
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>after&nbsp;I loaded the system into my hard-disk(B), my object hard-disk(B) is hdc. file /tmp/lilo.conf:</P>
+<P>this file is the one that system&nbsp; is booting ? then BIOS is setted from hdd1(hdc),the system show the error information: L 00 00 00 </P>
+<P>or I make the hard-disk(B) hda ,BIOS is setted from hdd0(hda),it will appear the same trouble.</P>
+<P>adi,can you tell me some possible caustions ?</P>
+<P>thanks.</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1469990238-1011418600=:23956--
+
+From peeweelinux@adis.on.ca  Sat Jan 19 06:28:53 2002
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Sat, 19 Jan 2002 14:28:53 +0800 (CST)
+Subject: [Peeweelinux] boot error settled
+Message-ID: <20020119062853.27553.qmail@web9009.mail.yahoo.com>
+
+--0-414410031-1011421733=:25864
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+I set the large the access mode  of hd in BIOS,then it works ok.
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-414410031-1011421733=:25864
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+I set the large the access mode&nbsp; of hd in BIOS,then it works ok.<BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-414410031-1011421733=:25864--
+
+From peeweelinux@adis.on.ca  Sat Jan 26 09:28:03 2002
+From: peeweelinux@adis.on.ca (Ramya Ravi)
+Date: Sat, 26 Jan 2002 01:28:03 -0800 (PST)
+Subject: [Peeweelinux] compact flash newbie
+Message-ID: <20020126092803.91022.qmail@web21206.mail.yahoo.com>
+
+Hi,
+
+    I am a newbie.I want to replace the HD of a
+desktop system with a flash device for it to act as a
+embedded linux controller.
+    I decided on Compact Flash Cards as they are
+cheap.But do I need to have a CF-IDE adapter or can I
+socket it directly onto the motherboard?
+
+Please Help.
+
+Thanks
+Ramya
+
+__________________________________________________
+Do You Yahoo!?
+Great stuff seeking new owners in Yahoo! Auctions! 
+http://auctions.yahoo.com
+
+From peeweelinux@adis.on.ca  Sat Jan 26 20:41:46 2002
+From: peeweelinux@adis.on.ca (Andrei Bulucea)
+Date: Sat, 26 Jan 2002 12:41:46 -0800 (PST)
+Subject: [Peeweelinux] compact flash newbie
+In-Reply-To: <20020126092803.91022.qmail@web21206.mail.yahoo.com>
+Message-ID: <Pine.GSO.4.05.10201261238110.996-100000@ituner.com>
+
+Look at http://www.peeweelinux.com/#products
+
+you'll find one the plugs directly into the M/B and ones that use IDE
+cables. 
+
+We use the 3"5 adaptors because our enclosure is very slim, but for a
+regural PC case you can use pretty much everything. See
+http://www.ituner.com for an implementation example. The CF sticking out
+of the MediaBox audio encoder is the 3.5" adaptor. 
+
+Andrei Bulucea
+Ituner Networks Corp
+Voice: 800-97-TUNER
+Fax:   510-795-8855
+http://www.ituner.com
+
+On Sat, 26 Jan 2002, Ramya Ravi wrote:
+
+> Hi,
+> 
+>     I am a newbie.I want to replace the HD of a
+> desktop system with a flash device for it to act as a
+> embedded linux controller.
+>     I decided on Compact Flash Cards as they are
+> cheap.But do I need to have a CF-IDE adapter or can I
+> socket it directly onto the motherboard?
+> 
+> Please Help.
+> 
+> Thanks
+> Ramya
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Great stuff seeking new owners in Yahoo! Auctions! 
+> http://auctions.yahoo.com
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Jan 28 11:48:36 2002
+From: peeweelinux@adis.on.ca (Bob Tanner)
+Date: Mon, 28 Jan 2002 05:48:36 -0600
+Subject: [Peeweelinux] Re: 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+In-Reply-To: <20020128053333.I21613@real-time.com>; from tanner@real-time.com on Mon, Jan 28, 2002 at 05:33:33AM -0600
+References: <20020128053333.I21613@real-time.com>
+Message-ID: <20020128054836.L21613@real-time.com>
+
+Quoting Bob Tanner (tanner@real-time.com):
+> Using pwl 0.61.0 and a SanDisk USB reader/writer with a Viking 128Mb CF.
+> 
+> Just starting out, I put the minimal project to the CF. Tweaked the MSN
+> companion to boot the CF and I get a lovely lilo prompt.
+
+To add to my info:
+
+     Target: Compressed ramdisk on ext2 partition -->                           
+     Project Mount Point: "mnt"
+     Device Mount Point: "/mnt/flash" 
+     Target Device: "/dev/sda"
+     Free Space on Ramdisk: "2000"                                              
+
+I'm not sure if these options are right. 
+
+-- 
+Bob Tanner <tanner@real-time.com>         | Phone : (952)943-8700
+http://www.mn-linux.org, Minnesota, Linux | Fax   : (952)943-8500
+Key fingerprint =  6C E9 51 4F D5 3E 4C 66 62 A9 10 E5 35 85 39 D9 
+
+
+From peeweelinux@adis.on.ca  Mon Jan 28 11:48:45 2002
+From: peeweelinux@adis.on.ca (Bob Tanner)
+Date: Mon, 28 Jan 2002 05:48:45 -0600
+Subject: [Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+Message-ID: <20020128054845.A28478@real-time.com>
+
+Using pwl 0.61.0 and a SanDisk USB reader/writer with a Viking 128Mb CF.
+
+Just starting out, I put the minimal project to the CF. Tweaked the MSN
+companion to boot the CF and I get a lovely lilo prompt.
+ 
+Hitting enter, I get a "Block move error 0xNNNN", where NNNN is a number that
+isdifferent each time.
+
+But lilo continues to load the kernel.
+
+Kernel bootstraps. Right after mounting the "drives" I get the following error:
+
+VM: do_try_to_free_pages failed for swapper
+
+I read the following thread:
+
+http://mail.adis.on.ca/pipermail/peeweelinux/2000-October/000123.html
+
+Selecting the whole kernel didn't fix my problem.
+
+Running redhat 7.2 (kernel 2.4.29-21 official redhat kernel)
+PWL 0.61.0
+SanDisk Reader/writer
+Viking 128Mb CF
+To add to my info:
+
+     Target: Compressed ramdisk on ext2 partition -->
+     Project Mount Point: "mnt"
+     Device Mount Point: "/mnt/flash"
+     Target Device: "/dev/sda"
+     Free Space on Ramdisk: "2000"
+
+I'm not sure if these options are right.
+
+-- 
+Bob Tanner <tanner@real-time.com>         | Phone : (952)943-8700
+http://www.mn-linux.org, Minnesota, Linux | Fax   : (952)943-8500
+Key fingerprint =  6C E9 51 4F D5 3E 4C 66 62 A9 10 E5 35 85 39 D9 
+
+
+From peeweelinux@adis.on.ca  Mon Jan 28 13:53:28 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Mon, 28 Jan 2002 08:53:28 -0500
+Subject: [Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+References: <20020128054845.A28478@real-time.com>
+Message-ID: <001501c1a803$3a9f2100$0101a8c0@dellc800>
+
+A couple of thoughts (if you haven't tried them already):
+
+Try changing Device Mount Point to "./mnt"
+
+Check the "Boot Device on Target System" option.  It should probably be
+"/dev/sda".
+
+Regards
+
+Mark
+
+----- Original Message -----
+From: "Bob Tanner" <tanner@real-time.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Monday, January 28, 2002 6:48 AM
+Subject: [Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+
+
+> Using pwl 0.61.0 and a SanDisk USB reader/writer with a Viking 128Mb CF.
+>
+> Just starting out, I put the minimal project to the CF. Tweaked the MSN
+> companion to boot the CF and I get a lovely lilo prompt.
+>
+> Hitting enter, I get a "Block move error 0xNNNN", where NNNN is a number
+that
+> isdifferent each time.
+>
+> But lilo continues to load the kernel.
+>
+> Kernel bootstraps. Right after mounting the "drives" I get the following
+error:
+>
+> VM: do_try_to_free_pages failed for swapper
+>
+> I read the following thread:
+>
+> http://mail.adis.on.ca/pipermail/peeweelinux/2000-October/000123.html
+>
+> Selecting the whole kernel didn't fix my problem.
+>
+> Running redhat 7.2 (kernel 2.4.29-21 official redhat kernel)
+> PWL 0.61.0
+> SanDisk Reader/writer
+> Viking 128Mb CF
+> To add to my info:
+>
+>      Target: Compressed ramdisk on ext2 partition -->
+>      Project Mount Point: "mnt"
+>      Device Mount Point: "/mnt/flash"
+>      Target Device: "/dev/sda"
+>      Free Space on Ramdisk: "2000"
+>
+> I'm not sure if these options are right.
+>
+> --
+> Bob Tanner <tanner@real-time.com>         | Phone : (952)943-8700
+> http://www.mn-linux.org, Minnesota, Linux | Fax   : (952)943-8500
+> Key fingerprint =  6C E9 51 4F D5 3E 4C 66 62 A9 10 E5 35 85 39 D9
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+
+
+
+From peeweelinux@adis.on.ca  Mon Jan 28 14:32:00 2002
+From: peeweelinux@adis.on.ca (SY Meta)
+Date: Mon, 28 Jan 2002 17:32:00 +0300
+Subject: [Peeweelinux] Some questions
+Message-ID: <3C5560E0.8090303@malagasy.com>
+
+Hi,
+
+I try to install peeweelinux on a 8MB CF.
+
+1. peeweelinux enables bridge by default. Can we disable this?
+
+2. Sometime i got pation unknown, kernel panic while booting but 
+pwconfig script worked fine. What could be the problem?
+
+Thanks,
+
+Meta
+
+
+From peeweelinux@adis.on.ca  Tue Jan 29 06:19:57 2002
+From: peeweelinux@adis.on.ca (Bob Tanner)
+Date: Tue, 29 Jan 2002 00:19:57 -0600
+Subject: [Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+In-Reply-To: <001501c1a803$3a9f2100$0101a8c0@dellc800>; from mark@lakeshoremicro.com on Mon, Jan 28, 2002 at 08:53:28AM -0500
+References: <20020128054845.A28478@real-time.com> <001501c1a803$3a9f2100$0101a8c0@dellc800>
+Message-ID: <20020129001957.A12662@real-time.com>
+
+Quoting Mark Meade (mark@lakeshoremicro.com):
+> A couple of thoughts (if you haven't tried them already):
+> 
+> Try changing Device Mount Point to "./mnt"
+> 
+> Check the "Boot Device on Target System" option.  It should probably be
+> "/dev/sda".
+
+Where can I find details on what these parameters mean and what they do?
+
+-- 
+Bob Tanner <tanner@real-time.com>         | Phone : (952)943-8700
+http://www.mn-linux.org, Minnesota, Linux | Fax   : (952)943-8500
+Key fingerprint =  6C E9 51 4F D5 3E 4C 66 62 A9 10 E5 35 85 39 D9 
+
+
+From peeweelinux@adis.on.ca  Tue Jan 29 09:33:49 2002
+From: peeweelinux@adis.on.ca (Ramya Ravi)
+Date: Tue, 29 Jan 2002 01:33:49 -0800 (PST)
+Subject: [Peeweelinux] CF-IDE adapter - fdisk problems
+Message-ID: <20020129093349.48279.qmail@web21202.mail.yahoo.com>
+
+Hi,
+ 
+I am planning to use CF cards on my x86 machine with a
+IDE adapter. Will I be having problems if I partition
+the CF using fdisk thru the IDE adapter?
+  I would like to have a ext2 partition on the CF.
+
+Thanks,
+Ramya
+
+
+__________________________________________________
+Do You Yahoo!?
+Great stuff seeking new owners in Yahoo! Auctions! 
+http://auctions.yahoo.com
+
+From peeweelinux@adis.on.ca  Tue Jan 29 18:56:55 2002
+From: peeweelinux@adis.on.ca (Carl Walthall)
+Date: Tue, 29 Jan 2002 12:56:55 -0600
+Subject: [Peeweelinux] help
+In-Reply-To: <200201291800.g0TI01i04514@yoda.adis.on.ca>
+Message-ID: <000001c1a8f6$b8d6f180$6e9eb518@CT44715C>
+
+Please unsubscribe me from this list
+
+Thanks
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]
+On Behalf Of peeweelinux-request@adis.on.ca
+Sent: Tuesday, January 29, 2002 12:00 PM
+To: peeweelinux@adis.on.ca
+Subject: Peeweelinux digest, Vol 1 #40 - 2 msgs
+
+
+Send Peeweelinux mailing list submissions to
+	peeweelinux@adis.on.ca
+
+To subscribe or unsubscribe via the World Wide Web, visit
+	http://mail.adis.on.ca/lists/listinfo/peeweelinux
+or, via email, send a message with subject or body 'help' to
+	peeweelinux-request@adis.on.ca
+
+You can reach the person managing the list at
+	peeweelinux-admin@adis.on.ca
+
+When replying, please edit your Subject line so it is more specific than
+"Re: Contents of Peeweelinux digest..."
+
+
+Today's Topics:
+
+   1. Re: 0.61.0 and MSN Companion (aka Compaq iPAQ line) (Bob Tanner)
+   2. CF-IDE adapter - fdisk problems (Ramya Ravi)
+
+--__--__--
+
+Message: 1
+Date: Tue, 29 Jan 2002 00:19:57 -0600
+From: Bob Tanner <tanner@real-time.com>
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ
+line)
+Reply-To: peeweelinux@adis.on.ca
+
+Quoting Mark Meade (mark@lakeshoremicro.com):
+> A couple of thoughts (if you haven't tried them already):
+> 
+> Try changing Device Mount Point to "./mnt"
+> 
+> Check the "Boot Device on Target System" option.  It should probably 
+> be "/dev/sda".
+
+Where can I find details on what these parameters mean and what they do?
+
+-- 
+Bob Tanner <tanner@real-time.com>         | Phone : (952)943-8700
+http://www.mn-linux.org, Minnesota, Linux | Fax   : (952)943-8500
+Key fingerprint =  6C E9 51 4F D5 3E 4C 66 62 A9 10 E5 35 85 39 D9 
+
+
+--__--__--
+
+Message: 2
+Date: Tue, 29 Jan 2002 01:33:49 -0800 (PST)
+From: Ramya Ravi <ramya_rav2000@yahoo.com>
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] CF-IDE adapter - fdisk problems
+Reply-To: peeweelinux@adis.on.ca
+
+Hi,
+ 
+I am planning to use CF cards on my x86 machine with a
+IDE adapter. Will I be having problems if I partition
+the CF using fdisk thru the IDE adapter?
+  I would like to have a ext2 partition on the CF.
+
+Thanks,
+Ramya
+
+
+__________________________________________________
+Do You Yahoo!?
+Great stuff seeking new owners in Yahoo! Auctions! 
+http://auctions.yahoo.com
+
+
+--__--__--
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+End of Peeweelinux Digest
+
+
+From peeweelinux@adis.on.ca  Tue Jan 29 19:24:14 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Tue, 29 Jan 2002 14:24:14 -0500
+Subject: [Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+References: <20020128054845.A28478@real-time.com> <001501c1a803$3a9f2100$0101a8c0@dellc800> <20020129001957.A12662@real-time.com>
+Message-ID: <003201c1a8fa$a93ad4e0$0201a8c0@dellc800>
+
+There is some context sensitive help built into pwlconfig.  Select
+"Configure Target Hardware" and then "Help".  There is also a filed called
+README.pwlconfig in the Embedded_Build/scripts directory that contains some
+useful information.
+
+Based on the description of your problem, it sounds like you may need to
+configure a "custom" kernel specifically for your application.
+
+In my case (8MB bootable DiskOnChip), I had to use a custom 2.4.17 kernel on
+the target, rather than the 2.2 era kernel included with Peewee.
+
+For what it's worth, here's some more information on some of the Peewee
+Linux Project options, as I understand them:
+
+    Project Mount Point: mnt
+        This is a directory where your project will be "extracted" to.
+    Device Mount Point: ./mnt
+        This is where pwlconfig will default to mounting your device.
+
+Typically, you shouldn't need to change these options.  If you have a
+project called "test", the complete file system for the target would be
+created under Embedded_Build/projects/test/mnt.  After you use the "Extract
+File System for Project" option, this directory will contain the entire file
+system.  I often find it useful to manually go into this directory (and
+subdirectories) just to see what was extracted, prior to actually copying it
+to the target device.
+
+    IDE Flash (or HD) Target Parameters
+    Target Device: /dev/sda
+        The target device name on the development system your PeeWeeLinux
+        system will be build on. Be careful here. The target build script
+        will destroy any existing content on this device!
+
+      Boot Device: /dev/hda
+         How the target device will be known as on the final target system.
+
+These target parameters are used when you're ready to copy the complete
+project file system created earlier.  Peewee Linux is using the "Target
+Device" parameter to automatically copy the file system to the target, which
+could be a floppy, Compact flash, DiskOnChip device, etc.
+
+I'm not sure how this works with compact flash, but my DiskOnChip part is
+accessed via "/dev/nftla".  In my case, the target device is specified as
+"/dev/nftla".  Peewee Linux handles the partitioning (fdisk), file system
+creation (ext2 or FAT), file copying, and boot record creation
+automatically.
+
+Incidentally, if the Linux system does not recognize your target, the "Load
+File System onto Target" option will always fail.  As a quick sanity check,
+try "sfdisk -l /dev/xx" where xx is your actual target.
+
+If the "Load File System onto Target" option was successful, the target
+device should now be bootable.
+
+The "Boot Device" option specifies where the root file system is located.
+After the kernel boots, it will attempt to find and mount the root file
+system on the device specified.  Unless the root file system is not on the
+target device itself (for instance, a CD-ROM or harddrive), this option
+should be the same as the Target Device.
+
+I hope this helps,
+
+Mark
+
+----- Original Message -----
+From: "Bob Tanner" <tanner@real-time.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Tuesday, January 29, 2002 1:19 AM
+Subject: Re: [Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+
+
+> Quoting Mark Meade (mark@lakeshoremicro.com):
+> > A couple of thoughts (if you haven't tried them already):
+> >
+> > Try changing Device Mount Point to "./mnt"
+> >
+> > Check the "Boot Device on Target System" option.  It should probably be
+> > "/dev/sda".
+>
+> Where can I find details on what these parameters mean and what they do?
+>
+> --
+> Bob Tanner <tanner@real-time.com>         | Phone : (952)943-8700
+> http://www.mn-linux.org, Minnesota, Linux | Fax   : (952)943-8500
+> Key fingerprint =  6C E9 51 4F D5 3E 4C 66 62 A9 10 E5 35 85 39 D9
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+
+
+
+
+
+From peeweelinux@adis.on.ca  Wed Jan 30 04:02:07 2002
+From: peeweelinux@adis.on.ca (Bob Tanner)
+Date: Tue, 29 Jan 2002 22:02:07 -0600
+Subject: [Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+In-Reply-To: <001501c1a803$3a9f2100$0101a8c0@dellc800>; from mark@lakeshoremicro.com on Mon, Jan 28, 2002 at 08:53:28AM -0500
+References: <20020128054845.A28478@real-time.com> <001501c1a803$3a9f2100$0101a8c0@dellc800>
+Message-ID: <20020129220207.L21315@real-time.com>
+
+> >      Target: Compressed ramdisk on ext2 partition -->
+> >      Project Mount Point: "mnt"
+> >      Device Mount Point: "/mnt/flash"
+> >      Target Device: "/dev/sda"
+> >      Free Space on Ramdisk: "2000"
+
+Is the free space on ramdisk in kilobytes?
+
+I'm assuming that 2000 really is 2048, correct?
+
+Your changes got the MSN companion to boot linux, so I'm off and running now.
+

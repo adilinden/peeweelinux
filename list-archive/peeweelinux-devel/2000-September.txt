@@ -1,0 +1,1606 @@
+From PeeWeeLinux-devel@adis.on.ca  Tue Sep  5 04:30:26 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Mon, 4 Sep 2000 22:30:26 -0500 (CDT)
+Subject: PeeWeeLinux 0.51
+Message-ID: <Pine.LNX.4.10.10009042212140.7876-100000@big.adis.on.ca>
+
+Hi,
+
+I just finished uploading PeeWeeLinux 0.51 to sourceforge and metalab at
+the following URL's:
+
+http://sourceforge.net/project/filelist.php?group_id=818
+ftp://metalab.unc.edu/pub/linux/distributions/peewee/
+
+Here's a quick overview of the changes:
+
+  v0.51 -- September 4, 2000
+  --------------------------
+   o Bugfixes in:
+     - filesystem
+     - mgetty+sendfax
+     - ncurses
+     - sysklogd
+     - fileutils
+     - crond
+   o Simplified rocketmodem initscript
+   o Changed initscripts to support rd_dialog and rd_functions
+   o Added telinit symlink to sysvinit
+   o Added sh symlink to ash
+   o Default login shell in passwd is sh now
+   o Added rd_dialog and rd_functions to build target devices
+
+The rd_dialog script has been added. It allows for easy loading of a
+extracted filesystem onto a target drive attached to the development
+system. The following schemes are supported:
+
+  Compressed Ramdisk from a FAT partition
+    - Target dirve is partitioned into a single FAT16 partition
+    - syslinux bootloader is installed
+    - Compressed ramdisk and kernel are loaded onto the device
+
+  Compressed Ramdisk from a ext2 partition
+    - Target dirve is partitioned into a single ext2 partition
+    - Compressed ramdisk and kernel are loaded onto the device
+    - Lilo is installed onto the target device
+
+  Uncompressed Partition is Loaded into Memory as Ramdisk
+    - Target drive is partitioned into 2 partitions
+      - a FAT16 or ext2 boot partition
+      - a ext2 root partition
+    - a initrd is build which dd's the root partition into memory
+    - the ramdisk is mounted as root
+    - the ext2 root partition from the target drive can be mounted
+      and changes can be made which take effect after a reboot
+
+  Read-Only Root Partition
+    - target drive is partition into multiple partitions
+    - the root partition is mounted r/o at all times
+    - ramdisks are loaded for /dev, /var, /etc and /home
+
+  Raw floppy disk
+    - the kernel is dd'd onto the floppy disk
+    - a ramdisk is dd'd onto the floppy disk
+
+To use the rd_dialog script configure a project using pwlconfig. Extract
+the filesystem using pwlconfig. Now quit pwlconfig and run the
+./misc/rd_dialog script. Select the type of target to create, answer the
+configuration question (the defaults should be fine) and let it go...
+
+Hopefully rd_dialog will be integrated into pwlconfig soon.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Thu Sep  7 19:49:55 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Thu, 7 Sep 2000 11:49:55 -0700 (PDT)
+Subject: Multiple Targets for PeeWee Linux
+Message-ID: <20000907184955.72164.qmail@web9102.mail.yahoo.com>
+
+ 
+We are beginning to integrate the ramdisk configuration utilities into 
+the latest version of pwlconfig.  I plan on working on this over the next few
+days...Anybody have any suggestions please let me know...
+======
+Requirement: To build a project on several different targets. Users should
+configure each target as required, then choose the proper target configuration
+before doing the Erase/load operations on the target device.
+
+Main menu changes:
+==================
+...
+---
+Configure Target Device "CF 32Mb"-->
+Erase "Flash" -->
+Load Filesystem to Flash -->
+Lilo...
+---
+...
+
+
+Selecting "Configure Target Device -->" gives the following menu from
+"pwl_targets" script file:
+
+PWL Target Menu
+===============
+Select Target Type -->
+Save Target Configuration for "my floppy" 
+Create New Target
+---
+Configure "CF 32Mb" Parameters
+[*] CF 32Mb
+[ ] CF 16Mb
+[ ] RAM 256Mb
+[ ] My test Floppy
+[ ] My CDROM release
+
+Now each target file would contain all the default parameters as configured for
+that target. 
+The "Configure "CF 32Mb" menu item would then display the parameters (basically
+just like the current "project defaults" menu )
+
+Configure Target parameters
+=================
+---- Boot defaults ---
+boot image file: /boot/bzImage
+boot location: /dev/hda1
+---- Lilo defaults ---
+Lilo boot label: pwlinuz
+Lilo timeout: 2
+Lilo custom command: linear
+Lilo image command: vga=0x317
+---- Device defaults ---
+Mount point: ./mnt
+Device name: FLASH
+Device node: /dev/hda
+---- Partition defaults ---
+Boot partition: 1  size: 1Mb
+system partition: 2 size: 28Mb
+Other partition: 3 size 2Mb
+---- Ram Disk Defaults ---
+initrd name: rd_image
+verbose operation: On
+???
+
+And Where the Select Target Type menu is as Adi proposed:
+
+Select Target Type
+==================
+1)  Compressed ramdisk on FAT 16 partition"
+2)  Compressed ramdisk on ext2 partition"
+3)  Uncompressed ramdisk, boot from FAT 16 partition"
+4)  Uncompressed ramdisk, boot from ext2 partition"
+5)  Read-only root fs with multiple ramdisks"
+  ----- Non-flash target devices -----"
+6)  Compressed ramdisk on floppy disk w/o bootloader"
+7)  Compressed ramdisk on FAT12 floppy disk w/syslinux"
+8)  Bootable iso image w/ramdisk"
+9)  Bootable iso image w/read-only root"
+"  -----    For testing only!     -----"
+10) Read-write root on a single partition"  > 
+
+
+Ok, I can integrate this and get any/all parameters stored and loaded fairly
+easily.  I'll try to get the parameters from your rd_dialog functions...any
+list you have would be appreciated...
+
+The next step is to activate the Erase/Foramt command to handle all the various
+partitions; and the Load command must build the ramdisk images etc..
+
+Does this look like something that would work for all different targets ? 
+Suggestions ??
+Thanks,
+Ralph
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Sep  8 05:06:34 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Thu, 7 Sep 2000 23:06:34 -0500 (CDT)
+Subject: Multiple Targets for PeeWee Linux
+In-Reply-To: <20000907184955.72164.qmail@web9102.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10009072224030.32186-100000@big.adis.on.ca>
+
+Hi,
+
+Just some notes to what I see here...
+
+> PWL Target Menu
+> ===============
+> Select Target Type -->
+> Save Target Configuration for "my floppy" 
+> Create New Target
+> ---
+> Configure "CF 32Mb" Parameters
+> [*] CF 32Mb
+> [ ] CF 16Mb
+> [ ] RAM 256Mb
+> [ ] My test Floppy
+> [ ] My CDROM release
+> 
+> Now each target file would contain all the default parameters as configured for
+> that target. 
+> The "Configure "CF 32Mb" menu item would then display the parameters (basically
+> just like the current "project defaults" menu )
+
+There is no need to configure the actual device being used. The script
+will automatically determine the size of the target device and calculate
+the proper sizes.
+
+> Configure Target parameters
+> =================
+> ---- Boot defaults ---
+> boot image file: /boot/bzImage
+> boot location: /dev/hda1
+> ---- Lilo defaults ---
+> Lilo boot label: pwlinuz
+> Lilo timeout: 2
+> Lilo custom command: linear
+> Lilo image command: vga=0x317
+> ---- Device defaults ---
+> Mount point: ./mnt
+> Device name: FLASH
+> Device node: /dev/hda
+> ---- Partition defaults ---
+> Boot partition: 1  size: 1Mb
+> system partition: 2 size: 28Mb
+> Other partition: 3 size 2Mb
+> ---- Ram Disk Defaults ---
+> initrd name: rd_image
+> verbose operation: On
+> ???
+
+Partition sizes are configured by specifying free space! I found it really
+annoying having to resize partitions as they grew or ram for a ramdisk
+shrunk. Since we need to calculate before doing anything anyways, I
+figured I calculate the needed space and make the additional free space
+configurable.
+
+Bootlocation should not include the partition, just the device. The script
+picks the proper partition.
+
+> And Where the Select Target Type menu is as Adi proposed:
+> 
+> Select Target Type
+> ==================
+> 1)  Compressed ramdisk on FAT 16 partition"
+> 2)  Compressed ramdisk on ext2 partition"
+> 3)  Uncompressed ramdisk, boot from FAT 16 partition"
+> 4)  Uncompressed ramdisk, boot from ext2 partition"
+> 5)  Read-only root fs with multiple ramdisks"
+>   ----- Non-flash target devices -----"
+> 6)  Compressed ramdisk on floppy disk w/o bootloader"
+> 7)  Compressed ramdisk on FAT12 floppy disk w/syslinux"
+> 8)  Bootable iso image w/ramdisk"
+> 9)  Bootable iso image w/read-only root"
+> "  -----    For testing only!     -----"
+> 10) Read-write root on a single partition"  > 
+
+> Ok, I can integrate this and get any/all parameters stored and loaded fairly
+> easily.  I'll try to get the parameters from your rd_dialog functions...any
+> list you have would be appreciated...
+
+Here is the list of variables that are sensibly selected to be
+configurable.
+
+These first variables are customizable but shouldn't require change. They
+define system defaults. I added the above numbers to indicate which
+setting apply where.
+ 
+    #####
+    #
+    # Only change these if you really know what you are doing!!!
+    #
+    #####
+
+    # define the initrd size
+    rd_initrd_size=                {3,4,5,8,9}
+
+    # define the safety margin for the boot partition
+    rd_size_boot_margin=           {3,4,5}
+
+    # define the safety margin for fit in flash calculations
+    rd_size_margin=                {1,2,3,4,5,6,7,8,9,10}
+
+The following settings apply to file locations, target devices, etc. They
+apply to literally all methods.
+
+    #####
+    #
+    # Configurable paramters
+    #
+    #####
+
+    # selected device layout
+    rd_scheme=                      {put a name to the numbers above}
+
+    # define if we maintain fstab and rc.init
+    rd_initscripts=                 {needed if you have a custom rc.init
+                                     or fstab, prvents rd_function from
+                                     playing with it}
+
+    # define default verbosity
+    rd_action_verbosity=             {how much we dump to the screen}
+
+    # temporary files directory
+    rd_tmp=
+
+    # the temporary mount point
+    rd_mount=
+
+    # the kernel name
+    rd_kernel=                       {the kernel image (bzImage) w/o path}
+
+    # the initrd name
+    rd_initrd=                       {the initrd name w/o path}
+
+    # the ramdisk name
+    rd_ramdisk=                      {the ramdisk name w/o path}
+
+The following variables are used by the raw floppy only.
+
+    ####
+    # target specific options - floppy
+
+    # the target device
+    rd_floppy=                        {just in case you're not using fd0}
+
+    # the free space on the unompressed ramdisk
+    rd_ramdisk_fd_free=
+
+The following applies to mostly all flash based systems {1,2,3,4,5}
+
+    ####
+    # target device specific - hd or flash
+
+    # the target device on the development system
+    rd_target=                         {device (/dev/sda) w/o partition #}
+
+    # the final boot device
+    rd_boot=                           {device (/dev/hda) w/o partition #}
+
+The following is needed for the systems with a single ramdisk or the
+uncompressed ramdisk.
+
+    ####
+    # single ramdisk parameters
+
+    # the free space on the uncompressed ramdisk in kB
+    rd_ramdisk_free=                    {1,2,3,4}
+
+These variables are required by the read-only root system.
+
+    ####
+    # multiple ramdisk parameters
+    # the free space on the /dev - /var partition in kB
+    # this partition also contains the /var tree!!!
+    rd_dev_free=                        {5}
+
+    # the free space on the /etc partition in kb
+    rd_etc_free=                        {5}
+
+    # the free space on the /home partition
+    # this partition also contains /root
+    rd_home_free=                       {5}
+ 
+The next are bootloader options that are valid for any system using
+syslinux or lilo. Note, that I haven't fixed syslinux.cfg for all
+bootoptions yet. But that will happen sometime soon.
+
+    ####
+    # bootloader options
+
+    # prompt timeout
+    rd_bp_time=                         {1,2,3,4,5,7,8,9,10}
+
+    # kernel label
+    rd_bp_label=                        {1,2,3,4,5,7,8,9,10}
+
+    # vga options
+    rd_bp_vga=                          {1,2,3,4,5,7,8,9,10}
+
+This about covers it.
+
+> The next step is to activate the Erase/Foramt command to handle all the various
+> partitions; and the Load command must build the ramdisk images etc..
+
+The loading script does everything! Fdisk, partition and format the
+device. Install the bootloader, restore the DOS MBR for syslinux (if you
+switch from lilo to syslinux). Create intrd, ramdisk compressed or
+uncompressed, removes the kernel from the filesystem where it's not
+needed...
+
+So the sequence to use rd_functions without rd_dialog should be as
+follows:
+
+  1.  source rd_functions
+  2.  set rd_base to the devel root dir (i.e./root/PeeWee/Embedded_Build)
+  3.  call func_rd_env
+  4.  call func_rd_defaults <project name>
+  5.  load custom setting (redefininging some variables defined in prev step)   
+      Note: I wrote function that save whatever rd_dialog defines in a
+            config file. But that's irrelevant as long as pwlconfig has
+            all needed variables defined at this point. The build-in way
+            pwlconfig works should be fine.
+  6.  call function that installs filesystem
+         {1}  func_rd_build_comp_rd_fat
+         {2}  func_rd_build_comp_rd_ext2
+         {3}  func_rd_build_uncomp_rd_fat
+         {4}  func_rd_build_uncomp_rd_ext2
+         {5}  func_rd_build_ro_root_rd  
+         {6}  func_rd_build_fd_raw   
+
+         Proposed: 
+         {7}  func_rd_build_fd_fat   
+         {8}  func_rd_build_rd_iso  
+         {9}  func_rd_build_ro_iso  
+         {10} func_rd_build_rw_root  
+
+A last note, when the function in step 6 is called all required variables
+need to be configured properly. There are no exhausting checks when it
+comes to determining if the variables actually exist or have sane
+locations. They will simply be used...
+
+Hope this makes sense. Hey, I think I did ok documenting the script. I
+look at it and I can still figure out what it does, even after a couple of
+weeks :)  Now if someone previously unexposed to the script can have the
+same satisfying experience I am happy :-)
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Sep  8 16:32:56 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Fri, 8 Sep 2000 08:32:56 -0700 (PDT)
+Subject: Multiple Targets for PeeWee Linux
+Message-ID: <20000908153256.62313.qmail@web9101.mail.yahoo.com>
+
+Adi,
+Dang..Just lost about an hour trying to reply to this when Netscape just died -
+kill the mouse, killed X windows everything. Netscape BITES!! where's IE when
+you need it (or maybe some other browser!!!)....
+
+Ok, I'll see what I can remember...
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> Just some notes to what I see here...
+> 
+> 
+> There is no need to configure the actual device being used. The script
+> will automatically determine the size of the target device and calculate
+> the proper sizes.
+> 
+Good idea - too many variations was bothering me...
+
+> 
+> Partition sizes are configured by specifying free space! I found it really
+> annoying having to resize partitions as they grew or ram for a ramdisk
+> shrunk. Since we need to calculate before doing anything anyways, I
+> figured I calculate the needed space and make the additional free space
+> configurable.
+> 
+Another good idea!
+
+> Bootlocation should not include the partition, just the device. The script
+> picks the proper partition.
+> 
+Hmmmm....need to look into that - when do I use it now - mkBootDevice....
+
+> 
+> Here is the list of variables that are sensibly selected to be
+> configurable.
+> 
+> These first variables are customizable but shouldn't require change. They
+> define system defaults. I added the above numbers to indicate which
+> setting apply where.
+>  
+>     #####
+>     #
+>     # Only change these if you really know what you are doing!!!
+>     #
+>     #####
+> 
+>     # define the initrd size
+>     rd_initrd_size=                {3,4,5,8,9}
+> 
+>     # define the safety margin for the boot partition
+>     rd_size_boot_margin=           {3,4,5}
+> 
+>     # define the safety margin for fit in flash calculations
+>     rd_size_margin=                {1,2,3,4,5,6,7,8,9,10}
+> 
+these in kb ?? or percent ??
+
+
+> The following settings apply to file locations, target devices, etc. They
+> apply to literally all methods.
+> 
+>     #####
+>     #
+>     # Configurable paramters
+>     #
+>     #####
+> 
+>     # selected device layout
+>     rd_scheme=                      {put a name to the numbers above}
+> 
+>     # define if we maintain fstab and rc.init
+>     rd_initscripts=                 {needed if you have a custom rc.init
+>                                      or fstab, prvents rd_function from
+>                                      playing with it}
+> 
+>     # define default verbosity
+>     rd_action_verbosity=             {how much we dump to the screen}
+> 
+>     # temporary files directory
+>     rd_tmp=
+> 
+>     # the temporary mount point
+>     rd_mount=
+> 
+>     # the kernel name
+>     rd_kernel=                       {the kernel image (bzImage) w/o path}
+> 
+>     # the initrd name
+>     rd_initrd=                       {the initrd name w/o path}
+> 
+>     # the ramdisk name
+>     rd_ramdisk=                      {the ramdisk name w/o path}
+> 
+> The following variables are used by the raw floppy only.
+> 
+>     ####
+>     # target specific options - floppy
+> 
+>     # the target device
+>     rd_floppy=                        {just in case you're not using fd0}
+> 
+>     # the free space on the unompressed ramdisk
+>     rd_ramdisk_fd_free=
+> 
+> The following applies to mostly all flash based systems {1,2,3,4,5}
+> 
+>     ####
+>     # target device specific - hd or flash
+> 
+>     # the target device on the development system
+>     rd_target=                         {device (/dev/sda) w/o partition #}
+> 
+>     # the final boot device
+>     rd_boot=                           {device (/dev/hda) w/o partition #}
+> 
+> The following is needed for the systems with a single ramdisk or the
+> uncompressed ramdisk.
+> 
+>     ####
+>     # single ramdisk parameters
+> 
+>     # the free space on the uncompressed ramdisk in kB
+>     rd_ramdisk_free=                    {1,2,3,4}
+> 
+> These variables are required by the read-only root system.
+> 
+>     ####
+>     # multiple ramdisk parameters
+>     # the free space on the /dev - /var partition in kB
+>     # this partition also contains the /var tree!!!
+>     rd_dev_free=                        {5}
+> 
+>     # the free space on the /etc partition in kb
+>     rd_etc_free=                        {5}
+> 
+>     # the free space on the /home partition
+>     # this partition also contains /root
+>     rd_home_free=                       {5}
+>  
+> The next are bootloader options that are valid for any system using
+> syslinux or lilo. Note, that I haven't fixed syslinux.cfg for all
+> bootoptions yet. But that will happen sometime soon.
+> 
+>     ####
+>     # bootloader options
+> 
+>     # prompt timeout
+>     rd_bp_time=                         {1,2,3,4,5,7,8,9,10}
+> 
+>     # kernel label
+>     rd_bp_label=                        {1,2,3,4,5,7,8,9,10}
+> 
+>     # vga options
+>     rd_bp_vga=                          {1,2,3,4,5,7,8,9,10}
+> 
+> This about covers it.
+> 
+> > The next step is to activate the Erase/Foramt command to handle all the
+> various
+> > partitions; and the Load command must build the ramdisk images etc..
+> 
+> The loading script does everything! Fdisk, partition and format the
+> device. Install the bootloader, restore the DOS MBR for syslinux (if you
+> switch from lilo to syslinux). Create intrd, ramdisk compressed or
+> uncompressed, removes the kernel from the filesystem where it's not
+> needed...
+> 
+> So the sequence to use rd_functions without rd_dialog should be as
+> follows:
+> 
+>   1.  source rd_functions
+>   2.  set rd_base to the devel root dir (i.e./root/PeeWee/Embedded_Build)
+>   3.  call func_rd_env
+>   4.  call func_rd_defaults <project name>
+>   5.  load custom setting (redefininging some variables defined in prev step)
+>   
+>       Note: I wrote function that save whatever rd_dialog defines in a
+>             config file. But that's irrelevant as long as pwlconfig has
+>             all needed variables defined at this point. The build-in way
+>             pwlconfig works should be fine.
+>   6.  call function that installs filesystem
+>          {1}  func_rd_build_comp_rd_fat
+>          {2}  func_rd_build_comp_rd_ext2
+>          {3}  func_rd_build_uncomp_rd_fat
+>          {4}  func_rd_build_uncomp_rd_ext2
+>          {5}  func_rd_build_ro_root_rd  
+>          {6}  func_rd_build_fd_raw   
+> 
+>          Proposed: 
+>          {7}  func_rd_build_fd_fat   
+>          {8}  func_rd_build_rd_iso  
+>          {9}  func_rd_build_ro_iso  
+>          {10} func_rd_build_rw_root  
+> 
+> A last note, when the function in step 6 is called all required variables
+> need to be configured properly. There are no exhausting checks when it
+> comes to determining if the variables actually exist or have sane
+> locations. They will simply be used...
+> 
+> Hope this makes sense. Hey, I think I did ok documenting the script. I
+> look at it and I can still figure out what it does, even after a couple of
+> weeks :)  Now if someone previously unexposed to the script can have the
+> same satisfying experience I am happy :-)
+> 
+Yep...I went back and read it closer after this e-mail makes more sense now.
+
+So, what I'd propose is to do the following:
+
+1. write a "main" function that
+-- reads the project.defaults file and converts those parameters into rd_xxx
+variables (or rename some of your variables to match the defaults)
+-- activates the choosen scheme as outlined in 1-6 above
+
+2. Call pwl_ramdisk or mkbootDevice from pwlconfig 
+
+3. Add parameters to project.defaults file as required.
+
+Hmmm...not to hard...I'll try to send my latest pwlconfig and pwl_target and
+project.defaults file this afternoon. 
+
+You might think about the "main" function and the variable names (note read
+project.defaults file to see the names of the variables used in pwl_xxx files).
+
+Ok...didn't loose to much (except some wity coments :) and about an hour of
+time! ahhh...
+
+Later,
+Ralph
+
+> TTYL,
+> Adi
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Sep  8 16:50:51 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Fri, 8 Sep 2000 10:50:51 -0500 (CDT)
+Subject: Multiple Targets for PeeWee Linux
+In-Reply-To: <20000908153256.62313.qmail@web9101.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10009081036200.3213-100000@develop.knet.on.ca>
+
+Hi Ralph,
+
+Crapscape sucks...! Big time...! I use pine for email and vi for editing
+:)
+
+> > Bootlocation should not include the partition, just the device. The script
+> > picks the proper partition.
+> > 
+> Hmmmm....need to look into that - when do I use it now - mkBootDevice....
+
+What does mkBootDevice do? I suspect you wouldn't need this anymore.
+
+> >     # define the initrd size
+> >     rd_initrd_size=                {3,4,5,8,9}
+> > 
+> >     # define the safety margin for the boot partition
+> >     rd_size_boot_margin=           {3,4,5}
+> > 
+> >     # define the safety margin for fit in flash calculations
+> >     rd_size_margin=                {1,2,3,4,5,6,7,8,9,10}
+> > 
+> these in kb ?? or percent ??
+
+All sizes are in kB
+
+> 1. write a "main" function that
+> -- reads the project.defaults file and converts those parameters into rd_xxx
+> variables (or rename some of your variables to match the defaults)
+> -- activates the choosen scheme as outlined in 1-6 above
+
+So you'll change project.defaults to include the rd_functions parameters?
+
+> 2. Call pwl_ramdisk or mkbootDevice from pwlconfig 
+
+Ok, I see, it's just a matter of name... pwl_ramdisk or mkbootDevice would
+both call the appropriate function in rd_function...
+
+> 3. Add parameters to project.defaults file as required.
+
+Now if you add rd_ style paramters you won't need to translate those for
+rd_function, except perhaps define rd_base prior to calling func_rd_env
+
+> You might think about the "main" function and the variable names (note read
+> project.defaults file to see the names of the variables used in pwl_xxx files).
+
+I would think that the rd_functions script would replace the current
+arrangement for configuring and loading a target device in pwlconfig. The
+current method would be taken car of by '10. single r/w root partition'.
+
+The rd_function script 'should' be safe to some degree even if a
+configuration mistake is made. I.e. you specify /dev/hda as target but it
+is also your current HD your working from. Part of the standard checks is
+to see if there is any match for /dev/hda in the mounted devices. Since
+it's not safe to fdisk or format a mounted partition the process will
+aboard. Mind you, if you thesis or mp3 collection is on /dev/hdb and it's
+a dual-boot WIN box... it'll be replaced by the latest and greatest
+PeeWeeLinux... :)
+
+Yup, I would think edit the projects default mechanism to include the
+rd_function variables.
+
+Followed by a routine to set the environment and variables for rd_function
+followed by a call to the build function in rd_function. This last part I
+played with before and it's pretty straight forward.
+
+A last idea or variation...
+
+If the rd_scheme variable is define in project.defaults it would be
+possible to have a single
+
+   Load Target Device -->
+
+in the main menu. What this single command does and which target it will
+build would be entirly based on what's configured in project.defaults.
+
+So the script that defines project.defaults would have to provide the
+selection of the targets partitioning scheme... Can you do radio buttons
+in a menu (i.e. 10 selections that are exclusive, check 1 the other 9
+uncheck?).
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Thu Sep 14 03:41:22 2000
+From: PeeWeeLinux-devel@adis.on.ca (Richard Jennings)
+Date: Wed, 13 Sep 2000 18:41:22 -0800
+Subject: Hello
+Message-ID: <a04310100b5e5dec020d6@[24.14.159.102]>
+
+Hello,
+
+I wanted to introduce myself and offer my congratulations to Adi and 
+Ralph.  I've been playing with PeeWeeLinux for the past couple of 
+days and I think its great!   In my mind's eye I had a vision of the 
+type of embedded linux environment I would like - package based with 
+the ability to select commands and components using a GUI front end. 
+In short PeeWeeLinux.
+
+I built my first embedded Linux system in the spring and summer of 
+'99 using Paul Moody's Howto. http://linux-embedded.com/pmhowto.html 
+It took me a long time with endless reboots to finally trim my system 
+down to  less than 20 MB of disk space and still run a LabVIEW for 
+Linux executable. On the first day with PeeWeeLinux I had a booting 
+system with X that used ~13 MB. Pretty cool!
+
+I wanted to ask a favor - could you send me a copy of the library 
+libpthread.so.0 that is compatible with PeeWeeLinux 0.51 and will you 
+include in the next release as part of the distribution? I need this 
+for running LabVIEW under Linux. I tried to copy the library from my 
+SuSE distribution but it wasn't compatible. :-(
+
+Thanks
+
+Richard
+
+
+
+-- 
+Richard Jennings
+1426 Aster Lane
+Livermore, CA 94550
+USA
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Thu Sep 14 14:43:30 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Thu, 14 Sep 2000 06:43:30 -0700 (PDT)
+Subject: Hello
+Message-ID: <20000914134330.42021.qmail@web9102.mail.yahoo.com>
+
+Richard,
+
+--- Richard Jennings <rjennings@home.com> wrote:
+> Hello,
+> 
+> I wanted to introduce myself and offer my congratulations to Adi and 
+> Ralph.  I've been playing with PeeWeeLinux for the past couple of 
+> days and I think its great!   In my mind's eye I had a vision of the 
+> type of embedded linux environment I would like - package based with 
+> the ability to select commands and components using a GUI front end. 
+> In short PeeWeeLinux.
+> 
+Thanks, glad you like it...
+
+> I built my first embedded Linux system in the spring and summer of 
+> '99 using Paul Moody's Howto. http://linux-embedded.com/pmhowto.html 
+> It took me a long time with endless reboots to finally trim my system 
+> down to  less than 20 MB of disk space and still run a LabVIEW for 
+> Linux executable. On the first day with PeeWeeLinux I had a booting 
+> system with X that used ~13 MB. Pretty cool!
+> 
+glad you found it useful too !
+
+> I wanted to ask a favor - could you send me a copy of the library 
+> libpthread.so.0 that is compatible with PeeWeeLinux 0.51 and will you 
+> include in the next release as part of the distribution? I need this 
+> for running LabVIEW under Linux. I tried to copy the library from my 
+> SuSE distribution but it wasn't compatible. :-(
+> 
+I simply copied the file from my Red Hat 6.1 distribution - my quick and dirty
+way of getting things going (don't tell Adi - he hates it when I do that :) 
+
+Adi can probably figure out how to get the sources and build a rpm thing....
+in the mean time, I'll send my file off-list (65K zip file).
+
+> Thanks
+> 
+> Richard
+> 
+> 
+Later,
+Ralph
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Thu Sep 14 15:19:06 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Thu, 14 Sep 2000 09:19:06 -0500 (CDT)
+Subject: Hello
+In-Reply-To: <a04310100b5e5dec020d6@[24.14.159.102]>
+Message-ID: <Pine.LNX.4.10.10009140913020.2281-100000@develop.knet.on.ca>
+
+Hi,
+
+It is certainly possible to compile redo the rpm and include
+libpthread.so.0 I'll see what I can do to get accomplished over the
+weekend.
+
+There is still some work to do to get the libs done properly. The original
+PeeWeeLinux included a very basic libc. After I changed to rpm for the
+binary build process I started including more libs in the glibc package.
+pwlconfig provides for an easy mechanism to select needed libs only.
+However, there is nothing indicating which app nees which lib. So at some
+point there will be a dependency checking feature that will select needed
+libs for you instead of having to pick them by hand.
+
+Anyways, I am in the mids of renovations and don't have internet access
+from my development system. Cut the wires :( So I can do the compile and
+email you just libpthreads. A revised libc rpm with libpthreads would be
+part of the next PWL release...
+
+TTYL,
+Adi
+  
+
+On Wed, 13 Sep 2000, Richard Jennings wrote:
+
+> Hello,
+> 
+> I wanted to introduce myself and offer my congratulations to Adi and 
+> Ralph.  I've been playing with PeeWeeLinux for the past couple of 
+> days and I think its great!   In my mind's eye I had a vision of the 
+> type of embedded linux environment I would like - package based with 
+> the ability to select commands and components using a GUI front end. 
+> In short PeeWeeLinux.
+> 
+> I built my first embedded Linux system in the spring and summer of 
+> '99 using Paul Moody's Howto. http://linux-embedded.com/pmhowto.html 
+> It took me a long time with endless reboots to finally trim my system 
+> down to  less than 20 MB of disk space and still run a LabVIEW for 
+> Linux executable. On the first day with PeeWeeLinux I had a booting 
+> system with X that used ~13 MB. Pretty cool!
+> 
+> I wanted to ask a favor - could you send me a copy of the library 
+> libpthread.so.0 that is compatible with PeeWeeLinux 0.51 and will you 
+> include in the next release as part of the distribution? I need this 
+> for running LabVIEW under Linux. I tried to copy the library from my 
+> SuSE distribution but it wasn't compatible. :-(
+> 
+> Thanks
+> 
+> Richard
+> 
+> 
+> 
+> -- 
+> Richard Jennings
+> 1426 Aster Lane
+> Livermore, CA 94550
+> USA
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Thu Sep 14 15:34:10 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Thu, 14 Sep 2000 09:34:10 -0500 (CDT)
+Subject: Hello
+In-Reply-To: <20000914134330.42021.qmail@web9102.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10009140933010.2281-100000@develop.knet.on.ca>
+
+Hi,
+
+Let me know if Ralph's libpthread works for you. Then I won't have to go
+through compiling a new libc until I am getting ready for the next PWL
+release.
+
+TTYL,
+Adi
+
+> I simply copied the file from my Red Hat 6.1 distribution - my quick and dirty
+> way of getting things going (don't tell Adi - he hates it when I do that :) 
+> 
+> Adi can probably figure out how to get the sources and build a rpm thing....
+> in the mean time, I'll send my file off-list (65K zip file).
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Sep 15 05:49:23 2000
+From: PeeWeeLinux-devel@adis.on.ca (Richard Jennings)
+Date: Thu, 14 Sep 2000 20:49:23 -0800
+Subject: libpthreads OK!
+Message-ID: <a04310100b5e74d2bccbc@[24.14.159.102]>
+
+Thanks guys.  Installed it and it worked great.
+
+I looked at a copy of Red Hat 6.1 but it is using the 2.2.12 kernel 
+and PeeWeeLinux 0.51 shipped with 2.2.14. Have you moved up to 6.2?
+
+What do I need to do to compile the sources? The documentation says 
+that I need Red Hat installed but not much else besides that. Has 
+anyone patched PWL with RTLinux or RTAI? Do you need a hand with the 
+documentation or anything? I don't have much spare time but I could 
+expand on the docs that you have as I'm learning.
+
+I'm currently writing about building embedded systems with LabVIEW 
+and Linux for Gary W. Johnson and Richard T. Jennings "LabVIEW 
+Graphical Programming, 3 rd Edition" to be published early next year. 
+I'm really excited about PeeWeeLinux because you guys made something 
+hard into something pretty easy. You still need to be knowledgeable 
+about how Linux works but PWL takes a _lot_ of the work out of 
+trimming down or building up an embedded system.
+
+We're going to try to show people how easy it is to build an embedded 
+system using LabVIEW, Linux and VMware.  We plan on shipping one or 
+more embedded systems with the book as VMware virtual machines that 
+people can boot up and play with on their own computer. No extra 
+hardware required! Then we'll point them to www.peeweelinux.com.
+
+What do you think?
+
+Richard
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Sep 15 16:03:39 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Fri, 15 Sep 2000 10:03:39 -0500 (CDT)
+Subject: libpthreads OK!
+In-Reply-To: <a04310100b5e74d2bccbc@[24.14.159.102]>
+Message-ID: <Pine.LNX.4.10.10009150947340.2281-100000@develop.knet.on.ca>
+
+Hi,
+
+> Thanks guys.  Installed it and it worked great.
+
+Good to hear you're having success. It's one thing seeing lots of
+downloads and hits on the webpage but another to hear from someone
+successful using it!
+
+> I looked at a copy of Red Hat 6.1 but it is using the 2.2.12 kernel 
+> and PeeWeeLinux 0.51 shipped with 2.2.14. Have you moved up to 6.2?
+
+The kernel version of the development system doesn't have to be the same
+as the PeeWeeLinux kernel version.
+
+The system I am building the distribution system on is a RedHat 6.1 system
+running in VMWare. The system I use to test PeeWeeLinux and build embedded
+systems with is a RedHat 6.1 with 2.2.14 kernel at home and a RedHat 6.2
+with 2.2.14 kernel at work.
+
+I'd love to use VMWare for building embedded systems, too. But
+unfortunately VMWare does not allow access to USB devices. At least I
+haven't managed to do so.
+
+> What do I need to do to compile the sources? The documentation says 
+> that I need Red Hat installed but not much else besides that. Has 
+
+Just a plain old RedHat 6.1 or RedHat 6.2 system and the PeeWeeLinux
+source rpms.
+
+> anyone patched PWL with RTLinux or RTAI? 
+
+I haven't...
+
+> Do you need a hand with the documentation or anything? 
+> I don't have much spare time but I could  expand on the docs that you
+> have as I'm learning.
+
+Yes, the documantation is defenitely lacking. Getting documentation from
+someone using PeeWeeLinux and having gone through all the glitches and
+hickups would be great!
+
+Keep in mind, though, that the project defaults menu will change and that
+the whole section about loading a extracted filesystem onto the target
+device will change as well as soon as rd_function has been integrated into
+pwlconfig.
+
+> I'm currently writing about building embedded systems with LabVIEW 
+> and Linux for Gary W. Johnson and Richard T. Jennings "LabVIEW 
+> Graphical Programming, 3 rd Edition" to be published early next year. 
+> I'm really excited about PeeWeeLinux because you guys made something 
+> hard into something pretty easy. You still need to be knowledgeable 
+> about how Linux works but PWL takes a _lot_ of the work out of 
+> trimming down or building up an embedded system.
+
+I have to have a look at LabVIEW. The name rings a bell but that's about
+it.
+
+> We're going to try to show people how easy it is to build an embedded 
+> system using LabVIEW, Linux and VMware.  We plan on shipping one or 
+> more embedded systems with the book as VMware virtual machines that 
+> people can boot up and play with on their own computer. No extra 
+> hardware required! Then we'll point them to www.peeweelinux.com.
+
+This is a neat idea! VMWare certainly opens a lot of possibilities. I
+wonder if building a VMWare target device would be a usefull addition to
+PeeWeeLinux?
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Sep 15 19:17:10 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Fri, 15 Sep 2000 11:17:10 -0700 (PDT)
+Subject: libpthreads OK!
+Message-ID: <20000915181710.69348.qmail@web9101.mail.yahoo.com>
+
+Richard,
+
+--- Richard Jennings <rjennings@home.com> wrote:
+> Thanks guys.  Installed it and it worked great.
+> 
+> I looked at a copy of Red Hat 6.1 but it is using the 2.2.12 kernel 
+> and PeeWeeLinux 0.51 shipped with 2.2.14. Have you moved up to 6.2?
+>
+I think we went with 2.2.14 to get USB support...
+ 
+> What do I need to do to compile the sources? The documentation says 
+> that I need Red Hat installed but not much else besides that. Has 
+> anyone patched PWL with RTLinux or RTAI? 
+>
+BTW, There is nothing keeping pwlconfig from working with any other
+distribution (if its rpmd nicely ).  If you find someone to rpm RTLinux, LEM,
+LRP or whatever, then you could select a base configuration from one of
+those...In fact the main file configuration menu could just be a list of
+distributions (yet another feature - oops).
+
+>Do you need a hand with the 
+> documentation or anything? I don't have much spare time but I could 
+> expand on the docs that you have as I'm learning.
+> 
+Wow - that would be great. The pending changes for ramdisk support should be
+incorporated before you get started...release planned real soon now :)
+
+> I'm currently writing about building embedded systems with LabVIEW 
+> and Linux for Gary W. Johnson and Richard T. Jennings "LabVIEW 
+> Graphical Programming, 3 rd Edition" to be published early next year. 
+>
+Great - I love National Instruments stuff - I've used 7 or 8 of their boards
+and have written tons of code in LabWindows/CVI.  Hey, why all the LabView
+books an no books on LabWindows/CVI ?? If you plan on doing a complementary
+book for LabWindows let me know!
+
+> I'm really excited about PeeWeeLinux because you guys made something 
+> hard into something pretty easy. You still need to be knowledgeable 
+> about how Linux works but PWL takes a _lot_ of the work out of 
+> trimming down or building up an embedded system.
+> 
+Thats what I thought too, I just wonder why nobody else has done this...
+
+> We're going to try to show people how easy it is to build an embedded 
+> system using LabVIEW, Linux and VMware.  We plan on shipping one or 
+> more embedded systems with the book as VMware virtual machines that 
+> people can boot up and play with on their own computer. No extra 
+> hardware required! Then we'll point them to www.peeweelinux.com.
+> 
+> What do you think?
+> 
+I've never tried vmware - I saw it demo'ed at Linux World Expo and it looked
+great -  but I don't have anything faster than 400MHz/128Mb Ram. 
+Actually using it with Linux should be a big help.  
+
+However, after the demo, people are going to want to port it to some box
+somewhere - it would be neat to have some recommended motherboards (and
+associated drivers) for "instant embedding".  These would be simple, small (20K
+or so) pwlconfig project files. Of course, thats a lot more work too...but I
+wouldn't claim to be "embedded" without gett'n in the hardware at some point.
+
+(Thanks for the pointer!)
+Later,
+Ralph
+
+> Richard
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Sat Sep 16 02:22:48 2000
+From: PeeWeeLinux-devel@adis.on.ca (Richard Jennings)
+Date: Fri, 15 Sep 2000 17:22:48 -0800
+Subject: libpthreads OK!
+In-Reply-To: <20000915181710.69348.qmail@web9101.mail.yahoo.com>
+References: <20000915181710.69348.qmail@web9101.mail.yahoo.com>
+Message-ID: <a04310100b5e86cae62c7@[24.14.159.102]>
+
+>
+>BTW, There is nothing keeping pwlconfig from working with any other
+>distribution (if its rpmd nicely ).  If you find someone to rpm RTLinux, LEM,
+>LRP or whatever, then you could select a base configuration from one of
+>those...In fact the main file configuration menu could just be a list of
+>distributions (yet another feature - oops).
+
+
+I'll have to see if I can find a RPM of RTLinux or RTAI.  Adding a 
+real time version of Linux to PeeWeeLinux would be a plus.
+>
+>>Do you need a hand with the
+>>  documentation or anything? I don't have much spare time but I could
+>>  expand on the docs that you have as I'm learning.
+>>
+>Wow - that would be great. The pending changes for ramdisk support should be
+>incorporated before you get started...release planned real soon now :)
+
+
+Should I start with the posted docs or do you have something in the 
+works already?
+>
+>>  We're going to try to show people how easy it is to build an embedded
+>>  system using LabVIEW, Linux and VMware.  We plan on shipping one or
+>>  more embedded systems with the book as VMware virtual machines that
+>>  people can boot up and play with on their own computer. No extra
+>>  hardware required! Then we'll point them to www.peeweelinux.com.
+>>
+>>  What do you think?
+>>
+>I've never tried vmware - I saw it demo'ed at Linux World Expo and it looked
+>great -  but I don't have anything faster than 400MHz/128Mb Ram.
+>Actually using it with Linux should be a big help.
+
+I'm using a 400 MHz. AMD K2. It's pretty cool for trying out 
+different distributions and configurations.
+
+>
+>However, after the demo, people are going to want to port it to some box
+>somewhere - it would be neat to have some recommended motherboards (and
+>associated drivers) for "instant embedding".  These would be simple, 
+>small (20K
+>or so) pwlconfig project files. Of course, thats a lot more work too...but I
+>wouldn't claim to be "embedded" without gett'n in the hardware at some point.
+
+I agree, it's not really embedded until you put it on some hardware 
+but I don't have any particular hardware vendor to work with so I 
+thought I would try to write the book without depending on a vendor. 
+VMware gives us a virtual machine that (hopefully) is going to act 
+the same no matter what the underlying hardware (plus it works on 
+NT/2000 so people without Linux can still see what is happening). 
+Then we can concentrate on showing people how to use Linux to build 
+an embedded system and not on trying to make it work on their 
+particular model of PC or embedded board.
+
+When you build a new "machine" with VMware you still have to format 
+the disk and make a file system. You still have to xfer your OS to 
+the hard drive, install lilo and all those other things. That's what 
+I plan on showing people.  We'll include one or two working systems 
+to show how they work, hopefully one standard linux and one 
+real-time. People can use vmmount to mount the embedded system at a 
+mount point on their drive and then we'll show them how it works and 
+what config files control what things. Then we'll walk them through 
+placing their own  program on a virtual machine that they build 
+themselves. Hopefully by the time they are done the light will have 
+come on and they will be ready to build their own embedded system 
+with Linux.
+
+That's the plan in a nutshell. I wasn't too sure how I was going to 
+come up with a current embedded system that I could ship with the 
+book. The system that I did last year is getting stale and I wanted 
+something that people could use without too much trouble. None of the 
+distributions that I had seen on the net worked with LabVIEW when I 
+tried them. That's why I asked Ralph to give my LabVIEW application a 
+try on his machine. I was really happy, Ralph, when you let me know 
+that it had worked with just the addition of one library. God does 
+answer prayers!
+
+Some of the things I'm having trouble with right now are:
+
+setting the path at boot up so all users have X. I can't seem to get 
+this to work. Does every user have to a .profile script with a PATH 
+statement?
+
+Logging in automatically: I've tried "login USER" and "su USER -c 
+'path to file'" but neither one of those works. The login command 
+works in my SuSE derived system but not under PWL.
+
+Well, back to work. Any tips you have for me are appreciated.
+
+Richard
+
+
+
+
+
+-- 
+Richard Jennings
+1426 Aster Lane
+Livermore, CA 94550
+USA
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Tue Sep 19 15:40:07 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Tue, 19 Sep 2000 07:40:07 -0700 (PDT)
+Subject: libpthreads OK!
+Message-ID: <20000919144007.26795.qmail@web9103.mail.yahoo.com>
+
+Richard,
+
+--- Richard Jennings <rjennings@home.com> wrote:
+> >
+> >BTW, There is nothing keeping pwlconfig from working with any other
+> >distribution (if its rpmd nicely ).  If you find someone to rpm RTLinux,
+> LEM,
+> >LRP or whatever, then you could select a base configuration from one of
+> >those...In fact the main file configuration menu could just be a list of
+> >distributions (yet another feature - oops).
+> 
+> 
+> I'll have to see if I can find a RPM of RTLinux or RTAI.  Adding a 
+> real time version of Linux to PeeWeeLinux would be a plus.
+
+I don't know if all the programs have to be re-compiled, I suspect that you can
+get "real time" just by changing the kernel...Of course, I think every kernel
+should be a real time kernel - if you need it, great, if not then you still
+have it! (I used QNX before I started working with Linux :)
+
+
+> 
+> Should I start with the posted docs or do you have something in the 
+> works already?
+
+Haven't gone back to do the docs... still trying to figure out what we should
+be doing/showing to the user...
+
+> >
+> >>  We're going to try to show people how easy it is to build an embedded
+> >>  system using LabVIEW, Linux and VMware.  We plan on shipping one or
+> >>  more embedded systems with the book as VMware virtual machines that
+> >>  people can boot up and play with on their own computer. No extra
+> >>  hardware required! Then we'll point them to www.peeweelinux.com.
+> >>
+> >>  What do you think?
+> >>
+> >I've never tried vmware - I saw it demo'ed at Linux World Expo and it looked
+> >great -  but I don't have anything faster than 400MHz/128Mb Ram.
+> >Actually using it with Linux should be a big help.
+> 
+> I'm using a 400 MHz. AMD K2. It's pretty cool for trying out 
+> different distributions and configurations.
+> 
+Wow...didn't know it would run on a lowly 400 MHz...I'll have to try that (or
+maybe I'll wait for the book !)
+
+> >
+> >However, after the demo, people are going to want to port it to some box
+> >somewhere - it would be neat to have some recommended motherboards (and
+> >associated drivers) for "instant embedding".  These would be simple, 
+> >small (20K
+> >or so) pwlconfig project files. Of course, thats a lot more work too...but I
+> >wouldn't claim to be "embedded" without gett'n in the hardware at some
+> point.
+> 
+> I agree, it's not really embedded until you put it on some hardware 
+> but I don't have any particular hardware vendor to work with so I 
+> thought I would try to write the book without depending on a vendor. 
+> VMware gives us a virtual machine that (hopefully) is going to act 
+> the same no matter what the underlying hardware (plus it works on 
+> NT/2000 so people without Linux can still see what is happening). 
+> Then we can concentrate on showing people how to use Linux to build 
+> an embedded system and not on trying to make it work on their 
+> particular model of PC or embedded board.
+> 
+Great idea...Now I see where the vmware fits..cool.
+Are you tracking the free version ?
+http://www.freemware.org
+
+> When you build a new "machine" with VMware you still have to format 
+> the disk and make a file system. You still have to xfer your OS to 
+> the hard drive, install lilo and all those other things. That's what 
+> I plan on showing people.  We'll include one or two working systems 
+> to show how they work, hopefully one standard linux and one 
+> real-time. People can use vmmount to mount the embedded system at a 
+> mount point on their drive and then we'll show them how it works and 
+> what config files control what things. Then we'll walk them through 
+> placing their own  program on a virtual machine that they build 
+> themselves. Hopefully by the time they are done the light will have 
+> come on and they will be ready to build their own embedded system 
+> with Linux.
+> 
+
+One of my goals with the Main Menu of PeeWee Linux was to show, in general, the
+process required to embed linux.  We are generally hiding all of the command
+line stuff, but not what is actually being done. (Thats why the Erase and Load
+are two seperate operations :)  Any suggestions on how to improve this to make
+it clearer would be appreciated!
+
+> That's the plan in a nutshell. I wasn't too sure how I was going to 
+> come up with a current embedded system that I could ship with the 
+> book. The system that I did last year is getting stale and I wanted 
+> something that people could use without too much trouble. 
+
+Thought of that this weekend..Any hardware you recommend will 1) date the book
+and 2) probably be out of production by the time the book is printed!  Other
+than just using one off-the-shelf board as an "example" - you will probably
+have to link to a site that lists various motherboards - just click and
+download a PeeWee Project file for each motherboard !
+
+(Really cool: use the openBIOS/freebios board list and show how to kick off a
+board and boot linux - all with GPL code :)
+http://www.freiburg.linux.de/openbios/
+Thats the plan anyhow...they aren't moving too fast -thats the killer with all
+these open source/hobby projects :(
+
+> None of the 
+> distributions that I had seen on the net worked with LabVIEW when I 
+> tried them. That's why I asked Ralph to give my LabVIEW application a 
+> try on his machine. I was really happy, Ralph, when you let me know 
+> that it had worked with just the addition of one library. God does 
+> answer prayers!
+> 
+> Some of the things I'm having trouble with right now are:
+> 
+> setting the path at boot up so all users have X. I can't seem to get 
+> this to work. Does every user have to a .profile script with a PATH 
+> statement?
+> 
+Wondering that too...
+
+> Logging in automatically: I've tried "login USER" and "su USER -c 
+> 'path to file'" but neither one of those works. The login command 
+> works in my SuSE derived system but not under PWL.
+> 
+Yep..I'm still logging in and running the box as root :(
+
+> Well, back to work. Any tips you have for me are appreciated.
+>
+> 
+> Richard
+> 
+Later,
+Ralph
+
+> 
+> -- 
+> Richard Jennings
+> 1426 Aster Lane
+> Livermore, CA 94550
+> USA
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages & get email alerts with Yahoo! Messenger.
+http://im.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Wed Sep 20 08:02:42 2000
+From: PeeWeeLinux-devel@adis.on.ca (Richard Jennings)
+Date: Tue, 19 Sep 2000 23:02:42 -0800
+Subject: libpthreads OK!
+In-Reply-To: <20000919144007.26795.qmail@web9103.mail.yahoo.com>
+References: <20000919144007.26795.qmail@web9103.mail.yahoo.com>
+Message-ID: <a04310100b5edf6977561@[24.14.159.102]>
+
+>
+>
+>Haven't gone back to do the docs... still trying to figure out what we should
+>be doing/showing to the user...
+
+
+I thought I'd start with a few graphics / screenshots to make things 
+a little clearer.  picture ==1k words ;)
+
+I also  thought I could go through the postings to the list and see 
+if I couldn't put the answers to some of those questions in the docs.
+
+Finally I thought I'd try to answer some of the obvious questions 
+like "How do you get your application to start up at boot up?" and 
+any other questions we can think of answers to.
+
+I finally worked out a solution to getting my X-based application to 
+start at boot time. I'll try to explain the solution and what I think 
+are the causes. Let me know if I'm off track or if you have any extra 
+insight.
+
+I'm using Ash with BusyBox. BusyBox can provide INIT capabilities and 
+it comes with its own initab file which is pretty descriptive. I have 
+a basic initab file which looks something like this:
+
+# initialize system - execute all the scripts in /etc/init.d/rcS
+::sysinit:/etc/init.d/rcS
+
+# start a shell
+::respawn:/bin/sh
+
+# start a shell on tty2
+tty2::respawn:/bin/sh
+
+# start my application by calling a script in the /bin directory
+tty1::once:/bin/.setpath
+
+Note that there is no login being used and I am starting two shells. 
+I think, but I'm probably wrong, that each shell is it's own process 
+and environment variables are not shared between the two processes. I 
+have tried sourcing (.scriptfile) any script files and exporting the 
+PATH but this did not have the desired effect of making the path 
+change in the "parent" process. I'm beginning to think that the 
+default path of "/usr/bin:/bin:/usr/sbin:/sbin" is hard coded into 
+the shell but I haven't explored this yet. I tried commenting out and 
+changing the PATH statement in every startup script without making 
+any difference to the PATH that is initially available to me. man ash 
+lists a switch (-) which will cause the .profile to be used for 
+environment variables but I could never get it to work.
+
+My solution was to call a script that I had placed into a directory 
+in ash's search path. The script is :
+
+# /bin/.setpath
+export PATH=$PATH:/usr/X11R6/bin:/etc/X11
+
+#clean up any lock files
+rm -rf /tmp/.X0-lock
+
+# call startx which configures X and calls my application
+startx
+
+I don't know how or why it works but it works and right now that's 
+good enough for me ;-)
+
+>
+>Are you tracking the free version ?
+>http://www.freemware.org
+
+
+I hadn't heard of them. I'll have to keep an eye on it - looks pretty alpha
+
+>
+>One of my goals with the Main Menu of PeeWee Linux was to show, in 
+>general, the
+>process required to embed linux.  We are generally hiding all of the command
+>line stuff, but not what is actually being done. (Thats why the Erase and Load
+>are two seperate operations :)  Any suggestions on how to improve this to make
+>it clearer would be appreciated!
+>
+You guys are doing an awesome job on pwlconfig. I had a working 
+system up and going in less than a day and that's fantastic! Could it 
+be smoother? sure.
+
+When I was trying to figure out how to to accomplish this on my own I 
+was considering using RPMs and one of the graphical package managers 
+that come with KDE as a starting place. Have you seen NT Embedded's 
+target designer? It's a Windows Explorer-like configuration utility 
+that lets you rapidly pick and chose which components to use in your 
+embedded system.
+I had envisioned using an Explorer type interface to move through the 
+package hierarchy in a rapid manner selecting the components needed. 
+Once this was working it might not be too far of a stretch to add 
+menu items and "browse dialogs" for selecting targets based on 
+devices, partitions, mount points, etc... But I'm afraid that my 
+dreams often exceed my reality ;-))
+
+See ya'
+
+Richard
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

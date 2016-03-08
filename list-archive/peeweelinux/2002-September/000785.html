@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Network Problems
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000784.html">
+   <LINK REL="Next"  HREF="000786.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Network Problems
+   </H1>
+    <B>Stefan Willmert
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Network Problems">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 11 Sep 2002 12:50:29 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000784.html">[Peeweelinux] Network Problems
+</A></li>
+        <LI> Next message: <A HREF="000786.html">[Peeweelinux] remote target
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#785">[ date ]</a>
+              <a href="thread.html#785">[ thread ]</a>
+              <a href="subject.html#785">[ subject ]</a>
+              <a href="author.html#785">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>You would enter the command
+	insmod 8139too
+to load your network driver. If you are receiving errors regarding
+unresolved symbols, then your driver is searching for another library or
+driver that it can't find.
+
+If you do an
+	nm 8139too.o
+command, you should be able to determine what symbols are unresolved. It
+could be the way your driver is compiled, whether its static compiled or
+dynamic.
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of John Maddox
+Sent: Wednesday, September 11, 2002 12:38 PM
+To: '<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>'
+Subject: [Peeweelinux] Network Problems
+
+
+Stefan,
+
+&lt;Most likely, your system is not loading the driver module for your network
+card. PWL will not do this &lt;automatically as a normal linux system will. To
+test, just execute the command insmod &lt;yournicmodule&gt;
+
+When you use insmod, what do you put in place for &lt;yournicmodule&gt;
+
+Is it the *.o file located under
+/lib/modules/2.4.18/kernel/driver/net/8139too.o
+I guess this is my nick module because under the modules.conf file
+it has an alias eth0 8139too
+
+BUT, I tried typing in insmod 8139too after booting into my peewee build
+but I got errors stating that I have unresolved symbols.
+
+Where do I go from here??
+
+And why do I need to do a insmod if I built the drivers straight into the
+kernel,
+instead of putting an M I did a *
+
+Thanks
+John Maddox
+Programmer Analyst II
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000784.html">[Peeweelinux] Network Problems
+</A></li>
+	<LI> Next message: <A HREF="000786.html">[Peeweelinux] remote target
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#785">[ date ]</a>
+              <a href="thread.html#785">[ thread ]</a>
+              <a href="subject.html#785">[ subject ]</a>
+              <a href="author.html#785">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

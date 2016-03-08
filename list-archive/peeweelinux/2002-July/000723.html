@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] PeeWee on hard drive partition
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000722.html">
+   <LINK REL="Next"  HREF="000724.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] PeeWee on hard drive partition
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] PeeWee on hard drive partition">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 26 Jul 2002 17:56:41 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000722.html">[Peeweelinux] Uncompressed fail.
+</A></li>
+        <LI> Next message: <A HREF="000724.html">[Peeweelinux] Uncompressed fail.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#723">[ date ]</a>
+              <a href="thread.html#723">[ thread ]</a>
+              <a href="subject.html#723">[ subject ]</a>
+              <a href="author.html#723">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>the simplest way would be to .tgz the mnt directory of your project after
+</I>&gt;<i>extracting files, and copying it to the partition, the booting it the way
+</I>&gt;<i>you prefer.
+</I>
+I think you mean to say I would untar it in the new partition so that 
+it would the be a copy of the project's ./mnt directory.  That would
+work.  I guess it would resemble a conventional Linux system.
+
+In reading the help file, I see that I can &quot;extract a file system&quot;...
+&quot;to any mount point&quot;.  Since my host and target are the same 
+hardware, I should be able to have it copy the files directly there and
+get the same result.
+
+
+What I did today was realize that if LOADLIN would boot it, that LILO
+should also.  I just had to get the boot parameters right.  After
+messing about a bit I was able to achieve that.   So now I've got
+a PeeWee partition that I can boot directly, using the compressed
+files built by pwlconfig.
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000722.html">[Peeweelinux] Uncompressed fail.
+</A></li>
+	<LI> Next message: <A HREF="000724.html">[Peeweelinux] Uncompressed fail.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#723">[ date ]</a>
+              <a href="thread.html#723">[ thread ]</a>
+              <a href="subject.html#723">[ subject ]</a>
+              <a href="author.html#723">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

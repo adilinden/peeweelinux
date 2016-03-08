@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Making a floppy system with PeeWeeLinux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000064.html">
+   <LINK REL="Next"  HREF="000068.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Making a floppy system with PeeWeeLinux
+   </H1>
+    <B>fred anger
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Making a floppy system with PeeWeeLinux">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 5 Sep 2000 17:09:11 -0700 (MST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000064.html">Making a floppy system with PeeWeeLinux
+</A></li>
+        <LI> Next message: <A HREF="000068.html">Making a floppy system with PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#67">[ date ]</a>
+              <a href="thread.html#67">[ thread ]</a>
+              <a href="subject.html#67">[ subject ]</a>
+              <a href="author.html#67">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sat, 2 Sep 2000, Adi Linden wrote:
+&gt;<i> Here are some instructions on how to create a floppy run system using
+</I>&gt;<i> PeeWeeLinux.
+</I>
+Thank you very much!  I do have a problem though:
+ 
+&gt;<i> 4.  Exit pwlconfig at this point.
+</I>
+Had to go into the filesystem's dev directory and delete a whole mess of
+unecessary device file that were eating up inodes to get it to fit on the
+3M ram disk, BTW...
+ 
+&gt;<i> 14. Place the kernel on the floppy
+</I>&gt;<i>         dd if=Embedded_Build/projects/&lt;your project&gt;/mnt/boot/bzImage \
+</I>&gt;<i>             of=/dev/fd0
+</I>&gt;<i> 
+</I>&gt;<i> 15. When dd finishes you will get a message similar to
+</I>&gt;<i>         410+1 records in
+</I>&gt;<i>         410+1 records out
+</I>
+Here's mine - something's wrong cuz mine looks WAY too big...
+
+[<A HREF="mailto:root@blowtorch">root@blowtorch</A> /]# ls -l \
+/home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage 
+-rw-r--r--    1 root     root       567580 Sep  2 07:22
+/home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage
+[<A HREF="mailto:root@blowtorch">root@blowtorch</A> /]# dd \
+if=/home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage \
+of=/dev/fd0
+1108+1 records in
+1108+1 records out
+
+What am I doing wrong?  And how did you get your kernel smaller?  I'm
+using the latest binary distro (.51).  Should I be configuring my own
+kernel and rebuilding from the src distro?
+ 
+Needless to say, the kernel and the compressed ramdisk image (1107131
+bytes) don't fit on the floppy...
+
+Thank you for your time.
+
+-fa
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000064.html">Making a floppy system with PeeWeeLinux
+</A></li>
+	<LI> Next message: <A HREF="000068.html">Making a floppy system with PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#67">[ date ]</a>
+              <a href="thread.html#67">[ thread ]</a>
+              <a href="subject.html#67">[ subject ]</a>
+              <a href="author.html#67">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

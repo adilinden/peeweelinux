@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> busybox issue Was: peewee on floppy
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000214.html">
+   <LINK REL="Next"  HREF="000217.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>busybox issue Was: peewee on floppy
+   </H1>
+    <B>Dean Brown
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="busybox issue Was: peewee on floppy">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 08 Dec 2000 08:16:55 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000214.html">busybox issue Was: peewee on floppy
+</A></li>
+        <LI> Next message: <A HREF="000217.html">busybox issue Was: peewee on floppy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#216">[ date ]</a>
+              <a href="thread.html#216">[ thread ]</a>
+              <a href="subject.html#216">[ subject ]</a>
+              <a href="author.html#216">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adi Linden wrote:
+&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> I have a patch for busybox to make mount more compatible. But I haven't
+</I>&gt;<i> applied it yet to the busybox package.
+</I>&gt;<i> 
+</I>&gt;<i> Busybox includes a shell now. It seems to be severly limited but is quite
+</I>&gt;<i> ideal for simple things like an initrd. For an embedded system I would
+</I>&gt;<i> install the 'real' ash shell and use the busybox shell.
+</I>
+I assume you meant _not_ use the busybox shell!! That is what I am
+currently doing.
+
+&gt;<i> I am trying to tune busybox and tinylogin for PeeWeeLinux sometime soon. I
+</I>&gt;<i> am also thinking about creating a busybox centric initscripts package
+</I>&gt;<i> (placed under minial). No promises when this happens.
+</I>
+Part of the problem with that is some of the initscripts are generated
+by the pwl scripts. Most of my recent changes the system I am working on
+has been accomplished by hacking the pwl scripts. Most of the changes
+are not very elegant, but they get the job done. When I get some time,
+I'd be happy to share what I've done and why. That isn't likely to
+happen before the holidays though.
+ 
+&gt;<i> If anyone has a working basic PeeWeeLinux busybox system and would like to
+</I>&gt;<i> share the files it would make this task much easier :)
+</I>
+I am using busybox for most everything except mount and (la)sh.  
+
+&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> On Fri, 8 Dec 2000, Dean Brown wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Adi Linden wrote:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Hi Andu,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &lt;snip&gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Absolutely. In addition it would be an idea to build a system using
+</I>&gt;<i> &gt; &gt; busybox and tinylogin. Both are included with PeeWeeLinux but I haven't
+</I>&gt;<i> &gt; &gt; had any hands on configuring a system with busybox and tinylogin using
+</I>&gt;<i> &gt; &gt; PeeWeeLinux in a long time.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; The mount command in busybox does not work properly with the current
+</I>&gt;<i> &gt; startup scripts. In particular, the -n option on mount is not
+</I>&gt;<i> &gt; implemented in busybox which causes the rc.init script to fail. You need
+</I>&gt;<i> &gt; to use the standalone mount to make things work.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; There also seems to be an issue with lash beyond it's inability to
+</I>&gt;<i> &gt; handle if-then-else statements in scripts, but I haven't had the time to
+</I>&gt;<i> &gt; figure that out yet.
+</I>
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000214.html">busybox issue Was: peewee on floppy
+</A></li>
+	<LI> Next message: <A HREF="000217.html">busybox issue Was: peewee on floppy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#216">[ date ]</a>
+              <a href="thread.html#216">[ thread ]</a>
+              <a href="subject.html#216">[ subject ]</a>
+              <a href="author.html#216">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,1804 @@
+From peeweelinux@adis.on.ca  Sat Nov 16 20:18:41 2002
+From: peeweelinux@adis.on.ca (Marc Wiz)
+Date: Sat, 16 Nov 2002 14:18:41 -0600 (CST)
+Subject: [Peeweelinux] Boot/CRC Problems
+In-Reply-To: <Pine.LNX.4.33.0210171204290.4470-100000@adibox.knet.ca> from "Adi Linden" at Oct 17, 2002 12:06:08 PM
+Message-ID: <200211162018.gAGKIgo06830@freshaire.wiz.com>
+
+> 
+> > > I would recommend using a PC104 board that has a traditional (software 
+> > > transparent) IDE-CompactFlash adapter on it to boot the system. 
+> > > 
+> > 
+> > For those of us who do not have a PC104 board where can you get such an
+> > adapter?
+> > 
+> > I have a system that has one IDE "port" and room for a 2.5" laptop
+> > drive which I would like to replace which compact flash.
+> 
+> Here are CompactFlash IDE adapters...
+> http://peeweelinux.org/products.html
+
+Hi Adi,
+
+I've been swamped the last few weeks so I have not been able to reply to
+you.  Could you please tell me what the US price is?  Do you accept
+credit cards?
+
+Thanks,
+Marc
+
+-- 
+Marc Wiz
+marc@wiz.com
+Yes, that really is my last name.
+
+From peeweelinux@adis.on.ca  Sun Nov 17 02:09:05 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 16 Nov 2002 20:09:05 -0600 (CST)
+Subject: [Peeweelinux] Boot/CRC Problems
+In-Reply-To: <200211162018.gAGKIgo06830@freshaire.wiz.com>
+Message-ID: <Pine.LNX.4.44.0211162007400.1019-100000@mobile.adis.on.ca>
+
+Hi,
+
+The adapters are CDN$30 and are billed in Canadian Dollar. This is 
+equivalent to approx. US$20
+
+Adi
+
+On Sat, 16 Nov 2002, Marc Wiz wrote:
+
+> > 
+> > > > I would recommend using a PC104 board that has a traditional (software 
+> > > > transparent) IDE-CompactFlash adapter on it to boot the system. 
+> > > > 
+> > > 
+> > > For those of us who do not have a PC104 board where can you get such an
+> > > adapter?
+> > > 
+> > > I have a system that has one IDE "port" and room for a 2.5" laptop
+> > > drive which I would like to replace which compact flash.
+> > 
+> > Here are CompactFlash IDE adapters...
+> > http://peeweelinux.org/products.html
+> 
+> Hi Adi,
+> 
+> I've been swamped the last few weeks so I have not been able to reply to
+> you.  Could you please tell me what the US price is?  Do you accept
+> credit cards?
+> 
+> Thanks,
+> Marc
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Sun Nov 17 02:20:49 2002
+From: peeweelinux@adis.on.ca (Marc Wiz)
+Date: Sat, 16 Nov 2002 20:20:49 -0600 (CST)
+Subject: [Peeweelinux] Boot/CRC Problems
+In-Reply-To: <Pine.LNX.4.44.0211162007400.1019-100000@mobile.adis.on.ca> from "Adi Linden" at Nov 16, 2002 08:09:05 PM
+Message-ID: <200211170220.gAH2KpB08716@freshaire.wiz.com>
+
+> 
+> Hi,
+> 
+> The adapters are CDN$30 and are billed in Canadian Dollar. This is 
+> equivalent to approx. US$20
+> 
+> Adi
+
+Adi,
+
+does that include shipping?  How do I get payment to you?
+
+Thanks so much,
+Marc
+
+-- 
+Marc Wiz
+marc@wiz.com
+Yes, that really is my last name.
+
+From peeweelinux@adis.on.ca  Tue Nov 19 05:57:25 2002
+From: peeweelinux@adis.on.ca (Thanomsak Liumsuwan)
+Date: Mon, 18 Nov 2002 21:57:25 -0800 (PST)
+Subject: [Peeweelinux] How to limit connection time for dialin user ???
+Message-ID: <20021119055725.6619.qmail@web41008.mail.yahoo.com>
+
+with PeeWee Linux + mgetty + pppd What config file
+should I set to limit connection time for each user ??
+Thank you
+Thanomsak Liumsuwan
+Bangkok, Thailand
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Web Hosting - Let the expert host your site
+http://webhosting.yahoo.com
+
+From peeweelinux@adis.on.ca  Fri Nov 22 23:04:50 2002
+From: peeweelinux@adis.on.ca (Cem Eryasar)
+Date: 22 Nov 2002 23:04:50 +0000
+Subject: [Peeweelinux] Hello and a question
+Message-ID: <1038006292.9650.7.camel@cemer>
+
+Hello all!
+
+It's nice to see people doing embedded linux stuff.
+I downloaded the Peewee and gave it a go. I tried it on an embedded
+486 board. Looks really good.
+
+However, here is my first question:
+
+Do I have to stay with the built in 2.2.17 kernel?
+If it's possible is it better to move on another one? Like 2.2.22?
+
+How can I compare kernel versions? Is it always good to go for a
+recent one from kernel.org?
+
+Thanks a lot!
+Cem Eryasar - Cemer
+
+
+
+
+
+
+
+
+
+From peeweelinux@adis.on.ca  Sat Nov 23 11:41:42 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Sat, 23 Nov 2002 11:41:42 -0000
+Subject: [Peeweelinux] Hello and a question
+In-Reply-To: <1038006292.9650.7.camel@cemer>
+Message-ID: <000e01c292e5$4ba18d80$99ff0dd5@ricardo>
+
+there is a guide to upgrading the kernel in the mailing list archives.
+however, if the one includede does what you need, I think you should keep
+it, it's stable.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Cem Eryasar
+Sent: sexta-feira, 22 de Novembro de 2002 23:05
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] Hello and a question
+
+
+Hello all!
+
+It's nice to see people doing embedded linux stuff.
+I downloaded the Peewee and gave it a go. I tried it on an embedded
+486 board. Looks really good.
+
+However, here is my first question:
+
+Do I have to stay with the built in 2.2.17 kernel?
+If it's possible is it better to move on another one? Like 2.2.22?
+
+How can I compare kernel versions? Is it always good to go for a
+recent one from kernel.org?
+
+Thanks a lot!
+Cem Eryasar - Cemer
+
+
+
+
+
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Sat Nov 23 16:11:40 2002
+From: peeweelinux@adis.on.ca (Tom Schneider)
+Date: Sat, 23 Nov 2002 10:11:40 -0600
+Subject: [Peeweelinux] Hello and a question
+References: <000e01c292e5$4ba18d80$99ff0dd5@ricardo>
+Message-ID: <3DDFA8BC.2090609@nvisia.com>
+
+I've had great luck with the latest 2.4 kernel. (2.4.18)  Plus I've 
+upgraded most of the standard peewee linux packages to the latest Redhat 
+7.3 packages.  I'm running on a PC/104 486 with 48 MB ram and 64 MB 
+disk-on-chip.  If you follow the tutorial and know your way around the 
+basics of kernel building, it's not too hard.  (If not, get the Kernel 
+Howto can fix that)
+Tom
+
+Ricardo Trindade wrote:
+
+>there is a guide to upgrading the kernel in the mailing list archives.
+>however, if the one includede does what you need, I think you should keep
+>it, it's stable.
+>
+>-----Original Message-----
+>From: peeweelinux-admin@adis.on.ca
+>[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Cem Eryasar
+>Sent: sexta-feira, 22 de Novembro de 2002 23:05
+>To: peeweelinux@adis.on.ca
+>Subject: [Peeweelinux] Hello and a question
+>
+>
+>Hello all!
+>
+>It's nice to see people doing embedded linux stuff.
+>I downloaded the Peewee and gave it a go. I tried it on an embedded
+>486 board. Looks really good.
+>
+>However, here is my first question:
+>
+>Do I have to stay with the built in 2.2.17 kernel?
+>If it's possible is it better to move on another one? Like 2.2.22?
+>
+>How can I compare kernel versions? Is it always good to go for a
+>recent one from kernel.org?
+>
+>Thanks a lot!
+>Cem Eryasar - Cemer
+>
+>
+>
+>
+>
+>
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>  
+>
+
+
+
+
+From peeweelinux@adis.on.ca  Sat Nov 23 19:47:25 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Sat, 23 Nov 2002 11:47:25 -0800
+Subject: [Peeweelinux] Hello and a question
+References: <000e01c292e5$4ba18d80$99ff0dd5@ricardo> <3DDFA8BC.2090609@nvisia.com>
+Message-ID: <001e01c29329$4de439a0$0200a8c0@anuff.com>
+
+Were you able to use the RH 7.3 packages as is, or did you need to rebuild
+them?  I got stalled when I tried using the 2.4 kernel because although
+building the kernel itself wasn't too bad, hunting down all the packages
+that needed to be upgraded seemed daunting.
+
+Ed
+
+----- Original Message -----
+From: "Tom Schneider" <tschneider@nvisia.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Saturday, November 23, 2002 8:11 AM
+Subject: Re: [Peeweelinux] Hello and a question
+
+
+> I've had great luck with the latest 2.4 kernel. (2.4.18)  Plus I've
+> upgraded most of the standard peewee linux packages to the latest Redhat
+> 7.3 packages.  I'm running on a PC/104 486 with 48 MB ram and 64 MB
+> disk-on-chip.  If you follow the tutorial and know your way around the
+> basics of kernel building, it's not too hard.  (If not, get the Kernel
+> Howto can fix that)
+> Tom
+>
+> Ricardo Trindade wrote:
+>
+> >there is a guide to upgrading the kernel in the mailing list archives.
+> >however, if the one includede does what you need, I think you should keep
+> >it, it's stable.
+> >
+> >-----Original Message-----
+> >From: peeweelinux-admin@adis.on.ca
+> >[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Cem Eryasar
+> >Sent: sexta-feira, 22 de Novembro de 2002 23:05
+> >To: peeweelinux@adis.on.ca
+> >Subject: [Peeweelinux] Hello and a question
+> >
+> >
+> >Hello all!
+> >
+> >It's nice to see people doing embedded linux stuff.
+> >I downloaded the Peewee and gave it a go. I tried it on an embedded
+> >486 board. Looks really good.
+> >
+> >However, here is my first question:
+> >
+> >Do I have to stay with the built in 2.2.17 kernel?
+> >If it's possible is it better to move on another one? Like 2.2.22?
+> >
+> >How can I compare kernel versions? Is it always good to go for a
+> >recent one from kernel.org?
+> >
+> >Thanks a lot!
+> >Cem Eryasar - Cemer
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> >
+> >_______________________________________________
+> >Peeweelinux mailing list
+> >Peeweelinux@adis.on.ca
+> >http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> >_______________________________________________
+> >Peeweelinux mailing list
+> >Peeweelinux@adis.on.ca
+> >http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> >
+> >
+>
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Sat Nov 23 20:41:35 2002
+From: peeweelinux@adis.on.ca (Tom Schneider)
+Date: Sat, 23 Nov 2002 14:41:35 -0600
+Subject: [Peeweelinux] Hello and a question
+References: <000e01c292e5$4ba18d80$99ff0dd5@ricardo> <3DDFA8BC.2090609@nvisia.com> <001e01c29329$4de439a0$0200a8c0@anuff.com>
+Message-ID: <3DDFE7FF.1000209@nvisia.com>
+
+--------------030905030700050909080200
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Ed,
+I was able to run the 2.4 kernel with the existing packages, the only 
+thing I changed initially was the kernel, the kernel modules, and the 
+modutils package.  I then made sure I could boot the new kernel.  Then I 
+upgraded packages as necessary.  The way I upgraded the packages was to 
+manually create the tar and list file myself.
+For example:
+rpm2cpio xxx.rpm | cpio -dim  (extracts a redhat package to the current 
+directory)
+tar cf xxx.tar *  (tars up all the files in the package)
+tar tf xxx.tar > xxx.list ( creates the necessary list file)
+copy xxx.tar and xxx.list to the packages directory in peewee linux and 
+you're all set.
+Tom
+
+Ed Anuff wrote:
+
+>Were you able to use the RH 7.3 packages as is, or did you need to rebuild
+>them?  I got stalled when I tried using the 2.4 kernel because although
+>building the kernel itself wasn't too bad, hunting down all the packages
+>that needed to be upgraded seemed daunting.
+>
+>Ed
+>
+>----- Original Message -----
+>From: "Tom Schneider" <tschneider@nvisia.com>
+>To: <peeweelinux@adis.on.ca>
+>Sent: Saturday, November 23, 2002 8:11 AM
+>Subject: Re: [Peeweelinux] Hello and a question
+>
+>
+>  
+>
+>>I've had great luck with the latest 2.4 kernel. (2.4.18)  Plus I've
+>>upgraded most of the standard peewee linux packages to the latest Redhat
+>>7.3 packages.  I'm running on a PC/104 486 with 48 MB ram and 64 MB
+>>disk-on-chip.  If you follow the tutorial and know your way around the
+>>basics of kernel building, it's not too hard.  (If not, get the Kernel
+>>Howto can fix that)
+>>Tom
+>>
+>>Ricardo Trindade wrote:
+>>
+>>    
+>>
+>>>there is a guide to upgrading the kernel in the mailing list archives.
+>>>however, if the one includede does what you need, I think you should keep
+>>>it, it's stable.
+>>>
+>>>-----Original Message-----
+>>>From: peeweelinux-admin@adis.on.ca
+>>>[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Cem Eryasar
+>>>Sent: sexta-feira, 22 de Novembro de 2002 23:05
+>>>To: peeweelinux@adis.on.ca
+>>>Subject: [Peeweelinux] Hello and a question
+>>>
+>>>
+>>>Hello all!
+>>>
+>>>It's nice to see people doing embedded linux stuff.
+>>>I downloaded the Peewee and gave it a go. I tried it on an embedded
+>>>486 board. Looks really good.
+>>>
+>>>However, here is my first question:
+>>>
+>>>Do I have to stay with the built in 2.2.17 kernel?
+>>>If it's possible is it better to move on another one? Like 2.2.22?
+>>>
+>>>How can I compare kernel versions? Is it always good to go for a
+>>>recent one from kernel.org?
+>>>
+>>>Thanks a lot!
+>>>Cem Eryasar - Cemer
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>
+>>>_______________________________________________
+>>>Peeweelinux mailing list
+>>>Peeweelinux@adis.on.ca
+>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>
+>>>_______________________________________________
+>>>Peeweelinux mailing list
+>>>Peeweelinux@adis.on.ca
+>>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>>
+>>>
+>>>      
+>>>
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+>>    
+>>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>  
+>
+
+
+
+--------------030905030700050909080200
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+Ed,<br>
+I was able to run the 2.4 kernel with the existing packages, the only thing
+I changed initially was the kernel, the kernel modules, and the modutils
+package. &nbsp;I then made sure I could boot the new kernel. &nbsp;Then I upgraded
+packages as necessary. &nbsp;The way I upgraded the packages was to manually create
+the tar and list file myself.<br>
+For example:<br>
+rpm2cpio xxx.rpm | cpio -dim &nbsp;(extracts a redhat package to the current directory)<br>
+tar cf xxx.tar * &nbsp;(tars up all the files in the package)<br>
+tar tf xxx.tar &gt; xxx.list ( creates the necessary list file)<br>
+copy xxx.tar and xxx.list to the packages directory in peewee linux and you're
+all set.<br>
+Tom<br>
+<br>
+Ed Anuff wrote:<br>
+<blockquote type="cite"
+ cite="mid001e01c29329$4de439a0$0200a8c0@anuff.com">
+  <pre wrap="">Were you able to use the RH 7.3 packages as is, or did you need to rebuild
+them?  I got stalled when I tried using the 2.4 kernel because although
+building the kernel itself wasn't too bad, hunting down all the packages
+that needed to be upgraded seemed daunting.
+
+Ed
+
+----- Original Message -----
+From: "Tom Schneider" <a class="moz-txt-link-rfc2396E" href="mailto:tschneider@nvisia.com">&lt;tschneider@nvisia.com&gt;</a>
+To: <a class="moz-txt-link-rfc2396E" href="mailto:peeweelinux@adis.on.ca">&lt;peeweelinux@adis.on.ca&gt;</a>
+Sent: Saturday, November 23, 2002 8:11 AM
+Subject: Re: [Peeweelinux] Hello and a question
+
+
+  </pre>
+  <blockquote type="cite">
+    <pre wrap="">I've had great luck with the latest 2.4 kernel. (2.4.18)  Plus I've
+upgraded most of the standard peewee linux packages to the latest Redhat
+7.3 packages.  I'm running on a PC/104 486 with 48 MB ram and 64 MB
+disk-on-chip.  If you follow the tutorial and know your way around the
+basics of kernel building, it's not too hard.  (If not, get the Kernel
+Howto can fix that)
+Tom
+
+Ricardo Trindade wrote:
+
+    </pre>
+    <blockquote type="cite">
+      <pre wrap="">there is a guide to upgrading the kernel in the mailing list archives.
+however, if the one includede does what you need, I think you should keep
+it, it's stable.
+
+-----Original Message-----
+From: <a class="moz-txt-link-abbreviated" href="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</a>
+[<a class="moz-txt-link-freetext" href="mailto:peeweelinux-admin@adis.on.ca">mailto:peeweelinux-admin@adis.on.ca</a>]On Behalf Of Cem Eryasar
+Sent: sexta-feira, 22 de Novembro de 2002 23:05
+To: <a class="moz-txt-link-abbreviated" href="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</a>
+Subject: [Peeweelinux] Hello and a question
+
+
+Hello all!
+
+It's nice to see people doing embedded linux stuff.
+I downloaded the Peewee and gave it a go. I tried it on an embedded
+486 board. Looks really good.
+
+However, here is my first question:
+
+Do I have to stay with the built in 2.2.17 kernel?
+If it's possible is it better to move on another one? Like 2.2.22?
+
+How can I compare kernel versions? Is it always good to go for a
+recent one from kernel.org?
+
+Thanks a lot!
+Cem Eryasar - Cemer
+
+
+
+
+
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+<a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a>
+<a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a>
+
+_______________________________________________
+Peeweelinux mailing list
+<a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a>
+<a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a>
+
+
+      </pre>
+    </blockquote>
+    <pre wrap="">
+
+_______________________________________________
+Peeweelinux mailing list
+<a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a>
+<a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a>
+
+    </pre>
+  </blockquote>
+  <pre wrap=""><!---->
+_______________________________________________
+Peeweelinux mailing list
+<a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a>
+<a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a>
+  </pre>
+</blockquote>
+<br>
+<br>
+</body>
+</html>
+
+--------------030905030700050909080200--
+
+
+From peeweelinux@adis.on.ca  Sun Nov 24 20:19:17 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Sun, 24 Nov 2002 20:19:17 CET
+Subject: [Peeweelinux] rc.init
+Message-ID: <mnet1.1038165557.27151.francois.seingier@club-internet.fr>
+
+hello,
+it's the first time I give a try to peeweelinux and I hope I won't ask things that have already been answered...
+I downloaded the source package and ran the script pwlconfig. Worked fine until the Extract File System for project. I found out about an hour later I had to run the rpm2tar first. Maybe this will help some new comers like me...
+Now for my problem: 
+I'm trying to boot on a floppy. I get a "sh: PATH=/bin:/sbin:/usr/bin:/usr/sbin: No such file or directory"
+I extracted the ramdisk from the floppy mounted it and ran the script rc.init with a chroot. So I could conclude it comes from the rc.init (boy that's only the second line of the script :( ).
+and btw, I'm using busybox (<--- it's probably his fault!!)
+Has anybody gone through that?
+
+François
+
+
+From peeweelinux@adis.on.ca  Mon Nov 25 19:13:49 2002
+From: peeweelinux@adis.on.ca (Cem Eryasar)
+Date: 25 Nov 2002 19:13:49 +0000
+Subject: [Peeweelinux] Re: Hello and a question
+In-Reply-To: <200211241801.gAOI11c30895@yoda.adis.on.ca>
+References: <200211241801.gAOI11c30895@yoda.adis.on.ca>
+Message-ID: <1038251631.2266.10.camel@cemer>
+
+Thanks for the responses. The 2.4 kernel tip is really useful.
+I am also using a RH7.3 and thinking of upgrading to the
+RH7.3 kernel/apps/libs at some point in the future.
+
+My question was also about the kernel versions. I don't have any
+link to compare the different versions of kernels - except the diff ;)
+Why did you move to 2.4? Did it justify all the work?
+
+Cem
+
+
+
+> 
+> Ed,
+> I was able to run the 2.4 kernel with the existing packages, the only 
+> thing I changed initially was the kernel, the kernel modules, and the 
+> modutils package.  I then made sure I could boot the new kernel.  Then I 
+> upgraded packages as necessary.  The way I upgraded the packages was to 
+> manually create the tar and list file myself.
+> For example:
+> rpm2cpio xxx.rpm | cpio -dim  (extracts a redhat package to the current 
+> directory)
+> tar cf xxx.tar *  (tars up all the files in the package)
+> tar tf xxx.tar > xxx.list ( creates the necessary list file)
+> copy xxx.tar and xxx.list to the packages directory in peewee linux and 
+> you're all set.
+> Tom
+> 
+> Ed Anuff wrote:
+> 
+> >Were you able to use the RH 7.3 packages as is, or did you need to rebuild
+> >them?  I got stalled when I tried using the 2.4 kernel because although
+> >building the kernel itself wasn't too bad, hunting down all the packages
+> >that needed to be upgraded seemed daunting.
+> >
+> >Ed
+> >
+> >----- Original Message -----
+> >From: "Tom Schneider" <tschneider@nvisia.com>
+> >To: <peeweelinux@adis.on.ca>
+> >Sent: Saturday, November 23, 2002 8:11 AM
+> >Subject: Re: [Peeweelinux] Hello and a question
+> >
+> >
+> >  
+> >
+> >>I've had great luck with the latest 2.4 kernel. (2.4.18)  Plus I've
+> >>upgraded most of the standard peewee linux packages to the latest Redhat
+> >>7.3 packages.  I'm running on a PC/104 486 with 48 MB ram and 64 MB
+> >>disk-on-chip.  If you follow the tutorial and know your way around the
+> >>basics of kernel building, it's not too hard.  (If not, get the Kernel
+> >>Howto can fix that)
+> >>Tom
+> >>
+> >>Ricardo Trindade wrote:
+> >>
+> >>    
+> >>
+> >>>there is a guide to upgrading the kernel in the mailing list archives.
+> >>>however, if the one includede does what you need, I think you should keep
+> >>>it, it's stable.
+> >>>
+> >>>-----Original Message-----
+> >>>From: peeweelinux-admin@adis.on.ca
+> >>>[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Cem Eryasar
+> >>>Sent: sexta-feira, 22 de Novembro de 2002 23:05
+> >>>To: peeweelinux@adis.on.ca
+> >>>Subject: [Peeweelinux] Hello and a question
+> >>>
+> >>>
+> >>>Hello all!
+> >>>
+> >>>It's nice to see people doing embedded linux stuff.
+> >>>I downloaded the Peewee and gave it a go. I tried it on an embedded
+> >>>486 board. Looks really good.
+> >>>
+> >>>However, here is my first question:
+> >>>
+> >>>Do I have to stay with the built in 2.2.17 kernel?
+> >>>If it's possible is it better to move on another one? Like 2.2.22?
+> >>>
+> >>>How can I compare kernel versions? Is it always good to go for a
+> >>>recent one from kernel.org?
+> >>>
+> >>>Thanks a lot!
+> >>>Cem Eryasar - Cemer
+> >>>
+
+
+
+From peeweelinux@adis.on.ca  Mon Nov 25 19:39:12 2002
+From: peeweelinux@adis.on.ca (Tom Schneider)
+Date: Mon, 25 Nov 2002 13:39:12 -0600
+Subject: [Peeweelinux] Re: Hello and a question
+References: <200211241801.gAOI11c30895@yoda.adis.on.ca> <1038251631.2266.10.camel@cemer>
+Message-ID: <3DE27C60.5040605@nvisia.com>
+
+It really wasn't that much work.  Figuring it out how to do it was the 
+hardest part.  The main reason I went to the latest and greatest kernel 
+is for the latest disk-on-chip drivers which are a standard part of the 
+2.4 kernel.  I'm also more familiar with building and working with 2.4 
+kernels.
+Tom
+ 
+Cem Eryasar wrote:
+
+>Thanks for the responses. The 2.4 kernel tip is really useful.
+>I am also using a RH7.3 and thinking of upgrading to the
+>RH7.3 kernel/apps/libs at some point in the future.
+>
+>My question was also about the kernel versions. I don't have any
+>link to compare the different versions of kernels - except the diff ;)
+>Why did you move to 2.4? Did it justify all the work?
+>
+>Cem
+>
+>  
+>
+
+
+From peeweelinux@adis.on.ca  Mon Nov 25 23:04:08 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Mon, 25 Nov 2002 23:04:08 -0000
+Subject: [Peeweelinux] project status
+Message-ID: <000001c294d6$f63a18f0$94f90dd5@ricardo>
+
+Hi,
+
+	I've been using peewee for a while now, and I'm very happy with it. I tried
+several embedded linux distros, and I found peewee the best. So thanks Adi.
+
+	However peewee hasn't been maintained for a while now, so I'm wondering if
+there is a project roadmap, what's the status, etc..
+
+	Can you give some pointers Adi ?
+
+thanks
+
+
+From peeweelinux@adis.on.ca  Tue Nov 26 01:29:46 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Mon, 25 Nov 2002 17:29:46 -0800
+Subject: [Peeweelinux] project status
+References: <000001c294d6$f63a18f0$94f90dd5@ricardo>
+Message-ID: <000e01c294eb$4e3ea930$1496fe0a@epicentric.com>
+
+I think the scripts work pretty well as they are know, but an upgrading of
+the latest kernel and packages would be a good thing.  It doesn't have to
+fall on Adi's shoulders, if we split up rebuilding the packages among a
+group of people it could get done pretty quickly.
+
+I'd also like to look at it including a special set of packages with a
+minimal X server that works with National Geode chipset SBCs.
+
+Ed
+
+----- Original Message -----
+From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Monday, November 25, 2002 3:04 PM
+Subject: [Peeweelinux] project status
+
+
+> Hi,
+>
+> I've been using peewee for a while now, and I'm very happy with it. I
+tried
+> several embedded linux distros, and I found peewee the best. So thanks
+Adi.
+>
+> However peewee hasn't been maintained for a while now, so I'm wondering if
+> there is a project roadmap, what's the status, etc..
+>
+> Can you give some pointers Adi ?
+>
+> thanks
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Tue Nov 26 09:24:11 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Tue, 26 Nov 2002 09:24:11 -0000
+Subject: [Peeweelinux] project status
+In-Reply-To: <000e01c294eb$4e3ea930$1496fe0a@epicentric.com>
+Message-ID: <000401c2952d$94ff2010$c7fd0dd5@ricardo>
+
+yes, I agree completely, if we split the work it would be easier. I think
+the changes needed would be just to keep it current.
+
+However, if you search the list, you will see that is rewriting the all
+thing.
+
+As he hasn't release anything yet we can't help him there, and working on
+the current version could be pointless, depending on his work.
+
+Care to coment Adi ? Anyone ?
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ed Anuff
+Sent: terça-feira, 26 de Novembro de 2002 1:30
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] project status
+
+
+I think the scripts work pretty well as they are know, but an upgrading of
+the latest kernel and packages would be a good thing.  It doesn't have to
+fall on Adi's shoulders, if we split up rebuilding the packages among a
+group of people it could get done pretty quickly.
+
+I'd also like to look at it including a special set of packages with a
+minimal X server that works with National Geode chipset SBCs.
+
+Ed
+
+----- Original Message -----
+From: "Ricardo Trindade" <Ricardo.Trindade@myrealbox.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Monday, November 25, 2002 3:04 PM
+Subject: [Peeweelinux] project status
+
+
+> Hi,
+>
+> I've been using peewee for a while now, and I'm very happy with it. I
+tried
+> several embedded linux distros, and I found peewee the best. So thanks
+Adi.
+>
+> However peewee hasn't been maintained for a while now, so I'm wondering if
+> there is a project roadmap, what's the status, etc..
+>
+> Can you give some pointers Adi ?
+>
+> thanks
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Nov 26 15:11:31 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 26 Nov 2002 09:11:31 -0600 (CST)
+Subject: [Peeweelinux] project status
+In-Reply-To: <000001c294d6$f63a18f0$94f90dd5@ricardo>
+Message-ID: <Pine.LNX.4.44.0211260856460.23574-100000@adibox.knet.ca>
+
+Hi,
+
+You're asking a difficult question. I have a list of things I'd like to do 
+with PeeWeeLinux. Perhaps the most significant is to build a dedicated 
+build environment that one chroots into for building PeeWeeLinux binaries. 
+This would be part of the source distribution. The idea is to make 
+PeeWeeLinux independent of the underlying Linux distribution and version.
+Now the binaries were linked against the existing system libraries, then 
+the binaries will be linked against PeeWeeLinux libraries.
+
+Beyond that, I think 2.4.x kernal is need in addition to what's there and 
+some of the binaries need to be updated. With the above environment and 
+proper scripting it should be pretty easy to rebuild all of the 
+PeeWeeLinux packages automatically. A big improvement when it comes to 
+updating libraries. That might even allow for a PeeWeeLinuxLite version, 
+linked against ulibc...
+
+Right now my problem is time. I mentioned the above before and hoped long 
+time ago to have time to work on PeeWeeLinux again. My job has not brought 
+any new embedded Linux projects as I hoped, instead im very busy building 
+a satellite network. What little time I have left is mostly spend with 
+family. What I need is a couple of weeks or so of uncommited evenings to 
+get the basics of the ground. I am now hoping for that break to come 
+shortly after Christmas, all the things that keep me busy now should be 
+wrapped up then.
+
+I open to input, if anyone wants to contribute and make these things 
+happen, I'd love to assist in any way I can to get things integrated 
+smoothly and take PeeWeeLinux to the next level.
+
+Adi
+
+On Mon, 25 Nov 2002, Ricardo Trindade wrote:
+
+> Hi,
+> 
+> I've been using peewee for a while now, and I'm very happy with it. I 
+> tried several embedded linux distros, and I found peewee the best. So 
+> thanks Adi.
+> 
+> However peewee hasn't been maintained for a while now, so I'm wondering if
+> there is a project roadmap, what's the status, etc..
+> 
+> Can you give some pointers Adi ?
+> 
+> thanks
+
+
+From peeweelinux@adis.on.ca  Tue Nov 26 15:15:55 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 26 Nov 2002 09:15:55 -0600 (CST)
+Subject: [Peeweelinux] project status
+In-Reply-To: <000401c2952d$94ff2010$c7fd0dd5@ricardo>
+Message-ID: <Pine.LNX.4.44.0211260912260.23574-100000@adibox.knet.ca>
+
+> As he hasn't release anything yet we can't help him there, and working on
+> the current version could be pointless, depending on his work.
+> 
+> Care to coment Adi ? Anyone ?
+
+Not much has happened beyond me explaining my ideas and vision of what it 
+could be. Everything is wide open and the latest release is the most 
+recent. I have manually build a development environment and made notes of 
+what I had to do to prove that it can be done. No scripts yet that would 
+integrate anything into PeeWeeLinux, though.
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Tue Nov 26 15:20:11 2002
+From: peeweelinux@adis.on.ca (Stefan Willmert)
+Date: Tue, 26 Nov 2002 09:20:11 -0600
+Subject: [Peeweelinux] project status
+In-Reply-To: <Pine.LNX.4.44.0211260856460.23574-100000@adibox.knet.ca>
+Message-ID: <ICEOIHIIFHIJAFEIJICPKEEHCDAA.stefanw@intellanet.com>
+
+Hello,
+I've used PWL to initially create our embedded system. Because it wasn't
+updated though, I made my own custom scripts with updated kernel, libraries,
+etc, and built an install for my purposes.
+
+I don't have much freetime either, but would be happy to contribute what i
+can to the advancement of PWL. If someone wants to take the lead, and
+organize the necessary changes, please let me know how i can help.
+
+-stefan willmert
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Adi Linden
+Sent: Tuesday, November 26, 2002 9:12 AM
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] project status
+
+
+Hi,
+
+You're asking a difficult question. I have a list of things I'd like to do
+with PeeWeeLinux. Perhaps the most significant is to build a dedicated
+build environment that one chroots into for building PeeWeeLinux binaries.
+This would be part of the source distribution. The idea is to make
+PeeWeeLinux independent of the underlying Linux distribution and version.
+Now the binaries were linked against the existing system libraries, then
+the binaries will be linked against PeeWeeLinux libraries.
+
+Beyond that, I think 2.4.x kernal is need in addition to what's there and
+some of the binaries need to be updated. With the above environment and
+proper scripting it should be pretty easy to rebuild all of the
+PeeWeeLinux packages automatically. A big improvement when it comes to
+updating libraries. That might even allow for a PeeWeeLinuxLite version,
+linked against ulibc...
+
+Right now my problem is time. I mentioned the above before and hoped long
+time ago to have time to work on PeeWeeLinux again. My job has not brought
+any new embedded Linux projects as I hoped, instead im very busy building
+a satellite network. What little time I have left is mostly spend with
+family. What I need is a couple of weeks or so of uncommited evenings to
+get the basics of the ground. I am now hoping for that break to come
+shortly after Christmas, all the things that keep me busy now should be
+wrapped up then.
+
+I open to input, if anyone wants to contribute and make these things
+happen, I'd love to assist in any way I can to get things integrated
+smoothly and take PeeWeeLinux to the next level.
+
+Adi
+
+On Mon, 25 Nov 2002, Ricardo Trindade wrote:
+
+> Hi,
+>
+> I've been using peewee for a while now, and I'm very happy with it. I
+> tried several embedded linux distros, and I found peewee the best. So
+> thanks Adi.
+>
+> However peewee hasn't been maintained for a while now, so I'm wondering if
+> there is a project roadmap, what's the status, etc..
+>
+> Can you give some pointers Adi ?
+>
+> thanks
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Nov 26 23:40:06 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Tue, 26 Nov 2002 15:40:06 -0800
+Subject: [Peeweelinux] project status
+References: <ICEOIHIIFHIJAFEIJICPKEEHCDAA.stefanw@intellanet.com>
+Message-ID: <00ad01c295a5$269b4e50$1496fe0a@epicentric.com>
+
+I don't know much about the sourceforge system that peeweelinux is hosted
+on, but might that be a way of getting some of these efforts coordinated?
+
+Ed
+
+----- Original Message -----
+From: "Stefan Willmert" <stefanw@intellanet.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Tuesday, November 26, 2002 7:20 AM
+Subject: RE: [Peeweelinux] project status
+
+
+> Hello,
+> I've used PWL to initially create our embedded system. Because it wasn't
+> updated though, I made my own custom scripts with updated kernel,
+libraries,
+> etc, and built an install for my purposes.
+>
+> I don't have much freetime either, but would be happy to contribute what i
+> can to the advancement of PWL. If someone wants to take the lead, and
+> organize the necessary changes, please let me know how i can help.
+>
+> -stefan willmert
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Adi Linden
+> Sent: Tuesday, November 26, 2002 9:12 AM
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] project status
+>
+>
+> Hi,
+>
+> You're asking a difficult question. I have a list of things I'd like to do
+> with PeeWeeLinux. Perhaps the most significant is to build a dedicated
+> build environment that one chroots into for building PeeWeeLinux binaries.
+> This would be part of the source distribution. The idea is to make
+> PeeWeeLinux independent of the underlying Linux distribution and version.
+> Now the binaries were linked against the existing system libraries, then
+> the binaries will be linked against PeeWeeLinux libraries.
+>
+> Beyond that, I think 2.4.x kernal is need in addition to what's there and
+> some of the binaries need to be updated. With the above environment and
+> proper scripting it should be pretty easy to rebuild all of the
+> PeeWeeLinux packages automatically. A big improvement when it comes to
+> updating libraries. That might even allow for a PeeWeeLinuxLite version,
+> linked against ulibc...
+>
+> Right now my problem is time. I mentioned the above before and hoped long
+> time ago to have time to work on PeeWeeLinux again. My job has not brought
+> any new embedded Linux projects as I hoped, instead im very busy building
+> a satellite network. What little time I have left is mostly spend with
+> family. What I need is a couple of weeks or so of uncommited evenings to
+> get the basics of the ground. I am now hoping for that break to come
+> shortly after Christmas, all the things that keep me busy now should be
+> wrapped up then.
+>
+> I open to input, if anyone wants to contribute and make these things
+> happen, I'd love to assist in any way I can to get things integrated
+> smoothly and take PeeWeeLinux to the next level.
+>
+> Adi
+>
+> On Mon, 25 Nov 2002, Ricardo Trindade wrote:
+>
+> > Hi,
+> >
+> > I've been using peewee for a while now, and I'm very happy with it. I
+> > tried several embedded linux distros, and I found peewee the best. So
+> > thanks Adi.
+> >
+> > However peewee hasn't been maintained for a while now, so I'm wondering
+if
+> > there is a project roadmap, what's the status, etc..
+> >
+> > Can you give some pointers Adi ?
+> >
+> > thanks
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Wed Nov 27 00:12:08 2002
+From: peeweelinux@adis.on.ca (C Nagappa)
+Date: Tue, 26 Nov 2002 16:12:08 -0800
+Subject: [Peeweelinux] Newbie question: vmlinux or zImage instead of bzImage?
+Message-ID: <200211261612.09062.nagappa@attglobal.net>
+
+Hi all,
+Is there an easy way to get an uncompressed kernel output (vmlinux or zImage) 
+instead of bzImage from pwlconfig?
+
+I am running an IBM Netvista 2200 Thin Client which runs a Geode processor. 
+Apparently, it cannot boot from bzImage.
+
+Thanks,
+C Nagappa
+
+From peeweelinux@adis.on.ca  Wed Nov 27 15:42:58 2002
+From: peeweelinux@adis.on.ca (Hanoi Santos Hung)
+Date: Wed, 27 Nov 2002 10:42:58 -0500
+Subject: [Peeweelinux] Kernel panic: no init found.
+Message-ID: <11010402281.20021127104258@icid.edu.cu>
+
+Hello:
+I'm working in a almost full configuration, only excluding X and some
+network and video drivers, with the last version of peewee.I change
+the bzimage for bzimage-full and I'm booting from a 16 MB Compact
+Flash located in hdc for programming and in hda for booting.
+I'm using a GX1 SBC Card with Cx5530 Chipset and 64 MB Ram
+
+This is the error message:
+
+hda: Sandisk SDCFB-16, ATA DISK drive
+ide0 at 0x1f0-0x1f7 on irq 14
+hda: Sandisk SDFCB-16, 15 MB w/1kB Cache, CHS=490/2/32
+Floppy drives(s):fd0 is 1.44M
+FDC 0 is a post-1991 82077
+scsi : 0 hosts
+scsi : detected total
+Partition check:
+RAMDISK: Compressed image found at block 0
+VFS Mounted root (ext2 filesystem).
+Freeing unused kernel memory: 84 freed
+Kernel Panic: no init found. Try passing init= option to kernel
+
+
+
+-- 
+Best regards,
+Ing Hanoi Santos
+ mailto:hanoi@icid.edu.cu
+
+
+From peeweelinux@adis.on.ca  Wed Nov 27 17:06:54 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Wed, 27 Nov 2002 12:06:54 -0500
+Subject: [Peeweelinux] Kernel panic: no init found.
+Message-ID: <sde4b56f.054@qatech.com>
+
+It appears as if you don't have the init program installed. 
+
+go to your project_folder/mnt/ folder and look to see if the init program is there. It is probably in mnt/sbin/init. 
+
+For some reason your config might not include init (although I can't imagine how..)
+
+~Ken
+
+>>> Hanoi Santos Hung <hanoi@icid.edu.cu> 11/27 10:42 AM >>>
+Hello:
+I'm working in a almost full configuration, only excluding X and some
+network and video drivers, with the last version of peewee.I change
+the bzimage for bzimage-full and I'm booting from a 16 MB Compact
+Flash located in hdc for programming and in hda for booting.
+I'm using a GX1 SBC Card with Cx5530 Chipset and 64 MB Ram
+
+This is the error message:
+
+hda: Sandisk SDCFB-16, ATA DISK drive
+ide0 at 0x1f0-0x1f7 on irq 14
+hda: Sandisk SDFCB-16, 15 MB w/1kB Cache, CHS=490/2/32
+Floppy drives(s):fd0 is 1.44M
+FDC 0 is a post-1991 82077
+scsi : 0 hosts
+scsi : detected total
+Partition check:
+RAMDISK: Compressed image found at block 0
+VFS Mounted root (ext2 filesystem).
+Freeing unused kernel memory: 84 freed
+Kernel Panic: no init found. Try passing init= option to kernel
+
+
+
+-- 
+Best regards,
+Ing Hanoi Santos
+ mailto:hanoi@icid.edu.cu 
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca 
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Nov 27 17:21:02 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 27 Nov 2002 17:21:02 -0000
+Subject: [Peeweelinux] Kernel panic: no init found.
+In-Reply-To: <sde4b56f.054@qatech.com>
+Message-ID: <000001c29639$5ca8bde0$c2fb0dd5@ricardo>
+
+I once had that error with a broken computer
+
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ken Emmons, Jr.
+Sent: quarta-feira, 27 de Novembro de 2002 17:07
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] Kernel panic: no init found.
+
+
+It appears as if you don't have the init program installed.
+
+go to your project_folder/mnt/ folder and look to see if the init program is
+there. It is probably in mnt/sbin/init.
+
+For some reason your config might not include init (although I can't imagine
+how..)
+
+~Ken
+
+>>> Hanoi Santos Hung <hanoi@icid.edu.cu> 11/27 10:42 AM >>>
+Hello:
+I'm working in a almost full configuration, only excluding X and some
+network and video drivers, with the last version of peewee.I change
+the bzimage for bzimage-full and I'm booting from a 16 MB Compact
+Flash located in hdc for programming and in hda for booting.
+I'm using a GX1 SBC Card with Cx5530 Chipset and 64 MB Ram
+
+This is the error message:
+
+hda: Sandisk SDCFB-16, ATA DISK drive
+ide0 at 0x1f0-0x1f7 on irq 14
+hda: Sandisk SDFCB-16, 15 MB w/1kB Cache, CHS=490/2/32
+Floppy drives(s):fd0 is 1.44M
+FDC 0 is a post-1991 82077
+scsi : 0 hosts
+scsi : detected total
+Partition check:
+RAMDISK: Compressed image found at block 0
+VFS Mounted root (ext2 filesystem).
+Freeing unused kernel memory: 84 freed
+Kernel Panic: no init found. Try passing init= option to kernel
+
+
+
+--
+Best regards,
+Ing Hanoi Santos
+ mailto:hanoi@icid.edu.cu
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Nov 27 17:34:19 2002
+From: peeweelinux@adis.on.ca (Tom Schneider)
+Date: Wed, 27 Nov 2002 11:34:19 -0600
+Subject: [Peeweelinux] Kernel panic: no init found.
+In-Reply-To: <000001c29639$5ca8bde0$c2fb0dd5@ricardo>
+References: <000001c29639$5ca8bde0$c2fb0dd5@ricardo>
+Message-ID: <3DE5021B.8020405@nvisia.com>
+
+--------------060709020408020403060604
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+I got this error when I was trying to use an old version of LILO 
+(patched with mtd) on a 2.4 kernel.  If you're working with the latest 
+2.4 kernels, use the latest version of LILO. (which has built-in 
+disk-on-chip support)
+Tom
+
+Ricardo Trindade wrote:
+
+>I once had that error with a broken computer
+>
+>
+>-----Original Message-----
+>From: peeweelinux-admin@adis.on.ca
+>[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ken Emmons, Jr.
+>Sent: quarta-feira, 27 de Novembro de 2002 17:07
+>To: peeweelinux@adis.on.ca
+>Subject: Re: [Peeweelinux] Kernel panic: no init found.
+>
+>
+>It appears as if you don't have the init program installed.
+>
+>go to your project_folder/mnt/ folder and look to see if the init program is
+>there. It is probably in mnt/sbin/init.
+>
+>For some reason your config might not include init (although I can't imagine
+>how..)
+>
+>~Ken
+>
+>  
+>
+>>>>Hanoi Santos Hung <hanoi@icid.edu.cu> 11/27 10:42 AM >>>
+>>>>        
+>>>>
+>Hello:
+>I'm working in a almost full configuration, only excluding X and some
+>network and video drivers, with the last version of peewee.I change
+>the bzimage for bzimage-full and I'm booting from a 16 MB Compact
+>Flash located in hdc for programming and in hda for booting.
+>I'm using a GX1 SBC Card with Cx5530 Chipset and 64 MB Ram
+>
+>This is the error message:
+>
+>hda: Sandisk SDCFB-16, ATA DISK drive
+>ide0 at 0x1f0-0x1f7 on irq 14
+>hda: Sandisk SDFCB-16, 15 MB w/1kB Cache, CHS=490/2/32
+>Floppy drives(s):fd0 is 1.44M
+>FDC 0 is a post-1991 82077
+>scsi : 0 hosts
+>scsi : detected total
+>Partition check:
+>RAMDISK: Compressed image found at block 0
+>VFS Mounted root (ext2 filesystem).
+>Freeing unused kernel memory: 84 freed
+>Kernel Panic: no init found. Try passing init= option to kernel
+>
+>
+>
+>--
+>Best regards,
+>Ing Hanoi Santos
+> mailto:hanoi@icid.edu.cu
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>  
+>
+
+
+--------------060709020408020403060604
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+I got this error when I was trying to use an old version of LILO
+(patched with mtd) on a 2.4 kernel. &nbsp;If you're working with the latest
+2.4 kernels, use the latest version of LILO. (which has built-in
+disk-on-chip support)<br>
+Tom<br>
+<br>
+Ricardo Trindade wrote:<br>
+<blockquote type="cite" cite="mid000001c29639$5ca8bde0$c2fb0dd5@ricardo">
+  <pre wrap="">I once had that error with a broken computer
+
+
+-----Original Message-----
+From: <a class="moz-txt-link-abbreviated" href="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</a>
+[<a class="moz-txt-link-freetext" href="mailto:peeweelinux-admin@adis.on.ca">mailto:peeweelinux-admin@adis.on.ca</a>]On Behalf Of Ken Emmons, Jr.
+Sent: quarta-feira, 27 de Novembro de 2002 17:07
+To: <a class="moz-txt-link-abbreviated" href="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</a>
+Subject: Re: [Peeweelinux] Kernel panic: no init found.
+
+
+It appears as if you don't have the init program installed.
+
+go to your project_folder/mnt/ folder and look to see if the init program is
+there. It is probably in mnt/sbin/init.
+
+For some reason your config might not include init (although I can't imagine
+how..)
+
+~Ken
+
+  </pre>
+  <blockquote type="cite">
+    <blockquote type="cite">
+      <blockquote type="cite">
+        <pre wrap="">Hanoi Santos Hung <a class="moz-txt-link-rfc2396E" href="mailto:hanoi@icid.edu.cu">&lt;hanoi@icid.edu.cu&gt;</a> 11/27 10:42 AM &gt;&gt;&gt;
+        </pre>
+      </blockquote>
+    </blockquote>
+  </blockquote>
+  <pre wrap=""><!---->Hello:
+I'm working in a almost full configuration, only excluding X and some
+network and video drivers, with the last version of peewee.I change
+the bzimage for bzimage-full and I'm booting from a 16 MB Compact
+Flash located in hdc for programming and in hda for booting.
+I'm using a GX1 SBC Card with Cx5530 Chipset and 64 MB Ram
+
+This is the error message:
+
+hda: Sandisk SDCFB-16, ATA DISK drive
+ide0 at 0x1f0-0x1f7 on irq 14
+hda: Sandisk SDFCB-16, 15 MB w/1kB Cache, CHS=490/2/32
+Floppy drives(s):fd0 is 1.44M
+FDC 0 is a post-1991 82077
+scsi : 0 hosts
+scsi : detected total
+Partition check:
+RAMDISK: Compressed image found at block 0
+VFS Mounted root (ext2 filesystem).
+Freeing unused kernel memory: 84 freed
+Kernel Panic: no init found. Try passing init= option to kernel
+
+
+
+--
+Best regards,
+Ing Hanoi Santos
+ <a class="moz-txt-link-freetext" href="mailto:hanoi@icid.edu.cu">mailto:hanoi@icid.edu.cu</a>
+
+_______________________________________________
+Peeweelinux mailing list
+<a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a>
+<a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a>
+
+_______________________________________________
+Peeweelinux mailing list
+<a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a>
+<a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a>
+
+_______________________________________________
+Peeweelinux mailing list
+<a class="moz-txt-link-abbreviated" href="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</a>
+<a class="moz-txt-link-freetext" href="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</a>
+  </pre>
+</blockquote>
+<br>
+</body>
+</html>
+
+--------------060709020408020403060604--
+
+
+From peeweelinux@adis.on.ca  Wed Nov 27 20:56:17 2002
+From: peeweelinux@adis.on.ca (Cem Eryasar)
+Date: Wed, 27 Nov 2002 20:56:17 +0000
+Subject: [Peeweelinux] Re: Kernel panic: no init found.
+In-Reply-To: <200211271801.gARI11c06649@yoda.adis.on.ca>
+References: <200211271801.gARI11c06649@yoda.adis.on.ca>
+Message-ID: <83897190.20021127205617@softhome.net>
+
+I am having the same problem with RH7.3 too!
+I have attahced a 32Mb Compact Flash card as hdb and I couldn't
+boot from the hda, which is my primary hardrive. However win2k
+works fine with the CF in the same config.
+
+If anyone has a solution for that, will be greatly appreciated :)
+Cem
+
+
+praoc> Date: Wed, 27 Nov 2002 10:42:58 -0500
+praoc> From: Hanoi Santos Hung <hanoi@icid.edu.cu>
+praoc> Organization: ICID
+praoc> To: peeweelinux@adis.on.ca
+praoc> Subject: [Peeweelinux] Kernel panic: no init found.
+praoc> Reply-To: peeweelinux@adis.on.ca
+
+praoc> Hello:
+praoc> I'm working in a almost full configuration, only excluding X and some
+praoc> network and video drivers, with the last version of peewee.I change
+praoc> the bzimage for bzimage-full and I'm booting from a 16 MB Compact
+praoc> Flash located in hdc for programming and in hda for booting.
+praoc> I'm using a GX1 SBC Card with Cx5530 Chipset and 64 MB Ram
+
+praoc> This is the error message:
+
+praoc> hda: Sandisk SDCFB-16, ATA DISK drive
+praoc> ide0 at 0x1f0-0x1f7 on irq 14
+praoc> hda: Sandisk SDFCB-16, 15 MB w/1kB Cache, CHS=490/2/32
+praoc> Floppy drives(s):fd0 is 1.44M
+praoc> FDC 0 is a post-1991 82077
+praoc> scsi : 0 hosts
+praoc> scsi : detected total
+praoc> Partition check:
+praoc> RAMDISK: Compressed image found at block 0
+praoc> VFS Mounted root (ext2 filesystem).
+praoc> Freeing unused kernel memory: 84 freed
+praoc> Kernel Panic: no init found. Try passing init= option to kernel
+
+
+
+From peeweelinux@adis.on.ca  Thu Nov 28 12:53:33 2002
+From: peeweelinux@adis.on.ca (Paul Nuzzo)
+Date: Thu, 28 Nov 2002 12:53:33 +0000
+Subject: [Peeweelinux] General Information for Project
+Message-ID: <3DFCAD90@mail.totalise.co.uk>
+
+Hi,
+
+I'm interested in using CF with PeeWee in a car MP3 PC project.  I was
+thinking of using CF for the linux distribution so boot up would be quicker.
+
+How fast is CF when booting up? Would it be quicker than a hard drive?
+
+I would still have a hard drive in the system for MP3 storage, should I just
+boot up from this and leave CF alone?
+
+When people are talking about small linux distribution of PeeWee how small can
+I get it?  I need to have MySQL and Perl installed - is this realistic in a
+128MB card for example?
+
+Many thanks in advance,
+Paul Nuzzo
+
+
+
+From peeweelinux@adis.on.ca  Thu Nov 28 14:19:13 2002
+From: peeweelinux@adis.on.ca (Stefan Willmert)
+Date: Thu, 28 Nov 2002 08:19:13 -0600
+Subject: [Peeweelinux] General Information for Project
+In-Reply-To: <3DFCAD90@mail.totalise.co.uk>
+Message-ID: <ICEOIHIIFHIJAFEIJICPKEFDCDAA.stefanw@intellanet.com>
+
+CF works great for things like that. ON our embedded system, linux boots on
+about 30 seconds. We store an image on the CF and load a ramdisk to run the
+system. That way, if the power ever goes out, or the system gets turned of,
+the image is not corrupted, and can be rebooted without any system
+corruption.
+
+With a little work, I trimmed down linux to under 3MB. With a LOT of work,
+you should be able to get a system in under 1.44 MB, although for me, it was
+useless...as it had nothing but the kernel.
+
+good luck
+
+-stefan
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Paul Nuzzo
+Sent: Thursday, November 28, 2002 6:54 AM
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] General Information for Project
+
+
+Hi,
+
+I'm interested in using CF with PeeWee in a car MP3 PC project.  I was
+thinking of using CF for the linux distribution so boot up would be quicker.
+
+How fast is CF when booting up? Would it be quicker than a hard drive?
+
+I would still have a hard drive in the system for MP3 storage, should I just
+boot up from this and leave CF alone?
+
+When people are talking about small linux distribution of PeeWee how small
+can
+I get it?  I need to have MySQL and Perl installed - is this realistic in a
+128MB card for example?
+
+Many thanks in advance,
+Paul Nuzzo
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Nov 28 22:29:51 2002
+From: peeweelinux@adis.on.ca (C Nagappa)
+Date: Thu, 28 Nov 2002 14:29:51 -0800
+Subject: [Peeweelinux] Newbie question: vmlinux or zImage instead of bzImage?
+Message-ID: <000801c2972d$ab281b10$0200a8c0@cnagappa>
+
+This is a multi-part message in MIME format.
+
+--Boundary_(ID_W9agGyBezoStpAMTk6Yu2Q)
+Content-type: text/plain; charset=iso-8859-1
+Content-transfer-encoding: 7BIT
+
+OK, I got it to work.  Here's how:
+
+1. I ran ./pwlconfig to create and extract a linux filesystem onto a CF card on my SanDisk SDDR-75 CF reader (I chose the target configuration option which extracts the whole file system)
+2. Then I took the config file from peeweelinux "kernelbuild/usr/src/linux/config" directory which I copied to /usr/src/linux-2.4  on my Desktop (I am using RH7.3) 
+3. I then ran make xconfig, loaded the config file from step 2, added spcefic changes for my processor (NS Geode 233MHz, which uses the x586 processor type)
+4. Then ran make clean, make dep and make bzImage
+5. I then copied the created "vmlinux" file onto the CF card. Also copiled /lib/modules/2.4.18.x directory to the CF card (/mnt/flash/lib/modules/2.4.18.x)
+6. Then configured the built-in boot loader via the BIOS on my Netvista Thin Client to use the vmlinux file (the boot loader is built into the flash of this machine and lilo will not work)
+7. Installed the CF card into the CF slot of the Thin Client, and voila - it worked! (I had to make minor changes to /etc/inittab.)
+
+(Note: I had problems when I tried to buid the kernel from the peeweelinux/kernelbuild/usr/src/linux directory. It compiled, but complained at the end and did not create the kernel images. This is why I decided to build the kernel under the RH7.3 Desktop /usr/src/linux-2.4 directory)
+
+Surprisingly, the kernel 2.4.18.x seems to run OK (so far) with the 2.2.x peeweelinux-created filesystem on the CF card. 
+
+Cheers,
+C Nagappa
+
+
+>Hi all,
+>Is there an easy way to get an uncompressed kernel output (vmlinux or zImage) 
+>instead of bzImage from pwlconfig?
+>
+>I am running an IBM Netvista 2200 Thin Client which runs a Geode processor. 
+>Apparently, it cannot boot from bzImage.
+>
+>Thanks,
+>C Nagappa
+
+
+--Boundary_(ID_W9agGyBezoStpAMTk6Yu2Q)
+Content-type: text/html; charset=iso-8859-1
+Content-transfer-encoding: 7BIT
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2600.0" name=GENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=#ffffff>
+<DIV><FONT face=Arial>OK, I got it to work.&nbsp; Here's how:</FONT></DIV>
+<DIV><FONT face=Arial></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial>1. I ran ./pwlconfig to create and extract a linux 
+filesystem onto a CF card on my SanDisk SDDR-75 CF reader (I chose the target 
+configuration option which extracts the whole file system)</FONT></DIV>
+<DIV><FONT face=Arial>2. Then </FONT><FONT face=Arial>I&nbsp;took the config 
+file from peeweelinux "kernelbuild/usr/src/linux/config" directory which I 
+copied to /usr/src/linux-2.4&nbsp; on my Desktop (I am using RH7.3) 
+</FONT></DIV>
+<DIV><FONT face=Arial>3. I then ran make xconfig, loaded the config file from 
+step 2, added spcefic changes for my processor (NS Geode 233MHz, which uses the 
+x586 processor type)</FONT></DIV>
+<DIV><FONT face=Arial>4. Then ran make clean, make dep and make 
+bzImage</FONT></DIV>
+<DIV><FONT face=Arial>5. I then copied the created "vmlinux" file onto the CF 
+card. Also copiled /lib/modules/2.4.18.x directory to the CF card 
+(/mnt/flash/lib/modules/2.4.18.x)</FONT></DIV>
+<DIV><FONT face=Arial>6. Then configured the built-in boot loader via the BIOS 
+on my Netvista Thin Client&nbsp;to use the vmlinux file (the boot loader is 
+built into the flash of this machine and lilo will not work)</FONT></DIV>
+<DIV><FONT face=Arial>7. Installed the CF card into the CF slot of the Thin 
+Client, and voila - it worked! (I had to make minor changes to 
+/etc/inittab.)</FONT></DIV>
+<DIV><FONT face=Arial></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial>
+<DIV><FONT face=Arial>(Note: I had problems when I tried to buid the kernel from 
+the peeweelinux/kernelbuild/usr/src/linux directory. It compiled, but complained 
+at the end and did not create the kernel images. This is why&nbsp;I decided 
+to&nbsp;build the kernel&nbsp;under the RH7.3 Desktop /usr/src/linux-2.4 
+directory)</FONT></DIV></FONT></DIV>
+<DIV><FONT face=Arial></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial>Surprisingly, the kernel 2.4.18.x seems to run OK (so far) 
+with the&nbsp;2.2.x&nbsp;peeweelinux-created filesystem on the CF card. 
+</FONT></DIV>
+<DIV><FONT face=Arial></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial>Cheers,</FONT></DIV>
+<DIV><FONT face=Arial>C Nagappa</FONT></DIV>
+<DIV><FONT face=Arial></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial></FONT>&nbsp;</DIV>
+<DIV><FONT face=Arial>&gt;Hi all,<BR>&gt;I</FONT><FONT face=Arial>s there an 
+easy way to get an uncompressed kernel output (vmlinux or zImage) 
+<BR>&gt;instead of bzImage from pwlconfig?<BR><FONT 
+size=2>&gt;</FONT><BR></FONT><FONT face=Arial>&gt;I am running an IBM Netvista 
+2200 Thin Client which runs a Geode processor. <BR></FONT><FONT 
+face=Arial>&gt;Apparently, it cannot boot from bzImage.<BR><FONT 
+size=2>&gt;</FONT><BR></FONT><FONT face=Arial>&gt;Thanks,<BR>&gt;C 
+Nagappa<BR></DIV></FONT></BODY></HTML>
+
+--Boundary_(ID_W9agGyBezoStpAMTk6Yu2Q)--
+
+From peeweelinux@adis.on.ca  Fri Nov 29 00:56:22 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Fri, 29 Nov 2002 00:56:22 -0000
+Subject: [Peeweelinux] General Information for Project
+In-Reply-To: <ICEOIHIIFHIJAFEIJICPKEFDCDAA.stefanw@intellanet.com>
+Message-ID: <001301c29742$236c48d0$abfd0dd5@ricardo>
+
+if you don't use the ramdisk method you can get it to boot much quicker,
+which apparently is what the original poster wanted.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Stefan Willmert
+Sent: quinta-feira, 28 de Novembro de 2002 14:19
+To: peeweelinux@adis.on.ca
+Subject: RE: [Peeweelinux] General Information for Project
+
+
+CF works great for things like that. ON our embedded system, linux boots on
+about 30 seconds. We store an image on the CF and load a ramdisk to run the
+system. That way, if the power ever goes out, or the system gets turned of,
+the image is not corrupted, and can be rebooted without any system
+corruption.
+
+With a little work, I trimmed down linux to under 3MB. With a LOT of work,
+you should be able to get a system in under 1.44 MB, although for me, it was
+useless...as it had nothing but the kernel.
+
+good luck
+
+-stefan
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Paul Nuzzo
+Sent: Thursday, November 28, 2002 6:54 AM
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] General Information for Project
+
+
+Hi,
+
+I'm interested in using CF with PeeWee in a car MP3 PC project.  I was
+thinking of using CF for the linux distribution so boot up would be quicker.
+
+How fast is CF when booting up? Would it be quicker than a hard drive?
+
+I would still have a hard drive in the system for MP3 storage, should I just
+boot up from this and leave CF alone?
+
+When people are talking about small linux distribution of PeeWee how small
+can
+I get it?  I need to have MySQL and Perl installed - is this realistic in a
+128MB card for example?
+
+Many thanks in advance,
+Paul Nuzzo
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+

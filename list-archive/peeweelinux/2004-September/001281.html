@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Seeking advice for FTP or SMB server for embedded
+ linux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001280.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Seeking advice for FTP or SMB server for embedded
+ linux
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Seeking advice for FTP or SMB server for embedded
+ linux">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 14 Sep 2004 17:05:21 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001280.html">[Peeweelinux] Seeking advice for FTP or SMB server for embedded linux
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1281">[ date ]</a>
+              <a href="thread.html#1281">[ thread ]</a>
+              <a href="subject.html#1281">[ subject ]</a>
+              <a href="author.html#1281">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Personally, I would start with ProFTPd -- in theory it should be easy to 
+get working and have a pretty small footprint, on top of being able to 
+decouple it from the system-based authentication and use virtual logins.
+
+Might be easiest to hit <A HREF="http://rpm.pbone.net">http://rpm.pbone.net</A> and search for .src.rpm 
+files for RedHat 6.x and 7.x, tearing them apart to look at compile 
+options. Given that, it should take only an hour or two to roll your own 
+and make a custom PWL package...
+
+-te
+
+Michael Shiloh wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> I'm working with an embedded Linux system and need to add the ability to
+</I>&gt;<i> accept downloaded files from elsewhere. Ideally, I'd provide a Samba server,
+</I>&gt;<i> so that Windows users will have a familiar experience, but I'm not sure what
+</I>&gt;<i> issues come up in installing a full Samba server on a small embeded system
+</I>&gt;<i> (I'm running out of a 128MB CF card). I've done a bit of searching to find
+</I>&gt;<i> a minimal Samba server, and failed on that. 
+</I>&gt;<i> 
+</I>&gt;<i> The best I could hope for would be that someone can point me to a minimal
+</I>&gt;<i> Samba server, or a HOWTO to accomplish that.
+</I>&gt;<i> 
+</I>&gt;<i> Failing that, I will simply provide an FTP server and instruct my Windows users
+</I>&gt;<i> to use FTP. Is there a FTP server designed for small embedded systems? The
+</I>&gt;<i> popular FTP servers, wu-ftpd and vsftpd seem rather heavy handed, and I certainly
+</I>&gt;<i> don't need the fancy features provided by vsftpd.
+</I>&gt;<i> 
+</I>&gt;<i> I welcome any advice or suggestions you may have.
+</I>&gt;<i> 
+</I>&gt;<i> Michael Shiloh
+</I>&gt;<i> MakingThings
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | <A HREF="http://www.fluid.com">http://www.fluid.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001280.html">[Peeweelinux] Seeking advice for FTP or SMB server for embedded linux
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1281">[ date ]</a>
+              <a href="thread.html#1281">[ thread ]</a>
+              <a href="subject.html#1281">[ subject ]</a>
+              <a href="author.html#1281">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

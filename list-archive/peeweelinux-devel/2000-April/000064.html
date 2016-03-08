@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Review of pwlconfig 0.90
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="000065.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Review of pwlconfig 0.90
+   </H1>
+    <B>Dennis W. Tokarski
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Review of pwlconfig 0.90">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Mon, 03 Apr 2000 15:01:16 -0400</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="000065.html">Review of pwlconfig 0.90
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+Sorry it took me so long to get back to you with a review of pwlconfig
+0.90. I got sidetracked for a bit in the &quot;educational&quot; experience of
+seeing what a minimal boot disk really requires if constructed manually.
+It was really rather interesting, and I at least wound up with something
+useable for my initial target/development system.
+
+I hope you find this feedback helpful.
+
+  --Dennis
+
+ ====================================
+
+As a general observation, the way pwlconfig drops into a text mode
+screen between menus creats a disconcerting flash. Even doing so for
+the sake of printing progress dots is kind of annoying. Painting one
+menu directly after another would be preferable. Progress indicators
+for long operations would be nicer if shown on the menu display as
+a spinning arrow, or a %done display, or even the more typical
+%done &quot;thermometer&quot; style progress bar.
+
+Here are some other rough spots I ran into, pretty much in the order
+they'd pop up when creating a new project.
+
+* When pwlconfig is started for the very first time (i.e., its
+  .* files don't exist yet and there is no &quot;projects&quot; directory),
+  it asks for a project to create but not a target device.
+
+* After the first run, creating a new project does prompt for a
+  default device, (DOC/FLOPPY/etc) which MUST be entered in upper
+  case. This should probably be made lower case, case insensitive,
+  or selected from a menu of fixed choices.
+
+  Currently, a mistake on entry gives a warning, but no reprompt.
+  Setting the device must then be done by manually selecting
+  Manage Projects/Project defaults/Device Type, then editing the
+  field.
+
+* When a target device is correctly entered for a newly created
+  project, it appears nothing is done with that information. A
+  look at project defaults shows they're all set to assume Flash.
+
+* Modifying the device type in the Reset Project Defaults menu
+  doesn't cause coordinated changes to other fields, like Boot Location,
+  Device Name, Device Partition, and Device Type Node. Reasonable
+defaults
+  could be supplied keyed to the selection of Device Type.
+
+* If a project is removed, the pwlconfig is pretty good about
+  insisting that the user select another project. However, it
+  is possible to exit the whole program suite without doing so.
+  Upon restart, pwlconfig reinserts the removed project name into
+  the projects list under Manage Projects, but it has new
+  default configuration information.
+
+  Essentially, pwlconfig implicitly creates a new project using the  
+  same name as the project the user just removed. This is potentially
+  confusing. Probably the right thing to do is not have a current
+project
+  and go back to insisting the user select one.
+
+* When configuring the file system the base-filesys-2 package
+  has a *lot* of possibly extraneous stuff in the dev directory.
+  So does base-filesys-minimal-1, for that matter. When pruning this
+  collection by manually deselecting individual items, each deselect
+  causes a drop to text mode while pwlconfig prints out about three
+  and a half lines of progress dots, which takes a looooooong time.
+
+  This one *really* had me climbing the wall. I finally took to just
+  accepting the whole smash, generating the file system, then using
+  'rm' to clean out the directlry after stopping pwlconfig.
+
+  It would be much much much ***much*** nicer to simply note the
+  selections/deselections and defer whatever processing is neccessary
+  until after the menu is exited. Or maybe an &quot;Apply&quot; button would be
+  appropriate here?
+
+* Here's a problem which showed up while trying to use one of the
+  &quot;minimal&quot; packages, busybox-0.36. Suppose you really want to
+  use busybox along with some other package which contains a
+  conflicting file. You can't install the other package second
+  because it might replace some of busybox's links with real files,
+  and thus take up more space than you want. But installing busybox
+  second doesn't work either, because the &quot;ln&quot; command to make the
+  links is issued without the -f option.
+
+pwlconfig appears to assume that the target device will be mounted
+as / in the running system. There is no provision for use of initrd
+or compressed ram disk. These features really are needed if the goal
+is to make some sort of minimal special purpose rescue/diagnostic
+disk. At the very least, separate boot and root floppies need to
+be supported.
+
+As a result, pwlconfig can't presently make a bootable floppy at
+all. There are several obstacles:
+
+ * For one, the libraries are too darn big, and there's nothing
+   we can reasonably do about it. They either *must* go on a
+   compressed ram disk or there has to be a separate root floppy.
+
+ * There are too many entries in /dev taking up too many inodes.
+   When pwlconfig copies the project filesystem to the floppy,
+   it quickly gets a &quot;no space on device&quot; error even if
+   there's plenty of space. What's really happening is it's
+   out of inodes. You need to make the file system with something
+   like
+         mke2fs -N `wc -l ./projects/PROJECTNAME/mnt` /dev/fd0
+
+   Presently, just the base filesystem package is too much for
+   a floppy made with just &quot;mke2fs /dev/fd0&quot;.
+
+ * Making the floppy boot able with LILO has a couple of hitches--  
+   pwlconfig insists that lilo be in ./bin, rather than just using
+   /sbin/lilo as installed, and (cosmetic only) the prompt for using
+   the existing lilo.conf.FLOPPY is done in text mode.
+
+ * The generated lilo.conf.FLOPPY file expects a kernel image name
+   of vmlinuz, but the kernel packages use bzImage.
+
+Just to see if a floppy produced by pwlconfig would boot, I made one up
+without any libraries. After resolving the above problems, lilo seemed
+to run successfully. However, trying to boot the floppy resulted in the
+first stage loader stopping after printing &quot;L&quot;, then it loops printing
+an error code: &quot;04&quot;. Removing the &quot;disk=&quot; line from lilo.conf.FLOPPY
+solved this problem. 
+
+
+
+      *** Some suggestions for initrd/ramdisk/root disk support ***
+
+It seems that a natural way to extend pwlconfig would be to split
+the Configure Project File System menu into three sections: Configure
+Boot File System, Configure Initrd, and Configure Root File System.
+In the latter case there should be options to specify if the Root
+File System will be a ramdisk, and if it should be compressed. You
+would also need to specify the ramword parameters. Ramdisk size could
+be determined automatically using du.
+
+Each of these three options would build file systems under separate
+trees: ./projects/PROJECTNAME/{boot,initrd,root} using the current
+package installation procedures. The mere existence of the initrd
+and/or root file trees at the end of the procedure would be enough
+information for you to figure out how to generate the composite
+boot disk, or boot/root set.
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="000065.html">Review of pwlconfig 0.90
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#64">[ date ]</a>
+              <a href="thread.html#64">[ thread ]</a>
+              <a href="subject.html#64">[ subject ]</a>
+              <a href="author.html#64">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Remote server boot system
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000563.html">
+   <LINK REL="Next"  HREF="000565.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Remote server boot system
+   </H1>
+    <B>Jonathan E. Paton
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Remote server boot system">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 18 Apr 2002 19:01:54 +0100 (BST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000563.html">[Peeweelinux] DiskOnChip Boot Problems
+</A></li>
+        <LI> Next message: <A HREF="000565.html">[Peeweelinux] Remote server boot system
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#564">[ date ]</a>
+              <a href="thread.html#564">[ thread ]</a>
+              <a href="subject.html#564">[ subject ]</a>
+              <a href="author.html#564">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Allow me to set the scene:
+
+I have a dream... an exciting dream... I dream of co-locating
+a rackmounted Linux box, hopefully someplace near the internet
+(the 'net backbone that is).
+
+However, the nearest co-location site (London) is about 400
+miles away - thus keeping the requirement for travel down
+would be important, and I'm currently thinking of a FLASH based
+disk and a small Linux installation.  It would do:
+
+ * Boot up the Linux kernel, with networking built-in.
+ * Start SSH and some form of file transfer
+ * Have enough to reconfigure and reinstall the main installation
+   remotely.
+
+Now, I'm wondering over the following issues related to FLASH:
+
+ 1. Can I easily make FLASH disks Read Only, for safety.
+ 2. What is the difference between the PeeWeeLinux PCMCIA-&gt;IDE
+convertor and more expensive ones such as:
+
+<A HREF="http://www.magicram.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=M&Product_Code=CDSDDA-03&Category_Code=PCA">http://www.magicram.com/Merchant2/merchant.mv?Screen=PROD&amp;Store_Code=M&amp;Product_Code=CDSDDA-03&amp;Category_Code=PCA</A>
+
+And relating to the Linux installation:
+
+ 1. Is it possible to execute the built-in kernel, and
+    instruct it to load another kernel from a HDD?
+    (Perhaps OT).
+
+ 2. Would the software watchdog timer be enough for
+    catching most failures?
+
+ 3. How would I reboot the system?  :)
+    (clever ideas required here)
+
+A rackmount PC gives me exactly one PCI slot - which may be used by a watchdog timer... so you can
+*almost* regard PCI as not an option (unless it's a good suggestion :)  My budget can be
+considered to be $0.01 for software, and limited to about $150 for hardware for supporting remote
+boot.
+
+Of course, I may have missed something so feel free to add suggestions/alternatives.  Pointers to
+relevent documentation is much appreciated, seemly not much hope from LinuxDoc.  Either impart
+valuable experience/knowledge, or simply ignore me :)
+
+Thanks,
+
+Jonathan Paton
+
+__________________________________________________
+Do You Yahoo!?
+Everything you'll ever need on one web page
+from News and Sport to Email and Music Charts
+<A HREF="http://uk.my.yahoo.com">http://uk.my.yahoo.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000563.html">[Peeweelinux] DiskOnChip Boot Problems
+</A></li>
+	<LI> Next message: <A HREF="000565.html">[Peeweelinux] Remote server boot system
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#564">[ date ]</a>
+              <a href="thread.html#564">[ thread ]</a>
+              <a href="subject.html#564">[ subject ]</a>
+              <a href="author.html#564">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

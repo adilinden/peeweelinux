@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> command not found
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000127.html">
+   <LINK REL="Next"  HREF="000130.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>command not found
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="command not found">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 24 Oct 2000 17:52:41 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000127.html">command not found
+</A></li>
+        <LI> Next message: <A HREF="000130.html">Updated pwlconfig scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#128">[ date ]</a>
+              <a href="thread.html#128">[ thread ]</a>
+              <a href="subject.html#128">[ subject ]</a>
+              <a href="author.html#128">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+The target build functions under 0.53 are still under development. The
+following is the list of targets that will work. I tested them all using
+4MB, 16MB and 64MB Compact Flash and Floppy (for the last option).
+
+Compressed ramdisk on FAT 16 partition
+Compressed ramdisk on ext2 partition
+Uncompressed ramdisk, boot from FAT 16 partition
+Uncompressed ramdisk, boot from ext2 partition
+Read-only root fs with multiple ramdisks
+----- Non-flash target devices -----
+Compressed ramdisk on floppy disk w/o bootloader  
+
+The other listed targets will simply refuse to do anything since the
+script/function they call do not exist yet.
+
+There'll be a pwlconfig maintanance release shortly. It adds a -b or
+--experimental switch. Without it any menu options that are not completely
+developed will be &quot;turned off&quot;. Using the switch (-b or --experimental)
+will show all menu options including broken features and non implemented
+features.
+
+The &quot;Create New Project&quot; prompt has been enhanced with a list of sample
+projects that can be picked from. This should make it easier to get that
+first project of the ground and a feel for pwlconfig.
+
+Something that has potential for some grief is a change in the kernel
+naming convention. I decided to not strip the kernel version from the
+kernel package name. This will cause a package not found error for the
+kernel package if an older project is used with the upcoming pwlconfig.
+Simply pick a 'new' kernel and select the desired files to rectify the
+problem.
+
+TTYL,
+Adi
+
+On Tue, 24 Oct 2000, fred anger wrote:
+
+&gt;<i> Another problem under 0.53:  If I set my target environment to &quot;Read-only
+</I>&gt;<i> root fs - ext2 with no ramdisk&quot;, I get an error complaining about
+</I>&gt;<i> &quot;func_rd_build_ext2_only: command not found&quot; when I attempt to load file
+</I>&gt;<i> system onto target.  Ugh.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> 
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000127.html">command not found
+</A></li>
+	<LI> Next message: <A HREF="000130.html">Updated pwlconfig scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#128">[ date ]</a>
+              <a href="thread.html#128">[ thread ]</a>
+              <a href="subject.html#128">[ subject ]</a>
+              <a href="author.html#128">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

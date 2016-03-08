@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> An 'early' morning thought about the future of PWL
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000009.html">
+   <LINK REL="Next"  HREF="000011.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>An 'early' morning thought about the future of PWL
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="An 'early' morning thought about the future of PWL">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Sat, 22 Jan 2000 21:20:18 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000009.html">An 'early' morning thought about the future of PWL
+</A></li>
+        <LI> Next message: <A HREF="000011.html">An 'early' morning thought about the future of PWL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hey, 
+Sounds like your on to something here...except for building the pwlconfig
+packages (either tar or RPMs) I think most of this is done with pwlconfig
+now...maybe I missed something...
+
+--- Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; wrote:
+&gt;<i> I thought about ways to automate the sources for PeeWeeLinux. Here's an
+</I>&gt;<i> idea I had while showering this morning. Right up front, to implement it
+</I>&gt;<i> it would require sophisticated knowledge of rpm. Something I don't have
+</I>&gt;<i> but nonetheless its an idea I'd like to share...
+</I>&gt;<i> 
+</I>&gt;<i> First PeeWeeLinux would have to build from RedHat source rpms. Packages
+</I>&gt;<i> that do not exist as source rpm would have to be created specifically for
+</I>&gt;<i> PeeWeeLinux or for Redhat Linux in gerneral.
+</I>&gt;<i> 
+</I>&gt;<i> First take the original source rpm and manually edit the spec file to
+</I>&gt;<i> build a rpm suitable for PWL. Also, edit the sources to compile as
+</I>&gt;<i> required for PWL. I.e. the libs to use, which files to install, etc. 
+</I>&gt;<i> Create a patch file to patch the necessary changes into the source rpm
+</I>&gt;<i> files.
+</I>&gt;<i> 
+</I>&gt;<i> Build a PWL specific rpm from the patches source rpm.
+</I>&gt;<i> 
+</I>Ok, let me see if I can figure this out...
+
+RH RPM 6.x--&gt; manual process --&gt; PWL-RPM.patch file --&gt; PWL-RPM
+
+then
+
+RH RPM 6.x --&gt; RPM process with PWL-RPM.patch file -&gt; PWL-RPM
+
+the &quot;PWL-RPM.patch_file&quot; plus the RH source disk is all you need...
+sounds good.
+
+&gt;<i> Use a defined mount point for the PeeWeeLinux filesystem being build
+</I>&gt;<i> independed of where PeeWeeLinux has been extracted to. I.e. /mnt/PWL.
+</I>&gt;<i> 
+</I>Hmmm...shouldn't keep this within the development environment ??
+...maybe Embedded-Build/projects/xxx/mnt...why would you use the same
+mount point for a project specific filesystem  ??
+
+Ohhh...wait...you want to basically extract all the tar files we have now
+into one pwl file system, then let the user pick from this file system???
+Seems like an added step, not sure of any advantages...
+Ok, I'm confussed...
+
+
+&gt;<i> Use rpm in a similar mode as the RedHat install disks do. That is install
+</I>&gt;<i> the PWL specific rpms in /mnt/PWL rather than the current file system.
+</I>&gt;<i> 
+</I>
+Ok, not sure what RH does with the RPMS..I thought they just got extracted
+into the /usr/src/linux/ directory structure..again, I think I'd prefer to keep
+everything within the &quot;Embedded-Build&quot; structure, however, any good reason
+not to would sway me :-)
+
+&gt;<i> This would eliminate the use of tar to manage files. The pwlconfig script
+</I>&gt;<i> would have to do the following steps to build a project:
+</I>&gt;<i> 
+</I>&gt;<i> 1. Menu to select which packages to build and install
+</I>&gt;<i> 2. Submenu to select which files to install from the packages
+</I>&gt;<i> 3. Configure the location of RH source rpms and source rpm that do not
+</I>&gt;<i> come with RH
+</I>&gt;<i> 4. Patch the RH source rpms to turn them into PWL source rpms
+</I>&gt;<i> 5. Build the PWL specific rpms from source rpms
+</I>
+...this creates the PWL-RPM.patch files for each rpm..ok..I envision these
+fitting into the project as follows:
+
+Embedded-Build/source/patches
+
+Scripts or patches or whatever, that are used to turn a lowly source file
+(RH RPM or whatever) into a PWL-RPM file.  After processing these are
+stored in the packages directory:
+
+Embedded-Build/packages
+Embedded-Build/packages/package A
+Embedded-Build/packages/package B     
+
+These are the &quot;global&quot; optimized binaries used for every
+project...these can be tar or RPM files, shouldn't be hard to switch...
+
+This is where the RPM files reside after being &quot;processed&quot; by the PWL-RPM.patch
+files. The pwlconfig menu item (yet to be added :-) &quot;Build PWL-RPM&quot; would
+let you pick a patch file and generate the PWL-RPM file.  This would
+be inserted into the packages directory.
+
+
+&gt;<i> 6. Condition the /mnt/PWL filesystem for the new system
+</I>
+not sure what this is..
+
+&gt;<i> 7. Install the selected files from PWL rpms in /mnt/PWL
+</I>&gt;<i> 8. Install any custom config files into /mnt/PWL, overwriting any existing
+</I>&gt;<i> configuration
+</I>
+I think these should be project specific...I could be building a router and
+a print server and a thin client..these are all in seperate directories.
+
+I think this is the process I'm doing now with the tar files, only each project
+
+keeps their file system seperate within the project directory:
+
+Embedded-Build/projects/router_486/mnt                    
+Embedded-Build/projects/thin_client/mnt                    
+
+This is a &quot;mount point&quot; where the project (ie. &quot;router_486&quot;) gets built from
+the project specific configuration files. All files are extracted and allows
+the user to tweak the project before it is loaded on to some device. at this
+point, we are device independent.
+
+Embedded-Build/mnt
+
+When you load a device, it gets mounted in the &quot;Embedded-Build/mnt&quot; directory
+until you unmount it and go to another project.  This mount directory is
+bascially a temporary mount point used for every project, but can be used
+to mount any device.
+
+&gt;<i> 8. Offer choice of what to do with the newly created system, i.e. build a
+</I>&gt;<i> ramdisk, load a DOC, make a bootable CD...
+</I>&gt;<i> 
+</I>Almost got this working...I have a new script that does DOC and flash disk...
+Adding the ramdisk and bootable CD should be easy, once I know what needs
+to be done.
+
+&gt;<i> The advantages I can see:
+</I>&gt;<i> - The PWL distribution would no longer require any sources but only patch
+</I>&gt;<i> files containing package description, help information (things that could
+</I>&gt;<i> be displayed by pwlconfig) and the actual patch to the RH source rpm.
+</I>
+Yes...I have the source, I shouldn't have to download it again...
+
+&gt;<i> - Perhaps eases the migration to newer RH versions as they are released.
+</I>&gt;<i> 
+</I>&gt;<i> The disadvantages:
+</I>&gt;<i> - Building an initial PWL development environment could be 'very' time
+</I>&gt;<i> consuming and diskspace consuming since everything has to be compiled
+</I>&gt;<i> first.
+</I>&gt;<i> - Defenitely RH specific!
+</I>&gt;<i> 
+</I>
+Only RH specific where the patches to the RPMS are concerned. After we
+have built our RPMS (or tar files), the configuration tool does not care 
+what order the files are in or what the directory structure is....
+
+&gt;<i> I guess an option would be to have a package of pre-compiled PWL rpms
+</I>&gt;<i> available. That would make PWL a 'real' full-fledged distro for embedded
+</I>&gt;<i> stuff :)
+</I>&gt;<i> 
+</I>&gt;<i> Perhaps I should get and dig into 'Maxximum RPM' sometime. Maybe that
+</I>&gt;<i> would be a ToDo wishlist item for the next RedHat release, when a few
+</I>&gt;<i> package for PWL will have to be re-done...
+</I>&gt;<i> 
+</I>&gt;<i> TTYL,
+</I>&gt;<i> Adi (dreaming... :)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+I'm not sure how this differs from what you have done to build the
+existing tar files.  Now, (or planned real soon now) we do the RPM extract to
+our &quot;Embedded-Build/source&quot; file system, then apply the patches and build tar
+files ...But instead of building tar files, create new RPM files...
+
+Is there an advantage to building the RPM as opposed to the tar files? maybe
+processing them might be easier...
+
+Shouldn't matter if these are RPMs or TARS, but processing them into specific
+projects should be able to use the same pwlconfig as now, just change from
+tar file processing to RPM file processing ???
+Either way, each project is unique, and built from some &quot;pwl&quot; source
+repository,I guess I need to get up to speed on the RPM stuff too.
+
+---------------
+On a seperate note, I noticed that Transmeta is desiging their Linux to
+work for &quot;Mobile&quot; applications.  OK, that to me means embedded (what else is
+low power for :-)
+
+Anyhow, while they haven't released anything yet, they have &quot;hinted&quot; that
+they have spent time doing special programs like &quot;touch screen keyboard&quot;
+and &quot;handwritting recognition&quot; (ie.palm pilot work alike programs).
+
+Also, these are supposedly built from the Debian distribution.
+
+Soooooo....Assuming that Transmetta has not built any sort of development 
+environment (which true UNIX people *NEVER* do), I think it would be nice
+to be able to get these programs and add them to our embedded RH environment.
+
+Thus, get their RPM (or whatever Debian uses) and process them into 
+our tar (or RPM) format.  Now you can add these to your project and they
+should just work....
+
+pwlconfig should allow you to work with applications from any distribution.
+There is nothing specific in &quot;pwlconfig&quot; that would prevent this from 
+working.
+
+The PeeWee Distribution is useable when we can :
+
+1. Create several default projects 
+   (ie. Embedded-Build/projects/[router|thinclient|server|print server|...])
+
+2. Create project configurations for each of these projects 
+   (ie. use pwlconfig V1.0 for each of the default projects listed above)
+
+3. Process &quot;source files&quot; into optimized binaries 
+   (ie.fill up the Embedded-Build/patches with the PWL-patches_for_RPM_x)
+
+On going work is to:
+
+A. refine pwlconfig for more devices and features
+B. keep building patch files for each new version of RH
+C. build patch files for special applications
+
+If we can do this, it will be a very usable (and unique) environment for
+embedded Linux development ( and World Domination will be at hand :-)) !!!
+
+Hmmm...Let me know if we're on the same page here...I could be missing
+something
+
+Later,
+Ralph
+
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000009.html">An 'early' morning thought about the future of PWL
+</A></li>
+	<LI> Next message: <A HREF="000011.html">An 'early' morning thought about the future of PWL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

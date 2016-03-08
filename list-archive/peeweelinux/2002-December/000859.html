@@ -1,0 +1,195 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] General Information for Project
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000858.html">
+   <LINK REL="Next"  HREF="000861.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] General Information for Project
+   </H1>
+    <B>Ricardo Trindade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] General Information for Project">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 9 Dec 2002 02:11:55 -0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000858.html">[Peeweelinux] General Information for Project
+</A></li>
+        <LI> Next message: <A HREF="000861.html">[Peeweelinux] help - static compiling
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#859">[ date ]</a>
+              <a href="thread.html#859">[ thread ]</a>
+              <a href="subject.html#859">[ subject ]</a>
+              <a href="author.html#859">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I thought you were talking about j2se.
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of <A HREF="mailto:bwimsatt@1783.com">bwimsatt@1783.com</A>
+Sent: terca-feira, 3 de Dezembro de 2002 19:10
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: RE: [Peeweelinux] General Information for Project
+
+
+J9 is J2ME based correct? We have been trying to find a small J2SE. J9
+is very fast and efficient; however, Sun will not recognize it as Java
+since IBM has not run the compatibility test kit.
+
+Regards,
+Bill Wimsatt
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]
+On Behalf Of Tom Schneider
+Sent: Tuesday, December 03, 2002 11:24 AM
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: Re: [Peeweelinux] General Information for Project
+
+We're using J9 from IBM. (Websphere Micro Environment)  The first thing 
+I did was remove all the source code.  Next, I removed all the class 
+files for the profiles we were not using.  (We are using the Foundation 
+profile, J9 also includes a CDC, CDLC and MIDP profile)  Then I went 
+into the bin directory and figured out what libraries I needed.  I only 
+included the libraries necessary for runtime, I removed all compile 
+libraries.  Using this method I was able to trim J9 from about 30 megs 
+down to about 5.
+Tom
+
+
+Ricardo Jorge Silva Trindade wrote:
+
+&gt;<i>Hi,
+</I>&gt;<i>
+</I>&gt;<i>I'd be interested to know how you were able to trim the java vm. I once
+</I>tried and the results weren't good
+&gt;<i>
+</I>&gt;<i>-----Original Message-----
+</I>&gt;<i>From: Tom Schneider &lt;<A HREF="mailto:tschneider@nvisia.com">tschneider@nvisia.com</A>&gt;
+</I>&gt;<i>To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i>Date: Tue, 03 Dec 2002 07:03:12 -0600 
+</I>&gt;<i>Subject: Re: [Peeweelinux] General Information for Project
+</I>&gt;<i>
+</I>&gt;<i>Barry Gershenfeld wrote:
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i>How fast is CF when booting up? Would it be quicker than a hard
+</I>drive?
+&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>CF is not as fast as a hard drive, from what I can find.  Especially
+</I>&gt;&gt;<i>on writes, which may not matter here.   One thing peewee does in
+</I>&gt;&gt;<i>this configuration (compressed ramdisk on memory card) on startup 
+</I>&gt;&gt;<i>is to copy the filesystem into RAM, which can take a few seconds.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>We're using disk-on-chip which is significantly faster than a hard 
+</I>&gt;<i>driver for both reading and writing. (At least from what I've seen)  I 
+</I>&gt;<i>would think that CF would be just as fast, but I'm no expert on these 
+</I>&gt;<i>matters.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;&gt;<i>When people are talking about small linux distribution of PeeWee how
+</I>small can
+&gt;&gt;&gt;<i>I get it?  I need to have MySQL and Perl installed - is this
+</I>realistic in a
+&gt;&gt;&gt;<i>128MB card for example?
+</I>&gt;&gt;&gt;<i>Paul Nuzzo
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>It ought to be enough.  Peewee is very small, so the question
+</I>&gt;&gt;<i>becomes, &quot;how big is MySQL + perl ?&quot;  I'd like to know
+</I>&gt;&gt;<i>that myself for future planning.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>Our testing shows that MySQL is roughly 10 megs for a base install 
+</I>&gt;<i>(binary and empty database).  I'm not sure about perl. (we did java and
+</I>
+&gt;<i>that was another 5 megs after we trimmed down the JVM)  Ultimately we 
+</I>&gt;<i>chose not do use MySQL because of licensing issues.  By the way, we're 
+</I>&gt;<i>running on a 64 meg disk-on-chip and had postgres, the JVM, ppp, the 
+</I>&gt;<i>latest kernel and a decent set of utilities running with room to spare.
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Barry
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Peeweelinux mailing list
+</I>&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Peeweelinux mailing list
+</I>&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000858.html">[Peeweelinux] General Information for Project
+</A></li>
+	<LI> Next message: <A HREF="000861.html">[Peeweelinux] help - static compiling
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#859">[ date ]</a>
+              <a href="thread.html#859">[ thread ]</a>
+              <a href="subject.html#859">[ subject ]</a>
+              <a href="author.html#859">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

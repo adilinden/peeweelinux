@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux-devel] ftp problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000147.html">
+   <LINK REL="Next"  HREF="000149.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux-devel] ftp problem
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux-devel%40adis.on.ca"
+       TITLE="[Peeweelinux-devel] ftp problem">peeweelinux-devel@adis.on.ca
+       </A><BR>
+    <I>Sat, 24 Nov 2001 16:51:17 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000147.html">[Peeweelinux-devel] ftp problem
+</A></li>
+        <LI> Next message: <A HREF="000149.html">[Peeweelinux-devel] Geode GX1 development board
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#148">[ date ]</a>
+              <a href="thread.html#148">[ thread ]</a>
+              <a href="subject.html#148">[ subject ]</a>
+              <a href="author.html#148">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>PeeWeeLinux does not support PAM. If you need to build binaries for
+a PeeWeeLinux system you need to make sure you're building on a RedHat 6.2
+system for glibc compatability and not link any libs which aren't part of
+PeeWeeLinux (such as PAM).
+
+Adi
+
+
+On Sat, 24 Nov 2001, [gb2312] helen wrote:
+
+&gt;<i>
+</I>&gt;<i> I 'm using an embedded system with peewee-0.61.0,I want to
+</I>&gt;<i>
+</I>&gt;<i>  use ftpd.I copied files about ftp from my red linux.Now,it can connect ,but user couldn't login.this is information in my log file:
+</I>&gt;<i>
+</I>&gt;<i> auth.alert PAM_pwdb[78]:check pass;user unknown
+</I>&gt;<i>
+</I>&gt;<i> can someone tell me how to solve this problem.
+</I>&gt;<i>
+</I>&gt;<i> Good luck.
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000147.html">[Peeweelinux-devel] ftp problem
+</A></li>
+	<LI> Next message: <A HREF="000149.html">[Peeweelinux-devel] Geode GX1 development board
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#148">[ date ]</a>
+              <a href="thread.html#148">[ thread ]</a>
+              <a href="subject.html#148">[ subject ]</a>
+              <a href="author.html#148">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

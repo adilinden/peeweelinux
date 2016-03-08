@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] X windows system problem.www.lin
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000656.html">
+   <LINK REL="Next"  HREF="000658.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] X windows system problem.www.lin
+   </H1>
+    <B>Ricardo Trindade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] X windows system problem.www.lin">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 9 Jul 2002 14:59:59 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000656.html">[Peeweelinux] X windows system problem.www.lin
+</A></li>
+        <LI> Next message: <A HREF="000658.html">[Peeweelinux] X windows system problem.www.lin
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#657">[ date ]</a>
+              <a href="thread.html#657">[ thread ]</a>
+              <a href="subject.html#657">[ subject ]</a>
+              <a href="author.html#657">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I do this in a different manner, I edit a runlevel (usually 4), and add a
+service(my application). I guess both are good ways to do it.
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Ken Emmons, Jr.
+Sent: terca-feira, 9 de Julho de 2002 14:45
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: Re: [Peeweelinux] X windows system problem.www.lin
+
+
+Hello,
+
+I have an embedded system using peewee and X. I want a GUI to fire up (a
+statically linked gtk app) when I boot the PC and stay there in focus all
+the time without anyone being able to &quot;send it to the background&quot;. This
+sounds very familiar with your application.
+
+What I do is in the default runlevel I SU to a certain user, say autoboot
+for nomenclature. In the autoboot users bash profile, I have a command for
+startx. Then I put a .xinitrc file in the users directory so that that gets
+used instead of the default system xinit script. In short it looks like
+this:
+
+#/home/autoboot/.profile
+~./bashrc
+
+#/home/autoboot/.bashrc
+/usr/X11R6/bin/startx
+
+#/home/autoboot/.xinitrc
+/usr/bin/YourXAppToRun
+
+Make sure that all the paths are right of course. For the .xinitrc file I
+copied the one that came with Peewee and then modified by removing all calls
+to xterm and xclock and other programs (including window manager) and just
+inserted a call to my app. Everything works fine for me, I never loose focus
+and since it is the only app I need to run everythign is fine.
+
+What I have in this example is basically a generic autobooting X server for
+VGA16 (why can't every video card just support VESA standard VGA256!!) You
+could replace my app with any app you want, so I was wondering if anyone
+would want to have an example of my project after its been genericized. Let
+me know if anyone is interested.
+
+~Ken
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000656.html">[Peeweelinux] X windows system problem.www.lin
+</A></li>
+	<LI> Next message: <A HREF="000658.html">[Peeweelinux] X windows system problem.www.lin
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#657">[ date ]</a>
+              <a href="thread.html#657">[ thread ]</a>
+              <a href="subject.html#657">[ subject ]</a>
+              <a href="author.html#657">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

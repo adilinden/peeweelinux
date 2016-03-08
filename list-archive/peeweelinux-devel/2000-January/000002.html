@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> pwlconfig
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000001.html">
+   <LINK REL="Next"  HREF="000003.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>pwlconfig
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="pwlconfig">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Mon, 17 Jan 2000 08:56:15 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000001.html">pwlconfig
+</A></li>
+        <LI> Next message: <A HREF="000003.html">pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+&gt;<i> Ok, this is a bit of a mess :-(
+</I>&gt;<i> There are 2 forums and 3 mailing list + 2 more mailing lists ? ...not to 
+</I>&gt;<i> mention, I keep sending mail to myself about 3 times :-) As long as
+</I>&gt;<i> I don't start replying to myself, I guess we're ok...
+</I>
+My fault, I originally setup the mailing lists on sourceforge. I made some
+mistaks I couldn't fix and asked the sourceforge people to change it. So I
+went and installed majordomo and ran mailing lists on my own box. I
+intended to make the lists on sourcforge private, so noone can subscribe
+or post messages... Also, last night I attempted to remove any names that
+belong to the sourceforge lists. I hope it worked...
+
+&gt;<i> BTW, did you seen the message about someone looking for the root
+</I>&gt;<i> password ? I send a response direct from my poor ailing memory, you 
+</I>&gt;<i> might be able to clarify this...I guess this means we've been spotted :-)
+</I>
+I entered a app record on freshmeat...
+
+
+&gt;<i> No problem receiving mail...at least to this yahoo account...they just
+</I>&gt;<i> gave me a new computer at work, pre-installed with Windows and IE which
+</I>&gt;<i> should bring my work account back up.  then I just put everything on
+</I>&gt;<i> a floppy and move it where I need it..unless it &gt;1.4MB...unless its on
+</I>&gt;<i> my target...ahhhhhhhhhhhh
+</I>
+Fun stuff!
+
+&gt;<i> Your work stuff getting in the way too ?? 
+</I>
+Yup, the problem is all is work and play. I love my job! Just the
+priorities are screwed up. What I am supposed to do and what I'd like to
+do any given moment doesn't quite match all the time. Ohhh well...
+
+&gt;<i> &gt; Hey, you could have me play with a IPIX to build a kiosk and share my
+</I>&gt;<i> &gt; development work with you for use in your work, make it boot, run from a
+</I>&gt;<i> &gt; ramdisk, etc... :)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Not a problem...If you call Datalux and tell them what you're doing, they
+</I>&gt;<i> should be able to send you an eval - tell them Ralph sent ya!  1-800-datalux
+</I>&gt;<i> (free call !).
+</I>
+I'll give that a shot!
+
+&gt;<i> Hmmm...not sure if we need to see them in this order, but it might be handy
+</I>&gt;<i> for the user to move/add packages if all three files had same name:
+</I>&gt;<i> 
+</I>&gt;<i> _package.list
+</I>&gt;<i> _package.tar
+</I>&gt;<i> _package.README
+</I>&gt;<i> 
+</I>&gt;<i> Looks good to me...just need to know whats in a package but I can't help
+</I>&gt;<i> you there..They're all just files to me!
+</I>
+So we'll stick with that...
+
+&gt;<i> &gt; So what would be suitable keywords?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Description:
+</I>&gt;<i> &gt; Dependencies:
+</I>&gt;<i> &gt; Compilation:
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> I think the keywords will have to be the package name, thats what I'm 
+</I>&gt;<i> getting from the lxdialog when the help button is pressed. 
+</I>&gt;<i> Just put it in the first column of the file...
+</I>&gt;<i> 
+</I>&gt;<i> #### _package.README 
+</I>&gt;<i> 
+</I>&gt;<i> file history
+</I>&gt;<i> ....
+</I>&gt;<i> script to build from RPM..hint...hint.
+</I>&gt;<i> .....
+</I>&gt;<i> _base_filesystem 
+</I>&gt;<i> 
+</I>&gt;<i>  &quot;The best base file system package ever..described right here&quot;
+</I>&gt;<i>    ...text...all about the _base_filesystem
+</I>&gt;<i>    shows up in the help screen until END is found...
+</I>&gt;<i> 
+</I>&gt;<i> END
+</I>&gt;<i> 
+</I>&gt;<i> compile notes,
+</I>&gt;<i> other notes that don't appear on help screen.
+</I>&gt;<i> #####
+</I>
+#### minicom.README
+
+Initial release, untested.
+
+minicom
+
+Minicom is a simple text-based modem control and terminal emulation
+program somewhat similar to MSDOS Telix.  Minicom includes a dialing
+directory, full ANSI and VT100 emulation, an (external) scripting
+language, and other features.
+
+END
+####
+ 
+Would the above be suitable? So it wouldn't need any other keywords? I
+guess the package name shouldn't appear in the file history portion then.
+The mods to 'fix' a RPM for PeeWeeLinux require a patch. I wonder if the
+patch should be at the bottom of the README file? So put the compilation
+and the patch output after the END statement?
+
+&gt;<i> Or I can just dump the entire readme file to the help screen....
+</I>
+Depending on the contents that might be a lot to output...
+
+&gt;<i> Cool, I couldn't get my V0.7 to load on source forge...hmmmm....maybe I can
+</I>&gt;<i> mail it to myself on 3 or four mailing lists :-)))
+</I>
+Upload to <A HREF="ftp://download.sourceforge.net/incoming">ftp://download.sourceforge.net/incoming</A> then go to the admin
+function of PeeWeeLinux and add the file...
+
+I am having a very difficult time uploading to sourceforge. Basically it
+doesn't work. SO now I login to the shell account, run wget to grab the
+URL from my box... Once I think its done I login again and use ncftp to
+transfer the file to the incoming directory. Then I go to the admin page
+and finally add it.
+
+So I want to do a cgi script that I can call like:
+<A HREF="http://embedded.sourceforge.net/cgi-bin/release.pl?file=embedded-0.19-src.tar.gz">http://embedded.sourceforge.net/cgi-bin/release.pl?file=embedded-0.19-src.tar.gz</A>
+
+It'll the do the above process and output a page saying it's all done once
+it's done or send an email. Then I simply go to the admin page and add it
+from there... Awkward process... 
+
+&gt;<i> Its late again,
+</I>
+In the morning for me now :)
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+Download PWL at <A HREF="http://projects.adis.on.ca/Embedded">http://projects.adis.on.ca/Embedded</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000001.html">pwlconfig
+</A></li>
+	<LI> Next message: <A HREF="000003.html">pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#2">[ date ]</a>
+              <a href="thread.html#2">[ thread ]</a>
+              <a href="subject.html#2">[ subject ]</a>
+              <a href="author.html#2">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

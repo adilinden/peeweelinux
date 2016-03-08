@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Package format / Sharing packages
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000802.html">
+   <LINK REL="Next"  HREF="000805.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Package format / Sharing packages
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Package format / Sharing packages">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 18 Oct 2002 10:49:14 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000802.html">[Peeweelinux] Package format / Sharing packages
+</A></li>
+        <LI> Next message: <A HREF="000805.html">[Peeweelinux] embedded linux for robots... newbie
+ questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#803">[ date ]</a>
+              <a href="thread.html#803">[ thread ]</a>
+              <a href="subject.html#803">[ subject ]</a>
+              <a href="author.html#803">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>John Murphy wrote:
+&gt;<i> A big thanks to Troy for posting his howto
+</I>&gt;<i> for the 2.4 kernel on this list.  The directions are
+</I>&gt;<i> great.
+</I>
+Yay!  Glad it was of help to you. ;)
+
+&gt;<i> Can I add any odd packages I need by simply creating a
+</I>&gt;<i> &quot;sparse tree&quot; skeleton filesystem with respect to
+</I>&gt;<i> / and adding the files, tarring it up, and
+</I>&gt;<i> adding a matching xxxx.list file?  I really don't want to
+</I>&gt;<i> learn the finer points of .rpms.
+</I>
+Yes, in my experiece it works just fine (I mean, shoot that's what I did 
+for the 2.4 kernel packages utils, and it works 100%). Again, the only 
+gotcha I've found is making sure directories are specified with a 
+trailing &quot;/&quot; to make stuff work right.
+
+My problem these days is that I've customized so many peewee packages 
+for my needs, that upgrading to any new version will be just impossible 
+without tearing my hair out. Egads. (e.g. I ripped out the entire 
+networking subsystem and replaced it with custom configs that run out of 
+/opt/etc/ read/write ext3 partition).
+
+For anyone that's interested, the RedWing CDPD modems from 
+<A HREF="http://www.airlink.com">http://www.airlink.com</A> rock; if you're looking for remote IP 
+connectivity in the field with your embedded system, I've deployed three 
+of these (beta situations, middle of nowhere USA) and they're sweet. 
+Shows up as a simple modem to linux, stock pppd works great.
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+Cool as the other side of the pillow
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000802.html">[Peeweelinux] Package format / Sharing packages
+</A></li>
+	<LI> Next message: <A HREF="000805.html">[Peeweelinux] embedded linux for robots... newbie
+ questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#803">[ date ]</a>
+              <a href="thread.html#803">[ thread ]</a>
+              <a href="subject.html#803">[ subject ]</a>
+              <a href="author.html#803">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

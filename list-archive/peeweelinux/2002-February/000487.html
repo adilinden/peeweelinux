@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: Peewee on Rocky 328E
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000486.html">
+   <LINK REL="Next"  HREF="000488.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Peewee on Rocky 328E
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Peewee on Rocky 328E">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 26 Feb 2002 09:20:28 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000486.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+        <LI> Next message: <A HREF="000488.html">[Peeweelinux] vmware
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#487">[ date ]</a>
+              <a href="thread.html#487">[ thread ]</a>
+              <a href="subject.html#487">[ subject ]</a>
+              <a href="author.html#487">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 26 Feb 2002 Guillaume PREVOST wrote:
+
+&gt;<i> But my aim is to install Peewee on the HD of my embedded PC. I have created the
+</I>&gt;<i> target filesystem on the HD of my Desk PC with Red Hat (or I think so). And I
+</I>&gt;<i> only use a floppy as a link between my desk PC HD and my embedded PC HD. Is
+</I>&gt;<i> there any other way to do ? I could also try to temporarily install my embedded
+</I>&gt;<i> PC HD on my desk PC as primary slave disk ...
+</I>
+Peewee configures everything based on your target, so in this case you end up with a
+bootable floppy.  Simply copying everything from the floppy to your hard drive will not
+result in a bootable hard drive.
+
+&gt;<i> By using a floppy to transfer data, when I choose a target in pwlconfig, this
+</I>&gt;<i> target is not directly accessible from pwlconfig. Is it possible ? I think that
+</I>&gt;<i> it is, because I imagine that you may have to use this way to install peewee on
+</I>&gt;<i> a diskonchip. But this does not appear clearly to me in documentations.
+</I>
+As an example, I use Peewee to configure a bootable 8MB DiskOnChip.  The DOC is installed
+in my development PC while running Peewee; the part is then removed and placed in the
+embedded target when Peewee is done.
+
+In your case, installing the hard drive as a primary slave is probably the way to go.
+Your target device would then be &quot;/dev/hdb&quot;, assuming you have IDE drives.  Since you are
+no longer limited by the size of a floppy, this will also give you much more space to add
+additional packages as needed.
+
+Regards,
+
+Mark
+
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000486.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+	<LI> Next message: <A HREF="000488.html">[Peeweelinux] vmware
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#487">[ date ]</a>
+              <a href="thread.html#487">[ thread ]</a>
+              <a href="subject.html#487">[ subject ]</a>
+              <a href="author.html#487">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

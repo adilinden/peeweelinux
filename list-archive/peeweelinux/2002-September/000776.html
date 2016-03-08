@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] rc.pcmcia fails
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000775.html">
+   <LINK REL="Next"  HREF="000777.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] rc.pcmcia fails
+   </H1>
+    <B>vwbug19
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] rc.pcmcia fails">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sun, 8 Sep 2002 13:16:39 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000775.html">[Peeweelinux] rc.pcmcia fails
+</A></li>
+        <LI> Next message: <A HREF="000777.html">[Peeweelinux] possible (tiny) problem with peewee script ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#776">[ date ]</a>
+              <a href="thread.html#776">[ thread ]</a>
+              <a href="subject.html#776">[ subject ]</a>
+              <a href="author.html#776">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>we can simple toss out the rh 6.2 grep and replace it with older version of
+grep and it may work?
+----- Original Message -----
+From: &quot;Barry Gershenfeld&quot; &lt;<A HREF="mailto:barry_g@zmicro.com">barry_g@zmicro.com</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Sent: Friday, September 06, 2002 2:39 PM
+Subject: Re: [Peeweelinux] rc.pcmcia fails
+
+
+&gt;<i> I &quot;grepped grep&quot; and found this, on a RH7.3 system.
+</I>&gt;<i>
+</I>&gt;<i>   Fgrep is the same as grep -F.
+</I>&gt;<i>
+</I>&gt;<i>   -F, --fixed-strings
+</I>&gt;<i>          Interpret PATTERN as a list of fixed strings, sepa-
+</I>&gt;<i>          rated  by  newlines, any of which is to be matched.
+</I>&gt;<i>          -P, --perl-regexp Interpret PATTERN as a Perl regu-
+</I>&gt;<i>          lar expression.
+</I>&gt;<i>
+</I>&gt;<i> I'd be surprised if these were &quot;just added&quot; but the man page does
+</I>&gt;<i> say Jan 2002, so it could be.
+</I>&gt;<i>
+</I>&gt;<i> Here is another trick for strange messages from scripts:
+</I>&gt;<i>
+</I>&gt;<i>   sh -x pcmcia
+</I>&gt;<i>
+</I>&gt;<i> will echo everything going in and out of the script so you can
+</I>&gt;<i> see the command that caused the 'Syntax error: Bad substitution'
+</I>&gt;<i> error.
+</I>&gt;<i>
+</I>&gt;<i> Barry
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> At 08:04 PM 9/4/02 -0700, you wrote:
+</I>&gt;<i> &gt;'grep -F'.  When
+</I>&gt;<i> &gt;I look at the web page for busybox there isn't an '-F' listed, nor is
+</I>there
+&gt;<i> &gt;one listed on grep on my Redhat 7.2 box.  The other problem is in the
+</I>last
+&gt;<i> &gt;line of the script, I get a 'Syntax error: Bad substitution'
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Randy Torgerson
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000775.html">[Peeweelinux] rc.pcmcia fails
+</A></li>
+	<LI> Next message: <A HREF="000777.html">[Peeweelinux] possible (tiny) problem with peewee script ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#776">[ date ]</a>
+              <a href="thread.html#776">[ thread ]</a>
+              <a href="subject.html#776">[ subject ]</a>
+              <a href="author.html#776">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

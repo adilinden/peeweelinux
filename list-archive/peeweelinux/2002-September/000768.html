@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] adding packages
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000767.html">
+   <LINK REL="Next"  HREF="000769.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] adding packages
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] adding packages">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 4 Sep 2002 18:22:08 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000767.html">[Peeweelinux] adding packages
+</A></li>
+        <LI> Next message: <A HREF="000769.html">[Peeweelinux] How to build 6.2 programs, or other ways
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#768">[ date ]</a>
+              <a href="thread.html#768">[ thread ]</a>
+              <a href="subject.html#768">[ subject ]</a>
+              <a href="author.html#768">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>At 04:05 PM 9/1/02 -0500, you wrote:
+&gt;<i>Hello, Can anyone tell me how to add packages in peewee... For example:
+</I>&gt;<i>a small binary rpm package like x3270 or
+</I>&gt;<i>tn5250 ..Is there a utility to do this ?
+</I>&gt;<i>Your Help Is appreciated
+</I>&gt;<i> Patrick Beaven
+</I>
+&gt;<i>From what I can ascertain, peewee works from rpm's.  I do know
+</I>(because I have notes) that when peewee is first brought up,
+it unpacks the rpms from a certain directory, and then builds
+tar files which it stores in the packages directory.  I don't
+know what happens if you add another rpm, whether it &quot;knows&quot;
+and offers to convert it, whether you have to find this
+operation on the menu, or whether it's a manual task.  One
+of us should try it and find out :)
+
+With packages, Adi cautions us to make sure they come from
+the same RH6.2 system that peewee comes from, so that your
+program will find the libraries it needs.  Other fiddling
+may be required since peewee packages were built with some
+unneeded features left out...so the program might not work.
+
+The nice thing is that packages put in this way are automatically
+recognized and show up in the menu just like the rest of 'em.
+
+There is another way to include programs and files outright.
+By building into directory called &quot;/root/custom&quot; you can
+have files just copied into the target system and if there
+are no issues with the result then they are ready to go.  This
+works for things that don't have many files.   There are menu
+options that let you collect and select the custom files. 
+
+Hope this helps somehow.
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000767.html">[Peeweelinux] adding packages
+</A></li>
+	<LI> Next message: <A HREF="000769.html">[Peeweelinux] How to build 6.2 programs, or other ways
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#768">[ date ]</a>
+              <a href="thread.html#768">[ thread ]</a>
+              <a href="subject.html#768">[ subject ]</a>
+              <a href="author.html#768">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

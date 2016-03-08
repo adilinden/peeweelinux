@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] initrd problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000973.html">
+   <LINK REL="Next"  HREF="000979.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] initrd problem
+   </H1>
+    <B>Stephen Lee
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] initrd problem">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>23 Mar 2003 22:01:23 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000973.html">[Peeweelinux] initrd problem
+</A></li>
+        <LI> Next message: <A HREF="000979.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#974">[ date ]</a>
+              <a href="thread.html#974">[ thread ]</a>
+              <a href="subject.html#974">[ subject ]</a>
+              <a href="author.html#974">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, 2003-03-23 at 19:14, Dennis W. Tokarski wrote:
+&gt;<i> Stephen Lee wrote:
+</I>&gt;<i> 
+</I>&gt;<i> [snip]
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Freeing initrd memory: 1152k freed
+</I>&gt;<i> &gt; VFS: Mounted root (ext2 filesystem).
+</I>&gt;<i> &gt; VFS: Mounted root (ext2 filesystem) readonly.
+</I>&gt;<i> &gt; Trying to move old root to /initrd ... failed
+</I>&gt;<i> &gt; Unmounting old root
+</I>&gt;<i> &gt; Trying to free ramdisk memory ... okay
+</I>&gt;<i> &gt; Freeing unused kernel memory: 264k freed
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Is there some setting within pwlconfig I can adjust to fix the initrd
+</I>&gt;<i> &gt; problem?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Does your root ext2 file system have an empty
+</I>&gt;<i> directory called '/initrd' on it that the
+</I>&gt;<i> kernel can use a mount point?
+</I>&gt;<i> 
+</I>I think I did. I created a /initrd under
+./Embedded_Build/projects/DOC-Test/mnt and added initrd/ to
+filesystem.list and reloaded onto the DOC. It didn't seem to make a
+difference. I then disconnected the harddrive and rebooted with just the
+DOC. This was more revealing. Here is the last of the kernel messages:
+
+VFS: Mounted root (ext2 filesystem)
+Kmod: failed to exec /sbin/modprobe -s -k block-major-3, errno = 2
+VFS: Cannot open root device or 03:06
+Please append a correct &quot;root=&quot; boot option.
+Kernel panic: VFS: Unable to mount root fs on 03:06
+
+The kernel (2.4.20) was compiled with ide support having the following
+kernel config bits:
+
+CONFIG_IDE=y
+CONFIG_BLK_DEV_IDE=y
+CONFIG_BLK_DEV_IDEDISK=y
+CONFIG_BLK_DEV_IDECD=y
+CONFIG_BLK_DEV_IDESCSI=y
+CONFIG_BLK_DEV_IDEPCI=y
+CONFIG_IDEPCI_SHARE_IRQ=y
+CONFIG_BLK_DEV_IDEDMA_PCI=y
+CONFIG_IDEDMA_PCI_AUTO=y
+CONFIG_BLK_DEV_IDEDMA=y
+CONFIG_IDEDMA_AUTO=y
+
+It looks like the kernel cannot read the root fs even though IDE support
+is part of the kernel. Is this a lilo, kernel or DOC (2000) problem?
+
+Thanks,
+Stephen
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000973.html">[Peeweelinux] initrd problem
+</A></li>
+	<LI> Next message: <A HREF="000979.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#974">[ date ]</a>
+              <a href="thread.html#974">[ thread ]</a>
+              <a href="subject.html#974">[ subject ]</a>
+              <a href="author.html#974">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

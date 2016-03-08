@@ -1,0 +1,1242 @@
+From peeweelinux@adis.on.ca  Thu Nov  1 08:39:02 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Thu, 1 Nov 2001 16:39:02 +0800 (CST)
+Subject: [Peeweelinux] how to solve the problem from ramdisk
+Message-ID: <20011101083902.78289.qmail@web9007.mail.yahoo.com>
+
+embedding linux with peewee must use ramdisk?whether
+can I do it without ramdisk? if must use ramdisk,now
+how to solve the problem that all contents  written
+disappeared after I reboot it.can someone tell me how
+to do.
+thanks very much.
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+
+From peeweelinux@adis.on.ca  Thu Nov  1 08:44:02 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Thu, 1 Nov 2001 16:44:02 +0800 (CST)
+Subject: [Peeweelinux] how to set my network,I can't find netconf
+Message-ID: <20011101084402.38673.qmail@web9003.mail.yahoo.com>
+
+I couldn't find netconf in directory of bin.how to set
+my network.peewee is 2.2.17-13,my kernel is 2.2.5-15.
+can someone have successful experiences tell me how to
+do.
+thanks very much.
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+
+From peeweelinux@adis.on.ca  Fri Nov  2 05:21:08 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Fri, 2 Nov 2001 13:21:08 +0800 (CST)
+Subject: [Peeweelinux] how about read-write root on a single partition
+Message-ID: <20011102052108.233.qmail@web9003.mail.yahoo.com>
+
+hello,
+   I select the
+"Target: Read-write root on a single partition-----"
+on the option of Configure Tartet Hardware.but,I
+reboot it ,is died when display:
+
+Partition check:
+request_module[ide-disk]:root fs not mounted
+hda:driver not present
+vfs:cannot open root device 03:01
+kernel panic:VFS:Unable to mount root fs on 03:01
+
+can someone tell me how to solve this problem??
+thanks.
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+
+From peeweelinux@adis.on.ca  Wed Nov  7 16:52:30 2001
+From: peeweelinux@adis.on.ca (Sudhanshu Tewari)
+Date: Wed, 7 Nov 2001 09:52:30 -0700
+Subject: [Peeweelinux] Kernel Compile failure
+Message-ID: <A2D82421E95D9646AFE9CD8D711962C0CAA5F1@co-w2ks-exch-01.networkphotonics.com>
+
+This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+------_=_NextPart_001_01C167AC.96D8D487
+Content-Type: text/plain;
+	charset="iso-8859-1"
+
+Hi,
+
+I am Sudhanshu from Boulder CO
+Using successfully the latest version of Peewee LInux.
+Thanks for the good work !!
+
+Recently i tried compiling the the custum kernel using pwlconfig menu.
+I did't add any thing custum but just took the 2.2.17-13 code used standard
+peeweelinux-basic configuration.
+and compiled the kernel.
+
+The Problem is the scripts comes out with kernel compiled successful after
+creating custom kernel package, But there is no bzImage file in the boot
+directory.
+The modules are getting compiled fine.
+
+when i tried compiling using make dep;make clean;make bzImage in the
+.../usr/src/linux/* directory.
+
+the make bzImage fails at Checksum.S at line 234 complaining badly puntuated
+parameter in #define.
+
+The #define problem gets fixed if i remove option -traditional from the make
+file but then it crashes in get_address.c in line 177 & 187 complaining
+invalid lvalue in asm statement.
+
+
+Any idead what i am missing !!!
+
+Thanks
+Sudhanshu
+
+
+------_=_NextPart_001_01C167AC.96D8D487
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1">
+<META NAME=3D"Generator" CONTENT=3D"MS Exchange Server version =
+5.5.2650.12">
+<TITLE>Kernel Compile failure</TITLE>
+</HEAD>
+<BODY>
+
+<P><FONT SIZE=3D2 FACE=3D"Arial">Hi,</FONT>
+</P>
+
+<P><FONT SIZE=3D2 FACE=3D"Arial">I am Sudhanshu from Boulder CO</FONT>
+<BR><FONT SIZE=3D2 FACE=3D"Arial">Using successfully the latest version =
+of Peewee LInux.</FONT>
+<BR><FONT SIZE=3D2 FACE=3D"Arial">Thanks for the good work !!</FONT>
+</P>
+
+<P><FONT SIZE=3D2 FACE=3D"Arial">Recently i tried compiling the the =
+custum kernel using pwlconfig menu.</FONT>
+<BR><FONT SIZE=3D2 FACE=3D"Arial">I did't add any thing custum but just =
+took the 2.2.17-13 code used standard peeweelinux-basic =
+configuration.</FONT>
+<BR><FONT SIZE=3D2 FACE=3D"Arial">and compiled the kernel.</FONT>
+</P>
+
+<P><FONT SIZE=3D2 FACE=3D"Arial">The Problem is the scripts comes out =
+with kernel compiled successful after creating custom kernel package, =
+But there is no bzImage file in the boot directory.</FONT></P>
+
+<P><FONT SIZE=3D2 FACE=3D"Arial">The modules are getting compiled =
+fine.</FONT>
+</P>
+
+<P><FONT SIZE=3D2 FACE=3D"Arial">when i tried compiling using make =
+dep;make clean;make bzImage in the .../usr/src/linux/* =
+directory.</FONT>
+</P>
+
+<P><FONT SIZE=3D2 FACE=3D"Arial">the make bzImage fails at Checksum.S =
+at line 234 complaining badly puntuated parameter in #define.</FONT>
+</P>
+
+<P><FONT SIZE=3D2 FACE=3D"Arial">The #define problem gets fixed if i =
+remove option -traditional from the make file but then it crashes in =
+get_address.c in line 177 &amp; 187 complaining</FONT></P>
+
+<P><FONT SIZE=3D2 FACE=3D"Arial">invalid lvalue in asm =
+statement.</FONT>
+</P>
+<BR>
+
+<P><FONT SIZE=3D2 FACE=3D"Arial">Any idead what i am missing !!!</FONT>
+</P>
+
+<P><FONT SIZE=3D2 FACE=3D"Arial">Thanks</FONT>
+<BR><FONT SIZE=3D2 FACE=3D"Arial">Sudhanshu</FONT>
+</P>
+
+</BODY>
+</HTML>
+------_=_NextPart_001_01C167AC.96D8D487--
+
+From peeweelinux@adis.on.ca  Wed Nov  7 16:54:21 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 7 Nov 2001 10:54:21 -0600 (CST)
+Subject: [Peeweelinux] Kernel Compile failure
+In-Reply-To: <A2D82421E95D9646AFE9CD8D711962C0CAA5F1@co-w2ks-exch-01.networkphotonics.com>
+Message-ID: <Pine.LNX.4.33.0111071053050.891-100000@mobile.adis.on.ca>
+
+Hi,
+
+What Linux flavour are you using for development purposes? I have tested
+the kernel compiling on on RedHat 6.1 and RedHat 6.2...
+
+Adi
+
+On Wed, 7 Nov 2001, Sudhanshu Tewari wrote:
+
+> Hi,
+>
+> I am Sudhanshu from Boulder CO
+> Using successfully the latest version of Peewee LInux.
+> Thanks for the good work !!
+>
+> Recently i tried compiling the the custum kernel using pwlconfig menu.
+> I did't add any thing custum but just took the 2.2.17-13 code used standard
+> peeweelinux-basic configuration.
+> and compiled the kernel.
+>
+> The Problem is the scripts comes out with kernel compiled successful after
+> creating custom kernel package, But there is no bzImage file in the boot
+> directory.
+> The modules are getting compiled fine.
+>
+> when i tried compiling using make dep;make clean;make bzImage in the
+> .../usr/src/linux/* directory.
+>
+> the make bzImage fails at Checksum.S at line 234 complaining badly puntuated
+> parameter in #define.
+>
+> The #define problem gets fixed if i remove option -traditional from the make
+> file but then it crashes in get_address.c in line 177 & 187 complaining
+> invalid lvalue in asm statement.
+>
+>
+> Any idead what i am missing !!!
+>
+> Thanks
+> Sudhanshu
+>
+>
+
+
+From peeweelinux@adis.on.ca  Wed Nov  7 20:15:22 2001
+From: peeweelinux@adis.on.ca (Sudhanshu Tewari)
+Date: Wed, 7 Nov 2001 13:15:22 -0700
+Subject: [Peeweelinux] Kernel Compile failure
+Message-ID: <A2D82421E95D9646AFE9CD8D711962C0CAA5F2@co-w2ks-exch-01.networkphotonics.com>
+
+This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+------_=_NextPart_001_01C167C8.EE2A8586
+Content-Type: text/plain;
+	charset="iso-8859-1"
+
+
+Hi,
+
+I am using 7.1
+I will try with 6.2 and let you know ...
+
+thanks
+Sudhanshu
+
+-----Original Message-----
+From: Adi Linden [mailto:adi@adis.on.ca]
+Sent: Wednesday, November 07, 2001 9:54 AM
+To: Sudhanshu Tewari
+Cc: 'peeweelinux@adis.on.ca'
+Subject: Re: [Peeweelinux] Kernel Compile failure
+
+
+Hi,
+
+What Linux flavour are you using for development purposes? I have tested
+the kernel compiling on on RedHat 6.1 and RedHat 6.2...
+
+Adi
+
+On Wed, 7 Nov 2001, Sudhanshu Tewari wrote:
+
+> Hi,
+>
+> I am Sudhanshu from Boulder CO
+> Using successfully the latest version of Peewee LInux.
+> Thanks for the good work !!
+>
+> Recently i tried compiling the the custum kernel using pwlconfig menu.
+> I did't add any thing custum but just took the 2.2.17-13 code used
+standard
+> peeweelinux-basic configuration.
+> and compiled the kernel.
+>
+> The Problem is the scripts comes out with kernel compiled successful after
+> creating custom kernel package, But there is no bzImage file in the boot
+> directory.
+> The modules are getting compiled fine.
+>
+> when i tried compiling using make dep;make clean;make bzImage in the
+> .../usr/src/linux/* directory.
+>
+> the make bzImage fails at Checksum.S at line 234 complaining badly
+puntuated
+> parameter in #define.
+>
+> The #define problem gets fixed if i remove option -traditional from the
+make
+> file but then it crashes in get_address.c in line 177 & 187 complaining
+> invalid lvalue in asm statement.
+>
+>
+> Any idead what i am missing !!!
+>
+> Thanks
+> Sudhanshu
+>
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+------_=_NextPart_001_01C167C8.EE2A8586
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1">
+<META NAME=3D"Generator" CONTENT=3D"MS Exchange Server version =
+5.5.2650.12">
+<TITLE>RE: [Peeweelinux] Kernel Compile failure</TITLE>
+</HEAD>
+<BODY>
+<BR>
+
+<P><FONT SIZE=3D2>Hi,</FONT>
+</P>
+
+<P><FONT SIZE=3D2>I am using 7.1</FONT>
+<BR><FONT SIZE=3D2>I will try with 6.2 and let you know ...</FONT>
+</P>
+
+<P><FONT SIZE=3D2>thanks</FONT>
+<BR><FONT SIZE=3D2>Sudhanshu</FONT>
+</P>
+
+<P><FONT SIZE=3D2>-----Original Message-----</FONT>
+<BR><FONT SIZE=3D2>From: Adi Linden [<A =
+HREF=3D"mailto:adi@adis.on.ca">mailto:adi@adis.on.ca</A>]</FONT>
+<BR><FONT SIZE=3D2>Sent: Wednesday, November 07, 2001 9:54 AM</FONT>
+<BR><FONT SIZE=3D2>To: Sudhanshu Tewari</FONT>
+<BR><FONT SIZE=3D2>Cc: 'peeweelinux@adis.on.ca'</FONT>
+<BR><FONT SIZE=3D2>Subject: Re: [Peeweelinux] Kernel Compile =
+failure</FONT>
+</P>
+<BR>
+
+<P><FONT SIZE=3D2>Hi,</FONT>
+</P>
+
+<P><FONT SIZE=3D2>What Linux flavour are you using for development =
+purposes? I have tested</FONT>
+<BR><FONT SIZE=3D2>the kernel compiling on on RedHat 6.1 and RedHat =
+6.2...</FONT>
+</P>
+
+<P><FONT SIZE=3D2>Adi</FONT>
+</P>
+
+<P><FONT SIZE=3D2>On Wed, 7 Nov 2001, Sudhanshu Tewari wrote:</FONT>
+</P>
+
+<P><FONT SIZE=3D2>&gt; Hi,</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; I am Sudhanshu from Boulder CO</FONT>
+<BR><FONT SIZE=3D2>&gt; Using successfully the latest version of Peewee =
+LInux.</FONT>
+<BR><FONT SIZE=3D2>&gt; Thanks for the good work !!</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; Recently i tried compiling the the custum =
+kernel using pwlconfig menu.</FONT>
+<BR><FONT SIZE=3D2>&gt; I did't add any thing custum but just took the =
+2.2.17-13 code used standard</FONT>
+<BR><FONT SIZE=3D2>&gt; peeweelinux-basic configuration.</FONT>
+<BR><FONT SIZE=3D2>&gt; and compiled the kernel.</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; The Problem is the scripts comes out with =
+kernel compiled successful after</FONT>
+<BR><FONT SIZE=3D2>&gt; creating custom kernel package, But there is no =
+bzImage file in the boot</FONT>
+<BR><FONT SIZE=3D2>&gt; directory.</FONT>
+<BR><FONT SIZE=3D2>&gt; The modules are getting compiled fine.</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; when i tried compiling using make dep;make =
+clean;make bzImage in the</FONT>
+<BR><FONT SIZE=3D2>&gt; .../usr/src/linux/* directory.</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; the make bzImage fails at Checksum.S at line =
+234 complaining badly puntuated</FONT>
+<BR><FONT SIZE=3D2>&gt; parameter in #define.</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; The #define problem gets fixed if i remove =
+option -traditional from the make</FONT>
+<BR><FONT SIZE=3D2>&gt; file but then it crashes in get_address.c in =
+line 177 &amp; 187 complaining</FONT>
+<BR><FONT SIZE=3D2>&gt; invalid lvalue in asm statement.</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; Any idead what i am missing !!!</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; Thanks</FONT>
+<BR><FONT SIZE=3D2>&gt; Sudhanshu</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+</P>
+
+<P><FONT =
+SIZE=3D2>_______________________________________________</FONT>
+<BR><FONT SIZE=3D2>Peeweelinux mailing list</FONT>
+<BR><FONT SIZE=3D2>Peeweelinux@adis.on.ca</FONT>
+<BR><FONT SIZE=3D2><A =
+HREF=3D"http://mail.adis.on.ca/lists/listinfo/peeweelinux" =
+TARGET=3D"_blank">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A><=
+/FONT>
+</P>
+
+</BODY>
+</HTML>
+------_=_NextPart_001_01C167C8.EE2A8586--
+
+From peeweelinux@adis.on.ca  Thu Nov  8 00:49:11 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Thu, 8 Nov 2001 08:49:11 +0800 (CST)
+Subject: [Peeweelinux] Kernel Compile failure
+In-Reply-To: <A2D82421E95D9646AFE9CD8D711962C0CAA5F1@co-w2ks-exch-01.networkphotonics.com>
+Message-ID: <20011108004911.37346.qmail@web9003.mail.yahoo.com>
+
+--0-936415061-1005180551=:34750
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+hi,
+
+  when I used peeweelinux config the kernel ,I met your problem also.I don't know the reason.But,lately,I config the kernel several times,the problem don't happen.or you can config the kernel with the command of make menuconfig (not use the option make menuconfig of )peewee,then copy the bzImage to the right directory.try it.
+
+ Good luck.
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-936415061-1005180551=:34750
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>hi,</P>
+<P>&nbsp; when I used peeweelinux config the kernel ,I met your problem also.I don't know the reason.But,lately,I config the kernel several times,the problem don't happen.or you can config the kernel with the command of make menuconfig (not use the option make menuconfig of )peewee,then copy the bzImage to the right directory.try it.</P>
+<P>&nbsp;Good luck.</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-936415061-1005180551=:34750--
+
+From peeweelinux@adis.on.ca  Fri Nov  9 18:10:56 2001
+From: peeweelinux@adis.on.ca (James D. Bearden)
+Date: Fri, 09 Nov 2001 18:10:56 GMT
+Subject: [Peeweelinux] Init Problem
+Message-ID: <courier.3BEC1C30.00006FEC@public.nontrivial.org>
+
+Hello All, 
+
+I am starting out in the wonderful world of Peewee Linux and I have run into 
+a problem.
+I am investigating peewee due to performance reasons, not disk space. More 
+details are
+available at http://james.nontrivial.org/projcitr.htm but basically it is a 
+386 with 16
+Megabytes of RAM. I pretty much chose the simplest peewee setup I couldn 
+find with the
+read only and many ramdisks option. 
+
+While I'm not a complete linux newbie, I really don't know much about the 
+finer points of
+the boot process. So, I don't know if the root file system did not get 
+mounted successfully,
+or else it did and for some reason there isn't an init. At any rate, I get a 
+kernel panic about
+not being able to finid init. I am extemely inexperienced, but everything 
+before that seemed
+to go swimmingly except for two errors: 
+
+   tcsetpsrp: Inappropriate ioctl for device
+   change_root: old root has dcount=1 
+
+If somebody could throw me a bone before I spend all weekend on this I would 
+greatly
+appreciate it. :-) Bonus points are available for telling me how to specify 
+a 80x25 console
+verses the default 80x30 console. Maybe a kernel option? 
+
+ ---
+James D. Bearden
+james@nontrivial.org
+http://james.nontrivial.org/ 
+
+Don't reward Microsoft's bad behavior. Use the free
+Mozilla web browser (http://www.mozilla.org/releases/)
+and then use (http://www.98lite.net/ieradicator.html)
+IEradicator to remove Internet Explorer from your system.
+This will also make your machine faster and more stable. 
+
+
+From peeweelinux@adis.on.ca  Fri Nov  9 19:30:21 2001
+From: peeweelinux@adis.on.ca (Sudhanshu Tewari)
+Date: Fri, 9 Nov 2001 12:30:21 -0700
+Subject: [Peeweelinux] Kernel Compile failure
+Message-ID: <A2D82421E95D9646AFE9CD8D711962C0CAA5F3@co-w2ks-exch-01.networkphotonics.com>
+
+This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+------_=_NextPart_001_01C16954.FA22E6B2
+Content-Type: text/plain;
+	charset="iso-8859-1"
+
+Hi Adi,
+
+I tried compiling on 6.2, It is compiling properly !!
+so it looks like some thing is not working on 7.1
+
+Thanks
+Sudhanshu
+
+
+-----Original Message-----
+From: Adi Linden [mailto:adi@adis.on.ca]
+Sent: Wednesday, November 07, 2001 9:54 AM
+To: Sudhanshu Tewari
+Cc: 'peeweelinux@adis.on.ca'
+Subject: Re: [Peeweelinux] Kernel Compile failure
+
+
+Hi,
+
+What Linux flavour are you using for development purposes? I have tested
+the kernel compiling on on RedHat 6.1 and RedHat 6.2...
+
+Adi
+
+On Wed, 7 Nov 2001, Sudhanshu Tewari wrote:
+
+> Hi,
+>
+> I am Sudhanshu from Boulder CO
+> Using successfully the latest version of Peewee LInux.
+> Thanks for the good work !!
+>
+> Recently i tried compiling the the custum kernel using pwlconfig menu.
+> I did't add any thing custum but just took the 2.2.17-13 code used
+standard
+> peeweelinux-basic configuration.
+> and compiled the kernel.
+>
+> The Problem is the scripts comes out with kernel compiled successful after
+> creating custom kernel package, But there is no bzImage file in the boot
+> directory.
+> The modules are getting compiled fine.
+>
+> when i tried compiling using make dep;make clean;make bzImage in the
+> .../usr/src/linux/* directory.
+>
+> the make bzImage fails at Checksum.S at line 234 complaining badly
+puntuated
+> parameter in #define.
+>
+> The #define problem gets fixed if i remove option -traditional from the
+make
+> file but then it crashes in get_address.c in line 177 & 187 complaining
+> invalid lvalue in asm statement.
+>
+>
+> Any idead what i am missing !!!
+>
+> Thanks
+> Sudhanshu
+>
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+------_=_NextPart_001_01C16954.FA22E6B2
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1">
+<META NAME=3D"Generator" CONTENT=3D"MS Exchange Server version =
+5.5.2650.12">
+<TITLE>RE: [Peeweelinux] Kernel Compile failure</TITLE>
+</HEAD>
+<BODY>
+
+<P><FONT SIZE=3D2>Hi Adi,</FONT>
+</P>
+
+<P><FONT SIZE=3D2>I tried compiling on 6.2, It is compiling properly =
+!!</FONT>
+<BR><FONT SIZE=3D2>so it looks like some thing is not working on =
+7.1</FONT>
+</P>
+
+<P><FONT SIZE=3D2>Thanks</FONT>
+<BR><FONT SIZE=3D2>Sudhanshu</FONT>
+</P>
+<BR>
+
+<P><FONT SIZE=3D2>-----Original Message-----</FONT>
+<BR><FONT SIZE=3D2>From: Adi Linden [<A =
+HREF=3D"mailto:adi@adis.on.ca">mailto:adi@adis.on.ca</A>]</FONT>
+<BR><FONT SIZE=3D2>Sent: Wednesday, November 07, 2001 9:54 AM</FONT>
+<BR><FONT SIZE=3D2>To: Sudhanshu Tewari</FONT>
+<BR><FONT SIZE=3D2>Cc: 'peeweelinux@adis.on.ca'</FONT>
+<BR><FONT SIZE=3D2>Subject: Re: [Peeweelinux] Kernel Compile =
+failure</FONT>
+</P>
+<BR>
+
+<P><FONT SIZE=3D2>Hi,</FONT>
+</P>
+
+<P><FONT SIZE=3D2>What Linux flavour are you using for development =
+purposes? I have tested</FONT>
+<BR><FONT SIZE=3D2>the kernel compiling on on RedHat 6.1 and RedHat =
+6.2...</FONT>
+</P>
+
+<P><FONT SIZE=3D2>Adi</FONT>
+</P>
+
+<P><FONT SIZE=3D2>On Wed, 7 Nov 2001, Sudhanshu Tewari wrote:</FONT>
+</P>
+
+<P><FONT SIZE=3D2>&gt; Hi,</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; I am Sudhanshu from Boulder CO</FONT>
+<BR><FONT SIZE=3D2>&gt; Using successfully the latest version of Peewee =
+LInux.</FONT>
+<BR><FONT SIZE=3D2>&gt; Thanks for the good work !!</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; Recently i tried compiling the the custum =
+kernel using pwlconfig menu.</FONT>
+<BR><FONT SIZE=3D2>&gt; I did't add any thing custum but just took the =
+2.2.17-13 code used standard</FONT>
+<BR><FONT SIZE=3D2>&gt; peeweelinux-basic configuration.</FONT>
+<BR><FONT SIZE=3D2>&gt; and compiled the kernel.</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; The Problem is the scripts comes out with =
+kernel compiled successful after</FONT>
+<BR><FONT SIZE=3D2>&gt; creating custom kernel package, But there is no =
+bzImage file in the boot</FONT>
+<BR><FONT SIZE=3D2>&gt; directory.</FONT>
+<BR><FONT SIZE=3D2>&gt; The modules are getting compiled fine.</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; when i tried compiling using make dep;make =
+clean;make bzImage in the</FONT>
+<BR><FONT SIZE=3D2>&gt; .../usr/src/linux/* directory.</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; the make bzImage fails at Checksum.S at line =
+234 complaining badly puntuated</FONT>
+<BR><FONT SIZE=3D2>&gt; parameter in #define.</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; The #define problem gets fixed if i remove =
+option -traditional from the make</FONT>
+<BR><FONT SIZE=3D2>&gt; file but then it crashes in get_address.c in =
+line 177 &amp; 187 complaining</FONT>
+<BR><FONT SIZE=3D2>&gt; invalid lvalue in asm statement.</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; Any idead what i am missing !!!</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt; Thanks</FONT>
+<BR><FONT SIZE=3D2>&gt; Sudhanshu</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+<BR><FONT SIZE=3D2>&gt;</FONT>
+</P>
+
+<P><FONT =
+SIZE=3D2>_______________________________________________</FONT>
+<BR><FONT SIZE=3D2>Peeweelinux mailing list</FONT>
+<BR><FONT SIZE=3D2>Peeweelinux@adis.on.ca</FONT>
+<BR><FONT SIZE=3D2><A =
+HREF=3D"http://mail.adis.on.ca/lists/listinfo/peeweelinux" =
+TARGET=3D"_blank">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A><=
+/FONT>
+</P>
+
+</BODY>
+</HTML>
+------_=_NextPart_001_01C16954.FA22E6B2--
+
+From peeweelinux@adis.on.ca  Tue Nov 13 06:41:34 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Tue, 13 Nov 2001 14:41:34 +0800 (CST)
+Subject: [Peeweelinux] ftp problem
+Message-ID: <20011113064134.68515.qmail@web9006.mail.yahoo.com>
+
+--0-795864207-1005633694=:65651
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+I'm using peewee-0.61.0 to create an embedded linux in a dom,it's working well.Now I want to use ftp and telnet server.but,I couldn't find the configure files about ftp .And I can find telnetd in the directory of /us/sbin/, but I can't find ftpd.
+
+whether the ftp in peewee is distinguishing with others.how to do ftp and telnet ,can some tell me.
+
+thanks.
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-795864207-1005633694=:65651
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>I'm using peewee-0.61.0 to create an embedded linux in a dom,it's working well.Now I want to use ftp and telnet server.but,I couldn't find the configure files about ftp .And I can find&nbsp;telnetd in the directory of /us/sbin/, but I can't find ftpd.</P>
+<P>whether the ftp in peewee is distinguishing with others.how to do ftp and telnet ,can some tell me.</P>
+<P>thanks.</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-795864207-1005633694=:65651--
+
+From peeweelinux@adis.on.ca  Tue Nov 13 14:49:38 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 13 Nov 2001 08:49:38 -0600 (CST)
+Subject: [Peeweelinux] ftp problem
+In-Reply-To: <20011113064134.68515.qmail@web9006.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.33.0111130848250.17959-100000@adibox.knet.ca>
+
+Hi,
+
+Telnet and ftp are controlled by the inted daemon. The /etc/inetd.conf 
+file might need to be edited to turn on ftp and/or telnet.
+
+Adi
+
+On Tue, 13 Nov 2001, [gb2312] helen wrote:
+
+> 
+> I'm using peewee-0.61.0 to create an embedded linux in a dom,it's working well.Now I want to use ftp and telnet server.but,I couldn't find the configure files about ftp .And I can find telnetd in the directory of /us/sbin/, but I can't find ftpd.
+> 
+> whether the ftp in peewee is distinguishing with others.how to do ftp and telnet ,can some tell me.
+> 
+> thanks.
+> 
+> 
+> ---------------------------------
+> Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+> ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+
+
+From peeweelinux@adis.on.ca  Wed Nov 14 00:36:25 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Wed, 14 Nov 2001 08:36:25 +0800 (CST)
+Subject: [Peeweelinux] ftp problem
+In-Reply-To: <Pine.LNX.4.33.0111130848250.17959-100000@adibox.knet.ca>
+Message-ID: <20011114003625.74002.qmail@web9007.mail.yahoo.com>
+
+--0-1151735246-1005698185=:72004
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+I know inetd.conf, inetd.conf file show that ftpd is under the directory of /usr/sbin/,but why I couldn't find the ftpd.And how to startup inetd,because I couldn't find it when I use  the comand :ps x.Only startup the inetd and enable ftpd and telnetd ,ftpd can work ? not to do others?
+
+thanks.
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1151735246-1005698185=:72004
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>I know inetd.conf, inetd.conf file show that ftpd is under the directory of /usr/sbin/,but why I couldn't find the ftpd.And how to startup inetd,because I couldn't find it when I use&nbsp; the comand :ps x.Only startup the inetd and enable ftpd and telnetd ,ftpd can work ? not to do others?</P>
+<P>thanks.</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1151735246-1005698185=:72004--
+
+From peeweelinux@adis.on.ca  Wed Nov 14 00:58:40 2001
+From: peeweelinux@adis.on.ca (Paul Russell)
+Date: Wed, 14 Nov 2001 11:58:40 +1100
+Subject: [Peeweelinux] ftp problem
+In-Reply-To: <20011114003625.74002.qmail@web9007.mail.yahoo.com>
+Message-ID: <FOEHJPEGGFBAHDDEIKMFOECJCAAA.paulr@solutionsplus.com.au>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0047_01C16D03.B3494EE0
+Content-Type: text/plain;
+	charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+
+I have just configured a PeeWee system and found the same problem.  I took
+the ftpd from my Redhat development system and configured the inetd to run
+this.  It works quite well.
+
+Regards,
+ Paul Russell
+  -----Original Message-----
+  From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]On
+Behalf Of helen
+  Sent: Wednesday, 14 November 2001 11:36 AM
+  To: peeweelinux@adis.on.ca
+  Subject: Re: [Peeweelinux] ftp problem
+
+
+  I know inetd.conf, inetd.conf file show that ftpd is under the directory
+of /usr/sbin/,but why I couldn't find the ftpd.And how to startup
+inetd,because I couldn't find it when I use  the comand :ps x.Only startup
+the inetd and enable ftpd and telnetd ,ftpd can work ? not to do others?
+
+  thanks.
+
+
+
+----------------------------------------------------------------------------
+--
+  Do You Yahoo!? 5GBQE;"5gSJ!
+  QE;"H+PBADLlJR#,HCDcAD0!!"AD0!5D#,;9JGAD2;9;#!
+
+------=_NextPart_000_0047_01C16D03.B3494EE0
+Content-Type: text/html;
+	charset="US-ASCII"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Dus-ascii">
+<META content=3D"MSHTML 5.50.4207.2601" name=3DGENERATOR></HEAD>
+<BODY>
+<DIV><SPAN class=3D521365200-14112001><FONT face=3DArial color=3D#0000ff =
+size=3D2>I have=20
+just configured a PeeWee system and found the same problem.&nbsp; I took =
+the=20
+ftpd from my Redhat development system and configured the inetd to run=20
+this.&nbsp; It works quite well.</FONT></SPAN></DIV>
+<DIV><SPAN class=3D521365200-14112001><FONT face=3DArial color=3D#0000ff =
+
+size=3D2></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=3D521365200-14112001><FONT face=3DArial color=3D#0000ff =
+
+size=3D2>Regards,</FONT></SPAN></DIV>
+<DIV><SPAN class=3D521365200-14112001><FONT face=3DArial color=3D#0000ff =
+
+size=3D2>&nbsp;Paul Russell</FONT></SPAN></DIV>
+<BLOCKQUOTE>
+  <DIV class=3DOutlookMessageHeader dir=3Dltr align=3Dleft><FONT =
+face=3DTahoma=20
+  size=3D2>-----Original Message-----<BR><B>From:</B> =
+peeweelinux-admin@adis.on.ca=20
+  [mailto:peeweelinux-admin@adis.on.ca]<B>On Behalf Of =
+</B>helen<BR><B>Sent:</B>=20
+  Wednesday, 14 November 2001 11:36 AM<BR><B>To:</B>=20
+  peeweelinux@adis.on.ca<BR><B>Subject:</B> Re: [Peeweelinux] ftp=20
+  problem<BR><BR></FONT></DIV>
+  <P>I know inetd.conf, inetd.conf file show that ftpd is under the =
+directory of=20
+  /usr/sbin/,but why I couldn't find the ftpd.And how to startup =
+inetd,because I=20
+  couldn't find it when I use&nbsp; the comand :ps x.Only startup the =
+inetd and=20
+  enable ftpd and telnetd ,ftpd can work ? not to do others?</P>
+  <P>thanks.</P>
+  <P>
+  <HR SIZE=3D1>
+  <B>Do You Yahoo!?</B> 5GB<CB7Q<A=20
+  href=3D"http://mail.yahoo.com.cn/">QE;"5gSJ!</A><BR><A=20
+  =
+href=3D"http://cn.chat.yahoo.com/c/roomlist.html">QE;"H+PBADLlJR</A>#,HCD=
+cAD0!!"AD0!5D#,;9JGAD2;9;#!</BLOCKQUOTE></BODY></HTML>
+
+------=_NextPart_000_0047_01C16D03.B3494EE0--
+
+
+From peeweelinux@adis.on.ca  Wed Nov 14 01:29:35 2001
+From: peeweelinux@adis.on.ca (=?gb2312?q?helen?=)
+Date: Wed, 14 Nov 2001 09:29:35 +0800 (CST)
+Subject: [Peeweelinux] how to update busybox
+In-Reply-To: <Pine.LNX.4.33.0111130848250.17959-100000@adibox.knet.ca>
+Message-ID: <20011114012935.32427.qmail@web9009.mail.yahoo.com>
+
+--0-1131318473-1005701375=:31852
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+can someone tell me how to update busybox in peewee?my peewee is 0.61.0,busybox is 0.46,my reboot and halt couldn't work well in my embedded system.but I replaced it with my redhat system,It works well.so I think the busybox is too old.
+
+someone who have successful experience tell me how to do.
+
+thanks.
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1131318473-1005701375=:31852
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>can someone tell me how to update busybox in peewee?my peewee is 0.61.0,busybox is 0.46,my reboot and halt couldn't work well in my embedded system.but I replaced it with my redhat system,It works well.so I think the busybox is too old.</P>
+<P>someone who have successful experience tell me how to do.</P>
+<P>thanks.</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1131318473-1005701375=:31852--
+
+From peeweelinux@adis.on.ca  Mon Nov  5 08:02:59 2001
+From: peeweelinux@adis.on.ca (Vladimir Petrov)
+Date: Mon, 5 Nov 2001 09:02:59 +0100
+Subject: [Peeweelinux] how about read-write root on a single partition
+Message-ID: <714386B887D4D211952000805FB7FC2A01F2A7DC@ID-PDC>
+
+Hm... for me it seems your kernel has no module for ide-disk so it can't
+find any root partition. The one solution is to create initial ramdisk with
+ide-disk kernel module. On Linuxes like RH 7 you can make it after kernel
+compiling with command mkinitrd /boot/initrd-2.2.19.img 2.2.19 and add
+statement in lilo.conf under stanza for kernel image. That should be
+something like initrd=/boot/initrd-2.2.19.img. The other option is to create
+monolithic kernel with all neccessary drivers compiled in...
+
+
+
+-----Original Message-----
+From: helen [mailto:lostsun2001@yahoo.com.cn]
+Sent: 2. november 2001 06:21
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] how about read-write root on a single partition
+
+
+hello,
+   I select the
+"Target: Read-write root on a single partition-----"
+on the option of Configure Tartet Hardware.but,I
+reboot it ,is died when display:
+
+Partition check:
+request_module[ide-disk]:root fs not mounted
+hda:driver not present
+vfs:cannot open root device 03:01
+kernel panic:VFS:Unable to mount root fs on 03:01
+
+can someone tell me how to solve this problem??
+thanks.
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+From peeweelinux@adis.on.ca  Tue Nov 27 17:10:39 2001
+From: peeweelinux@adis.on.ca (Jan De Geeter)
+Date: Tue, 27 Nov 2001 18:10:39 +0100
+Subject: [Peeweelinux] [Q] telnet does not work...
+Message-ID: <1179FFD5B43CD4118D220050042A54142C5599@www.krypton.be>
+
+Dear all,
+
+I am trying to get telnet working on my PeeWeeLinux system.
+
+When attempting to telnet to the PeeWee system, I get the message
+"telnetd: All network ports in use"
+
+I found some pages on the web suggesting that I should create
+a ptyp0/ttyp0 device.
+Is this correct?
+
+I tried to create these devices in the mnt directory of my PeeWee project.
+However, these devices do not appear in de /dev directory of my target disk
+after "loading onto target disk" in the peewee config menu.
+
+What is going wrong?
+
+Than you for any suggestions.
+
+Jan De Geeter
+jan.degeeter@krypton.be
+
+From peeweelinux@adis.on.ca  Wed Nov 28 11:51:56 2001
+From: peeweelinux@adis.on.ca (David ROCHE)
+Date: Wed, 28 Nov 2001 12:51:56 +0100
+Subject: [Peeweelinux] Problem with initialisation of X Server on the last ISO PeeWeeLinux
+Message-ID: <001e01c17803$14bdc2a0$495d0b50@rds>
+
+C'est un message de format MIME en plusieurs parties.
+
+------=_NextPart_000_001B_01C1780B.762E3E40
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Hello,
+
+I'am trying to use the PeeWeeLinux on an embedded platform. I have =
+downloaded the ISO distribution and make a configuration with PWLCONFIG =
+for my target platform. All the boot and initialisation are OK and i can =
+login and enter the password. But when i tryied to start the W server =
+the next message appear:
+
+-------------------------------------------------------------------------=
+---------------------------------
+execve failed for /usr/X11R6/bin/X    (errno 2)
+_X11TransSocketUNIXConnect: can't connect: errno =3D 111
+giving up
+xinit: connection refused (errno 111): unable to connect to X server
+xinit: No such process (errno 3): server error
+-------------------------------------------------------------------------=
+---------------------------------
+
+I don't know what happened, and i would like to know why the X server =
+don't start.
+Are there missing some files, packages on my PWLCONFIG configuration ?
+Is it a reported bug ?
+
+Would you be so kind to help me on this problem because i would like to =
+use Xfree86. I would like to use a graphic interface to run an =
+application made with FLTK lib or QT lib.
+
+Best regards
+
+David ROCHE
+
+
+
+
+------=_NextPart_000_001B_01C1780B.762E3E40
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 5.50.4134.100" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#78a4e0>
+<DIV><FONT face=3DArial size=3D2>
+<DIV><FONT face=3DArial size=3D2>Hello,</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>I'am trying to use the PeeWeeLinux on =
+an embedded=20
+platform. I have downloaded the ISO distribution and make a =
+configuration with=20
+PWLCONFIG for my target platform. All the boot and initialisation are OK =
+and i=20
+can login and enter the password. But when i tryied to start the W =
+server the=20
+next message appear:</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial=20
+size=3D2>----------------------------------------------------------------=
+------------------------------------------</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>execve failed for=20
+/usr/X11R6/bin/X&nbsp;&nbsp;&nbsp; (errno 2)</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>_X11TransSocketUNIXConnect: can't =
+connect: errno =3D=20
+111</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>giving up</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>xinit: connection refused (errno 111): =
+unable to=20
+connect to X server</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>xinit: No such process (errno 3): =
+server=20
+error</FONT></DIV>
+<DIV><FONT face=3DArial=20
+size=3D2>----------------------------------------------------------------=
+------------------------------------------</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>I don't know what happened, and i would =
+like to=20
+know why the X server don't start.</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>Are there missing some files, packages =
+on my=20
+PWLCONFIG configuration ?</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>Is it a reported bug ?</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Would you be so kind to help me on this =
+problem=20
+because i would like to use Xfree86. I would like to use a graphic =
+interface to=20
+run an application made with FLTK lib or QT lib.</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Best regards</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>David ROCHE</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial =
+size=3D2></FONT>&nbsp;</DIV></FONT></DIV></BODY></HTML>
+
+------=_NextPart_000_001B_01C1780B.762E3E40--
+
+ 
+______________________________________________________________________________
+ifrance.com, l'email gratuit le plus complet de l'Internet !
+vos emails depuis un navigateur, en POP3, sur Minitel, sur le WAP...
+http://www.ifrance.com/_reloc/email.emailif
+
+
+
+From peeweelinux@adis.on.ca  Wed Nov 28 12:54:26 2001
+From: peeweelinux@adis.on.ca (Fernando Branquinho)
+Date: Wed, 28 Nov 2001 10:54:26 -0200
+Subject: [Peeweelinux] Starting with PeeweeLinux
+Message-ID: <NFBBLPOJALJICBPLHDMPGEAECAAA.branqs@ig.com.br>
+
+Hello Friends
+
+	My name is Fernando Branquinho, more knowed as Branqs, and i'll try to use
+the PeeWeeLinux in a new development. For me, this will be a real chalenge,
+mainly because i ever used Windows (at least after i left my TRS-80 and MSX
+plataforms. Yes, can call me, a "dinossaur"). Well, i thank you very much by
+any future help.
+
+	I would like starting, asking about my desires:
+
+	My goal is to run just a Java application in a PC, conected to a PLC. This
+PLC isn't much knowed out of Brazil (sorry, i forgot tell you  that i'm
+brazilian. So, sorry by my confused english).
+
+	My main doubts are:
+
+	- Its ok to work with a JRE in PeeWeeLinux ?
+	- Its possible, obtain a very fast boot ?
+
+	I thank you very much
+
+	Branqs
+
+
+From peeweelinux@adis.on.ca  Wed Nov 28 21:11:05 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 28 Nov 2001 15:11:05 -0600 (CST)
+Subject: [Peeweelinux] [Q] telnet does not work...
+In-Reply-To: <1179FFD5B43CD4118D220050042A54142C5599@www.krypton.be>
+Message-ID: <Pine.LNX.4.33.0111281510420.1015-100000@mobile.adis.on.ca>
+
+Hi,
+
+These device should be in your /dev directory automatically...
+
+Adi
+
+On Tue, 27 Nov 2001, Jan De Geeter wrote:
+
+> Dear all,
+>
+> I am trying to get telnet working on my PeeWeeLinux system.
+>
+> When attempting to telnet to the PeeWee system, I get the message
+> "telnetd: All network ports in use"
+>
+> I found some pages on the web suggesting that I should create
+> a ptyp0/ttyp0 device.
+> Is this correct?
+>
+> I tried to create these devices in the mnt directory of my PeeWee project.
+> However, these devices do not appear in de /dev directory of my target disk
+> after "loading onto target disk" in the peewee config menu.
+>
+> What is going wrong?
+>
+> Than you for any suggestions.
+>
+> Jan De Geeter
+> jan.degeeter@krypton.be
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Thu Nov 29 08:21:04 2001
+From: peeweelinux@adis.on.ca (Jan De Geeter)
+Date: Thu, 29 Nov 2001 09:21:04 +0100
+Subject: [Peeweelinux] [Q] telnet does not work...
+Message-ID: <1179FFD5B43CD4118D220050042A54142C55A0@www.krypton.be>
+
+Dear Adi, David,
+
+The ptyp0/ttyp0 was nog by default in my project. Maybe this is due to the
+guys that configured the project for me, I don't know. 
+
+Anyway, adding these devices with mknod did not work.
+However, adding them through the pwlconfig program did work!
+
+These missing devices were indeed the solution. Thank you all.
+
+Could you give me some insight why this does not work with mknod? What does
+pwlconfig do?
+
+Best regards,
+
+Jan.
+
+
+Jan De Geeter
+____________________________________
+
+  Krypton n.v. - Industrial Metrology
+
+  Research Park Z1
+  Interleuvenlaan 86
+  B-3001 Leuven
+  Belgium
+
+  Tel: +32 (0)16 / 400.410
+  Fax: +32 (0)16 / 400.386
+  http://www.krypton.be
+  email: jan.degeeter@krypton.be
+
+
+ Visit Krypton in 2001 at these exhibitions:
+
+  Euromold, Frankfurt: November 28 -> December 1
+ ______________________________________
+
+
+

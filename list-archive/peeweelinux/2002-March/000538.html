@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] software is for geeks; docs are for nerds
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000537.html">
+   <LINK REL="Next"  HREF="000539.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] software is for geeks; docs are for nerds
+   </H1>
+    <B>jim barchuk
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] software is for geeks; docs are for nerds">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 28 Mar 2002 05:12:48 -0500 (EST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000537.html">[Peeweelinux] hello and intro
+</A></li>
+        <LI> Next message: <A HREF="000539.html">[Peeweelinux] software is for geeks; docs are for nerds
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#538">[ date ]</a>
+              <a href="thread.html#538">[ thread ]</a>
+              <a href="subject.html#538">[ subject ]</a>
+              <a href="author.html#538">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All!
+
+Software is for geeks; docs are for nerds. But I think pwl is intricate
+enough to need some. The help screens are -very- useful, thank you.
+Obviously the docs are totally outdated. Personally I think it'd be better
+to simply remove -all- of them, READMEs too, rather than confuse simple
+minded people like myself with misleading information. :) I've downloaded
+and read the full list archives with lots of great background info but
+nothing related to my particular problem.
+
+I get the impression that pwl used to be more difficult to use. The
+purpose of the menued install system is to reduce the difficulty. With a
+little practice it really does go very smoothly. The drawback is that it
+also insulates the user from the guts of what's going on and doesn't give
+a lot of feedback.
+
+Downloaded the binary distribution. With each run I completely delete and
+reuntar the Embedded_Build tree to make sure I'm starting from the same
+known point each time. (That's easy with a P4/1.4G but would *NOT* have
+been fun with my previous PPRO/200. LOL!)
+
+Here's a blow by blow description of exactly what I do. I'm giving
+excruciating detail to make sure I'm not pushing a wrong button. Most
+likely it's some simple misunderstanding on my part, and without real docs
+it's hard to figure out.
+
+=======
+
+./pwlconfig
+minimal.tgs - Exit
+No packages found. Extract? Yes Extracting...
+
+Didn't select either Create Custom Kernel or Configure Project File System
+because this is a plain vanilla minimal 'trial run' install.
+
+Extract File System ./projects/minimal/mnt - A few errors:
+
+tar: boot: Cannot mkdir: File exists
+tar: dev: Cannot mkdir: File exists
+tar: usr/bin: Cannot mkdir: File exists
+tar: Error exit delayed from previous errors
+
+None of these bother me much, the subdirs are there. Exit
+
+Configure Target Hardware - Convert configuration file from 0.53.10 to
+0.61.1? Yes. (Selecting No refuses to proceed further.) Configuration
+Reset - OK
+
+Projects Default Menu - Changed target device to fd0 - Exit - It's
+*really* scary to think that if I didn't pay attention to that it'd have
+wiped my system. :(
+
+Load File System onto Target /dev/fd0 - Yes - Succeeded
+
+Question at this point: '2772+0 records out - 70.3%.' Does that mean that
+I have .5M free on the floppy for other apps/options?
+
+Hit 'Save configuration' to keep that fd0 target. Exit.
+
+I *think* everything went correctly because du -s
+~/Embedded_Build/projects/minimal/mnt returns 2860 and that tree is chock
+full of files.
+
+Pop the floppy into target box. Boot looks normal, 'welcome to peewee.'
+Yay!
+
+Login as root/redhat.
+
+ls -l returns 'total 0'.
+
+=======
+
+At -that- point I am obviously dead in the water. I have a booted linux
+box with no 'file system,' directory tree, executables.
+
+I know that if I can just get past this one tiny problem pwl will be a
+tremendously useful tool.
+
+TIA and have a :) day!
+
+jb
+
+-- 
+jim barchuk
+<A HREF="mailto:jb@jbarchuk.com">jb@jbarchuk.com</A>
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000537.html">[Peeweelinux] hello and intro
+</A></li>
+	<LI> Next message: <A HREF="000539.html">[Peeweelinux] software is for geeks; docs are for nerds
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#538">[ date ]</a>
+              <a href="thread.html#538">[ thread ]</a>
+              <a href="subject.html#538">[ subject ]</a>
+              <a href="author.html#538">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

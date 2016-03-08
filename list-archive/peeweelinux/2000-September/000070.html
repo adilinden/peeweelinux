@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> CDROM Installation?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000069.html">
+   <LINK REL="Next"  HREF="000071.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>CDROM Installation?
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="CDROM Installation?">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 5 Sep 2000 20:38:00 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000069.html">CDROM Installation?
+</A></li>
+        <LI> Next message: <A HREF="000071.html">CDROM Installation?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> So I don't waste my time downloading the entire PeeWeeLinux distribution I
+</I>&gt;<i> was wondering if there is a way to create a bootable PeeWeeLinux from a
+</I>&gt;<i> CDROM?  I'm assuming that this could be done by making the install and
+</I>&gt;<i> &quot;Read-Only Root File System&quot; type of installation.  If I am correct it
+</I>&gt;<i> would then place /var, /etc, /usr and /home in ramdisks.
+</I>
+Yes and no. A CDROM embedded system is planned for the future. There are 2
+possible ways of doing this:
+
+1. Load the entire filesystem from the CD into a ramdisk
+2. Load the kernel and some ramdisks mount a read-only root on CD
+
+Option 1 would be fine for a small system that just won't fit onto a
+floppy.
+
+Option 2 would be almost limitless. In fact a quite complete Linux system
+can be run that way (done that a while back).
+
+The current read-only root installation doesn't do the trick. It
+partitions the target drive which is useless for a CD. Right now the
+arrangement is as follows:
+
+/               --&gt; read-only on target drive
+/dev &amp; /var     --&gt; compressed ramdisk loaded from /boot
+/etc            --&gt; compressed ramdisk loaded from /boot
+/home &amp; /root   --&gt; partition copied into ram
+
+A note to the above, /var is a symlink to /dev/var and /root is a symlink
+to /home/root and /tmp is a symlink to /dev/var/tmp.
+
+This could be modified to have a partition for /etc instead of a ramdisk.
+This might make runtime configuration easier. But as you can see the /usr
+partition is part of the read-only / partition just as /bin, /sbin, /lib
+and all the other directories.
+
+A CD-ROM system doesn't have the option of saving anything back to the
+boot media. So all the ramdisk stuff including /home could be loaded from
+compressed ramdisks on the root filesystem. Doing this kind of thing
+wouldn't be too hard that's why I planned on doing it sometime soon.
+
+I think /home and /root should be ramdisks for sure, except they could be
+made really small if nothing really gets written to it ever. Some
+applications like netscape complain if they don't find a writeable home
+for the user.
+
+Off hand I don't think the kernels currently included have iso9660 support
+which would be rather essential for a CD-ROM system. Maybe the basic
+kernel does as it was meant for rescue disks and such.
+
+So for the short answer, PeeWeeLinux 0.51 doesn't have CD-ROM support out
+of the box.
+
+Hope this helps.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000069.html">CDROM Installation?
+</A></li>
+	<LI> Next message: <A HREF="000071.html">CDROM Installation?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

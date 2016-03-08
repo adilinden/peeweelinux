@@ -1,0 +1,95 @@
+From peeweelinux-devel@adis.on.ca  Wed Mar 17 08:35:19 2004
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Wed, 17 Mar 2004 16:35:19 +0800 (CST)
+Subject: [Peeweelinux-devel] why I Couldn't connnect to the home page of www.peeweelinux.com
+Message-ID: <20040317083519.36077.qmail@web15404.mail.cnb.yahoo.com>
+
+--0-680660536-1079512519=:35344
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+hi,
+  why my pc couldn't connect to the home page www.peeweelinux.com.
+  Can someone tellme ? 
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+
+---------------------------------
+Do You Yahoo!?
+完全免费的雅虎电邮，马上注册获赠额外60兆网络存储空间
+--0-680660536-1079512519=:35344
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<DIV>hi,</DIV>
+<DIV>&nbsp; why&nbsp;my pc&nbsp;couldn't connect to the home page&nbsp;<A href="http://www.peeweelinux.com">www.peeweelinux.com</A>.</DIV>
+<DIV>&nbsp;&nbsp;Can someone tellme ?&nbsp;</DIV><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><br><hr size=1><b>Do You Yahoo!?</b><br>
+<a href="http://cn.rd.yahoo.com/mail_cn/tag/?http://cn.mail.yahoo.com" target=blank>完全免费的雅虎电邮，马上注册获赠额外60兆网络存储空间</a>
+--0-680660536-1079512519=:35344--
+
+From peeweelinux-devel@adis.on.ca  Wed Mar 17 08:42:03 2004
+From: peeweelinux-devel@adis.on.ca (peeweelinux-devel@adis.on.ca)
+Date: Wed, 17 Mar 2004 08:42:03 +0000
+Subject: Autoreply: [Peeweelinux-devel] why I Couldn't connnect to the home page
+ of www.peeweelinux.com
+Message-ID: <B0040159425@ni-mail3.dna.utvinternet.net>
+
+Osprey Env. Ltd has changed its name to Acksen Ltd. Our email addresses have changed:-
+ 
+Personal email addresses are now forename.surname@acksen.com. 
+General email addresses such as 'info' and 'marketing' are changed to '@acksen.com' also!
+ 
+Please resend your email with the corrected address!
+ 
+www.acksen.com is our new domain name.
+
+
+
+From peeweelinux-devel@adis.on.ca  Wed Mar 17 15:25:38 2004
+From: peeweelinux-devel@adis.on.ca (Ray Olszewski)
+Date: Wed, 17 Mar 2004 07:25:38 -0800
+Subject: [Peeweelinux-devel] why I Couldn't connnect to the home
+ page of www.peeweelinux.com
+In-Reply-To: <20040317083519.36077.qmail@web15404.mail.cnb.yahoo.com>
+Message-ID: <5.1.0.14.1.20040317072027.01f19b90@celine>
+
+At 04:35 PM 3/17/2004 +0800, =?gb2312?q?helen?= wrote:
+>hi,
+>   why my pc couldn't connect to the home page 
+> <http://www.peeweelinux.com>www.peeweelinux.com.
+>   Can someone tellme ?
+
+No. That is, I can tell you that the URL (to be exact, 
+http://www.peeweelinux.com/) still responds with a home page when I connect 
+to it from here (a location in the USA). So whatever problem you 
+encountered is either at your end or somewhere between you and the 
+peeweelinux site.
+
+
+
+
+From peeweelinux-devel@adis.on.ca  Wed Mar 17 15:28:13 2004
+From: peeweelinux-devel@adis.on.ca (peeweelinux-devel@adis.on.ca)
+Date: Wed, 17 Mar 2004 15:28:13 +0000
+Subject: Autoreply: Re: [Peeweelinux-devel] why I Couldn't connnect to the home
+ page of www.peeweelinux.com
+Message-ID: <B0041762076@ni-mail2.dna.utvinternet.net>
+
+Osprey Env. Ltd has changed its name to Acksen Ltd. Our email addresses have changed:-
+ 
+Personal email addresses are now forename.surname@acksen.com. 
+General email addresses such as 'info' and 'marketing' are changed to '@acksen.com' also!
+ 
+Please resend your email with the corrected address!
+ 
+www.acksen.com is our new domain name.
+
+
+

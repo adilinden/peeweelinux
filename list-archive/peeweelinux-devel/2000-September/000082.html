@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> libpthreads OK!
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000081.html">
+   <LINK REL="Next"  HREF="000083.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>libpthreads OK!
+   </H1>
+    <B>Richard Jennings
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="libpthreads OK!">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Fri, 15 Sep 2000 17:22:48 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000081.html">libpthreads OK!
+</A></li>
+        <LI> Next message: <A HREF="000083.html">libpthreads OK!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#82">[ date ]</a>
+              <a href="thread.html#82">[ thread ]</a>
+              <a href="subject.html#82">[ subject ]</a>
+              <a href="author.html#82">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i>BTW, There is nothing keeping pwlconfig from working with any other
+</I>&gt;<i>distribution (if its rpmd nicely ).  If you find someone to rpm RTLinux, LEM,
+</I>&gt;<i>LRP or whatever, then you could select a base configuration from one of
+</I>&gt;<i>those...In fact the main file configuration menu could just be a list of
+</I>&gt;<i>distributions (yet another feature - oops).
+</I>
+
+I'll have to see if I can find a RPM of RTLinux or RTAI.  Adding a 
+real time version of Linux to PeeWeeLinux would be a plus.
+&gt;<i>
+</I>&gt;&gt;<i>Do you need a hand with the
+</I>&gt;&gt;<i>  documentation or anything? I don't have much spare time but I could
+</I>&gt;&gt;<i>  expand on the docs that you have as I'm learning.
+</I>&gt;&gt;<i>
+</I>&gt;<i>Wow - that would be great. The pending changes for ramdisk support should be
+</I>&gt;<i>incorporated before you get started...release planned real soon now :)
+</I>
+
+Should I start with the posted docs or do you have something in the 
+works already?
+&gt;<i>
+</I>&gt;&gt;<i>  We're going to try to show people how easy it is to build an embedded
+</I>&gt;&gt;<i>  system using LabVIEW, Linux and VMware.  We plan on shipping one or
+</I>&gt;&gt;<i>  more embedded systems with the book as VMware virtual machines that
+</I>&gt;&gt;<i>  people can boot up and play with on their own computer. No extra
+</I>&gt;&gt;<i>  hardware required! Then we'll point them to www.peeweelinux.com.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  What do you think?
+</I>&gt;&gt;<i>
+</I>&gt;<i>I've never tried vmware - I saw it demo'ed at Linux World Expo and it looked
+</I>&gt;<i>great -  but I don't have anything faster than 400MHz/128Mb Ram.
+</I>&gt;<i>Actually using it with Linux should be a big help.
+</I>
+I'm using a 400 MHz. AMD K2. It's pretty cool for trying out 
+different distributions and configurations.
+
+&gt;<i>
+</I>&gt;<i>However, after the demo, people are going to want to port it to some box
+</I>&gt;<i>somewhere - it would be neat to have some recommended motherboards (and
+</I>&gt;<i>associated drivers) for &quot;instant embedding&quot;.  These would be simple, 
+</I>&gt;<i>small (20K
+</I>&gt;<i>or so) pwlconfig project files. Of course, thats a lot more work too...but I
+</I>&gt;<i>wouldn't claim to be &quot;embedded&quot; without gett'n in the hardware at some point.
+</I>
+I agree, it's not really embedded until you put it on some hardware 
+but I don't have any particular hardware vendor to work with so I 
+thought I would try to write the book without depending on a vendor. 
+VMware gives us a virtual machine that (hopefully) is going to act 
+the same no matter what the underlying hardware (plus it works on 
+NT/2000 so people without Linux can still see what is happening). 
+Then we can concentrate on showing people how to use Linux to build 
+an embedded system and not on trying to make it work on their 
+particular model of PC or embedded board.
+
+When you build a new &quot;machine&quot; with VMware you still have to format 
+the disk and make a file system. You still have to xfer your OS to 
+the hard drive, install lilo and all those other things. That's what 
+I plan on showing people.  We'll include one or two working systems 
+to show how they work, hopefully one standard linux and one 
+real-time. People can use vmmount to mount the embedded system at a 
+mount point on their drive and then we'll show them how it works and 
+what config files control what things. Then we'll walk them through 
+placing their own  program on a virtual machine that they build 
+themselves. Hopefully by the time they are done the light will have 
+come on and they will be ready to build their own embedded system 
+with Linux.
+
+That's the plan in a nutshell. I wasn't too sure how I was going to 
+come up with a current embedded system that I could ship with the 
+book. The system that I did last year is getting stale and I wanted 
+something that people could use without too much trouble. None of the 
+distributions that I had seen on the net worked with LabVIEW when I 
+tried them. That's why I asked Ralph to give my LabVIEW application a 
+try on his machine. I was really happy, Ralph, when you let me know 
+that it had worked with just the addition of one library. God does 
+answer prayers!
+
+Some of the things I'm having trouble with right now are:
+
+setting the path at boot up so all users have X. I can't seem to get 
+this to work. Does every user have to a .profile script with a PATH 
+statement?
+
+Logging in automatically: I've tried &quot;login USER&quot; and &quot;su USER -c 
+'path to file'&quot; but neither one of those works. The login command 
+works in my SuSE derived system but not under PWL.
+
+Well, back to work. Any tips you have for me are appreciated.
+
+Richard
+
+
+
+
+
+-- 
+Richard Jennings
+1426 Aster Lane
+Livermore, CA 94550
+USA
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000081.html">libpthreads OK!
+</A></li>
+	<LI> Next message: <A HREF="000083.html">libpthreads OK!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#82">[ date ]</a>
+              <a href="thread.html#82">[ thread ]</a>
+              <a href="subject.html#82">[ subject ]</a>
+              <a href="author.html#82">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

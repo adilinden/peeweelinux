@@ -1,0 +1,213 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Greetings--may I be of service?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000059.html">
+   <LINK REL="Next"  HREF="000061.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Greetings--may I be of service?
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Greetings--may I be of service?">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 8 Mar 2000 13:10:54 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000059.html">Greetings--may I be of service?
+</A></li>
+        <LI> Next message: <A HREF="000061.html">Greetings--may I be of service?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#60">[ date ]</a>
+              <a href="thread.html#60">[ thread ]</a>
+              <a href="subject.html#60">[ subject ]</a>
+              <a href="author.html#60">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Dennis,
+
+I hope we have something here you can use. Like you, I think both Adi
+and I want to build on the &quot;latest&quot; RH distribution, but finding nothing
+available we ended up doing it ourselves.
+
+We are currently trying to get the system up with X windows. Adi is
+doing all the library and binary compiling and configuring (all the
+in-depth technical stuff).  I am developing the pwlconfig program 
+as a means 1) to stop the never ending studying of How-Tos and
+2) because nobody else has done it.  I started reading all the 
+How-Tos and then would have to go back and re-read them...never 
+being good at following the instructions, I could never get anything
+to work twice in a row :-o
+
+I am configuring and booting from Disk-On-Chip (Msystems) Disk-On-Module
+(PQI) and Compact flash cards (IDE to CF adaptor from PC-Engines).
+This will also work from any partition on any mounted hard drive.
+We haven't done the Floppy or CD-ROM boot image yet.
+
+The next big ToDo is a read-only partition and/or ramdisk boot...
+
+Note: the freeBIOS group is currently working to install LILO in
+ROM and maybe even the kernel in rom.  I recommend checking with them
+to figure out where they are ...
+
+More...
+
+--- &quot;Dennis W. Tokarski&quot; &lt;<A HREF="mailto:dwt@PolTec.COM">dwt@PolTec.COM</A>&gt; wrote:
+&gt;<i> Hi Adi, Hi Ralph.
+</I>&gt;<i> 
+</I>&gt;<i> My name is Dennis Tokarski. I run a little one-man consulting shop in
+</I>&gt;<i> Ann Arbor, Michigan, USA. Mostly my work is software development for
+</I>&gt;<i> real time and embedded systems, much of that driver writing, and almost
+</I>&gt;<i> all of it for QNX (at least for the past 6 years or so).
+</I>&gt;<i>
+</I>
+As a little background: I spent a year or so working with QNX - it 
+seems a bit cleaner than the Linux stuff, probably because it all came 
+from the same shop, but the costs are way too high for the project I'm 
+working on now.  You can see our &quot;thin client&quot; at:
+http:/www.datalux.com/ipix
+
+ 
+&gt;<i> However, I am finding Linux a compelling alternative for some
+</I>&gt;<i> applications. The learning curve has been a bit steep, and have found
+</I>&gt;<i> Beck &amp; Co's book &quot;Linux Kernel Internals&quot; very helpful. I am now
+</I>&gt;<i> part way through Rubini's very excellent &quot;Linux Device Drivers&quot;.
+</I>&gt;<i> 
+</I>&gt;<i> Recently a client approached me about putting together a small footprint
+</I>&gt;<i> Linux package for use in their embedded product. The hardware isn't
+</I>&gt;<i> really constrained (Pentium/133 at least, 64MB RAM, all the usual PC
+</I>&gt;<i> desktop facilities like SVGA, etc), but they do have a peculiar
+</I>&gt;<i> requirement in they aren't allowed to use a hard drive, or any kind
+</I>&gt;<i> of alterable media for program storage.
+</I>&gt;<i> 
+</I>
+Is a write protected flash drive sufficient ? This would make development
+a lot easier.  Maybe start here, get it working then migrate to a ROM...
+Do you have the Source for your BIOS ? (BTW, General Software BIOS is 
+fairly cheap if you have any development budget...FreeBIOS isn't quite
+there yet)
+
+Several commerical &quot;Thin Clients&quot; are being sold with write protected
+M-Systems devices.  With the proper tools from the server, they can
+be in-field upgraded by application, services or kernel.  Maybe a
+CD-ROM boot would work if you have the hardware, but the upgrade
+is more on-site than most would like for large numbers of installed
+units.
+
+&gt;<i> In a previous incarnation of this project, we've booted QNX4 from ROM,
+</I>&gt;<i> with all the ancillary applications loaded from a ROM disk. I'd like to
+</I>&gt;<i> work my way toward a similar capability using Linux.
+</I>&gt;<i> 
+</I>&gt;<i> PeeWeeLinux seems to be the best starting point. I've spent a couple of
+</I>&gt;<i> days looking for small-footprint distributions. There are lots out
+</I>&gt;<i> there, but as Ralph noted in a January 26 post about YASL, some have
+</I>&gt;<i> just sort of faded away. I didn't find anyone else using the 2.2 kernel,
+</I>&gt;<i> it's all 2.0 as far as I could tell. Nor does anyone appear to have
+</I>&gt;<i> their project as cleanly organized as yours, or set up to use as current
+</I>&gt;<i> a development platform as current as RH 6.1, which is what I'm running
+</I>&gt;<i> in my office. By the way, while I've downloaded your latest (0.20) I've
+</I>&gt;<i> not taken it for a test drive. I expect to have that pleasure later
+</I>&gt;<i> today or tomorrow.
+</I>&gt;<i> 
+</I>&gt;<i> The one common thread amongst all the small Linices seems to be that
+</I>&gt;<i> they boot from floppy, or more rarely as in your case, Disk On Chip.
+</I>&gt;<i> I've used the DOC parts before with QNX. They're OK, but in my current
+</I>&gt;<i> project the fact that they behave like writeable disks is a problem.
+</I>&gt;<i> 
+</I>&gt;<i> Adi, I think you mentioned in a readme file somewhere something about
+</I>&gt;<i> writing an open source file system driver. Have you done anything with
+</I>&gt;<i> that idea yet?
+</I>&gt;<i> 
+</I>&gt;<i> If not, perhaps this is where I can make a contribution in the near
+</I>&gt;<i> future. I was thinking of using the existing dos/fat file system as a
+</I>&gt;<i> starting point, then seeing what I could carve out and otherwise modify
+</I>&gt;<i> to suit my customer's requirements. The result would have to be
+</I>&gt;<i> suitable for use with a disk image on ROM (hopefully using compression
+</I>&gt;<i> to save space), and could probably be used with battery backed SRAM
+</I>&gt;<i> (which we also have on our hardware).
+</I>&gt;<i> 
+</I>&gt;<i> The other thing I'm looking to do is solve the boot-from-ROM problem.
+</I>&gt;<i> Nobody has done this so far as I can tell. My current thought is to
+</I>&gt;<i> locate a modified version of lilo in one of our user bios ROMs. It would
+</I>&gt;<i> have hard-wired knowledge of a ROM address where it would find an
+</I>&gt;<i> essentially conventional Linux boot image which it would relocate to low
+</I>&gt;<i> RAM and start up. After that it would be business as usual. This is
+</I>&gt;<i> basically what we did with QNX, so the idea is at least workable.
+</I>&gt;<i> Ultimately what we'd like to achieve is an execute-from-ROM ability, but
+</I>&gt;<i> I'm most definitely not knowledgeable enough about Lines yet to tackle
+</I>&gt;<i> that one.
+</I>&gt;<i> 
+</I>&gt;<i> So, do think these sorts of things would be useful additions to your
+</I>&gt;<i> project? Of course, any advice and moral support you can provide while I
+</I>&gt;<i> do the dog work will be greatly appreciated.
+</I>&gt;<i> 
+</I>I think PWL will be a nice starting point. Just using this in a different
+environment and testing the stuff that is currently installed will be a big
+help.  Our ultimate goal is to have available Pee Wee Linux projects&quot; for a
+router, print server, thin client and whatever...you didn't mention the end
+product, but if they let you GPL everything, any projects you create would be a
+welcome addition (Note, a project is simply a list of tar files (packages) and
+lists of files within the tar files to include in the final file system - any
+custom code or drivers could easily be excluded)
+
+&gt;<i> You've put together a nice package. I look forward to using it and
+</I>&gt;<i> giving something back.
+</I>&gt;<i>
+</I>
+Thanks, let us know of any problems you find.  The latest code for pwlconfig is
+not fully installed in the CVS tree, but the download has a reasonably updated
+version. I'll try to get another version posted as soon as I &quot;just a few more
+features&quot; working (actually Adi does the web page updating :-). 
+ 
+Good luck,
+Ralph
+ 
+&gt;<i>    Regards,
+</I>&gt;<i> 
+</I>&gt;<i>    Dennis Tokarski
+</I>&gt;<i>    PolTec Electronics
+</I>&gt;<i>    921 S. Seventh St.
+</I>&gt;<i>    Ann Arbor, MI  48103
+</I>&gt;<i>    (734) 994-0212
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> 
+</I>__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000059.html">Greetings--may I be of service?
+</A></li>
+	<LI> Next message: <A HREF="000061.html">Greetings--may I be of service?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#60">[ date ]</a>
+              <a href="thread.html#60">[ thread ]</a>
+              <a href="subject.html#60">[ subject ]</a>
+              <a href="author.html#60">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

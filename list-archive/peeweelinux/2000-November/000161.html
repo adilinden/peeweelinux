@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> experiences with PWL0.53.10 (some problems?)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000160.html">
+   <LINK REL="Next"  HREF="000162.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>experiences with PWL0.53.10 (some problems?)
+   </H1>
+    <B>Dean Brown
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="experiences with PWL0.53.10 (some problems?)">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 10 Nov 2000 13:24:26 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000160.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+        <LI> Next message: <A HREF="000162.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#161">[ date ]</a>
+              <a href="thread.html#161">[ thread ]</a>
+              <a href="subject.html#161">[ subject ]</a>
+              <a href="author.html#161">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adi Linden wrote:
+&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> I have some answers...
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I am experiencing the following with PWL0.53.10:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; a) when I tried to extract a file system to a CompactFlash IDE target
+</I>&gt;<i> &gt; device (/dev/hdc) from pwlconfig, I always get the following:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &quot;testing that nothing is mounted on mount directory&quot; ...failed
+</I>
+This happens to me if the device is mounted prior to loading the
+filesystem onto the CF device. Do a umount /dev/hdc first and the
+problem should go away.
+ 
+&gt;<i> Seeing that rd_dialog works, the actual script that loads the filesystem
+</I>&gt;<i> is alright. What do you see when you go to
+</I>&gt;<i> 
+</I>&gt;<i>     Configure Target Hardware --&gt;
+</I>&gt;<i> 
+</I>&gt;<i> Did pwlconfig ask you to create a new configuration file (it should have)
+</I>&gt;<i> when you tried to load your target? All I can think of is that the path to
+</I>&gt;<i> the temporary mount directory is not correct. It should say something
+</I>&gt;<i> like:
+</I>&gt;<i> 
+</I>&gt;<i>     Device Mount Point: &quot;./mnt&quot;
+</I>&gt;<i> 
+</I>&gt;<i> &gt; b) On another note, the minimal configuration example that comes with
+</I>&gt;<i> &gt; PWL0.53.10 tries to extract, as kernel,
+</I>&gt;<i> &gt; ./packages/Kernel/kernel-basic-2.2.17.list, which does not exist (at
+</I>&gt;<i> &gt; least not in the distro I have). Hence,, the system generated does not
+</I>&gt;<i> &gt; have a kernel. Furthermore, I have noticed that even If you select
+</I>&gt;<i> &gt; another kernel, project.conf always includes
+</I>&gt;<i> &gt; ./packages/Kernel/kernel-basic-2.2.17.list, hence the error is also
+</I>&gt;<i> &gt; generated, despite your selected kernel included okay (that happens
+</I>&gt;<i> &gt; whenever your project is based on &quot;minimal&quot;. If you start your new
+</I>&gt;<i> &gt; project from the scratch, it does not happen).
+</I>&gt;<i> 
+</I>&gt;<i> Did you upgrade to 0.53.10 by downloading the peeweelinux-*-cfg.tar.gz
+</I>&gt;<i> package or did you download the complete bin or src archive?
+</I>
+I've just recently seen that same error and I haven't tried the example
+configurations. I have however just re-installed the original 0.53 then
+0.53-8 and then 0.53-10.
+
+Another minor annoyance that I've noticed is that if a 'load target'
+fails, any subsequent attempt within the same pwlconfig session will
+also report a failure, even if the load succeeded. This appears to be a
+case of the failure flag not being cleared in the beginning of the load
+script.
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000160.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+	<LI> Next message: <A HREF="000162.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#161">[ date ]</a>
+              <a href="thread.html#161">[ thread ]</a>
+              <a href="subject.html#161">[ subject ]</a>
+              <a href="author.html#161">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

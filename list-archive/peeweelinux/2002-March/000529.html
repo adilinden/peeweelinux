@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] network
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000525.html">
+   <LINK REL="Next"  HREF="000527.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] network
+   </H1>
+    <B>Ricardo Trindade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] network">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 21 Mar 2002 17:05:36 -0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000525.html">[Peeweelinux] network
+</A></li>
+        <LI> Next message: <A HREF="000527.html">[Peeweelinux] network
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#529">[ date ]</a>
+              <a href="thread.html#529">[ thread ]</a>
+              <a href="subject.html#529">[ subject ]</a>
+              <a href="author.html#529">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>can't use that one, it's for industrial automation, and the boxes must be
+completely autonomous.
+
+thanks anyway!
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Dean Brown
+Sent: quinta-feira, 21 de Março de 2002 16:50
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Cc: Dean Brown
+Subject: RE: [Peeweelinux] network
+
+
+You could configure networking to use DHCP to assign an address and make a
+DHCP server available on the network. This way the systems are all identical
+and the addresses are assigned by an external system.
+
+Dean Brown
+
+&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;<i> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Ricardo Trindade
+</I>&gt;<i> Sent: Thursday, March 21, 2002 8:42 AM
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: RE: [Peeweelinux] network
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> thank for your answer, but that wasn't what I meant.
+</I>&gt;<i>
+</I>&gt;<i> I know how to configure it for one client, I was just wondering if peewee
+</I>&gt;<i> had some feature to allow me to manage the distinct configuration files of
+</I>&gt;<i> several computer that are otherwise identical
+</I>&gt;<i>
+</I>&gt;<i> thanks!
+</I>&gt;<i>
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;<i> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Mark Meade
+</I>&gt;<i> Sent: quinta-feira, 21 de Março de 2002 15:24
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: [Peeweelinux] network
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Ricardo Trindade wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; I have to setup several embedded computers. The only difference between
+</I>&gt;<i> &gt; them is the IP address. How would one go about doing this in peewee ?
+</I>&gt;<i>
+</I>&gt;<i> Hi Ricardo,
+</I>&gt;<i>
+</I>&gt;<i> Since Peewee is based on Redhat 6.2, I believe the IP address is set in a
+</I>&gt;<i> file called
+</I>&gt;<i> &quot;/etc/config/ifcfg-eth0&quot;.  A typical file might look like this:
+</I>&gt;<i>
+</I>&gt;<i> DEVICE=eth0
+</I>&gt;<i> IPADDR=192.168.1.1
+</I>&gt;<i> NETMASK=255.255.255.0
+</I>&gt;<i> NETWORK=192.168.1.0
+</I>&gt;<i> BROADCAST=192.168.1.255
+</I>&gt;<i> GATEWAY=192.168.1.254
+</I>&gt;<i>
+</I>&gt;<i> This file may be selected under the &quot;networkscripts&quot; package.  If the
+</I>&gt;<i> default settings
+</I>&gt;<i> aren't exactly what you need, you could create and include a custom file.
+</I>&gt;<i>
+</I>&gt;<i> Hope this helps,
+</I>&gt;<i>
+</I>&gt;<i> Mark
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000525.html">[Peeweelinux] network
+</A></li>
+	<LI> Next message: <A HREF="000527.html">[Peeweelinux] network
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#529">[ date ]</a>
+              <a href="thread.html#529">[ thread ]</a>
+              <a href="subject.html#529">[ subject ]</a>
+              <a href="author.html#529">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

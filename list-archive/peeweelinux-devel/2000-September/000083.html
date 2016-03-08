@@ -1,0 +1,211 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> libpthreads OK!
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000082.html">
+   <LINK REL="Next"  HREF="000084.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>libpthreads OK!
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="libpthreads OK!">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Tue, 19 Sep 2000 07:40:07 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000082.html">libpthreads OK!
+</A></li>
+        <LI> Next message: <A HREF="000084.html">libpthreads OK!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Richard,
+
+--- Richard Jennings &lt;<A HREF="mailto:rjennings@home.com">rjennings@home.com</A>&gt; wrote:
+&gt;<i> &gt;
+</I>&gt;<i> &gt;BTW, There is nothing keeping pwlconfig from working with any other
+</I>&gt;<i> &gt;distribution (if its rpmd nicely ).  If you find someone to rpm RTLinux,
+</I>&gt;<i> LEM,
+</I>&gt;<i> &gt;LRP or whatever, then you could select a base configuration from one of
+</I>&gt;<i> &gt;those...In fact the main file configuration menu could just be a list of
+</I>&gt;<i> &gt;distributions (yet another feature - oops).
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> I'll have to see if I can find a RPM of RTLinux or RTAI.  Adding a 
+</I>&gt;<i> real time version of Linux to PeeWeeLinux would be a plus.
+</I>
+I don't know if all the programs have to be re-compiled, I suspect that you can
+get &quot;real time&quot; just by changing the kernel...Of course, I think every kernel
+should be a real time kernel - if you need it, great, if not then you still
+have it! (I used QNX before I started working with Linux :)
+
+
+&gt;<i> 
+</I>&gt;<i> Should I start with the posted docs or do you have something in the 
+</I>&gt;<i> works already?
+</I>
+Haven't gone back to do the docs... still trying to figure out what we should
+be doing/showing to the user...
+
+&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt;  We're going to try to show people how easy it is to build an embedded
+</I>&gt;<i> &gt;&gt;  system using LabVIEW, Linux and VMware.  We plan on shipping one or
+</I>&gt;<i> &gt;&gt;  more embedded systems with the book as VMware virtual machines that
+</I>&gt;<i> &gt;&gt;  people can boot up and play with on their own computer. No extra
+</I>&gt;<i> &gt;&gt;  hardware required! Then we'll point them to www.peeweelinux.com.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;  What do you think?
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;I've never tried vmware - I saw it demo'ed at Linux World Expo and it looked
+</I>&gt;<i> &gt;great -  but I don't have anything faster than 400MHz/128Mb Ram.
+</I>&gt;<i> &gt;Actually using it with Linux should be a big help.
+</I>&gt;<i> 
+</I>&gt;<i> I'm using a 400 MHz. AMD K2. It's pretty cool for trying out 
+</I>&gt;<i> different distributions and configurations.
+</I>&gt;<i> 
+</I>Wow...didn't know it would run on a lowly 400 MHz...I'll have to try that (or
+maybe I'll wait for the book !)
+
+&gt;<i> &gt;
+</I>&gt;<i> &gt;However, after the demo, people are going to want to port it to some box
+</I>&gt;<i> &gt;somewhere - it would be neat to have some recommended motherboards (and
+</I>&gt;<i> &gt;associated drivers) for &quot;instant embedding&quot;.  These would be simple, 
+</I>&gt;<i> &gt;small (20K
+</I>&gt;<i> &gt;or so) pwlconfig project files. Of course, thats a lot more work too...but I
+</I>&gt;<i> &gt;wouldn't claim to be &quot;embedded&quot; without gett'n in the hardware at some
+</I>&gt;<i> point.
+</I>&gt;<i> 
+</I>&gt;<i> I agree, it's not really embedded until you put it on some hardware 
+</I>&gt;<i> but I don't have any particular hardware vendor to work with so I 
+</I>&gt;<i> thought I would try to write the book without depending on a vendor. 
+</I>&gt;<i> VMware gives us a virtual machine that (hopefully) is going to act 
+</I>&gt;<i> the same no matter what the underlying hardware (plus it works on 
+</I>&gt;<i> NT/2000 so people without Linux can still see what is happening). 
+</I>&gt;<i> Then we can concentrate on showing people how to use Linux to build 
+</I>&gt;<i> an embedded system and not on trying to make it work on their 
+</I>&gt;<i> particular model of PC or embedded board.
+</I>&gt;<i> 
+</I>Great idea...Now I see where the vmware fits..cool.
+Are you tracking the free version ?
+<A HREF="http://www.freemware.org">http://www.freemware.org</A>
+
+&gt;<i> When you build a new &quot;machine&quot; with VMware you still have to format 
+</I>&gt;<i> the disk and make a file system. You still have to xfer your OS to 
+</I>&gt;<i> the hard drive, install lilo and all those other things. That's what 
+</I>&gt;<i> I plan on showing people.  We'll include one or two working systems 
+</I>&gt;<i> to show how they work, hopefully one standard linux and one 
+</I>&gt;<i> real-time. People can use vmmount to mount the embedded system at a 
+</I>&gt;<i> mount point on their drive and then we'll show them how it works and 
+</I>&gt;<i> what config files control what things. Then we'll walk them through 
+</I>&gt;<i> placing their own  program on a virtual machine that they build 
+</I>&gt;<i> themselves. Hopefully by the time they are done the light will have 
+</I>&gt;<i> come on and they will be ready to build their own embedded system 
+</I>&gt;<i> with Linux.
+</I>&gt;<i> 
+</I>
+One of my goals with the Main Menu of PeeWee Linux was to show, in general, the
+process required to embed linux.  We are generally hiding all of the command
+line stuff, but not what is actually being done. (Thats why the Erase and Load
+are two seperate operations :)  Any suggestions on how to improve this to make
+it clearer would be appreciated!
+
+&gt;<i> That's the plan in a nutshell. I wasn't too sure how I was going to 
+</I>&gt;<i> come up with a current embedded system that I could ship with the 
+</I>&gt;<i> book. The system that I did last year is getting stale and I wanted 
+</I>&gt;<i> something that people could use without too much trouble. 
+</I>
+Thought of that this weekend..Any hardware you recommend will 1) date the book
+and 2) probably be out of production by the time the book is printed!  Other
+than just using one off-the-shelf board as an &quot;example&quot; - you will probably
+have to link to a site that lists various motherboards - just click and
+download a PeeWee Project file for each motherboard !
+
+(Really cool: use the openBIOS/freebios board list and show how to kick off a
+board and boot linux - all with GPL code :)
+<A HREF="http://www.freiburg.linux.de/openbios/">http://www.freiburg.linux.de/openbios/</A>
+Thats the plan anyhow...they aren't moving too fast -thats the killer with all
+these open source/hobby projects :(
+
+&gt;<i> None of the 
+</I>&gt;<i> distributions that I had seen on the net worked with LabVIEW when I 
+</I>&gt;<i> tried them. That's why I asked Ralph to give my LabVIEW application a 
+</I>&gt;<i> try on his machine. I was really happy, Ralph, when you let me know 
+</I>&gt;<i> that it had worked with just the addition of one library. God does 
+</I>&gt;<i> answer prayers!
+</I>&gt;<i> 
+</I>&gt;<i> Some of the things I'm having trouble with right now are:
+</I>&gt;<i> 
+</I>&gt;<i> setting the path at boot up so all users have X. I can't seem to get 
+</I>&gt;<i> this to work. Does every user have to a .profile script with a PATH 
+</I>&gt;<i> statement?
+</I>&gt;<i> 
+</I>Wondering that too...
+
+&gt;<i> Logging in automatically: I've tried &quot;login USER&quot; and &quot;su USER -c 
+</I>&gt;<i> 'path to file'&quot; but neither one of those works. The login command 
+</I>&gt;<i> works in my SuSE derived system but not under PWL.
+</I>&gt;<i> 
+</I>Yep..I'm still logging in and running the box as root :(
+
+&gt;<i> Well, back to work. Any tips you have for me are appreciated.
+</I>&gt;<i>
+</I>&gt;<i> 
+</I>&gt;<i> Richard
+</I>&gt;<i> 
+</I>Later,
+Ralph
+
+&gt;<i> 
+</I>&gt;<i> -- 
+</I>&gt;<i> Richard Jennings
+</I>&gt;<i> 1426 Aster Lane
+</I>&gt;<i> Livermore, CA 94550
+</I>&gt;<i> USA
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages &amp; get email alerts with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com/">http://im.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000082.html">libpthreads OK!
+</A></li>
+	<LI> Next message: <A HREF="000084.html">libpthreads OK!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#83">[ date ]</a>
+              <a href="thread.html#83">[ thread ]</a>
+              <a href="subject.html#83">[ subject ]</a>
+              <a href="author.html#83">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] about autologin again
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001230.html">
+   <LINK REL="Next"  HREF="001233.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] about autologin again
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] about autologin again">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 16 Jan 2004 13:18:23 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001230.html">[Peeweelinux] about autologin again
+</A></li>
+        <LI> Next message: <A HREF="001233.html">[Peeweelinux] login problem . . .
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1231">[ date ]</a>
+              <a href="thread.html#1231">[ thread ]</a>
+              <a href="subject.html#1231">[ subject ]</a>
+              <a href="author.html#1231">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've created an example project that Autoboots, and also fires up a generic X windows for any machine. 
+
+It sounds like you are happy with the minimal setup, so all you need is how to autologin.
+
+Basically, you need to add these two lines to your inittab file:
+
+#Runlevel 4 is for auto login user. 
+#It can also be used to start X if &quot;startx&quot; is put in ~/.bashrc
+id:4:initdefault:
+
+#if in runlevel 4 change to autologin user
+1:4:respawn:su -l autologin
+
+Put any startup stuff in the &quot;autologin&quot; users bashrc. 
+
+Hope this helps...
+~Ken
+
+
+
+&gt;<i> -----Original Message-----
+</I>&gt;<i> From: Wang Ke [mailto:<A HREF="mailto:wangke1980@hotmail.com">wangke1980@hotmail.com</A>]
+</I>&gt;<i> Sent: Friday, January 16, 2004 12:48 PM
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: [Peeweelinux] about autologin again
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> I am a newbie in Embedded Linux world.
+</I>&gt;<i> 
+</I>&gt;<i> I run minimal example nicely on a pc/104 via CompactFlash. 
+</I>&gt;<i> Thank you for 
+</I>&gt;<i> this wonderful tool!
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Now i want to enable the Autologin ability to my system.
+</I>&gt;<i> 
+</I>&gt;<i> I checked the mailing list. And tried to modify the 
+</I>&gt;<i> /etc/inittab file from 
+</I>&gt;<i> one instruction.
+</I>&gt;<i> 
+</I>&gt;<i> Create a file named autologin.c add this to the file: int 
+</I>&gt;<i> main () { execlp 
+</I>&gt;<i> (&quot;login&quot;, &quot;login&quot;, &quot;-f&quot;, &quot;root&quot;, 0); }
+</I>&gt;<i> 
+</I>&gt;<i> Now gcc -o autologin autologin.c Now cp autologin /sbin Now edit  
+</I>&gt;<i> etc/inittab file, look for the line that looks like this: 
+</I>&gt;<i> 1:345:respawn:/sbin/getty 38400 tty1 and change to 
+</I>&gt;<i> 1:2345:respawn:/sbin/getty -n -l /sbin/autologin 38400 tty1
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> but the system is still asking for password!
+</I>&gt;<i> 
+</I>&gt;<i> Do you have any other approach to do Autologin? How about by 
+</I>&gt;<i> &quot;tinylogin&quot; in 
+</I>&gt;<i> ./pwlconfig
+</I>&gt;<i> and can you tell me? Or some one would send me the bootx.gz file?
+</I>&gt;<i> 
+</I>&gt;<i> Thank you very much.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> Wang Ke
+</I>&gt;<i> 
+</I>&gt;<i> Adress:
+</I>&gt;<i> Voyrinkatu 6 AS 2
+</I>&gt;<i> Vaasa 65100
+</I>&gt;<i> Finland
+</I>&gt;<i> 
+</I>&gt;<i> _________________________________________________________________
+</I>&gt;<i> Help STOP SPAM with the new MSN 8 and get 2 months FREE*  
+</I>&gt;<i> <A HREF="http://join.msn.com/?page=features/junkmail">http://join.msn.com/?page=features/junkmail</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001230.html">[Peeweelinux] about autologin again
+</A></li>
+	<LI> Next message: <A HREF="001233.html">[Peeweelinux] login problem . . .
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1231">[ date ]</a>
+              <a href="thread.html#1231">[ thread ]</a>
+              <a href="subject.html#1231">[ subject ]</a>
+              <a href="author.html#1231">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

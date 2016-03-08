@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] RE compact flash partitions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000443.html">
+   <LINK REL="Next"  HREF="000444.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] RE compact flash partitions
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] RE compact flash partitions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 14 Jan 2002 10:27:08 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000443.html">[Peeweelinux] RE compact flash partitions
+</A></li>
+        <LI> Next message: <A HREF="000444.html">[Peeweelinux] RE compact flash partitions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#442">[ date ]</a>
+              <a href="thread.html#442">[ thread ]</a>
+              <a href="subject.html#442">[ subject ]</a>
+              <a href="author.html#442">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Dan,
+
+Did you try forcing the geometry the BIOS reports onto the card? I would 
+suggest trying to manually fdisk the card to see if you can get it 
+partitioned, formatted and mounted.
+
+I take it you are using the cf card via a CF-IDE adapter?
+
+Adi
+
+On Mon, 14 Jan 2002, Daniel Hennessey wrote:
+
+&gt;<i> Adi,
+</I>&gt;<i> 
+</I>&gt;<i> Initially I was using pwlconfig to do everything, but after failing I have
+</I>&gt;<i> tried (probably) every conceivable method of partitioning, formatting,
+</I>&gt;<i> populating and bootsectoring (?) the cf card. The card is a PQI FC032 32Mb.
+</I>&gt;<i> I have checked the web site but my Korean isn't up to much. 
+</I>&gt;<i> 
+</I>&gt;<i> Cheers
+</I>&gt;<i> 
+</I>&gt;<i> Dan
+</I>&gt;<i> 
+</I>&gt;<i> &gt; -----Original Message-----
+</I>&gt;<i> &gt; From:	Adi Linden [SMTP:<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>]
+</I>&gt;<i> &gt; Sent:	14 January 2002 15:11
+</I>&gt;<i> &gt; To:	daniel hennessey
+</I>&gt;<i> &gt; Cc:	<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; Subject:	Re: [Peeweelinux] RE compact flash partitions
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; What are you using to load the filesystem onto the card? What is the make 
+</I>&gt;<i> &gt; and model of the card?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Adi
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; On Mon, 14 Jan 2002, daniel hennessey wrote:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &gt; Hi all,
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; I have found the reason why when I cannot boot from the peeweelinux
+</I>&gt;<i> &gt; installation on my compact flash card! Whenever I put the card in the
+</I>&gt;<i> &gt; cf-ide converter, it either cannot read or corrupts the partition table! I
+</I>&gt;<i> &gt; haven't worked out if it is the mobo, the cf-ide conv or the cf card
+</I>&gt;<i> &gt; itself. The other thing I cannot work out is what the geometry of the card
+</I>&gt;<i> &gt; should be. It is detected by the mobo bios as 4 heads 16 sectors and 500
+</I>&gt;<i> &gt; cylinders, but cfdisk (or fdisk or sfdisk) SOMETIMES reported it as 2 x 16
+</I>&gt;<i> &gt; x 500 or 2 x 8 x 1000 !!!
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; In short, has anybody had similar problems with cf cards or does anybody
+</I>&gt;<i> &gt; know of a source of information for using cf cards under linux.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Cheers
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Dan
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000443.html">[Peeweelinux] RE compact flash partitions
+</A></li>
+	<LI> Next message: <A HREF="000444.html">[Peeweelinux] RE compact flash partitions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#442">[ date ]</a>
+              <a href="thread.html#442">[ thread ]</a>
+              <a href="subject.html#442">[ subject ]</a>
+              <a href="author.html#442">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

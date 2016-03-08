@@ -1,0 +1,3450 @@
+From peeweelinux@adis.on.ca  Tue Feb  4 22:53:50 2003
+From: peeweelinux@adis.on.ca (Rushi Lala)
+Date: Tue, 4 Feb 2003 22:53:50 -0000
+Subject: [Peeweelinux] auto login and auto start X application
+Message-ID: <001501c2cca0$487b50b0$0d186551@param>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0016_01C2CCA0.487B50B0
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+ 
+ 
+At last I am now able to run my static QT application and X on peewee in
+around 15MB+10MB application with libqt.a.
+Its working perfectly, but I have few questions, so if any one can give
+some suggestions.
+ 
+1)       Append= "quite" is not working with /etc/lilo.conf, any other
+ideas for quiet boot of peewee instead of the interactive???
+2)       I want auto login without any login and password?
+3)       How to auto start X after auto login
+4)       How to auto start the application after starting X?
+ 
+ 
+Thanks in advance 
+ 
+Rushi
+ 
+ 
+ 
+
+------=_NextPart_000_0016_01C2CCA0.487B50B0
+Content-Type: text/html;
+	charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns=3D"http://www.w3.org/TR/REC-html40">
+
+<head>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Dus-ascii">
+
+
+<meta name=3DProgId content=3DWord.Document>
+<meta name=3DGenerator content=3D"Microsoft Word 10">
+<meta name=3DOriginator content=3D"Microsoft Word 10">
+<link rel=3DFile-List href=3D"cid:filelist.xml@01C2CCA0.48446230">
+<!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:DoNotRelyOnCSS/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:DocumentKind>DocumentEmail</w:DocumentKind>
+  <w:EnvelopeVis/>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+span.EmailStyle17
+	{mso-style-type:personal;
+	mso-style-noshow:yes;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	color:windowtext;}
+span.EmailStyle18
+	{mso-style-type:personal-reply;
+	mso-style-noshow:yes;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	color:navy;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:1160929068;
+	mso-list-type:hybrid;
+	mso-list-template-ids:-1178178672 67698705 67698713 67698715 67698703 =
+67698713 67698715 67698703 67698713 67698715;}
+@list l0:level1
+	{mso-level-text:"%1\)";
+	mso-level-tab-stop:36.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level2
+	{mso-level-tab-stop:72.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level3
+	{mso-level-tab-stop:108.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level4
+	{mso-level-tab-stop:144.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level5
+	{mso-level-tab-stop:180.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level6
+	{mso-level-tab-stop:216.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level7
+	{mso-level-tab-stop:252.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level8
+	{mso-level-tab-stop:288.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+@list l0:level9
+	{mso-level-tab-stop:324.0pt;
+	mso-level-number-position:left;
+	text-indent:-18.0pt;}
+ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */=20
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]-->
+</head>
+
+<body lang=3DEN-US link=3Dblue vlink=3Dpurple =
+style=3D'tab-interval:36.0pt'>
+
+<div class=3DSection1>
+
+<p class=3DMsoNormal><font size=3D2 color=3Dnavy face=3DArial><span =
+style=3D'font-size:
+10.0pt;font-family:Arial;color:navy'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D3 face=3D"Times New Roman"><span =
+style=3D'font-size:
+12.0pt'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>At last I am now able =
+to run
+my static QT application and X on peewee in around 15MB+10MB application =
+with
+libqt.a.<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>Its working perfectly, =
+but I
+have few questions, so if any one can give some =
+suggestions.<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'><span style=3D'mso-list:Ignore'>1)<font =
+size=3D1
+face=3D"Times New Roman"><span style=3D'font:7.0pt "Times New =
+Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></font></span></span></font><![endif]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>Appe=
+nd=3D
+&#8220;quite&#8221; is not working with /etc/lilo.conf, any other ideas =
+for
+quiet boot of peewee instead of the =
+interactive???<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'><span style=3D'mso-list:Ignore'>2)<font =
+size=3D1
+face=3D"Times New Roman"><span style=3D'font:7.0pt "Times New =
+Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></font></span></span></font><![endif]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>I
+want auto login without any login and =
+password?<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'><span style=3D'mso-list:Ignore'>3)<font =
+size=3D1
+face=3D"Times New Roman"><span style=3D'font:7.0pt "Times New =
+Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></font></span></span></font><![endif]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>How
+to auto start X after auto login<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'margin-left:36.0pt;text-indent:-18.0pt;mso-list:l0 level1 lfo2;
+tab-stops:list 36.0pt'><![if !supportLists]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-fareast-font-family:
+Arial;mso-ansi-language:EN-GB'><span style=3D'mso-list:Ignore'>4)<font =
+size=3D1
+face=3D"Times New Roman"><span style=3D'font:7.0pt "Times New =
+Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span></font></span></span></font><![endif]><font size=3D2 =
+face=3DArial><span
+lang=3DEN-GB =
+style=3D'font-size:10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>How
+to auto start the application after starting =
+X?<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>Thanks in advance =
+<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'>Rushi<o:p></o:p></span>=
+</font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+<p class=3DMsoNormal><font size=3D2 face=3DArial><span lang=3DEN-GB =
+style=3D'font-size:
+10.0pt;font-family:Arial;mso-ansi-language:EN-GB'><o:p>&nbsp;</o:p></span=
+></font></p>
+
+</div>
+
+</body>
+
+</html>
+
+------=_NextPart_000_0016_01C2CCA0.487B50B0--
+
+From peeweelinux@adis.on.ca  Wed Feb  5 15:56:07 2003
+From: peeweelinux@adis.on.ca (Carlos Henrique Tibo Narciso)
+Date: Wed, 5 Feb 2003 13:56:07 -0200
+Subject: [Peeweelinux] Network Error!
+Message-ID: <DLEBLAHEFMHDDFHFIABEGELHCAAA.tibo@fic.com.br>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0039_01C2CD1E.54D7B190
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 7bit
+
+Hi:
+
+      I'm trying to configure a network in a system created using
+PeeWeeLinux and
+when I use the command ifconfig eth0 up ,It shows a message sayng  there is
+no such device. The System uses a onboard Realtek RTL8139C network adapter
+and I've already marked this option in the Kernel Configurator of pwl.conf.
+At startup, there is a brg0 device identified by PeeWeeLinux, but It doesn't
+work. I think there is a drive or something like that missing.
+
+Thank you very much.
+
+
+---
+Outgoing mail is certified Virus Free.
+Checked by AVG anti-virus system (http://www.grisoft.com).
+Version: 6.0.449 / Virus Database: 251 - Release Date: 27/1/2003
+
+------=_NextPart_000_0039_01C2CD1E.54D7B190
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns=3D"http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<meta name=3DProgId content=3DWord.Document>
+<meta name=3DGenerator content=3D"Microsoft Word 9">
+<meta name=3DOriginator content=3D"Microsoft Word 9">
+<link rel=3DFile-List href=3D"cid:filelist.xml@01C2CD1E.54C254D0">
+<!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:DoNotRelyOnCSS/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:View>Normal</w:View>
+  <w:Zoom>0</w:Zoom>
+  <w:DocumentKind>DocumentEmail</w:DocumentKind>
+  <w:HyphenationZone>21</w:HyphenationZone>
+  <w:EnvelopeVis/>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+p.MsoAutoSig, li.MsoAutoSig, div.MsoAutoSig
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+span.EstiloDeCorreioEletrnico15
+	{mso-style-type:personal-compose;
+	mso-ansi-font-size:10.0pt;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	color:black;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+</head>
+
+<body lang=3DPT-BR style=3D'tab-interval:35.4pt'>
+
+<div class=3DSection1>
+
+<p class=3DMsoNormal =
+style=3D'mso-layout-grid-align:none;text-autospace:none'><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier =
+New";color:black;mso-ansi-language:EN-US'>Hi:</span></font><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier =
+New";color:black;mso-color-alt:windowtext;mso-ansi-language:
+EN-US'><o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'mso-layout-grid-align:none;text-autospace:none'><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier New";color:black;mso-ansi-language:EN-US'><![if =
+!supportEmptyParas]>&nbsp;<![endif]></span></font><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier =
+New";color:black;mso-color-alt:windowtext;mso-ansi-language:
+EN-US'><o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'mso-layout-grid-align:none;text-autospace:none'><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier New";color:black;mso-ansi-language:EN-US'><span
+style=3D'mso-tab-count:1'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>I'm =
+trying to
+configure a network in a system created using PeeWeeLinux and =
+</span></font><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier =
+New";color:black;mso-color-alt:windowtext;mso-ansi-language:
+EN-US'><o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'mso-layout-grid-align:none;text-autospace:none'><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier New";color:black;mso-ansi-language:EN-US'>when I =
+use the
+command ifconfig eth0 up ,It shows a message sayng<span =
+style=3D"mso-spacerun:
+yes">&nbsp; </span>there is </span></font><font size=3D2 color=3Dblack
+face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;font-family:"Courier New";
+color:black;mso-color-alt:windowtext;mso-ansi-language:EN-US'><o:p></o:p>=
+</span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'mso-layout-grid-align:none;text-autospace:none'><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier New";color:black;mso-ansi-language:EN-US'>no such =
+device.
+The System uses a onboard Realtek RTL8139C network adapter =
+</span></font><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier =
+New";color:black;mso-color-alt:windowtext;mso-ansi-language:
+EN-US'><o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'mso-layout-grid-align:none;text-autospace:none'><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier New";color:black;mso-ansi-language:EN-US'>and I've =
+already
+marked this option in the Kernel Configurator of pwl.conf. =
+</span></font><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier =
+New";color:black;mso-color-alt:windowtext;mso-ansi-language:
+EN-US'><o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'mso-layout-grid-align:none;text-autospace:none'><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier New";color:black;mso-ansi-language:EN-US'>At =
+startup,
+there is a brg0 device identified by PeeWeeLinux, but It doesn't =
+</span></font><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier =
+New";color:black;mso-color-alt:windowtext;mso-ansi-language:
+EN-US'><o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'mso-layout-grid-align:none;text-autospace:none'><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier New";color:black;mso-ansi-language:EN-US'>work. I =
+think
+there is a drive or something like that missing.</span></font><font =
+size=3D2
+color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier =
+New";color:black;mso-color-alt:windowtext;mso-ansi-language:
+EN-US'><o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'mso-layout-grid-align:none;text-autospace:none'><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier New";color:black;mso-ansi-language:EN-US'><![if =
+!supportEmptyParas]>&nbsp;<![endif]></span></font><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier =
+New";color:black;mso-color-alt:windowtext;mso-ansi-language:
+EN-US'><o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal =
+style=3D'mso-layout-grid-align:none;text-autospace:none'><font
+size=3D2 color=3Dblack face=3D"Courier New"><span lang=3DEN-US =
+style=3D'font-size:10.0pt;
+font-family:"Courier New";color:black;mso-ansi-language:EN-US'>Thank you =
+very
+much.</span></font><font size=3D2 color=3Dblack face=3D"Courier =
+New"><span
+lang=3DEN-US style=3D'font-size:10.0pt;font-family:"Courier =
+New";color:black;
+mso-color-alt:windowtext;mso-ansi-language:EN-US'><o:p></o:p></span></fon=
+t></p>
+
+<p class=3DMsoNormal =
+style=3D'mso-layout-grid-align:none;text-autospace:none'><font
+size=3D3 color=3Dblack face=3D"Times New Roman"><span =
+style=3D'font-size:12.0pt;
+color:black'><![if =
+!supportEmptyParas]>&nbsp;<![endif]></span></font><font
+color=3Dblack><span =
+style=3D'color:black;mso-color-alt:windowtext'><o:p></o:p></span></font><=
+/p>
+
+</div>
+
+</body>
+
+</html>
+
+------=_NextPart_000_0039_01C2CD1E.54D7B190--
+
+
+From peeweelinux@adis.on.ca  Fri Feb  7 18:28:39 2003
+From: peeweelinux@adis.on.ca (Slim)
+Date: Fri, 7 Feb 2003 10:28:39 -0800 (PST)
+Subject: [Peeweelinux] Disk on Chip 2000 questions
+Message-ID: <20030207182839.5045.qmail@web9902.mail.yahoo.com>
+
+I've built the custom kernel with M-systems support, and
+booted my pc/104 cpu via floppy.  I see /dev/fla* devices,
+but now I'm not sure how to access them.  My goal is booting
+from the doc 2000, with read/write access to it for logging.
+The cpu is Real Time Devices CMM6686GX233.  I'd like to be
+able to install the system without resorting to a hard drive
+if possible.  I do have an ethernet board I can use though.
+Any advice appreciated.
+
+Thanks,
+Slim
+
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Mail Plus - Powerful. Affordable. Sign up now.
+http://mailplus.yahoo.com
+
+From peeweelinux@adis.on.ca  Fri Feb  7 19:30:50 2003
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Fri, 7 Feb 2003 11:30:50 -0800
+Subject: [Peeweelinux] Disk on Chip 2000 questions
+In-Reply-To: <20030207182839.5045.qmail@web9902.mail.yahoo.com>; from slimaffi@yahoo.com on Fri, Feb 07, 2003 at 10:28:39 -0800
+References: <20030207182839.5045.qmail@web9902.mail.yahoo.com>
+Message-ID: <20030207113050.C1450@leif.attbi.com>
+
+Is it possible to "mount" them? If so, we can help you with writing a new 
+lilo.conf file so that you can use lilo to transfer the kernel to the boot 
+sector, and then all you have to do is copy the system files and make some 
+new /dev/ nodes. There's a HOWTO entitled "Hard Disk upgrade" under the 
+lilo documentation project that I can highly recommend to get you oriented.
+
+
+On 2003.02.07 10:28 Slim wrote:
+> I've built the custom kernel with M-systems support, and
+> booted my pc/104 cpu via floppy.  I see /dev/fla* devices,
+> but now I'm not sure how to access them.  My goal is booting
+> from the doc 2000, with read/write access to it for logging.
+> The cpu is Real Time Devices CMM6686GX233.  I'd like to be
+> able to install the system without resorting to a hard drive
+> if possible.  I do have an ethernet board I can use though.
+> Any advice appreciated.
+> 
+> Thanks,
+> Slim
+> 
+> 
+> __________________________________________________
+> Do you Yahoo!?
+> Yahoo! Mail Plus - Powerful. Affordable. Sign up now.
+> http://mailplus.yahoo.com
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Fri Feb  7 20:36:13 2003
+From: peeweelinux@adis.on.ca (Slim)
+Date: Fri, 7 Feb 2003 12:36:13 -0800 (PST)
+Subject: [Peeweelinux] Disk on Chip 2000 questions
+In-Reply-To: <20030207113050.C1450@leif.attbi.com>
+Message-ID: <20030207203613.11511.qmail@web9903.mail.yahoo.com>
+
+I found Mark Meade's http://www.lakeshoremicro.com/peewee.doc
+I'll give that a try if I can get a kernel built.  Looks like
+I may need to buy a pci carrier board to speed this up.
+I'll check the HOWTO you mentioned - thanks.
+
+--- Leif Steinhour <grnwrnch@attbi.com> wrote:
+> 
+> Is it possible to "mount" them? If so, we can help you with writing a new 
+> lilo.conf file so that you can use lilo to transfer the kernel to the boot 
+> sector, and then all you have to do is copy the system files and make some 
+> new /dev/ nodes. There's a HOWTO entitled "Hard Disk upgrade" under the 
+> lilo documentation project that I can highly recommend to get you oriented.
+> 
+> 
+> On 2003.02.07 10:28 Slim wrote:
+> > I've built the custom kernel with M-systems support, and
+> > booted my pc/104 cpu via floppy.  I see /dev/fla* devices,
+> > but now I'm not sure how to access them.  My goal is booting
+> > from the doc 2000, with read/write access to it for logging.
+> > The cpu is Real Time Devices CMM6686GX233.  I'd like to be
+> > able to install the system without resorting to a hard drive
+> > if possible.  I do have an ethernet board I can use though.
+> > Any advice appreciated.
+> > 
+> > Thanks,
+> > Slim
+> > 
+> > 
+> > __________________________________________________
+> > Do you Yahoo!?
+> > Yahoo! Mail Plus - Powerful. Affordable. Sign up now.
+> > http://mailplus.yahoo.com
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> > 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Mail Plus - Powerful. Affordable. Sign up now.
+http://mailplus.yahoo.com
+
+From peeweelinux@adis.on.ca  Fri Feb  7 23:33:27 2003
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Fri,  7 Feb 2003 23:33:27 CET
+Subject: [Peeweelinux] how to use a host?
+Message-ID: <mnet1.1044657207.14359.francois.seingier@club-internet.fr>
+
+hello,
+I am just wondering how people here are used to develop for their embedded system. I am soon going to devote myself a couple of weeks (this is was I said I would do a few months ago... but never found the time :( ) to try to build an embedded system for a robot and I would like to be as efficient as possible. I have a pc-104 with no network card or usb port. The memory storage will be left to a pc-card (a sandisk pcmcia card and an ide-adapter for the pc-104). I believe it would be a pain to work directly
+on the pc-104 so I'd rather use a host. But I can't find any adapter for the pc-card that could be connected to the host. Does it exist, and if not, what would be the best way to work with the pc-104?
+
+françois
+
+
+From peeweelinux@adis.on.ca  Fri Feb  7 23:17:44 2003
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Fri, 7 Feb 2003 18:17:44 -0500
+Subject: [Peeweelinux] Disk on Chip 2000 questions
+In-Reply-To: <20030207203613.11511.qmail@web9903.mail.yahoo.com>
+References: <20030207203613.11511.qmail@web9903.mail.yahoo.com>
+Message-ID: <200302071817.44760.mark@lakeshoremicro.com>
+
+On Friday 07 February 2003 03:36 pm, Slim wrote:
+> I found Mark Meade's http://www.lakeshoremicro.com/peewee.doc
+> I'll give that a try if I can get a kernel built.  Looks like
+> I may need to buy a pci carrier board to speed this up.
+> I'll check the HOWTO you mentioned - thanks.
+
+> > On 2003.02.07 10:28 Slim wrote:
+> > > I've built the custom kernel with M-systems support, and
+> > > booted my pc/104 cpu via floppy.  I see /dev/fla* devices,
+> > > but now I'm not sure how to access them.  My goal is booting
+> > > from the doc 2000, with read/write access to it for logging.
+> > > The cpu is Real Time Devices CMM6686GX233.  I'd like to be
+> > > able to install the system without resorting to a hard drive
+> > > if possible.  I do have an ethernet board I can use though.
+> > > Any advice appreciated.
+
+FWIW, keep in mind that my instructions use the open-source "MTD" parts of the 
+Linux kernel for DiskOnChip support.  This has a number of advantages over 
+using the M-Sys binary-only drivers: access to the source code, support on 
+the Linux MTD mailing list, etc.
+
+Also, I have had better luck using GRUB rather than Lilo.  There are patches 
+available for adding DiskOnChip support to Grub, but the procedure is 
+somewhat complex.  
+
+The ISA or PCI eval board sure comes in handy.  Highly recommended!
+
+Mark
+
+
+From peeweelinux@adis.on.ca  Sat Feb  8 00:53:02 2003
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Fri, 7 Feb 2003 16:53:02 -0800
+Subject: [Peeweelinux] how to use a host?
+In-Reply-To: <mnet1.1044657207.14359.francois.seingier@club-internet.fr>; from francois.seingier@club-internet.fr on Fri, Feb 07, 2003 at 14:33:27 -0800
+References: <mnet1.1044657207.14359.francois.seingier@club-internet.fr>
+Message-ID: <20030207165302.I1450@leif.attbi.com>
+
+Sure:
+	I just sold a PC-104, 2 slot PCMCIA board on ebay for ~$30.00, 
+made by Advantech, they come up a fair amount. I highly recommend the 
+route you're taking, the one other thing you'll need is an ISA or PCI 
+reader for your host system, and you can usually get them for ~$20.00 on 
+ebay as well. As a side note, you can sometimes find PC/104 boards that 
+accept disk-on-chip, which have some speed and power consumption 
+advantages (minor) but are much more of a pain to set up (at least from my 
+experience). 
+
+On 2003.02.07 14:33 francois.seingier@club-internet.fr wrote:
+> hello,
+> I am just wondering how people here are used to develop for their
+> embedded system. I am soon going to devote myself a couple of weeks (this
+> is was I said I would do a few months ago... but never found the time :(
+> ) to try to build an embedded system for a robot and I would like to be
+> as efficient as possible. I have a pc-104 with no network card or usb
+> port. The memory storage will be left to a pc-card (a sandisk pcmcia card
+> and an ide-adapter for the pc-104). I believe it would be a pain to work
+> directly
+> on the pc-104 so I'd rather use a host. But I can't find any adapter for
+> the pc-card that could be connected to the host. Does it exist, and if
+> not, what would be the best way to work with the pc-104?
+> 
+> françois
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Sun Feb  9 10:35:51 2003
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Sun,  9 Feb 2003 10:35:51 CET
+Subject: [Peeweelinux] how to use a host?
+Message-ID: <mnet1.1044783351.21824.francois.seingier@club-internet.fr>
+
+thanks for your reply. I found some sort of pci card for the host at this address:
+http://www.surcouf.com/Catalogue/FicheProduit.asp?id%5Fproduit=156234&Detail=Non
+is it one of those?
+I don't really understand how it works. It seems to be made for wireless networks and should therefore accept only network pcmcia cards... In fact this is the only type of adaptor I have found until now. 
+
+
+----Message d'origine----
+>De: Leif Steinhour <grnwrnch@attbi.com>
+>A: peeweelinux@adis.on.ca
+>Sujet: Re: [Peeweelinux] how to use a host?
+>Date: Fri, 7 Feb 2003 16:53:02 -0800
+>
+>
+>Sure:
+>	I just sold a PC-104, 2 slot PCMCIA board on ebay for ~$30.00, 
+>made by Advantech, they come up a fair amount. I highly recommend the 
+>route you're taking, the one other thing you'll need is an ISA or PCI 
+>reader for your host system, and you can usually get them for ~$20.00 on 
+>ebay as well. As a side note, you can sometimes find PC/104 boards that 
+>accept disk-on-chip, which have some speed and power consumption 
+>advantages (minor) but are much more of a pain to set up (at least from my 
+>experience). 
+>
+>On 2003.02.07 14:33 francois.seingier@club-internet.fr wrote:
+>> hello,
+>> I am just wondering how people here are used to develop for their
+>> embedded system. I am soon going to devote myself a couple of weeks (this
+>> is was I said I would do a few months ago... but never found the time :(
+>> ) to try to build an embedded system for a robot and I would like to be
+>> as efficient as possible. I have a pc-104 with no network card or usb
+>> port. The memory storage will be left to a pc-card (a sandisk pcmcia card
+>> and an ide-adapter for the pc-104). I believe it would be a pain to work
+>> directly
+>> on the pc-104 so I'd rather use a host. But I can't find any adapter for
+>> the pc-card that could be connected to the host. Does it exist, and if
+>> not, what would be the best way to work with the pc-104?
+>> 
+>> françois
+>> 
+>> _______________________________________________
+>> Peeweelinux mailing list
+>> Peeweelinux@adis.on.ca
+>> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>> 
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+
+
+From peeweelinux@adis.on.ca  Mon Feb 10 10:23:58 2003
+From: peeweelinux@adis.on.ca (rushi lala)
+Date: Mon, 10 Feb 2003 10:23:58 +0000
+Subject: [Peeweelinux] rc.d /  init scripts Adi
+Message-ID: <F82kJQVf6JE7rCXVZ6r0001d018@hotmail.com>
+
+
+Hi Adi,
+
+I have realised that peewee is not using the same rc.d scripts like redhat 
+does.
+Actually what I want to do is to auto login the system.
+
+I found that by adding
+Su –pwd  - -login to /etc/rc.local in redhat will enable me to auto login 
+which is the lastly executing init script in redhat.
+
+I found that you have written most of the init script by your self. Can you 
+please tell in which script and where should I put this su –pwd - - login so 
+my system can auto login.
+
+Right now I am able to get the login prompt in X using xdm and able to auto 
+execute application after login.
+
+Also I tried to make the boot process silent by adding append=”quit” in 
+lilo.conf , which unfortunately does nothing, can you tell me where exactly 
+shall I put this for quite boot. Is there some thing related to 
+/etc/boot.silent file???
+
+Any suggestion from any one is appreciated
+
+Thanks in advance to all
+
+
+
+Rushi
+
+
+
+
+
+_________________________________________________________________
+Express yourself with cool emoticons http://messenger.msn.co.uk
+
+
+From peeweelinux@adis.on.ca  Tue Feb 11 22:04:19 2003
+From: peeweelinux@adis.on.ca (dan)
+Date: Tue, 11 Feb 2003 17:04:19 -0500
+Subject: [Peeweelinux] development configuration
+Message-ID: <5.1.1.6.2.20030211165050.00b38988@mail.earthlink.net>
+
+This isn't so much a Peeweelinux question, but thought the readers of this list
+would be a good source of info. I want to build systems using Peewee
+on my development  machine and copy it to media that is bootable on my
+prototype box and a floppy isn't big enough.
+
+Development box - Laptop running Redhat. Has USB ports.
+
+Prototype box - EPIA Mini-ITX. Will boot from IDE and USB Zip drive (but
+unfortunately no other USB devices)
+
+What I can do right now is use my USB hard drive caddy that I plug
+into the laptop and create the image. To boot the prototype box, I remove the
+IDE cable from the caddy and plug it into the protototype box. This is kind
+of awkward, since I'm plugging and unplugging cables and am kind of a klutz
+about bending pins sometimes. I don't really want to buy a USB Zip drive
+just for this purpose.
+
+My question is: What hardware config to you use for development?
+
+thanks in advance,
+dan 
+
+
+From peeweelinux@adis.on.ca  Wed Feb 12 07:33:35 2003
+From: peeweelinux@adis.on.ca (Ralph Stickley)
+Date: Tue, 11 Feb 2003 23:33:35 -0800 (PST)
+Subject: [Peeweelinux] development configuration
+In-Reply-To: <5.1.1.6.2.20030211165050.00b38988@mail.earthlink.net>
+Message-ID: <20030212073335.2496.qmail@web40408.mail.yahoo.com>
+
+Dan,
+How about Compact Flash on the IDE port ? Use USB/CF on development
+box, IDE/CF on target board.
+Adi did have some adaptor type thingys...
+
+Good luck,
+Ralph
+
+--- dan <danlatham@earthlink.net> wrote:
+> This isn't so much a Peeweelinux question, but thought the readers
+> of this list
+> would be a good source of info. I want to build systems using
+> Peewee
+> on my development  machine and copy it to media that is bootable on
+> my
+> prototype box and a floppy isn't big enough.
+> 
+> Development box - Laptop running Redhat. Has USB ports.
+> 
+> Prototype box - EPIA Mini-ITX. Will boot from IDE and USB Zip drive
+> (but
+> unfortunately no other USB devices)
+> 
+> What I can do right now is use my USB hard drive caddy that I plug
+> into the laptop and create the image. To boot the prototype box, I
+> remove the
+> IDE cable from the caddy and plug it into the protototype box. This
+> is kind
+> of awkward, since I'm plugging and unplugging cables and am kind of
+> a klutz
+> about bending pins sometimes. I don't really want to buy a USB Zip
+> drive
+> just for this purpose.
+> 
+> My question is: What hardware config to you use for development?
+> 
+> thanks in advance,
+> dan 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Shopping - Send Flowers for Valentine's Day
+http://shopping.yahoo.com
+
+From peeweelinux@adis.on.ca  Wed Feb 12 13:12:39 2003
+From: peeweelinux@adis.on.ca (dan latham)
+Date: Wed, 12 Feb 2003 08:12:39 -0500
+Subject: [Peeweelinux] development configuration
+In-Reply-To: <20030212073335.2496.qmail@web40408.mail.yahoo.com>
+References: <5.1.1.6.2.20030211165050.00b38988@mail.earthlink.net>
+Message-ID: <5.1.1.6.2.20030212080116.00ba2da8@mail.earthlink.net>
+
+ok, I'll look for those. The only issue I can think of with CF is the number of
+times it can be written to. Would you expect this to be a big issue when
+developing and testing? The nice thing about CF is that it's not too 
+inexpensive
+so if it wears out, just buy another. I just don't want to have to buy one 
+every month.
+Any experience with how long I might expect it to last given moderate 
+development
+activity (a couple of build/test cycles per day)?
+
+thanks,
+dan
+
+
+At 11:33 PM 2/11/2003 -0800, Ralph Stickley wrote:
+>Dan,
+>How about Compact Flash on the IDE port ? Use USB/CF on development
+>box, IDE/CF on target board.
+>Adi did have some adaptor type thingys...
+>
+>Good luck,
+>Ralph
+
+
+From peeweelinux@adis.on.ca  Wed Feb 12 14:22:23 2003
+From: peeweelinux@adis.on.ca (Ralph Stickley)
+Date: Wed, 12 Feb 2003 06:22:23 -0800 (PST)
+Subject: [Peeweelinux] development configuration
+In-Reply-To: <5.1.1.6.2.20030212080116.00ba2da8@mail.earthlink.net>
+Message-ID: <20030212142223.79277.qmail@web40411.mail.yahoo.com>
+
+I think the wear factor is noticable only after about 10,000 write
+cycles.  I also beleive that some CF controllers do wear leveling
+which may increase this "apparent" number of writes.
+
+So, for datalogging small files - not a good idea.  For development
+with 10 reloads a day you have a couple of years to go :)
+
+Enjoy....
+
+--- dan latham <danlatham@earthlink.net> wrote:
+> ok, I'll look for those. The only issue I can think of with CF is
+> the number of
+> times it can be written to. Would you expect this to be a big issue
+> when
+> developing and testing? The nice thing about CF is that it's not
+> too 
+> inexpensive
+> so if it wears out, just buy another. I just don't want to have to
+> buy one 
+> every month.
+> Any experience with how long I might expect it to last given
+> moderate 
+> development
+> activity (a couple of build/test cycles per day)?
+> 
+> thanks,
+> dan
+> 
+> 
+> At 11:33 PM 2/11/2003 -0800, Ralph Stickley wrote:
+> >Dan,
+> >How about Compact Flash on the IDE port ? Use USB/CF on
+> development
+> >box, IDE/CF on target board.
+> >Adi did have some adaptor type thingys...
+> >
+> >Good luck,
+> >Ralph
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Shopping - Send Flowers for Valentine's Day
+http://shopping.yahoo.com
+
+From peeweelinux@adis.on.ca  Wed Feb 12 16:32:28 2003
+From: peeweelinux@adis.on.ca (Slim)
+Date: Wed, 12 Feb 2003 08:32:28 -0800 (PST)
+Subject: [Peeweelinux] Disk on Chip 2000 questions
+In-Reply-To: <20030207113050.C1450@leif.attbi.com>
+Message-ID: <20030212163228.75751.qmail@web9907.mail.yahoo.com>
+
+Using redhat 8.0, I copied the /usr/src tree to a temp space to compile.
+Everything went ok until make install.  While it ran the install script:
+
++ exec /sinb/installkernel 2.4.18-14custom bzImage
+/mnt/b/kernel/linux-2.4.18-14/System.map
+All of your loopback devices are in use.
+make[1]:  *** [install] Error 1
+
+I tried manually copying the bzImage to /boot, and adding a second entry in
+grub.conf:
+
+title Red Hat Linux (2.4.18-14) Disk On Chip 2000
+        root (hd0,0)
+        kernel /bzImage.doc ro root=LABEL=/
+        initrd /initrd-2.4.18-14.img
+
+this I copied from the original entry and changed only the name of the 
+image file from vmlinuz-2.4.18-14 to bzImage.doc.
+
+On boot, the kernel panics with:
+
+Mounting root filesystem
+kmod: failed to exec /sbin/modprobe -s -k ext3, errno = 2
+kmod: failed to exec /sbin/modprobe -s -k freeext3, errno = 2
+pivotroot: pivot_root(/sysroot,/sysroot/initrd) failed: 2
+umount /initrd/proc failed: 2
+Freeing unused kernel memory: 164k freed
+Kernel painc: No init found. Try passing init= option to kernel.
+
+What did I miss?  Did the failed make install cause the kernel root filesystem
+problem?
+
+Thanks,
+Slim
+
+
+
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Shopping - Send Flowers for Valentine's Day
+http://shopping.yahoo.com
+
+From peeweelinux@adis.on.ca  Wed Feb 12 17:41:50 2003
+From: peeweelinux@adis.on.ca (Charles Billette)
+Date: 12 Feb 2003 12:41:50 -0500
+Subject: [Peeweelinux] SBC mediaGX
+Message-ID: <1045071710.2583.17.camel@localhost.localdomain>
+
+--=-83O0D4GLTDDD4IWF0fj1
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+Hi
+
+    Is there SBC mediaGX user on this news group?
+
+________________________________________________________________________
+Charles Billette
+- 514.909.2452
+- charles@cbillette.com
+                                                                        
+________________________________________________________________________
+
+--=-83O0D4GLTDDD4IWF0fj1
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 TRANSITIONAL//EN">
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=UTF-8">
+  <META NAME="GENERATOR" CONTENT="GtkHTML/1.1.7">
+</HEAD>
+<BODY>
+Hi<BR>
+<BR>
+&nbsp;&nbsp;&nbsp; Is there SBC mediaGX user on this news group?<BR>
+<TABLE CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+<TR>
+<TD>
+
+<HR>
+<BR>
+<A HREF="mailto:charles@cbillette.com"><FONT SIZE="5"><B>Charles Billette</B></FONT></A><BR>
+- 514.909.2452<BR>
+- <A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A><BR>
+<DIV ALIGN=right>
+<HR>
+</DIV>
+</TD>
+</TR>
+</TABLE>
+
+</BODY>
+</HTML>
+
+--=-83O0D4GLTDDD4IWF0fj1--
+
+
+From peeweelinux@adis.on.ca  Wed Feb 12 18:09:02 2003
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 12 Feb 2003 18:09:02 -0000
+Subject: [Peeweelinux] SBC mediaGX
+In-Reply-To: <1045071710.2583.17.camel@localhost.localdomain>
+Message-ID: <000401c2d2c1$d37f94b0$0201a8c0@ricardo>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0005_01C2D2C1.D38ED6F0
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+I'm one of them
+  -----Original Message-----
+  From: peeweelinux-admin@adis.on.ca =
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Charles Billette
+  Sent: quarta-feira, 12 de Fevereiro de 2003 17:42
+  To: peeweelinux
+  Subject: [Peeweelinux] SBC mediaGX
+
+
+  Hi
+
+      Is there SBC mediaGX user on this news group?
+
+------------------------------------------------------------------------
+
+        Charles Billette
+        - 514.909.2452
+        - charles@cbillette.com
+
+
+------------------------------------------------------------------------
+      =20
+
+------=_NextPart_000_0005_01C2D2C1.D38ED6F0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Dutf-8">
+
+
+<META content=3D"MSHTML 6.00.2800.1141" name=3DGENERATOR></HEAD>
+<BODY>
+<DIV><SPAN class=3D738570818-12022003><FONT face=3DArial color=3D#0000ff =
+size=3D2>I'm=20
+one of them</FONT></SPAN></DIV>
+<BLOCKQUOTE>
+  <DIV class=3DOutlookMessageHeader dir=3Dltr align=3Dleft><FONT =
+face=3DTahoma=20
+  size=3D2>-----Original Message-----<BR><B>From:</B> =
+peeweelinux-admin@adis.on.ca=20
+  [mailto:peeweelinux-admin@adis.on.ca]<B>On Behalf Of </B>Charles=20
+  Billette<BR><B>Sent:</B> quarta-feira, 12 de Fevereiro de 2003=20
+  17:42<BR><B>To:</B> peeweelinux<BR><B>Subject:</B> [Peeweelinux] SBC=20
+  mediaGX<BR><BR></FONT></DIV>Hi<BR><BR>&nbsp;&nbsp;&nbsp; Is there SBC =
+mediaGX=20
+  user on this news group?<BR>
+  <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%">
+    <TBODY>
+    <TR>
+      <TD>
+        <HR>
+        <BR><A href=3D"mailto:charles@cbillette.com"><FONT =
+size=3D5><B>Charles=20
+        Billette</B></FONT></A><BR>- 514.909.2452<BR>- <A=20
+        =
+href=3D"mailto:charles@cbillette.com">charles@cbillette.com</A><BR>
+        <DIV align=3Dright>
+        <HR>
+        </DIV></TD></TR></TBODY></TABLE></BLOCKQUOTE></BODY></HTML>
+
+------=_NextPart_000_0005_01C2D2C1.D38ED6F0--
+
+
+From peeweelinux@adis.on.ca  Wed Feb 12 18:36:21 2003
+From: peeweelinux@adis.on.ca (Rushi Lala)
+Date: Wed, 12 Feb 2003 18:36:21 -0000
+Subject: [Peeweelinux] or PCMCIA Compact Flash Card Adapter
+Message-ID: <000001c2d2c5$a3b14810$0d186551@param>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0001_01C2D2C5.A3B14810
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Hi Dan ,=20
+=20
+You can use CF I guess. And for laptop you can use USB card reader and
+writer or PCMCIA Compact Flash Card Adapter (less than 10=A3s) to port
+your peewee on it and than you can connect this CF to your Mini ITX
+board as IDE master with CF2IDE adapter.
+=20
+I guess this answers your question=20
+=20
+=20
+Thanks
+=20
+Rushi
+
+------=_NextPart_000_0001_01C2D2C5.A3B14810
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html xmlns:o=3D"urn:schemas-microsoft-com:office:office" =
+xmlns:w=3D"urn:schemas-microsoft-com:office:word" =
+xmlns=3D"http://www.w3.org/TR/REC-html40">
+
+<head>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1">
+
+
+<meta name=3DProgId content=3DWord.Document>
+<meta name=3DGenerator content=3D"Microsoft Word 10">
+<meta name=3DOriginator content=3D"Microsoft Word 10">
+<link rel=3DFile-List href=3D"cid:filelist.xml@01C2D2C5.A37A3280">
+<!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:DoNotRelyOnCSS/>
+ </o:OfficeDocumentSettings>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:SpellingState>Clean</w:SpellingState>
+  <w:GrammarState>Clean</w:GrammarState>
+  <w:DocumentKind>DocumentEmail</w:DocumentKind>
+  <w:EnvelopeVis/>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+ </w:WordDocument>
+</xml><![endif]-->
+<style>
+<!--
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-parent:"";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman";
+	mso-fareast-font-family:"Times New Roman";}
+a:link, span.MsoHyperlink
+	{color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+span.EmailStyle17
+	{mso-style-type:personal-compose;
+	mso-style-noshow:yes;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	font-family:Arial;
+	mso-ascii-font-family:Arial;
+	mso-hansi-font-family:Arial;
+	mso-bidi-font-family:Arial;
+	color:windowtext;}
+span.SpellE
+	{mso-style-name:"";
+	mso-spl-e:yes;}
+span.GramE
+	{mso-style-name:"";
+	mso-gram-e:yes;}
+@page Section1
+	{size:612.0pt 792.0pt;
+	margin:72.0pt 90.0pt 72.0pt 90.0pt;
+	mso-header-margin:35.4pt;
+	mso-footer-margin:35.4pt;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+-->
+</style>
+<!--[if gte mso 10]>
+<style>
+ /* Style Definitions */=20
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0cm 5.4pt 0cm 5.4pt;
+	mso-para-margin:0cm;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman";}
+</style>
+<![endif]-->
+</head>
+
+<body lang=3DEN-US link=3Dblue vlink=3Dpurple =
+style=3D'tab-interval:36.0pt'>
+
+<div class=3DSection1>
+
+<p class=3DMsoNormal><font size=3D3 color=3Dblack face=3DArial><span =
+lang=3DEN-GB
+style=3D'font-size:12.0pt;font-family:Arial;color:black;mso-ansi-language=
+:EN-GB'>Hi
+<span class=3DGramE>Dan ,</span> <o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D3 color=3Dblack face=3DArial><span =
+lang=3DEN-GB
+style=3D'font-size:12.0pt;font-family:Arial;color:black;mso-ansi-language=
+:EN-GB'><o:p>&nbsp;</o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D3 color=3Dblack face=3DArial><span =
+lang=3DEN-GB
+style=3D'font-size:12.0pt;font-family:Arial;color:black;mso-ansi-language=
+:EN-GB'>You
+can use CF I guess. And for laptop you can use USB card reader and =
+writer or </span></font><font
+color=3Dblack face=3DArial><span =
+style=3D'font-family:Arial;color:black;mso-bidi-font-weight:
+bold'>PCMCIA Compact Flash Card Adapter (less than 10&pound;s) to port =
+your
+peewee on it and than you can connect this CF to your Mini ITX board as =
+IDE
+master with CF2IDE adapter.<o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D3 color=3Dblack face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:black;mso-bidi-font-weight:bold'><o:p>&nbs=
+p;</o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D3 color=3Dblack face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:black;mso-bidi-font-weight:bold'>I guess =
+this answers
+your question <o:p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D3 color=3Dblack face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:black;mso-bidi-font-weight:bold'><o:p>&nbs=
+p;</o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D3 color=3Dblack face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:black;mso-bidi-font-weight:bold'><o:p>&nbs=
+p;</o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D3 color=3Dblack face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:black;mso-bidi-font-weight:bold'>Thanks<o:=
+p></o:p></span></font></p>
+
+<p class=3DMsoNormal><font size=3D3 color=3Dblack face=3DArial><span =
+style=3D'font-size:
+12.0pt;font-family:Arial;color:black;mso-bidi-font-weight:bold'><o:p>&nbs=
+p;</o:p></span></font></p>
+
+<p class=3DMsoNormal><span class=3DSpellE><font size=3D3 color=3Dblack =
+face=3DArial><span
+style=3D'font-size:12.0pt;font-family:Arial;color:black;mso-bidi-font-wei=
+ght:
+bold'>Rushi</span></font></span><font color=3Dblack face=3DArial><span =
+lang=3DEN-GB
+style=3D'font-family:Arial;color:black;mso-ansi-language:EN-GB'><o:p></o:=
+p></span></font></p>
+
+</div>
+
+</body>
+
+</html>
+
+------=_NextPart_000_0001_01C2D2C5.A3B14810--
+
+From peeweelinux@adis.on.ca  Wed Feb 12 19:40:57 2003
+From: peeweelinux@adis.on.ca (Cinq - Marcelo Loyola Stival)
+Date: Wed, 12 Feb 2003 16:40:57 -0300
+Subject: [Peeweelinux] SBC mediaGX
+Message-ID: <43136136FD3D7C408F7E60F2460D2E29162FEB@cwb.cinq.com.br>
+
+ I'm another one...
+
+Some one of mediaGX users could boot from bzImage with geode mediaGX? Just
+zImage work for me...
+any work around?
+
+[]'s
+Marcelo Stival
+
+
+-----Original Message-----
+From: Ricardo Trindade
+To: peeweelinux@adis.on.ca
+Sent: 12/02/2003 15:09
+Subject: RE: [Peeweelinux] SBC mediaGX
+
+I'm one of them
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Charles Billette
+Sent: quarta-feira, 12 de Fevereiro de 2003 17:42
+To: peeweelinux
+Subject: [Peeweelinux] SBC mediaGX
+
+
+Hi
+
+    Is there SBC mediaGX user on this news group?
+
+
+  _____  
+
+
+ <mailto:charles@cbillette.com> Charles Billette
+- 514.909.2452
+- charles@cbillette.com <mailto:charles@cbillette.com> 
+
+  _____  
+
+
+
+From peeweelinux@adis.on.ca  Thu Feb 13 02:12:45 2003
+From: peeweelinux@adis.on.ca (Charles Billette)
+Date: 12 Feb 2003 21:12:45 -0500
+Subject: [Peeweelinux] SBC mediaGX
+In-Reply-To: <000401c2d2c1$d37f94b0$0201a8c0@ricardo>
+References: <000401c2d2c1$d37f94b0$0201a8c0@ricardo>
+Message-ID: <1045102365.2535.7.camel@localhost.localdomain>
+
+--=-8MMb/uwS590jkDY+JWQu
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+Are you able to but the board in suspend mode and reactivate it?
+
+When I use the "suspend jumper/switch" the board goes to suspends. When
+I try to wake it (using the same switch) the board came back to life but
+only for couple second.
+
+Did peewee linux support suspend?
+Is there some rc.d scripts I miss?
+
+thanks
+
+On Wed, 2003-02-12 at 13:09, Ricardo Trindade wrote:
+
+> I'm one of them
+> 
+>         -----Original Message-----
+>         From: peeweelinux-admin@adis.on.ca
+>         [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Charles
+>         Billette
+>         Sent: quarta-feira, 12 de Fevereiro de 2003 17:42
+>         To: peeweelinux
+>         Subject: [Peeweelinux] SBC mediaGX
+>         
+>         
+>         Hi
+>         
+>             Is there SBC mediaGX user on this news group?
+>         
+>         ______________________________________________________________
+>         Charles Billette
+>         - 514.909.2452
+>         - charles@cbillette.com
+>                                                                       
+>         ______________________________________________________________
+
+
+________________________________________________________________________
+Charles Billette
+- 514.909.2452
+- charles@cbillette.com
+                                                                        
+________________________________________________________________________
+
+
+--=-8MMb/uwS590jkDY+JWQu
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 TRANSITIONAL//EN">
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=UTF-8">
+  <META NAME="GENERATOR" CONTENT="GtkHTML/1.1.7">
+</HEAD>
+<BODY>
+Are you able to but the board in suspend mode and reactivate it?<BR>
+<BR>
+When I use the &quot;suspend jumper/switch&quot; the board goes to suspends. When I try to wake it (using the same switch) the board came back to life but only for couple second.<BR>
+<BR>
+Did peewee linux support suspend?<BR>
+Is there some rc.d scripts I miss?<BR>
+<BR>
+thanks<BR>
+<BR>
+On Wed, 2003-02-12 at 13:09, Ricardo Trindade wrote:
+<BLOCKQUOTE TYPE=CITE>
+    <FONT SIZE="2"><I>I'm one of them</FONT>
+    <BLOCKQUOTE>
+        <FONT COLOR="#737373" SIZE="2">-----Original Message-----<BR>
+        <B>From:</B> peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]<B>On Behalf Of </B>Charles Billette<BR>
+        <B>Sent:</B> quarta-feira, 12 de Fevereiro de 2003 17:42<BR>
+        <B>To:</B> peeweelinux<BR>
+        <B>Subject:</B> [Peeweelinux] SBC mediaGX<BR>
+        </FONT><BR>
+        <FONT COLOR="#737373" SIZE="3"><BR>
+        Hi<BR>
+        <BR>
+        &nbsp;&nbsp;&nbsp; Is there SBC mediaGX user on this news group?</I></FONT><BR>
+        <TABLE CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+<TR>
+</TR>
+<TR>
+</TR>
+<TR>
+<TD>
+
+<HR>
+<BR>
+<A HREF="mailto:charles@cbillette.com"><FONT SIZE="5"><B>Charles Billette</B></FONT></A><BR>
+- 514.909.2452<BR>
+- <A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A><BR>
+<DIV ALIGN=right>
+<HR>
+</DIV>
+</TD>
+</TR>
+</TABLE>
+
+    </BLOCKQUOTE>
+</BLOCKQUOTE>
+<TABLE CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+<TR>
+<TD>
+
+<HR>
+<BR>
+<A HREF="mailto:charles@cbillette.com"><FONT SIZE="5"><B>Charles Billette</B></FONT></A><BR>
+- 514.909.2452<BR>
+- <A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A><BR>
+<DIV ALIGN=right>
+<HR>
+</DIV>
+</TD>
+</TR>
+</TABLE>
+<BR>
+<BR>
+</BODY>
+</HTML>
+
+--=-8MMb/uwS590jkDY+JWQu--
+
+
+From peeweelinux@adis.on.ca  Thu Feb 13 03:20:16 2003
+From: peeweelinux@adis.on.ca (vwbug19)
+Date: Wed, 12 Feb 2003 22:20:16 -0500
+Subject: [Peeweelinux] SBC mediaGX
+References: <000401c2d2c1$d37f94b0$0201a8c0@ricardo> <1045102365.2535.7.camel@localhost.localdomain>
+Message-ID: <010201c2d30e$dcf064a0$bd00a8c0@VW4>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_00FF_01C2D2E4.EB4661F0
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+that would be apm support=20
+
+  ----- Original Message -----=20
+  From: Charles Billette=20
+  To: peeweelinux=20
+  Sent: Wednesday, February 12, 2003 9:12 PM
+  Subject: RE: [Peeweelinux] SBC mediaGX
+
+
+  Are you able to but the board in suspend mode and reactivate it?
+
+  When I use the "suspend jumper/switch" the board goes to suspends. =
+When I try to wake it (using the same switch) the board came back to =
+life but only for couple second.
+
+  Did peewee linux support suspend?
+  Is there some rc.d scripts I miss?
+
+  thanks
+
+  On Wed, 2003-02-12 at 13:09, Ricardo Trindade wrote:=20
+    I'm one of them=20
+      -----Original Message-----
+      From: peeweelinux-admin@adis.on.ca =
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Charles Billette
+      Sent: quarta-feira, 12 de Fevereiro de 2003 17:42
+      To: peeweelinux
+      Subject: [Peeweelinux] SBC mediaGX
+
+
+      Hi
+
+          Is there SBC mediaGX user on this news group?
+
+
+
+--------------------------------------------------------------------
+
+            Charles Billette
+            - 514.909.2452
+            - charles@cbillette.com
+
+
+--------------------------------------------------------------------
+          =20
+
+
+------------------------------------------------------------------------
+
+        Charles Billette
+        - 514.909.2452
+        - charles@cbillette.com
+
+
+------------------------------------------------------------------------
+      =20
+
+
+
+------=_NextPart_000_00FF_01C2D2E4.EB4661F0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; CHARSET=3DUTF-8">
+<META content=3D"MSHTML 6.00.2800.1126" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>that would be apm support </FONT></DIV>
+<DIV>&nbsp;</DIV>
+<BLOCKQUOTE=20
+style=3D"PADDING-RIGHT: 0px; PADDING-LEFT: 5px; MARGIN-LEFT: 5px; =
+BORDER-LEFT: #000000 2px solid; MARGIN-RIGHT: 0px">
+  <DIV style=3D"FONT: 10pt arial">----- Original Message ----- </DIV>
+  <DIV=20
+  style=3D"BACKGROUND: #e4e4e4; FONT: 10pt arial; font-color: =
+black"><B>From:</B>=20
+  <A title=3Dcharles@cbillette.com =
+href=3D"mailto:charles@cbillette.com">Charles=20
+  Billette</A> </DIV>
+  <DIV style=3D"FONT: 10pt arial"><B>To:</B> <A =
+title=3Dpeeweelinux@adis.on.ca=20
+  href=3D"mailto:peeweelinux@adis.on.ca">peeweelinux</A> </DIV>
+  <DIV style=3D"FONT: 10pt arial"><B>Sent:</B> Wednesday, February 12, =
+2003 9:12=20
+  PM</DIV>
+  <DIV style=3D"FONT: 10pt arial"><B>Subject:</B> RE: [Peeweelinux] SBC=20
+  mediaGX</DIV>
+  <DIV><BR></DIV>Are you able to but the board in suspend mode and =
+reactivate=20
+  it?<BR><BR>When I use the "suspend jumper/switch" the board goes to =
+suspends.=20
+  When I try to wake it (using the same switch) the board came back to =
+life but=20
+  only for couple second.<BR><BR>Did peewee linux support suspend?<BR>Is =
+there=20
+  some rc.d scripts I miss?<BR><BR>thanks<BR><BR>On Wed, 2003-02-12 at =
+13:09,=20
+  Ricardo Trindade wrote:=20
+  <BLOCKQUOTE TYPE=3D"CITE"><FONT size=3D2><I>I'm one of them</FONT>=20
+    <BLOCKQUOTE><FONT color=3D#737373 size=3D2>-----Original=20
+      Message-----<BR><B>From:</B> peeweelinux-admin@adis.on.ca=20
+      [mailto:peeweelinux-admin@adis.on.ca]<B>On Behalf Of </B>Charles=20
+      Billette<BR><B>Sent:</B> quarta-feira, 12 de Fevereiro de 2003=20
+      17:42<BR><B>To:</B> peeweelinux<BR><B>Subject:</B> [Peeweelinux] =
+SBC=20
+      mediaGX<BR></FONT><BR><FONT color=3D#737373=20
+      size=3D3><BR>Hi<BR><BR>&nbsp;&nbsp;&nbsp; Is there SBC mediaGX =
+user on this=20
+      news group?</I></FONT><BR>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%">
+        <TBODY>
+        <TR></TR>
+        <TR></TR>
+        <TR>
+          <TD>
+            <HR>
+            <BR><A href=3D"mailto:charles@cbillette.com"><FONT =
+size=3D5><B>Charles=20
+            Billette</B></FONT></A><BR>- 514.909.2452<BR>- <A=20
+            =
+href=3D"mailto:charles@cbillette.com">charles@cbillette.com</A><BR>
+            <DIV align=3Dright>
+            <HR>
+            </DIV></TD></TR></TBODY></TABLE></BLOCKQUOTE></BLOCKQUOTE>
+  <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%">
+    <TBODY>
+    <TR>
+      <TD>
+        <HR>
+        <BR><A href=3D"mailto:charles@cbillette.com"><FONT =
+size=3D5><B>Charles=20
+        Billette</B></FONT></A><BR>- 514.909.2452<BR>- <A=20
+        =
+href=3D"mailto:charles@cbillette.com">charles@cbillette.com</A><BR>
+        <DIV align=3Dright>
+        <HR>
+        =
+</DIV></TD></TR></TBODY></TABLE><BR><BR></BLOCKQUOTE></BODY></HTML>
+
+------=_NextPart_000_00FF_01C2D2E4.EB4661F0--
+
+
+From peeweelinux@adis.on.ca  Thu Feb 13 14:00:59 2003
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 13 Feb 2003 14:00:59 -0000
+Subject: [Peeweelinux] SBC mediaGX
+In-Reply-To: <1045102365.2535.7.camel@localhost.localdomain>
+Message-ID: <001001c2d368$56f34c00$2efe0dd5@ricardo>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0011_01C2D368.56F34C00
+Content-Type: text/plain;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+never tried it, sorry, mine is always on
+  -----Original Message-----
+  From: peeweelinux-admin@adis.on.ca =
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Charles Billette
+  Sent: quinta-feira, 13 de Fevereiro de 2003 2:13
+  To: peeweelinux
+  Subject: RE: [Peeweelinux] SBC mediaGX
+
+
+  Are you able to but the board in suspend mode and reactivate it?
+
+  When I use the "suspend jumper/switch" the board goes to suspends. =
+When I try to wake it (using the same switch) the board came back to =
+life but only for couple second.
+
+  Did peewee linux support suspend?
+  Is there some rc.d scripts I miss?
+
+  thanks
+
+  On Wed, 2003-02-12 at 13:09, Ricardo Trindade wrote:=20
+    I'm one of them=20
+      -----Original Message-----
+      From: peeweelinux-admin@adis.on.ca =
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Charles Billette
+      Sent: quarta-feira, 12 de Fevereiro de 2003 17:42
+      To: peeweelinux
+      Subject: [Peeweelinux] SBC mediaGX
+
+
+      Hi
+
+          Is there SBC mediaGX user on this news group?
+
+
+
+--------------------------------------------------------------------
+
+            Charles Billette
+            - 514.909.2452
+            - charles@cbillette.com
+
+
+--------------------------------------------------------------------
+          =20
+
+
+------------------------------------------------------------------------
+
+        Charles Billette
+        - 514.909.2452
+        - charles@cbillette.com
+
+
+------------------------------------------------------------------------
+      =20
+
+
+
+------=_NextPart_000_0011_01C2D368.56F34C00
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Dutf-8">
+
+
+<META content=3D"MSHTML 6.00.2800.1141" name=3DGENERATOR></HEAD>
+<BODY>
+<DIV><SPAN class=3D530500014-13022003><FONT face=3DArial color=3D#0000ff =
+size=3D2>never=20
+tried it, sorry, mine is always on</FONT></SPAN></DIV>
+<BLOCKQUOTE>
+  <DIV class=3DOutlookMessageHeader dir=3Dltr align=3Dleft><FONT =
+face=3DTahoma=20
+  size=3D2>-----Original Message-----<BR><B>From:</B> =
+peeweelinux-admin@adis.on.ca=20
+  [mailto:peeweelinux-admin@adis.on.ca]<B>On Behalf Of </B>Charles=20
+  Billette<BR><B>Sent:</B> quinta-feira, 13 de Fevereiro de 2003=20
+  2:13<BR><B>To:</B> peeweelinux<BR><B>Subject:</B> RE: [Peeweelinux] =
+SBC=20
+  mediaGX<BR><BR></FONT></DIV>Are you able to but the board in suspend =
+mode and=20
+  reactivate it?<BR><BR>When I use the "suspend jumper/switch" the board =
+goes to=20
+  suspends. When I try to wake it (using the same switch) the board came =
+back to=20
+  life but only for couple second.<BR><BR>Did peewee linux support=20
+  suspend?<BR>Is there some rc.d scripts I miss?<BR><BR>thanks<BR><BR>On =
+Wed,=20
+  2003-02-12 at 13:09, Ricardo Trindade wrote:=20
+  <BLOCKQUOTE TYPE=3D"CITE"><FONT size=3D2><I>I'm one of them</FONT>=20
+    <BLOCKQUOTE><FONT color=3D#737373 size=3D2>-----Original=20
+      Message-----<BR><B>From:</B> peeweelinux-admin@adis.on.ca=20
+      [mailto:peeweelinux-admin@adis.on.ca]<B>On Behalf Of </B>Charles=20
+      Billette<BR><B>Sent:</B> quarta-feira, 12 de Fevereiro de 2003=20
+      17:42<BR><B>To:</B> peeweelinux<BR><B>Subject:</B> [Peeweelinux] =
+SBC=20
+      mediaGX<BR></FONT><BR><FONT color=3D#737373=20
+      size=3D3><BR>Hi<BR><BR>&nbsp;&nbsp;&nbsp; Is there SBC mediaGX =
+user on this=20
+      news group?</I></FONT><BR>
+      <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%">
+        <TBODY>
+        <TR></TR>
+        <TR></TR>
+        <TR>
+          <TD>
+            <HR>
+            <BR><A href=3D"mailto:charles@cbillette.com"><FONT =
+size=3D5><B>Charles=20
+            Billette</B></FONT></A><BR>- 514.909.2452<BR>- <A=20
+            =
+href=3D"mailto:charles@cbillette.com">charles@cbillette.com</A><BR>
+            <DIV align=3Dright>
+            <HR>
+            </DIV></TD></TR></TBODY></TABLE></BLOCKQUOTE></BLOCKQUOTE>
+  <TABLE cellSpacing=3D0 cellPadding=3D0 width=3D"100%">
+    <TBODY>
+    <TR>
+      <TD>
+        <HR>
+        <BR><A href=3D"mailto:charles@cbillette.com"><FONT =
+size=3D5><B>Charles=20
+        Billette</B></FONT></A><BR>- 514.909.2452<BR>- <A=20
+        =
+href=3D"mailto:charles@cbillette.com">charles@cbillette.com</A><BR>
+        <DIV align=3Dright>
+        <HR>
+        =
+</DIV></TD></TR></TBODY></TABLE><BR><BR></BLOCKQUOTE></BODY></HTML>
+
+------=_NextPart_000_0011_01C2D368.56F34C00--
+
+
+From peeweelinux@adis.on.ca  Thu Feb 13 17:54:07 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Thu, 13 Feb 2003 09:54:07 -0800
+Subject: [Peeweelinux] development configuration
+In-Reply-To: <20030212142223.79277.qmail@web40411.mail.yahoo.com>
+References: <20030212142223.79277.qmail@web40411.mail.yahoo.com>
+Message-ID: <3E4BDBBF.2020505@fluid.com>
+
+Note that SanDisk makes industrial grade CF disks, we're using them -- 
+they're black in color and say "Industrial Grade" on them. They "work" 
+just like regular ones, no changes needed to your process.
+
+http://www.envoydata.com/PCMCIA_SD_Industrial_CF_Flash.htm
+
+hth,
+-te
+
+Ralph Stickley wrote:
+> I think the wear factor is noticable only after about 10,000 write
+> cycles.  I also beleive that some CF controllers do wear leveling
+> which may increase this "apparent" number of writes.
+> 
+> So, for datalogging small files - not a good idea.  For development
+> with 10 reloads a day you have a couple of years to go :)
+> 
+> Enjoy....
+> 
+> --- dan latham <danlatham@earthlink.net> wrote:
+> 
+>>ok, I'll look for those. The only issue I can think of with CF is
+>>the number of
+>>times it can be written to. Would you expect this to be a big issue
+>>when
+>>developing and testing? The nice thing about CF is that it's not
+>>too 
+>>inexpensive
+>>so if it wears out, just buy another. I just don't want to have to
+>>buy one 
+>>every month.
+>>Any experience with how long I might expect it to last given
+>>moderate 
+>>development
+>>activity (a couple of build/test cycles per day)?
+>>
+>>thanks,
+>>dan
+>>
+>>
+>>At 11:33 PM 2/11/2003 -0800, Ralph Stickley wrote:
+>>
+>>>Dan,
+>>>How about Compact Flash on the IDE port ? Use USB/CF on
+>>
+>>development
+>>
+>>>box, IDE/CF on target board.
+>>>Adi did have some adaptor type thingys...
+>>>
+>>>Good luck,
+>>>Ralph
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+> 
+> 
+> __________________________________________________
+> Do you Yahoo!?
+> Yahoo! Shopping - Send Flowers for Valentine's Day
+> http://shopping.yahoo.com
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Troy Engel, Systems Engineer
+Not suitable for children.
+
+
+From peeweelinux@adis.on.ca  Thu Feb 13 18:04:08 2003
+From: peeweelinux@adis.on.ca (dan latham)
+Date: Thu, 13 Feb 2003 13:04:08 -0500
+Subject: [Peeweelinux] Re: or PCMCIA Compact Flash Card Adapter
+In-Reply-To: <000001c2d2c5$a3b14810$0d186551@param>
+Message-ID: <5.1.1.6.2.20030213130129.00b20470@mail.earthlink.net>
+
+--=====================_1219483==.ALT
+Content-Type: text/plain; charset="iso-8859-1"; format=flowed
+Content-Transfer-Encoding: quoted-printable
+
+Thanks Rushi, I've ordered an IDE to CF reader for the Mini-ITX. Good idea
+with the PCMCIA adapter. I have one of those and will try it!
+
+thanks,
+dan
+
+At 06:36 PM 2/12/2003 +0000, Rushi Lala wrote:
+
+>Hi Dan ,
+>
+>
+>
+>You can use CF I guess. And for laptop you can use USB card reader and=20
+>writer or PCMCIA Compact Flash Card Adapter (less than 10=A3s) to port your=
+=20
+>peewee on it and than you can connect this CF to your Mini ITX board as=20
+>IDE master with CF2IDE adapter.
+>
+>
+>
+>I guess this answers your question
+>
+>
+>
+>
+>
+>Thanks
+>
+>
+>
+>Rushi
+
+--=====================_1219483==.ALT
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+Thanks Rushi, I've ordered an IDE to CF reader for the Mini-ITX. Good
+idea<br>
+with the PCMCIA adapter. I have one of those and will try it!<br><br>
+thanks,<br>
+dan<br><br>
+At 06:36 PM 2/12/2003 +0000, Rushi Lala wrote:<br><br>
+<blockquote type=3Dcite class=3Dcite cite><font face=3D"arial">Hi Dan , <br>
+</font><br>
+<font face=3D"arial">&nbsp;<br>
+</font><br>
+<font face=3D"arial">You can use CF I guess. And for laptop you can use USB
+card reader and writer or PCMCIA Compact Flash Card Adapter (less than
+10=A3s) to port your peewee on it and than you can connect this CF to your
+Mini ITX board as IDE master with CF2IDE adapter.<br>
+</font><br>
+<font face=3D"arial">&nbsp;<br>
+</font><br>
+<font face=3D"arial">I guess this answers your question <br>
+</font><br>
+<font face=3D"arial">&nbsp;<br>
+</font><br>
+<font face=3D"arial">&nbsp;<br>
+</font><br>
+<font face=3D"arial">Thanks<br>
+</font><br>
+<font face=3D"arial">&nbsp;<br>
+</font><br>
+<font face=3D"arial">Rushi</font></blockquote></html>=00
+
+--=====================_1219483==.ALT--
+
+
+From peeweelinux@adis.on.ca  Fri Feb 14 10:25:49 2003
+From: peeweelinux@adis.on.ca (Sventje Lill (RR))
+Date: Fri, 14 Feb 2003 11:25:49 +0100
+Subject: [Peeweelinux] SBC mediaGX
+In-Reply-To: <1045071710.2583.17.camel@localhost.localdomain>
+References: <1045071710.2583.17.camel@localhost.localdomain>
+Message-ID: <oprkkxxbs6wvt33w@mx.freenet.de>
+
+------------BYbxO4W46nPlrBYdQcOXX5
+Content-Type: text/plain; charset=iso-8859-15; format=flowed
+
+On 12 Feb 2003 12:41:50 -0500, Charles Billette <charles@cbillette.com> 
+wrote:
+
+Maybe this will help ;-)
+
+#!/bin/sh
+#
+# This script, when installed in your /etc/rc.d directory,
+# and when called from e.g. rc.local or rc.M will enable
+# various performance and power-saving features on your
+# Cyrix CPU.
+#
+# set6x86 version 1.2 or newer required
+
+
+BINPATH=/usr/sbin
+
+echo -n "Cyrix 6x86: Suspend-on-Halt, "
+$BINPATH/set6x86 -p 0xC2 -s 0x08
+
+echo -n "Fast ADS, "
+$BINPATH/set6x86 -p 0xC2 -c 0x02
+
+# MAPEN (access to CCR4/5 enabled -- needed for settings below)
+$BINPATH/set6x86 -p 0xC3 -s 0x10
+
+echo -n "Fast IORT, "
+$BINPATH/set6x86 -p 0xE8 -s 0x07
+
+echo -n "Enable DTE, "
+$BINPATH/set6x86 -p 0xE8 -s 0x10
+
+echo -n "Fast LOOP, "
+$BINPATH/set6x86 -p 0xE9 -c 0x02
+
+# This enables some performance features for the linear memory mapped
+# VGA memory buffer, assuming it's on address 0xE0000000.
+#
+# On my system, memory bandwidth goes from 44 MB/sec to 78 MB/sec.
+#
+# It is disabled here, because this is very system-dependent.
+#
+#echo -n "Fast Lin. VidMem."
+#$BINPATH/set6x86 -p 0xD6 0xE0
+#$BINPATH/set6x86 -p 0xD7 0x00
+#$BINPATH/set6x86 -p 0xD8 0x0A
+#$BINPATH/set6x86 -p 0xE2 0x09
+
+
+# MAPEN (disable access to CCR4/5)
+$BINPATH/set6x86 -p 0xC3 -c 0x10
+
+echo
+
+
+
+> Hi
+>
+> Is there SBC mediaGX user on this news group?
+>
+> ________________________________________________________________________
+> Charles Billette
+> - 514.909.2452
+> - charles@cbillette.com
+> ________________________________________________________________________
+>
+
+
+3 additional files attached
+-6x86reg shows the registers used by the CPU
+
+
+and for more hints:
+http://wwwd.national.com/national/developer.nsf/df772260f0f9b90c872569590075bc32/
+
+have fun
+
+Ralf Riedel
+
+------------BYbxO4W46nPlrBYdQcOXX5
+Content-Disposition: attachment;
+	filename="rc.set6x86"
+Content-Type: application/octet-stream;
+	name="rc.set6x86"
+Content-Transfer-Encoding: Base64
+
+IyEvYmluL3NoCiMKIyBUaGlzIHNjcmlwdCwgd2hlbiBpbnN0YWxsZWQgaW4g
+eW91ciAvZXRjL3JjLmQgZGlyZWN0b3J5LAojIGFuZCB3aGVuIGNhbGxlZCBm
+cm9tIGUuZy4gcmMubG9jYWwgb3IgcmMuTSB3aWxsIGVuYWJsZQojIHZhcmlv
+dXMgcGVyZm9ybWFuY2UgYW5kIHBvd2VyLXNhdmluZyBmZWF0dXJlcyBvbiB5
+b3VyCiMgQ3lyaXggQ1BVLgojCiMgc2V0Nng4NiB2ZXJzaW9uIDEuMiBvciBu
+ZXdlciByZXF1aXJlZAoKCkJJTlBBVEg9L3Vzci9zYmluCgplY2hvIC1uICJD
+eXJpeCA2eDg2OiBTdXNwZW5kLW9uLUhhbHQsICIKJEJJTlBBVEgvc2V0Nng4
+NiAtcCAweEMyIC1zIDB4MDgKCmVjaG8gLW4gIkZhc3QgQURTLCAiCiRCSU5Q
+QVRIL3NldDZ4ODYgLXAgMHhDMiAtYyAweDAyCgojIE1BUEVOIChhY2Nlc3Mg
+dG8gQ0NSNC81IGVuYWJsZWQgLS0gbmVlZGVkIGZvciBzZXR0aW5ncyBiZWxv
+dykKJEJJTlBBVEgvc2V0Nng4NiAtcCAweEMzIC1zIDB4MTAKCmVjaG8gLW4g
+IkZhc3QgSU9SVCwgIgokQklOUEFUSC9zZXQ2eDg2IC1wIDB4RTggLXMgMHgw
+NwoKZWNobyAtbiAiRW5hYmxlIERURSwgIgokQklOUEFUSC9zZXQ2eDg2IC1w
+IDB4RTggLXMgMHgxMAoKZWNobyAtbiAiRmFzdCBMT09QLCAiCiRCSU5QQVRI
+L3NldDZ4ODYgLXAgMHhFOSAtYyAweDAyCgojIFRoaXMgZW5hYmxlcyBzb21l
+IHBlcmZvcm1hbmNlIGZlYXR1cmVzIGZvciB0aGUgbGluZWFyIG1lbW9yeSBt
+YXBwZWQKIyBWR0EgbWVtb3J5IGJ1ZmZlciwgYXNzdW1pbmcgaXQncyBvbiBh
+ZGRyZXNzIDB4RTAwMDAwMDAuCiMKIyBPbiBteSBzeXN0ZW0sIG1lbW9yeSBi
+YW5kd2lkdGggZ29lcyBmcm9tIDQ0IE1CL3NlYyB0byA3OCBNQi9zZWMuCiMK
+IyBJdCBpcyBkaXNhYmxlZCBoZXJlLCBiZWNhdXNlIHRoaXMgaXMgdmVyeSBz
+eXN0ZW0tZGVwZW5kZW50LgojCiNlY2hvIC1uICJGYXN0IExpbi4gVmlkTWVt
+LiIKIyRCSU5QQVRIL3NldDZ4ODYgLXAgMHhENiAweEUwCiMkQklOUEFUSC9z
+ZXQ2eDg2IC1wIDB4RDcgMHgwMAojJEJJTlBBVEgvc2V0Nng4NiAtcCAweEQ4
+IDB4MEEKIyRCSU5QQVRIL3NldDZ4ODYgLXAgMHhFMiAweDA5CgoKIyBNQVBF
+TiAoZGlzYWJsZSBhY2Nlc3MgdG8gQ0NSNC81KQokQklOUEFUSC9zZXQ2eDg2
+IC1wIDB4QzMgLWMgMHgxMAoKZWNobwo=
+------------BYbxO4W46nPlrBYdQcOXX5
+Content-Disposition: attachment;
+	filename="6x86_reg."
+Content-Type: application/octet-stream;
+	name="6x86_reg."
+Content-Transfer-Encoding: Base64
+
+f0VMRgEBAQAAAAAAAAAAAAIAAwABAAAAkIUECDQAAAAYFgAAAAAAADQAIAAF
+ACgAFwAUAAYAAAA0AAAANIAECDSABAigAAAAoAAAAAUAAAAEAAAAAwAAANQA
+AADUgAQI1IAECBMAAAATAAAABAAAAAEAAAABAAAAAAAAAACABAgAgAQIHhQA
+AB4UAAAFAAAAABAAAAEAAAAgFAAAIKQECCCkBAjcAAAAWAIAAAYAAAAAEAAA
+AgAAAHQUAAB0pAQIdKQECIgAAACIAAAABgAAAAQAAAAvbGliL2xkLWxpbnV4
+LnNvLjEAABEAAAAaAAAAAAAAABcAAAASAAAADgAAABYAAAAAAAAACgAAAAkA
+AAAVAAAABwAAABAAAAAUAAAAAAAAABMAAAALAAAAEQAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAAAAAAAQAAAAAAAAA
+AQAAAAMAAAAGAAAADQAAAAAAAAAAAAAAGQAAABgAAAAPAAAAAgAAAAwAAAAA
+AAAACAAAAAAAAAAAAAAAAAAAAAAAAAALAAAAuIQECCgAAAAiAAAAEgAAAHSk
+BAgAAAAAEQDx/xsAAADIhAQIAAAAACIAAAAiAAAAAKUECFQAAAARABEALgAA
+ANiEBAgAAAAAIgAAADUAAAAgpAQIBAAAABEADAA/AAAAoIQECAAAAAASAAcA
+RQAAAOiEBAhGAAAAEgAAAFEAAAD4hAQIAAAAACIAAABYAAAAIKQECAQAAAAg
+AAwAYAAAAAiFBAgAAAAAIgAAAGgAAABUpQQIAgAAABEAEQB2AAAAGIUECAAA
+AAAiAAAAfAAAACiFBAgAAAAAIgAAAIMAAAAAjgQIAAAAABIACgCJAAAAOIUE
+CCYAAAAiAAAAkQAAAEiFBAg4AAAAEgAAAJgAAAA0pAQIAAAAABEA8f+uAAAA
+WIUECKAAAAASAAAAswAAAGiFBAg+AAAAEgAAAL4AAAB4hQQIOgAAABIAAADE
+AAAA9I0ECAAAAAARAPH/ywAAAPykBAgAAAAAEQDx/9IAAAD8pAQIAAAAABEA
+8f/eAAAAeKYECAAAAAARAPH/AGxpYmMuc28uNQBwcmludGYAX0RZTkFNSUMA
+ZnNjYW5mAF9JT19zdGRlcnJfAHBlcnJvcgBfX2Vudmlyb24AX2luaXQAX19s
+aWJjX2luaXQAaW9wZXJtAGVudmlyb24AZnByaW50ZgBfX2ZwdV9jb250cm9s
+AGZvcGVuAGZjbG9zZQBfZmluaQBzcHJpbnRmAGF0ZXhpdABfR0xPQkFMX09G
+RlNFVF9UQUJMRV8AZXhpdABfX3NldGZwdWN3AGNsb2NrAF9ldGV4dABfZWRh
+dGEAX19ic3Nfc3RhcnQAX2VuZAAAAKUECAUEAABUpQQIBQwAAECkBAgHAQAA
+RKQECAcDAABIpAQIBwUAAEykBAgHCAAAUKQECAcJAABUpAQIBwsAAFikBAgH
+DQAAXKQECAcOAABgpAQIBxAAAGSkBAgHEQAAaKQECAcTAABspAQIBxQAAHCk
+BAgHFQAAAAAAAAAAAADoKwkAAMIAAP81OKQECP8lPKQECAAAAAD/JUCkBAho
+AAAAAOng/////yVEpAQIaAgAAADp0P////8lSKQECGgQAAAA6cD/////JUyk
+BAhoGAAAAOmw/////yVQpAQIaCAAAADpoP////8lVKQECGgoAAAA6ZD/////
+JVikBAhoMAAAAOmA/////yVcpAQIaDgAAADpcP////8lYKQECGhAAAAA6WD/
+////JWSkBAhoSAAAAOlQ/////yVopAQIaFAAAADpQP////8lbKQECGhYAAAA
+6TD/////JXCkBAhoYAAAAOkg////AAAAAAAAAABZieOJ4IPk+InKAdIB0gHQ
+g8AEMe1VVVWJ5VBTUbiIAAAAuwAAAADNgItEJAijIKQECA+3BVSlBAhQ6Jn/
+//+DxAToEf///2gAjgQI6Gf///+DxATot/7//+jqAQAAUOhk////W410JgCN
+tCYAAAAAuAEAAADNgOv3jbQmAAAAAFO7MKQECIM9MKQECAB0DZCLA//Qg8ME
+gzsAdfRbw402w5CQkFWJ5VZTi10Ii3UMagFWU+iw/v//g8QMhcB0KWgIjgQI
+6H/+//+NRB7/UFNoGI4ECGgApQQI6Jr+//9qAejj/v//jXYAjWX4W17Jw5BV
+ieVXVlOLfQiLdQwxyTnxfQ6NNsaBWKUECDBBOfF89MaGWKUECAAxyTnxfR2N
+dgCNWQGJ8CnYifrT+oDiAQCQWKUECInZOfF85rhYpQQIjWX0W15fycOQVYnl
+i0UIPf8DAAB/C1Booo4ECOsgjXYAPf//DwB/DcH4ClBoqI4ECOsLjTbB+BRQ
+aK6OBAhoXaUECOgh/v//uF2lBAjJw402VYnlgewEAQAAV1ZTaLSOBAhoto4E
+COjd/f//iYX8/v//g8QIhcB1GKHEjgQIo3SlBAihyI4ECKN4pQQI62yNNo2d
+AP///4ne6xiNNoneU2jVjgQI/7X8/v//6En9//+DxAy/zI4ECLkJAAAA/KgA
+86Z12Y2FAP///1Bo1Y4ECP+1/P7//+ge/f//aHSlBAho1Y4ECP+1/P7//+gJ
+/f///7X8/v//6F79//+NpfD+//9bXl/Jw412AFWJ5YPsFFdWU74BAAAAagJq
+IuhF/v//aNiOBAjov/z//4PEDLDD5iLkI4jBD7bJiU34sMPmIopN+IDJEIjI
+5iOw/uYi5COIwQ+2yYlN/FFoBY8ECOiH/P//i1X8g+Jwg8QIg/pQdUGLTfyD
+4QeD+QJ0HncIg/kBdA/rbpCD+QN0F4P5BHQa62FoFo8ECOtSkGgujwQI60qQ
+aEiPBAjrQpBoYI8ECOs6kItN/IPhBYP5AXQZcg+D+QR0IoP5BXQV6yiNdgBo
+eo8ECOsWkGgWjwQI6w6QaEiPBAjrBpBoko8ECOj6+///g8QEaKqPBAjo7fv/
+/4PEBLD/5iLkI4jCD7bSiVX8UmisjwQI6NH7//+DxAiLTfyDwf2D+R8PhxQB
+AAD/JI0AiQQIqIkECACKBAgNigQIDYoECA2KBAgNigQIDYoECA2KBAgNigQI
+DYoECA2KBAgNigQIDYoECA2KBAgNigQIDYoECA2KBAiAiQQIiIkECJCJBAiY
+iQQIDYoECA2KBAgNigQIDYoECA2KBAgNigQIDYoECA2KBAgNigQIDYoECKCJ
+BAhovY8ECOt+kGjLjwQI63aQaNmPBAjrbpBo548ECOtmkGj8jwQI616QaAuQ
+BAjrVpCJ8DHS9/OJwY0MiYlN8I08iY00vQAAAACJ8L+IEwAAMdL394nBv2QA
+AAAx0vf3idNTifC/IKEHADHS9/eJwVFoP5AECOi/+v//g8QM60ONNmgbkAQI
+6K76//+DxARoK5AECOih+v//g8QE6yHoV/v//4nDifCQSHn96Er7//+Jwina
+idOD+2MPh3P///8B9nXb6Nr8//9odKUECGhfkAQI6GP6//9oqo8ECOhZ+v//
+g8QMsMDmIuQjiMIPttpTaHSQBAjoQPr//4PECPbDAnQIaIWQBAjrBpBot5AE
+COgm+v//g8QEsMHmIuQjiMIPttpTaOeQBAjoDfr//4PECPbDEHQJaPiQBAjr
+B402aAWRBAjo8vn//4PEBLDC5iLkI4jCD7baU2gUkQQI6Nn5//+DxAj2wwh0
+CWglkQQI6weNNmhUkQQI6L75//+DxASww+Yi5COIwg+22lNohpEECOil+f//
+g8QIsOjmIuQjiMIPttpTaJeRBAjojPn//4PECPZF/PB0HPbDEHQKaKiRBAjr
+CI12AGi8kQQI6Gr5//+DxASJ2YPhB4P5B3du/ySNZIsECI02hIsECIyLBAiU
+iwQInIsECKSLBAisiwQItIsECLyLBAho0ZEECOs2kGjxkQQI6y6QaBKSBAjr
+JpBoM5IECOsekGhUkgQI6xaQaHaSBAjrDpBomJIECOsGkGi6kgQI6PL4//+D
+xARoqo8ECOjl+P//g8QEsOnmIuQjiMIPttpTaM+SBAjozPj//4PECPZF/PB0
+HPbDAnQKaOCSBAjrCI12AGj0kgQI6Kr4//+DxAT2wwF0CmgJkwQI6wiNdgBo
+MJMECOiO+P//g8QEaFeTBAjogfj//zH2g8QEx0XsAAAAAJCKRewExOYi5COJ
+w8HjGIpF7ATF5iLkIyX/AAAAweAQCcOKRewExuYi5CMPtsiJyCXwAAAAweAI
+CcOD4Q9WaHuTBAiJTfToKvj//4PECItN9IXJdQxohZMECOkAAQAAjTZTaI+T
+BAiJTfToBvj//4PECItN9IP+Bn8Xg/kPdQpoAABAAOsTjXYAuAIAAADrBpC4
+gAAAANPgUOj3+f//UGiokwQI6Mz3//+DxAyJ8ATc5iLkIw+22FNorJMECOiz
+9///g8QIg/4HdBO5w5MECPbDAXQYub6TBAjrEY02ub6TBAj2wwF0BbnDkwQI
+UWjEkwQI6H73//+DxAj2RfzwdBL2wwJ0DWjNkwQI6Gb3//+DxAT2wwR0DWjj
+kwQI6FT3//+DxAT2wwh0DWjykwQI6EL3//+DxAT2wxB0DWgElAQI6DD3//+D
+xAT2wyB0DWgUlAQI6B73//+DxARoqo8ECOgR9///g8QEg0XsA0aD/gcPjoz+
+//+ww+YiikX45iMxwI1l4FteX8nDkJCQkJBTuySkBAiDPSSkBAj/dA2QiwP/
+0IPD/IM7/3X0W8ONNsOQkJAAAAAAAAAAAAAAAADoC/j//8IAAEkvTyBQZXJt
+aXNzaW9ucwBDYW5ub3QgZ2V0IEkvTyBwZXJtaXNzaW9ucyBmb3IgaGFyZHdh
+cmUgYWRkcmVzcyByYW5nZSAweCV4LTB4JXguCiAgICAgICAgICAgICBZb3Ug
+bXVzdCBiZSBzdXBlcnVzZXIsIG9yIHRoZSBwcm9ncmFtIG11c3QgYmUgc2V0
+dWlkIHJvb3QhCgAlZCBLQgAlZCBNQgAlZCBHQgByAC9wcm9jL2NwdWluZm8A
+dW5rbm93bgBib2dvbWlwcwAlcwAKNng4NiAoQ2xhc3NpYy9ML01YKSBSZWdp
+c3RlciBEdW1wIHV0aWxpdHkKCgA2eDg2IERJUjA6IDB4JXgJADJYIGNvcmUv
+YnVzIGNsb2NrIHJhdGlvADIuNVggY29yZS9idXMgY2xvY2sgcmF0aW8AM1gg
+Y29yZS9idXMgY2xvY2sgcmF0aW8AMy41WCBjb3JlL2J1cyBjbG9jayByYXRp
+bwAxWCBjb3JlL2J1cyBjbG9jayByYXRpbwA0WCBjb3JlL2J1cyBjbG9jayBy
+YXRpbwAKACAgICAgRElSMTogMHgleAkANng4NiBSZXYuIDIuNAA2eDg2IFJl
+di4gMi41ADZ4ODYgUmV2LiAyLjYANng4NiBSZXYuIDIuNyBvciAzLjcANng4
+NkwgUmV2LiA0LjIANng4Nk1YIFJldi4gMS4zADZ4ODZNWCBSZXYuIDEuNAAK
+CldhaXQgYSBtb21lbnQuLi4KAENhbGN1bGF0ZWQgQm9nb01JUFM6CSVsdS4l
+MDJsdQoAS2VybmVsIEJvZ29NSVBTOgklcwoANng4NiBDQ1IwOiAweCV4CQBO
+QzEgc2V0IChhZGRyZXNzIHJlZ2lvbiA2NDBLYi0xTWIgbm9uLWNhY2hlYWJs
+ZSkKAE5DMSByZXNldCAoYWRkcmVzcyByZWdpb24gNjQwS2ItMU1iIGNhY2hl
+YWJsZSkKACAgICAgQ0NSMTogMHgleAkATk9fTE9DSyBzZXQKAE5PX0xPQ0sg
+cmVzZXQKACAgICAgQ0NSMjogMHgleAkAU1VTUF9ITFQgc2V0IChsb3cgcG93
+ZXIgc3VzcGVuZCBtb2RlIGVuYWJsZWQpCgBTVVNQX0hMVCByZXNldCAobG93
+IHBvd2VyIHN1c3BlbmQgbW9kZSBkaXNhYmxlZCkKACAgICAgQ0NSMzogMHgl
+eAoAICAgICBDQ1I0OiAweCV4CQBEVEUgY2FjaGUgZW5hYmxlZCwgAERURSBj
+YWNoZSBkaXNhYmxlZCwgADEgY2xvY2sgY3ljbGUgSS9PIHJlY292ZXJ5IHRp
+bWUAMiBjbG9jayBjeWNsZXMgSS9PIHJlY292ZXJ5IHRpbWUANCBjbG9jayBj
+eWNsZXMgSS9PIHJlY292ZXJ5IHRpbWUAOCBjbG9jayBjeWNsZXMgSS9PIHJl
+Y292ZXJ5IHRpbWUAMTYgY2xvY2sgY3ljbGVzIEkvTyByZWNvdmVyeSB0aW1l
+ADMyIGNsb2NrIGN5Y2xlcyBJL08gcmVjb3ZlcnkgdGltZQA2NCBjbG9jayBj
+eWNsZXMgSS9PIHJlY292ZXJ5IHRpbWUAbm8gSS9PIHJlY292ZXJ5IHRpbWUA
+ICAgICBDQ1I1OiAweCV4CQBzbG93IExPT1AgZW5hYmxlZCwgAHNsb3cgTE9P
+UCBkaXNhYmxlZCwgAGFsbG9jYXRlIGNhY2hlIGxpbmVzIG9uIHdyaXRlIG1p
+c3NlcwoKAGRlZmF1bHQgY2FjaGUgbGluZSBhbGxvY2F0aW9uIHBvbGljeQoK
+ADZ4ODYgQWRkcmVzcyBSZWdpb24gUmVnaXN0ZXIgZHVtcDoKACAgQVJSJWQ6
+IABkaXNhYmxlZAoAYWRkcmVzcyA9IDB4JVggLCBzaXplID0gACVzCgAgICAg
+UkNSID0gMHglWCA6IABub3QgAAAlc2NhY2hlZAAsIHdlYWsgd3JpdGUgb3Jk
+ZXJpbmcALCB3ZWFrIGxvY2tpbmcALCB3cml0ZSBnYXRoZXJpbmcALCB3cml0
+ZSB0aHJvdWdoACwgbm8gTEJBIwAAAAAAAAD/////AAAAAP////8AAAAAdKQE
+CAAAAAAAAAAAvoQECM6EBAjehAQI7oQECP6EBAgOhQQIHoUECC6FBAg+hQQI
+ToUECF6FBAhuhQQIfoUECAEAAAABAAAADAAAAKCEBAgNAAAAAI4ECAQAAADo
+gAQIBQAAADyDBAgGAAAAnIEECAoAAADjAAAACwAAABAAAAAVAAAAAAAAAAMA
+AAA0pAQIAgAAAGgAAAAUAAAAEQAAABcAAAAwhAQIEQAAACCEBAgSAAAAEAAA
+ABMAAAAIAAAAAAAAAAAAAAAAR0NDOiAoR05VKSAyLjcuMi5sLjMAAEdDQzog
+KEdOVSkgMi43LjIuMQAAR0NDOiAoR05VKSAyLjcuMi5sLjMACAAAAAAAAAAB
+AAAAMDEuMDEAAAAIAAAAAAAAAAEAAAAwMS4wMQAAAAgAAAAAAAAAAQAAADAx
+LjAxAAAAAC5zeW10YWIALnN0cnRhYgAuc2hzdHJ0YWIALmludGVycAAuaGFz
+aAAuZHluc3ltAC5keW5zdHIALnJlbC5ic3MALnJlbC5wbHQALmluaXQALnBs
+dAAudGV4dAAuZmluaQAucm9kYXRhAC5kYXRhAC5jdG9ycwAuZHRvcnMALmdv
+dAAuZHluYW1pYwAuYnNzAC5jb21tZW50AC5ub3RlAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAbAAAAAQAAAAIAAADUgAQI1AAA
+ABMAAAAAAAAAAAAAAAEAAAAAAAAAIwAAAAUAAAACAAAA6IAECOgAAAC0AAAA
+AwAAAAAAAAAEAAAABAAAACkAAAALAAAAAgAAAJyBBAicAQAAoAEAAAQAAAAB
+AAAABAAAABAAAAAxAAAAAwAAAAIAAAA8gwQIPAMAAOMAAAAAAAAAAAAAAAEA
+AAAAAAAAOQAAAAkAAAACAAAAIIQECCAEAAAQAAAAAwAAABEAAAAEAAAACAAA
+AEIAAAAJAAAAAgAAADCEBAgwBAAAaAAAAAMAAAAIAAAABAAAAAgAAABLAAAA
+AQAAAAYAAACghAQIoAQAAAgAAAAAAAAAAAAAABAAAAAAAAAAUQAAAAEAAAAG
+AAAAqIQECKgEAADgAAAAAAAAAAAAAAAEAAAABAAAAFYAAAABAAAABgAAAJCF
+BAiQBQAAZAgAAAAAAAAAAAAAEAAAAAAAAABcAAAAAQAAAAYAAAAAjgQIAA4A
+AAgAAAAAAAAAAAAAABAAAAAAAAAAYgAAAAEAAAACAAAACI4ECAgOAAAWBgAA
+AAAAAAAAAAABAAAAAAAAAGoAAAABAAAAAwAAACCkBAggFAAABAAAAAAAAAAA
+AAAABAAAAAAAAABwAAAAAQAAAAMAAAAkpAQIJBQAAAgAAAAAAAAAAAAAAAQA
+AAAAAAAAdwAAAAEAAAADAAAALKQECCwUAAAIAAAAAAAAAAAAAAAEAAAAAAAA
+AH4AAAABAAAAAwAAADSkBAg0FAAAQAAAAAAAAAAAAAAABAAAAAQAAACDAAAA
+BgAAAAMAAAB0pAQIdBQAAIgAAAAEAAAAAAAAAAQAAAAIAAAAjAAAAAgAAAAD
+AAAA/KQECPwUAAB8AQAAAAAAAAAAAAAIAAAAAAAAAJEAAAABAAAAAAAAAAAA
+AAD8FAAAQAAAAAAAAAAAAAAAAQAAAAAAAACaAAAABwAAAAAAAABAAAAAPBUA
+ADwAAAAAAAAAAAAAAAEAAAAAAAAAEQAAAAMAAAAAAAAAAAAAAHgVAACgAAAA
+AAAAAAAAAAABAAAAAAAAAAEAAAACAAAAAAAAAAAAAACwGQAA0AQAABYAAAAr
+AAAABAAAABAAAAAJAAAAAwAAAAAAAAAAAAAAgB4AAP4BAAAAAAAAAAAAAAEA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMAAQAAAAAAAAAA
+AAAAAAADAAIAAAAAAAAAAAAAAAAAAwADAAAAAAAAAAAAAAAAAAMABAAAAAAA
+AAAAAAAAAAADAAUAAAAAAAAAAAAAAAAAAwAGAAAAAAAAAAAAAAAAAAMABwAA
+AAAAAAAAAAAAAAADAAgAAAAAAAAAAAAAAAAAAwAJAAAAAAAAAAAAAAAAAAMA
+CgAAAAAAAAAAAAAAAAADAAsAAAAAAAAAAAAAAAAAAwAMAAAAAAAAAAAAAAAA
+AAMADQAAAAAAAAAAAAAAAAADAA4AAAAAAAAAAAAAAAAAAwAPAAAAAAAAAAAA
+AAAAAAMAEAAAAAAAAAAAAAAAAAADABEAAAAAAAAAAAAAAAAAAwASAAAAAAAA
+AAAAAAAAAAMAEwAAAAAAAAAAAAAAAAADABQAAAAAAAAAAAAAAAAAAwAVAAAA
+AAAAAAAAAAAAAAMAFgABAAAAAAAAAAAAAAAEAPH/DAAAANCNBAgAAAAAAAAJ
+ABsAAADQjQQIAAAAAAIACQAxAAAAKKQECAAAAAABAA0APgAAAPCNBAgAAAAA
+AgAJAEkAAAAkpAQIAAAAAAEADABXAAAAMKQECAAAAAABAA4AZAAAAAAAAAAA
+AAAABADx/2sAAAAAhgQIAAAAAAAACQABAAAAAAAAAAAAAAAEAPH/DAAAABCG
+BAgAAAAAAAAJAHAAAAAQhgQIAAAAAAIACQCGAAAALKQECAAAAAABAA4AlAAA
+ADCGBAgAAAAAAgAJAEkAAAAkpAQIAAAAAAEADACfAAAAJKQECAAAAAABAA0A
+rQAAAAAAAAAAAAAABADx/wwAAAA0hgQIAAAAAAAACQC4AAAAWKUECAUAAAAA
+ABEAwwAAAF2lBAgUAAAAAAARAMwAAAB0pQQIAAEAABAAEQDRAAAAuIQECCgA
+AAAiAAAA2AAAAHSkBAgAAAAAEQDx/+EAAAA0hgQISwAAABIACQDuAAAA9I0E
+CAAAAAARAPH/9QAAAMiEBAgAAAAAIgAAAPwAAAAApQQIVAAAABEAEQAIAQAA
+2IQECAAAAAAiAAAADwEAAICGBAhXAAAAEgAJABoBAAAgpAQIBAAAABEADAAk
+AQAAoIQECAAAAAASAAcAKgEAAOiEBAhGAAAAEgAAADYBAADYhgQIRgAAABIA
+CQA/AQAA+IQECAAAAAAiAAAARgEAACCkBAgEAAAAIAAMAE4BAAAIhQQIAAAA
+ACIAAABWAQAAVKUECAIAAAARABEAZAEAAJCFBAiAAAAAEgAJAGsBAACQhQQI
+AAAAABAACQB6AQAAIIcECLUAAAASAAkAhwEAABiFBAgAAAAAIgAAAI0BAAD8
+pAQIAAAAABEA8f+ZAQAA2IcECPMFAAASAAkAngEAACiFBAgAAAAAIgAAAKUB
+AAAAjgQIAAAAABIACgCrAQAAOIUECCYAAAAiAAAAswEAAEiFBAg4AAAAEgAA
+ALoBAAB0pgQIBAAAABAAEQDGAQAA/KQECAAAAAARAPH/zQEAADSkBAgAAAAA
+EQDx/+MBAAB4pgQIAAAAABEA8f/oAQAAWIUECKAAAAASAAAA7QEAAGiFBAg+
+AAAAEgAAAPgBAAB4hQQIOgAAABIAAAAAY3J0c3R1ZmYuYwBnY2MyX2NvbXBp
+bGVkLgBfX2RvX2dsb2JhbF9jdG9yc19hdXgAX19DVE9SX0VORF9fAGluaXRf
+ZHVtbXkAZm9yY2VfdG9fZGF0YQBfX0RUT1JfRU5EX18AY3J0MC5TAGRvbmUA
+X19kb19nbG9iYWxfZHRvcnNfYXV4AF9fRFRPUl9MSVNUX18AZmluaV9kdW1t
+eQBfX0NUT1JfTElTVF9fADZ4ODZfcmVnLmMAYmluc3RyLjEwMgBzaXplLjEw
+NQBpbmZvAHByaW50ZgBfRFlOQU1JQwBnZXRfSU9fcmFuZ2UAX2V0ZXh0AGZz
+Y2FuZgBfSU9fc3RkZXJyXwBwZXJyb3IAaW50X3RvX2JpbgBfX2Vudmlyb24A
+X2luaXQAX19saWJjX2luaXQAc2l6ZV9zdHIAaW9wZXJtAGVudmlyb24AZnBy
+aW50ZgBfX2ZwdV9jb250cm9sAF9zdGFydABfX19jcnRfZHVtbXlfXwByZWFk
+X2NwdWluZm8AZm9wZW4AX19ic3Nfc3RhcnQAbWFpbgBmY2xvc2UAX2ZpbmkA
+c3ByaW50ZgBhdGV4aXQAQ29tbWFuZE5hbWUAX2VkYXRhAF9HTE9CQUxfT0ZG
+U0VUX1RBQkxFXwBfZW5kAGV4aXQAX19zZXRmcHVjdwBjbG9jawA=
+------------BYbxO4W46nPlrBYdQcOXX5
+Content-Disposition: attachment;
+	filename="set6x86."
+Content-Type: application/octet-stream;
+	name="set6x86."
+Content-Transfer-Encoding: Base64
+
+f0VMRgEBAQAAAAAAAAAAAAIAAwABAAAAsIUECDQAAADsEAAAAAAAADQAIAAF
+ACgAFwAUAAYAAAA0AAAANIAECDSABAigAAAAoAAAAAUAAAAEAAAAAwAAANQA
+AADUgAQI1IAECBMAAAATAAAABAAAAAEAAAABAAAAAAAAAACABAgAgAQI8Q4A
+APEOAAAFAAAAABAAAAEAAAD4DgAA+J4ECPieBAjYAAAARAEAAAYAAAAAEAAA
+AgAAAEgPAABInwQISJ8ECIgAAACIAAAABgAAAAQAAAAvbGliL2xkLWxpbnV4
+LnNvLjEAABEAAAAbAAAAEwAAABgAAAAUAAAACgAAAAMAAAAAAAAADAAAAAsA
+AAARAAAACAAAAAEAAAAWAAAAAAAAABUAAAAQAAAAEgAAAAAAAAAAAAAAAAAA
+AAAAAAAXAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAAAAAAAAAAA
+BAAAAAAAAAANAAAADwAAAAYAAAAHAAAAAAAAAAAAAAAaAAAAGQAAAAIAAAAO
+AAAAAAAAAAkAAAAAAAAAAAAAAAAAAAAAAAAACwAAAOiEBAgoAAAAIgAAABIA
+AABInwQIAAAAABEA8f8bAAAA+IQECOQEAAASAAAALQAAANCfBAhUAAAAEQAR
+ADkAAAAIhQQIAAAAACIAAABAAAAA+J4ECAQAAAARAAwASgAAABiFBAjhAQAA
+EgAAAFYAAADQhAQIAAAAABIABwBcAAAAKIUECEYAAAASAAAAaAAAADiFBAi5
+AQAAEgAAAHAAAABIhQQIAAAAACIAAAB3AAAA+J4ECAQAAAAgAAwAfwAAAFiF
+BAgAAAAAIgAAAIcAAAAkoAQIAgAAABEAEQCVAAAAKKAECAQAAAARABEAnAAA
+AGiFBAgsAAAAEgAAAKMAAABAigQIAAAAABIACgCpAAAAeIUECDgAAAASAAAA
+sAAAACygBAgEAAAAEQARALcAAAAMnwQIAAAAABEA8f/NAAAAiIUECKAAAAAS
+AAAA0gAAAJiFBAg+AAAAEgAAAN0AAAA0igQIAAAAABEA8f/kAAAA0J8ECAAA
+AAARAPH/6wAAANCfBAgAAAAAEQDx//cAAAA8oAQIAAAAABEA8f8AbGliYy5z
+by41AHByaW50ZgBfRFlOQU1JQwBfX3N0cnRvbF9pbnRlcm5hbABfSU9fc3Rk
+ZXJyXwBwZXJyb3IAX19lbnZpcm9uAHN0cm5jYXNlY21wAF9pbml0AF9fbGli
+Y19pbml0AHN0cnJjaHIAaW9wZXJtAGVudmlyb24AZnByaW50ZgBfX2ZwdV9j
+b250cm9sAG9wdGluZABnZXRvcHQAX2ZpbmkAYXRleGl0AG9wdG9wdABfR0xP
+QkFMX09GRlNFVF9UQUJMRV8AZXhpdABfX3NldGZwdWN3AF9ldGV4dABfZWRh
+dGEAX19ic3Nfc3RhcnQAX2VuZADQnwQIBQQAACSgBAgFDgAAKKAECAUPAAAs
+oAQIBRMAABifBAgHAQAAHJ8ECAcDAAAgnwQIBwUAACSfBAgHBwAAKJ8ECAcJ
+AAAsnwQIBwoAADCfBAgHCwAANJ8ECAcNAAA4nwQIBxAAADyfBAgHEgAAQJ8E
+CAcVAABEnwQIBxYAAAAAAADoOwUAAMIAAP81EJ8ECP8lFJ8ECAAAAAD/JRif
+BAhoAAAAAOng/////yUcnwQIaAgAAADp0P////8lIJ8ECGgQAAAA6cD/////
+JSSfBAhoGAAAAOmw/////yUonwQIaCAAAADpoP////8lLJ8ECGgoAAAA6ZD/
+////JTCfBAhoMAAAAOmA/////yU0nwQIaDgAAADpcP////8lOJ8ECGhAAAAA
+6WD/////JTyfBAhoSAAAAOlQ/////yVAnwQIaFAAAADpQP////8lRJ8ECGhY
+AAAA6TD///8AAAAAAAAAAFmJ44ngg+T4icoB0gHSAdCDwAQx7VVVVYnlUFNR
+uIgAAAC7AAAAAM2Ai0QkCKP4ngQID7cFJKAECFDoqf///4PEBOgx////aECK
+BAjod////4PEBOjH/v//6KIBAABQ6HT///9bjXQmAI20JgAAAAC4AQAAAM2A
+6/eNtCYAAAAAU7sInwQIgz0InwQIAHQNkIsD/9CDwwSDOwB19FvDjTbDkJCQ
+VYnlVlOLXQiLdQxqAVZT6OD+//+DxAyFwHQpaEiKBAjoj/7//41EHv9QU2hY
+igQIaNCfBAjoyv7//2oB6PP+//+NdgCNZfhbXsnDkFWJ5YtFCItNDItVEDnI
+fAQ50H4gUlFQUP91FGjiigQIaNCfBAjojv7//2oB6Lf+//+NdgDJw402VYnl
+V1ZTi10Mi3UUagBqAGoA/3UI6Ab+//+Jx4PEEFNW/3UQV+ie////ifiNZfRb
+Xl/Jw1WJ5VdWU4t9CIt1DDHJOfF9Do02xoEwoAQIMEE58Xz0xoYwoAQIADHJ
+OfF9HY12AI1ZAYnwKdiJ+tP6gOIBAJAwoAQIidk58XzmuDCgBAiNZfRbXl/J
+w5BVieWLVQi4t4sECIXSdAW4LYsECFC4gIwECIXSdAW4uIsECFC4t4sECIXS
+dAW4yIwECFChOKAECFBozYwECFBo0YwECOg7/f//ycOQVYnlg+wUV1ZTi10M
+x0X8AAAAAMdF+AAAAADHRfQAAAAAx0XwAAAAAIsDozigBAhqL1DoUf3//4nC
+g8QIhdJ0BELrB5CLFTigBAhqA2jYjQQIUugR/f//g8QMhcAPlMAPtvCNNmjc
+jQQIU/91COhG/f//icKDxAyD+v8PhIwAAACD+mh0G38Ng/o/dEiD+mN0N+th
+kIP6cHQXg/pzdB7rVFboDv///2oA6Cv9//+NdgDHRfwBAAAA66uNdgDHRfgB
+AAAA65+NdgDHRfQBAAAA65ONdgBW6Nr+//8PvgUsoAQIUGjhjQQI6Ez8//9q
+Aejl/P//kFJo840ECGjQnwQI6KT8//9qAejN/P//kIsVKKAECI1CATlFCH0W
+aBiOBAho0J8ECOh//P//agHoqPz//2j/AAAAagBoP44ECP80k+jk/f//iceD
+xBCF9nRRoSigBAiJRexAoyigBAiLFSigBAiLReyDwAI5RQh9GGhOjgQIaNCf
+BAjoLfz//2oB6Fb8//+NNmj/AAAAagBoZY4ECP80k+iQ/f//iUXwg8QQ/wUo
+oAQIixUooAQIOVUIfhX/NJNoc44ECGjQnwQI6Of7//+DxAxqAmoi6Nf8//+D
+xAiF9nQ5g330AHUGg334AHQkifjmIuQjiMIPttqDffQAdAqLRfD30CHYiUXw
+g334AHQDCV3wifjmIopF8OYjifjmIuQjiMIPttqDffwAdRpqCFPoNv3//1BT
+U1dXaKKOBAjoA/v//+sQkIX2dQtTaOuOBAjo8fr//zHAjWXgW15fycOQkJCQ
+kJCQkJCQkJCQkJBTu/yeBAiDPfyeBAj/dA2QiwP/0IPD/IM7/3X0W8ONNsOQ
+kJAAAAAAAAAAAAAAAADo6/v//8IAAEkvTyBQZXJtaXNzaW9ucwBDYW5ub3Qg
+Z2V0IEkvTyBwZXJtaXNzaW9ucyBmb3IgaGFyZHdhcmUgYWRkcmVzcyByYW5n
+ZSAweCV4LTB4JXguCiAgICAgICAgICAgICBZb3UgbXVzdCBiZSBzdXBlcnVz
+ZXIsIG9yIHRoZSBwcm9ncmFtIG11c3QgYmUgc2V0dWlkIHJvb3QhCgAlcyA9
+ICVkICgweCV4KSBvdXQgb2YgcmFuZ2UgWyVkLi4lZF0hCgBJbGxlZ2FsIGNo
+YXJhY3RlciAnJXMnIGluICVzOiAnJXMnCgAgIGRhdGE6IHRoZSBkYXRhIHRv
+IHByb2dyYW0gaW50byB0aGUgc3BlY2lmaWVkIHJlZ2lzdGVyIChkZWN8aGV4
+fG9jdCkuCiAgICAgICAgKG9yIHRoZSBiaXRtYXNrIGZvciB0aGUgLXMnIChz
+ZXQpIG9yIC1jJyAoY2xlYXIpIG9wdGlvbnMpCgAAICAgICAgICAgICAtcCAg
+c2lsZW50IG1vZGU6IGRvbid0IHNwcmVhZCB0aGUgbmV3cyAobm8gb3V0cHV0
+KQogICAgICAgICAgIC1zICBgZGF0YScgaXMgYSBiaXRtYXNrIGZvciBzZXR0
+aW5nIGJpdHMgaW4gdGhlIHJlZ2lzdGVyCiAgICAgICAgICAgLWMgIGBkYXRh
+JyBpcyBhIGJpdG1hc2sgZm9yIGNsZWFyaW5nIGJpdHMgaW4gdGhlIHJlZ2lz
+dGVyCgAgICAgICAgICAgIC1wICBwaXBlYWJsZSBvdXRwdXQ6IG9ubHkgaGV4
+IHJlZ2lzdGVyIGNvbnRlbnRzIGFyZSBwcmludGVkCgBkYXRhADEuNAAlcyAl
+cyAoYykgMTk5NiBLb2VuIEdhZGV5bmUuCgogIFVzYWdlOiAlcyBbb3B0aW9u
+c10gcmVnaXN0ZXJfaW5kZXggJXMKCiAgT3B0aW9uczogLWggIHByaW50IHVz
+YWdlIGluZm9ybWF0aW9uCiVzCiAgcmVnaXN0ZXJfaW5kZXg6IEFuIGluZGV4
+IHRvIHRoZSBzcGVjaWZpZWQgQ3lyaXggNng4NiBjb25maWcgcmVnaXN0ZXIs
+CiAgICAgICAgICAgICAgICAgIEluIGRlY2ltYWwgKGUuZy4gJzI0JyksIGhl
+eCAoJzB4MTgnKSBvciBvY3RhbCAoJzAzMCcpLgoKJXMKAHNldABocHNjAEJh
+ZCBvcHRpb24gJy0lYycKAGdldG9wdCByZXR1cm5lZCB1bmtub3duIHRva2Vu
+ICclYycuCgBNaXNzaW5nIHJlZ2lzdGVyIGluZGV4IG9uIGNvbW1hbmRsaW5l
+CgByZWdpc3RlciBpbmRleABNaXNzaW5nIHJlZ2lzdGVyIGRhdGEKAHJlZ2lz
+dGVyIGRhdGEARXh0cmEgcGFyYW1ldGVycyAoc3RhcnRpbmcgd2l0aCAnJXMn
+KSBpZ25vcmVkCgBDeXJpeCA2eDg2IGNvbmZpZyByZWdpc3RlciwgaW5kZXgg
+JWQgKD0weCV4KSBjb250YWlucyAlZCAoPTB4JTAyeCA9YiVzKQoAMHgleAoA
+AAAAAAAAAAAAAAD/////AAAAAP////8AAAAASJ8ECAAAAAAAAAAA7oQECP6E
+BAgOhQQIHoUECC6FBAg+hQQIToUECF6FBAhuhQQIfoUECI6FBAiehQQIAQAA
+AAEAAAAMAAAA0IQECA0AAABAigQIBAAAAOiABAgFAAAAUIMECAYAAACggQQI
+CgAAAPwAAAALAAAAEAAAABUAAAAAAAAAAwAAAAyfBAgCAAAAYAAAABQAAAAR
+AAAAFwAAAGyEBAgRAAAATIQECBIAAAAgAAAAEwAAAAgAAAAAAAAAAAAAAABH
+Q0M6IChHTlUpIDIuNy4yLmwuMwAAR0NDOiAoR05VKSAyLjcuMi4xAABHQ0M6
+IChHTlUpIDIuNy4yLmwuMwAIAAAAAAAAAAEAAAAwMS4wMQAAAAgAAAAAAAAA
+AQAAADAxLjAxAAAACAAAAAAAAAABAAAAMDEuMDEAAAAALnN5bXRhYgAuc3Ry
+dGFiAC5zaHN0cnRhYgAuaW50ZXJwAC5oYXNoAC5keW5zeW0ALmR5bnN0cgAu
+cmVsLmJzcwAucmVsLnBsdAAuaW5pdAAucGx0AC50ZXh0AC5maW5pAC5yb2Rh
+dGEALmRhdGEALmN0b3JzAC5kdG9ycwAuZ290AC5keW5hbWljAC5ic3MALmNv
+bW1lbnQALm5vdGUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAABsAAAABAAAAAgAAANSABAjUAAAAEwAAAAAAAAAAAAAAAQAAAAAA
+AAAjAAAABQAAAAIAAADogAQI6AAAALgAAAADAAAAAAAAAAQAAAAEAAAAKQAA
+AAsAAAACAAAAoIEECKABAACwAQAABAAAAAEAAAAEAAAAEAAAADEAAAADAAAA
+AgAAAFCDBAhQAwAA/AAAAAAAAAAAAAAAAQAAAAAAAAA5AAAACQAAAAIAAABM
+hAQITAQAACAAAAADAAAAEQAAAAQAAAAIAAAAQgAAAAkAAAACAAAAbIQECGwE
+AABgAAAAAwAAAAgAAAAEAAAACAAAAEsAAAABAAAABgAAANCEBAjQBAAACAAA
+AAAAAAAAAAAAEAAAAAAAAABRAAAAAQAAAAYAAADYhAQI2AQAANAAAAAAAAAA
+AAAAAAQAAAAEAAAAVgAAAAEAAAAGAAAAsIUECLAFAACEBAAAAAAAAAAAAAAQ
+AAAAAAAAAFwAAAABAAAABgAAAECKBAhACgAACAAAAAAAAAAAAAAAEAAAAAAA
+AABiAAAAAQAAAAIAAABIigQISAoAAKkEAAAAAAAAAAAAAAEAAAAAAAAAagAA
+AAEAAAADAAAA+J4ECPgOAAAEAAAAAAAAAAAAAAAEAAAAAAAAAHAAAAABAAAA
+AwAAAPyeBAj8DgAACAAAAAAAAAAAAAAABAAAAAAAAAB3AAAAAQAAAAMAAAAE
+nwQIBA8AAAgAAAAAAAAAAAAAAAQAAAAAAAAAfgAAAAEAAAADAAAADJ8ECAwP
+AAA8AAAAAAAAAAAAAAAEAAAABAAAAIMAAAAGAAAAAwAAAEifBAhIDwAAiAAA
+AAQAAAAAAAAABAAAAAgAAACMAAAACAAAAAMAAADQnwQI0A8AAGwAAAAAAAAA
+AAAAAAgAAAAAAAAAkQAAAAEAAAAAAAAAAAAAANAPAABAAAAAAAAAAAAAAAAB
+AAAAAAAAAJoAAAAHAAAAAAAAAEAAAAAQEAAAPAAAAAAAAAAAAAAAAQAAAAAA
+AAARAAAAAwAAAAAAAAAAAAAATBAAAKAAAAAAAAAAAAAAAAEAAAAAAAAAAQAA
+AAIAAAAAAAAAAAAAAIQUAADQBAAAFgAAACoAAAAEAAAAEAAAAAkAAAADAAAA
+AAAAAAAAAABUGQAADwIAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA
+AAAAAAAAAAAAAAAAAAAAAwABAAAAAAAAAAAAAAAAAAMAAgAAAAAAAAAAAAAA
+AAADAAMAAAAAAAAAAAAAAAAAAwAEAAAAAAAAAAAAAAAAAAMABQAAAAAAAAAA
+AAAAAAADAAYAAAAAAAAAAAAAAAAAAwAHAAAAAAAAAAAAAAAAAAMACAAAAAAA
+AAAAAAAAAAADAAkAAAAAAAAAAAAAAAAAAwAKAAAAAAAAAAAAAAAAAAMACwAA
+AAAAAAAAAAAAAAADAAwAAAAAAAAAAAAAAAAAAwANAAAAAAAAAAAAAAAAAAMA
+DgAAAAAAAAAAAAAAAAADAA8AAAAAAAAAAAAAAAAAAwAQAAAAAAAAAAAAAAAA
+AAMAEQAAAAAAAAAAAAAAAAADABIAAAAAAAAAAAAAAAAAAwATAAAAAAAAAAAA
+AAAAAAMAFAAAAAAAAAAAAAAAAAADABUAAAAAAAAAAAAAAAAAAwAWAAEAAAAA
+AAAAAAAAAAQA8f8MAAAAEIoECAAAAAAAAAkAGwAAABCKBAgAAAAAAgAJADEA
+AAAAnwQIAAAAAAEADQA+AAAAMIoECAAAAAACAAkASQAAAPyeBAgAAAAAAQAM
+AFcAAAAInwQIAAAAAAEADgBkAAAAAAAAAAAAAAAEAPH/awAAACCGBAgAAAAA
+AAAJAAEAAAAAAAAAAAAAAAQA8f8MAAAAMIYECAAAAAAAAAkAcAAAADCGBAgA
+AAAAAgAJAIYAAAAEnwQIAAAAAAEADgCUAAAAUIYECAAAAAACAAkASQAAAPye
+BAgAAAAAAQAMAJ8AAAD8ngQIAAAAAAEADQCtAAAAAAAAAAAAAAAEAPH/DAAA
+AFSGBAgAAAAAAAAJALcAAAAwoAQIBQAAAAAAEQDCAAAA6IQECCgAAAAiAAAA
+yQAAAEifBAgAAAAAEQDx/9IAAABUhgQISwAAABIACQDfAAAANIoECAAAAAAR
+APH/5gAAAPiEBAjkBAAAEgAAAPgAAABkhwQISwAAABIACQD+AAAA0J8ECFQA
+AAARABEACgEAAAiFBAgAAAAAIgAAABEBAAAMhwQIVwAAABIACQAcAQAA2IYE
+CDQAAAASAAkAIwEAAPieBAgEAAAAEQAMAC0BAAAYhQQI4QEAABIAAAA5AQAA
+0IQECAAAAAASAAcAPwEAACiFBAhGAAAAEgAAAEsBAAA4hQQIuQEAABIAAABT
+AQAASIUECAAAAAAiAAAAWgEAAPieBAgEAAAAIAAMAGIBAABYhQQIAAAAACIA
+AABqAQAAJKAECAIAAAARABEAeAEAACigBAgEAAAAEQARAH8BAACwhQQIgAAA
+ABIACQCGAQAAsIUECAAAAAAQAAkAlQEAANCfBAgAAAAAEQDx/6EBAABohQQI
+LAAAABIAAACoAQAAsIcECFECAAASAAkArQEAAECKBAgAAAAAEgAKALMBAAB4
+hQQIOAAAABIAAAC6AQAALKAECAQAAAARABEAwQEAADigBAgEAAAAEAARAM0B
+AADQnwQIAAAAABEA8f/UAQAADJ8ECAAAAAARAPH/6gEAADygBAgAAAAAEQDx
+/+8BAACIhQQIoAAAABIAAAD0AQAAoIYECDYAAAASAAkABAIAAJiFBAg+AAAA
+EgAAAABjcnRzdHVmZi5jAGdjYzJfY29tcGlsZWQuAF9fZG9fZ2xvYmFsX2N0
+b3JzX2F1eABfX0NUT1JfRU5EX18AaW5pdF9kdW1teQBmb3JjZV90b19kYXRh
+AF9fRFRPUl9FTkRfXwBjcnQwLlMAZG9uZQBfX2RvX2dsb2JhbF9kdG9yc19h
+dXgAX19EVE9SX0xJU1RfXwBmaW5pX2R1bW15AF9fQ1RPUl9MSVNUX18Ac2V0
+Nng4Ni5jAGJpbnN0ci4xMDYAcHJpbnRmAF9EWU5BTUlDAGdldF9JT19yYW5n
+ZQBfZXRleHQAX19zdHJ0b2xfaW50ZXJuYWwAdXNhZ2UAX0lPX3N0ZGVycl8A
+cGVycm9yAGludF90b19iaW4AZ2V0aW50AF9fZW52aXJvbgBzdHJuY2FzZWNt
+cABfaW5pdABfX2xpYmNfaW5pdABzdHJyY2hyAGlvcGVybQBlbnZpcm9uAGZw
+cmludGYAX19mcHVfY29udHJvbABvcHRpbmQAX3N0YXJ0AF9fX2NydF9kdW1t
+eV9fAF9fYnNzX3N0YXJ0AGdldG9wdABtYWluAF9maW5pAGF0ZXhpdABvcHRv
+cHQAQ29tbWFuZE5hbWUAX2VkYXRhAF9HTE9CQUxfT0ZGU0VUX1RBQkxFXwBf
+ZW5kAGV4aXQAY2hlY2tfaW50X3JhbmdlAF9fc2V0ZnB1Y3cA
+------------BYbxO4W46nPlrBYdQcOXX5--
+
+
+
+From peeweelinux@adis.on.ca  Mon Feb 17 01:18:07 2003
+From: peeweelinux@adis.on.ca (Charles Billette)
+Date: 16 Feb 2003 20:18:07 -0500
+Subject: [Peeweelinux] SBC mediaGX
+In-Reply-To: <oprkkxxbs6wvt33w@mx.freenet.de>
+References: <1045071710.2583.17.camel@localhost.localdomain>
+ <oprkkxxbs6wvt33w@mx.freenet.de>
+Message-ID: <1045444686.9339.3.camel@localhost.localdomain>
+
+--=-08ckKNI7rbtpHJIv4L4n
+Content-Type: text/plain
+Content-Transfer-Encoding: 7bit
+
+Take for the script!
+
+I try it but I still have a problem. When I resume the board it not seem
+to run full speed.
+
+
+
+
+On Fri, 2003-02-14 at 05:25, Sventje Lill (RR) wrote:
+
+> On 12 Feb 2003 12:41:50 -0500, Charles Billette <charles@cbillette.com> 
+> wrote:
+> 
+> Maybe this will help ;-)
+> 
+> #!/bin/sh
+> #
+> # This script, when installed in your /etc/rc.d directory,
+> # and when called from e.g. rc.local or rc.M will enable
+> # various performance and power-saving features on your
+> # Cyrix CPU.
+> #
+> # set6x86 version 1.2 or newer required
+> 
+> 
+> BINPATH=/usr/sbin
+> 
+> echo -n "Cyrix 6x86: Suspend-on-Halt, "
+> $BINPATH/set6x86 -p 0xC2 -s 0x08
+> 
+> echo -n "Fast ADS, "
+> $BINPATH/set6x86 -p 0xC2 -c 0x02
+> 
+> # MAPEN (access to CCR4/5 enabled -- needed for settings below)
+> $BINPATH/set6x86 -p 0xC3 -s 0x10
+> 
+> echo -n "Fast IORT, "
+> $BINPATH/set6x86 -p 0xE8 -s 0x07
+> 
+> echo -n "Enable DTE, "
+> $BINPATH/set6x86 -p 0xE8 -s 0x10
+> 
+> echo -n "Fast LOOP, "
+> $BINPATH/set6x86 -p 0xE9 -c 0x02
+> 
+> # This enables some performance features for the linear memory mapped
+> # VGA memory buffer, assuming it's on address 0xE0000000.
+> #
+> # On my system, memory bandwidth goes from 44 MB/sec to 78 MB/sec.
+> #
+> # It is disabled here, because this is very system-dependent.
+> #
+> #echo -n "Fast Lin. VidMem."
+> #$BINPATH/set6x86 -p 0xD6 0xE0
+> #$BINPATH/set6x86 -p 0xD7 0x00
+> #$BINPATH/set6x86 -p 0xD8 0x0A
+> #$BINPATH/set6x86 -p 0xE2 0x09
+> 
+> 
+> # MAPEN (disable access to CCR4/5)
+> $BINPATH/set6x86 -p 0xC3 -c 0x10
+> 
+> echo
+> 
+> 
+> 
+> > Hi
+> >
+> > Is there SBC mediaGX user on this news group?
+> >
+> > ________________________________________________________________________
+> > Charles Billette
+> > - 514.909.2452
+> > - charles@cbillette.com
+> > ________________________________________________________________________
+> >
+> 
+> 
+> 3 additional files attached
+> -6x86reg shows the registers used by the CPU
+> 
+> 
+> and for more hints:
+> http://wwwd.national.com/national/developer.nsf/df772260f0f9b90c872569590075bc32/
+> 
+> have fun
+> 
+> Ralf Riedel
+
+
+________________________________________________________________________
+Charles Billette
+- 514.909.2452
+- charles@cbillette.com
+                                                                        
+________________________________________________________________________
+
+--=-08ckKNI7rbtpHJIv4L4n
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: 7bit
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 TRANSITIONAL//EN">
+<HTML>
+<HEAD>
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; CHARSET=UTF-8">
+  <META NAME="GENERATOR" CONTENT="GtkHTML/1.1.7">
+</HEAD>
+<BODY>
+Take for the script!<BR>
+<BR>
+I try it but I still have a problem. When I resume the board it not seem to run full speed.<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+On Fri, 2003-02-14 at 05:25, Sventje Lill (RR) wrote:
+<BLOCKQUOTE TYPE=CITE>
+<PRE><FONT COLOR="#737373" SIZE="3"><I>On 12 Feb 2003 12:41:50 -0500, Charles Billette &lt;charles@cbillette.com&gt; 
+wrote:
+
+Maybe this will help ;-)
+
+#!/bin/sh
+#
+# This script, when installed in your /etc/rc.d directory,
+# and when called from e.g. rc.local or rc.M will enable
+# various performance and power-saving features on your
+# Cyrix CPU.
+#
+# set6x86 version 1.2 or newer required
+
+
+BINPATH=/usr/sbin
+
+echo -n &quot;Cyrix 6x86: Suspend-on-Halt, &quot;
+$BINPATH/set6x86 -p 0xC2 -s 0x08
+
+echo -n &quot;Fast ADS, &quot;
+$BINPATH/set6x86 -p 0xC2 -c 0x02
+
+# MAPEN (access to CCR4/5 enabled -- needed for settings below)
+$BINPATH/set6x86 -p 0xC3 -s 0x10
+
+echo -n &quot;Fast IORT, &quot;
+$BINPATH/set6x86 -p 0xE8 -s 0x07
+
+echo -n &quot;Enable DTE, &quot;
+$BINPATH/set6x86 -p 0xE8 -s 0x10
+
+echo -n &quot;Fast LOOP, &quot;
+$BINPATH/set6x86 -p 0xE9 -c 0x02
+
+# This enables some performance features for the linear memory mapped
+# VGA memory buffer, assuming it's on address 0xE0000000.
+#
+# On my system, memory bandwidth goes from 44 MB/sec to 78 MB/sec.
+#
+# It is disabled here, because this is very system-dependent.
+#
+#echo -n &quot;Fast Lin. VidMem.&quot;
+#$BINPATH/set6x86 -p 0xD6 0xE0
+#$BINPATH/set6x86 -p 0xD7 0x00
+#$BINPATH/set6x86 -p 0xD8 0x0A
+#$BINPATH/set6x86 -p 0xE2 0x09
+
+
+# MAPEN (disable access to CCR4/5)
+$BINPATH/set6x86 -p 0xC3 -c 0x10
+
+echo
+
+
+
+&gt; Hi
+&gt;
+&gt; Is there SBC mediaGX user on this news group?
+&gt;
+&gt; ________________________________________________________________________
+&gt; Charles Billette
+&gt; - 514.909.2452
+&gt; - charles@cbillette.com
+&gt; ________________________________________________________________________
+&gt;
+
+
+3 additional files attached
+-6x86reg shows the registers used by the CPU
+
+
+and for more hints:</FONT>
+<A HREF="http://wwwd.national.com/national/developer.nsf/df772260f0f9b90c872569590075bc32/"><FONT SIZE="3">http://wwwd.national.com/national/developer.nsf/df772260f0f9b90c872569590075bc32/</FONT></A>
+<FONT COLOR="#737373" SIZE="3">
+have fun
+
+Ralf Riedel</I></FONT></PRE>
+</BLOCKQUOTE>
+<PRE><TABLE CELLSPACING="0" CELLPADDING="0" WIDTH="100%">
+<TR>
+<TD>
+
+<HR>
+<BR>
+<A HREF="mailto:charles@cbillette.com"><FONT SIZE="5"><B>Charles Billette</B></FONT></A><BR>
+- 514.909.2452<BR>
+- <A HREF="mailto:charles@cbillette.com">charles@cbillette.com</A><BR>
+<DIV ALIGN=right>
+<HR>
+</DIV>
+</TD>
+</TR>
+</TABLE>
+</PRE>
+</BODY>
+</HTML>
+
+--=-08ckKNI7rbtpHJIv4L4n--
+
+
+From peeweelinux@adis.on.ca  Mon Feb 17 14:16:17 2003
+From: peeweelinux@adis.on.ca (Jim Graham)
+Date: Mon, 17 Feb 2003 09:16:17 -0500
+Subject: [Peeweelinux] DOC
+Message-ID: <3E50EEB1.40FCC66D@sensors.com>
+
+This is a multi-part message in MIME format.
+--------------0C21943FE726B4E0FD4DC861
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Hi
+
+    I am trying to use a 512 MB DOC (NFTL) on a RTD Geode processor with
+the 5530 companion chip.  I have updated the DOC driver to version 5.1.4
+and am loading the DOC module as part of initrd (just prior to the copy
+from the boot device to ram).
+
+    Currently I am booting from an attached hard drive.  When the DOC
+module is loaded partition information is displayed.  On successive
+boots the same DOC partition information is not always displayed.  dmesg
+after boot displays error messages of the type
+
+   fl: _init:registerd device at major:100
+   fl: Error FlMount->flAbsMountVolumn:26
+
+I am not linking in the PCI UDMA code in the kernel per the RTD
+application note.
+I am using the M-Systems lilo compiled with the switch LARGE_EDBA which
+pushes the application down in memory.
+
+Any ideas on the meaning of the erorr or recommendations?
+
+Any suggestions would be appreciated.
+
+-- thanks
+    jim
+
+--------------0C21943FE726B4E0FD4DC861
+Content-Type: text/x-vcard; charset=us-ascii;
+ name="graham.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Description: Card for Jim Graham
+Content-Disposition: attachment;
+ filename="graham.vcf"
+
+begin:vcard 
+n:Graham;Jim
+tel;fax:(315) 798-8950
+tel;work:(315) 798-1377
+x-mozilla-html:FALSE
+url:www.sensors.com
+org:Integrated Sensors Inc.
+adr:;;502 Court Street;Utica;NY;13502;
+version:2.1
+email;internet:graham@sensors.com
+title:Senior Software Engineer
+end:vcard
+
+--------------0C21943FE726B4E0FD4DC861--
+
+
+From peeweelinux@adis.on.ca  Wed Feb 19 00:44:33 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Tue, 18 Feb 2003 16:44:33 -0800
+Subject: [Peeweelinux] HowTo: OpenSSH on PWL
+Message-ID: <3E52D371.7000407@fluid.com>
+
+This is a bit tricky, so if it doesn't work quite right (or I missed a 
+step in this document, etc), just try it again. Errors and ommisions, 
+just send a note.
+
+Required:
+- Red Hat 6.2 box with root priv (will be explained)
+- zlib 1.1.4
+- openssl-0.9.7
+- openssh-3.5p1
+
+I ran into a smattering of problems, mainly during linking, when trying 
+to build this all on a RH 7.2 box with the 6.2 compat libs installed. To 
+save a lot of hearttache, it was easier to use one of my 6.2 boxes - 
+they have the same glibc and stuff PWL does.
+
+
+Set up stuff
+============
+/var/tmp/ is your working directory. Make a directory /var/tmp/ssh-root 
+(for installs), /var/tmp/src/ and /var/tmp/build/. Download all tarballs 
+to /var/tmp/src/.
+
+
+Build zlib
+==========
+Untar zlib to /var/tmp/build/, then build as follows:
+
+   ./configure --prefix=/usr --shared
+   make
+   make install prefix=/var/tmp/ssh-root/usr
+
+
+Build openssl
+=============
+Untar openssl to /var/tmp/build/, then build as follows:
+   /usr/bin/perl ./Configure --prefix=/usr -no-krb5 linux-elf shared 
+zlib-dynamic
+
+   make
+   make INSTALL_PREFIX=/var/tmp/ssh-root install
+
+
+Edit LD path
+============
+The openssl configure script (and maybe build, but didn't check) has an 
+issue with trying to use the openssl libs you just built, if they're not 
+in the LD scene. Add the following line to /etc/ld.so.conf:
+
+   /var/tmp/ssh-root/usr/lib
+
+...and run /sbin/ldconfig. We'll remove this when done.
+
+
+Build openssh
+=============
+Untar openssl to /var/tmp/build/, then build as follows:
+
+   ./configure --prefix=/usr --sysconfdir=/etc/ssh 
+--with-zlib=/var/tmp/ssh-root --with-ssl-dir=/var/tmp/ssh-root 
+--without-shadow --with-pid-dir=/var/run --with-ipv4-default 
+--build=i386-pc-linux-gnu --without-privsep-user --without-privsep-path
+
+   make
+   make install DESTDIR=/var/tmp/ssh-root
+
+
+Create sshd keys
+================
+Run the following commands to create the host keypairs (you could do 
+this on bootup, but I prefer to prepackage them). Change the comment 
+used in the -C option to your desired comment.
+
+   cd /var/tmp/ssh-root/usr/bin
+   ./ssh-keygen -t rsa1 -f /var/tmp/ssh-root/etc/ssh/ssh_host_key -N "" 
+-C "mycomment"
+   ./ssh-keygen -t rsa -f /var/tmp/ssh-root/etc/ssh/ssh_host_rsa_key -N 
+"" -C "mycomment"
+   ./ssh-keygen -t dsa -f /var/tmp/ssh-root/etc/ssh/ssh_host_dsa_key -N 
+"" -C "mycomment"
+
+
+Configure sshd_config
+=====================
+Edit /var/tmp/ssh-root/etc/ssh/sshd_config and change params as desired 
+-- you must change at least "UsePrivilegeSeparation no", as we're not 
+using it here. (I change "X11Forwarding yes")
+
+
+Add startup script
+==================
+Create a startup script in /var/tmp/ssh-root/etc/rcS.d/ (make dir rcS.d) 
+- the exact name will vary depending on your needs. My PWL has been 
+customized, so the script for me works named as "60sshd" (I have a 
+10network and 50inetd which fire off first). Make sure the file is mode 
+0755. Here is my script:
+
+   #!/bin/sh
+
+   # /etc/rcS.d/60sshd
+   #
+   # Init file for OpenSSH server daemon
+
+   [ -f /var/lock/subsys/network ] || exit 0
+
+   echo "Starting sshd...."
+   /usr/sbin/sshd &
+   touch /var/lock/subsys/sshd
+
+   exit 0
+
+
+Clean out things
+================
+Prune down useless stuff (man pages, include files, etc) from your 
+/var/tmp/ssh-root/ tree. I wanted to leave the user programs there (we 
+have enough space on the CF disk), but I got rid of a lot of things. My 
+list is attached at the end of this doc.
+
+
+Create PWL "list" file and tarball
+==================================
+Change to /var/tmp/ssh-root, then run these commands:
+
+   find . | sed -e "s|^./||g ; /^.$/d" > openssh-3.5p1.list
+   tar -cf openssh-3.5p1.tar usr/ etc/
+
+...and now edit "openssh-3.5p1.list" -- you need to add a terminating 
+slash to all directory names (usr/, etc/, etc) for PWL to work right later.
+
+
+Add to PWL
+==========
+Add these two files (openssh-3.5p1.list, openssh-3.5p1.tar) to one of 
+the packages/ locations on your PWL build machine 
+(packages/Network_Daemons/ seems like a good spot). Run ./pwlconfig and 
+select the new openssl files as normal, extract the filesystem, and so 
+forth -- it's all normal from here on out.
+
+
+You can now remove the /var/tmp/ssh-root/usr/lib/ from /etc/ld.so.conf 
+and rerun /sbin/ldconfig on your build machine. I should note that I run 
+kernel 2.4.18 on our systems (see my other HowTo for new kernels), but 
+since it builds cleanly on a stock RH62 machine, I don't think there's 
+going to be any issues here. (my custom kernel includes unixpty support, 
+et al).
+
+
+My openssh-3.5p1.list file
+==========================
+usr/
+usr/bin/
+usr/bin/scp
+usr/bin/sftp
+usr/bin/slogin
+usr/bin/ssh
+usr/bin/ssh-keygen
+usr/lib/
+usr/lib/libz.so.1.1.4
+usr/lib/libz.so
+usr/lib/libz.so.1
+usr/lib/libcrypto.so
+usr/lib/libcrypto.so.0
+usr/lib/libcrypto.so.0.9.7
+usr/lib/libssl.so
+usr/lib/libssl.so.0
+usr/lib/libssl.so.0.9.7
+usr/libexec/
+usr/libexec/sftp-server
+usr/sbin/
+usr/sbin/sshd
+usr/ssl/
+usr/ssl/certs/
+usr/ssl/private/
+usr/ssl/openssl.cnf
+etc/
+etc/ssh/
+etc/ssh/ssh_config
+etc/ssh/sshd_config
+etc/ssh/moduli
+etc/ssh/ssh_host_key
+etc/ssh/ssh_host_key.pub
+etc/ssh/ssh_host_rsa_key
+etc/ssh/ssh_host_rsa_key.pub
+etc/ssh/ssh_host_dsa_key
+etc/ssh/ssh_host_dsa_key.pub
+etc/rcS.d/
+etc/rcS.d/60sshd
+
+
+
+-- 
+Troy Engel, Systems Engineer
+Not suitable for children.
+
+
+From peeweelinux@adis.on.ca  Wed Feb 19 22:29:38 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Wed, 19 Feb 2003 14:29:38 -0800
+Subject: [Peeweelinux] HowTo: OpenSSH on PWL
+In-Reply-To: <3E52D371.7000407@fluid.com>
+References: <3E52D371.7000407@fluid.com>
+Message-ID: <3E540552.2050300@fluid.com>
+
+As I rebuilt everything for the newly released OpenSSL-0.9.7a, I noticed 
+a slight error -- the OpenSSH build line is missing a "/usr" for the 
+zlib/ssl-dir params. It *should* reads as follows:
+
+  ./configure --prefix=/usr --sysconfdir=/etc/ssh
+  --with-zlib=/var/tmp/ssh-root/usr --with-ssl-dir=/var/tmp/ssh-root/usr
+  --without-shadow --with-pid-dir=/var/run --with-ipv4-default
+  --build=i386-pc-linux-gnu --without-privsep-user --without-privsep-path
+
+Also found an easier way to create the filelist for pwlconfig -- first, 
+create the tarball then just run "tar -tf openssh-3.5p1.tar > 
+openssh-3.5p1.list" and you're done.
+
+hth,
+-te
+
+Troy Engel wrote:
+> This is a bit tricky, so if it doesn't work quite right (or I missed a 
+> step in this document, etc), just try it again. Errors and ommisions, 
+> just send a note.
+> 
+> Required:
+> - Red Hat 6.2 box with root priv (will be explained)
+> - zlib 1.1.4
+> - openssl-0.9.7
+> - openssh-3.5p1
+> 
+> I ran into a smattering of problems, mainly during linking, when trying 
+> to build this all on a RH 7.2 box with the 6.2 compat libs installed. To 
+> save a lot of hearttache, it was easier to use one of my 6.2 boxes - 
+> they have the same glibc and stuff PWL does.
+> 
+> 
+> Set up stuff
+> ============
+> /var/tmp/ is your working directory. Make a directory /var/tmp/ssh-root 
+> (for installs), /var/tmp/src/ and /var/tmp/build/. Download all tarballs 
+> to /var/tmp/src/.
+> 
+> 
+> Build zlib
+> ==========
+> Untar zlib to /var/tmp/build/, then build as follows:
+> 
+>   ./configure --prefix=/usr --shared
+>   make
+>   make install prefix=/var/tmp/ssh-root/usr
+> 
+> 
+> Build openssl
+> =============
+> Untar openssl to /var/tmp/build/, then build as follows:
+>   /usr/bin/perl ./Configure --prefix=/usr -no-krb5 linux-elf shared 
+> zlib-dynamic
+> 
+>   make
+>   make INSTALL_PREFIX=/var/tmp/ssh-root install
+> 
+> 
+> Edit LD path
+> ============
+> The openssl configure script (and maybe build, but didn't check) has an 
+> issue with trying to use the openssl libs you just built, if they're not 
+> in the LD scene. Add the following line to /etc/ld.so.conf:
+> 
+>   /var/tmp/ssh-root/usr/lib
+> 
+> ...and run /sbin/ldconfig. We'll remove this when done.
+> 
+> 
+> Build openssh
+> =============
+> Untar openssl to /var/tmp/build/, then build as follows:
+> 
+>   ./configure --prefix=/usr --sysconfdir=/etc/ssh 
+> --with-zlib=/var/tmp/ssh-root --with-ssl-dir=/var/tmp/ssh-root 
+> --without-shadow --with-pid-dir=/var/run --with-ipv4-default 
+> --build=i386-pc-linux-gnu --without-privsep-user --without-privsep-path
+> 
+>   make
+>   make install DESTDIR=/var/tmp/ssh-root
+> 
+> 
+> Create sshd keys
+> ================
+> Run the following commands to create the host keypairs (you could do 
+> this on bootup, but I prefer to prepackage them). Change the comment 
+> used in the -C option to your desired comment.
+> 
+>   cd /var/tmp/ssh-root/usr/bin
+>   ./ssh-keygen -t rsa1 -f /var/tmp/ssh-root/etc/ssh/ssh_host_key -N "" 
+> -C "mycomment"
+>   ./ssh-keygen -t rsa -f /var/tmp/ssh-root/etc/ssh/ssh_host_rsa_key -N 
+> "" -C "mycomment"
+>   ./ssh-keygen -t dsa -f /var/tmp/ssh-root/etc/ssh/ssh_host_dsa_key -N 
+> "" -C "mycomment"
+> 
+> 
+> Configure sshd_config
+> =====================
+> Edit /var/tmp/ssh-root/etc/ssh/sshd_config and change params as desired 
+> -- you must change at least "UsePrivilegeSeparation no", as we're not 
+> using it here. (I change "X11Forwarding yes")
+> 
+> 
+> Add startup script
+> ==================
+> Create a startup script in /var/tmp/ssh-root/etc/rcS.d/ (make dir rcS.d) 
+> - the exact name will vary depending on your needs. My PWL has been 
+> customized, so the script for me works named as "60sshd" (I have a 
+> 10network and 50inetd which fire off first). Make sure the file is mode 
+> 0755. Here is my script:
+> 
+>   #!/bin/sh
+> 
+>   # /etc/rcS.d/60sshd
+>   #
+>   # Init file for OpenSSH server daemon
+> 
+>   [ -f /var/lock/subsys/network ] || exit 0
+> 
+>   echo "Starting sshd...."
+>   /usr/sbin/sshd &
+>   touch /var/lock/subsys/sshd
+> 
+>   exit 0
+> 
+> 
+> Clean out things
+> ================
+> Prune down useless stuff (man pages, include files, etc) from your 
+> /var/tmp/ssh-root/ tree. I wanted to leave the user programs there (we 
+> have enough space on the CF disk), but I got rid of a lot of things. My 
+> list is attached at the end of this doc.
+> 
+> 
+> Create PWL "list" file and tarball
+> ==================================
+> Change to /var/tmp/ssh-root, then run these commands:
+> 
+>   find . | sed -e "s|^./||g ; /^.$/d" > openssh-3.5p1.list
+>   tar -cf openssh-3.5p1.tar usr/ etc/
+> 
+> ...and now edit "openssh-3.5p1.list" -- you need to add a terminating 
+> slash to all directory names (usr/, etc/, etc) for PWL to work right later.
+> 
+> 
+> Add to PWL
+> ==========
+> Add these two files (openssh-3.5p1.list, openssh-3.5p1.tar) to one of 
+> the packages/ locations on your PWL build machine 
+> (packages/Network_Daemons/ seems like a good spot). Run ./pwlconfig and 
+> select the new openssl files as normal, extract the filesystem, and so 
+> forth -- it's all normal from here on out.
+> 
+> 
+> You can now remove the /var/tmp/ssh-root/usr/lib/ from /etc/ld.so.conf 
+> and rerun /sbin/ldconfig on your build machine. I should note that I run 
+> kernel 2.4.18 on our systems (see my other HowTo for new kernels), but 
+> since it builds cleanly on a stock RH62 machine, I don't think there's 
+> going to be any issues here. (my custom kernel includes unixpty support, 
+> et al).
+> 
+> 
+> My openssh-3.5p1.list file
+> ==========================
+> usr/
+> usr/bin/
+> usr/bin/scp
+> usr/bin/sftp
+> usr/bin/slogin
+> usr/bin/ssh
+> usr/bin/ssh-keygen
+> usr/lib/
+> usr/lib/libz.so.1.1.4
+> usr/lib/libz.so
+> usr/lib/libz.so.1
+> usr/lib/libcrypto.so
+> usr/lib/libcrypto.so.0
+> usr/lib/libcrypto.so.0.9.7
+> usr/lib/libssl.so
+> usr/lib/libssl.so.0
+> usr/lib/libssl.so.0.9.7
+> usr/libexec/
+> usr/libexec/sftp-server
+> usr/sbin/
+> usr/sbin/sshd
+> usr/ssl/
+> usr/ssl/certs/
+> usr/ssl/private/
+> usr/ssl/openssl.cnf
+> etc/
+> etc/ssh/
+> etc/ssh/ssh_config
+> etc/ssh/sshd_config
+> etc/ssh/moduli
+> etc/ssh/ssh_host_key
+> etc/ssh/ssh_host_key.pub
+> etc/ssh/ssh_host_rsa_key
+> etc/ssh/ssh_host_rsa_key.pub
+> etc/ssh/ssh_host_dsa_key
+> etc/ssh/ssh_host_dsa_key.pub
+> etc/rcS.d/
+> etc/rcS.d/60sshd
+> 
+> 
+> 
+
+-- 
+Troy Engel, Systems Engineer
+Not suitable for children.
+
+
+From peeweelinux@adis.on.ca  Sat Feb 22 05:32:49 2003
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Sat, 22 Feb 2003 16:32:49 +1100
+Subject: [Peeweelinux] How to compile module for peeweelinux
+Message-ID: <200302221632.49458.burzin@bigpond.net.au>
+
+Hi,
+
+I have built a module mod_quickcam from sourceforge project qce-ga-0.40c, and 
+included it as a custom file on a peeweelinux system When I insmod or 
+modprobe it I get unresolved symbols errors. I 'make' it on a Redhat 7.3 box. 
+
+Can anyone tell me the correct procedure to include a module on a peewee
+system?
+
+Thanks,
+
+burzin
+
+From peeweelinux@adis.on.ca  Sat Feb 22 20:20:59 2003
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Sat, 22 Feb 2003 12:20:59 -0800
+Subject: [Peeweelinux] How to compile module for peeweelinux
+In-Reply-To: <200302221632.49458.burzin@bigpond.net.au>; from burzin@bigpond.net.au on Fri, Feb 21, 2003 at 21:32:49 -0800
+References: <200302221632.49458.burzin@bigpond.net.au>
+Message-ID: <20030222122059.A2882@leif.attbi.com>
+
+Two options:
+
+1). You can follow the 2.4 kernel HOWTO (which you can find in the pwl 
+archives) and build a custom kernel. The newer versions of the 2.4.x 
+series all have that option included. This will definitely work.
+
+2). You could also try building it using the 
+/usr/i386-glibc21-linux/bin/i386-glibc21-linux-env.sh script to get your 
+shell setup and using kgcc instead of gcc for the compiler. There have 
+been a fair amount of previous posts on running pee wee on RH 7.1 & 7.2 
+that you should refer to if you want to go this route. You would then have 
+to make install_modules and tell it where you want them and then copy them 
+to the /lib/modules/{kernel_version} directory of the target device. What 
+I don't know is whether or not the kernel needs to have compiled-in 
+information regarding modules available or whether it's okay to build them 
+externally and use insmod.
+
+
+On 2003.02.21 21:32 burzin@bigpond.net.au wrote:
+> Hi,
+> 
+> I have built a module mod_quickcam from sourceforge project qce-ga-0.40c,
+> and
+> included it as a custom file on a peeweelinux system When I insmod or
+> modprobe it I get unresolved symbols errors. I 'make' it on a Redhat 7.3
+> box.
+> 
+> Can anyone tell me the correct procedure to include a module on a peewee
+> system?
+> 
+> Thanks,
+> 
+> burzin
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Sat Feb 22 23:13:43 2003
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Sun, 23 Feb 2003 10:13:43 +1100
+Subject: [Peeweelinux] How to compile module for peeweelinux
+In-Reply-To: <20030222122059.A2882@leif.attbi.com>
+References: <200302221632.49458.burzin@bigpond.net.au> <20030222122059.A2882@leif.attbi.com>
+Message-ID: <200302231013.43650.burzin@bigpond.net.au>
+
+I tried option 2 and it works. 
+(nm mod_quickcam and nm usbcore have matching symbols now, which
+they did not before.)
+
+Thank you. 
+
+On Sun, 23 Feb 2003 07:20, Leif Steinhour wrote:
+> Two options:
+>
+> 1). You can follow the 2.4 kernel HOWTO (which you can find in the pwl
+> archives) and build a custom kernel. The newer versions of the 2.4.x
+> series all have that option included. This will definitely work.
+>
+> 2). You could also try building it using the
+> /usr/i386-glibc21-linux/bin/i386-glibc21-linux-env.sh script to get your
+> shell setup and using kgcc instead of gcc for the compiler. There have
+> been a fair amount of previous posts on running pee wee on RH 7.1 & 7.2
+> that you should refer to if you want to go this route. You would then have
+> to make install_modules and tell it where you want them and then copy them
+> to the /lib/modules/{kernel_version} directory of the target device. What
+> I don't know is whether or not the kernel needs to have compiled-in
+> information regarding modules available or whether it's okay to build them
+> externally and use insmod.
+>
+> On 2003.02.21 21:32 burzin@bigpond.net.au wrote:
+> > Hi,
+> >
+> > I have built a module mod_quickcam from sourceforge project qce-ga-0.40c,
+> > and
+> > included it as a custom file on a peeweelinux system When I insmod or
+> > modprobe it I get unresolved symbols errors. I 'make' it on a Redhat 7.3
+> > box.
+> >
+> > Can anyone tell me the correct procedure to include a module on a peewee
+> > system?
+> >
+> > Thanks,
+> >
+> > burzin
+> > _______________________________________________
+> > Peeweelinux mailing list
+> > Peeweelinux@adis.on.ca
+> > http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+

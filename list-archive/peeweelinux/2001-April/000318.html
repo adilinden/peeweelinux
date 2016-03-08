@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> pwlconfig broken?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="000319.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>pwlconfig broken?
+   </H1>
+    <B>Claude Johnson
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="pwlconfig broken?">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 03 Apr 2001 03:49:09 -0700</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="000319.html">pwlconfig broken?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#318">[ date ]</a>
+              <a href="thread.html#318">[ thread ]</a>
+              <a href="subject.html#318">[ subject ]</a>
+              <a href="author.html#318">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Alright, RH 6.1 system on 2.2.18 kernel.
+
+[<A HREF="mailto:root@coral">root@coral</A> Embedded_Build]# ./pwlconfig -n dpn
+Error: -n:  not a valid pwlconfig option 
+
+[<A HREF="mailto:root@coral">root@coral</A> Embedded_Build]# ./pwlconfig
+.../scripts/pwl_create: .select.lst: Permission denied
+./scripts/pwl_create: .select.lst: Permission denied
+./scripts/pwl_create: .select.lst: Permission denied
+./scripts/pwl_create: .select.lst: Permission denied
+./scripts/pwl_create: .select.lst: Permission denied
+./scripts/pwl_create: .result: Permission denied
+./scripts/pwl_create: .result: No such file or directory
+.
+Pee Wee Linux System Configuration - Version 0.61.0
+Error: No Project
+
+bash$ rpm -qa | grep curses
+ncurses-4.2-25
+ncurses-devel-4.2-25
+ncurses3-1.9.9e-9
+
+So, either the docs are wrong or pwlconfig doesn't work.
+The only options it seems to know about are -n, -b and
+-h. Putting the project name on the command line, sans
+-n option, generates the same error.
+
+Did I miss something here? And where are docs for doing
+this by hand, since I would actually like to know?
+
+-- 
+Claude Johnson					    <A HREF="mailto:claude@undoo.com">claude@undoo.com</A>
+Undoo Technologies				    949.743.5145 (D)
+*undoo everything*				    301.806.7399 (M)
+Key fingerprint = F00A 34E2 C141 F29D 7E41  6DF6 DB04 0769
+592D 14AD
+	&quot;It takes a tough man to make a tender chicken!&quot;
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="000319.html">pwlconfig broken?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#318">[ date ]</a>
+              <a href="thread.html#318">[ thread ]</a>
+              <a href="subject.html#318">[ subject ]</a>
+              <a href="author.html#318">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] =?iso-8859-1?Q?Re:_=5BPeeweelinux=5D_R=E9f._:_Re:_=5BPeeweelinux=5D_P?=
+ =?iso-8859-1?Q?eewee_on_Rocky_328E?=
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000474.html">
+   <LINK REL="Next"  HREF="000476.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: [Peeweelinux] Réf. : Re: [Peeweelinux] P
+ eewee on Rocky 328E
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: [Peeweelinux] Réf. : Re: [Peeweelinux] P
+ eewee on Rocky 328E">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 20 Feb 2002 08:35:12 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000474.html">[Peeweelinux] Réf. : Re: [Peeweelinux] Peewee on Rocky 328E
+</A></li>
+        <LI> Next message: <A HREF="000476.html">[Peeweelinux] wireless_isa
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#475">[ date ]</a>
+              <a href="thread.html#475">[ thread ]</a>
+              <a href="subject.html#475">[ subject ]</a>
+              <a href="author.html#475">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Guillaume,
+
+&gt;<i> Testing for target device /mnt/floppy ........ failed
+</I>&gt;<i> Testing that target /mnt/floppy is not mounted ....... Ok
+</I>&gt;<i>
+</I>&gt;<i> Nevertheless my floppy seems to be ok. Before &quot;umount&quot; it, I was able to copy a
+</I>&gt;<i> file (cp &quot;file&quot; /mnt/floppy/ , and &quot;file&quot; appears in my red hat browser.)
+</I>
+Try changing the target to &quot;/dev/fd0&quot; instead of &quot;/mnt/floppy&quot;.
+
+&gt;<i> Is there anybody who could explain me the difference between those 3 parameter
+</I>&gt;<i> of the config menu :
+</I>&gt;<i>
+</I>&gt;<i> Project Mount Point : &quot;mnt&quot;
+</I>&gt;<i>
+</I>&gt;<i> Device Mount point : &quot;./mnt&quot;
+</I>&gt;<i>
+</I>&gt;<i> Floppy Device : &quot;/mnt/floppy&quot;
+</I>
+I made an attempt to explain these parameters in a previous message to this
+group:
+
+<A HREF="http://mail.adis.on.ca/pipermail/peeweelinux/2002-January/000464.html">http://mail.adis.on.ca/pipermail/peeweelinux/2002-January/000464.html</A>
+
+Hopefully this will help explain those parameters.
+
+If anybody notices any errors in these descriptions, let me know.
+Eventually, I'd like to help put together a FAQ for Peewee, and these
+questions come up fairly frequently.
+
+&gt;<i> And what is the mean of this parameter :
+</I>&gt;<i>
+</I>&gt;<i> Initrd File Name : &quot;initrd&quot;
+</I>
+&quot;Initrd&quot; is the &quot;initial ram disk image&quot;.  Initrd may be used as a
+&quot;preliminary root file system image&quot;; this image is mounted by the kernel
+prior to mounting the &quot;real&quot; root file system.  This is done is cases where
+you need a special device driver to access the root file system, but it is
+not compiled as part of the kernel.
+
+A really good reference on this subject (and many others) is the &quot;Linux Rute
+User's Tutorial and Exposition&quot;, by Paul Sheer.  This book is available
+online at: <A HREF="http://rute.sourceforge.net/.">http://rute.sourceforge.net/.</A>
+
+Regards,
+
+Mark
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000474.html">[Peeweelinux] Réf. : Re: [Peeweelinux] Peewee on Rocky 328E
+</A></li>
+	<LI> Next message: <A HREF="000476.html">[Peeweelinux] wireless_isa
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#475">[ date ]</a>
+              <a href="thread.html#475">[ thread ]</a>
+              <a href="subject.html#475">[ subject ]</a>
+              <a href="author.html#475">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

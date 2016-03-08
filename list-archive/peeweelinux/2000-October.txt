@@ -1,0 +1,1575 @@
+From PeeWeeLinux@adis.on.ca  Wed Oct  4 00:47:14 2000
+From: PeeWeeLinux@adis.on.ca (Michael J. Hoyt)
+Date: Tue, 03 Oct 2000 16:47:14 -0700
+Subject: root password?
+Message-ID: <39DA7002.E48CD336@san.rr.com>
+
+Ok,
+
+I've finally got something booting off of a DOC device.  This is
+awesome.  One small problem, how do I log in?  I built the kernel myself
+from Redhat 6.2.  One thing I've always taken for granted is that the
+RedHat installation process always asks you to provide the root
+password.   Without my crutch of the Redhat install system I seem to be
+at somewhat of a disadvantage.
+
+What do I do?
+
+thanks,
+
+Mike
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Oct  4 02:15:38 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Tue, 3 Oct 2000 20:15:38 -0500 (CDT)
+Subject: root password?
+In-Reply-To: <39DA7002.E48CD336@san.rr.com>
+Message-ID: <Pine.LNX.4.10.10010032014410.1596-100000@big.adis.on.ca>
+
+Hi,
+
+The PeeWeeLinux logins are:
+
+User: admin
+Pass: admin
+
+and 
+
+User: root
+Pass: redhat
+
+Hope this helps,
+
+TTYL,
+Adi
+
+On Tue, 3 Oct 2000, Michael J. Hoyt wrote:
+
+> Ok,
+> 
+> I've finally got something booting off of a DOC device.  This is
+> awesome.  One small problem, how do I log in?  I built the kernel myself
+> from Redhat 6.2.  One thing I've always taken for granted is that the
+> RedHat installation process always asks you to provide the root
+> password.   Without my crutch of the Redhat install system I seem to be
+> at somewhat of a disadvantage.
+> 
+> What do I do?
+> 
+> thanks,
+> 
+> Mike
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Oct  5 19:04:02 2000
+From: PeeWeeLinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Thu, 05 Oct 2000 19:04:02 +0100
+Subject: pwlconfig and LILO error
+References: <Pine.LNX.4.10.10009141242000.2281-100000@develop.knet.on.ca> <39C78D8C.927B2166@h2eye.com>
+Message-ID: <39DCC292.5F7ACBB4@h2eye.com>
+
+Hi,
+
+I've been playing aroung with PWL051 lately to get embedded linux into a CF. I got the grips of it now, and I can make a linux system. If I make a ram image of the fs, and flash it into the CF (an IDE on hdc1) with rd_dialog, it works fine. However, if I want to install the fully fledged file system (not ramdisk) into the flash with the help of the "Insatall LInux LOader (LILO) to flash disk" option in pwlconfig, it comes back with the error: "Lilo not found : lilo". And consequently the flash
+does not boot since the images are not there. I know lilo, as a binary is there, along with the rest of the packages (in RPM and tar).
+
+Any hints?
+
+Ta.
+
+Jaime
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Oct  5 19:50:27 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Thu, 5 Oct 2000 11:50:27 -0700 (PDT)
+Subject: pwlconfig and LILO error
+Message-ID: <20001005185027.18035.qmail@web9104.mail.yahoo.com>
+
+Dr. Miro,
+Looks like the path thing is getting us here.  lilo doesn't show up
+on a standard path (which lilo says "no lilo in...")
+
+The fix is to properly define the PLILO variable.
+
+Use the standard version (RH path):
+PLILO="/sbin/lilo"
+
+-- or the copy provided in the bin directory --
+PLILO="$baseprj/bin/lilo"
+
+-- but not ---
+PLILO="lilo"  # oops doesn't work :(
+
+This was setup originally to use the patched lilo from M-Systems
+which I am personally no longer using.  To finish the job, a default
+assigning the variable PLILO to a user specified location should be
+added.
+
+Sorry for the confusion. Let me know if anything else doesn't quite
+work as expected.
+Thanks,
+Ralph
+
+
+--- "Dr Jaime V. Miro" <j.v.miro@h2eye.com> wrote:
+> Hi,
+> 
+> I've been playing aroung with PWL051 lately to get embedded linux into a CF.
+> I got the grips of it now, and I can make a linux system. If I make a ram
+> image of the fs, and flash it into the CF (an IDE on hdc1) with rd_dialog, it
+> works fine. However, if I want to install the fully fledged file system (not
+> ramdisk) into the flash with the help of the "Insatall LInux LOader (LILO) to
+> flash disk" option in pwlconfig, it comes back with the error: "Lilo not
+> found : lilo". And consequently the flash
+> does not boot since the images are not there. I know lilo, as a binary is
+> there, along with the rest of the packages (in RPM and tar).
+> 
+> Any hints?
+> 
+> Ta.
+> 
+> Jaime
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Photos - 35mm Quality Prints, Now Get 15 Free!
+http://photos.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Oct  9 17:45:52 2000
+From: PeeWeeLinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Mon, 09 Oct 2000 17:45:52 +0100
+Subject: pwlconfig and LILO error
+References: <20001005185027.18035.qmail@web9104.mail.yahoo.com>
+Message-ID: <39E1F640.60AF8BA0@h2eye.com>
+
+Hi Ralph,
+
+Thanks for the info. The reason for the error was, as suggested, not being able to locate lilo because I don't have /sbin on the PATH. However, setting PLILO did not help. I had to actually add it to the PATH env. variable to get it to work - I never bother doing that b4, pure laziness, always using /sbin/lilo when I was messing around with lilo :-)
+
+With regards to other points of conflict, here is my experience in case it helps:
+
+a) rc.sysinit not executable, but that has been raised b4 in the list. Nothing new there.
+
+b) when the filesystem for the current project is extracted, I always get a tar error when ncurses.tar is untarred:
+...
+..
+.
+ncurses.tar   project_name/ncurses.list
+tar:usr/bin/clear:Could not create file:File exists
+tar:error exit delayed from previous errors
+.
+..
+...
+
+The file system is however untarred, and I can see the files I have selected from ncurses.tar in my root file system. It has also happened b4 that libncurses.so.X (in ncurses.tar) has not been untarred despite being selected, and I seem to remember (not sure though) being unable to log in (got the login/pwd prompt, but after properly typing the admin/admin or root/redhat login/pwd, it would give me the login prompt again :-o). Extracting the system again would not make a difference. I first
+copied my own version of libncurses.so.4 from my dev. machine, and it worked. Then, I deleted the whole project filesystem, extracted it all again, and then extracted libncurses.so.X ok (also giving me the above mentioned error, though). And it all went fine after.
+
+I'll keep you posted with my experiences. Thanks again,
+
+Jaime
+
+
+
+ 	 
+
+Ralph Stickley wrote:
+> 
+> Dr. Miro,
+> Looks like the path thing is getting us here.  lilo doesn't show up
+> on a standard path (which lilo says "no lilo in...")
+> 
+> The fix is to properly define the PLILO variable.
+> 
+> Use the standard version (RH path):
+> PLILO="/sbin/lilo"
+> 
+> -- or the copy provided in the bin directory --
+> PLILO="$baseprj/bin/lilo"
+> 
+> -- but not ---
+> PLILO="lilo"  # oops doesn't work :(
+> 
+> This was setup originally to use the patched lilo from M-Systems
+> which I am personally no longer using.  To finish the job, a default
+> assigning the variable PLILO to a user specified location should be
+> added.
+> 
+> Sorry for the confusion. Let me know if anything else doesn't quite
+> work as expected.
+> Thanks,
+> Ralph
+> 
+> --- "Dr Jaime V. Miro" <j.v.miro@h2eye.com> wrote:
+> > Hi,
+> >
+> > I've been playing aroung with PWL051 lately to get embedded linux into a CF.
+> > I got the grips of it now, and I can make a linux system. If I make a ram
+> > image of the fs, and flash it into the CF (an IDE on hdc1) with rd_dialog, it
+> > works fine. However, if I want to install the fully fledged file system (not
+> > ramdisk) into the flash with the help of the "Insatall LInux LOader (LILO) to
+> > flash disk" option in pwlconfig, it comes back with the error: "Lilo not
+> > found : lilo". And consequently the flash
+> > does not boot since the images are not there. I know lilo, as a binary is
+> > there, along with the rest of the packages (in RPM and tar).
+> >
+> > Any hints?
+> >
+> > Ta.
+> >
+> > Jaime
+> >
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Yahoo! Photos - 35mm Quality Prints, Now Get 15 Free!
+> http://photos.yahoo.com/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Oct  9 20:07:56 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Mon, 9 Oct 2000 14:07:56 -0500 (CDT)
+Subject: pwlconfig and LILO error
+In-Reply-To: <39E1F640.60AF8BA0@h2eye.com>
+Message-ID: <Pine.LNX.4.10.10010091406220.15292-100000@big.adis.on.ca>
+
+Hi,
+
+> a) rc.sysinit not executable, but that has been raised b4 in the list. Nothing new there.
+
+Hmmm... thought I fixed that in 0.51
+
+> b) when the filesystem for the current project is extracted, I always get a tar error when ncurses.tar is untarred:
+> ...
+> ..
+> .
+> ncurses.tar   project_name/ncurses.list
+> tar:usr/bin/clear:Could not create file:File exists
+> tar:error exit delayed from previous errors
+> .
+> ..
+> ...
+
+This tar error only applies to usr/bin/clear which exists in another
+package. That error can be safely ignored.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From adi@adis.on.ca  Wed Oct 11 16:30:49 2000
+From: adi@adis.on.ca (Adi Linden)
+Date: Wed, 11 Oct 2000 10:30:49 -0500 (CDT)
+Subject: Test
+In-Reply-To: <200010111528.KAA28189@gizmo.adis.on.ca>
+Message-ID: <Pine.LNX.4.10.10010111030170.4012-100000@develop.knet.on.ca>
+
+Sorry! Just to make sure this still works.
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Oct 13 17:18:18 2000
+From: peeweelinux@adis.on.ca (Thomas, Matt)
+Date: Fri, 13 Oct 2000 11:18:18 -0500
+Subject: lilo error
+Message-ID: <454C9F4C2480D3118399009027A19B0E033AE822@ii-exchange-2.brightpoint.com>
+
+I have another lilo error when I write the MBR to a flash IDE drive it gives
+me the following error
+
+First boot sector is version 20.0 Expecting version 21.5
+
+does anyone have a suggestion???
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Oct 13 17:21:26 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 13 Oct 2000 11:21:26 -0500 (CDT)
+Subject: lilo error
+In-Reply-To: <454C9F4C2480D3118399009027A19B0E033AE822@ii-exchange-2.brightpoint.com>
+Message-ID: <Pine.LNX.4.10.10010131120480.4012-100000@develop.knet.on.ca>
+
+Hi,
+
+What do you use for a development system? How is the flash attached to
+your system?
+
+TTYL,
+Adi
+
+
+> I have another lilo error when I write the MBR to a flash IDE drive it gives
+> me the following error
+> 
+> First boot sector is version 20.0 Expecting version 21.5
+> 
+> does anyone have a suggestion???
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Oct 16 05:53:12 2000
+From: peeweelinux@adis.on.ca (Thomas, Matt)
+Date: Sun, 15 Oct 2000 23:53:12 -0500
+Subject: lilo error
+Message-ID: <454C9F4C2480D3118399009027A19B0E033AE847@ii-exchange-2.brightpoint.com>
+
+Im actually using mandrake.. The flash device is an IDE flash device so the
+bios sees it as an IDE hard drive.. I went to DJnews and found out that my
+version of lilo and my boot.b map file was two diffrent version... hopefully
+I can try this and it will work.. if it doesn't well i'll post another
+question.. thank you for the response
+
+-----Original Message-----
+From: Adi Linden [mailto:adi@adis.on.ca]
+Sent: Friday, October 13, 2000 11:21 AM
+To: peeweelinux@adis.on.ca
+Subject: Re: lilo error
+
+
+Hi,
+
+What do you use for a development system? How is the flash attached to
+your system?
+
+TTYL,
+Adi
+
+
+> I have another lilo error when I write the MBR to a flash IDE drive it
+gives
+> me the following error
+> 
+> First boot sector is version 20.0 Expecting version 21.5
+> 
+> does anyone have a suggestion???
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Oct 17 04:01:11 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 16 Oct 2000 22:01:11 -0500 (CDT)
+Subject: 0.52 Release
+Message-ID: <Pine.LNX.4.10.10010162153290.30989-100000@gizmo.adis.on.ca>
+
+Hi,
+
+I just finished uploading PeeWeeLinux 0.52 to sourceforge. The target
+build functions are now integrated into pwlconfig. The 2.2.17 kernel has
+been build and a full featured kernel package is included.
+
+Treat this carfully as the pwlconfig integration hasn't been fully tested
+yet. Also, not all of the 2.2.17 kernel packages have been tested either.
+
+Download locations are:
+
+http://download.sourceforge.net/embedded/peeweelinux-0.52-src.tar.gz
+http://download.sourceforge.net/embedded/peeweelinux-0.52-bin.tar.gz
+
+Soon this should also be available at:
+
+ftp://metalab.unc.edu/pub/linux/distributions/peewee/
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Oct 17 17:43:19 2000
+From: peeweelinux@adis.on.ca (fred anger)
+Date: Tue, 17 Oct 2000 09:43:19 -0700 (MST)
+Subject: 0.52 problems
+Message-ID: <Pine.BSO.4.21.0010170940340.10059-100000@tattooed.rightarm.org>
+
+I grabbed a copy of 0.52-bin and gave it a try.  First problem I notice is
+that it complains about various directories not existing.  The only one I
+seem to have been affected by so far is ./Embedded_Build/rd_tmp.  Others  
+already scrolled out of my scrollback buffer - sorry.
+
+Now I'm having trouble installing a pwl system to /dev/hdd.  It is a 2Gig 
+laptop hard drive.  The first problem I ran into was that the first time I
+tried to "extract" the system to the hard drive, it tried to do it to
+/dev/sda, even though I had already changed the device in the defaults to
+/dev/hdd.  Exiting and re-starting seemed to get the change to /dev/hdd to
+take.  Next, it can't seem to install lilo, but it just says 
+"failed".  Here's the output:
+
+Testing for mkdosfs...                                     [  ok  ]
+Testing for syslinux...                                    [  ok  ]
+Testing for mke2fs...                                      [  ok  ]
+Testing for sfdisk...                                      [  ok  ]
+Testing for losetup...                                     [  ok  ]
+Testing for tmp directory...                               [  ok  ]
+Testing for mount directory...                             [  ok  ]
+Testing for target device /dev/hdd...                      [  ok  ]
+Testing that target /dev/hdd is not mounted...             [  ok  ]
+Testing that nothing is mounted on mount directory...      [  ok  ]
+Testing for an existing project root...                    [  ok  ]
+Creating a loopback device...                              [  ok  ]
+Creating a filesystem on /dev/loop0...                     [  ok  ]
+Mounting loopback device...                                [  ok  ]
+Copying files to loopback device...                        [  ok  ]
+Creating fstab and rc.init...                              [  ok  ]
+Editing inittab...                                         [  ok  ]
+Building ld.so.cache...                                    [  ok  ]
+Unmounting loopback device...                              [  ok  ]
+Compressing /dev/loop0 into ramdisk...                     [  ok  ]
+Free loopback device /dev/loop0...                         [  ok  ]
+Determining space on target device...                      [  ok  ]
+Partition traget device /dev/hdd...                        [  ok  ]
+Creating ext2 filesystem...                                [  ok  ]
+Mount the target device /dev/hdd1...                       [  ok  ]
+Copying ramdisk, kernel and boot.b...                      [  ok  ]
+Creating lilo.conf in a temporary location...              [  ok  ]
+Installing lilo bootloader...                              [failed]
+Unmounting target device /dev/hdd1...                      [  ok  ]
+
+Any idea why it fails?
+
+Oh, and that spelling error on the 7th line from the bottom really is in
+there ;)
+
+-fa
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Oct 17 18:02:43 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 17 Oct 2000 12:02:43 -0500 (CDT)
+Subject: pwlconfig in 0.52 does not work!
+In-Reply-To: <Pine.BSO.4.21.0010170940340.10059-100000@tattooed.rightarm.org>
+Message-ID: <Pine.LNX.4.10.10010171200060.16846-100000@develop.knet.on.ca>
+
+Hi,
+
+A big ooops on my part! I uploaded the wrong 0.52 archive. Instead of
+uplaoding the working release I uploaded a previous backup with unfinished
+pwlconfig scripts!
+
+I'll try to do my best to make the 0.52 release unavailable since it
+doesn't work and get a new fixed release out!
+
+A big sorry for that one!
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Oct 17 18:05:15 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 17 Oct 2000 12:05:15 -0500 (CDT)
+Subject: 0.52 problems
+In-Reply-To: <Pine.BSO.4.21.0010170940340.10059-100000@tattooed.rightarm.org>
+Message-ID: <Pine.LNX.4.10.10010171202540.16846-100000@develop.knet.on.ca>
+
+Hi,
+
+You're absolutely right! The 0.52 release is proken and doesn't contain
+the proper pwlconfig files.
+
+I will update the archive and create a new fixed release asap. Also, I
+will post a fix that will update the pwlconfig files for everyone who's
+already downloaded the 0.52 release!
+
+Sorry about that one!
+
+TTYL,
+Adi
+
+
+
+On Tue, 17 Oct 2000, fred anger wrote:
+
+> I grabbed a copy of 0.52-bin and gave it a try.  First problem I notice is
+> that it complains about various directories not existing.  The only one I
+> seem to have been affected by so far is ./Embedded_Build/rd_tmp.  Others  
+> already scrolled out of my scrollback buffer - sorry.
+> 
+> Now I'm having trouble installing a pwl system to /dev/hdd.  It is a 2Gig 
+> laptop hard drive.  The first problem I ran into was that the first time I
+> tried to "extract" the system to the hard drive, it tried to do it to
+> /dev/sda, even though I had already changed the device in the defaults to
+> /dev/hdd.  Exiting and re-starting seemed to get the change to /dev/hdd to
+> take.  Next, it can't seem to install lilo, but it just says 
+> "failed".  Here's the output:
+> 
+> Testing for mkdosfs...                                     [  ok  ]
+> Testing for syslinux...                                    [  ok  ]
+> Testing for mke2fs...                                      [  ok  ]
+> Testing for sfdisk...                                      [  ok  ]
+> Testing for losetup...                                     [  ok  ]
+> Testing for tmp directory...                               [  ok  ]
+> Testing for mount directory...                             [  ok  ]
+> Testing for target device /dev/hdd...                      [  ok  ]
+> Testing that target /dev/hdd is not mounted...             [  ok  ]
+> Testing that nothing is mounted on mount directory...      [  ok  ]
+> Testing for an existing project root...                    [  ok  ]
+> Creating a loopback device...                              [  ok  ]
+> Creating a filesystem on /dev/loop0...                     [  ok  ]
+> Mounting loopback device...                                [  ok  ]
+> Copying files to loopback device...                        [  ok  ]
+> Creating fstab and rc.init...                              [  ok  ]
+> Editing inittab...                                         [  ok  ]
+> Building ld.so.cache...                                    [  ok  ]
+> Unmounting loopback device...                              [  ok  ]
+> Compressing /dev/loop0 into ramdisk...                     [  ok  ]
+> Free loopback device /dev/loop0...                         [  ok  ]
+> Determining space on target device...                      [  ok  ]
+> Partition traget device /dev/hdd...                        [  ok  ]
+> Creating ext2 filesystem...                                [  ok  ]
+> Mount the target device /dev/hdd1...                       [  ok  ]
+> Copying ramdisk, kernel and boot.b...                      [  ok  ]
+> Creating lilo.conf in a temporary location...              [  ok  ]
+> Installing lilo bootloader...                              [failed]
+> Unmounting target device /dev/hdd1...                      [  ok  ]
+> 
+> Any idea why it fails?
+> 
+> Oh, and that spelling error on the 7th line from the bottom really is in
+> there ;)
+> 
+> -fa
+> 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Oct 18 07:14:46 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 18 Oct 2000 01:14:46 -0500 (CDT)
+Subject: PeeWeeLinux 0.52
+Message-ID: <Pine.LNX.4.10.10010180105520.16199-100000@big.adis.on.ca>
+
+Hi,
+
+The format of the configuration file has changed substantially between the
+0.51 and 0.52 release. This is causing most of the problems with 0.52 and
+the errors running pwlconfig. This should only affect anyone trying to use
+an old project in 0.52.
+
+As of 0.53 the PWL version that created the projects.default file will be
+recorded. So as new variables are added to the config file PWL can make
+sure that old config files are updated automatically.
+
+PeeWeeLinux 0.53 should be ready shortly including a fix to update 0.52 to
+0.53.
+
+TTYL,
+Adi 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Oct 18 16:44:14 2000
+From: peeweelinux@adis.on.ca (Michael George)
+Date: Wed, 18 Oct 2000 11:44:14 -0400
+Subject: Extraction problem...
+In-Reply-To: From Michael George on Sep 19
+References: <20000919213426.A12333@brutus.mintcity.com>
+Message-ID: <20001018114414.A3587@tutus.mintcity.com>
+
+On Sep 19, Michael George wrote:
+> 
+> I have a bizarre problem that I'm hoping someone has seen before, or perhaps
+> might have a workaround.  I have peeweelinux-0.50-bin.tar.gz, and I've
+> installed it at work and at home.  Both machines are running a basic RHL6.1
+> system.  The one at work is running just fine.  But I am trying to Extract the
+> rpm files into the package directory.  When I try to do so, though, the
+> extraction process gets stuck at the dev*.rpm package.
+> 
+> It doesn't freeze, for I can watch the rpm process consuming time and nearly
+> 100% of the processor, but I just get the "Extracting ... dev...rpm." message.
+> The additional "." never appear and it just sits there indefinately.
+> 
+> Very strange, indeed!
+> 
+> Has anyone else ever heard of this or seen it?  Is there a way I can work
+> around it and get the packages all unpacked?
+
+Well I got this problem solved.  It turns out that my machine is just slow.  I
+started up pwl again and just let it run extracting the packages while I went
+and did something else.  I came back later that night and it was finished.
+
+Sorry for the trouble.  And thanks for the help.
+
+-Michael
+
+-- 
+No, my friend, the way to have good and safe government, is not to trust it
+all to one, but to divide it among the many, distributing to every one exactly
+the functions he is competent to.  It is by dividing and subdividing these
+republics from the national one down through all its subordinations, until it
+ends in the administration of every man's farm by himself; by placing under
+every one what his own eye may superintend, that all will be done for the
+best.
+                -- Thomas Jefferson, to Joseph Cabell, 1816
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Oct 19 04:02:51 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 18 Oct 2000 22:02:51 -0500 (CDT)
+Subject: PeeWeeLinux 0.53
+Message-ID: <Pine.LNX.4.10.10010182158450.23203-100000@big.adis.on.ca>
+
+Hi,
+
+To update PeeWeeLinux 0.52 to 0.53 extract the pwl_scr-0.97g.tar.gz file
+in the Embedded_Build directory. It will replace the existing pwlconfig
+scripts with the newest versions. Location:
+
+http://adis.on.ca/pub/Projects/Embedded/Miscellaneous/pwl_scr-0.97g.tar.gz
+
+
+PeeWeeLinux 0.53 is now available. Highlights of this
+release are: 
+
+    - Target build functions integrated into pwlconfig 
+    - New 2.2.17 kernel 
+    - A few bugfixes 
+
+More details can be found in Changelog:
+
+    http://adis.on.ca/pub/Projects/Embedded/Embedded_Build/CHANGELOG 
+
+Find the new PeeWeeLinux 0.53 release at the customary locations: 
+
+    http://sourceforge.net/project/filelist.php?group_id=818 
+    ftp://metalab.unc.edu/pub/linux/distributions/peewee/ 
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Oct 20 18:15:17 2000
+From: peeweelinux@adis.on.ca (fred anger)
+Date: Fri, 20 Oct 2000 10:15:17 -0700 (MST)
+Subject: 0.53-bin problem
+Message-ID: <Pine.BSO.4.21.0010201013120.1960-100000@tattooed.rightarm.org>
+
+I downloaded the 0.53-bin distro from metalab.unc.edu, but I get the
+following error trying to gunzip it:
+
+gunzip: peeweelinux-0.53-bin.tar.gz: unexpected end of file
+
+I downloaded a couple times using both Netscape and ncftp, and get the
+same result...
+
+-fa
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Oct 20 18:34:53 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 20 Oct 2000 12:34:53 -0500 (CDT)
+Subject: 0.53-bin problem
+In-Reply-To: <Pine.BSO.4.21.0010201013120.1960-100000@tattooed.rightarm.org>
+Message-ID: <Pine.LNX.4.10.10010201230300.2010-100000@develop.knet.on.ca>
+
+Hi,
+
+Arrrghhh... They are supposed to validate uploaded tar.gz file before
+moving them to the final destination. I would think the actual files
+residing at metalab are corrupted then. When I compare filesizes theyre
+off:
+
+My ftp site
+    peeweelinux-0.53-bin..> 18-Oct-2000 02:23  33.2M  GZIP
+    peeweelinux-0.53-src..> 18-Oct-2000 03:42   164M  GZIP
+
+Metalab
+    peeweelinux-0.53-bin.tar.gz    22061 Kb    Thu Oct 19 08:53:00 2000
+    peeweelinux-0.53-src.tar.gz   141118 Kb    Thu Oct 19 08:52:00 2000
+
+Both the source and binary package seem a few bytes short.
+
+I will send them back up there this evening and hopefully within a couple
+of days there are proper archives there.
+
+TTYL,
+Adi
+
+
+On Fri, 20 Oct 2000, fred anger wrote:
+
+> I downloaded the 0.53-bin distro from metalab.unc.edu, but I get the
+> following error trying to gunzip it:
+> 
+> gunzip: peeweelinux-0.53-bin.tar.gz: unexpected end of file
+> 
+> I downloaded a couple times using both Netscape and ncftp, and get the
+> same result...
+> 
+> -fa
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Oct 20 18:12:08 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Fri, 20 Oct 2000 12:12:08 -0500
+Subject: Configuration problem
+Message-ID: <39F07CE8.8E1677F3@amiga.com>
+
+I am having problems extracting a filesystem using the pwlconfig script.
+As can be seen in the following project.conf file the last six lines
+have an incorrect path. 
+
+./packages/Editors/vim-ncurses.list
+./packages/Editors/vim.list
+./packages/Kernel/kernel-basic-old.list
+./packages/Kernel/modutils.list
+./packages/Network/netkit-telnet.list
+./packages/Network_Base/net-tools.list
+./packages/Network_Base/netkit-base.list
+./packages/Network_Base/networkscripts.list
+./packages/Network_Clients/dhcpcd.list
+./packages/Network_Serial/mgetty.list
+./packages/Network_Serial/setserial.list
+./packages/Shells/bash.list
+./packages/System_Administration/procps-ncurses.list
+./packages/System_Base/bdflush.list
+./packages/System_Base/dev.list
+./packages/System_Base/filesystem.list
+./packages/System_Base/initscripts.list
+./packages/System_Base/ldconfig.list
+./packages/System_Base/lilo.list
+./packages/System_Base/mingetty.list
+./packages/System_Base/sysvinit.list
+./packages/System_Base/util-linux.list
+./packages/System_Daemons/sysklogd.list
+./packages/System_Daemons/vixie-cron.list
+./packages/System_Libraries/glibc.list
+./packages/System_Libraries/libtermcap.list
+./packages/System_Utilities/e2fsprogs.list
+./packages/System_Utilities/fileutils.list
+./packages/System_Utilities/gzip.list
+./packages/System_Utilities/sh-utils.list
+./packages/System_Utilities/tar.list
+./packages/X/XFree86-100dpi-fonts.list
+./packages/X/XFree86-75dpi-fonts.list
+./packages/X/XFree86-FBDev.list
+./packages/X/XFree86-SVGA.list
+./packages/X/XFree86-VGA16.list
+./packages/X/XFree86-libs.list
+./packages/X/XFree86-stuff.list
+./packages/X/XFree86-twm.list
+./packages/X/XFree86-xdm.list
+./packages/X/XFree86-xfs.list
+./packages/X/XFree86.list
+./packages/X/fvwm2-icons.list
+./packages/X/fvwm2.list
+./packages/X_Libraries/xpm.list
+./packages/packages/System_Administration/procps.list
+./packages/packages/System_Libraries/libstdc++.list
+./packages/packages/System_Libraries/ncurses.list
+./packages/packages/System_Utilities/fileutils.list
+./packages/packages/System_Utilities/grep.list
+./packages/packages/X/fvwm2-icons.list
+
+Ignoring the fact that I'm including way more than necessary for a
+minimal system, is there anything that may be causing this?
+
+-- 
+Dean
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Oct 20 21:46:02 2000
+From: peeweelinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 20 Oct 2000 13:46:02 -0700 (PDT)
+Subject: Configuration problem
+Message-ID: <20001020204602.57823.qmail@web9101.mail.yahoo.com>
+
+Dean,
+I was able to make this occur using the "check configuration dependancies"
+feature. So the fix for this is in pwl_pkgconf (about line 643, where the
+selected dependancy files are used to find the package they are contained in)
+
+was:
+   grep "$depFn" $PKG_INDEX >> .dep.add
+
+can be fixed with:
+   grep "$depFn" $PKG_INDEX | sed "s!packages\/!!g" >> .dep.add
+
+A slight bug since PKG_INDEX contains the full path packages/xxx/fn
+and package_add_delete function is expecting xxx/fn..
+
+Hope this helps... 
+
+Later,
+Ralph
+
+(Adi - check this out, maybe find a better way to do this; should be a variable
+instead of hardcoding the "packages" path in this file - all directories are
+defined in pwl_functions...)
+
+
+--- Dean Brown <dean@amiga.com> wrote:
+> I am having problems extracting a filesystem using the pwlconfig script.
+> As can be seen in the following project.conf file the last six lines
+> have an incorrect path. 
+> 
+> ./packages/Editors/vim-ncurses.list
+> ./packages/Editors/vim.list
+> ./packages/Kernel/kernel-basic-old.list
+> ./packages/Kernel/modutils.list
+> ./packages/Network/netkit-telnet.list
+> ./packages/Network_Base/net-tools.list
+> ./packages/Network_Base/netkit-base.list
+> ./packages/Network_Base/networkscripts.list
+> ./packages/Network_Clients/dhcpcd.list
+> ./packages/Network_Serial/mgetty.list
+> ./packages/Network_Serial/setserial.list
+> ./packages/Shells/bash.list
+> ./packages/System_Administration/procps-ncurses.list
+> ./packages/System_Base/bdflush.list
+> ./packages/System_Base/dev.list
+> ./packages/System_Base/filesystem.list
+> ./packages/System_Base/initscripts.list
+> ./packages/System_Base/ldconfig.list
+> ./packages/System_Base/lilo.list
+> ./packages/System_Base/mingetty.list
+> ./packages/System_Base/sysvinit.list
+> ./packages/System_Base/util-linux.list
+> ./packages/System_Daemons/sysklogd.list
+> ./packages/System_Daemons/vixie-cron.list
+> ./packages/System_Libraries/glibc.list
+> ./packages/System_Libraries/libtermcap.list
+> ./packages/System_Utilities/e2fsprogs.list
+> ./packages/System_Utilities/fileutils.list
+> ./packages/System_Utilities/gzip.list
+> ./packages/System_Utilities/sh-utils.list
+> ./packages/System_Utilities/tar.list
+> ./packages/X/XFree86-100dpi-fonts.list
+> ./packages/X/XFree86-75dpi-fonts.list
+> ./packages/X/XFree86-FBDev.list
+> ./packages/X/XFree86-SVGA.list
+> ./packages/X/XFree86-VGA16.list
+> ./packages/X/XFree86-libs.list
+> ./packages/X/XFree86-stuff.list
+> ./packages/X/XFree86-twm.list
+> ./packages/X/XFree86-xdm.list
+> ./packages/X/XFree86-xfs.list
+> ./packages/X/XFree86.list
+> ./packages/X/fvwm2-icons.list
+> ./packages/X/fvwm2.list
+> ./packages/X_Libraries/xpm.list
+> ./packages/packages/System_Administration/procps.list
+> ./packages/packages/System_Libraries/libstdc++.list
+> ./packages/packages/System_Libraries/ncurses.list
+> ./packages/packages/System_Utilities/fileutils.list
+> ./packages/packages/System_Utilities/grep.list
+> ./packages/packages/X/fvwm2-icons.list
+> 
+> Ignoring the fact that I'm including way more than necessary for a
+> minimal system, is there anything that may be causing this?
+> 
+> -- 
+> Dean
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Messenger - Talk while you surf!  It's FREE.
+http://im.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Oct 20 22:15:27 2000
+From: peeweelinux@adis.on.ca (fred anger)
+Date: Fri, 20 Oct 2000 14:15:27 -0700 (MST)
+Subject: swap problem
+Message-ID: <Pine.BSO.4.21.0010201412110.22303-100000@tattooed.rightarm.org>
+
+I'm having a problem booting a 0.53 system.  It gets to where the
+RAMDISK: compressed image found message is displayed, then it just starts
+spitting out the following messages:
+
+VM: do_try_to_free_pages failed for swapper...
+VM: do_try_to_free_pages failed for kswapd...
+
+What am I doing wrong now?
+
+-fa
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Oct 21 00:18:56 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 20 Oct 2000 18:18:56 -0500 (CDT)
+Subject: swap problem
+In-Reply-To: <Pine.BSO.4.21.0010201412110.22303-100000@tattooed.rightarm.org>
+Message-ID: <Pine.LNX.4.10.10010201812450.32023-100000@big.adis.on.ca>
+
+Hi,
+
+Which kernel are you using. I've been testing the kernel-full with only
+the bzImage, the 8390.o and ne.o network modules selected. It's been
+booting just fine. So if you can give more detail on your set up I can try
+to reproduce it.
+
+I plan on adding an examples directory that contains prebuild projects.
+One of the first additions will be a small non network configuration that
+will easily fit on a floppy and build without any custom files. Somewhat
+of a reference design that should load and boot to a login prompt on all
+targets. That's my project for tonight...
+
+TTYL,
+Adi
+
+
+
+On Fri, 20 Oct 2000, fred anger wrote:
+
+> I'm having a problem booting a 0.53 system.  It gets to where the
+> RAMDISK: compressed image found message is displayed, then it just starts
+> spitting out the following messages:
+> 
+> VM: do_try_to_free_pages failed for swapper...
+> VM: do_try_to_free_pages failed for kswapd...
+> 
+> What am I doing wrong now?
+> 
+> -fa
+> 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Oct 21 01:26:53 2000
+From: peeweelinux@adis.on.ca (fred anger)
+Date: Fri, 20 Oct 2000 17:26:53 -0700 (MST)
+Subject: swap problem
+In-Reply-To: <Pine.LNX.4.10.10010201812450.32023-100000@big.adis.on.ca>
+Message-ID: <Pine.BSO.4.21.0010201725450.29009-100000@tattooed.rightarm.org>
+
+On Fri, 20 Oct 2000, Adi Linden wrote:
+
+> Hi,
+> 
+> Which kernel are you using. I've been testing the kernel-full with only
+> the bzImage, the 8390.o and ne.o network modules selected. It's been
+> booting just fine. So if you can give more detail on your set up I can try
+> to reproduce it.
+
+I selected kernel-full, but didn't go in and change anything else under
+that package group.  Perhaps I should have...
+
+
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Oct 21 01:32:47 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 20 Oct 2000 19:32:47 -0500 (CDT)
+Subject: swap problem
+In-Reply-To: <Pine.BSO.4.21.0010201725450.29009-100000@tattooed.rightarm.org>
+Message-ID: <Pine.LNX.4.10.10010201931470.32023-100000@big.adis.on.ca>
+
+Hi,
+
+That kernel should work. Selecting the whole package will simply consume a
+lot of space but it shouldn't make any other difference.
+
+TTYL,
+Adi
+
+On Fri, 20 Oct 2000, fred anger wrote:
+
+> On Fri, 20 Oct 2000, Adi Linden wrote:
+> 
+> > Hi,
+> > 
+> > Which kernel are you using. I've been testing the kernel-full with only
+> > the bzImage, the 8390.o and ne.o network modules selected. It's been
+> > booting just fine. So if you can give more detail on your set up I can try
+> > to reproduce it.
+> 
+> I selected kernel-full, but didn't go in and change anything else under
+> that package group.  Perhaps I should have...
+> 
+> 
+> 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Oct 24 23:36:16 2000
+From: peeweelinux@adis.on.ca (fred anger)
+Date: Tue, 24 Oct 2000 15:36:16 -0700 (MST)
+Subject: command not found
+Message-ID: <Pine.BSO.4.21.0010241515500.20486-100000@tattooed.rightarm.org>
+
+Another problem under 0.53:  If I set my target environment to "Read-only
+root fs - ext2 with no ramdisk", I get an error complaining about
+"func_rd_build_ext2_only: command not found" when I attempt to load file
+system onto target.  Ugh.
+
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Oct 24 23:52:41 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 24 Oct 2000 17:52:41 -0500 (CDT)
+Subject: command not found
+In-Reply-To: <Pine.BSO.4.21.0010241515500.20486-100000@tattooed.rightarm.org>
+Message-ID: <Pine.LNX.4.10.10010241744250.746-100000@develop.knet.on.ca>
+
+Hi,
+
+The target build functions under 0.53 are still under development. The
+following is the list of targets that will work. I tested them all using
+4MB, 16MB and 64MB Compact Flash and Floppy (for the last option).
+
+Compressed ramdisk on FAT 16 partition
+Compressed ramdisk on ext2 partition
+Uncompressed ramdisk, boot from FAT 16 partition
+Uncompressed ramdisk, boot from ext2 partition
+Read-only root fs with multiple ramdisks
+----- Non-flash target devices -----
+Compressed ramdisk on floppy disk w/o bootloader  
+
+The other listed targets will simply refuse to do anything since the
+script/function they call do not exist yet.
+
+There'll be a pwlconfig maintanance release shortly. It adds a -b or
+--experimental switch. Without it any menu options that are not completely
+developed will be "turned off". Using the switch (-b or --experimental)
+will show all menu options including broken features and non implemented
+features.
+
+The "Create New Project" prompt has been enhanced with a list of sample
+projects that can be picked from. This should make it easier to get that
+first project of the ground and a feel for pwlconfig.
+
+Something that has potential for some grief is a change in the kernel
+naming convention. I decided to not strip the kernel version from the
+kernel package name. This will cause a package not found error for the
+kernel package if an older project is used with the upcoming pwlconfig.
+Simply pick a 'new' kernel and select the desired files to rectify the
+problem.
+
+TTYL,
+Adi
+
+On Tue, 24 Oct 2000, fred anger wrote:
+
+> Another problem under 0.53:  If I set my target environment to "Read-only
+> root fs - ext2 with no ramdisk", I get an error complaining about
+> "func_rd_build_ext2_only: command not found" when I attempt to load file
+> system onto target.  Ugh.
+> 
+> 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Oct 24 22:27:28 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Tue, 24 Oct 2000 16:27:28 -0500
+Subject: Xterm
+Message-ID: <39F5FEC0.5C34F0C4@amiga.com>
+
+Ok, I've another problem that is causing me to lose hair!
+
+I have a basic multiuser linux install up and running on a 32MByte CF
+card. I am now attempting to get X running as well. Using XF86_FBDev and
+fvwm2 I can get X up with an oclock onscreen in 800x600 mode on the
+target hardware. What I have not been able to do is open an xterm
+window. 
+
+By not spawning the xterm, I have been able to get a failure message of
+'Segmentation fault (core dumped)'. Does anyone have an idea as to why
+this is happening? 
+
+-- 
+
+Dean Brown
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Oct 25 03:34:01 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 24 Oct 2000 21:34:01 -0500 (CDT)
+Subject: Updated pwlconfig scripts
+Message-ID: <Pine.LNX.4.10.10010242126080.19586-100000@big.adis.on.ca>
+
+Hi,
+
+Here are some updated pwlconfig scripts. Some changes:
+- Non-working and under development features are no longer shown by
+  default. Use 'pwlconfig -b' or 'pwlconfig --experimental' to get
+  the hidden menu options
+- The kernel packages no show the kernel version for clarity. This means
+  older projects will not have a valid kernel until a new kernel package
+  has been configured.
+- Added a load example project choice to 'Create New Project' option
+- Added a first example project.
+
+Download: http://adis.on.ca/pub/Projects/Embedded/peeweelinux-0.53.4-cfg.tar.gz
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Oct 26 02:35:16 2000
+From: peeweelinux@adis.on.ca (Ralph Stickley)
+Date: Wed, 25 Oct 2000 18:35:16 -0700 (PDT)
+Subject: Xterm
+Message-ID: <20001026013516.49782.qmail@web9104.mail.yahoo.com>
+
+Dean,
+I had the same problem and never got this fixed properly.
+I ended up running the system as root user - seems a 
+permission problem or something.
+BTW, if you go to a console, can you start xterm ?
+<ctr><alt><F8>
+<alt><F2>
+
+This should give you a login prompt (if you have another
+getty setup in your sysinit file ??)
+login as root and type:
+
+export DISPLAY=:0
+xterm &
+then press 
+<alt><f7> (if you have 6 gettys setup)
+--or--
+<alt><f4> (if you only have 3 gettys setup, etc...)
+
+This should start the xterm program (or at least
+show some error messages that may help explain why
+its not working).  Also there is a program "strace" IIRC
+that prints out the system calls - capture the output from:
+
+strace xterm 2> xxx
+
+and see if you notice what the program is doing.
+
+Wish I could say for sure what the problem is...if you
+find out, let us know!:)
+
+Later,
+Ralph Stickley
+
+(already lost most of my hair!)
+
+--- Dean Brown <dean@amiga.com> wrote:
+> Ok, I've another problem that is causing me to lose hair!
+> 
+> I have a basic multiuser linux install up and running on a 32MByte CF
+> card. I am now attempting to get X running as well. Using XF86_FBDev and
+> fvwm2 I can get X up with an oclock onscreen in 800x600 mode on the
+> target hardware. What I have not been able to do is open an xterm
+> window. 
+> 
+> By not spawning the xterm, I have been able to get a failure message of
+> 'Segmentation fault (core dumped)'. Does anyone have an idea as to why
+> this is happening? 
+> 
+> -- 
+> 
+> Dean Brown
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Messenger - Talk while you surf!  It's FREE.
+http://im.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Oct 26 13:20:42 2000
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Thu, 26 Oct 2000 07:20:42 -0500
+Subject: Xterm
+References: <20001026013516.49782.qmail@web9104.mail.yahoo.com>
+Message-ID: <39F8219A.5F83FA70@amiga.com>
+
+Ralph Stickley wrote:
+> 
+> Dean,
+> I had the same problem and never got this fixed properly.
+> I ended up running the system as root user - seems a
+> permission problem or something.
+
+I am running as root!!! :(
+
+> BTW, if you go to a console, can you start xterm ?
+> <ctr><alt><F8>
+> <alt><F2>
+> 
+> This should give you a login prompt (if you have another
+> getty setup in your sysinit file ??)
+> login as root and type:
+> 
+> export DISPLAY=:0
+> xterm &
+> then press
+> <alt><f7> (if you have 6 gettys setup)
+> --or--
+> <alt><f4> (if you only have 3 gettys setup, etc...)
+
+I did this as well. I got the same Segmentation fault error.
+ 
+> This should start the xterm program (or at least
+> show some error messages that may help explain why
+> its not working).  Also there is a program "strace" IIRC
+> that prints out the system calls - capture the output from:
+> 
+> strace xterm 2> xxx
+
+I'll give that a try and see what I see.
+ 
+> and see if you notice what the program is doing.
+> 
+> Wish I could say for sure what the problem is...if you
+> find out, let us know!:)
+
+I'm still working on it. My application doesn't actually require me to
+run an xterm, but I hate unsolved puzzles!!! Xterm is the only
+application that I've tried that actually has problems. xmag, oclock,
+xload, all have been tried and work fine.
+
+Thanks for letting me know that I'm not the only one with this problem.
+I was beginning to believe that I was doing something completely stupid.
+
+> Later,
+> Ralph Stickley
+> 
+> (already lost most of my hair!)
+> 
+> --- Dean Brown <dean@amiga.com> wrote:
+> > Ok, I've another problem that is causing me to lose hair!
+> >
+> > I have a basic multiuser linux install up and running on a 32MByte CF
+> > card. I am now attempting to get X running as well. Using XF86_FBDev and
+> > fvwm2 I can get X up with an oclock onscreen in 800x600 mode on the
+> > target hardware. What I have not been able to do is open an xterm
+> > window.
+> >
+> > By not spawning the xterm, I have been able to get a failure message of
+> > 'Segmentation fault (core dumped)'. Does anyone have an idea as to why
+> > this is happening?
+> >
+> > --
+> >
+> > Dean Brown
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Yahoo! Messenger - Talk while you surf!  It's FREE.
+> http://im.yahoo.com/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+-- 
+
+It took them 15 years to catch up... Now they never will!
+
+Privileged and Confidential communication. If you are not the addressee,
+you may not read, copy, or distribute this email. This email is not for
+public use or knowledge. If you receive this email in error, please
+advise
+us by return email. Thank you.
+
+Dean Brown
+Director of Hardware
+Amiga Inc.
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Oct 28 02:50:14 2000
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 27 Oct 2000 20:50:14 -0500 (CDT)
+Subject: It does not login
+In-Reply-To: <20001027.19263000@Camille.e-Sagedev.com>
+Message-ID: <Pine.LNX.4.10.10010272047080.18747-100000@big.adis.on.ca>
+
+Hi,
+
+Hmmm... PeeWeeLinux doesn't use shadow or PAM. If you get the login prompt
+you would have login and mingetty. Make sure you have /var/run/utmp and
+/var/log/wtmp. If you don't have those you're missing an important
+package...
+
+I am cc'ing this to the PeeWeeLinux list just in case I am missing
+something here.
+
+TTYL,
+Adi
+
+On Fri, 27 Oct 2000, Yves Lemay wrote:
+
+> Is there anything else I can check (shadow, PAM)?
+> 
+> How can this be possible? I can't belieave Im stuck with such a 
+> problem...
+> 
+> 
+> 
+> 
+> I do have those files.
+> 
+> If you to have a look at it I attached them.
+> 
+> 
+> Yves
+> 
+> >>>>>>>>>>>>>>>>>> Message d'origine <<<<<<<<<<<<<<<<<<
+> 
+> Le 10/26/00, à 12:26:39 PM h, Adi Linden <adi@adis.on.ca> vous a écrit sur
+> le sujet suivant Re: It does not login :
+> 
+> 
+> > Hi,
+> 
+> > Make sure you have the  /etc/passwd and /etc/group files
+> 
+> > TTYL,
+> > Adi
+> 
+> > On Thu, 26 Oct 2000, Yves Lemay wrote:
+> 
+> > > Thank you for your quick answer. I appreciate a lot.
+> > >
+> > > The problem is still the same:
+> > >
+> > > It does not login even if I use these user and password !!!
+> > >
+> > >
+> > > Why ???
+> > >
+> > >
+> > > I'm really desperate. Is there any packages that I migth have forget ?
+> > >
+> > >
+> > > Yves Lemay
+> > > e-Sage Development inc.
+> > >
+> > >
+> > >
+> > >
+> > > >>>>>>>>>>>>>>>>>> Message d'origine <<<<<<<<<<<<<<<<<<
+> > >
+> > > Le 10/26/00, à 10:22:43 AM h, Adi Linden <adi@adis.on.ca> vous a écrit sur
+> > > le sujet suivant Re: It does not login :
+> > >
+> > >
+> > > > Hi,
+> > >
+> > > > The username and passwords are:
+> > >
+> > > > User: root
+> > > > Pass: redhat
+> > >
+> > > > User: admin
+> > > > Pass: admin
+> > >
+> > > > The sytem is meant to run of the first IDE drive of the system. An IDE
+> > > > flash is just fine.
+> > >
+> > > > TTYL,
+> > > > Adi
+> > >
+> > >
+> > > > On Thu, 26 Oct 2000, Yves Lemay wrote:
+> > >
+> > > > > My ultimate goal is to instal a Linux OS on a 64 M Flash that is working
+> > > > > with a Celron 433 .
+> > > > >
+> > > > > My startegie is this one :
+> > > > >
+> > > > > 1.  Build a boot disk using the instructions found in Bootdisk.HOWTO
+> > > > > (monolithic kernel is a 2.2.12 )
+> > > > > 2.  Use Peeweelinux to build a root disk - including LILO
+> > > > > 3.  Transfert the FIle system, LILO and the kernel to the Flash.
+> > > > >
+> > > > > Now, I can't login. Even if I use the combinations found in README :
+> > > > > user: root   password:redhat or admin:admin.
+> > > > >
+> > > > > It keeps telling me "Login incorrect" !!!!!!!!!!!!!!!!!!!!!! Why
+> > > > > ?????????????????????
+> > > > >
+> > > > > Do I have to expect any problem with Lilo if my Flash is the only IDE
+> > > > > device and it resides on the secondary IDE (hdc) ?
+> > > > >
+> > > > > Desperatly crying for help.
+> > > > >
+> > > > > --
+> > > > > Yves Lemay
+> > > > > e-Sage Development inc.
+> > > > >
+> > > > >
+> > > > >
+> > >
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

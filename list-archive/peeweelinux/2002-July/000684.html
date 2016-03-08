@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] New - II
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000683.html">
+   <LINK REL="Next"  HREF="000685.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] New - II
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] New - II">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 19 Jul 2002 18:15:11 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000683.html">[Peeweelinux] New
+</A></li>
+        <LI> Next message: <A HREF="000685.html">[Peeweelinux] graphics
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#684">[ date ]</a>
+              <a href="thread.html#684">[ thread ]</a>
+              <a href="subject.html#684">[ subject ]</a>
+              <a href="author.html#684">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>In the following messages I will reveal answers to questions 
+that might be posed by someone starting out cold.  By the time
+I get through this, I'll no longer qualify :)
+
+Getting PeeWee
+
+After going to SourceForge and downloading the binary package,
+and untarring it to a suitable directory tree, I discovered
+a few things.
+
+   - It looks just like the directory tree on the CD
+   - It has one bad symlink to SRPMS
+   - There's a script in the top directory called cd_install
+
+Sure enough, the difference between the CD and the binary package
+is the presence of the SRPMS.  In the binary package the SRPMS
+are removed.  I ran the cd_install script, and (after following
+the directions to become root) let it remove what I had untarred
+and, near as I can tell, it then copied the same things back
+to that directory (plus the sources).
+
+So for first-time obtainers, the images found on SourceForge
+are as follows:
+
+old name: embedded-0.18-src.tar.gz
+   If you look back through the versions, you will find that the
+   name changed between versions 0.32 and 0.40
+
+CD image: peeweelinux-0.61.1.iso
+   Burn this to a CD and everything described below is there.
+
+Source package: peeweelinux-0.61.1-src.tar.gz
+  Untar this and get the same thing that you see on the CD.
+  Includes, source, binary, and configuration.
+
+Binary package: peeweelinux-0.61.1-bin.tar.gz
+  Untar this and get the CD image, except the source tree
+  from src/SRPMS is not present.
+
+Configuration tool:
+  This is just the pwlconfig scripts and utilities found
+  in the bin, scripts, and lxdialog directories. 
+
+
+
+Corrections are solicited.  
+
+Next: Installing ('Unpack')
+
+After that: Making a system (hint--I need help: I couldn't
+  find &quot;boot_system&quot;; and the unmodified &quot;minimal&quot; image
+  didn't fit on a floppy.)
+
+See y'all next week.
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000683.html">[Peeweelinux] New
+</A></li>
+	<LI> Next message: <A HREF="000685.html">[Peeweelinux] graphics
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#684">[ date ]</a>
+              <a href="thread.html#684">[ thread ]</a>
+              <a href="subject.html#684">[ subject ]</a>
+              <a href="author.html#684">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> X startup stuff - questions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000044.html">
+   <LINK REL="Next"  HREF="000046.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>X startup stuff - questions
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="X startup stuff - questions">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Tue, 1 Feb 2000 08:52:41 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000044.html">X startup stuff - questions
+</A></li>
+        <LI> Next message: <A HREF="000046.html">X11-Package works!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+&gt;<i> &gt; &gt; 3. mknod /dev/mouse c 10 1
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Wouldn't the above be part of the installation process of putting X onto
+</I>&gt;<i> &gt; the flash device/into the filesystem?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> I hadn't thought of that...the /dev/mouse /dev/usb ... stuff that X uses
+</I>&gt;<i> would be part of the X package. Good fit!
+</I>&gt;<i> 
+</I>&gt;<i> I did notice that the normal RH devices directory 
+</I>&gt;<i> contains an ungodly number of nodes in it.  Also, configuring the
+</I>&gt;<i> _base_filesystem takes a while because of the large number of files included in
+</I>&gt;<i> this.
+</I>&gt;<i> 
+</I>&gt;<i> Would it make sense to have a _devices package ? This would shrink the size of
+</I>&gt;<i> _base_filesystem file and configuring both would be quicker.
+</I>
+There isn't much else to the base_filesystem other than the devices. Also,
+the devices included in the base_filesystem are a subset of what's
+included with a 'normal' Linux install. Unusual devices are usually
+included with the individual packages. I.e. a kernel image with DOC
+support also includes /dev/fla0, etc...
+
+&gt;<i> &gt; &gt; 4. insmod unix.o 
+</I>&gt;<i> &gt; &gt; 5. xfs -droppriv -daemon -port -1
+</I>&gt;<i> &gt; &gt; 6. XF86_SVGA
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I would do a startup script to run from the etc/rcS.d directory. All
+</I>&gt;<i> &gt; scripts in there are run automatically at startup in alphanumerical order.
+</I>&gt;<i> &gt; To have good control over what runs when they're numbered, like: 05modules
+</I>&gt;<i> &gt; 20firewall, etc....
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i>  Oh...there they be...in my standard RH, I have XFS and gpm(which I don't know
+</I>&gt;<i> if I need or not).  Now I just have to go back and dig into the magic that is
+</I>&gt;<i> RH Init stuff...insmod doesn't seem to get called...geeze, could this *be* more
+</I>&gt;<i> confusing? (QNX has a very clean startup process conpared to this, but I guess
+</I>&gt;<i> thats the price you pay for flexibility!)
+</I>
+Yup, except the RH startup is quite complex. A lot of the stuff included
+in /etc/rc.d/init.d/gpm and /etc/rc.d/init.d/xfs can be stripped. For
+example, with PeeWeeLinux I don't expect daemons to be shutdown
+gracefully. Mind you, for compatibility reasons rcS calls all startup
+script with the 'start' command line argument. Also, RH uses some
+functions included in /etc/rc.d/init.d/functions. Either the startup
+scripts have to be rewritten or the .../fuctions script also has to be
+copied to /etc/rcS.d/. Makes sense? To recap for a really quick and dirty
+start just copy the following files to /etc/rcS.d:
+
+/etc/rc.d/init.d/functions
+/etc/rc.d/init.d/gpm
+/etc/rc.d/init.d/xfs
+
+For a PeeWeeLinux package I would remove the functions script and rewrite
+gpm and xfs to not rely on functions and to simply start the service, none
+of the other functions.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000044.html">X startup stuff - questions
+</A></li>
+	<LI> Next message: <A HREF="000046.html">X11-Package works!
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#45">[ date ]</a>
+              <a href="thread.html#45">[ thread ]</a>
+              <a href="subject.html#45">[ subject ]</a>
+              <a href="author.html#45">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

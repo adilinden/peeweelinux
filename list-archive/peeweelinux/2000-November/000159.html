@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> experiences with PWL0.53.10 (some problems?)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000158.html">
+   <LINK REL="Next"  HREF="000160.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>experiences with PWL0.53.10 (some problems?)
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="experiences with PWL0.53.10 (some problems?)">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 10 Nov 2000 14:16:21 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000158.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+        <LI> Next message: <A HREF="000160.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I have some answers...
+
+&gt;<i> I am experiencing the following with PWL0.53.10: 
+</I>&gt;<i> 
+</I>&gt;<i> a) when I tried to extract a file system to a CompactFlash IDE target
+</I>&gt;<i> device (/dev/hdc) from pwlconfig, I always get the following:
+</I>&gt;<i> 
+</I>&gt;<i> &quot;testing that nothing is mounted on mount directory&quot; ...failed
+</I>
+Seeing that rd_dialog works, the actual script that loads the filesystem
+is alright. What do you see when you go to 
+
+    Configure Target Hardware --&gt;
+
+Did pwlconfig ask you to create a new configuration file (it should have) 
+when you tried to load your target? All I can think of is that the path to
+the temporary mount directory is not correct. It should say something
+like: 
+
+    Device Mount Point: &quot;./mnt&quot;
+
+&gt;<i> b) On another note, the minimal configuration example that comes with
+</I>&gt;<i> PWL0.53.10 tries to extract, as kernel,
+</I>&gt;<i> ./packages/Kernel/kernel-basic-2.2.17.list, which does not exist (at
+</I>&gt;<i> least not in the distro I have). Hence,, the system generated does not
+</I>&gt;<i> have a kernel. Furthermore, I have noticed that even If you select
+</I>&gt;<i> another kernel, project.conf always includes
+</I>&gt;<i> ./packages/Kernel/kernel-basic-2.2.17.list, hence the error is also
+</I>&gt;<i> generated, despite your selected kernel included okay (that happens
+</I>&gt;<i> whenever your project is based on &quot;minimal&quot;. If you start your new
+</I>&gt;<i> project from the scratch, it does not happen).
+</I>
+Did you upgrade to 0.53.10 by downloading the peeweelinux-*-cfg.tar.gz
+package or did you download the complete bin or src archive?
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000158.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+	<LI> Next message: <A HREF="000160.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

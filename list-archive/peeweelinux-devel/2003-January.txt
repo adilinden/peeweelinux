@@ -1,0 +1,92 @@
+From peeweelinux-devel@adis.on.ca  Wed Jan 22 01:19:47 2003
+From: peeweelinux-devel@adis.on.ca (Greg D Smith)
+Date: Tue, 21 Jan 2003 19:19:47 -0600
+Subject: [Peeweelinux-devel] ssh/ssl
+Message-ID: <3E2DF1B3.204@davisnetworks.net>
+
+I am seeking a quick and dirty way to add SSL/SSH support to PEEWEE 
+Linux. I cant believe that this hasnt been done before yet and was 
+wondering if anyone had any advice/RPMs. I dont feel like re-inventing 
+the wheel and feel like this is the last step in getting my box to do 
+what I want it to.
+
+Thanks
+Greg D Smith
+
+
+
+From peeweelinux-devel@adis.on.ca  Wed Jan 22 19:51:15 2003
+From: peeweelinux-devel@adis.on.ca (Henrik Fransson)
+Date: Wed, 22 Jan 2003 20:51:15 +0100
+Subject: [Peeweelinux-devel] Re: Peeweelinux-devel digest, Vol 1 #32 - 1 msg
+In-Reply-To: <200301221802.h0MI2uO02119@yoda.adis.on.ca>
+References: <200301221802.h0MI2uO02119@yoda.adis.on.ca>
+Message-ID: <oprje2rptece6vhc@localhost>
+
+On Wed, 22 Jan 2003 12:02:57 -0600, <peeweelinux-devel-request@adis.on.ca> 
+wrote:
+
+If anyone know if there's any implementation  to run SSH on  a non-OS  
+system..
+
+please reply ...
+
+Thanx  Henrik Fransson
+
+
+> Send Peeweelinux-devel mailing list submissions to
+> 	peeweelinux-devel@adis.on.ca
+>
+> To subscribe or unsubscribe via the World Wide Web, visit
+> 	http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel
+> or, via email, send a message with subject or body 'help' to
+> 	peeweelinux-devel-request@adis.on.ca
+>
+> You can reach the person managing the list at
+> 	peeweelinux-devel-admin@adis.on.ca
+>
+> When replying, please edit your Subject line so it is more specific
+> than "Re: Contents of Peeweelinux-devel digest..."
+>
+>
+> Today's Topics:
+>
+> 1. ssh/ssl (Greg D Smith)
+>
+> --__--__--
+>
+> Message: 1
+> Date: Tue, 21 Jan 2003 19:19:47 -0600
+> From: Greg D Smith <gsmith@davisnetworks.net>
+> To: peeweelinux-devel@adis.on.ca
+> Subject: [Peeweelinux-devel] ssh/ssl
+> Reply-To: peeweelinux-devel@adis.on.ca
+>
+> I am seeking a quick and dirty way to add SSL/SSH support to PEEWEE 
+> Linux. I cant believe that this hasnt been done before yet and was 
+> wondering if anyone had any advice/RPMs. I dont feel like re-inventing 
+> the wheel and feel like this is the last step in getting my box to do 
+> what I want it to.
+>
+> Thanks
+> Greg D Smith
+>
+>
+>
+>
+> --__--__--
+>
+> _______________________________________________
+> Peeweelinux-devel mailing list
+> Peeweelinux-devel@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel
+>
+>
+> End of Peeweelinux-devel Digest
+>
+
+
+
+-- 
+ 
+

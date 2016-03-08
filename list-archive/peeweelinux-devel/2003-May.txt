@@ -1,0 +1,51 @@
+From peeweelinux-devel@adis.on.ca  Tue May 20 17:34:21 2003
+From: peeweelinux-devel@adis.on.ca (Olivier Pedretti)
+Date: Tue, 20 May 2003 18:34:21 +0200
+Subject: [Peeweelinux-devel] peewee and dns?
+Message-ID: <Sea2-F12CuFjqDo7XcD00026e68@hotmail.com>
+
+<html><div style='background-color:'><DIV>
+<P><BR>Hello,<BR>I'm french, sorry for bad english.<BR>I've installed peewee linux on pc104 to make the link between a server and televisions in rooms of a hospital. The card work find with&nbsp; peewee unlike winCE, in framebuffer mode I use a navigator: Links with the mode graphic... I can ping other systems with their ip but i cannot use their names... but my resolv.conf&nbsp; file is good, it's the same than my redhat on a classical pc but it seem's that no DNS resolution works on peewee...<BR>Can you help please<BR>Oliver<BR></P></DIV></div><br clear=all><hr>Pro ou perso, toutes les adresses et numéros de tél que vous cherchez <a href="http://g.msn.com/8HMKFRFR/2740??PS=">Cliquez-ici </a> </html>
+
+From peeweelinux-devel@adis.on.ca  Tue May 20 14:40:55 2003
+From: peeweelinux-devel@adis.on.ca (Deepak Pandey)
+Date: Tue, 20 May 2003 13:40:55 -0000
+Subject: [Peeweelinux-devel] peewee and dns?
+References: <Sea2-F12CuFjqDo7XcD00026e68@hotmail.com>
+Message-ID: <000101c31ee2$5c4dca70$ea00000a@pandeyd>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0027_01C31ED5.725B01A0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+you need to manually add hosts in your host file.
+and also change the order of resolution.
+
+Deepak
+------=_NextPart_000_0027_01C31ED5.725B01A0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.2800.1106" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>you need to manually add hosts in your =
+host=20
+file.</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>and also change the order of=20
+resolution.</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Deepak</FONT></DIV></BODY></HTML>
+
+------=_NextPart_000_0027_01C31ED5.725B01A0--
+
+

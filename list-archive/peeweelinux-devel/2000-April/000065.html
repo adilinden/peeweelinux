@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Review of pwlconfig 0.90
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000064.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Review of pwlconfig 0.90
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Review of pwlconfig 0.90">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Mon, 3 Apr 2000 13:55:54 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000064.html">Review of pwlconfig 0.90
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dennis,
+
+--- &quot;Dennis W. Tokarski&quot; &lt;<A HREF="mailto:dwt@PolTec.COM">dwt@PolTec.COM</A>&gt; wrote:
+&gt;<i> Hi Ralph,
+</I>&gt;<i> 
+</I>&gt;<i> Sorry it took me so long to get back to you with a review of pwlconfig
+</I>&gt;<i> 0.90. I got sidetracked for a bit in the &quot;educational&quot; experience of
+</I>&gt;<i> seeing what a minimal boot disk really requires if constructed manually.
+</I>&gt;<i> It was really rather interesting, and I at least wound up with something
+</I>&gt;<i> useable for my initial target/development system.
+</I>&gt;<i> 
+</I>&gt;<i> I hope you find this feedback helpful.
+</I>&gt;<i> 
+</I>&gt;<i>   --Dennis
+</I>&gt;<i> 
+</I>No problem, thanks for the feed back. I don't know what my schedule holds for
+the next week or so, but I do hope to get back on this soon...
+
+I'll see if I can explain away these problems (or at least find something to
+blame them on :)...
+
+Thanks again,
+Ralph
+
+&gt;<i>  ====================================
+</I>&gt;<i> 
+</I>&gt;<i> As a general observation, the way pwlconfig drops into a text mode
+</I>&gt;<i> screen between menus creats a disconcerting flash. Even doing so for
+</I>&gt;<i> the sake of printing progress dots is kind of annoying. Painting one
+</I>&gt;<i> menu directly after another would be preferable. Progress indicators
+</I>&gt;<i> for long operations would be nicer if shown on the menu display as
+</I>&gt;<i> a spinning arrow, or a %done display, or even the more typical
+</I>&gt;<i> %done &quot;thermometer&quot; style progress bar.
+</I>&gt;<i> 
+</I>I know, I hate it when that happens...menuconfig doesn't seem to do that, not
+sure why...I also thought I saw an indicator available in lxdialog, but haven't
+persued that one any further...
+
+&gt;<i> Here are some other rough spots I ran into, pretty much in the order
+</I>&gt;<i> they'd pop up when creating a new project.
+</I>&gt;<i> 
+</I>&gt;<i> * When pwlconfig is started for the very first time (i.e., its
+</I>&gt;<i>   .* files don't exist yet and there is no &quot;projects&quot; directory),
+</I>&gt;<i>   it asks for a project to create but not a target device.
+</I>&gt;<i> 
+</I>Yep...went back and forth on this one...current default is the device I'm
+currently working on :)
+
+&gt;<i> * After the first run, creating a new project does prompt for a
+</I>&gt;<i>   default device, (DOC/FLOPPY/etc) which MUST be entered in upper
+</I>&gt;<i>   case. This should probably be made lower case, case insensitive,
+</I>&gt;<i>   or selected from a menu of fixed choices.
+</I>&gt;<i> 
+</I>That should be a select list anyhow -&gt; New feature &lt;-
+
+&gt;<i>   Currently, a mistake on entry gives a warning, but no reprompt.
+</I>&gt;<i>   Setting the device must then be done by manually selecting
+</I>&gt;<i>   Manage Projects/Project defaults/Device Type, then editing the
+</I>&gt;<i>   field.
+</I>&gt;<i> 
+</I>Should have thought someone would type it in wrong...fixed with above new
+feature...oops.
+
+&gt;<i> * When a target device is correctly entered for a newly created
+</I>&gt;<i>   project, it appears nothing is done with that information. A
+</I>&gt;<i>   look at project defaults shows they're all set to assume Flash.
+</I>&gt;<i> 
+</I>Oops...that sounds like the pick any one as long as it flash feature...
+
+&gt;<i> * Modifying the device type in the Reset Project Defaults menu
+</I>&gt;<i>   doesn't cause coordinated changes to other fields, like Boot Location,
+</I>&gt;<i>   Device Name, Device Partition, and Device Type Node. Reasonable
+</I>&gt;<i> defaults
+</I>&gt;<i>   could be supplied keyed to the selection of Device Type.
+</I>&gt;<i> 
+</I>I thought the reset changed most fields here...of course, I only tested lately
+with FLASH...
+
+&gt;<i> * If a project is removed, the pwlconfig is pretty good about
+</I>&gt;<i>   insisting that the user select another project. However, it
+</I>&gt;<i>   is possible to exit the whole program suite without doing so.
+</I>&gt;<i>   Upon restart, pwlconfig reinserts the removed project name into
+</I>&gt;<i>   the projects list under Manage Projects, but it has new
+</I>&gt;<i>   default configuration information.
+</I>&gt;<i> 
+</I>BUG -- Ouch...hadn't thought of that...(ummm...don't do that?)...should force
+you to select a new project when you restart...
+
+&gt;<i>   Essentially, pwlconfig implicitly creates a new project using the  
+</I>&gt;<i>   same name as the project the user just removed. This is potentially
+</I>&gt;<i>   confusing. Probably the right thing to do is not have a current
+</I>&gt;<i> project
+</I>&gt;<i>   and go back to insisting the user select one.
+</I>&gt;<i> 
+</I>Yep...
+
+&gt;<i> * When configuring the file system the base-filesys-2 package
+</I>&gt;<i>   has a *lot* of possibly extraneous stuff in the dev directory.
+</I>&gt;<i>   So does base-filesys-minimal-1, for that matter. When pruning this
+</I>&gt;<i>   collection by manually deselecting individual items, each deselect
+</I>&gt;<i>   causes a drop to text mode while pwlconfig prints out about three
+</I>&gt;<i>   and a half lines of progress dots, which takes a looooooong time.
+</I>&gt;<i> 
+</I>This is a killer...the way I'm using lxdialog and the script language just kill
+the system with long lists...I need to look at some optimizations, mabe pageing
+(list 50 at a time or something)...as is, your manual prune is best bet.
+
+&gt;<i>   This one *really* had me climbing the wall. I finally took to just
+</I>&gt;<i>   accepting the whole smash, generating the file system, then using
+</I>&gt;<i>   'rm' to clean out the directlry after stopping pwlconfig.
+</I>&gt;<i> 
+</I>&gt;<i>   It would be much much much ***much*** nicer to simply note the
+</I>&gt;<i>   selections/deselections and defer whatever processing is neccessary
+</I>&gt;<i>   until after the menu is exited. Or maybe an &quot;Apply&quot; button would be
+</I>&gt;<i>   appropriate here?
+</I>&gt;<i> 
+</I>&gt;<i> * Here's a problem which showed up while trying to use one of the
+</I>&gt;<i>   &quot;minimal&quot; packages, busybox-0.36. Suppose you really want to
+</I>&gt;<i>   use busybox along with some other package which contains a
+</I>&gt;<i>   conflicting file. You can't install the other package second
+</I>&gt;<i>   because it might replace some of busybox's links with real files,
+</I>&gt;<i>   and thus take up more space than you want. But installing busybox
+</I>&gt;<i>   second doesn't work either, because the &quot;ln&quot; command to make the
+</I>&gt;<i>   links is issued without the -f option.
+</I>&gt;<i> 
+</I>Yep...we've seen this - it has to do with the order in which the files are
+extracted (alphabetical now)...don't know how to fix it...
+
+don't think there is a good way to allow the user to set priority on which
+files actually get installed, that leaves:
+
+1. make the duplicated file you really want as custom (custom files get copied
+last and overwrite any existing files)
+
+2. manually go in an disable the duplicated files from busybox (haven't tested
+that to see if that would work..do links get enabled/disabled properly
+..hmmmm...)
+
+
+&gt;<i> pwlconfig appears to assume that the target device will be mounted
+</I>&gt;<i> as / in the running system. There is no provision for use of initrd
+</I>&gt;<i> or compressed ram disk. These features really are needed if the goal
+</I>&gt;<i> is to make some sort of minimal special purpose rescue/diagnostic
+</I>&gt;<i> disk. At the very least, separate boot and root floppies need to
+</I>&gt;<i> be supported.
+</I>&gt;<i> 
+</I>Yep...pwlconfig is &quot;partition&quot; centric...that is one project matches one
+partition.  My plan (not done) was to:
+
+1. make a project for the ramdisk file system
+- extract files just as currently done
+- add a flag in the &quot;defaults&quot; that tells pwlconfig to compress this into some
+image filename
+- &quot;Load&quot;  files operation would then build a compressed image file somewhere in
+the system ./Embedded_Build/misc/myimage or whatever)
+
+2. make a project that is the file system for the boot files
+- Include the custom file ./Embedded_Build/misc/myimage 
+- Load files includes the image file - poof, instant ramdisk
+
+
+&gt;<i> As a result, pwlconfig can't presently make a bootable floppy at
+</I>&gt;<i> all. There are several obstacles:
+</I>&gt;<i>
+</I>Yep, one of those features that I've never needed, never got implemented...
+ 
+&gt;<i>  * For one, the libraries are too darn big, and there's nothing
+</I>&gt;<i>    we can reasonably do about it. They either *must* go on a
+</I>&gt;<i>    compressed ram disk or there has to be a separate root floppy.
+</I>&gt;<i> 
+</I>ummmm...Adi could answer to this better :-)
+
+&gt;<i>  * There are too many entries in /dev taking up too many inodes.
+</I>&gt;<i>    When pwlconfig copies the project filesystem to the floppy,
+</I>&gt;<i>    it quickly gets a &quot;no space on device&quot; error even if
+</I>&gt;<i>    there's plenty of space. What's really happening is it's
+</I>&gt;<i>    out of inodes. You need to make the file system with something
+</I>&gt;<i>    like
+</I>&gt;<i>          mke2fs -N `wc -l ./projects/PROJECTNAME/mnt` /dev/fd0
+</I>&gt;<i> 
+</I>neat trick!
+
+&gt;<i>    Presently, just the base filesystem package is too much for
+</I>&gt;<i>    a floppy made with just &quot;mke2fs /dev/fd0&quot;.
+</I>&gt;<i> 
+</I>&gt;<i>  * Making the floppy boot able with LILO has a couple of hitches--  
+</I>&gt;<i>    pwlconfig insists that lilo be in ./bin, rather than just using
+</I>&gt;<i>    /sbin/lilo as installed, and (cosmetic only) the prompt for using
+</I>&gt;<i>    the existing lilo.conf.FLOPPY is done in text mode.
+</I>&gt;<i> 
+</I>Yep...I had to do this for the DOC which uses its own Lilo program...just left
+the default lilo program there too..didn't have to...could change it...that
+would make sense too...
+
+&gt;<i>  * The generated lilo.conf.FLOPPY file expects a kernel image name
+</I>&gt;<i>    of vmlinuz, but the kernel packages use bzImage.
+</I>&gt;<i> 
+</I>yep..one of those pesky defaults...
+
+&gt;<i> Just to see if a floppy produced by pwlconfig would boot, I made one up
+</I>&gt;<i> without any libraries. After resolving the above problems, lilo seemed
+</I>&gt;<i> to run successfully. However, trying to boot the floppy resulted in the
+</I>&gt;<i> first stage loader stopping after printing &quot;L&quot;, then it loops printing
+</I>&gt;<i> an error code: &quot;04&quot;. Removing the &quot;disk=&quot; line from lilo.conf.FLOPPY
+</I>&gt;<i> solved this problem. 
+</I>&gt;<i> 
+</I>Hmmmm...I guess that makes sense...disk= is for hdd table...Ok, yet another bug
+- good catch :)
+
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>       *** Some suggestions for initrd/ramdisk/root disk support ***
+</I>&gt;<i> 
+</I>&gt;<i> It seems that a natural way to extend pwlconfig would be to split
+</I>&gt;<i> the Configure Project File System menu into three sections: Configure
+</I>&gt;<i> Boot File System, Configure Initrd, and Configure Root File System.
+</I>&gt;<i> In the latter case there should be options to specify if the Root
+</I>&gt;<i> File System will be a ramdisk, and if it should be compressed. You
+</I>&gt;<i> would also need to specify the ramword parameters. Ramdisk size could
+</I>&gt;<i> be determined automatically using du.
+</I>&gt;<i> 
+</I>&gt;<i> Each of these three options would build file systems under separate
+</I>&gt;<i> trees: ./projects/PROJECTNAME/{boot,initrd,root} using the current
+</I>&gt;<i> package installation procedures. The mere existence of the initrd
+</I>&gt;<i> and/or root file trees at the end of the procedure would be enough
+</I>&gt;<i> information for you to figure out how to generate the composite
+</I>&gt;<i> boot disk, or boot/root set.
+</I>
+See my coment about the partition thing.  We've had some discussions on this
+but I'm not at a point where I can add this in yet - although everyone who
+looks at this system seems to think that ramdisk is useful...
+
+Wow, Great testing! I'll have to print this out and use it for the next rev (or
+if you have any patches that would help too :-)
+Thanks!
+
+&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> 
+</I>
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000064.html">Review of pwlconfig 0.90
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#65">[ date ]</a>
+              <a href="thread.html#65">[ thread ]</a>
+              <a href="subject.html#65">[ subject ]</a>
+              <a href="author.html#65">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

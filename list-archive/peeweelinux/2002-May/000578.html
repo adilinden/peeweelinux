@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] newbie questions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000577.html">
+   <LINK REL="Next"  HREF="000576.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] newbie questions
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] newbie questions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 31 May 2002 08:54:06 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000577.html">[Peeweelinux] newbie questions
+</A></li>
+        <LI> Next message: <A HREF="000576.html">[Peeweelinux] newbie questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#578">[ date ]</a>
+              <a href="thread.html#578">[ thread ]</a>
+              <a href="subject.html#578">[ subject ]</a>
+              <a href="author.html#578">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ricardo,
+
+Cool!  Our device is booting (yay!), now it's on to even more fun stuff. 
+  Do you have a methodology for installing the jvm, and where do you put 
+your code?
+
+I was thinking of formatting and mounting sda3 (rest of CF card) as 
+/opt, and putting the JVM and our code over there.  See any downsides to 
+that?  Is it too slow to run right off CF, and should I be installing it 
+with PeeWee, and having it load into ramdisk?
+
+thx,
+-te
+
+Ricardo Trindade wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> 	I'm using peewee on a 128Mb CF and sun's jre 1.3 fits in there. takes
+</I>&gt;<i> almost half the card, but at least it's a full jvm
+</I>&gt;<i> 
+</I>&gt;<i> ricardo
+</I>&gt;<i> 
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;<i> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Troy Engel
+</I>&gt;<i> Sent: quinta-feira, 30 de Maio de 2002 22:02
+</I>&gt;<i> To: peeweelinux
+</I>&gt;<i> Subject: [Peeweelinux] newbie questions
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hiya folks, I have a few minor questions re: PWL if someone has a few
+</I>&gt;<i> minutes.  We're building the prototype hardware right now, and I've got
+</I>&gt;<i> a custom kernel (need &gt;4 serial ports, shared IRQ) built and the PWL
+</I>&gt;<i> filesystem onto my CF. yay!
+</I>&gt;<i> 
+</I>&gt;<i> I'm new to embedded/flash stuff, so sorry if this is basic.
+</I>&gt;<i> 
+</I>&gt;<i> 1) /dev/sda1 contains the boot files, sda2 contains the OS. there's a
+</I>&gt;<i> sda3 partition on the rest of the CF card (128meg card), which I want to
+</I>&gt;<i> utilize as my own personal scratch space (this device reads from serial
+</I>&gt;<i> ports and stores logfiles for later upload).  Can i just make ext2 on
+</I>&gt;<i> /dev/sda3, and mount it in sda3/etc/fstab as hda3?  is it that simple?
+</I>&gt;<i> 
+</I>&gt;<i> sda2/etc/fstab looks like:
+</I>&gt;<i> 
+</I>&gt;<i> /dev/ram0       /               ext2    defaults
+</I>&gt;<i> /dev/hda2       /mnt/flash      ext2    ro,noauto,defaults
+</I>&gt;<i> none            /proc           proc    defaults
+</I>&gt;<i> 
+</I>&gt;<i> 2) anyone have some quick primers on setting up the dhcpd/pump and ppp
+</I>&gt;<i> with this distro?  I'm sure I could noodle around and figure out what to
+</I>&gt;<i> put where, but it'd help if someone else had an example. ;)
+</I>&gt;<i> 
+</I>&gt;<i> 3) java vm -- anyone gone through the pain and found a good one? (we're
+</I>&gt;<i> looking at Waba, I think)
+</I>&gt;<i> 
+</I>&gt;<i> Any other wonderful words of advice would be great, so far I'm cruising
+</I>&gt;<i> along with only a few hurdles.  I'm just beginning to get the hang of
+</I>&gt;<i> how things work in the embedded space....
+</I>&gt;<i> 
+</I>&gt;<i> oh! with CF media, can I just use dd to dump the entire card to a file,
+</I>&gt;<i> so I can duplicate it onto other cards? (ala a normal harddrive, block
+</I>&gt;<i> device, etc)
+</I>&gt;<i> 
+</I>&gt;<i> thanks!
+</I>&gt;<i> -te
+</I>&gt;<i> 
+</I>&gt;<i> --
+</I>&gt;<i> Troy Engel, Systems Engineer
+</I>&gt;<i> Hockey. Kinda like Figure Skating in a War Zone.
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000577.html">[Peeweelinux] newbie questions
+</A></li>
+	<LI> Next message: <A HREF="000576.html">[Peeweelinux] newbie questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#578">[ date ]</a>
+              <a href="thread.html#578">[ thread ]</a>
+              <a href="subject.html#578">[ subject ]</a>
+              <a href="author.html#578">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

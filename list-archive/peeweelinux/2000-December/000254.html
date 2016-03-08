@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Bugs using PeeWee on Mandrake 7.2
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000253.html">
+   <LINK REL="Next"  HREF="000255.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Bugs using PeeWee on Mandrake 7.2
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Bugs using PeeWee on Mandrake 7.2">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 19 Dec 2000 09:26:58 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000253.html">2.3/2.4 Kernels?
+</A></li>
+        <LI> Next message: <A HREF="000255.html">Bugs using PeeWee on Mandrake 7.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#254">[ date ]</a>
+              <a href="thread.html#254">[ thread ]</a>
+              <a href="subject.html#254">[ subject ]</a>
+              <a href="author.html#254">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+What version of bash does Mandrake 7.2 include? I've had several reports
+of the 
+
+&gt;<i> pwl_target_functions-&gt; syntax error :unexpected end of file
+</I>
+type error but have npt been able to recreate the problem at all! I am
+cc'ing this to the <A HREF="mailto:PeeWeeLinux@adis.on.ca">PeeWeeLinux@adis.on.ca</A> list for reference.
+
+TTYL,
+Adi
+
+
+
+On Tue, 19 Dec 2000, Herman Theron wrote:
+
+&gt;<i> Hi Adi
+</I>&gt;<i> 
+</I>&gt;<i> Must congratulate you on a very nice embedded environment!!
+</I>&gt;<i> 
+</I>&gt;<i> I've had trouble using the binaries on a Mandrake 7.2 system (Version 0.53.24). I think it might be a bash problem.
+</I>&gt;<i> 
+</I>&gt;<i> Bug report:
+</I>&gt;<i> Everything works fine until I want to create a bootable floppy.
+</I>&gt;<i> 
+</I>&gt;<i> The script pwl_target complains:
+</I>&gt;<i> pwl_target_functions-&gt; syntax error :unexpected end of file
+</I>&gt;<i> pwl_target_load-&gt; syntax error: unexpected end of file
+</I>&gt;<i> (Not real error messages)
+</I>&gt;<i> 
+</I>&gt;<i> I fixed the problem (after some hunting). It has to do when you use
+</I>&gt;<i> something like the following:
+</I>&gt;<i> { dd if ..... } &gt;&gt;$rd_log 2&gt;&amp;1
+</I>&gt;<i> 
+</I>&gt;<i> I had to add {} to the above line-&gt;
+</I>&gt;<i> {{ dd if ..... } &gt;&gt;$rd_log 2&gt;&amp;1}
+</I>&gt;<i> 
+</I>&gt;<i> This helped in both files. 
+</I>&gt;<i> 
+</I>&gt;<i> Hope this helps.
+</I>&gt;<i> 
+</I>&gt;<i> Cheers
+</I>&gt;<i> Herman
+</I>&gt;<i> 
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000253.html">2.3/2.4 Kernels?
+</A></li>
+	<LI> Next message: <A HREF="000255.html">Bugs using PeeWee on Mandrake 7.2
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#254">[ date ]</a>
+              <a href="thread.html#254">[ thread ]</a>
+              <a href="subject.html#254">[ subject ]</a>
+              <a href="author.html#254">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

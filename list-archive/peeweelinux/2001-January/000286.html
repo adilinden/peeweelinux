@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> PeeWee:  Installing Lilo.....failed
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000283.html">
+   <LINK REL="Next"  HREF="000281.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>PeeWee:  Installing Lilo.....failed
+   </H1>
+    <B>Marc Wiz
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="PeeWee:  Installing Lilo.....failed">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 11 Jan 2001 10:57:49 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000283.html">PeeWee:  Installing Lilo.....failed
+</A></li>
+        <LI> Next message: <A HREF="000281.html">PeeWee:  Installing Lilo.....failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#286">[ date ]</a>
+              <a href="thread.html#286">[ thread ]</a>
+              <a href="subject.html#286">[ subject ]</a>
+              <a href="author.html#286">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Disk-On-Chip requires a special patched version of LILO. When using
+</I>&gt;<i> M-Systems Disk-On-Chip I recommend using a FAT based boot partition with
+</I>&gt;<i> syslinux as bootloader. It doesn't have any of the problems lilo has.
+</I>
+I guess I should chime in here. :-)
+
+About two weeks ago I had a somewhat similiar problem.
+
+There are directions for creating an EXT2FS on the DOC that are
+available from M-Systems.  It really is quite easy.   I think it
+is a PDF file which I can dig up.
+
+I am using the M-Systems patched lilo for my setup.  I boot off
+the DOC and am able to then pick a configuration that has the root
+on the DOC or the IDE disk I have.
+
+I am able to do a lilo operation on the DOC even when I am booted
+off the disk.   It is just a matter of specifying the proper root
+for lilo.
+
+The hardware is a GCT-Allwell system.
+
+I did not use all of the PeeWeeLinux facilities to do this.  I do
+have a working system on a 8 MB DOC.  Now all I have to do is 
+get the system set up as a router.
+
+Is there a way to get greater compression on any parts of the
+distribution?  It would be nice to get a smaller kernel or libraries.
+
+I built and installed my own kernel and took out everything I could
+think of.  I could use some more room.
+
+The only other thing I can think of is to put some of the libraries
+into a RAM disk that is loaded at boot time.
+
+Marc
+-- 
+Marc Wiz
+<A HREF="mailto:marc@wiz.com">marc@wiz.com</A>
+Yes, that really is my last name.
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000283.html">PeeWee:  Installing Lilo.....failed
+</A></li>
+	<LI> Next message: <A HREF="000281.html">PeeWee:  Installing Lilo.....failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#286">[ date ]</a>
+              <a href="thread.html#286">[ thread ]</a>
+              <a href="subject.html#286">[ subject ]</a>
+              <a href="author.html#286">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

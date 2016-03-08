@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] swapper prob.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000514.html">
+   <LINK REL="Next"  HREF="000517.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] swapper prob.
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] swapper prob.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 18 Mar 2002 11:19:56 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000514.html">[Peeweelinux] swapper prob.
+</A></li>
+        <LI> Next message: <A HREF="000517.html">[Peeweelinux] swapper prob.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#515">[ date ]</a>
+              <a href="thread.html#515">[ thread ]</a>
+              <a href="subject.html#515">[ subject ]</a>
+              <a href="author.html#515">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Adi,
+
+I'm a bit confused.  I was under the impression that the &quot;ramdisk free&quot; parameter was used
+when Peewee determines the total ramdisk size.
+
+In one of the scripts, the formula seems to be
+    total ram disk size = file system size + &quot;free&quot; size
+
+I tried playing with this parameter a few months ago, and from my notes:
+
+Filesystem  1k-blocks Used    Free
+/dev/ram0    6764        4494    2270        (Ramdisk Free = 2000)
+/dev/ram0    5311        4494     817         (Ramdisk Free = 500)
+
+It seems like this parameter does affect the memory usage on the target.  Am I
+misunderstanding something here?
+
+Thanks,
+
+Mark
+
+Adi Linden wrote:
+
+&gt;<i> I don't think the ramdisk paramter actually allocates any memory. It just
+</I>&gt;<i> sets limits. I.e. I am running a box with 32MB of physical memory and the
+</I>&gt;<i> remdisk paramter set to 200000, which would allow me a largest ramdisk of
+</I>&gt;<i> 200MB.
+</I>
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000514.html">[Peeweelinux] swapper prob.
+</A></li>
+	<LI> Next message: <A HREF="000517.html">[Peeweelinux] swapper prob.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#515">[ date ]</a>
+              <a href="thread.html#515">[ thread ]</a>
+              <a href="subject.html#515">[ subject ]</a>
+              <a href="author.html#515">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

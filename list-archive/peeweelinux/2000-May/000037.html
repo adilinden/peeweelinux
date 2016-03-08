@@ -1,0 +1,208 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Uncompressed root fs to ramdisk.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000036.html">
+   <LINK REL="Next"  HREF="000038.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Uncompressed root fs to ramdisk.
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Uncompressed root fs to ramdisk.">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 23 May 2000 13:23:49 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000036.html">Uncompressed root fs to ramdisk.
+</A></li>
+        <LI> Next message: <A HREF="000038.html">Uncompressed root fs to ramdisk.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Good Job!
+
+Not sure about the minigetty thing.  I think the /dev/tty things (are they
+files , pipes ? does anybody know ?? ) have to be in R/W partition. I just
+linked to my ram disk:
+
+mount /dev/ram /var
+/tmp -&gt; /var
+/dev/tty0 -&gt; /tmp/tty0
+...
+
+Where /tmp is a link to the /var mount point for the ram disk. That might help
+?
+
+Do you create more than one ramdisk ? How do you specify the size of your ram
+disk ?
+
+BTW, If I don't login with root privledge, I can never get my console window to
+open. (Something to do with ttyP0 and ptyp0 I think...)
+
+Little bits here and there to clean up yet....so little time :-)
+
+Good luck,
+Ralph
+
+--- Mattias Sjogren &lt;<A HREF="mailto:mattias@voxway.com">mattias@voxway.com</A>&gt; wrote:
+&gt;<i> After some minor initial problems we're now up and
+</I>&gt;<i> running... Our only remaining problem is that mingetty does
+</I>&gt;<i> not like to be run from the read-only disk. Init says that
+</I>&gt;<i> it respawned too many times.
+</I>&gt;<i> 
+</I>&gt;<i> I have /var (inc a touched run/utmp), /tmp and /root as
+</I>&gt;<i> mounted ramdisks. I boot of one big partition that I want
+</I>&gt;<i> read-only.
+</I>&gt;<i> 
+</I>&gt;<i> /Mattias
+</I>&gt;<i> 
+</I>&gt;<i> Ralph Stickley &lt;<A HREF="mailto:r_stickley@yahoo.com">r_stickley@yahoo.com</A>&gt; skrev:
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; The solution I used to protect the system (copied from
+</I>&gt;<i> &gt; some other
+</I>&gt;<i> &gt; distributions):
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Format the Compact Flash as follows:
+</I>&gt;<i> &gt; 1. hdx1 Create a boot partition (~1MB)
+</I>&gt;<i> &gt; 2. hdx2 Create a Read Only partition (~28MB)
+</I>&gt;<i> &gt; 3. hdx3 Create a Read/Write partition (~1MB)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Now load each partition:
+</I>&gt;<i> &gt; 1. hdx1 Copy boot.b and kernel-2.2.14 (or whatever your
+</I>&gt;<i> &gt; image is)
+</I>&gt;<i> &gt; 2. hdx2 Copy all files here
+</I>&gt;<i> &gt; 3. hdx3 format/erase
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Now run LiLo and tell it where the boot image is
+</I>&gt;<i> &gt; (/dev/hdx1) 
+</I>&gt;<i> &gt; and where the file system is (root=/dev/hdx2)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Note fstab never has to mount the boot partition. All
+</I>&gt;<i> &gt; system files are
+</I>&gt;<i> &gt; maintained on the read only partition and never get
+</I>&gt;<i> &gt; corrupted. User files are
+</I>&gt;<i> &gt; vulenerable, but can be backed up on-to the Read only
+</I>&gt;<i> &gt; partition as required.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; The trickery is all in rc.sysinit. At boot up, you have
+</I>&gt;<i> &gt; to mount everything
+</I>&gt;<i> &gt; and then load the default files to the read/write
+</I>&gt;<i> &gt; partition. This
+</I>&gt;<i> &gt; needs to be checked and reformatted if it gets corrupted.
+</I>&gt;<i> &gt; I also create a ramdisk to store the /tmp /var /whatever
+</I>&gt;<i> &gt; files in.
+</I>&gt;<i> &gt; this gives about 4MB of space to let the system store
+</I>&gt;<i> &gt; stuff.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Some files on the Read Only partition may need to be
+</I>&gt;<i> &gt; updated on
+</I>&gt;<i> &gt; occasion.  A simple script will allow access to do this 
+</I>&gt;<i> &gt; (mount -o remount...).
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; So far, this works for me, doesn't take much ram.  I
+</I>&gt;<i> &gt; don't know how
+</I>&gt;<i> &gt; to get the permissions set properly, how to get the
+</I>&gt;<i> &gt; devices to work
+</I>&gt;<i> &gt; everytime and other little problems....
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; The applications I have working (on 32MB CF) so far:
+</I>&gt;<i> &gt; Netscape 4.7/Citrix/x3270/fvwm95
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; All system configuration is done through fvwm scripts
+</I>&gt;<i> &gt; (clock, mouse,
+</I>&gt;<i> &gt; keyboard, beep, network, startup applications, screen
+</I>&gt;<i> &gt; background).
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Hope this helps,
+</I>&gt;<i> &gt; Ralph
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; --- Mattias Sjogren &lt;<A HREF="mailto:mattias@voxway.com">mattias@voxway.com</A>&gt; wrote:
+</I>&gt;<i> &gt; &gt; Hi all!
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; I have just got going with PeeWee Linux and it looks
+</I>&gt;<i> &gt; great
+</I>&gt;<i> &gt; &gt; so far... My only problem is that I want to load the
+</I>&gt;<i> &gt; &gt; uncompressed root filesystem to ram to avoid corruption
+</I>&gt;<i> &gt; on
+</I>&gt;<i> &gt; &gt; sudden power failures. I know that this is easily done
+</I>&gt;<i> &gt; with
+</I>&gt;<i> &gt; &gt; a compressed root fs but that makes it so hard to
+</I>&gt;<i> &gt; change so
+</I>&gt;<i> &gt; &gt; I don't want that.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; I'm booting from a 16MB Flash pcmcia card in an ide
+</I>&gt;<i> &gt; adaptor
+</I>&gt;<i> &gt; &gt; using LILO. 
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Another small question... How do I get the statup
+</I>&gt;<i> &gt; scripts to
+</I>&gt;<i> &gt; &gt; automatically run fsck on the root fs? I have a '1' at
+</I>&gt;<i> &gt; the
+</I>&gt;<i> &gt; &gt; right place in fstab but that doesn't help and I get no
+</I>&gt;<i> &gt; &gt; errors...
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; Don't know, I have the same problem...some option in
+</I>&gt;<i> &gt; mount I suppose...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; __________________________________________________
+</I>&gt;<i> &gt; Do You Yahoo!?
+</I>&gt;<i> &gt; Send instant messages &amp; get email alerts with Yahoo!
+</I>&gt;<i> &gt; Messenger.
+</I>&gt;<i> &gt; <A HREF="http://im.yahoo.com/">http://im.yahoo.com/</A>
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> &gt; See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> &gt; See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://www.docs.uu.se/robocup/">http://www.docs.uu.se/robocup/</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages &amp; get email alerts with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com/">http://im.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000036.html">Uncompressed root fs to ramdisk.
+</A></li>
+	<LI> Next message: <A HREF="000038.html">Uncompressed root fs to ramdisk.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#37">[ date ]</a>
+              <a href="thread.html#37">[ thread ]</a>
+              <a href="subject.html#37">[ subject ]</a>
+              <a href="author.html#37">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

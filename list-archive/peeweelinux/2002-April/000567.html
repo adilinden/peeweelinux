@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] PWL on Redhat 7.1
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000566.html">
+   <LINK REL="Next"  HREF="000568.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] PWL on Redhat 7.1
+   </H1>
+    <B>Michael McManus
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] PWL on Redhat 7.1">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 24 Apr 2002 21:40:58 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000566.html">[Peeweelinux] PWL on Redhat 7.1
+</A></li>
+        <LI> Next message: <A HREF="000568.html">[Peeweelinux] PWL on Redhat 7.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#567">[ date ]</a>
+              <a href="thread.html#567">[ thread ]</a>
+              <a href="subject.html#567">[ subject ]</a>
+              <a href="author.html#567">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Can you give me more details
+i.e. which Makefile and its location
+plus i have installed compat-glibc-6.2-2.1.3.2.i386.rpm
+but i cannot find &quot;i386-glibc21-linux-env.sh&quot; does red hat 7.1 change this?
+
+Regards
+Michael McManus
+<A HREF="mailto:Michael@durhamdomains.co.uk">Michael@durhamdomains.co.uk</A>
+-= i dont suffer from insanity i enjoy every minute of it =-
+
+
+
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Randy Torgerson
+Sent: 20 April 2002 7:56 PM
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: [Peeweelinux] PWL on Redhat 7.1
+
+
+After many falls and stumbles I have PWL running on Redhat 7.1.  I wanted to
+share with the group what has to be done so PWL works correctly and to
+document the process for others.
+
+All of the information here is posted somewhere in the archives but is not
+in
+one location.  These are the steps that I took and maynot be the most
+straight forward way of getting PWL working on Redhat 7.1.
+
+install ncurses4.  This may not be necessary with the latest version.
+
+install compat-glibc-6.2-2.1.3.2.i386.rpm.  These libraries are compatible
+with the 2.2.17 kernel.
+
+After installing, run script &quot;i386-glibc21-linux-env.sh&quot;
+
+Modify your Makefile to use kgcc instead of cc
+
+CC	=$(CROSS_COMPILE)kgcc -D__KERNEL__ -I$(HPATH)
+
+Once I had made these changes I was able to get a project working on my
+target very quickly.
+
+TTFN,
+
+Randy Torgerson
+San Diego, CA
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000566.html">[Peeweelinux] PWL on Redhat 7.1
+</A></li>
+	<LI> Next message: <A HREF="000568.html">[Peeweelinux] PWL on Redhat 7.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#567">[ date ]</a>
+              <a href="thread.html#567">[ thread ]</a>
+              <a href="subject.html#567">[ subject ]</a>
+              <a href="author.html#567">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

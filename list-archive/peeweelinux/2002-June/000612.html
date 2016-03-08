@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] autostart
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000611.html">
+   <LINK REL="Next"  HREF="000616.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] autostart
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] autostart">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 7 Jun 2002 16:10:14 +0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000611.html">[Peeweelinux] autostart
+</A></li>
+        <LI> Next message: <A HREF="000616.html">[Peeweelinux] autostart
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#612">[ date ]</a>
+              <a href="thread.html#612">[ thread ]</a>
+              <a href="subject.html#612">[ subject ]</a>
+              <a href="author.html#612">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--0__=KNVs8UvzEIetfZHrOd5CXh87a1xJOaNt8LLbJXbIqW4xpxRQHLXptOEm
+Content-type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-transfer-encoding: quoted-printable
+
+
+
+
+Thank you Ken for those detailed information. I will try your solution =
+which
+seems to fulfil my dreams.
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+&quot;Ken Emmons, Jr.&quot; &lt;<A HREF="mailto:KEN@qatech.com">KEN@qatech.com</A>&gt; on 07/06/2002 15:15:58
+
+Veuillez r=E9pondre =E0 <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+
+Pour :    <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] autostart
+
+
+=
+
+--0__=KNVs8UvzEIetfZHrOd5CXh87a1xJOaNt8LLbJXbIqW4xpxRQHLXptOEm
+Content-type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+Hi Guillaume,
+
+I have added my stuff to the end of the /etc/rc.sysinit script. In my case I
+load modules for RTLinux RTOS, but you could launch any programs or scripts.
+These are launched as root, so just be aware of any security issues. To modify
+the rc.sysinit you need to go to the project folder under peewee and then into a
+folder called &quot;custom&quot; Then do this:
+
+mkdir etc
+cp ../mnt/etc/rc.sysinit  ./etc
+
+
+then you can edit your custom/etc/rc.sysinit file and it will be copied to your
+target.
+
+hope this helps,
+
+~Ken
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+
+
+
+
+
+
+
+
+
+
+--0__=KNVs8UvzEIetfZHrOd5CXh87a1xJOaNt8LLbJXbIqW4xpxRQHLXptOEm--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000611.html">[Peeweelinux] autostart
+</A></li>
+	<LI> Next message: <A HREF="000616.html">[Peeweelinux] autostart
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#612">[ date ]</a>
+              <a href="thread.html#612">[ thread ]</a>
+              <a href="subject.html#612">[ subject ]</a>
+              <a href="author.html#612">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

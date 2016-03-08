@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000978.html">
+   <LINK REL="Next"  HREF="000984.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+   </H1>
+    <B>Stephen Lee
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>24 Mar 2003 13:19:04 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000978.html">[Peeweelinux] nfs with peewee, kernel 2.4.20
+</A></li>
+        <LI> Next message: <A HREF="000984.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#981">[ date ]</a>
+              <a href="thread.html#981">[ thread ]</a>
+              <a href="subject.html#981">[ subject ]</a>
+              <a href="author.html#981">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 2003-03-24 at 13:09, Mark Meade wrote:
+&gt;<i> On Monday 24 March 2003 03:49 pm, Stephen Lee wrote:
+</I>&gt;<i> &gt; I've compiled a 2.4.20 kernel with no modules and still have the same
+</I>&gt;<i> &gt; problem. Does anyone have a DOC2000-ready kernel (2.4.2x) with no
+</I>&gt;<i> &gt; dependent modules for PWL I could try? I want to eliminate the kernel as
+</I>&gt;<i> &gt; a source of my bootup problem.
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> Stephen,
+</I>&gt;<i> 
+</I>&gt;<i> I don't have a kernel handy, but I can tell you that I have been able to boot 
+</I>&gt;<i> from a DOC2000 with a 2.4.19 kernel and the appropriate MTD options enabled 
+</I>&gt;<i> (compiled-in, not as modules).  I used both GRUB and LILO -- Grub is my 
+</I>&gt;<i> personal perference, but using LILO is easier under Peewee.
+</I>&gt;<i> 
+</I>&gt;<i> In your first email, you mentioned that you used dformat or fdisk to install 
+</I>&gt;<i> a FAT12 partition on the DOC.  If you are trying to boot from this partition, 
+</I>&gt;<i> do you have FAT support compiled into your kernel?
+</I>&gt;<i> 
+</I>Hi Mark,
+
+Yes I do (CONFIG_FAT_FS=y). Actually, I ended up following your
+suggestion and used the 4.2 DFORMAT and in the end it worked and 5.12
+did not. Here again is the kernel error after lilo starts the kernel:
+
+VFS: Mounted root (ext2 filesystem)
+Kmod: failed to exec /sbin/modprobe -s -k block-major-3, errno = 2
+VFS: Cannot open root device or 03:06
+Please append a correct &quot;root=&quot; boot option.
+Kernel panic: VFS: Unable to mount root fs on 03:06
+
+Is this a sign of missing FS support or a more fundamental problem of
+the IDE driver not working? I wonder if I should try 2.4.19 instead?
+
+Thanks,
+Stephen
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000978.html">[Peeweelinux] nfs with peewee, kernel 2.4.20
+</A></li>
+	<LI> Next message: <A HREF="000984.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#981">[ date ]</a>
+              <a href="thread.html#981">[ thread ]</a>
+              <a href="subject.html#981">[ subject ]</a>
+              <a href="author.html#981">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

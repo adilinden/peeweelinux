@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> It does not login
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000132.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>It does not login
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="It does not login">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 27 Oct 2000 20:50:14 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000132.html">Xterm
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#133">[ date ]</a>
+              <a href="thread.html#133">[ thread ]</a>
+              <a href="subject.html#133">[ subject ]</a>
+              <a href="author.html#133">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Hmmm... PeeWeeLinux doesn't use shadow or PAM. If you get the login prompt
+you would have login and mingetty. Make sure you have /var/run/utmp and
+/var/log/wtmp. If you don't have those you're missing an important
+package...
+
+I am cc'ing this to the PeeWeeLinux list just in case I am missing
+something here.
+
+TTYL,
+Adi
+
+On Fri, 27 Oct 2000, Yves Lemay wrote:
+
+&gt;<i> Is there anything else I can check (shadow, PAM)?
+</I>&gt;<i> 
+</I>&gt;<i> How can this be possible? I can't belieave Im stuck with such a 
+</I>&gt;<i> problem...
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> I do have those files.
+</I>&gt;<i> 
+</I>&gt;<i> If you to have a look at it I attached them.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Yves
+</I>&gt;<i> 
+</I>&gt;<i> &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Message d'origine &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+</I>&gt;<i> 
+</I>&gt;<i> Le 10/26/00, à 12:26:39 PM h, Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; vous a écrit sur
+</I>&gt;<i> le sujet suivant Re: It does not login :
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Make sure you have the  /etc/passwd and /etc/group files
+</I>&gt;<i> 
+</I>&gt;<i> &gt; TTYL,
+</I>&gt;<i> &gt; Adi
+</I>&gt;<i> 
+</I>&gt;<i> &gt; On Thu, 26 Oct 2000, Yves Lemay wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt; Thank you for your quick answer. I appreciate a lot.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; The problem is still the same:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; It does not login even if I use these user and password !!!
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Why ???
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; I'm really desperate. Is there any packages that I migth have forget ?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Yves Lemay
+</I>&gt;<i> &gt; &gt; e-Sage Development inc.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; Message d'origine &lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Le 10/26/00, à 10:22:43 AM h, Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; vous a écrit sur
+</I>&gt;<i> &gt; &gt; le sujet suivant Re: It does not login :
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Hi,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; The username and passwords are:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; User: root
+</I>&gt;<i> &gt; &gt; &gt; Pass: redhat
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; User: admin
+</I>&gt;<i> &gt; &gt; &gt; Pass: admin
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; The sytem is meant to run of the first IDE drive of the system. An IDE
+</I>&gt;<i> &gt; &gt; &gt; flash is just fine.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; TTYL,
+</I>&gt;<i> &gt; &gt; &gt; Adi
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; On Thu, 26 Oct 2000, Yves Lemay wrote:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; My ultimate goal is to instal a Linux OS on a 64 M Flash that is working
+</I>&gt;<i> &gt; &gt; &gt; &gt; with a Celron 433 .
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; My startegie is this one :
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; 1.  Build a boot disk using the instructions found in Bootdisk.HOWTO
+</I>&gt;<i> &gt; &gt; &gt; &gt; (monolithic kernel is a 2.2.12 )
+</I>&gt;<i> &gt; &gt; &gt; &gt; 2.  Use Peeweelinux to build a root disk - including LILO
+</I>&gt;<i> &gt; &gt; &gt; &gt; 3.  Transfert the FIle system, LILO and the kernel to the Flash.
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; Now, I can't login. Even if I use the combinations found in README :
+</I>&gt;<i> &gt; &gt; &gt; &gt; user: root   password:redhat or admin:admin.
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; It keeps telling me &quot;Login incorrect&quot; !!!!!!!!!!!!!!!!!!!!!! Why
+</I>&gt;<i> &gt; &gt; &gt; &gt; ?????????????????????
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; Do I have to expect any problem with Lilo if my Flash is the only IDE
+</I>&gt;<i> &gt; &gt; &gt; &gt; device and it resides on the secondary IDE (hdc) ?
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; Desperatly crying for help.
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt; --
+</I>&gt;<i> &gt; &gt; &gt; &gt; Yves Lemay
+</I>&gt;<i> &gt; &gt; &gt; &gt; e-Sage Development inc.
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000132.html">Xterm
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#133">[ date ]</a>
+              <a href="thread.html#133">[ thread ]</a>
+              <a href="subject.html#133">[ subject ]</a>
+              <a href="author.html#133">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

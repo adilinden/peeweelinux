@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] EXTRAVERSION
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000738.html">
+   <LINK REL="Next"  HREF="000740.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] EXTRAVERSION
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] EXTRAVERSION">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 8 Aug 2002 11:08:39 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000738.html">[Peeweelinux] EXTRAVERSION
+</A></li>
+        <LI> Next message: <A HREF="000740.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#739">[ date ]</a>
+              <a href="thread.html#739">[ thread ]</a>
+              <a href="subject.html#739">[ subject ]</a>
+              <a href="author.html#739">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>If you are using pwlconfig to compile the kernel, the scripts will modify 
+</I>&gt;<i>EXTRAVERSION I believe. 
+</I>
+I think I proved that.  The question was how, or what?  If it is
+being erased on purpose then there is probably a reason.  If it is
+being substituted from elsewhere then if I know the location of
+'elsewhere' I could put it there and be happy.   
+
+They warned me that when compiling kernels, it's a good idea to
+change EXTRAVERSION so that the modules built with one kernel
+don't accidentally wind up in another.   Your packaging scheme
+makes this less likely, though you never want to underestimate
+the ingeniousness of fools...
+
+I understand that Ralph wrote a lot of the scripts and so you
+don't have all the answers.  It's also obvious you guys don't
+have a lot of time to throw at this.   I'm trying to get a 
+clue for the design behind the scripts so that I can find some
+of my own answers.   I do like the way the options are keyed
+to file and directory names.  Makes it easy to know what
+to choose.   It also lets me manage them (rename or delete)
+from outside pwlconfig without having to know too much.
+
+
+
+&gt;<i>If you need to make changes to the kernel sources beyond whats 
+</I>&gt;<i>configurable in pwlconfig, I would suggest building a kernel using 
+</I>&gt;<i>prestine kernel sources and including the resulting kernel and modules as 
+</I>&gt;<i>custom files.
+</I>
+I'm really trying to &quot;stay inside the lines&quot; until such time that I
+really know what I'm doing.
+
+My question is: Are there modifications to the code here, or 
+are all the packages &quot;stock&quot;?   I see a lot of &quot;roll your own&quot;
+suggestions but I keep thinking there are some &quot;tweaks&quot; applied
+that make the target system work.   I mean changes to code,
+not things like simplyfying startup scripts.   It's a question
+of whether I can expect to be able to go get some package
+and be able to use it as is.   I was surprised that you
+can apparently use a 2.4 kernel &quot;as is&quot;.   Namely because
+I also hear talk like &quot;updating peewee to be able to use
+a 2.4 kernel&quot;.   Maybe these are all library issues?
+
+I've got a system now, with a reconfigured kernel, network drivers,
+and I am able to ping other addresses.  Now I'm working on 
+making thttpd work.   Doubtless you'll hear about that soon :)
+
+Thanks for all your effort.
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000738.html">[Peeweelinux] EXTRAVERSION
+</A></li>
+	<LI> Next message: <A HREF="000740.html">[Peeweelinux] thttpd web server Q+A, net-pf-10
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#739">[ date ]</a>
+              <a href="thread.html#739">[ thread ]</a>
+              <a href="subject.html#739">[ subject ]</a>
+              <a href="author.html#739">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

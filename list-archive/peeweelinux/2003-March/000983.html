@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] NFS works .....
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000982.html">
+   <LINK REL="Next"  HREF="000985.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] NFS works .....
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] NFS works .....">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 24 Mar 2003 17:35:22 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000982.html">[Peeweelinux] portmap?
+</A></li>
+        <LI> Next message: <A HREF="000985.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd
+ problem)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#983">[ date ]</a>
+              <a href="thread.html#983">[ thread ]</a>
+              <a href="subject.html#983">[ subject ]</a>
+              <a href="author.html#983">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Sorry for that last email. After many many google searches I finally stumbled onto something interesting. My problem was that my mount command woudl hang for several minutes.
+
+With a 2.4 kernel (and possibly other kernels...) compiled with NFS support for client, all you need is to configure fstab to NOT use the lockd program. So, in your fstab options, pass mount the &quot;nolock&quot; option and now you can mount and unmount NFS shares with peewee...
+
+~Ken
+
+&gt;&gt;&gt;<i> &quot;Ken Emmons, Jr.&quot; &lt;<A HREF="mailto:KEN@qatech.com">KEN@qatech.com</A>&gt; 03/24 5:23 PM &gt;&gt;&gt;
+</I>Hello,
+
+Is there a portmap package for peewee? Everything I have been reading seems to point out that an NFS client needs to have portmap running in order to work properly. The 2.4.20 kernel config, however only mentions that the only additional package needed is TCP ... hmmm.
+
+Has anyone had luck running peewee with a NFS share? Did you need portmap, and if so how do you get it?
+
+~Ken
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A> 
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000982.html">[Peeweelinux] portmap?
+</A></li>
+	<LI> Next message: <A HREF="000985.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd
+ problem)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#983">[ date ]</a>
+              <a href="thread.html#983">[ thread ]</a>
+              <a href="subject.html#983">[ subject ]</a>
+              <a href="author.html#983">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

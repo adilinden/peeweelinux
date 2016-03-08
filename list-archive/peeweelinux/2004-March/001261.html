@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] success! thanks all
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001260.html">
+   <LINK REL="Next"  HREF="001259.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] success! thanks all
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] success! thanks all">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 19 Mar 2004 09:20:17 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001260.html">[Peeweelinux] success! thanks all
+</A></li>
+        <LI> Next message: <A HREF="001259.html">FW: RE: [Peeweelinux] success! thanks all
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1261">[ date ]</a>
+              <a href="thread.html#1261">[ thread ]</a>
+              <a href="subject.html#1261">[ subject ]</a>
+              <a href="author.html#1261">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE> From my end (to maybe help), we use the Advantech PCM-3350 and it works 
+&quot;out of the box&quot; with a 2.2/2.4 kernel, no crazy driver issues encountered.
+
+<A HREF="http://www.advantech.com/products/Model_Detail.asp?model_id=1-D6LUW&bu=">http://www.advantech.com/products/Model_Detail.asp?model_id=1-D6LUW&amp;bu=</A>
+
+NIC: OEM i82557/i82558 10/100 Ethernet (eepro100)
+IDE: CS5530 (SanDisk CF chip used as /dev/hdc)
+
+We don't use X, textmode VGA works fine though. A couple other Advantech 
+modules are stacked on it (multiport serial, modem, etc) and all are 
+100% operational. I will note that very specific DIP switch settings are 
+required.
+
+-te
+
+Ashley Rolleston wrote:
+&gt;<i> I used a vortex-6047 (ICOPtech) single board computer, and before that on
+</I>&gt;<i> the prototype I was using Advantech hardware. Although they were specified
+</I>&gt;<i> quite similarly, I encountered very unique problems, mostly driver related.
+</I>&gt;<i> Therefore if you are looking at possible hardware to use I would go for as
+</I>&gt;<i> generic a setup as you can (vesa compliant vga, ne2000 compliant net card
+</I>&gt;<i> etc).
+</I>&gt;<i> 
+</I>&gt;<i> Good luck,
+</I>&gt;<i> 
+</I>&gt;<i> Ashley
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Hi Ashley,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I just read your letter and I'm wondering if you happen to know what
+</I>&gt;&gt;<i>embedded platform it's possible to install the pee-wee on ?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I'm talking about boards like 8051 and such...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Thanks in advance,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Seth.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>From: &quot;Ashley Rolleston&quot; &lt;<A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>&gt;
+</I>&gt;&gt;&gt;<i>Reply-To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;&gt;<i>To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+</I>&gt;&gt;&gt;<i>Subject: [Peeweelinux] success! thanks all
+</I>&gt;&gt;&gt;<i>Date: Tue, 16 Mar 2004 13:01:23 -0000
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Hi,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Well my peeweelinux project is now all but finished. It's looking great,
+</I>&gt;&gt;&gt;<i>using peeweelinux with bootx and an updated kernel, an 800x600 TFT +
+</I>&gt;&gt;&gt;<i>touchscreen on a SBC. All my net drivers and touchscreen drivers are
+</I>&gt;&gt;&gt;<i>working, although I had to revert to standard vesa framebuffer drivers
+</I>&gt;&gt;&gt;<i>together with the XF86_FBDev X server because of a problem with my
+</I>&gt;<i> 
+</I>&gt;<i> hardware
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>configuration and the SiS drivers for my particular graphics/lcd setup.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Together with Netscape and the Flash 5 plug-in this will be used as an
+</I>&gt;<i> 
+</I>&gt;<i> easy
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>to use interface for other hardware (flash still leaves a bad taste in my
+</I>&gt;&gt;&gt;<i>mouth though...)
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>I have one last question on my configuration. I need a driver program in
+</I>&gt;&gt;&gt;<i>/usr/bin to run automatically on startup before startx is called. This
+</I>&gt;&gt;&gt;<i>driver creates some custom devices in /dev and it appears to need to be
+</I>&gt;<i> 
+</I>&gt;<i> ran
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>as root. I have tried adding the program to .bashrc in /home/autologin
+</I>&gt;<i> 
+</I>&gt;<i> but
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>this doesn't work. I have also tried creating /etc/rc.local , and trying
+</I>&gt;&gt;&gt;<i>rc.sysinit.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>At the moment the only way is to stop autologin running startx, and
+</I>&gt;&gt;&gt;<i>manually
+</I>&gt;&gt;&gt;<i>'su root' then run the driver program and then exit the root shell and
+</I>&gt;<i> 
+</I>&gt;<i> run
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>startx manually...
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Where can I specify in the startup scripts to run this process ?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Thanks for all your help, I will remain subscribed to this list in case I
+</I>&gt;&gt;&gt;<i>can help anyone else with the experience I have had.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Ashley Rolleston
+</I>&gt;&gt;&gt;<i>Software Engineer
+</I>&gt;&gt;&gt;<i>ashley AT smartsw DOT co DOT uk
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_________________________________________________________________
+</I>&gt;&gt;<i>Help STOP SPAM with the new MSN 8 and get 2 months FREE*
+</I>&gt;&gt;<i><A HREF="http://join.msn.com/?page=features/junkmail">http://join.msn.com/?page=features/junkmail</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+-- 
+Troy Engel | Systems Engineer
+Fluid, Inc | <A HREF="http://www.fluid.com">http://www.fluid.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001260.html">[Peeweelinux] success! thanks all
+</A></li>
+	<LI> Next message: <A HREF="001259.html">FW: RE: [Peeweelinux] success! thanks all
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1261">[ date ]</a>
+              <a href="thread.html#1261">[ thread ]</a>
+              <a href="subject.html#1261">[ subject ]</a>
+              <a href="author.html#1261">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

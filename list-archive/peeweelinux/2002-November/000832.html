@@ -1,0 +1,298 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Hello and a question
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000831.html">
+   <LINK REL="Next"  HREF="000833.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Hello and a question
+   </H1>
+    <B>Tom Schneider
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Hello and a question">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sat, 23 Nov 2002 14:41:35 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000831.html">[Peeweelinux] Hello and a question
+</A></li>
+        <LI> Next message: <A HREF="000833.html">[Peeweelinux] rc.init
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#832">[ date ]</a>
+              <a href="thread.html#832">[ thread ]</a>
+              <a href="subject.html#832">[ subject ]</a>
+              <a href="author.html#832">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--------------030905030700050909080200
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Ed,
+I was able to run the 2.4 kernel with the existing packages, the only 
+thing I changed initially was the kernel, the kernel modules, and the 
+modutils package.  I then made sure I could boot the new kernel.  Then I 
+upgraded packages as necessary.  The way I upgraded the packages was to 
+manually create the tar and list file myself.
+For example:
+rpm2cpio xxx.rpm | cpio -dim  (extracts a redhat package to the current 
+directory)
+tar cf xxx.tar *  (tars up all the files in the package)
+tar tf xxx.tar &gt; xxx.list ( creates the necessary list file)
+copy xxx.tar and xxx.list to the packages directory in peewee linux and 
+you're all set.
+Tom
+
+Ed Anuff wrote:
+
+&gt;<i>Were you able to use the RH 7.3 packages as is, or did you need to rebuild
+</I>&gt;<i>them?  I got stalled when I tried using the 2.4 kernel because although
+</I>&gt;<i>building the kernel itself wasn't too bad, hunting down all the packages
+</I>&gt;<i>that needed to be upgraded seemed daunting.
+</I>&gt;<i>
+</I>&gt;<i>Ed
+</I>&gt;<i>
+</I>&gt;<i>----- Original Message -----
+</I>&gt;<i>From: &quot;Tom Schneider&quot; &lt;<A HREF="mailto:tschneider@nvisia.com">tschneider@nvisia.com</A>&gt;
+</I>&gt;<i>To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+</I>&gt;<i>Sent: Saturday, November 23, 2002 8:11 AM
+</I>&gt;<i>Subject: Re: [Peeweelinux] Hello and a question
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>I've had great luck with the latest 2.4 kernel. (2.4.18)  Plus I've
+</I>&gt;&gt;<i>upgraded most of the standard peewee linux packages to the latest Redhat
+</I>&gt;&gt;<i>7.3 packages.  I'm running on a PC/104 486 with 48 MB ram and 64 MB
+</I>&gt;&gt;<i>disk-on-chip.  If you follow the tutorial and know your way around the
+</I>&gt;&gt;<i>basics of kernel building, it's not too hard.  (If not, get the Kernel
+</I>&gt;&gt;<i>Howto can fix that)
+</I>&gt;&gt;<i>Tom
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Ricardo Trindade wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>there is a guide to upgrading the kernel in the mailing list archives.
+</I>&gt;&gt;&gt;<i>however, if the one includede does what you need, I think you should keep
+</I>&gt;&gt;&gt;<i>it, it's stable.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>-----Original Message-----
+</I>&gt;&gt;&gt;<i>From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;&gt;&gt;<i>[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Cem Eryasar
+</I>&gt;&gt;&gt;<i>Sent: sexta-feira, 22 de Novembro de 2002 23:05
+</I>&gt;&gt;&gt;<i>To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;&gt;<i>Subject: [Peeweelinux] Hello and a question
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Hello all!
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>It's nice to see people doing embedded linux stuff.
+</I>&gt;&gt;&gt;<i>I downloaded the Peewee and gave it a go. I tried it on an embedded
+</I>&gt;&gt;&gt;<i>486 board. Looks really good.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>However, here is my first question:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Do I have to stay with the built in 2.2.17 kernel?
+</I>&gt;&gt;&gt;<i>If it's possible is it better to move on another one? Like 2.2.22?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>How can I compare kernel versions? Is it always good to go for a
+</I>&gt;&gt;&gt;<i>recent one from kernel.org?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Thanks a lot!
+</I>&gt;&gt;&gt;<i>Cem Eryasar - Cemer
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Peeweelinux mailing list
+</I>&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+
+
+--------------030905030700050909080200
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Ed,&lt;br&gt;
+I was able to run the 2.4 kernel with the existing packages, the only thing
+I changed initially was the kernel, the kernel modules, and the modutils
+package. &amp;nbsp;I then made sure I could boot the new kernel. &amp;nbsp;Then I upgraded
+packages as necessary. &amp;nbsp;The way I upgraded the packages was to manually create
+the tar and list file myself.&lt;br&gt;
+For example:&lt;br&gt;
+rpm2cpio xxx.rpm | cpio -dim &amp;nbsp;(extracts a redhat package to the current directory)&lt;br&gt;
+tar cf xxx.tar * &amp;nbsp;(tars up all the files in the package)&lt;br&gt;
+tar tf xxx.tar &amp;gt; xxx.list ( creates the necessary list file)&lt;br&gt;
+copy xxx.tar and xxx.list to the packages directory in peewee linux and you're
+all set.&lt;br&gt;
+Tom&lt;br&gt;
+&lt;br&gt;
+Ed Anuff wrote:&lt;br&gt;
+&lt;blockquote type=&quot;cite&quot;
+ cite=&quot;mid001e01c29329$4de439a0$<A HREF="mailto:0200a8c0@anuff.com">0200a8c0@anuff.com</A>&quot;&gt;
+  &lt;pre wrap=&quot;&quot;&gt;Were you able to use the RH 7.3 packages as is, or did you need to rebuild
+them?  I got stalled when I tried using the 2.4 kernel because although
+building the kernel itself wasn't too bad, hunting down all the packages
+that needed to be upgraded seemed daunting.
+
+Ed
+
+----- Original Message -----
+From: &quot;Tom Schneider&quot; &lt;a class=&quot;moz-txt-link-rfc2396E&quot; href=&quot;mailto:<A HREF="mailto:tschneider@nvisia.com">tschneider@nvisia.com</A>&quot;&gt;&amp;lt;<A HREF="mailto:tschneider@nvisia.com">tschneider@nvisia.com</A>&amp;gt;&lt;/a&gt;
+To: &lt;a class=&quot;moz-txt-link-rfc2396E&quot; href=&quot;mailto:<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&quot;&gt;&amp;lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&amp;gt;&lt;/a&gt;
+Sent: Saturday, November 23, 2002 8:11 AM
+Subject: Re: [Peeweelinux] Hello and a question
+
+
+  &lt;/pre&gt;
+  &lt;blockquote type=&quot;cite&quot;&gt;
+    &lt;pre wrap=&quot;&quot;&gt;I've had great luck with the latest 2.4 kernel. (2.4.18)  Plus I've
+upgraded most of the standard peewee linux packages to the latest Redhat
+7.3 packages.  I'm running on a PC/104 486 with 48 MB ram and 64 MB
+disk-on-chip.  If you follow the tutorial and know your way around the
+basics of kernel building, it's not too hard.  (If not, get the Kernel
+Howto can fix that)
+Tom
+
+Ricardo Trindade wrote:
+
+    &lt;/pre&gt;
+    &lt;blockquote type=&quot;cite&quot;&gt;
+      &lt;pre wrap=&quot;&quot;&gt;there is a guide to upgrading the kernel in the mailing list archives.
+however, if the one includede does what you need, I think you should keep
+it, it's stable.
+
+-----Original Message-----
+From: &lt;a class=&quot;moz-txt-link-abbreviated&quot; href=&quot;mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>&quot;&gt;<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>&lt;/a&gt;
+[&lt;a class=&quot;moz-txt-link-freetext&quot; href=&quot;mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>&quot;&gt;mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>&lt;/a&gt;]On Behalf Of Cem Eryasar
+Sent: sexta-feira, 22 de Novembro de 2002 23:05
+To: &lt;a class=&quot;moz-txt-link-abbreviated&quot; href=&quot;mailto:<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&quot;&gt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&lt;/a&gt;
+Subject: [Peeweelinux] Hello and a question
+
+
+Hello all!
+
+It's nice to see people doing embedded linux stuff.
+I downloaded the Peewee and gave it a go. I tried it on an embedded
+486 board. Looks really good.
+
+However, here is my first question:
+
+Do I have to stay with the built in 2.2.17 kernel?
+If it's possible is it better to move on another one? Like 2.2.22?
+
+How can I compare kernel versions? Is it always good to go for a
+recent one from kernel.org?
+
+Thanks a lot!
+Cem Eryasar - Cemer
+
+
+
+
+
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+&lt;a class=&quot;moz-txt-link-abbreviated&quot; href=&quot;mailto:<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&quot;&gt;<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&lt;/a&gt;
+&lt;a class=&quot;moz-txt-link-freetext&quot; href=&quot;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux"">http://mail.adis.on.ca/lists/listinfo/peeweelinux&quot;</A>&gt;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux</a">http://mail.adis.on.ca/lists/listinfo/peeweelinux&lt;/a</A>&gt;
+
+_______________________________________________
+Peeweelinux mailing list
+&lt;a class=&quot;moz-txt-link-abbreviated&quot; href=&quot;mailto:<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&quot;&gt;<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&lt;/a&gt;
+&lt;a class=&quot;moz-txt-link-freetext&quot; href=&quot;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux"">http://mail.adis.on.ca/lists/listinfo/peeweelinux&quot;</A>&gt;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux</a">http://mail.adis.on.ca/lists/listinfo/peeweelinux&lt;/a</A>&gt;
+
+
+      &lt;/pre&gt;
+    &lt;/blockquote&gt;
+    &lt;pre wrap=&quot;&quot;&gt;
+
+_______________________________________________
+Peeweelinux mailing list
+&lt;a class=&quot;moz-txt-link-abbreviated&quot; href=&quot;mailto:<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&quot;&gt;<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&lt;/a&gt;
+&lt;a class=&quot;moz-txt-link-freetext&quot; href=&quot;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux"">http://mail.adis.on.ca/lists/listinfo/peeweelinux&quot;</A>&gt;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux</a">http://mail.adis.on.ca/lists/listinfo/peeweelinux&lt;/a</A>&gt;
+
+    &lt;/pre&gt;
+  &lt;/blockquote&gt;
+  &lt;pre wrap=&quot;&quot;&gt;&lt;!----&gt;
+_______________________________________________
+Peeweelinux mailing list
+&lt;a class=&quot;moz-txt-link-abbreviated&quot; href=&quot;mailto:<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&quot;&gt;<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&lt;/a&gt;
+&lt;a class=&quot;moz-txt-link-freetext&quot; href=&quot;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux"">http://mail.adis.on.ca/lists/listinfo/peeweelinux&quot;</A>&gt;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux</a">http://mail.adis.on.ca/lists/listinfo/peeweelinux&lt;/a</A>&gt;
+  &lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+--------------030905030700050909080200--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000831.html">[Peeweelinux] Hello and a question
+</A></li>
+	<LI> Next message: <A HREF="000833.html">[Peeweelinux] rc.init
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#832">[ date ]</a>
+              <a href="thread.html#832">[ thread ]</a>
+              <a href="subject.html#832">[ subject ]</a>
+              <a href="author.html#832">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

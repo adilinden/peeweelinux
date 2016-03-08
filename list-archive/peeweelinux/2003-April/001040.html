@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] gunzipping ramdisk
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001044.html">
+   <LINK REL="Next"  HREF="001041.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] gunzipping ramdisk
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] gunzipping ramdisk">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 18 Apr 2003 16:26:28 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001044.html">[Peeweelinux] CF card problem
+</A></li>
+        <LI> Next message: <A HREF="001041.html">[Peeweelinux] gunzipping ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1040">[ date ]</a>
+              <a href="thread.html#1040">[ thread ]</a>
+              <a href="subject.html#1040">[ subject ]</a>
+              <a href="author.html#1040">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>I would like to mount the ramdisk residing on flash (running PWL on a
+</I>&gt;<i>DOC2000) so changes can be made and then saved again. After mounting the
+</I>&gt;<i>DOC under PWL, I tried to unzip the ramdisk so I could mount it for
+</I>&gt;<i>editing. What was a 1.3Meg file ballooned to more than 30Meg after
+</I>&gt;<i>unzipping the file. I wasn't sure of the exact size because it ran out
+</I>&gt;<i>of ramdisk space. Surely, 1.3Meg can possibly expand THAT much?!?. I had
+</I>&gt;<i>renamed &quot;ramdisk&quot; to &quot;ramdisk.gz&quot; and then tried running &quot;gunzip
+</I>&gt;<i>ramdisk.gz&quot; What is the correct command to unzip the ramdisk? 
+</I>&gt;<i>Thanks,
+</I>&gt;<i>Stephen 
+</I>
+gunzip file should do it.  These programs are generally smart 
+enough to tell you if your file isn't a zip file.   It _is_ possible
+to compress a file 100:1  especially if it is
+an empty file.
+
+The file system that appears there should be the compressed version
+of the one pwl built.  cd to to the projects directory, to the
+name of your project, and then to mnt.    Then, issue the
+du -h    command to see how much got put in there.   It may
+be possible to create a lot of empty space through the pwl 
+configurations but I'm not sure of that and I'm not much good 
+looking at their scripts.
+
+Barry
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001044.html">[Peeweelinux] CF card problem
+</A></li>
+	<LI> Next message: <A HREF="001041.html">[Peeweelinux] gunzipping ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1040">[ date ]</a>
+              <a href="thread.html#1040">[ thread ]</a>
+              <a href="subject.html#1040">[ subject ]</a>
+              <a href="author.html#1040">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

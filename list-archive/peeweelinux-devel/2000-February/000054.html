@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> RPM Loader Script - V0.1
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000053.html">
+   <LINK REL="Next"  HREF="000055.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>RPM Loader Script - V0.1
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="RPM Loader Script - V0.1">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Thu, 3 Feb 2000 10:42:49 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000053.html">RPM Loader Script - V0.1
+</A></li>
+        <LI> Next message: <A HREF="000055.html">List File Search Utility
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#54">[ date ]</a>
+              <a href="thread.html#54">[ thread ]</a>
+              <a href="subject.html#54">[ subject ]</a>
+              <a href="author.html#54">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+
+--- Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; wrote:
+&gt;<i> Hi Ralph,
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt; Here's what I am doing. I'd like PeeWeeLinux to become a platform that
+</I>&gt;<i> Unless you need to include additional libs that are purposely left out of
+</I>&gt;<i> PWL.
+</I>&gt;<i> 
+</I>oops, left those out too:-)
+...one thing I was thinking would be helpful..search the *.list files
+in the packages directory to find a specific file.  If that file is found,
+then I can prompt the user to include the package/file in their configuration.
+
+(OR include the package/file in the new &quot;package-dep.tar&quot; ?? it would be 
+duplicated, but it doesn't affect the extract process..)
+
+Now, if it is a completely new file, not part of any pwl packages, I can
+do a locate on their hard drive and copy it. OR is there an RPM that 
+contains the library files ? Hmmmmm...
+
+Again, so far I'm only concerning myself with binaries....
+
+&gt;<i> But all PeeWeeLinux packages should be build from source tar balls or
+</I>&gt;<i> source rpms, I think. None of the copying from a running system or a
+</I>&gt;<i> binary rpm.
+</I>&gt;<i> 
+</I>that would be optimial...but my current process
+pwl_rpmloader
+package
+is a quick way to build a package to run and test.  Optimize them after
+they are working...
+
+&gt;<i> 
+</I>&gt;<i> I think the key to that happening is to have a well defined and documented
+</I>&gt;<i> process of how to create a PeeWeeLinux package.
+</I>&gt;<i> 
+</I>
+The best documentation is if we can script it &quot;generically&quot;.  In order
+to script a &quot;rebuild&quot; of packages xyz, all I need is a patch file, maybe
+a short xyz script that I can run...
+
+Then to build a package, the package maker must:
+1. create a patch file
+2. create a make_pkg file that handles all the uniqueness for the package.
+
+I'd have to see a patch and make_pkg to integrate it, since I've never 
+actually compiled anything :-)
+
+&gt;<i> So as far as creating packages is concerned this has become a rather
+</I>&gt;<i> urgent thing to be decided on. Since the build process for packages should
+</I>&gt;<i> be reproduceable. So here is what needs to be done:
+</I>&gt;<i> 
+</I>&gt;<i> Raw Sources           ---&gt;  PeeWeeLinux Sources
+</I>&gt;<i> PeeWeeLinux Sources   ---&gt;  PeeWeeLinux Binaries
+</I>&gt;<i> PeeWeeLinux Binaries  ---&gt;  PeeWeeLinux Packages
+</I>Nearly done on the last step!
+
+&gt;<i> 
+</I>&gt;<i> 1. What do we use for Raw sources?
+</I>&gt;<i>   a. Source tarballs
+</I>&gt;<i>      We can extract the tarballs from Redhat source rpms where
+</I>&gt;<i>      source rpms exist.
+</I>&gt;<i>   b. Redhat RPMS
+</I>&gt;<i>      Where source rpms don't exist we have to create either
+</I>&gt;<i>      Redhat RPMS or Source RPMS first
+</I>&gt;<i> 
+</I>Yes.
+
+&gt;<i> 2. Do we create and keep PeeWeeLinux sources (already patched
+</I>&gt;<i>    and ready to compile?). Or do we keep the original sources
+</I>&gt;<i>    and apply PeeWeeLinux patches?
+</I>&gt;<i> 
+</I>
+I think I'd go for the PeeWeeLinux patches.  That way, when the
+original is upgraded, the patch *Might* work on the upgarde, otherwise,
+just modify the patch a little...
+
+&gt;<i> 3. Do we create PeeWeeLinux tar packages or PeeWeeLinux rpms
+</I>&gt;<i>    (both binaries)?
+</I>&gt;<i> 
+</I>
+I still like the tar files, unless you can figure out how to make 
+the rpms re-locatable. (or use /tmp/pwl_tmp for all rpms or something).
+
+&gt;<i> &gt; The key here is that this *painful process* need only be done once...
+</I>&gt;<i> 
+</I>&gt;<i> That's correct. But what we use to start with and what it results in
+</I>&gt;<i> should be well defined. I looked at the Linux Router Project and I thought
+</I>&gt;<i> making LPR packages is a mess. I don't want the same for PeeWeeLinux.
+</I>&gt;<i>
+</I>yep, I never got into lrp because of it's configuration stuff...too much
+to read!
+ 
+&gt;<i> The easier the process is to follow the more likely people will contribute
+</I>&gt;<i> a complete set of sources/patches/binaries for PeeWeeLinux...
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Is it time to start to ask for help / Announce Pee Wee to a 
+</I>&gt;<i> &gt; bunch of news groups /mailing lists ?? (Pee Wee Comes out of the closet!)
+</I>&gt;<i> 
+</I>&gt;<i> It's still far from a plug-and-play solution. I think I'd rather stick to
+</I>&gt;<i> announcing updates on freshmeat for now.
+</I>&gt;<i> 
+</I>Oh...I haven't been checking freshmeat myself ...
+
+&gt;<i> &gt; Maybe after I integrate the package stuff and the ram disk stuff...and
+</I>&gt;<i> &gt; we get a few projects working...of course, we can always come up with 
+</I>&gt;<i> &gt; more features...We need a marketing guy to say STOP, SHIP it NOW!:-)
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &quot;Software programs are never finished...only abandoned&quot;
+</I>&gt;<i> 
+</I>&gt;<i> I think it'll be never finished. But the framework needs to be
+</I>&gt;<i> established.
+</I>&gt;<i> 
+</I>
+we're getting close...just need to close the loop on this package thing...
+handle a few more devices...hmmmm...well, we are closer than we were last week!
+
+Later,
+Ralph
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000053.html">RPM Loader Script - V0.1
+</A></li>
+	<LI> Next message: <A HREF="000055.html">List File Search Utility
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#54">[ date ]</a>
+              <a href="thread.html#54">[ thread ]</a>
+              <a href="subject.html#54">[ subject ]</a>
+              <a href="author.html#54">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

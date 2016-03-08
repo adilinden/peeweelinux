@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> peewee
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000205.html">
+   <LINK REL="Next"  HREF="000206.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>peewee
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="peewee">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 7 Dec 2000 20:12:27 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000205.html">peewee
+</A></li>
+        <LI> Next message: <A HREF="000206.html">kernel versions in PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#207">[ date ]</a>
+              <a href="thread.html#207">[ thread ]</a>
+              <a href="subject.html#207">[ subject ]</a>
+              <a href="author.html#207">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> with hda as a 32 MB Dos formatted SanDisk. 
+</I>&gt;<i> Althugh I have a fd0 I do not want to use it as a transfer media
+</I>
+What physical size is your /dev/hda?
+
+&gt;<i> firstly I cannot get &quot;/root/custom&quot;  to get and alter packages it says guess
+</I>&gt;<i> again.
+</I>&gt;<i> The only custom directory seems to be in
+</I>&gt;<i> /root/Embedded_Build/projects/minimal/custom
+</I>
+/root/custom is a directory you will need to create yourself. In it you
+place files you need to add to the sytem after all the packages were
+extracted. Custom files will overwrite package files.
+
+So if you would like etc/config/ifcfg-eth0 to contain your ip numbers
+rather than samples in the packages create the
+/root/custom/etc/config/ifcfg-eth0 file with the proper permissions and it
+will be copied into the target filesystem during the extraction process.
+
+&gt;<i> Then I tried to load to target and faithfully changed the references to
+</I>&gt;<i> /dev/sda and /dev/fd0 to /dev/hda
+</I>
+The /dev/fd0 reference is for floppy based systems only. Changing it to
+/dev/hda won't do anything until you try to build a floppy based sytem.
+
+Changing /dev/sda to /dev/hda is the right thing to do (as you did).
+
+&gt;<i> and selected DOS12 and pressed the majic button. 
+</I>&gt;<i> After confirming that I did want to proceed it told me that I was
+</I>&gt;<i> unsucesfull ????  &quot;YES&quot; to see why but a blank results screen, nothing...
+</I>
+There should be a screen with a list of items and their results...
+
+&gt;<i> I looked on my SanDisk /dev/hda and it too had no contents.  
+</I>
+Did you make sure to extract the filesystem prior to selecting the
+installation step?
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000205.html">peewee
+</A></li>
+	<LI> Next message: <A HREF="000206.html">kernel versions in PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#207">[ date ]</a>
+              <a href="thread.html#207">[ thread ]</a>
+              <a href="subject.html#207">[ subject ]</a>
+              <a href="author.html#207">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

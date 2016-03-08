@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] selecting a compact flash reader
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000602.html">
+   <LINK REL="Next"  HREF="000606.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] selecting a compact flash reader
+   </H1>
+    <B>Tom Genereaux
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] selecting a compact flash reader">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>05 Jun 2002 22:36:27 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000602.html">[Peeweelinux] selecting a compact flash reader
+</A></li>
+        <LI> Next message: <A HREF="000606.html">[Peeweelinux] selecting a compact flash reader
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#603">[ date ]</a>
+              <a href="thread.html#603">[ thread ]</a>
+              <a href="subject.html#603">[ subject ]</a>
+              <a href="author.html#603">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Here is the driver stack I have loaded:
+
+usb-core
+usb-uhci (this drives the USB chip - you may need OHCI)
+scsi-mod
+ide-scsi
+
+Note, this is under Redhat 7.3...but the same stack was being used 
+under Mandrake 8.0 and below. 
+
+Tom
+
+On Thu, 2002-06-06 at 03:11, <A HREF="mailto:drowe@juptech.com">drowe@juptech.com</A> wrote:
+&gt;<i> 
+</I>&gt;<i> Hi Tom,
+</I>&gt;<i> 
+</I>&gt;<i> which driver do you refer to ?
+</I>&gt;<i> I am just loading usc-core, and sd_mod (generic scsi support ?) and acces
+</I>&gt;<i> the imagemate as /dev/sda
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>                                                                                                                         
+</I>&gt;<i>                     Tom Genereaux                                                                                       
+</I>&gt;<i>                     &lt;<A HREF="mailto:entropy@sunflower">entropy@sunflower</A>        To:     <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>                                            
+</I>&gt;<i>                     .com&gt;                     cc:                                                                       
+</I>&gt;<i>                     Sent by:                    Subject:   Re: [Peeweelinux] selecting a compact flash reader           
+</I>&gt;<i>                     peeweelinux-admin@                                                                                  
+</I>&gt;<i>                     adis.on.ca               Project:                                                                   
+</I>&gt;<i>                                                                                                                         
+</I>&gt;<i>                                                                                                                         
+</I>&gt;<i>                     06/06/2002 07:25                                                                                    
+</I>&gt;<i>                     AM                                                                                                  
+</I>&gt;<i>                     Please respond to                                                                                   
+</I>&gt;<i>                     peeweelinux                                                                                         
+</I>&gt;<i>                                                                                                                         
+</I>&gt;<i>                                                                                                                         
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hmmmmmmmmmmm...I'm using the Imagemate on my development system with no
+</I>&gt;<i> problems. Have you got the scsi-ide parameter set and the right driver
+</I>&gt;<i> loaded?
+</I>&gt;<i> 
+</I>&gt;<i> Tom
+</I>&gt;<i> 
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; <A HREF="mailto:drowe@juptech.com">drowe@juptech.com</A> wrote:
+</I>&gt;<i> &gt; &gt; Hi All,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; I am currently working on a project which uses an IDE--&gt;Compact Flash
+</I>&gt;<i> &gt; &gt; converter on the main board to treat the compact flash as /dev/hdc.
+</I>&gt;<i> &gt; &gt; Techs in the field will need to update both to and from this device
+</I>&gt;<i> using a
+</I>&gt;<i> &gt; &gt; USB compact flash reader, which can be attached as required.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; I have been using a Sandisk ImageMate SDDR-05 reader during development
+</I>&gt;<i> &gt; &gt; which is occasionally flaky. (Could be the way I have it running that
+</I>&gt;<i> is
+</I>&gt;<i> &gt; &gt; flaky :)
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Having made a short story longer than it needs to be, has anyone any
+</I>&gt;<i> &gt; &gt; experience using USB compact flash readers ?
+</I>&gt;<i> &gt; &gt; Can anyone recommend a robust one to run under a 2.4 kernel ?
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; All suggestions appreciated,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Kind regards,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Delaney.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; *********************************************************************
+</I>&gt;<i> &gt; &gt; This email message (and attachments) may contain information
+</I>&gt;<i> &gt; &gt; that is confidential to Jupiters Technology. If you are not the
+</I>&gt;<i> &gt; &gt; intended recipient you cannot use, distribute or copy the message
+</I>&gt;<i> &gt; &gt; or attachments. In such a case, please notify the sender by return
+</I>&gt;<i> &gt; &gt; email immediately and erase all copies of the message and
+</I>&gt;<i> &gt; &gt; attachments. Opinions, conclusions and other information in this
+</I>&gt;<i> &gt; &gt; message and attachments that do not relate to the official business
+</I>&gt;<i> &gt; &gt; of Jupiters Technology are neither given nor endorsed by it.
+</I>&gt;<i> &gt; &gt; *********************************************************************
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; --
+</I>&gt;<i> &gt; Troy Engel, Systems Engineer
+</I>&gt;<i> &gt; Hockey. Kinda like Figure Skating in a War Zone.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000602.html">[Peeweelinux] selecting a compact flash reader
+</A></li>
+	<LI> Next message: <A HREF="000606.html">[Peeweelinux] selecting a compact flash reader
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#603">[ date ]</a>
+              <a href="thread.html#603">[ thread ]</a>
+              <a href="subject.html#603">[ subject ]</a>
+              <a href="author.html#603">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

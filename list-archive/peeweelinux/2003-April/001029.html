@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Adding nfsroot parameters to lilo
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001028.html">
+   <LINK REL="Next"  HREF="001033.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Adding nfsroot parameters to lilo
+   </H1>
+    <B>Stephen Lee
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Adding nfsroot parameters to lilo">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>17 Apr 2003 01:12:13 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001028.html">[Peeweelinux] gunzipping ramdisk
+</A></li>
+        <LI> Next message: <A HREF="001033.html">[Peeweelinux] Adding nfsroot parameters to lilo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1029">[ date ]</a>
+              <a href="thread.html#1029">[ thread ]</a>
+              <a href="subject.html#1029">[ subject ]</a>
+              <a href="author.html#1029">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I added the following bits to the lilo.conf portion in
+pwl_target_functions:
+
+image = $rd_bp_kernel
+root = /dev/nfs
+label = nfs
+vga = 768
+append = &quot;console=tty2 ip=bootp  \
+          nfsroot=192.168.1.200:/export/linux/root&quot;
+
+During the lilo loader phase when writing PWL to a DOC2000, I get the
+following error:
+
+Creating lilo.conf in a temporary location...ok
+Installing lilo bootloader...Patched LILO for M-Systems' DiskOnChip 2000
+LILO version 21, Copyright 1992-1998 Werner Almesberger
+
+Reading boot sector from /dev/nftla
+Merging with ./mnt/boot.b
+Boot image: ./mnt/bzImage
+Mapping RAM disk ./mnt/ramdisk
+Added linux
+Not a number: &quot;/dev/nfs&quot;   &lt;------- error
+ok
+Unmounting target device /dev/nftla1...ok
+
+According to nfsroot.txt in the kernel docs (2.4.20), you're suppose to
+create a dummy device (mknod /dev/boot255 c 0 255) to satisfy the
+root=/dev/nfs requirement. I created the device on the system hosting
+prior to runnig pwlconfig but that didn't help lilo recognize /dev/nfs.
+How do  I do this with pwlconfig or manually. 
+
+Thanks,
+Stephen
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001028.html">[Peeweelinux] gunzipping ramdisk
+</A></li>
+	<LI> Next message: <A HREF="001033.html">[Peeweelinux] Adding nfsroot parameters to lilo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1029">[ date ]</a>
+              <a href="thread.html#1029">[ thread ]</a>
+              <a href="subject.html#1029">[ subject ]</a>
+              <a href="author.html#1029">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

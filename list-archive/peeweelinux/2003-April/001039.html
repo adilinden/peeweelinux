@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Error executing startx
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001037.html">
+   <LINK REL="Next"  HREF="001038.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Error executing startx
+   </H1>
+    <B>Leif Steinhour
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Error executing startx">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 18 Apr 2003 09:02:25 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001037.html">[Peeweelinux] Error executing startx
+</A></li>
+        <LI> Next message: <A HREF="001038.html">[Peeweelinux] CF card problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1039">[ date ]</a>
+              <a href="thread.html#1039">[ thread ]</a>
+              <a href="subject.html#1039">[ subject ]</a>
+              <a href="author.html#1039">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sure: for starters you need to go into the font directory under /etc/X11 
+and edit the config file and remove the listing for 75dpi fonts (you can 
+also check that the other fonts listed correspond with real files). Then 
+you need to start up xfs (that's the font server). Then you need to link X 
+in your /usr/X11R6/bin directory to one of the font servers. Finally, you 
+need to configure XF86Config under /usr/X11R6/lib for your graphics 
+display and mouse. 
+
+On 2003.04.18 05:25 Hanoi Santos Hung wrote:
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> Somebody has the solution to this error ? :
+</I>&gt;<i> 
+</I>&gt;<i> -----------------------------------
+</I>&gt;<i> execve failed for /usr/X11R6/bin/X (errno 2)
+</I>&gt;<i> _X11TransSocketUNIXConnect: Can't connect : errno = 111
+</I>&gt;<i> giving up
+</I>&gt;<i> xinit:Connection refused (errno 111): unable to connect to X server
+</I>&gt;<i> xinit:No such process (errno 3): Server error.
+</I>&gt;<i> --------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Best Regards
+</I>&gt;<i> Hanoi Santos Hung
+</I>&gt;<i> email : <A HREF="mailto:hanoi@icid.edu.cu">hanoi@icid.edu.cu</A>
+</I>&gt;<i> Linux User 296804
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001037.html">[Peeweelinux] Error executing startx
+</A></li>
+	<LI> Next message: <A HREF="001038.html">[Peeweelinux] CF card problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1039">[ date ]</a>
+              <a href="thread.html#1039">[ thread ]</a>
+              <a href="subject.html#1039">[ subject ]</a>
+              <a href="author.html#1039">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

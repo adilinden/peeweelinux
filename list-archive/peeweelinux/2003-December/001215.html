@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] trouble compiling custom kernel
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001214.html">
+   <LINK REL="Next"  HREF="001216.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] trouble compiling custom kernel
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] trouble compiling custom kernel">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 22 Dec 2003 15:05:36 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001214.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+        <LI> Next message: <A HREF="001216.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1215">[ date ]</a>
+              <a href="thread.html#1215">[ thread ]</a>
+              <a href="subject.html#1215">[ subject ]</a>
+              <a href="author.html#1215">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I think the 2.2 kernel compile will die with GCC 3.2, but I am not sure. Compile a kernel version (2.4 something) that will work with your compiler (view the README docs in the kernel source for where to findd out what version of GCC to use). If you can, compile everything static, so you don't have to deal with modules. 
+
+Now you need to Copy the bzImage file (your compiled kernel) into your peewee projects &quot;custom&quot; folder. This custom folder mimics the root filesystem of your target, which allows you to overwrite or add files. Make a &quot;boot&quot; directory if it is not already there, and put your bzImage file there.  If you don't need modules, you are now done. Otherwise, copy all of your module files intot he appropriate directories, and hope it works. 
+
+
+~Ken
+
+
+
+
+&gt;<i> -----Original Message-----
+</I>&gt;<i> From: Jonathan Sturges [mailto:<A HREF="mailto:jonathan@sprintmail.com">jonathan@sprintmail.com</A>]
+</I>&gt;<i> Sent: Monday, December 22, 2003 2:52 PM
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: [Peeweelinux] trouble compiling custom kernel
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> I'm a PWL newbie.  I've been playing with 0.61.1 for a week 
+</I>&gt;<i> or so now and
+</I>&gt;<i> have made several successful test images with it... pretty 
+</I>&gt;<i> darn intuitive
+</I>&gt;<i> and easy!
+</I>&gt;<i> 
+</I>&gt;<i> However I cannot seem to compile a custom kernel from the 
+</I>&gt;<i> 2.2.17 sources
+</I>&gt;<i> that came with PWL.  It never seems to produce a bzImage.
+</I>&gt;<i> 
+</I>&gt;<i> I was able to follow some directions I found in the list 
+</I>&gt;<i> archive and build a
+</I>&gt;<i> kernel outside of PWL and bring that in... that did work for 
+</I>&gt;<i> me though.
+</I>&gt;<i> 
+</I>&gt;<i> FWIW, my host OS is RH 8.0 with gcc 3.2; is that likely a 
+</I>&gt;<i> problem area or is
+</I>&gt;<i> the host platform pretty flexible with PWL?
+</I>&gt;<i> 
+</I>&gt;<i> thanks,
+</I>&gt;<i> Jonathan
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001214.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+	<LI> Next message: <A HREF="001216.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1215">[ date ]</a>
+              <a href="thread.html#1215">[ thread ]</a>
+              <a href="subject.html#1215">[ subject ]</a>
+              <a href="author.html#1215">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

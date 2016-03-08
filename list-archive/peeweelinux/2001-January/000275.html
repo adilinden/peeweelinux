@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> FlashDisk vs RamDisk+FlashDisk partitions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000274.html">
+   <LINK REL="Next"  HREF="000276.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>FlashDisk vs RamDisk+FlashDisk partitions
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="FlashDisk vs RamDisk+FlashDisk partitions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 5 Jan 2001 18:31:10 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000274.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+        <LI> Next message: <A HREF="000276.html">ibiblio.org (metalab.unc.edu)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#275">[ date ]</a>
+              <a href="thread.html#275">[ thread ]</a>
+              <a href="subject.html#275">[ subject ]</a>
+              <a href="author.html#275">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Andrei,
+
+&gt;<i> Thank you for the info. I like the mixed aproach because it tends to
+</I>&gt;<i> save RAM. In my case, my flash build is quite large 64Mb (not because
+</I>&gt;<i> of peewee), therefore I need to allocate another 64RAM for ramdisk
+</I>&gt;<i> plus some for the OS...
+</I>
+With a filesystem of that size using the read-only root approach is
+defenitely the way to go.
+
+&gt;<i> The trick is mount/unmounting the /etc flash partition in order   
+</I>&gt;<i> to save changes, if any. I suspect that changes on /etc
+</I>&gt;<i> are not as dynamic (system settings), hence mounting/unmounting 
+</I>&gt;<i> can be done on demand. 
+</I>
+I prefer to mount everything, except mount flash partitions as read-only
+and change them to read-write for the short period when writing is really
+necessary.
+
+&gt;<i> &gt; Future kernel releases will include devfs and reiserfs or ext3. devfs
+</I>&gt;<i> &gt; allows for a virtual device filesystem, similar to how /proc works.
+</I>&gt;<i> 
+</I>&gt;<i> Excellent! Will this be on 2.4 or 2.2.x? Just curious... (very)
+</I>
+The current kernel is 2.2.17 with usb support among other things. I hope
+to go to 2.2.18 with devfs and reiserfs soon (no promises on dates) and
+perhaps add 2.4.x as experimental kernel sometime after that.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000274.html">FlashDisk vs RamDisk+FlashDisk partitions
+</A></li>
+	<LI> Next message: <A HREF="000276.html">ibiblio.org (metalab.unc.edu)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#275">[ date ]</a>
+              <a href="thread.html#275">[ thread ]</a>
+              <a href="subject.html#275">[ subject ]</a>
+              <a href="author.html#275">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

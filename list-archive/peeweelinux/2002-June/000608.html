@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] kernel 2.4 mini-howto
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000604.html">
+   <LINK REL="Next"  HREF="000609.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] kernel 2.4 mini-howto
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] kernel 2.4 mini-howto">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 06 Jun 2002 10:27:52 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000604.html">[Peeweelinux] selecting a compact flash reader
+</A></li>
+        <LI> Next message: <A HREF="000609.html">[Peeweelinux] DiskOnChip Boot Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#608">[ date ]</a>
+              <a href="thread.html#608">[ thread ]</a>
+              <a href="subject.html#608">[ subject ]</a>
+              <a href="author.html#608">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Below follows my basic method for integrating a 2.4 kernel into the 
+peeweelinux distro; some steps may be missing, so may not be needed, 
+some may not be efficient.  Hey, I was winging it. ;)  Adjust as 
+appropriate/necessary.
+
+My build scenario is /usr/local/pwl/Embedded_Build/ - referred to as 
+$PWL from now on.
+
+Step 1 - Build yourself the new Kernel (2.4.18)
+===============================================
+1) Build a custom kernel of the existing 2.2.17 sources.  This ensures 
+that you can properly build and deploy a custom kernel on your dev box 
+(eg, on RedHat 7.2 you have all the compat-* RPMS installed and know how 
+to use them).
+
+2) create a subdir in the PWL build scenario to hold all your nifty 
+files -- for me, it's:  $PWL/custom_kernel (referred to as $CUSTOM from 
+here on)
+
+3) create $CUSTOM/usr/src, and untar the kernel sources into there. 
+Rename &quot;linux&quot; to &quot;linux-2.4.18&quot; (eg), and symlink linux to it.  Just 
+like you would in a real kernel build.
+
+4) cd to $CUSTOM/usr/src/linux, run &quot;make mrproper&quot;
+
+5) copy $PWL/kernelbuild/usr/src/linux/.config (notice the dot) to 
+$CUSTOM/usr/src/linux/
+
+6) run &quot;make oldconfig&quot;, then run &quot;make menuconfig&quot;.  choose kernel 
+options as appropriate.
+
+7) edit &quot;Makefile&quot; and change &quot;gcc&quot; to &quot;kgcc&quot; (I'm on RH72, using the 
+RH62 compat packages)
+
+8) run &quot;make dep&quot;, &quot;make bzImage&quot;, and &quot;make modules&quot; as normal. 
+(remember to source the compat-* script if you need to first!)
+
+9) mkdir -p $CUSTOM/kernel-root/boot and mkdir -p 
+$CUSTOM/kernel-root/lib/modules
+
+10) cp arch/i386/boot/bzImage $CUSTOM/kernel-root/boot
+
+11) &quot;make INSTALL_MOD_PATH=$CUSTOM/kernel-root modules_install&quot;
+
+
+Step 2 - Build the kernel package
+=================================
+1) cd $CUSTOM/kernel-root
+
+2) cp -a $PWL/kernelbuild/kernel-buildroot/dev .  (I don't know what 
+these devices are used for, but figured it couldn't hurt to drag 'em 
+along for the ride)
+
+
+NOTE: at this point, add your custom devices -- eg, the watchdog device. 
+  For example, &quot;cd $CUSTOM/kernel-root/dev, mknod watchdog c 10 130&quot;
+
+
+3) find dev &gt; kernel-2.4.18.list, find boot &gt;&gt; kernel-2.4.18.list, find 
+lib &gt;&gt; kernel-2.4.18.list
+
+4) edit kernel-2.4.18.list and add trailing slashes to *all* directory 
+names!  Very important that you do this.
+
+5) tar -cf kernel-2.4.18.tar boot/ dev/ lib/
+
+6) cp kernel-2.4.18.* $PWL/packages/Kernel_Custom/
+
+
+Now, at this point all you need to do is run pwlconfig, go into the 
+kernel-custom stuff, and use your new kernel instead of the old one. 
+Pretty simple.  However, as suggested in the Changes file, you want to 
+update some other files as well (eg, &quot;su&quot; from busybox doesn't work as 
+well as insmod).  So, I also built custom packages of the following:
+
+   e2fsprogs-1.27
+   emlog-0.40
+   modutils-2.4.16
+   ppp-2.4.1
+   util-linux-2.11r
+
+The exact same scenario as above is used to build these custom packages; 
+let's use emlog as an example, as many folks will want that with their 
+new kernel.
+
+Step 3 - Build supporting packages (emlog used as example)
+==========================================================
+1) cd $CUSTOM/usr/src
+
+2) untar emlog-0.40 package
+
+3) cd emlog-0.40, edit &quot;Makefile&quot; to set the path to kernel sources 
+(eg,/usr/local/pwl/Embedded_Build/custom_kernel/linux).  Also edit &quot;gcc&quot; 
+to use &quot;kgcc&quot; like you did for the kernel above -- not sure if it's 
+necessary, but I figured it couldn't hurt.
+
+4) run 'make'
+
+5) mkdir -p $CUSTOM/emlog-root/lib/modules/2.4.18/kernel/drivers/misc/, 
+mkdir -p $CUSTOM/emlog-root/usr/bin, mkdir -p $CUSTOM/emlog-root/var/log
+
+6) cp emlog.o 
+$CUSTOM/emlog-root/lib/modules/2.4.18/kernel/drivers/misc/, cp nbcat 
+$CUSTOM/emlog-root/usr/bin
+
+7) cd $CUSTOM/emlog-root/var/log, mknod messages c 241 8
+
+8) find lib &gt; emlog-0.40-2.4.18.list, find usr &gt;&gt; 
+emlog-0.40-2.4.18.list, find var &gt;&gt; emlog-0.40-2.4.18.list
+
+9) edit emlog-0.40-2.4.18.list and add trailing slashes to paths
+
+10) tar -cf emlog-0.40-2.4.18.tar lib/ usr/ var/
+
+11) cp emlog-0.40-2.4.18.* $PWL/packages/Kernel_Custom/
+
+
+Now you can do like you did for the kernel, and just go select the new 
+emlog package (don't forget to deselect the old kernel-2.2.17 one!) to 
+get the module installed.  You still need to deploy your own 
+'rc.modules' script to actually &quot;insmod emlog&quot; on boot.
+
+NOTE: you *must* build the modutils and use that insmod to load emlog.o 
+-- I found that trying to use the 'old' one symlinked to busybox didn't 
+work due to unresolved dependancies.
+
+The only other real custom thing with the supporting packages was the 
+ppp device; you need to make sure you &quot;mknod ppp c 108 0&quot; in a dev/ tree 
+and add that to your ppp-2.4.1.list packaging.  This is buried in some 
+doc somewhere that I found.
+
+Errors, omissions, etc - please feel free to correct and enhance.  I've 
+replaced and rebuilt and customized so much, I'm not sure what I could 
+have missed here.... (eg, lots of crap to suppport Unix98 ptys so telnet 
+logins work)
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000604.html">[Peeweelinux] selecting a compact flash reader
+</A></li>
+	<LI> Next message: <A HREF="000609.html">[Peeweelinux] DiskOnChip Boot Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#608">[ date ]</a>
+              <a href="thread.html#608">[ thread ]</a>
+              <a href="subject.html#608">[ subject ]</a>
+              <a href="author.html#608">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

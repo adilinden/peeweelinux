@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Uncompressed root fs to ramdisk.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000044.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Uncompressed root fs to ramdisk.
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Uncompressed root fs to ramdisk.">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 24 May 2000 07:53:23 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000044.html">Uncompressed root fs to ramdisk.
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mattias,
+
+I use sync flag in my fstab...seems to help, but I think it only 
+forces the writes to occur as quickly as possible - flush buffer 
+or something like that.  However, if power fails while you are
+writing things will get corrupted
+
+Ralph
+
+
+--- Mattias Sjogren &lt;<A HREF="mailto:mattias@voxway.com">mattias@voxway.com</A>&gt; wrote:
+&gt;<i> Another thing to try... Mount the filesystem in synch-mode
+</I>&gt;<i> and no curruption should occur on a suden power failure. Or,
+</I>&gt;<i> does anyone know any better?
+</I>&gt;<i> 
+</I>&gt;<i> /Mattias
+</I>&gt;<i> 
+</I>
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages &amp; get email alerts with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com/">http://im.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000044.html">Uncompressed root fs to ramdisk.
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#42">[ date ]</a>
+              <a href="thread.html#42">[ thread ]</a>
+              <a href="subject.html#42">[ subject ]</a>
+              <a href="author.html#42">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

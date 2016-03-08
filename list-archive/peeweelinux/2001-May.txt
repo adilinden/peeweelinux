@@ -1,0 +1,518 @@
+From peeweelinux@adis.on.ca  Tue May  1 00:11:54 2001
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Mon, 30 Apr 2001 18:11:54 -0500
+Subject: i815 video support with PeeWeeLinux?
+Message-ID: <EE3F7DF79AC85C4BA49A999C8D016A04011E13BD@ausxmbrh06.aus.amer.dell.com>
+
+
+Ok, as an update I was able to get 16-bit 1280x1024 out of an i815 
+on board video system with XFree86 4.0.3, despite it not being
+listed as supported in their driver status notes.  This was on a 
+RedHat 7.0 host system, not the PeeWeeLinux [0.61.0] target which
+doesn't inherently have 4.0.3 support in it.  I'm going to tackle
+getting the right stuff in the target package next...
+
+Here are the relevant lines from XF86Config:
+
+Section "Device"
+	Identifier "Intel Corporation|82810E CGC [Chipset Graphics
+Controller]"
+	Driver	"i810"
+	BoardName	"Unknown"
+	VideoRAM	8192
+EndSection
+
+Section "Screen"
+	Identifier "Screen0"
+	Device "Intel Corporation|82810E CGC [Chipset Graphics Controller]"
+	Monitor "My Monitor"
+	DefaultDepth   16
+	Subsection	"Display"
+		Depth	16
+		Modes "1280x1024" "1024x768" "800x600" "640x480"
+	EndSubsection
+EndSection
+	
+
+Randy
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri May 11 15:53:00 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 11 May 2001 09:53:00 -0500 (CDT)
+Subject: PeeWeeLinux question...
+In-Reply-To: <EE3F7DF79AC85C4BA49A999C8D016A04011E139E@ausxmbrh06.aus.amer.dell.com>
+Message-ID: <Pine.LNX.4.10.10105110949300.2432-100000@develop.knet.on.ca>
+
+Hi,
+
+Thank you for sharing the solution you found regarding RedHat 7.0. I
+forwarded your email to the PWL list as well for reference.
+
+I am currently spending what little spare time I have left at building a
+secure webserver to replace my aging server in place now. Once that has
+been accomplished I will be looking at more PeeWeeLinux development.
+Unfortunately I am left with very little time these days...
+
+TTYL,
+Adi 
+
+On Wed, 18 Apr 2001 Randy_Howard@Dell.com wrote:
+
+> 
+> Thanks, but I found a solution by brute force...  I was looking through
+> the RedHat 7 image, and found /usr/bin/kgcc, which is of a different
+> size than the normal /usr/bin/gcc.  I replaced gcc with kgcc in the
+> Makefile, and the build was successful.  Digging around later on the
+> RedHat website I found a "gotcha" entry describing the problem as:
+> 
+> "For various reasons, gcc is no longer able to compile the kernel from 
+> source because it uses the 2.96 version of the GNU C Compiler. However, 
+> it is still easy to compile your kernel, as version 2.91.66 of the egcs 
+> C compiler has been included with the distribution".
+> 
+> that explains kgcc's purpose, although they don't bother to give
+> specifics on what changed in gcc 2.96 that broke the kernel build.
+> 
+> Thanks for getting back to me anyway, I am really enjoying working
+> with the PWL distribution so far.  If I could figure out what I am 
+> doing wrong trying to get pump to work properly in my image (works
+> fine for dhcp on the RedHat host) I'd be basically done.  I'm sure
+> it's something minor.
+> 
+> It would be nice if the package included the newer XFree86 4.0.3 build 
+> for support of the newer video devices.  Also, I noticed that the ICA 
+> client including is an older one, Citrix has a 6.0.908 release, and PWL 
+> has 3.00.77 in it.  
+> 
+> 
+> Randy Howard
+> 
+> -----Original Message-----
+> From: Adi Linden [mailto:adi@adis.on.ca]
+> Sent: Wednesday, April 18, 2001 04:49 AM
+> To: Randy_Howard@exchange.dell.com
+> Subject: Re: PeeWeeLinux question...
+> 
+> 
+> Hi,
+> 
+> Haven't came across this yet. Can you send me the kernel config file? That
+> would allow me to recreate your build and see if it bombs on my system as
+> well...
+> 
+> TTYL,
+> Adi
+> 
+> On Thu, 12 Apr 2001 Randy_Howard@Dell.com wrote:
+> 
+> > 
+> > I am working on building up a very small image using the ISO CD image
+> which
+> > I downloaded yesterday.  It looks pretty good so far, but I do have a few
+> > questions.  I suspect I'm missing something obvious and hopefully you have
+> > seen this before...
+> > 
+> > First of all, I have been able to get an image installed onto a drive and
+> > boot the kernel, so the basics seem to be working fine.  I am having
+> trouble
+> > building a custom kernel, which when done from within pwlconfig reports it
+> > was successful, but I do not get a bzImage file in the custom kernel
+> package
+> > when it completes.  The package (in this case kernel-Target_64-2.2.17)
+> > contains /boot, but no kernel.  I saw from the PeeWee website that
+> building
+> > the kernel from inside the tool is fairly new, so I decided to try it by
+> > hand instead.
+> > 
+> > Building it manually from kernelbuild/usr/src/linux (2.2.17-13) under the
+> > Embedded_Build tree fails on arch/i386/usr/lib/checksum.S.  That is quite
+> > strange, since a diff of it and the same file on the host /usr/src/....
+> > shows they are identical.  It fails on the #define definitions for SRC()
+> and
+> > DST().  The specific error messages are:
+> > checksum.S:231: badly punctuated parameter list in #define
+> > checksum.S:237: badly punctuated parameter list in #define
+> > 
+> > Of course, that blows up the kernel build.    I suspect something is wrong
+> > in the build environment, but haven't been able to track it down yet.  The
+> > host machine is RedHat 7.0 (2.2.17-8) from Dell.
+> > 
+> > Any hints you might have would be very much appreciated...
+> > 
+> > 
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri May 11 16:29:02 2001
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Fri, 11 May 2001 11:29:02 -0400
+Subject: PeeWeeLinux question...
+Message-ID: <OF68480005.0A4CC604-ON85256A49.00549F08@psdi.com>
+
+
+As an aside, the reason that gcc 2.96 is not able to compile some stuff is
+because technically there is no gcc 2.96. See the GNU site here:
+
+ http://www.gnu.org/software/gcc/gcc-2.96.html
+
+Basically, 2.96 is development code working towards 3.0. (2.97 falls into
+this category too) The most recent formal release of gcc is 2.95.2.
+
+Dion Vansevenant
+Internetwork Administrator
+MRO Software Canada Ltd.
+E: dion.vansevenant@mro.com
+P: 519-642-6046
+F: 519-433-1247
+
+
+
+                                                                                                                        
+                    Adi Linden                                                                                          
+                    <adi@adis.on.ca>          To:     Randy_Howard@dell.com                                             
+                    Sent by:                  cc:     peeweelinux@adis.on.ca                                            
+                    owner-peeweelinux@        Subject:     RE: PeeWeeLinux question...                                  
+                    adis.on.ca                                                                                          
+                                                                                                                        
+                                                                                                                        
+                    2001/05/11 10:53                                                                                    
+                    Please respond to                                                                                   
+                    peeweelinux                                                                                         
+                                                                                                                        
+                                                                                                                        
+
+
+
+
+Hi,
+
+Thank you for sharing the solution you found regarding RedHat 7.0. I
+forwarded your email to the PWL list as well for reference.
+
+I am currently spending what little spare time I have left at building a
+secure webserver to replace my aging server in place now. Once that has
+been accomplished I will be looking at more PeeWeeLinux development.
+Unfortunately I am left with very little time these days...
+
+TTYL,
+Adi
+
+On Wed, 18 Apr 2001 Randy_Howard@Dell.com wrote:
+
+>
+> Thanks, but I found a solution by brute force...  I was looking through
+> the RedHat 7 image, and found /usr/bin/kgcc, which is of a different
+> size than the normal /usr/bin/gcc.  I replaced gcc with kgcc in the
+> Makefile, and the build was successful.  Digging around later on the
+> RedHat website I found a "gotcha" entry describing the problem as:
+>
+> "For various reasons, gcc is no longer able to compile the kernel from
+> source because it uses the 2.96 version of the GNU C Compiler. However,
+> it is still easy to compile your kernel, as version 2.91.66 of the egcs
+> C compiler has been included with the distribution".
+>
+> that explains kgcc's purpose, although they don't bother to give
+> specifics on what changed in gcc 2.96 that broke the kernel build.
+>
+> Thanks for getting back to me anyway, I am really enjoying working
+> with the PWL distribution so far.  If I could figure out what I am
+> doing wrong trying to get pump to work properly in my image (works
+> fine for dhcp on the RedHat host) I'd be basically done.  I'm sure
+> it's something minor.
+>
+> It would be nice if the package included the newer XFree86 4.0.3 build
+> for support of the newer video devices.  Also, I noticed that the ICA
+> client including is an older one, Citrix has a 6.0.908 release, and PWL
+> has 3.00.77 in it.
+>
+>
+> Randy Howard
+>
+> -----Original Message-----
+> From: Adi Linden [mailto:adi@adis.on.ca]
+> Sent: Wednesday, April 18, 2001 04:49 AM
+> To: Randy_Howard@exchange.dell.com
+> Subject: Re: PeeWeeLinux question...
+>
+>
+> Hi,
+>
+> Haven't came across this yet. Can you send me the kernel config file?
+That
+> would allow me to recreate your build and see if it bombs on my system as
+> well...
+>
+> TTYL,
+> Adi
+>
+> On Thu, 12 Apr 2001 Randy_Howard@Dell.com wrote:
+>
+> >
+> > I am working on building up a very small image using the ISO CD image
+> which
+> > I downloaded yesterday.  It looks pretty good so far, but I do have a
+few
+> > questions.  I suspect I'm missing something obvious and hopefully you
+have
+> > seen this before...
+> >
+> > First of all, I have been able to get an image installed onto a drive
+and
+> > boot the kernel, so the basics seem to be working fine.  I am having
+> trouble
+> > building a custom kernel, which when done from within pwlconfig reports
+it
+> > was successful, but I do not get a bzImage file in the custom kernel
+> package
+> > when it completes.  The package (in this case kernel-Target_64-2.2.17)
+> > contains /boot, but no kernel.  I saw from the PeeWee website that
+> building
+> > the kernel from inside the tool is fairly new, so I decided to try it
+by
+> > hand instead.
+> >
+> > Building it manually from kernelbuild/usr/src/linux (2.2.17-13) under
+the
+> > Embedded_Build tree fails on arch/i386/usr/lib/checksum.S.  That is
+quite
+> > strange, since a diff of it and the same file on the host /usr/src/....
+> > shows they are identical.  It fails on the #define definitions for SRC
+()
+> and
+> > DST().  The specific error messages are:
+> > checksum.S:231: badly punctuated parameter list in #define
+> > checksum.S:237: badly punctuated parameter list in #define
+> >
+> > Of course, that blows up the kernel build.    I suspect something is
+wrong
+> > in the build environment, but haven't been able to track it down yet.
+The
+> > host machine is RedHat 7.0 (2.2.17-8) from Dell.
+> >
+> > Any hints you might have would be very much appreciated...
+> >
+> >
+>
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri May 18 20:40:39 2001
+From: peeweelinux@adis.on.ca (Tanguay, Simon)
+Date: Fri, 18 May 2001 15:40:39 -0400
+Subject: RPM compatibility
+Message-ID: <5009AD9521A8D41198EE00805F85F18FCE3228@SEMBO111>
+
+
+I am using pwlconfig to create my distribution and it works fine except one
+thing. I can extract and use package bundled with Pee Wee but cannot use RPM
+bundled with Red Hat 7.1 or 6.2 (ex: Kernel or wu-ftpd packages).  When I
+choose Nothing appears in the "RPM Package Extracted" window but it's wrote
+100%. If there is a problem with this feature, is it possible to extract the
+package with another tool (Ex: RPM) in the package directory and use it?
+
+
+
+--------------------------------------------------------------
+Simon Tanguay
+
+Tel (450) 437-4661 ext: 3393
+Fax (450) 437-8053    
+Teknor Applicom
+616 Cure-Boivin
+Boisbriand, Quebec
+Canada, J7G 2A7
+http://www.teknor.com
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri May 18 21:31:23 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Fri, 18 May 2001 15:31:23 -0500 (CDT)
+Subject: RPM compatibility
+In-Reply-To: <5009AD9521A8D41198EE00805F85F18FCE3228@SEMBO111>
+Message-ID: <Pine.LNX.4.10.10105181526430.26784-100000@adibox.knet.on.ca>
+
+Hi, 
+
+There is an issue with the rpm package included with redhat 6.2. The
+script portion that invokes rpm requires that rpm returns the group 
+defined in the source rpm for the package to be placed in the proper
+'packages' subdirectory. The redhat 6.2 rpm would respond with the group
+stored in the system database which is different from what I've used for
+PeeWeeLinux. So if you use the rpm supplied with RedHat 7.x quite possibly
+the layout of the packages dir isn't what you'd expect. pwlconfig should
+still work but it'll break compatibility with saved configuration plus
+nest the actual tar file quite deeply.
+
+The rpm proven to work can be found in Embedded_Build/bin...
+
+TTYL,
+Adi
+
+On Fri, 18 May 2001, Tanguay, Simon wrote:
+
+> 
+> I am using pwlconfig to create my distribution and it works fine except one
+> thing. I can extract and use package bundled with Pee Wee but cannot use RPM
+> bundled with Red Hat 7.1 or 6.2 (ex: Kernel or wu-ftpd packages).  When I
+> choose Nothing appears in the "RPM Package Extracted" window but it's wrote
+> 100%. If there is a problem with this feature, is it possible to extract the
+> package with another tool (Ex: RPM) in the package directory and use it?
+> 
+> 
+> 
+> --------------------------------------------------------------
+> Simon Tanguay
+> 
+> Tel (450) 437-4661 ext: 3393
+> Fax (450) 437-8053    
+> Teknor Applicom
+> 616 Cure-Boivin
+> Boisbriand, Quebec
+> Canada, J7G 2A7
+> http://www.teknor.com
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue May 22 18:48:53 2001
+From: peeweelinux@adis.on.ca (Tanguay, Simon)
+Date: Tue, 22 May 2001 13:48:53 -0400
+Subject: rpm compatibility
+Message-ID: <5009AD9521A8D41198EE00805F85F18FCE35CF@SEMBO111>
+
+
+Hi,
+
+I tried to install RPM files not included in pee wee linux using pwlconfig
+and RPM version 3.0.3 (included with Red Hat 6.1) and it's still doesn't
+work. So, the problem seem to be something else than the RPM version. I
+tried some packages from Red Hat 6.0, 6.1, 6.2 and 7.1 and the problem still
+the same (no file is extracted but no error, write 100%). Is the package
+included with pee wee linux come directly from Red hat 6.1? Is there
+something I can do to use package not included with pee wee?
+
+--------------------------------------------------------------
+Simon Tanguay
+
+Tel (450) 437-4661 ext: 3393
+Fax (450) 437-8053    
+Teknor Applicom
+616 Cure-Boivin
+Boisbriand, Quebec
+Canada, J7G 2A7
+http://www.teknor.com
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed May 23 07:34:32 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 23 May 2001 01:34:32 -0500 (CDT)
+Subject: rpm compatibility
+In-Reply-To: <5009AD9521A8D41198EE00805F85F18FCE35CF@SEMBO111>
+Message-ID: <Pine.LNX.4.10.10105230130590.904-100000@big.adis.on.ca>
+
+Hi,
+
+The packages included with PeeWeeLinux are custom build for PeeWeeLinux.
+Some are modified Redhat rpms but most are build from scratch. I haven't
+had a chance to try PWL with any of the recent distributions (i.e. RH7.1)
+myself. I am travelling for the next 2 weeks but hope to get some time to
+test this regardless.
+
+TTYL,
+Adi
+
+On Tue, 22 May 2001, Tanguay, Simon wrote:
+
+> 
+> Hi,
+> 
+> I tried to install RPM files not included in pee wee linux using pwlconfig
+> and RPM version 3.0.3 (included with Red Hat 6.1) and it's still doesn't
+> work. So, the problem seem to be something else than the RPM version. I
+> tried some packages from Red Hat 6.0, 6.1, 6.2 and 7.1 and the problem still
+> the same (no file is extracted but no error, write 100%). Is the package
+> included with pee wee linux come directly from Red hat 6.1? Is there
+> something I can do to use package not included with pee wee?
+> 
+> --------------------------------------------------------------
+> Simon Tanguay
+> 
+> Tel (450) 437-4661 ext: 3393
+> Fax (450) 437-8053    
+> Teknor Applicom
+> 616 Cure-Boivin
+> Boisbriand, Quebec
+> Canada, J7G 2A7
+> http://www.teknor.com
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed May 30 21:12:43 2001
+From: peeweelinux@adis.on.ca (David Christensen)
+Date: Wed, 30 May 2001 13:12:43 -0700
+Subject: Can RPM still be used in this situation?
+Message-ID: <D973CF70008ED411B273009027893BA401BE6AF7@irv-exch.phoenix.com>
+
+I've been using the PeeWee Linux distribution to create a Linux file system.
+The end result for me is a tar file with all of the files necessary to boot
+and run Linux.  This works fine, but now I'm faced with the problem of
+providing updates.  RPM has a lot of capabilities that make it useful in my
+situation (PGP/GPG signatures, pre-,post-install scripts, etc.) but one big
+problem is that the RPM database is empty.  I can manually create the
+database with the rpm --initdb command, but since the database doesn't know
+about any of the already installed files I usually get failed dependency
+errors when I run rpm -i.  I understand why, but the question is how to best
+fix this?  Would it be possible to add the current files to the RPM database
+at some point so that new updates would work correctly?  Any thoughts would
+be appreciated.
+
+David Christensen
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

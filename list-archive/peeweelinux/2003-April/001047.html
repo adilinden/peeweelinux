@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Compact Flash
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001046.html">
+   <LINK REL="Next"  HREF="001049.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Compact Flash
+   </H1>
+    <B>Ricardo Trindade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Compact Flash">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 23 Apr 2003 11:47:47 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001046.html">[Peeweelinux] Compact Flash
+</A></li>
+        <LI> Next message: <A HREF="001049.html">[Peeweelinux] Compact Flash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1047">[ date ]</a>
+              <a href="thread.html#1047">[ thread ]</a>
+              <a href="subject.html#1047">[ subject ]</a>
+              <a href="author.html#1047">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I only disagree with the rh8 part, I'm running fine on it.
+
+-----Mensagem original-----
+De: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]Em
+nome de Leif Steinhour
+Enviada: quarta-feira, 23 de Abril de 2003 2:41
+Para: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Assunto: Re: [Peeweelinux] Compact Flash
+
+
+
+
+Okay, a bunch of people have written about this, so I want to set some 
+things straight.
+
+Here's what I think is going on:
+
+1). PWL is probably having even more problems running under RH 8.x than it 
+did under 7.x. My advice: go back and install 6.2 (that's right) on your 
+development platform. You should be able to get it online, it will make 
+your life much easier. 
+2). This stuff about things not working on Compact flash is half nonsense. 
+IDE Compact flash cards are pin-compatible with ide hard disks (if you 
+look online they even sell header boards which route all the signals 
+without modifying them), so Pee Wee runs fine on both ATA compact flash 
+and ATA PCMCIA cards. There are some cards that are sold as &quot;memory&quot; cards 
+that do not have the IDE circuitry built in that will not work (as BOOT 
+devices, but fine for storing info once card services is loaded), but if 
+you get a card that says it shows up as an ide device then it will work 
+provided the card is working (flash drives can wear out). If you have 
+questions about a given card that you have, plug it in to a machine that 
+has the pcmcia drivers and utlities installed properly and see what 
+cardinfo/cardctl have to say about the device.
+
+Pee Wee will automatically (thanks Adi!) do all of the partitioning, so 
+all you need to figure out is where on the development platform the target 
+device is installed and tell pwlconfig in one of the setup screens. For 
+compact flash and PCMCIA devices, either during startup or when the device 
+is inserted it should tell you, for instance &quot;/dev/hde1&quot;. You can use the 
+dmesg command to show information about the boot, otherwise it should 
+print the info to your console during a card insertion. Make sure you're 
+not using your host drive as the target, or you will not be happy with the 
+results. The command df will tell you where your host drives are mounted 
+so you can check. 
+3). If you are installing pee wee on a Disk on Chip, then you need to do 
+more work, because the kernel you use must have the right drivers, and I 
+will refer the reader to past posts in the archives for the appropriate 
+info. 
+
+
+On 2003.04.22 17:55 Correy Edmed wrote:
+&gt;<i> 
+</I>&gt;<i> Hi
+</I>&gt;<i> 
+</I>&gt;<i> I am currently at work experience and trying to set up peewee linux. I 
+</I>&gt;<i> have a PCM-3350 GX1 300Mhz Embedded PC and have a Sandisk 256M Compact 
+</I>&gt;<i> Flash card that I want to install the operating system on.
+</I>&gt;<i> 
+</I>&gt;<i> I have heard bad reports about formatting and partitioning CF cards and 
+</I>&gt;<i> this is where I am up to at the moment. I guess I need to partition the 
+</I>&gt;<i> CF card with a boot sector (hda1)  OS (hda2) and swap (hda3).
+</I>&gt;<i> 
+</I>&gt;<i> I have already experimented with the embedded PC using an ide HDD that I 
+</I>&gt;<i> have installed Redhat 8 on. The CF card just arrived and I placed it in 
+</I>&gt;<i> the CompactFlash socket and it is recognised in the bios as an ide 
+</I>&gt;<i> device however I have no idea on how to mount it.
+</I>&gt;<i> 
+</I>&gt;<i> While reading about PCMCIA I noticed in relation to CF cards about 
+</I>&gt;<i> &quot;ftl_format -i /dev/mem0c0c&quot; however this file (mem0c0c) isn't even in 
+</I>&gt;<i> my dev directory. Also after reading the man page for ftl_format I 
+</I>&gt;<i> noticed that you are able to create a boot secotor which perhaps is what 
+</I>&gt;<i> I need.
+</I>&gt;<i> 
+</I>&gt;<i> Any help on setting up the Compact Flash Card so I can start installing 
+</I>&gt;<i> peewee linux would be much appreciated.
+</I>&gt;<i> 
+</I>&gt;<i> Correy
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001046.html">[Peeweelinux] Compact Flash
+</A></li>
+	<LI> Next message: <A HREF="001049.html">[Peeweelinux] Compact Flash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1047">[ date ]</a>
+              <a href="thread.html#1047">[ thread ]</a>
+              <a href="subject.html#1047">[ subject ]</a>
+              <a href="author.html#1047">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

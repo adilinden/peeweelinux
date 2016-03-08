@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] compact flash
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000873.html">
+   <LINK REL="Next"  HREF="000875.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] compact flash
+   </H1>
+    <B>Cinq - Marcelo Loyola Stival
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] compact flash">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 17 Dec 2002 17:20:19 -0300</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000873.html">[Peeweelinux] compact flash
+</A></li>
+        <LI> Next message: <A HREF="000875.html">[Peeweelinux] howto for peeweelinux?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#874">[ date ]</a>
+              <a href="thread.html#874">[ thread ]</a>
+              <a href="subject.html#874">[ subject ]</a>
+              <a href="author.html#874">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Well, my bios does not recognize, correctly, the geometry of my compact
+flash card (hitachi)
+
+I need to pass the correct values to the kernel when run lilo.
+the configuration file:
+--
+disk=/dev/hd?
+bios=0x80
+sectors=32
+heads=6
+cylinders=306
+--
+This values are common to most 30MB compact flash.
+Just update the values of  CHS to the compact flash
+
+Marcelo
+
+----- Original Message -----
+From: &quot;Ken Emmons, Jr.&quot; &lt;<A HREF="mailto:KEN@qatech.com">KEN@qatech.com</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Sent: Tuesday, December 17, 2002 3:43 PM
+Subject: Re: RE: [Peeweelinux] compact flash
+
+
+&gt;<i> I have ahd problems with a Kingston card on a certain machine, but this
+</I>was for FAT32 stuff (not related to PeeWee .. it was a CNC machine with
+win95..). The same card worked great with PeeWee on a different machine. It
+appeares almost as if some machines are more particular about the flash
+cards, possibly the BIOS??
+&gt;<i>
+</I>&gt;<i> ~Ken
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000873.html">[Peeweelinux] compact flash
+</A></li>
+	<LI> Next message: <A HREF="000875.html">[Peeweelinux] howto for peeweelinux?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#874">[ date ]</a>
+              <a href="thread.html#874">[ thread ]</a>
+              <a href="subject.html#874">[ subject ]</a>
+              <a href="author.html#874">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

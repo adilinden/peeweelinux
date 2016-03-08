@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] single user / custom kernel
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000820.html">
+   <LINK REL="Next"  HREF="000822.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] single user / custom kernel
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] single user / custom kernel">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 29 Oct 2002 18:19:54 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000820.html">[Peeweelinux] single user / custom kernel
+</A></li>
+        <LI> Next message: <A HREF="000822.html">[Peeweelinux] single user / custom kernel
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#821">[ date ]</a>
+              <a href="thread.html#821">[ thread ]</a>
+              <a href="subject.html#821">[ subject ]</a>
+              <a href="author.html#821">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I have an example project that does autologin and launches XFree at startup. It works in generic VGA16 mode, so it should owrk on virtually any VGA system. I think to supress X startup you simply can edit the autologin user's .bashrc file if you don't need it. You can try and start with that as for some ideas of how to autoboot, or adapt that project. Adi posted it to the contrib section of the web site if you want to download it. 
+
+As for Redhat kernel compilation, Make sure you use a compiler compatable with the linux kernel. See the docs in the latest kernel tree (Make sure you download a fresh vanilla kernel from kernel.org, not the redhat kernel source! ) A lot of people install the kgcc package with redhat and compile with that. Simply use rpm to install kgcc and then when compiling linux kernel, check that the command is calling kgcc and not gcc. I think the linux kernel makefile is smart enough to do this. 
+
+Hope this helps,
+
+~Ken
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000820.html">[Peeweelinux] single user / custom kernel
+</A></li>
+	<LI> Next message: <A HREF="000822.html">[Peeweelinux] single user / custom kernel
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#821">[ date ]</a>
+              <a href="thread.html#821">[ thread ]</a>
+              <a href="subject.html#821">[ subject ]</a>
+              <a href="author.html#821">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

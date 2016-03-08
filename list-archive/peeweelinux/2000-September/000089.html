@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Multiple Targets for PeeWee Linux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000087.html">
+   <LINK REL="Next"  HREF="000090.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Multiple Targets for PeeWee Linux
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Multiple Targets for PeeWee Linux">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 11 Sep 2000 08:01:12 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000087.html">Problem installing LILO
+</A></li>
+        <LI> Next message: <A HREF="000090.html">testing, ignore please.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#89">[ date ]</a>
+              <a href="thread.html#89">[ thread ]</a>
+              <a href="subject.html#89">[ subject ]</a>
+              <a href="author.html#89">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>David,
+
+--- David Wood &lt;<A HREF="mailto:jbevren@yahoo.com">jbevren@yahoo.com</A>&gt; wrote:
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;                   Main menu changes:
+</I>&gt;<i> &gt;                   ==================
+</I>&gt;<i> &gt;                   ...
+</I>&gt;<i> &gt;                   ---
+</I>&gt;<i> &gt;                   Configure Target Device &quot;CF 32Mb&quot;--&gt;
+</I>&gt;<i> 
+</I>&gt;<i> How about:          Manage Target Devices --&gt;
+</I>&gt;<i>                     Select Target Device --&gt;
+</I>&gt;<i> 
+</I>&gt;<i> &gt;                   Erase &quot;Flash&quot; --&gt;
+</I>&gt;<i>                of course, erase &quot;flash&quot; would be in the management,
+</I>&gt;<i> &gt;                   Load Filesystem to Flash --&gt;
+</I>&gt;<i>                as well as the loading of the filesystem,
+</I>&gt;<i> &gt;                   Lilo...
+</I>&gt;<i>                and lilo ;)
+</I>&gt;<i> &gt;                   ---
+</I>&gt;<i> &gt;                   ...
+</I>&gt;<i> &gt;
+</I>Hmmm...Adi mentioned an approach like this also.  I think all the steps
+involved should be evident from the main menu... My reasoning (however flawed
+it may be) is something like this:
+
+The main menu shows a progression of steps that must be followed to embed the
+system software to the target. First pick and choose the files you want
+embedded, next pick your target environment (new step now shown in proper order
+:<i>), erase all existing files from the target, load the selected system files
+</I>onto the target and then perform a Lilo operation on the target.
+
+My initial justification for this was to show the steps involved.  Its &quot;bad&quot;
+enough to be hiding all the command line  commands normally required for this
+operation, much less hide the procedure that has to be done.
+
+One of my original goals was to also be able to operate pwlconfig entirely from
+the command line (or shell script) for a manufacturing environment, but this
+has gone largely untested (we use a disk duplicator instead). Here each
+commandline flag roughly corresponded to one of the steps - something like:
+pwlconfig --erase --load --boot
+
+So this may have had a driving effect on the user interface also - some
+consistancy between the commandline and the GUI...
+
+Maybe this argument doesn't make sense now that I actually understand what is
+going on (as opposed to when I started this project and didn't know what had to
+be done to embedd linux :-O).  Hmmmmmm....more thoughts ???
+
+ 
+&gt;<i> 
+</I>&gt;<i> While I have the author's attention,
+</I>&gt;<i> 
+</I>&gt;<i> The current version builds the filesystem into projects/&lt;projectname&gt;/mnt/. 
+</I>&gt;<i> There's no note about where the filesystem is built (I discovered with
+</I>&gt;<i> find). 
+</I>As you found, the custom files and extracted package files are combined
+together under the /projects/prjname/mnt directory.  In theory, the user should
+not have to traverse the projects directory manually - thats what pwlconfig
+does.  While you can do this, if you find yourself doing it on a regular basis,
+then pwlconfig should be extended.
+
+Note: If pwlconfig is comprehensive then you should not have to manually go
+into any of the Embedded_Build subdirectories.
+
+&gt;<i> Also, if I mount a ramdisk/drive/device to the mountpoint, the
+</I>&gt;<i> filesystem build fails on a failure to make the directory.  Could you
+</I>&gt;<i> possibly make that specific mkdir check to see if its a mountpoint first?
+</I>&gt;<i> 
+</I>&gt;<i> -David
+</I>&gt;<i>
+</I>The offending code would be in pwlconfig, function extract_project(), in or
+about line 320...
+
+rm -rf $mntName
+mkdir $mntName
+
+Removing the directory removes all hidden files and everything....
+However if $mntName directory is another device, then it won't disappear and
+the mkdir fails.
+
+Ok to fix this, the code should read (untested):
+
+rm -rf $mntName
+if [ -d $mntName ] ; then  # check for directory
+   ;                       #  directory not deleted, may be mounted
+   ..  .                   #  could test for read/write access ??
+else
+   mkdir $mntName
+   if [ ! &quot;$?&quot; = &quot;0&quot; ] ; then
+    ...   # same stuff...
+fi
+
+Give that a try and let me know if it works in your environment.
+Thanks for the feedback...
+
+Later,
+Ralph
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+<A HREF="http://mail.yahoo.com/">http://mail.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000087.html">Problem installing LILO
+</A></li>
+	<LI> Next message: <A HREF="000090.html">testing, ignore please.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#89">[ date ]</a>
+              <a href="thread.html#89">[ thread ]</a>
+              <a href="subject.html#89">[ subject ]</a>
+              <a href="author.html#89">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

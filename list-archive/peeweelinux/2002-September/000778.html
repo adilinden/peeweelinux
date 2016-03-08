@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Almost working, newbie needs a couple of
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000777.html">
+   <LINK REL="Next"  HREF="000779.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Almost working, newbie needs a couple of
+   </H1>
+    <B>Leif Steinhour
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Almost working, newbie needs a couple of">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 10 Sep 2002 10:47:26 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000777.html">[Peeweelinux] possible (tiny) problem with peewee script ?
+</A></li>
+        <LI> Next message: <A HREF="000779.html">[Peeweelinux] Almost working, newbie needs a couple of
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#778">[ date ]</a>
+              <a href="thread.html#778">[ thread ]</a>
+              <a href="subject.html#778">[ subject ]</a>
+              <a href="author.html#778">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Background: I'm trying to put Pee Wee on Norand 6110 and 6100 handhelds 
+(they are like the ones UPS guys use) so that I can add them to our store 
+of available devices (a HOWTO will be coming when I have them working). My 
+build environment is a Red Hat 7.2 / 2.4.17 setup with an ISA PCMCIA 
+bridge. I'm using regular 256MB PCMCIA Sandisk flash cards. I've got the 
+pwlconfig script loading fine onto the target hardware and believe the 
+custom kernel script is working as well. In my build script I've tried to 
+include syslog and turn on as much logging as possible but may have 
+screwed that up. 
+
+Here goes:
+
+1). (Easy/Dumb) The 6110 starts up and then immediately shuts off, 
+possibly due to a power issue. Attaching it to the docking station results 
+in bringing up the lilo boot menu, and pressing return loads the kernel 
+and gets it to a screen with a bunch of startup and routing (which is 
+strange because I've not installed any networking either in the kernel or 
+the packages) information but it halts there with no login prompt. I'm 
+guessing it's getting to a serial console? but don't really know. It's 
+probably worth noting that it does this regardless of what drive I set the 
+&quot;boot device on target system&quot; to be (I've tried hdc, hde, hdf so far), 
+which is weird. 	When I take the PCMCIA cards out and put them back 
+in my host computer after having done that the /var/messages &quot;file&quot; is not 
+a file and is not readable. For starters, if there is any trick to getting 
+regular bootup information viewable after a boot I'd sure love to hear 
+about it.
+
+2). (Intermediate) The 6100 has a dos 5.x ROM, so I think I have to use 
+loadlin as my bootloader: when I try to use the FAT 16 / ramdisk setup, 
+the unit won't seem to recognize the partition as bootable. Has anyone 
+used loadlin with pee wee? I looked at the FAT 12 partition that the 
+script is creating for the booting off of and it looks like something 
+similar is going on, but I think the norand hardware needs an autoexec.bat 
+file in order to get loadlin working.
+
+	Thanks in advance for any help, and thanks in general for all your 
+work previously. I have benefitted tremendously from looking at the 
+archives.
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000777.html">[Peeweelinux] possible (tiny) problem with peewee script ?
+</A></li>
+	<LI> Next message: <A HREF="000779.html">[Peeweelinux] Almost working, newbie needs a couple of
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#778">[ date ]</a>
+              <a href="thread.html#778">[ thread ]</a>
+              <a href="subject.html#778">[ subject ]</a>
+              <a href="author.html#778">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

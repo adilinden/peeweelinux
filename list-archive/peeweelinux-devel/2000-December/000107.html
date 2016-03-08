@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> pwl_target_load: line 1656: syntax error: unexpected end of file
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000106.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>pwl_target_load: line 1656: syntax error: unexpected end of file
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="pwl_target_load: line 1656: syntax error: unexpected end of file">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 20 Dec 2000 00:27:20 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000106.html">0.53.24
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#107">[ date ]</a>
+              <a href="thread.html#107">[ thread ]</a>
+              <a href="subject.html#107">[ subject ]</a>
+              <a href="author.html#107">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Fixed the pwl_target_load and pwl_target_functions script to work properly
+with bash-2.x. The cause of the problem is a documented incomatability
+between bash-1.14 and bash-2.03. 
+
+So version 0.53.25 will be uploaded shortly...
+
+Below find the 'technical' explanation...
+
+TTYL,
+Adi
+
+
+
+ 
+
+In those scripts I redirect output from certain commands to $rd_log or
+/dev/null depending on the circumstances. Here is an offending line
+example:
+
+{ dd if=$rd_loop_dev bs=1k count=$rd_size_fs | gzip -v9 &gt; $rd_tmp/$rd_ramdisk } &gt;&gt;$rd_log 2&gt;&amp;1
+
+Things are working after adding a semicolon just before the closing
+bracket, like so:
+
+{ dd if=$rd_loop_dev bs=1k count=$rd_size_fs | gzip -v9 &gt; $rd_tmp/$rd_ramdisk; } &gt;&gt;$rd_log 2&gt;&amp;1
+
+Here is the excerpt from the bash2 COMPAT file for reference:
+
+--- Quote ---
+
+2.  One of the bugs fixed in the YACC grammar tightens up the rules
+    concerning group commands ( {...} ).  The `list' that composes the
+    body of the group command must be terminated by a newline or
+    semicolon.  That's because the braces are reserved words, and are
+    recognized as such only when a reserved word is legal.  This means
+    that while bash-1.14 accepted shell function definitions like this:
+
+        foo() { : }
+
+    bash-2.0 requires this:
+
+        foo() { :; }
+
+    This is also an issue for commands like this:
+
+        mkdir dir || { echo 'could not mkdir' ; exit 1; }
+
+    The syntax required by bash-2.0 is also accepted by bash-1.14.
+
+--- Unquote ---
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000106.html">0.53.24
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#107">[ date ]</a>
+              <a href="thread.html#107">[ thread ]</a>
+              <a href="subject.html#107">[ subject ]</a>
+              <a href="author.html#107">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

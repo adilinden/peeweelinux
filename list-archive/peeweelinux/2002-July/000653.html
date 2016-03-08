@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] XFree86 setup help
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000652.html">
+   <LINK REL="Next"  HREF="000654.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] XFree86 setup help
+   </H1>
+    <B>Ed Anuff
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] XFree86 setup help">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 8 Jul 2002 13:27:46 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000652.html">[Peeweelinux] XFree86 setup help
+</A></li>
+        <LI> Next message: <A HREF="000654.html">[Peeweelinux] XFree86 setup help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#653">[ date ]</a>
+              <a href="thread.html#653">[ thread ]</a>
+              <a href="subject.html#653">[ subject ]</a>
+              <a href="author.html#653">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've created a symlink from usr/X11R6/bin/X -&gt; /usr/X11R6/bin/XF86_SVGA and
+tried to start with startx and I get the following errors:
+usr/X11R6/bin/X: error in loading shared libraries: libm.so.6: cannot open
+shared object file: No such file or directory
+_X11TransSocketUNIXConnect: Can't connect: errno = 111
+
+Thanks
+
+Ed
+
+----- Original Message -----
+From: &quot;Ricardo Trindade&quot; &lt;<A HREF="mailto:Ricardo.Trindade@myrealbox.com">Ricardo.Trindade@myrealbox.com</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Sent: Monday, July 08, 2002 11:08 AM
+Subject: RE: [Peeweelinux] XFree86 setup help
+
+
+&gt;<i> looks fine. what's your error ? did you notice if the servers are
+</I>installed,
+&gt;<i> or if they are in individual packages ?
+</I>&gt;<i>
+</I>&gt;<i> one thing I noticed was the X symlink is not created, so try to run the
+</I>&gt;<i> XServer with XFree86_SVGA (for example, if you use this server)
+</I>&gt;<i>
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;<i> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Ed Anuff
+</I>&gt;<i> Sent: segunda-feira, 8 de Julho de 2002 17:46
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: [Peeweelinux] XFree86 setup help
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Perhaps I'm not including all the relevant packages?  What packages did
+</I>you
+&gt;<i> select in order to get it to work?  These are the packages I used:
+</I>&gt;<i>
+</I>&gt;<i> XFree86
+</I>&gt;<i> XFree86-100dpi-fonts,
+</I>&gt;<i> XFree86-75dpi-fonts
+</I>&gt;<i> XFree86-FBDev
+</I>&gt;<i> XFree86-libs
+</I>&gt;<i> XFree86-stuff,
+</I>&gt;<i> XFree86-twm
+</I>&gt;<i> XFree86-xdm
+</I>&gt;<i> XFree86-xfs
+</I>&gt;<i> xpm
+</I>&gt;<i>
+</I>&gt;<i> Ed
+</I>&gt;<i>
+</I>&gt;<i> ----- Original Message -----
+</I>&gt;<i> From: &quot;Ricardo Trindade&quot; &lt;<A HREF="mailto:Ricardo.Trindade@myrealbox.com">Ricardo.Trindade@myrealbox.com</A>&gt;
+</I>&gt;<i> To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+</I>&gt;<i> Sent: Monday, July 08, 2002 3:07 AM
+</I>&gt;<i> Subject: RE: [Peeweelinux] XFree86 setup help
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> &gt; I was able to setup XFree86 correctly out of the box. can you post your
+</I>&gt;<i> &gt; concrete troubles ?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; -----Original Message-----
+</I>&gt;<i> &gt; From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;<i> &gt; [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Ed Anuff
+</I>&gt;<i> &gt; Sent: segunda-feira, 8 de Julho de 2002 3:11
+</I>&gt;<i> &gt; To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; Subject: [Peeweelinux] XFree86 setup help
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; (sorry for the previously HTML-formatted email)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I've been trying to get XFree86 running but I haven't had any luck.  Can
+</I>&gt;<i> &gt; someone please post the steps necessary?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Ed
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000652.html">[Peeweelinux] XFree86 setup help
+</A></li>
+	<LI> Next message: <A HREF="000654.html">[Peeweelinux] XFree86 setup help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#653">[ date ]</a>
+              <a href="thread.html#653">[ thread ]</a>
+              <a href="subject.html#653">[ subject ]</a>
+              <a href="author.html#653">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

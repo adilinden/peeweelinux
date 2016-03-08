@@ -1,0 +1,2319 @@
+From peeweelinux@adis.on.ca  Tue Mar  5 09:09:47 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Tue, 5 Mar 2002 10:09:47 +0100
+Subject: [Peeweelinux] Re: Peewee on Rocky 328E
+Message-ID: <C1256B73.00323F56.00@vzmta01.netfr.alcatel.fr>
+
+
+Hi everybody,
+
+Thank you Mark for your last e-mail.
+
+Here is the result of my recent peewee installation test on my embedded PC board
+Rocky 328E.
+
+I install the IDE HD (as slave) of the embedded PC on my desk PC (Pentium II 350
+Mhz, 384 MB RAM), with Red Hat and pwlconfig .
+
+With pwlconfig : copy/paste of the "minimal" project to my project : minitest
+
+I only change those parameters :
+
+Target : uncompressed ramdisk, boot from ext2 partition
+Target device : "/dev/hdb"
+boot device on target system : "/dev/hda"
+
+Then, I try to install peewee on my DESK PC : I remove the master HD of my desk
+PC, and I replace it with the HD of my embedded PC as primary master. And ... it
+works ! Great ! Peewee ask me for a loggin and a password. But I do not know
+what to enter :-( Thus, I can not log on... (What is the default logon and pwd
+?)
+
+Then I move the embedded PC HD (still as primary master) from my desk PC to my
+embedded PC (386, 3712 kB RAM). And it does not come up :-(
+
+The embedded PC seems to boot normally :
+
+Lilo boot
+Loading Linux ..........
+.
+.
+until
+.
+.
+Ramdisk compressed image found at block 0
+VFS mounted root (ext2 filesystem)
+Copying system file from /dev/hda2 to /dev/ram2 ...
+
+And then starts the nightmare : an endless loop of :
+
+VM : do_try_to_free_pages failed for linuxrc
+
+that flows up with sometimes a different line :
+
+VM : do_try_to_free_pages failed for kswapd
+
+What is the problem with my embedded PC ? A lack of RAM ?
+
+Is there any parameter to change in pwlconfig ? Maybe "Free space on ramdisk :
+2000". Do I have to try with less than 2000 ? Anybody have any idea ?
+
+Thank you
+
+Guillaume PREVOST
+
+
+
+
+
+From peeweelinux@adis.on.ca  Tue Mar  5 14:00:46 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Tue, 5 Mar 2002 09:00:46 -0500
+Subject: [Peeweelinux] Re: Peewee on Rocky 328E
+References: <C1256B73.00323F56.00@vzmta01.netfr.alcatel.fr>
+Message-ID: <002801c1c44e$3d8fec20$0101a8c0@dellc800>
+
+On Tue, 5 March 2002, Guillaume PREVOST wrote:
+
+> Great ! Peewee ask me for a loggin and a password. But I do not know
+> what to enter :-( Thus, I can not log on... (What is the default logon and pwd)
+
+root, redhat
+
+> Ramdisk compressed image found at block 0
+> VFS mounted root (ext2 filesystem)
+> Copying system file from /dev/hda2 to /dev/ram2 ...
+>
+> And then starts the nightmare : an endless loop of :
+>
+> VM : do_try_to_free_pages failed for linuxrc
+>
+> that flows up with sometimes a different line :
+>
+> VM : do_try_to_free_pages failed for kswapd
+>
+> What is the problem with my embedded PC ? A lack of RAM ?
+>
+> Is there any parameter to change in pwlconfig ? Maybe "Free space on ramdisk :
+> 2000". Do I have to try with less than 2000 ? Anybody have any idea ?
+>
+
+With only 3712 kB, you're definitely not going to want a ramdisk with 2000 kB free.  Try
+changing it to 500 kB.
+
+If that doesn't work you may want to try changing your target to "Read-write root on a
+single partition".  This option will not use any ramdisks -- your root filesystem will be
+on the hard drive, rather than in RAM.
+
+Regards,
+
+Mark
+
+
+
+
+
+
+From peeweelinux@adis.on.ca  Tue Mar  5 14:24:27 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Tue, 5 Mar 2002 15:24:27 +0100
+Subject: [Peeweelinux] PeeWee for Aranym VM
+Message-ID: <OFFD886EAE.A6675875-ONC1256B73.004E54CD@mn.man.de>
+
+Hello!
+
+
+May I introduce myself? I am Martin Doering, Maintainer of the EmuTOS
+project, a newly written OS for the Atari ST series computers.
+
+http://emutos.sourceforge.net
+
+EmuTOS is thought to be run on Atari emulators. All these emulators need a
+host OS for to be used.
+
+I am searching for such an host OS, which is small enough to fit on one
+floppy, and what can start the emulator from another floppy. Possibly I
+would like to have a chance to install all this on a Harddisk, means create
+some kind of installation disks for a very minimal harddisk linux system.
+After this, you should not get in contact with the underlying host OS
+kernel more, than needed.
+
+Also the creation of this mini linux distribution should be easy and
+managable. This is, why I had an eye on PeeWee Linux.
+
+What do you think, would PeeWee linux be a good choice for this special
+thing?
+
+And I have another question: Do I really need to download 177 MB, for to
+build one 1,44 MB floppy?
+If yes, do I have to do this for every release of PeeWee linux?
+
+
+Thanks in advance!
+--
+Martin Döring
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar  7 12:53:03 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Thu, 7 Mar 2002 13:53:03 +0100
+Subject: [Peeweelinux] Re: Peewee on Rocky 328E
+Message-ID: <C1256B75.00470EB5.00@vzmta01.netfr.alcatel.fr>
+
+--0__=qn7wpSyBMiiUMYkXFEh4FiGxZijhFt5jVa3u6TBRPfmOAcXLEixT51fz
+Content-type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-transfer-encoding: quoted-printable
+
+
+
+
+Great ! peewee runs on my embedded PC card :-)
+
+Thank you very much for you help, Mark.
+
+I've unsuccessfully tried with 500kB as Free space on ramdisk. Unsucces=
+sfully
+with 50kB.
+
+Then I've successfully tried with "Read-write root on a single partitio=
+n".
+
+What is the consequence of this "Read-write root on a single partition"=
+ option ?
+My PC card will run slowly ?
+
+Now, I will try to re-configure peewee for this specific card (Ethernet=
+ ...).
+Presently, it's only a copy of the "minimal" configuration.
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+"Mark Meade" <mark@lakeshoremicro.com> on 05/03/2002 15:00:46
+
+Veuillez r=E9pondre =E0 peeweelinux@adis.on.ca
+
+Pour :    peeweelinux@adis.on.ca
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] Re: Peewee on Rocky 328E
+
+
+=
+
+--0__=qn7wpSyBMiiUMYkXFEh4FiGxZijhFt5jVa3u6TBRPfmOAcXLEixT51fz
+Content-type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+On Tue, 5 March 2002, Guillaume PREVOST wrote:
+
+> Great ! Peewee ask me for a loggin and a password. But I do not know
+> what to enter :-( Thus, I can not log on... (What is the default logon and
+pwd)
+
+root, redhat
+
+> Ramdisk compressed image found at block 0
+> VFS mounted root (ext2 filesystem)
+> Copying system file from /dev/hda2 to /dev/ram2 ...
+>
+> And then starts the nightmare : an endless loop of :
+>
+> VM : do_try_to_free_pages failed for linuxrc
+>
+> that flows up with sometimes a different line :
+>
+> VM : do_try_to_free_pages failed for kswapd
+>
+> What is the problem with my embedded PC ? A lack of RAM ?
+>
+> Is there any parameter to change in pwlconfig ? Maybe "Free space on ramdisk :
+> 2000". Do I have to try with less than 2000 ? Anybody have any idea ?
+>
+
+With only 3712 kB, you're definitely not going to want a ramdisk with 2000 kB
+free.  Try
+changing it to 500 kB.
+
+If that doesn't work you may want to try changing your target to "Read-write
+root on a
+single partition".  This option will not use any ramdisks -- your root
+filesystem will be
+on the hard drive, rather than in RAM.
+
+Regards,
+
+Mark
+
+
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+--0__=qn7wpSyBMiiUMYkXFEh4FiGxZijhFt5jVa3u6TBRPfmOAcXLEixT51fz--
+
+
+From peeweelinux@adis.on.ca  Thu Mar  7 13:25:13 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Thu, 7 Mar 2002 08:25:13 -0500
+Subject: [Peeweelinux] PeeWee for Aranym VM
+References: <OFFD886EAE.A6675875-ONC1256B73.004E54CD@mn.man.de>
+Message-ID: <001001c1c5db$a223cf10$0101a8c0@dellc800>
+
+Hi Martin,
+
+Peewee Linux is a good choice for easily creating and customizing a bootable floppy.  It
+can also be used to install to a hard drive, although it doesn't create "installation
+disks".  As outlined in another thread on this list, the easiest way to install to a hard
+drive is to physically remove it from your target machine, and temporarily install it in
+the development machine.
+
+One of the strengths of Peewee (and why it is 177 MB) is the availability of many
+different Linux packages, all optimized to reduce their size on the target.
+
+You don't really need to download the entire 177 MB, as this includes source.  The binary
+only packages are about 51 MB.  I believe that thus far, every new release of Peewee does
+require downloading of at least the binary packages.
+
+Mark
+
+Martin Doering wrote:
+
+> I am searching for such an host OS, which is small enough to fit on one
+> floppy, and what can start the emulator from another floppy. Possibly I
+> would like to have a chance to install all this on a Harddisk, means create
+> some kind of installation disks for a very minimal harddisk linux system.
+> After this, you should not get in contact with the underlying host OS
+> kernel more, than needed.
+>
+> Also the creation of this mini linux distribution should be easy and
+> managable. This is, why I had an eye on PeeWee Linux.
+>
+> What do you think, would PeeWee linux be a good choice for this special
+> thing?
+>
+> And I have another question: Do I really need to download 177 MB, for to
+> build one 1,44 MB floppy?
+> If yes, do I have to do this for every release of PeeWee linux?
+
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar  7 14:02:12 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Thu, 7 Mar 2002 09:02:12 -0500
+Subject: [Peeweelinux] Re: Peewee on Rocky 328E
+References: <C1256B75.00470EB5.00@vzmta01.netfr.alcatel.fr>
+Message-ID: <003801c1c5e0$c290f2f0$0101a8c0@dellc800>
+
+Guillaume,
+
+When you configure your target as a compressed (or uncompressed) ramdisk, the entire root
+file system is copied to RAM after booting the kernel.  In other words, the target device
+(floppy, flash, etc) is used only for booting.  All the files on your system exist in RAM,
+so if you make changes to any of the files, they won't survive a power fail.
+
+Having the file system entirely in RAM is a good thing for embedded systems.  It the
+system loses power, file system corruption is not an issue because everything will be
+restored from the target device on the next boot.
+
+Your system should not run noticeably slower, but be aware that power failures could cause
+the file system on your hard drive to have errors.
+
+Depending on what exactly you are trying to do, it might be best to try to find some more
+RAM for the PC.
+
+Mark
+
+Guillaume PREVOST wrote:
+
+>Then I've successfully tried with "Read-write root on a single partition".
+>
+>What is the consequence of this "Read-write root on a single partition" option ?
+> My PC card will run slowly ?
+
+
+
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar  7 14:42:56 2002
+From: peeweelinux@adis.on.ca (Mateo Garcia, Carlos)
+Date: Thu, 7 Mar 2002 15:42:56 +0100
+Subject: [Peeweelinux] Linking against older glibc
+Message-ID: <82DC6B639424D611A873001083F92DA237D13E@madtorsv07.indra.es>
+
+I am building an application for an embedded system that uses an older version of glibc, ld-linux and X11 than the linux computer I am using to develop the application.
+When I compile and link, the app runs on the development computers, but it fails (logically) on the embedded system.
+ 
+What is the easiest way to compile and link against the libraries installed in the embedded system?  (provided I don't want to downgrade the libraries in my development machine).
+ 
+Thank you
+--
+Carlos Mateo
+cmateo@indra.es
+
+From peeweelinux@adis.on.ca  Thu Mar  7 14:50:04 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Thu, 7 Mar 2002 15:50:04 +0100
+Subject: [Peeweelinux] =?iso-8859-1?Q?R=E9f._:_Re:_[Peeweelinux]_Re:_Peewee_on_Rocky_328?=
+ =?iso-8859-1?Q?E?=
+Message-ID: <C1256B75.0051778F.00@vzmta01.netfr.alcatel.fr>
+
+--0__=vt2t3XDUdp1mP9nFx8Fj74SwK2U9W34yYuS0emPnbkb9Skk0k4H2pCJd
+Content-type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-transfer-encoding: quoted-printable
+
+
+
+
+Hi,
+
+Our embedded PC card is very close to its power supply (battery), with =
+only a
+very few components between them (12V-5V CC/CC converter and a relay). =
+Thus I
+think that risks of power supply failures are quite minor. But you are =
+right, I
+prefere work with a ramdisk. The trouble is I do not find memory for my=
+ PC Card.
+It seems to be obsolete : max 32 MB on a 72 pin SIMM (single in-line me=
+mory
+module). The chipset only support single side DRAM. And I only find dua=
+l side 72
+pin DRAM. I've tested with dual side, and it do not run.
+
+If somebody knows where I can find such memory (web site or something e=
+lse ...),
+he will makes me very happy...
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+"Mark Meade" <mark@lakeshoremicro.com> on 07/03/2002 15:02:12
+
+Veuillez r=E9pondre =E0 peeweelinux@adis.on.ca
+
+Pour :    peeweelinux@adis.on.ca
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] Re: Peewee on Rocky 328E
+
+
+=
+
+--0__=vt2t3XDUdp1mP9nFx8Fj74SwK2U9W34yYuS0emPnbkb9Skk0k4H2pCJd
+Content-type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+Guillaume,
+
+When you configure your target as a compressed (or uncompressed) ramdisk, the
+entire root
+file system is copied to RAM after booting the kernel.  In other words, the
+target device
+(floppy, flash, etc) is used only for booting.  All the files on your system
+exist in RAM,
+so if you make changes to any of the files, they won't survive a power fail.
+
+Having the file system entirely in RAM is a good thing for embedded systems.  It
+the
+system loses power, file system corruption is not an issue because everything
+will be
+restored from the target device on the next boot.
+
+Your system should not run noticeably slower, but be aware that power failures
+could cause
+the file system on your hard drive to have errors.
+
+Depending on what exactly you are trying to do, it might be best to try to find
+some more
+RAM for the PC.
+
+Mark
+
+Guillaume PREVOST wrote:
+
+>Then I've successfully tried with "Read-write root on a single partition".
+>
+>What is the consequence of this "Read-write root on a single partition" option
+?
+> My PC card will run slowly ?
+
+
+
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+
+
+
+
+--0__=vt2t3XDUdp1mP9nFx8Fj74SwK2U9W34yYuS0emPnbkb9Skk0k4H2pCJd--
+
+
+From peeweelinux@adis.on.ca  Thu Mar  7 16:00:25 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Thu, 7 Mar 2002 11:00:25 -0500
+Subject: [Peeweelinux] Linking against older glibc
+References: <82DC6B639424D611A873001083F92DA237D13E@madtorsv07.indra.es>
+Message-ID: <001801c1c5f1$468cfe40$0101a8c0@dellc800>
+
+Hi Carlos,
+
+There are "compatibility packages" available that allow you to do this without removing
+existing libraries on your machine.
+
+Maybe http://mail.adis.on.ca/pipermail/peeweelinux-devel/2002-February/000164.html will
+help.
+
+The other alternative is to statically link your applications, removing the dependencies
+on shared libraries.  This, or course, makes your applications much larger.
+
+Mark
+
+Carlos Mateo wrote:
+
+> What is the easiest way to compile and link against the libraries installed in the
+> embedded system? (provided I don't want to downgrade the libraries in my development
+machine).
+
+
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar  7 16:08:22 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 7 Mar 2002 10:08:22 -0600 (CST)
+Subject: [Peeweelinux] Linking against older glibc
+In-Reply-To: <82DC6B639424D611A873001083F92DA237D13E@madtorsv07.indra.es>
+Message-ID: <Pine.LNX.4.33.0203070918420.22915-100000@adibox.knet.ca>
+
+Hi,
+
+The PeeWeeLinux binaries were compiled on a RedHat 6.2 system. If you link 
+against those binaries things should work in the embedded system. 
+
+Another option would be to build a statically linked application.
+
+Adi
+
+On Thu, 7 Mar 2002, Mateo Garcia, Carlos wrote:
+
+> I am building an application for an embedded system that uses an older version of glibc, ld-linux and X11 than the linux computer I am using to develop the application.
+> When I compile and link, the app runs on the development computers, but it fails (logically) on the embedded system.
+>  
+> What is the easiest way to compile and link against the libraries installed in the embedded system?  (provided I don't want to downgrade the libraries in my development machine).
+>  
+> Thank you
+> --
+> Carlos Mateo
+> cmateo@indra.es
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Mar 14 22:51:16 2002
+From: peeweelinux@adis.on.ca (Douglas Bush)
+Date: Thu, 14 Mar 2002 15:51:16 -0700
+Subject: [Peeweelinux] How is PWL loaded into Compact flash?
+Message-ID: <028a01c1cbaa$c002eaa0$090110ac@TRENT>
+
+Hello,
+
+I'm currently evaluating the use of PWL for use in a wireless networking
+appliance. (Yup, we're strapping the bird to an oil well.)
+
+How is the final PWL image placed in the compact flash?  Is the CF card
+mounted on the development machine, formatted, installed, then
+re-inserted in the target and booted?  While the web page only mentions
+a few concerns about formatting the CF card, how is that actually done?
+
+The only other concern I have is, whether PWL supports the complete
+PCMCIA distribution? (I assume yes, but I assume that I'd have to
+manually install this after I built the PWL distribution.)
+
+Douglas Bush
+Extreme Engineering
+#17, 6025 - 12 St. SE
+Calgary, Alberta, Canada
+T2H 2K1
+
+Phone: 403 640 9494 ext-208
+Fax: 403 640 9599
+
+http://www.extremeeng.com
+
+
+
+From peeweelinux@adis.on.ca  Fri Mar 15 02:42:35 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 14 Mar 2002 20:42:35 -0600 (CST)
+Subject: [Peeweelinux] How is PWL loaded into Compact flash?
+In-Reply-To: <028a01c1cbaa$c002eaa0$090110ac@TRENT>
+Message-ID: <Pine.LNX.4.33.0203142041220.903-100000@mobile.adis.on.ca>
+
+Hi,
+
+I recommend using the USB reader for writing and reading of the CF card on
+the development system.
+
+Regards,
+Adi
+
+On Thu, 14 Mar 2002, Douglas Bush wrote:
+
+> Hello,
+>
+> I'm currently evaluating the use of PWL for use in a wireless networking
+> appliance. (Yup, we're strapping the bird to an oil well.)
+>
+> How is the final PWL image placed in the compact flash?  Is the CF card
+> mounted on the development machine, formatted, installed, then
+> re-inserted in the target and booted?  While the web page only mentions
+> a few concerns about formatting the CF card, how is that actually done?
+>
+> The only other concern I have is, whether PWL supports the complete
+> PCMCIA distribution? (I assume yes, but I assume that I'd have to
+> manually install this after I built the PWL distribution.)
+>
+> Douglas Bush
+> Extreme Engineering
+> #17, 6025 - 12 St. SE
+> Calgary, Alberta, Canada
+> T2H 2K1
+>
+> Phone: 403 640 9494 ext-208
+> Fax: 403 640 9599
+>
+> http://www.extremeeng.com
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Mon Mar 18 15:10:27 2002
+From: peeweelinux@adis.on.ca (Duane Cox)
+Date: Mon, 18 Mar 2002 09:10:27 -0600
+Subject: [Peeweelinux] swapper prob.
+Message-ID: <001201c1ce8f$09392630$15360f0a@NEBULA>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_000F_01C1CE5C.BE6F68D0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+PeeWee has been working just fine until a few days ago, I reinstalled my =
+development machine with redhat linux 6.2 (which i was using before), =
+reinstalled peewee linux, and then installed my target /dev/msys/fla.
+Now when the kernel boots, it gets to the RAMDISK and then spits out...
+VM: do_try_to_free_pages failed for swapper...
+
+I noticed you have seen this before from a post but didn't find an =
+answer... could you please help!!
+
+Thanks
+Duane Cox
+dcox@illicom.net
+
+
+
+
+------=_NextPart_000_000F_01C1CE5C.BE6F68D0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.2713.1100" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>
+<DIV><FONT face=3DArial size=3D2>PeeWee has been working just fine until =
+a few days=20
+ago, I reinstalled my development machine with redhat linux 6.2 (which i =
+was=20
+using before), reinstalled peewee linux, and then installed my target=20
+/dev/msys/fla.</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2>Now when the kernel boots, it gets to =
+the RAMDISK=20
+and then spits out...</FONT></DIV>
+<DIV><FONT face=3DArial><I>VM: do_try_to_free_pages failed for=20
+swapper...</I></FONT></DIV>
+<DIV><FONT face=3DArial><I></I></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial><FONT size=3D2>I noticed you have seen this =
+before from a=20
+post but didn't find an answer... could you please =
+help!!</FONT></FONT></DIV>
+<DIV><FONT face=3DArial><FONT size=3D2></FONT></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial><FONT size=3D2>Thanks</FONT></FONT></DIV>
+<DIV><FONT face=3DArial><FONT size=3D2>Duane Cox</FONT></FONT></DIV>
+<DIV><FONT face=3DArial><FONT size=3D2><A=20
+href=3D"mailto:dcox@illicom.net">dcox@illicom.net</A></FONT></FONT></DIV>=
+
+<DIV><FONT face=3DArial>&nbsp;</DIV>
+<DIV><EM><BR></EM></DIV></FONT></FONT></DIV></BODY></HTML>
+
+------=_NextPart_000_000F_01C1CE5C.BE6F68D0--
+
+
+From peeweelinux@adis.on.ca  Mon Mar 18 15:32:08 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Mon, 18 Mar 2002 10:32:08 -0500
+Subject: [Peeweelinux] swapper prob.
+References: <001201c1ce8f$09392630$15360f0a@NEBULA>
+Message-ID: <000a01c1ce92$210a3a30$0101a8c0@dellc800>
+
+Hi Duane,
+
+It might have something to do with the amount of available RAM -- maybe reducing the "Free
+space on ramdisk" parameter might help.
+
+Mark
+
+Duane Cox wrote:
+
+>Now when the kernel boots, it gets to the RAMDISK and then spits out...
+> VM: do_try_to_free_pages failed for swapper...
+
+
+
+
+From peeweelinux@adis.on.ca  Mon Mar 18 15:35:42 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 18 Mar 2002 09:35:42 -0600 (CST)
+Subject: [Peeweelinux] swapper prob.
+In-Reply-To: <000a01c1ce92$210a3a30$0101a8c0@dellc800>
+Message-ID: <Pine.LNX.4.33.0203180934170.9992-100000@adibox.knet.ca>
+
+I don't think the ramdisk paramter actually allocates any memory. It just 
+sets limits. I.e. I am running a box with 32MB of physical memory and the 
+remdisk paramter set to 200000, which would allow me a largest ramdisk of 
+200MB.
+
+Adi
+
+On Mon, 18 Mar 2002, Mark Meade wrote:
+
+> Hi Duane,
+> 
+> It might have something to do with the amount of available RAM -- maybe reducing the "Free
+> space on ramdisk" parameter might help.
+> 
+> Mark
+> 
+> Duane Cox wrote:
+> 
+> >Now when the kernel boots, it gets to the RAMDISK and then spits out...
+> > VM: do_try_to_free_pages failed for swapper...
+> 
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Mon Mar 18 16:19:56 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Mon, 18 Mar 2002 11:19:56 -0500
+Subject: [Peeweelinux] swapper prob.
+References: <Pine.LNX.4.33.0203180934170.9992-100000@adibox.knet.ca>
+Message-ID: <001b01c1ce98$c9773c30$0101a8c0@dellc800>
+
+Hi Adi,
+
+I'm a bit confused.  I was under the impression that the "ramdisk free" parameter was used
+when Peewee determines the total ramdisk size.
+
+In one of the scripts, the formula seems to be
+    total ram disk size = file system size + "free" size
+
+I tried playing with this parameter a few months ago, and from my notes:
+
+Filesystem  1k-blocks Used    Free
+/dev/ram0    6764        4494    2270        (Ramdisk Free = 2000)
+/dev/ram0    5311        4494     817         (Ramdisk Free = 500)
+
+It seems like this parameter does affect the memory usage on the target.  Am I
+misunderstanding something here?
+
+Thanks,
+
+Mark
+
+Adi Linden wrote:
+
+> I don't think the ramdisk paramter actually allocates any memory. It just
+> sets limits. I.e. I am running a box with 32MB of physical memory and the
+> remdisk paramter set to 200000, which would allow me a largest ramdisk of
+> 200MB.
+
+
+
+
+
+From peeweelinux@adis.on.ca  Mon Mar 18 16:31:03 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Mon, 18 Mar 2002 17:31:03 +0100
+Subject: [Peeweelinux] swapper prob.
+Message-ID: <C1256B80.005AF3A6.00@vzmta01.netfr.alcatel.fr>
+
+--0__=2VP3EXp7DSmjdOOhqd5xfJjHNS6yxQRXi00esAHmbUPE5JLqNG8utJTM
+Content-type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-transfer-encoding: quoted-printable
+
+
+
+
+Hi,
+
+I had the same probleme with 4MB RAM (even with 50kB free on Ramdisk
+configuration). I resolve this probleme (thank you Mark) by selecting t=
+he Target
+: "Read-write in a single partition" (or something like that, I don't h=
+ave
+pwlconfig here). But then, you don't use any Ramdisk ...
+
+Now, I can loggin peewee, but I have an azerty keyboard, and peewee run=
+s with a
+qwerty keyboard. I try to make this change (my project is a copy of "mi=
+nimal").
+I try : Create Custom Kernel Package / Select a configuration / Configu=
+re the
+Kernel (menu config) / Filesystems / Native langage Support / Default N=
+LS option
+and I change with NLS ISO 8859-1 (latin 1). Then Extract file system fo=
+r
+project.
+
+But the keyboard is still configured as qwerty :-(
+
+Any idea ?
+
+Thank you.
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+Adi Linden <adi@adis.on.ca> on 18/03/2002 16:35:42
+
+Veuillez r=E9pondre =E0 peeweelinux@adis.on.ca
+
+Pour :    peeweelinux@adis.on.ca
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] swapper prob.
+
+
+=
+
+--0__=2VP3EXp7DSmjdOOhqd5xfJjHNS6yxQRXi00esAHmbUPE5JLqNG8utJTM
+Content-type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+I don't think the ramdisk paramter actually allocates any memory. It just
+sets limits. I.e. I am running a box with 32MB of physical memory and the
+remdisk paramter set to 200000, which would allow me a largest ramdisk of
+200MB.
+
+Adi
+
+On Mon, 18 Mar 2002, Mark Meade wrote:
+
+> Hi Duane,
+>
+> It might have something to do with the amount of available RAM -- maybe
+reducing the "Free
+> space on ramdisk" parameter might help.
+>
+> Mark
+>
+> Duane Cox wrote:
+>
+> >Now when the kernel boots, it gets to the RAMDISK and then spits out...
+> > VM: do_try_to_free_pages failed for swapper...
+>
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+
+
+
+
+--0__=2VP3EXp7DSmjdOOhqd5xfJjHNS6yxQRXi00esAHmbUPE5JLqNG8utJTM--
+
+
+From peeweelinux@adis.on.ca  Mon Mar 18 16:45:23 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 18 Mar 2002 10:45:23 -0600 (CST)
+Subject: [Peeweelinux] swapper prob.
+In-Reply-To: <001b01c1ce98$c9773c30$0101a8c0@dellc800>
+Message-ID: <Pine.LNX.4.33.0203181039390.11574-100000@adibox.knet.ca>
+
+Hi Mark,
+
+My apologies. You're right. I should read messages more thoroughly before 
+replying. I understood his development system was complaining, not the 
+target.
+
+The kernel parameter I was talking about is set by pwlconfig based on the 
+final ramdisk size. It is set for the target automatically.
+
+The "ramdisk free" in pwlconfig changes the overall ramdisk size of the 
+target system. Since the ramdisk uses up physical memory, any change in 
+this paramter will change memory consumption on the target.
+
+Adi
+
+
+
+On Mon, 18 Mar 2002, Mark Meade wrote:
+
+> Hi Adi,
+> 
+> I'm a bit confused.  I was under the impression that the "ramdisk free" parameter was used
+> when Peewee determines the total ramdisk size.
+> 
+> In one of the scripts, the formula seems to be
+>     total ram disk size = file system size + "free" size
+> 
+> I tried playing with this parameter a few months ago, and from my notes:
+> 
+> Filesystem  1k-blocks Used    Free
+> /dev/ram0    6764        4494    2270        (Ramdisk Free = 2000)
+> /dev/ram0    5311        4494     817         (Ramdisk Free = 500)
+> 
+> It seems like this parameter does affect the memory usage on the target.  Am I
+> misunderstanding something here?
+> 
+> Thanks,
+> 
+> Mark
+> 
+> Adi Linden wrote:
+> 
+> > I don't think the ramdisk paramter actually allocates any memory. It just
+> > sets limits. I.e. I am running a box with 32MB of physical memory and the
+> > remdisk paramter set to 200000, which would allow me a largest ramdisk of
+> > 200MB.
+> 
+> 
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Wed Mar 20 00:20:08 2002
+From: peeweelinux@adis.on.ca (Douglas Bush)
+Date: Tue, 19 Mar 2002 17:20:08 -0700
+Subject: [Peeweelinux] Problem Extracting Kernel To Build Images
+Message-ID: <02ec01c1cfa4$fdd05680$090110ac@TRENT>
+
+Folks,
+
+I'm having some trouble extracting final PWL floppy images.  In
+particular, when I first start a project, then select all my packages,
+the image is always created.  However after I go back and change the
+packages to be used, the final image extraction always fails with an
+error saying;
+'./projects/netdisk/mnt/boot/bzImage': No such file or directory.
+
+I'm using the latest PeeWee 0.61.1, and I'm also running RedHat 7.2.
+
+FYI, the image doesn't fit on the floppy, so I'm trying to whittle the
+image down.
+
+Please and thank you in advance,
+ 
+Douglas Bush
+Extreme Engineering
+#17, 6025 - 12 St. SE
+Calgary, Alberta, Canada
+T2H 2K1
+
+Phone: 403 640 9494 ext-208
+Fax: 403 640 9599
+
+http://www.extremeeng.com
+
+
+
+From peeweelinux@adis.on.ca  Wed Mar 20 18:46:20 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 20 Mar 2002 18:46:20 -0000
+Subject: [Peeweelinux] deployment question
+Message-ID: <000101c1d03f$878dd1a0$0201a8c0@ricardo>
+
+Hi,
+
+	I'm currently testing peeweelinux, and have some question about deployment.
+
+	I'm trying to install it a regualr x86, and I tought I could use a floppy
+linux distribution to nfs mount the Embedded_Build directory, and run
+pwlconfig from there.
+
+	I have found some problems with this aproach, for instance, the floppy
+distribution doesn't have bash.
+
+am I following a dead track ?
+
+thanks a lot
+Ricardo
+
+
+From peeweelinux@adis.on.ca  Wed Mar 20 19:13:59 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Wed, 20 Mar 2002 19:13:59 -0000
+Subject: [Peeweelinux] mount root from NFS
+Message-ID: <000301c1d043$63ea24c0$0201a8c0@ricardo>
+
+Hi,
+
+	Can I use peeweelinux to build a floppy that boots from NFS root ?
+
+	How would I do that ?
+
+thanks
+Ricardo
+
+From peeweelinux@adis.on.ca  Thu Mar 21 11:11:46 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 21 Mar 2002 11:11:46 -0000
+Subject: [Peeweelinux] network
+Message-ID: <000001c1d0c9$30f23c70$0201a8c0@ricardo>
+
+Hi,
+
+	I have a question regarding network in peeweelinux.
+
+	I have to setup several embedded computers. The only difference between
+them is the IP address. How would one go about doing this in peewee ?
+
+thanks
+Ricardo
+
+
+From peeweelinux@adis.on.ca  Thu Mar 21 15:14:45 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Thu, 21 Mar 2002 10:14:45 -0500
+Subject: [Peeweelinux] Problem Extracting Kernel To Build Images
+References: <02ec01c1cfa4$fdd05680$090110ac@TRENT>
+Message-ID: <000b01c1d0eb$2bea1e60$0101a8c0@dellc800>
+
+Douglas Bush wrote:
+
+> However after I go back and change the
+> packages to be used, the final image extraction always fails with an
+> error saying;
+> './projects/netdisk/mnt/boot/bzImage': No such file or directory.
+
+Hi Douglas,
+
+Are you doing anything with a "custom" kernel?   Is /boot/bzImage selected under the
+kernel-basic-2.2.17 package?
+
+> FYI, the image doesn't fit on the floppy, so I'm trying to whittle the
+> image down.
+
+Does anyone know if Peewee supports higher density floppies (like /dev/fd0u1680)?  I have
+a floppy-based Linux router that formats a normal floppy for 1680k, giving a little extra
+room for more stuff.
+
+
+
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar 21 15:24:05 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Thu, 21 Mar 2002 10:24:05 -0500
+Subject: [Peeweelinux] network
+References: <000001c1d0c9$30f23c70$0201a8c0@ricardo>
+Message-ID: <002101c1d0ec$84eb58c0$0101a8c0@dellc800>
+
+Ricardo Trindade wrote:
+
+> I have to setup several embedded computers. The only difference between
+> them is the IP address. How would one go about doing this in peewee ?
+
+Hi Ricardo,
+
+Since Peewee is based on Redhat 6.2, I believe the IP address is set in a file called
+"/etc/config/ifcfg-eth0".  A typical file might look like this:
+
+DEVICE=eth0
+IPADDR=192.168.1.1
+NETMASK=255.255.255.0
+NETWORK=192.168.1.0
+BROADCAST=192.168.1.255
+GATEWAY=192.168.1.254
+
+This file may be selected under the "networkscripts" package.  If the default settings
+aren't exactly what you need, you could create and include a custom file.
+
+Hope this helps,
+
+Mark
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar 21 16:41:51 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 21 Mar 2002 16:41:51 -0000
+Subject: [Peeweelinux] network
+In-Reply-To: <002101c1d0ec$84eb58c0$0101a8c0@dellc800>
+Message-ID: <000001c1d0f7$4dd4dd60$0201a8c0@ricardo>
+
+thank for your answer, but that wasn't what I meant.
+
+I know how to configure it for one client, I was just wondering if peewee
+had some feature to allow me to manage the distinct configuration files of
+several computer that are otherwise identical
+
+thanks!
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Mark Meade
+Sent: quinta-feira, 21 de Março de 2002 15:24
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] network
+
+
+Ricardo Trindade wrote:
+
+> I have to setup several embedded computers. The only difference between
+> them is the IP address. How would one go about doing this in peewee ?
+
+Hi Ricardo,
+
+Since Peewee is based on Redhat 6.2, I believe the IP address is set in a
+file called
+"/etc/config/ifcfg-eth0".  A typical file might look like this:
+
+DEVICE=eth0
+IPADDR=192.168.1.1
+NETMASK=255.255.255.0
+NETWORK=192.168.1.0
+BROADCAST=192.168.1.255
+GATEWAY=192.168.1.254
+
+This file may be selected under the "networkscripts" package.  If the
+default settings
+aren't exactly what you need, you could create and include a custom file.
+
+Hope this helps,
+
+Mark
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Mar 21 16:49:41 2002
+From: peeweelinux@adis.on.ca (Dean Brown)
+Date: Thu, 21 Mar 2002 08:49:41 -0800
+Subject: [Peeweelinux] network
+In-Reply-To: <000001c1d0f7$4dd4dd60$0201a8c0@ricardo>
+Message-ID: <NFBBIKBFELEOLMIFIGONIENCCGAA.dean@amiga.com>
+
+You could configure networking to use DHCP to assign an address and make a
+DHCP server available on the network. This way the systems are all identical
+and the addresses are assigned by an external system.
+
+Dean Brown
+
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ricardo Trindade
+> Sent: Thursday, March 21, 2002 8:42 AM
+> To: peeweelinux@adis.on.ca
+> Subject: RE: [Peeweelinux] network
+>
+>
+> thank for your answer, but that wasn't what I meant.
+>
+> I know how to configure it for one client, I was just wondering if peewee
+> had some feature to allow me to manage the distinct configuration files of
+> several computer that are otherwise identical
+>
+> thanks!
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Mark Meade
+> Sent: quinta-feira, 21 de Março de 2002 15:24
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] network
+>
+>
+> Ricardo Trindade wrote:
+>
+> > I have to setup several embedded computers. The only difference between
+> > them is the IP address. How would one go about doing this in peewee ?
+>
+> Hi Ricardo,
+>
+> Since Peewee is based on Redhat 6.2, I believe the IP address is set in a
+> file called
+> "/etc/config/ifcfg-eth0".  A typical file might look like this:
+>
+> DEVICE=eth0
+> IPADDR=192.168.1.1
+> NETMASK=255.255.255.0
+> NETWORK=192.168.1.0
+> BROADCAST=192.168.1.255
+> GATEWAY=192.168.1.254
+>
+> This file may be selected under the "networkscripts" package.  If the
+> default settings
+> aren't exactly what you need, you could create and include a custom file.
+>
+> Hope this helps,
+>
+> Mark
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Thu Mar 21 16:54:08 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 21 Mar 2002 16:54:08 -0000
+Subject: [Peeweelinux] java
+Message-ID: <000401c1d0f9$055e3a20$0201a8c0@ricardo>
+
+Hi,
+
+	I just got my peeweelinux up and running, and I'm trying to run java on it.
+	Has anyone done this before ?
+
+thanks
+
+
+From peeweelinux@adis.on.ca  Thu Mar 21 17:00:49 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Thu, 21 Mar 2002 12:00:49 -0500
+Subject: [Peeweelinux] network
+References: <000001c1d0f7$4dd4dd60$0201a8c0@ricardo>
+Message-ID: <003a01c1d0f9$f7b47f00$0101a8c0@dellc800>
+
+My apologies for misunderstanding your question.
+
+I'm not aware of any "automatic" way of managing these different configuration files, but
+one possibility would be to create multiple "custom" directories, each containing the
+various files that are different.  Prior to extracting and and loading the file system to
+your target, you could specify the proper "custom" directory.
+
+Ricardo Trindade wrote:
+
+>
+> thank for your answer, but that wasn't what I meant.
+>
+> I know how to configure it for one client, I was just wondering if peewee
+> had some feature to allow me to manage the distinct configuration files of
+> several computer that are otherwise identical
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar 21 17:04:57 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 21 Mar 2002 17:04:57 -0000
+Subject: [Peeweelinux] network
+In-Reply-To: <003a01c1d0f9$f7b47f00$0101a8c0@dellc800>
+Message-ID: <000501c1d0fa$88142eb0$0201a8c0@ricardo>
+
+ok, thats a fine way of doing it
+
+thanks
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Mark Meade
+Sent: quinta-feira, 21 de Março de 2002 17:01
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] network
+
+
+My apologies for misunderstanding your question.
+
+I'm not aware of any "automatic" way of managing these different
+configuration files, but
+one possibility would be to create multiple "custom" directories, each
+containing the
+various files that are different.  Prior to extracting and and loading the
+file system to
+your target, you could specify the proper "custom" directory.
+
+Ricardo Trindade wrote:
+
+>
+> thank for your answer, but that wasn't what I meant.
+>
+> I know how to configure it for one client, I was just wondering if peewee
+> had some feature to allow me to manage the distinct configuration files of
+> several computer that are otherwise identical
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Mar 21 17:05:36 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Thu, 21 Mar 2002 17:05:36 -0000
+Subject: [Peeweelinux] network
+In-Reply-To: <NFBBIKBFELEOLMIFIGONIENCCGAA.dean@amiga.com>
+Message-ID: <000601c1d0fa$9f294d10$0201a8c0@ricardo>
+
+can't use that one, it's for industrial automation, and the boxes must be
+completely autonomous.
+
+thanks anyway!
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Dean Brown
+Sent: quinta-feira, 21 de Março de 2002 16:50
+To: peeweelinux@adis.on.ca
+Cc: Dean Brown
+Subject: RE: [Peeweelinux] network
+
+
+You could configure networking to use DHCP to assign an address and make a
+DHCP server available on the network. This way the systems are all identical
+and the addresses are assigned by an external system.
+
+Dean Brown
+
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ricardo Trindade
+> Sent: Thursday, March 21, 2002 8:42 AM
+> To: peeweelinux@adis.on.ca
+> Subject: RE: [Peeweelinux] network
+>
+>
+> thank for your answer, but that wasn't what I meant.
+>
+> I know how to configure it for one client, I was just wondering if peewee
+> had some feature to allow me to manage the distinct configuration files of
+> several computer that are otherwise identical
+>
+> thanks!
+>
+> -----Original Message-----
+> From: peeweelinux-admin@adis.on.ca
+> [mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Mark Meade
+> Sent: quinta-feira, 21 de Março de 2002 15:24
+> To: peeweelinux@adis.on.ca
+> Subject: Re: [Peeweelinux] network
+>
+>
+> Ricardo Trindade wrote:
+>
+> > I have to setup several embedded computers. The only difference between
+> > them is the IP address. How would one go about doing this in peewee ?
+>
+> Hi Ricardo,
+>
+> Since Peewee is based on Redhat 6.2, I believe the IP address is set in a
+> file called
+> "/etc/config/ifcfg-eth0".  A typical file might look like this:
+>
+> DEVICE=eth0
+> IPADDR=192.168.1.1
+> NETMASK=255.255.255.0
+> NETWORK=192.168.1.0
+> BROADCAST=192.168.1.255
+> GATEWAY=192.168.1.254
+>
+> This file may be selected under the "networkscripts" package.  If the
+> default settings
+> aren't exactly what you need, you could create and include a custom file.
+>
+> Hope this helps,
+>
+> Mark
+>
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Mar 22 15:15:34 2002
+From: peeweelinux@adis.on.ca (K West)
+Date: Fri, 22 Mar 2002 09:15:34 -0600
+Subject: [Peeweelinux] Driver modules not loading...
+Message-ID: <F137FT3kMUVfNIJWNDI00020c97@hotmail.com>
+
+I'm a PeeWee newbie.  Using the 0.61.1 version of PeeWeeLinux, I can produce 
+a bootable CF card.
+
+The problem I'm having is with driver modules not loading.  For instance, I 
+have the eepro100 module included in the kernel but, to bring up networking, 
+I have to manually load the module on my target machine and run ifconfig as 
+follows:
+
+insmod //lib/modules/2.2.17/net/eepro100.o
+ifconfig eth0 <ip-addr>
+
+Similarly, if I want to mount a DOS floppy, I have to manually enter:
+
+insmod //lib/modules/2.2.17/fs/fat.o
+insmod //lib/modules/2.2.17/fs/msdos.o
+
+What am I missing?  These modules are supposed to already be in the kernel.  
+Why am i having to load them manually?
+
+Thanks in advance for any assistance.
+
+
+
+_________________________________________________________________
+Get your FREE download of MSN Explorer at http://explorer.msn.com/intl.asp.
+
+
+From peeweelinux@adis.on.ca  Fri Mar 22 16:18:48 2002
+From: peeweelinux@adis.on.ca (Sudhanshu Tewari)
+Date: Fri, 22 Mar 2002 09:18:48 -0700
+Subject: [Peeweelinux] Driver modules not loading...
+Message-ID: <A2D82421E95D9646AFE9CD8D711962C0CAA647@co-w2ks-exch-01.networkphotonics.com>
+
+This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+------_=_NextPart_001_01C1D1BD.3F8EC5B0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+
+Keep these insmod entries in /etc/rc.modules
+
+sudhanshu
+
+
+-----Original Message-----
+From: K West [mailto:k_west71@hotmail.com]
+Sent: Friday, March 22, 2002 8:16 AM
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] Driver modules not loading...
+
+
+
+I'm a PeeWee newbie.  Using the 0.61.1 version of PeeWeeLinux, I can produce
+
+a bootable CF card.
+
+The problem I'm having is with driver modules not loading.  For instance, I 
+have the eepro100 module included in the kernel but, to bring up networking,
+
+I have to manually load the module on my target machine and run ifconfig as 
+follows:
+
+insmod //lib/modules/2.2.17/net/eepro100.o
+ifconfig eth0 <ip-addr>
+
+Similarly, if I want to mount a DOS floppy, I have to manually enter:
+
+insmod //lib/modules/2.2.17/fs/fat.o
+insmod //lib/modules/2.2.17/fs/msdos.o
+
+What am I missing?  These modules are supposed to already be in the kernel.
+
+Why am i having to load them manually?
+
+Thanks in advance for any assistance.
+
+
+
+_________________________________________________________________
+Get your FREE download of MSN Explorer at http://explorer.msn.com/intl.asp.
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+------_=_NextPart_001_01C1D1BD.3F8EC5B0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1">
+<META NAME=3D"Generator" CONTENT=3D"MS Exchange Server version =
+5.5.2653.12">
+<TITLE>RE: [Peeweelinux] Driver modules not loading...</TITLE>
+</HEAD>
+<BODY>
+
+<P><FONT SIZE=3D2>Keep these insmod entries in /etc/rc.modules</FONT>
+</P>
+
+<P><FONT SIZE=3D2>sudhanshu</FONT>
+</P>
+<BR>
+
+<P><FONT SIZE=3D2>-----Original Message-----</FONT>
+<BR><FONT SIZE=3D2>From: K West [<A =
+HREF=3D"mailto:k_west71@hotmail.com">mailto:k_west71@hotmail.com</A>]</F=
+ONT>
+<BR><FONT SIZE=3D2>Sent: Friday, March 22, 2002 8:16 AM</FONT>
+<BR><FONT SIZE=3D2>To: peeweelinux@adis.on.ca</FONT>
+<BR><FONT SIZE=3D2>Subject: [Peeweelinux] Driver modules not =
+loading...</FONT>
+</P>
+<BR>
+<BR>
+
+<P><FONT SIZE=3D2>I'm a PeeWee newbie.&nbsp; Using the 0.61.1 version =
+of PeeWeeLinux, I can produce </FONT>
+<BR><FONT SIZE=3D2>a bootable CF card.</FONT>
+</P>
+
+<P><FONT SIZE=3D2>The problem I'm having is with driver modules not =
+loading.&nbsp; For instance, I </FONT>
+<BR><FONT SIZE=3D2>have the eepro100 module included in the kernel but, =
+to bring up networking, </FONT>
+<BR><FONT SIZE=3D2>I have to manually load the module on my target =
+machine and run ifconfig as </FONT>
+<BR><FONT SIZE=3D2>follows:</FONT>
+</P>
+
+<P><FONT SIZE=3D2>insmod //lib/modules/2.2.17/net/eepro100.o</FONT>
+<BR><FONT SIZE=3D2>ifconfig eth0 &lt;ip-addr&gt;</FONT>
+</P>
+
+<P><FONT SIZE=3D2>Similarly, if I want to mount a DOS floppy, I have to =
+manually enter:</FONT>
+</P>
+
+<P><FONT SIZE=3D2>insmod //lib/modules/2.2.17/fs/fat.o</FONT>
+<BR><FONT SIZE=3D2>insmod //lib/modules/2.2.17/fs/msdos.o</FONT>
+</P>
+
+<P><FONT SIZE=3D2>What am I missing?&nbsp; These modules are supposed =
+to already be in the kernel.&nbsp; </FONT>
+<BR><FONT SIZE=3D2>Why am i having to load them manually?</FONT>
+</P>
+
+<P><FONT SIZE=3D2>Thanks in advance for any assistance.</FONT>
+</P>
+<BR>
+<BR>
+
+<P><FONT =
+SIZE=3D2>_______________________________________________________________=
+__</FONT>
+<BR><FONT SIZE=3D2>Get your FREE download of MSN Explorer at <A =
+HREF=3D"http://explorer.msn.com/intl.asp" =
+TARGET=3D"_blank">http://explorer.msn.com/intl.asp</A>.</FONT>
+</P>
+
+<P><FONT =
+SIZE=3D2>_______________________________________________</FONT>
+<BR><FONT SIZE=3D2>Peeweelinux mailing list</FONT>
+<BR><FONT SIZE=3D2>Peeweelinux@adis.on.ca</FONT>
+<BR><FONT SIZE=3D2><A =
+HREF=3D"http://mail.adis.on.ca/lists/listinfo/peeweelinux" =
+TARGET=3D"_blank">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A><=
+/FONT>
+</P>
+
+</BODY>
+</HTML>
+------_=_NextPart_001_01C1D1BD.3F8EC5B0--
+
+From peeweelinux@adis.on.ca  Fri Mar 22 16:34:38 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Fri, 22 Mar 2002 16:34:38 -0000
+Subject: [Peeweelinux] app scenario with peeweelinux
+Message-ID: <000201c1d1bf$7628ab20$0201a8c0@ricardo>
+
+Hi,
+
+	I have a question regarding deploying an appplication with peeweelinux.
+
+	I'm going to use compact flash, and filesystem in /dev/ram.
+	However, I also need access to a small partition (~5Mb) in the compact
+flash, to store process data, in case of failure.
+
+	When I deploy peeweelinux it erases the entire device. How can I do this ?
+
+thanks
+
+
+From peeweelinux@adis.on.ca  Fri Mar 22 18:28:31 2002
+From: peeweelinux@adis.on.ca (Omar)
+Date: Fri, 22 Mar 2002 10:28:31 -0800
+Subject: [Peeweelinux] image
+References: <200203221801.g2MI11727987@yoda.adis.on.ca>
+Message-ID: <070601c1d1cf$5e7584c0$493e1f7e@IRV429>
+
+Does anyone have a root image of a peewee linux dist I can play around
+with???  I just want something I can boot up on a 486 and run basic Xwindows
+apps on.
+I don't have a spare computer i can install redhat 6.2 on so i can install
+peeweelinux.
+
+
+
+From peeweelinux@adis.on.ca  Sun Mar 24 19:23:12 2002
+From: peeweelinux@adis.on.ca (Mcwee, Bob)
+Date: Sun, 24 Mar 2002 14:23:12 -0500
+Subject: [Peeweelinux] woo's with diskonchip 2000 16M and 0.61 peewee
+Message-ID: <24BCB3C17DACD511ABEE00B0D0E15E8506183A@VNIEX-SRV1>
+
+Hi all,
+	I have looked all over the archives and what has been said has not
+helped me fix my problem. My problem is as follows.
+I have installed the peewee 0.61 iso and all works great to build . I have a
+diskonchip 2000 installed on my redhat 6.2 box that I am using and I can
+access it with no problems when I boot up.
+My problem is when I tell the pw to send it to /dev/msys/fla it sends it all
+untill it gets to the lilo part and then it fails. I have tried copying all
+the file and changing the doc.b and doc-lilo but it still does not work.
+
+I really need to get this to work on my 16M diskonchip so any help on how to
+do this would be great
+
+Again I have looked all over the archives so I have to post. I am new to
+this but I always try to find answers on my own before I post
+
+So far I am loving peewee and may start to help on writing some new docs for
+it as I get better at what I am doing.
+
+Thanks
+Bob
+
+
+From peeweelinux@adis.on.ca  Sun Mar 24 20:35:17 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Sun, 24 Mar 2002 15:35:17 -0500
+Subject: [Peeweelinux] woo's with diskonchip 2000 16M and 0.61 peewee
+References: <24BCB3C17DACD511ABEE00B0D0E15E8506183A@VNIEX-SRV1>
+Message-ID: <000b01c1d373$793fab00$0101a8c0@dellc800>
+
+Bob,
+
+I believe that the lilo version included with Peewee (found in the Embedded_Build/bin
+directory) does not support DiskOnChip devices.  It sounds like you have already tried the
+"doc_lilo" -- I'm assuming this is the one provided by M-Sys?
+
+What are the error messages that Peewee reports when it fails?  The messages in
+Embedded_Build/tmp/rd.log might help.
+
+I had similar problems with the DoC Millennium, and I ended up using the open-source MTD
+drivers, and a patched LILO, rather than the M-Sys drivers.  If you're interested, I have
+written up some instructions on how to do this.
+
+Regards,
+
+Mark
+
+> My problem is when I tell the pw to send it to /dev/msys/fla it sends it all
+> untill it gets to the lilo part and then it fails. I have tried copying all
+> the file and changing the doc.b and doc-lilo but it still does not work.
+
+
+
+
+From peeweelinux@adis.on.ca  Sun Mar 24 21:41:55 2002
+From: peeweelinux@adis.on.ca (Mcwee, Bob)
+Date: Sun, 24 Mar 2002 16:41:55 -0500
+Subject: [Peeweelinux] sorry I post again cause I was on digest mode
+Message-ID: <24BCB3C17DACD511ABEE00B0D0E15E8506183D@VNIEX-SRV1>
+
+Hi all, 
+        I have looked all over the archives and what has been said has not
+helped me fix my problem. My problem is as follows.
+
+I have installed the peewee 0.61 iso and all works great to build . I have a
+diskonchip 2000 installed on my redhat 6.2 box that I am using and I can
+access it with no problems when I boot up.
+
+My problem is when I tell the pw to send it to /dev/msys/fla it sends it all
+untill it gets to the lilo part and then it fails. I have tried copying all
+the file and changing the doc.b and doc-lilo but it still does not work.
+
+I really need to get this to work on my 16M diskonchip so any help on how to
+do this would be great 
+
+Again I have looked all over the archives so I have to post. I am new to
+this but I always try to find answers on my own before I post
+
+So far I am loving peewee and may start to help on writing some new docs for
+it as I get better at what I am doing. 
+
+Thanks 
+Bob 
+
+  
+
+From peeweelinux@adis.on.ca  Thu Mar 28 10:09:01 2002
+From: peeweelinux@adis.on.ca (jim barchuk)
+Date: Thu, 28 Mar 2002 05:09:01 -0500 (EST)
+Subject: [Peeweelinux] hello and intro
+Message-ID: <Pine.LNX.4.44.0203271559470.1579-100000@jbarchuk.com>
+
+Hi All!
+
+I date back to the VIC-20/C64/8088-12'turbo'/DOS 3.1 era. Ran a Fido BBS
+for about ten years up until four years ago. (I -heard- about Linux 'way
+back when' and -wish- I'd tried it then. [sigh]) Ran a Win 3.1 and then
+Linux server over dialup for a few years just learning the ropes. Lately
+with SDSL/208k (expensive but nice, nice, nice, fast and stable.)
+
+I am *IMPRESSED* with pwl beyond casual words. Have used tomsrtbt a number
+of times in the past for crash/rescue purposes and it was perfect for
+that. Been looking lately at a few other minimal-linux packages and pwl
+seems to be the most advanced and well supported. Tried plip and SETH
+extensively without good luck. SETH looked good as a
+'tomsrtbt-plus-networking,' but an error regarding 'no /dev/eth0' that's
+even mentioned at deja.com with no fix in sight was a tad disturbing. :(
+It also looked like a lot of 'work' to fix those kinds of problems and
+didn't feel like mucking around so I was elated when I found pwl.
+
+The main reason I need pwl at the moment is to move some legacy files from
+an old Win 3.1 box over to another box, then use it plus the CD on the
+main server to install redhat via the LAN. Not worth buying and installing
+a CD in a PPRO/200.
+
+I'd rate myself as 'very advanced' in Linux. Can
+install/setup/troubleshoot almost anything. Hate RPMs, use handrolled
+Apache, MySQL, Bind, PHP. There are a few things that still elude my
+understanding which is why I'm having some trouble getting pwl to do it's
+thing. I'm 99% there but stuck on that last 1%.
+
+Well that's all to explain that I generally know my way around the box.
+Will post another msg in a bit with all the gory details of difficulties.
+
+(Oh boy am I gonna miss that 3.1. :( With WinMizer it was *rock* solid
+stable, powered up for months at a time without a reboot. Could run
+resources down to 0%, just shut off a few apps and keep on ticking. If
+only Bill had bought that technology Win would not be the nightmare that
+it's always been.)
+
+Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+jb@jbarchuk.com
+
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar 28 10:12:48 2002
+From: peeweelinux@adis.on.ca (jim barchuk)
+Date: Thu, 28 Mar 2002 05:12:48 -0500 (EST)
+Subject: [Peeweelinux] software is for geeks; docs are for nerds
+Message-ID: <Pine.LNX.4.44.0203272333170.1579-100000@jbarchuk.com>
+
+Hi All!
+
+Software is for geeks; docs are for nerds. But I think pwl is intricate
+enough to need some. The help screens are -very- useful, thank you.
+Obviously the docs are totally outdated. Personally I think it'd be better
+to simply remove -all- of them, READMEs too, rather than confuse simple
+minded people like myself with misleading information. :) I've downloaded
+and read the full list archives with lots of great background info but
+nothing related to my particular problem.
+
+I get the impression that pwl used to be more difficult to use. The
+purpose of the menued install system is to reduce the difficulty. With a
+little practice it really does go very smoothly. The drawback is that it
+also insulates the user from the guts of what's going on and doesn't give
+a lot of feedback.
+
+Downloaded the binary distribution. With each run I completely delete and
+reuntar the Embedded_Build tree to make sure I'm starting from the same
+known point each time. (That's easy with a P4/1.4G but would *NOT* have
+been fun with my previous PPRO/200. LOL!)
+
+Here's a blow by blow description of exactly what I do. I'm giving
+excruciating detail to make sure I'm not pushing a wrong button. Most
+likely it's some simple misunderstanding on my part, and without real docs
+it's hard to figure out.
+
+=======
+
+./pwlconfig
+minimal.tgs - Exit
+No packages found. Extract? Yes Extracting...
+
+Didn't select either Create Custom Kernel or Configure Project File System
+because this is a plain vanilla minimal 'trial run' install.
+
+Extract File System ./projects/minimal/mnt - A few errors:
+
+tar: boot: Cannot mkdir: File exists
+tar: dev: Cannot mkdir: File exists
+tar: usr/bin: Cannot mkdir: File exists
+tar: Error exit delayed from previous errors
+
+None of these bother me much, the subdirs are there. Exit
+
+Configure Target Hardware - Convert configuration file from 0.53.10 to
+0.61.1? Yes. (Selecting No refuses to proceed further.) Configuration
+Reset - OK
+
+Projects Default Menu - Changed target device to fd0 - Exit - It's
+*really* scary to think that if I didn't pay attention to that it'd have
+wiped my system. :(
+
+Load File System onto Target /dev/fd0 - Yes - Succeeded
+
+Question at this point: '2772+0 records out - 70.3%.' Does that mean that
+I have .5M free on the floppy for other apps/options?
+
+Hit 'Save configuration' to keep that fd0 target. Exit.
+
+I *think* everything went correctly because du -s
+~/Embedded_Build/projects/minimal/mnt returns 2860 and that tree is chock
+full of files.
+
+Pop the floppy into target box. Boot looks normal, 'welcome to peewee.'
+Yay!
+
+Login as root/redhat.
+
+ls -l returns 'total 0'.
+
+=======
+
+At -that- point I am obviously dead in the water. I have a booted linux
+box with no 'file system,' directory tree, executables.
+
+I know that if I can just get past this one tiny problem pwl will be a
+tremendously useful tool.
+
+TIA and have a :) day!
+
+jb
+
+-- 
+jim barchuk
+jb@jbarchuk.com
+
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar 28 13:05:09 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Thu, 28 Mar 2002 08:05:09 -0500
+Subject: [Peeweelinux] software is for geeks; docs are for nerds
+References: <Pine.LNX.4.44.0203272333170.1579-100000@jbarchuk.com>
+Message-ID: <000d01c1d659$43277fa0$0101a8c0@dellc800>
+
+Hi Jim,
+
+Is it possible that you were in the "root" directory initially?  If I remember correctly,
+after Peewee boots and you login as root, you'll end up in /root by default.  Unless you
+had any "custom" files destined for the /root directory, it should be empty.
+
+cd /, ls -l should show the entire root filesystem.  It seems like something is there --
+the "ls" executable works, and it sounds like you have at least a minimal shell.
+
+Regards,
+
+Mark
+
+jim barchuk wrote:
+
+> Login as root/redhat.
+>
+> ls -l returns 'total 0'.
+>
+> =======
+>
+> At -that- point I am obviously dead in the water. I have a booted linux
+> box with no 'file system,' directory tree, executables.
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar 28 19:00:41 2002
+From: peeweelinux@adis.on.ca (jim barchuk)
+Date: Thu, 28 Mar 2002 14:00:41 -0500 (EST)
+Subject: [Peeweelinux] Can i configure the bash prompt like in the MANDRAKE
+ 8.1 distribution and with the history file too ?
+In-Reply-To: <001201c19a72$0880e9e0$063321c0@SECOMAM>
+Message-ID: <Pine.LNX.4.44.0203281209570.19968-100000@jbarchuk.com>
+
+Hi David!
+
+> Just an other question:
+> Can i configure the bash prompt like the MANDRAKE 8.1 distribution and
+> activate the history file ?
+> If yes, witch file i have to modify ? (.profile ?)
+> And what i have to add for having the bash like this : [user@domain]$
+> (and the history file activated)
+
+I'm surprised no one answered this. I'm replying FTR as it's a good FAQ
+item. And I had lots of fun looking into ash. :)
+
+pwl doesn't have bash, 512540 under rh7.0, it has ash, 64924 under 6.2.
+
+Ash doesn't support history. I *think* it doesn't support prompt
+variables. Hard to find docs for it but that's the impression I get from
+var.c. (I am not a c-geek but all it seems to do is set it to either $ or
+#.)
+
+Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+jb@jbarchuk.com
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar 28 19:29:48 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 28 Mar 2002 13:29:48 -0600 (CST)
+Subject: [Peeweelinux] Can i configure the bash prompt like in the MANDRAKE
+ 8.1 distribution and with the history file too ?
+In-Reply-To: <Pine.LNX.4.44.0203281209570.19968-100000@jbarchuk.com>
+Message-ID: <Pine.LNX.4.33.0203281329300.3901-100000@adibox.knet.ca>
+
+Hi,
+
+There is a bash package in PeeWeeLinux.
+
+Adi
+
+On Thu, 28 Mar 2002, jim barchuk wrote:
+
+> Hi David!
+> 
+> > Just an other question:
+> > Can i configure the bash prompt like the MANDRAKE 8.1 distribution and
+> > activate the history file ?
+> > If yes, witch file i have to modify ? (.profile ?)
+> > And what i have to add for having the bash like this : [user@domain]$
+> > (and the history file activated)
+> 
+> I'm surprised no one answered this. I'm replying FTR as it's a good FAQ
+> item. And I had lots of fun looking into ash. :)
+> 
+> pwl doesn't have bash, 512540 under rh7.0, it has ash, 64924 under 6.2.
+> 
+> Ash doesn't support history. I *think* it doesn't support prompt
+> variables. Hard to find docs for it but that's the impression I get from
+> var.c. (I am not a c-geek but all it seems to do is set it to either $ or
+> #.)
+> 
+> Have a :) day!
+> 
+> jb
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Mar 28 19:31:43 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Thu, 28 Mar 2002 14:31:43 -0500
+Subject: [Peeweelinux] Can i configure the bash prompt like in the MANDRAKE 8.1 distribution and with the history file too ?
+References: <Pine.LNX.4.44.0203281209570.19968-100000@jbarchuk.com>
+Message-ID: <000d01c1d68f$36cb11f0$0101a8c0@dellc800>
+
+Just to clarify, Pwl does indeed have bash: under "project file system->shells->bash" you
+can select the following:
+
+/bin
+/bin/bash  442388
+/bin/sh
+/etc
+/etc/bashrc
+/etc/profile
+
+Bash may not fit on a "minimal" floppy target, but I have been using it on an 8M
+DiskOnChip with no problems.
+
+jim barchuk wrote:
+
+> pwl doesn't have bash, 512540 under rh7.0, it has ash, 64924 under 6.2.
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar 28 20:37:02 2002
+From: peeweelinux@adis.on.ca (jim barchuk)
+Date: Thu, 28 Mar 2002 15:37:02 -0500 (EST)
+Subject: [Peeweelinux] software is for geeks; docs are for nerds
+In-Reply-To: <000d01c1d659$43277fa0$0101a8c0@dellc800>
+Message-ID: <Pine.LNX.4.44.0203281516520.19968-100000@jbarchuk.com>
+
+Hi Mark!
+
+> Is it possible that you were in the "root" directory initially?
+
+> > Login as root/redhat.
+> >
+> > ls -l returns 'total 0'.
+
+Bingo! :) Of *course* I was in /root. Set returned a nice PATH at login so
+I knew I was basically logged in.
+
+At the time I didn't *think* to *try* to go up the tree. I don't
+particularly care how it works as long as I have an idea what it might do
+when I push a button. I'd also swear that I tried ls -l /bin and similar
+but I might be mistaken.
+
+There're some strange behavior that screwed my head on sideways:
+
+login as root
+# pwd
+Cannot exec /bin/pwd
+# cd /
+# pwd
+/
+# cd root
+# pwd
+/root
+
+I also did have some truly faulty installs that allowed login but really
+did have no filesystem (nothing in ~/projects/~/mnt) and that further
+misled my understanding.
+
+Tnx much. Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+jb@jbarchuk.com
+
+
+From peeweelinux@adis.on.ca  Thu Mar 28 20:54:28 2002
+From: peeweelinux@adis.on.ca (jim barchuk)
+Date: Thu, 28 Mar 2002 15:54:28 -0500 (EST)
+Subject: [Peeweelinux] Can i configure the bash prompt like in the MANDRAKE
+ 8.1 distribution and with the history file too ?
+In-Reply-To: <Pine.LNX.4.33.0203281329300.3901-100000@adibox.knet.ca>
+Message-ID: <Pine.LNX.4.44.0203281547240.19968-100000@jbarchuk.com>
+
+Hello Adi, Mark, David!
+
+> There is a bash package in PeeWeeLinux.
+
+> > pwl doesn't have bash, 512540 under rh7.0, it has ash, 64924 under 6.2.
+
+Ayup, I certainly misstated that. The correct answer is pwl doesn't
+include bash by default. There are several ways to change the prompt such
+as rerolling the source, or using profile .profile .bash_profile
+/etc/bashrc depending on what a particular version of bash looks for.
+
+Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+jb@jbarchuk.com
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar 28 21:22:16 2002
+From: peeweelinux@adis.on.ca (jim barchuk)
+Date: Thu, 28 Mar 2002 16:22:16 -0500 (EST)
+Subject: [Peeweelinux] SRPMS SOURCES
+Message-ID: <Pine.LNX.4.44.0203281554460.19968-100000@jbarchuk.com>
+
+Hi All!
+
+Is this an oddity or just more of my misunderstanding?
+
+The pwl root directory has symlink SRPMS -> src/SRPMS/
+
+~/src has no SRPMS but is does have a SOURCES.
+
+cd SRPMS returns 'no such...'
+
+I did successfully install several source RPMs to browse so it's probably
+not a major malfunction, but didn't try to compile from them so unsure.
+
+Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+jb@jbarchuk.com
+
+
+
+From peeweelinux@adis.on.ca  Thu Mar 28 23:46:01 2002
+From: peeweelinux@adis.on.ca (jim barchuk)
+Date: Thu, 28 Mar 2002 18:46:01 -0500 (EST)
+Subject: [Peeweelinux] 'extra spaces'
+Message-ID: <Pine.LNX.4.44.0203281822450.19968-100000@jbarchuk.com>
+
+Hi All!
+
+Can these make any real difference?
+
+In ~/etc/config/network, for instance, seem to have some 'extra spaces' at
+the end of some lines. I can't actually 'see' them but under pico or joe
+hitting ctl-e throws the cursor way off to the right. These two lines
+'appear' as this:
+
+'FORWARD_IPV4=yes  '
+'HOSTNAME=PeeWee               '
+
+Shouldn't have any effect in these files but there might be some where it
+could cause odd reactions depending on what reads it, how they read it,
+and what they do with it.
+
+Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+jb@jbarchuk.com
+
+
+From peeweelinux@adis.on.ca  Fri Mar 29 08:05:54 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Fri, 29 Mar 2002 09:05:54 +0100
+Subject: [Peeweelinux] adduser
+Message-ID: <C1256B8B.002C81B6.00@vzmta01.netfr.alcatel.fr>
+
+Hi all,
+
+Mark, you write :
+
+****************
+
+Just to clarify, Pwl does indeed have bash: under "project file
+system->shells->bash" you
+can select the following:
+
+/bin
+/bin/bash  442388
+/bin/sh
+/etc
+/etc/bashrc
+/etc/profile
+
+Bash may not fit on a "minimal" floppy target, but I have been using it on an 8M
+DiskOnChip with no problems.
+
+****************
+
+May I understand that it's the reason why I can't add a new user to my "minimal"
+Peewee ? I've tried "useradd myself" and peewee returns : "bash : useradd :
+command not found" (why does it start its reply by "bash" since bash is not
+installed ?). Does a way exist to add a new user in a minimal Peewee ?
+
+Thank you.
+
+Guillaume PREVOST
+
+
+
+
+
+From peeweelinux@adis.on.ca  Fri Mar 29 08:32:20 2002
+From: peeweelinux@adis.on.ca (jim barchuk)
+Date: Fri, 29 Mar 2002 03:32:20 -0500 (EST)
+Subject: [Peeweelinux] edit fstab doesn't 'stick'
+Message-ID: <Pine.LNX.4.44.0203290247030.19968-100000@jbarchuk.com>
+
+Hi All!
+
+I've edited /etc/ hosts, inetd.conf, issue, resolv.conf, services, and
+ifcfg-eth0 and network in ~/config. They all 'stick' *except* fstab.
+Meaning create the boot disk, boot, and check everything out. The other
+edits are there but the fstab edits are not. Very weird.
+
+I noticed that some files in that tree such as fstab are not listed in
+packages/Network_Base/networkscripts.list. Don't know if it should be but
+it makes some sense. I added it but that had no effect.
+
+Do I need to 'extract file system?' I hope not because earlier on
+(fortunately with many fewer edits, just trying it out,) it reversed my
+edits. So I'd need to maintain the files I edit in a separate place and
+then move them into the tree after extract but before load file system.
+
+Any clues?
+
+Tnx much. Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+jb@jbarchuk.com
+
+
+From peeweelinux@adis.on.ca  Fri Mar 29 15:55:29 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Fri, 29 Mar 2002 10:55:29 -0500
+Subject: [Peeweelinux] adduser
+References: <C1256B8B.002C81B6.00@vzmta01.netfr.alcatel.fr>
+Message-ID: <001501c1d73a$37644e00$0101a8c0@dellc800>
+
+Guillaume PREVOST wrote:
+
+> Does a way exist to add a new user in a minimal Peewee ?
+
+I wasn't able to find "useradd" or "adduser" anywhere in Peewee.  I would think that it
+wouldn't be necessary in most embedded systems to add users; maybe this is why it's not
+included.
+
+I suppose you could grab the useradd program from a RH6.2 box, and include it in your
+custom files.  It is about 50k in size, so it might fit on your minimal target.
+
+The other option would be to manually modify relevant user files (/etc/passwd, /etc/group,
+...), and include these as custom files.
+
+Mark
+
+
+
+
+
+From peeweelinux@adis.on.ca  Fri Mar 29 16:03:34 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Fri, 29 Mar 2002 11:03:34 -0500
+Subject: [Peeweelinux] edit fstab doesn't 'stick'
+References: <Pine.LNX.4.44.0203290247030.19968-100000@jbarchuk.com>
+Message-ID: <001d01c1d73b$69299660$0101a8c0@dellc800>
+
+Jim,
+
+Peewee creates /etc/fstab dynamically, based on your particular target options.  As you
+have already seen, any custom fstab file you create will be replaced.
+
+I have been using 2.4 era kernels with Peewee, and I needed to add "Unix PTY support".
+This required a slightly modified /etc/fstab file, to mount /dev/pts.
+
+One way that worked was to add a custom /etc/rc.modules file, containing the following:
+
+    echo "none /dev/pts devpts gid=5,mode=620 0 0" >>/etc/fstab
+    mount -a
+
+Not exactly pretty, but it worked.
+
+Mark
+
+jim barchuk wrote:
+
+> I've edited /etc/ hosts, inetd.conf, issue, resolv.conf, services, and
+> ifcfg-eth0 and network in ~/config. They all 'stick' *except* fstab.
+
+
+
+
+

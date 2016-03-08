@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Read only filesystem size issues.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000247.html">
+   <LINK REL="Next"  HREF="000226.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Read only filesystem size issues.
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Read only filesystem size issues.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sun, 17 Dec 2000 12:26:46 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000247.html">Read only filesystem size issues.
+</A></li>
+        <LI> Next message: <A HREF="000226.html">peewee on floppy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#251">[ date ]</a>
+              <a href="thread.html#251">[ thread ]</a>
+              <a href="subject.html#251">[ subject ]</a>
+              <a href="author.html#251">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Dean,
+
+I went with your suggestions and edited pwl_target_load accordingly.
+
+&gt;<i> Yep, you are correct. I didn't notice the mount above. 
+</I>&gt;<i> Reiserfs looks interesting for the entire filesystem as there are many
+</I>&gt;<i> small files in my application that each eat up 1K worth of storage. If
+</I>&gt;<i> ext2fs supported fragments, I'd probably be able to reduce storage
+</I>&gt;<i> requirements by about 30%. It appears that reiserfs may be able to make
+</I>&gt;<i> a similar savings. Have you any experience with reiserfs?
+</I>
+I've been looking at reiserfs primarily for it's ability to be shutdown
+without corruption. I must say I don't know much about filesystems. I've
+read that a journalling filesystems keeps a history record of some sort
+that allows system boot without filesystem check, risk of corruption, etc.
+If I understand right reiserfs doesn't need any additional tools to like
+fsck if a filesystem is used read/write.
+
+I want to include reiserfs. But it will require several things:
+
+- Embedded kernel with reiserfs support
+- Development machine with reiserfs enabled kernel
+- Modifications of the pwl_target_load functions, i.e. additional targets
+  with reiserfs.
+
+This is a planned addition but without any guarantee or deadline at this
+point.
+
+&gt;<i> Being able to override the creation of the init scripts would allow me
+</I>&gt;<i> to return much closer to the standard pwl package. Most of the recent
+</I>&gt;<i> changes to my build have been accomplished by modifying the pwl_target*
+</I>&gt;<i> scripts.
+</I>
+I am working on some pwlconfig changes today. I hope to add the initscript
+flag to pwl_defaults.
+
+Another issue I want to resolve is the many questions I get from newcomers
+about missing packages. I will check for packages and if none exist I want
+to give a prompt with an option to extract all rpms to packages when
+pwlconfig is initially run.
+
+&gt;<i> Your default init scripts run ldconfig, if it exists, on every target
+</I>&gt;<i> boot. That is what prompted my comment. You are correct that the
+</I>
+This is correct. Leftovers from when PeeWeeLinux started to take shape. I
+left it just because there might be circumstances when an embedded system
+contains ldconfig is is required to use it for whatever mysterious reason.
+I.e. development without using pwl_target_load to build a target drive.
+
+&gt;<i> This would be wonderful!! I'm attempting every trick I can think of to
+</I>&gt;<i> conserve system resources. RAM is where I am currently focusing on.
+</I>
+There's a devfs backport I am looking at adding to the 2.2.18 kernel.
+
+So once these changes to pwlconfig are done I will release 0.53.24.
+Hopefully there'll be only minor changes if any and it will turn into 0.60
+to reflect a stable distribution.
+
+Then I can start adding packages, etc. I still have to come to grips with
+version numbering. Some way of distinguishing between beta releases and
+stable releases. I'd also like the version number to reflect when packages
+have changed rather than pwlconfig changes. Any suggestions are welcome
+here!
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000247.html">Read only filesystem size issues.
+</A></li>
+	<LI> Next message: <A HREF="000226.html">peewee on floppy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#251">[ date ]</a>
+              <a href="thread.html#251">[ thread ]</a>
+              <a href="subject.html#251">[ subject ]</a>
+              <a href="author.html#251">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] edit fstab doesn't 'stick'
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000551.html">
+   <LINK REL="Next"  HREF="000553.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] edit fstab doesn't 'stick'
+   </H1>
+    <B>jim barchuk
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] edit fstab doesn't 'stick'">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 2 Apr 2002 13:06:10 -0500 (EST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000551.html">[Peeweelinux] adduser and azerty keyboard
+</A></li>
+        <LI> Next message: <A HREF="000553.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#552">[ date ]</a>
+              <a href="thread.html#552">[ thread ]</a>
+              <a href="subject.html#552">[ subject ]</a>
+              <a href="author.html#552">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Mark!
+
+&gt;<i> Peewee creates /etc/fstab dynamically, based on your particular target
+</I>&gt;<i> options.  As you have already seen, any custom fstab file you create
+</I>&gt;<i> will be replaced.
+</I>
+This has got to be some system design philosophical thing that I don't
+understand. Pwl has no idea what devices the target system has. Why would
+it overwrite what -I- tell it it has?
+
+I think I'm misunderstanding what 'target' means. I'm making a boot floppy
+for a box that has several hds.  For me the floppy is a transition/boot
+device. Pwl is unclear at several points what target means for it.
+
+I fixed it by copying my files over to pwl after Extract and before Load.
+
+Related to fstab, what do I need to include to read fat16 and extended?
+Pwl fdisk -identifies- a partition but mount says it can't deal with them.
+
+Tnx. Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+<A HREF="mailto:jb@jbarchuk.com">jb@jbarchuk.com</A>
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000551.html">[Peeweelinux] adduser and azerty keyboard
+</A></li>
+	<LI> Next message: <A HREF="000553.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#552">[ date ]</a>
+              <a href="thread.html#552">[ thread ]</a>
+              <a href="subject.html#552">[ subject ]</a>
+              <a href="author.html#552">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

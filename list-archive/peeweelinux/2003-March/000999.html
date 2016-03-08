@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] black and with squares with an X in the middle
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000998.html">
+   <LINK REL="Next"  HREF="001000.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] black and with squares with an X in the middle
+   </H1>
+    <B>Leif Steinhour
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] black and with squares with an X in the middle">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 27 Mar 2003 07:46:37 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000998.html">[Peeweelinux] black and with squares with an X in the middle
+</A></li>
+        <LI> Next message: <A HREF="001000.html">[Peeweelinux] X_Free
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#999">[ date ]</a>
+              <a href="thread.html#999">[ thread ]</a>
+              <a href="subject.html#999">[ subject ]</a>
+              <a href="author.html#999">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>If you want to scope this one out, you'll have to look at the output from 
+the server. Do the following:
+
+startx &gt;&amp; logfile
+
+then press ctrl-alt-backspace to get you out of the server
+
+then type:
+
+more logfile
+
+and take a look at what the errors are. Usually stuff like this is from 
+problems with your mouse or video card.
+
+Another thing you can check out is to type:
+
+ps -fu root
+
+and see whether xfs is running. If it's not, check under /etc/X11/fs (or 
+something like that) to see whether the directories (under catalog) in the 
+config file actually exist and are linked to real files. If not, delete 
+the offending entries, and then try restarting your machine and seeing if 
+xfs is starting up. You need it in order to get X working. 
+
+On 2003.03.27 06:43 lfabada fffd wrote:
+&gt;<i> I got my XFree86 working, well... I guess. Now, I have
+</I>&gt;<i> a screen of little black and white squares with a big
+</I>&gt;<i> X in the middle. And I can,t exit that screen.
+</I>&gt;<i> 
+</I>&gt;<i> Is it fvmw that is not loading? Does anybody have any
+</I>&gt;<i> suggestion.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Does it worth it to try to install tinyX instead of Xfree86?
+</I>&gt;<i> 
+</I>&gt;<i> __________________________________________________
+</I>&gt;<i> Do you Yahoo!?
+</I>&gt;<i> Yahoo! Platinum - Watch CBS' NCAA March Madness, live on your desktop!
+</I>&gt;<i> <A HREF="http://platinum.yahoo.com">http://platinum.yahoo.com</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000998.html">[Peeweelinux] black and with squares with an X in the middle
+</A></li>
+	<LI> Next message: <A HREF="001000.html">[Peeweelinux] X_Free
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#999">[ date ]</a>
+              <a href="thread.html#999">[ thread ]</a>
+              <a href="subject.html#999">[ subject ]</a>
+              <a href="author.html#999">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

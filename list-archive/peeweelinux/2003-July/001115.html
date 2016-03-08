@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] About inittab .. failed
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001114.html">
+   <LINK REL="Next"  HREF="001116.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] About inittab .. failed
+   </H1>
+    <B>Scott MacKay
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] About inittab .. failed">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 2 Jul 2003 12:02:17 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001114.html">[Peeweelinux] About inittab .. failed
+</A></li>
+        <LI> Next message: <A HREF="001116.html">[Peeweelinux] About inittab .. failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1115">[ date ]</a>
+              <a href="thread.html#1115">[ thread ]</a>
+              <a href="subject.html#1115">[ subject ]</a>
+              <a href="author.html#1115">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The distributed 'rpm' program does not work on newer
+packages.  You need to edit the scripts/pwl_functions
+(i think that is the one) to change it to something
+like /bin/rpm instead.  I had the same problem with RH
+8 CD packages and it was happy after I used the native
+rpm instead of the one distributed
+
+
+--- Didier Solheid &lt;<A HREF="mailto:didier.solheid@skynet.be">didier.solheid@skynet.be</A>&gt; wrote:
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> Yep, all rights are ok ..
+</I>&gt;<i> 
+</I>&gt;<i> An other thing, is the fact that all .tar files in
+</I>&gt;<i> Embedded_Build/packages/
+</I>&gt;<i> have a size of 10240 bytes ... all .list are empty
+</I>&gt;<i> file.
+</I>&gt;<i> 
+</I>&gt;<i> This is a normal situation ?
+</I>&gt;<i> 
+</I>&gt;<i> Didier
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;<i> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of
+</I>&gt;<i> Daniel Purcell
+</I>&gt;<i> Sent: mercredi 2 juillet 2003 19:52
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: [Peeweelinux] About inittab .. failed
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Are permissions set right?
+</I>&gt;<i> 
+</I>&gt;<i> On Wednesday 02 July 2003 7:21 am, Adilson Oliveira
+</I>&gt;<i> wrote:
+</I>&gt;<i> &gt; Didier Solheid wrote:
+</I>&gt;<i> &gt; &gt; And here, in the result, a problem =&gt;
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; ee.tar	minimal/ee.list
+</I>&gt;<i> &gt; &gt; tar: usr/bin/ee: Not found in archive
+</I>&gt;<i> &gt; &gt; tar: Error exot delayed from previous errors
+</I>&gt;<i> &gt; &gt; kernel-basic-2.2.17.tar	
+</I>&gt;<i> minimal/kernel-basic-2.2.17.list
+</I>&gt;<i> &gt; &gt; tar: boot/bzImage: Not found in archive
+</I>&gt;<i> &gt; &gt; tar: dev/fla: Not found in archive
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; That's strange... maybe someelse can help you
+</I>&gt;<i> further because it should
+</I>&gt;<i> &gt; work.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; I'm jobless ..., so I can not help u in our job
+</I>&gt;<i> query :)
+</I>&gt;<i> &gt; &gt; But, a lot of website exist here ... like
+</I>&gt;<i> www.references.be or
+</I>&gt;<i> &gt; &gt; <A HREF="http://www.jobscareer.be/">http://www.jobscareer.be/</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Despite *I am* looking for a job overseas, Belgium
+</I>&gt;<i> was not in my plans
+</I>&gt;<i> &gt; as I don't speak any of the official languages but
+</I>&gt;<i> thank you anywany ;)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; ps: here it's summer ... ;)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Yes, I know. ;)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+
+__________________________________
+Do you Yahoo!?
+SBC Yahoo! DSL - Now only $29.95 per month!
+<A HREF="http://sbc.yahoo.com">http://sbc.yahoo.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001114.html">[Peeweelinux] About inittab .. failed
+</A></li>
+	<LI> Next message: <A HREF="001116.html">[Peeweelinux] About inittab .. failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1115">[ date ]</a>
+              <a href="thread.html#1115">[ thread ]</a>
+              <a href="subject.html#1115">[ subject ]</a>
+              <a href="author.html#1115">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

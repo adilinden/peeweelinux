@@ -1,0 +1,85 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] PeeWee on hard drive partition
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000718.html">
+   <LINK REL="Next"  HREF="000721.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] PeeWee on hard drive partition
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] PeeWee on hard drive partition">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 25 Jul 2002 14:49:09 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000718.html">[Peeweelinux] Fits on a floppy?
+</A></li>
+        <LI> Next message: <A HREF="000721.html">[Peeweelinux] PeeWee on hard drive partition
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#719">[ date ]</a>
+              <a href="thread.html#719">[ thread ]</a>
+              <a href="subject.html#719">[ subject ]</a>
+              <a href="author.html#719">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>So, I thought, I should target a hard drive on a computer, that
+will let me get used to running the IDE interface and give me
+some room to start building the real application.  
+
+I made a little space at the end of the second drive on my host
+system and figured I'd write it there.  Should work, no?
+
+Well, nobody really uses a hard drive for embedded work.  A flash
+IDE drive is supported, but the instructions seem to indicate
+that the master boot record gets written, which isn't what I'm
+looking for.  So I choose a floppy, and lie to it that the
+floppy is at /dev/hdb11.  It writes out fine, the partition 
+is a DOS filesystem with the kernel and ramdisk and boot files.
+I tell the host system lilo to add that image.   All is OK.
+
+Except that when I go there, syslinux starts and wants to read
+everything off the floppy drive.
+
+Last night I went to the syslinux site and it looks like I can
+change the drive syslinux is reading from...if I can actually
+get the BIOS to recognize an extended partition on the second
+drive.  Failing that, I think DOS will see it and I can use
+LOADLIN to start it.   Eventually I could probably work it 
+out with lilo if I knew what peewee did for each option.   
+Still, it's all a temporary step on the way to the real target.
+
+Tinkering is fun.
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000718.html">[Peeweelinux] Fits on a floppy?
+</A></li>
+	<LI> Next message: <A HREF="000721.html">[Peeweelinux] PeeWee on hard drive partition
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#719">[ date ]</a>
+              <a href="thread.html#719">[ thread ]</a>
+              <a href="subject.html#719">[ subject ]</a>
+              <a href="author.html#719">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

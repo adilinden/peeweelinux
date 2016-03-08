@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Boot/CRC Problems
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000800.html">
+   <LINK REL="Next"  HREF="000801.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Boot/CRC Problems
+   </H1>
+    <B>John Murphy
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Boot/CRC Problems">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 17 Oct 2002 11:23:15 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000800.html">[Peeweelinux] Boot/CRC Problems
+</A></li>
+        <LI> Next message: <A HREF="000801.html">[Peeweelinux] Boot/CRC Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#797">[ date ]</a>
+              <a href="thread.html#797">[ thread ]</a>
+              <a href="subject.html#797">[ subject ]</a>
+              <a href="author.html#797">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've got a couple of problems I'm hoping the sharp
+folks here can help me with.  I'm pretty experienced
+with linux and embedded systems, but new to peewee
+and not done a ton of bootdisk stuff.
+
+My system is a transmeta crusoe PC104 with an
+aaeon 3115B PCMCIA adapter.  I also have an IDE-&gt;
+Compact Flash Adapter.
+
+I've tried the wireless-isa example with similar results
+as my own custom kernel.  Here's what happens:
+
+1) Build system on development system and write to
+16MB CompactFlash card using USB Reader/Writer.
+
+2) Install card in compact flash adapter on IDE
+string.
+
+3) Power on.  I get the following error
+
+loading ramdisk...................................
+loading bzImage........
+
+  - crc error -
+
+system halted
+
+
+Any thoughts?  Do I somehow need to modify the kernel
+building to use zImage?  What script would I need to
+modify?
+
+
+
+A second problem I have is when I'm trying to boot from
+PCMCIA with the compact flash card in a PCMCIA-&gt;CF
+Adapter.  The PCMCIA PC104 card I have has a special
+boot EEPROM on it.  After fiddling with the jumpers, I
+am able to boot from a compact flash card with a
+bootable DOS filesystem on it.  When I try to boot the
+above linux filesystem, the system indicates that
+I need to insert a system disk - It's not seeing the bootable
+filesystem.  
+
+Any Ideas?
+
+I suppose that it is possible that the boot eeprom firmware
+only recognizes the dos filesystem.  If I wanted to create a 
+bootable partition with a minimal dos and syslinux to boot
+the system (a hack, but in this operation, it wouldn't be
+too bad as long as I can modify the PWL scripts to generate
+the system...)
+
+Any thoughts about how I would best go about modifying or adding
+scripts to do this?
+
+Thanks,
+murph
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000800.html">[Peeweelinux] Boot/CRC Problems
+</A></li>
+	<LI> Next message: <A HREF="000801.html">[Peeweelinux] Boot/CRC Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#797">[ date ]</a>
+              <a href="thread.html#797">[ thread ]</a>
+              <a href="subject.html#797">[ subject ]</a>
+              <a href="author.html#797">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

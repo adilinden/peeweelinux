@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Pee wee Linux - pwlconfig
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000014.html">
+   <LINK REL="Next"  HREF="000016.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Pee wee Linux - pwlconfig
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Pee wee Linux - pwlconfig">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 14 Feb 2000 08:53:32 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000014.html">upx, tinylogin
+</A></li>
+        <LI> Next message: <A HREF="000016.html">problem running pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> I am using SuSE linux as my main Linux box. I tried to install PWL in a
+</I>&gt;<i> small 36 Meg partition on the same hard disk &amp; LILO in to it on boot time.
+</I>&gt;<i> It all booted well &amp; all that except the network (eth0). I am using a
+</I>&gt;<i> standard NE2000 isa card, but for some reason the ne.o module didn't load &amp;
+</I>&gt;<i> hence failed to bring up network.
+</I>
+The ne2000 driver comes in two pieces. Do the following:
+
+insmod 8390
+insmod ne io=0x300 irq=15
+
+Make sure you use the actual i/o address and irq of your ne2000 card.
+
+&gt;<i> When I  tried to insmod ne.o, It gives out 'unresolved symbols' message. I
+</I>&gt;<i> am using your latest PWL 0.19version.
+</I>
+This is because the 8390 module didn't get loaded before loading the ne
+module.
+
+&gt;<i> Also I cannot run 'pwlconfig' as I  don't have 'lxdialog' in SuSE
+</I>&gt;<i> distribution.
+</I>
+Make sure you have the kernel sources installed. cd into your kernel
+sources directory ('/usr/src/linux') and do a 'make menuconfig'. This will
+create the lxdialog in '/usr/src/linux/scripts/lxdialog' (taking from
+memory and I might have missspelled the path).
+
+Hope this helps,
+Adi 
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000014.html">upx, tinylogin
+</A></li>
+	<LI> Next message: <A HREF="000016.html">problem running pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#15">[ date ]</a>
+              <a href="thread.html#15">[ thread ]</a>
+              <a href="subject.html#15">[ subject ]</a>
+              <a href="author.html#15">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

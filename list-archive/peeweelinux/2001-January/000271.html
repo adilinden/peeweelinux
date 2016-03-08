@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> pwlconfig custom file problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000270.html">
+   <LINK REL="Next"  HREF="000291.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>pwlconfig custom file problem
+   </H1>
+    <B>Dean Brown
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="pwlconfig custom file problem">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 05 Jan 2001 13:38:24 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000270.html">Inquiry
+</A></li>
+        <LI> Next message: <A HREF="000291.html">pwlconfig custom file problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#271">[ date ]</a>
+              <a href="thread.html#271">[ thread ]</a>
+              <a href="subject.html#271">[ subject ]</a>
+              <a href="author.html#271">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adi,
+
+I've come across a bit of a problem with the handling of custom files in
+pwl. If any directories have spaces in their names, the initial check
+when pwlconfig loads erroneously indicates that the source and custom
+directories aren't in sync. What appears to be happening is that any
+files in a custom directory that has an embedded space are assumed to
+belong in the root of the custom source directory.
+
+IF you need an example, I can send you one. As a simple test however,
+create a project that uses a custom directory structure as follows:
+
+&quot;&lt;custom_src&gt;/test dir/foo&quot;
+&quot;&lt;custom_src&gt;/test dir/bar&quot;
+&quot;&lt;custom_src&gt;/test dir/foobar&quot;
+
+
+If you add this to a project at root, exit pwlconfig, then re-enter
+pwlconfig you will get a list of file in your custom directory that do
+not exist in you custom source directory. The list will look something
+like this:
+
+&quot;&lt;custom_src&gt;/dir/foo&quot;
+&quot;&lt;custom_src&gt;/dir/bar&quot;
+&quot;&lt;custom_src&gt;/dir/foobar&quot;
+
+It seems that when you are creating your .list files, you aren't quoting
+paths with spaces embedded in them.
+
+This is a problem for me since the application I am trying to run on my
+system has embedded spaces in the paths that I don't have control over.
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000270.html">Inquiry
+</A></li>
+	<LI> Next message: <A HREF="000291.html">pwlconfig custom file problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#271">[ date ]</a>
+              <a href="thread.html#271">[ thread ]</a>
+              <a href="subject.html#271">[ subject ]</a>
+              <a href="author.html#271">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,1497 @@
+From peeweelinux@adis.on.ca  Tue Apr  2 09:05:52 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Tue, 2 Apr 2002 11:05:52 +0200
+Subject: [Peeweelinux] adduser and azerty keyboard
+Message-ID: <C1256B8F.00320824.00@vzmta01.netfr.alcatel.fr>
+
+--0__=6H9EwqOfTnARkUOCY9F3JcdFFC2fXC575IvdwCXFmTpR8JTyzlW8unB9
+Content-type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-transfer-encoding: quoted-printable
+
+
+
+
+Hi,
+
+Thank you for those information.
+
+Mmmh, ok, I stop trying to add a new user. I've recently discovered Lin=
+ux, and
+it was one of the first things I've learned :-)
+
+But I still have a problem with my azerty keyboard. It's not easy to le=
+arn
+peewee when you have to find each key ...
+
+Here is what I've tried to do to change my keyboard config to a latin 1=
+ "azerty"
+:
+
+>From a copy of a "minimal" config :
+
+Create Custom kernel package
+Configure the kernel (menu config)
+Filesystems
+Native langage support
+Default NLS option : latin 1 NLS ISO 8859-1
+
+Extract file system for project
+
+Load filesystem onto target ......
+
+Then Peewee works fine, but still with a qwerty keyboard :-(
+
+Does anyone know how to change the keyboard configuration ? Do French-s=
+peaking
+Canadians use "American" qwerty keyboards or "French" azerty ones ? :-)=
+
+
+Thank you.
+
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+"Mark Meade" <mark@lakeshoremicro.com> on 29/03/2002 16:55:29
+
+Veuillez r=E9pondre =E0 peeweelinux@adis.on.ca
+
+Pour :    peeweelinux@adis.on.ca
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] adduser
+
+
+=
+
+--0__=6H9EwqOfTnARkUOCY9F3JcdFFC2fXC575IvdwCXFmTpR8JTyzlW8unB9
+Content-type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+Guillaume PREVOST wrote:
+
+> Does a way exist to add a new user in a minimal Peewee ?
+
+I wasn't able to find "useradd" or "adduser" anywhere in Peewee.  I would think
+that it
+wouldn't be necessary in most embedded systems to add users; maybe this is why
+it's not
+included.
+
+I suppose you could grab the useradd program from a RH6.2 box, and include it in
+your
+custom files.  It is about 50k in size, so it might fit on your minimal target.
+
+The other option would be to manually modify relevant user files (/etc/passwd,
+/etc/group,
+...), and include these as custom files.
+
+Mark
+
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+
+
+
+
+
+
+--0__=6H9EwqOfTnARkUOCY9F3JcdFFC2fXC575IvdwCXFmTpR8JTyzlW8unB9--
+
+
+From peeweelinux@adis.on.ca  Tue Apr  2 18:06:10 2002
+From: peeweelinux@adis.on.ca (jim barchuk)
+Date: Tue, 2 Apr 2002 13:06:10 -0500 (EST)
+Subject: [Peeweelinux] edit fstab doesn't 'stick'
+In-Reply-To: <001d01c1d73b$69299660$0101a8c0@dellc800>
+Message-ID: <Pine.LNX.4.44.0204021248140.5476-100000@jbarchuk.com>
+
+Hi Mark!
+
+> Peewee creates /etc/fstab dynamically, based on your particular target
+> options.  As you have already seen, any custom fstab file you create
+> will be replaced.
+
+This has got to be some system design philosophical thing that I don't
+understand. Pwl has no idea what devices the target system has. Why would
+it overwrite what -I- tell it it has?
+
+I think I'm misunderstanding what 'target' means. I'm making a boot floppy
+for a box that has several hds.  For me the floppy is a transition/boot
+device. Pwl is unclear at several points what target means for it.
+
+I fixed it by copying my files over to pwl after Extract and before Load.
+
+Related to fstab, what do I need to include to read fat16 and extended?
+Pwl fdisk -identifies- a partition but mount says it can't deal with them.
+
+Tnx. Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+jb@jbarchuk.com
+
+
+
+From peeweelinux@adis.on.ca  Tue Apr  2 19:57:29 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Tue, 2 Apr 2002 14:57:29 -0500
+Subject: [Peeweelinux] edit fstab doesn't 'stick'
+References: <Pine.LNX.4.44.0204021248140.5476-100000@jbarchuk.com>
+Message-ID: <004901c1da80$c1de1270$0201a8c0@dellc800>
+
+jim barchuk wrote:
+
+> This has got to be some system design philosophical thing that I don't
+> understand. Pwl has no idea what devices the target system has.
+
+True, but Pwl *does* know how your target file system is configured, and the various mount
+points.  It knows what devices your target has (/dev/fd0, /dev/ram, etc), the file system
+in question (ext2, FAT, etc), and where the various directories are mounted (/, /home,
+etc).
+
+> Why would it overwrite what -I- tell it it has?
+
+For power users, this feature can be disabled:  After some poking around in the
+Embedded_Build/scripts directory, it looks like there is a script called "pwl_defaults"
+that you could run, and turn off the option ("Modify System Boot Files") that causes fstab
+to be created.
+
+> I think I'm misunderstanding what 'target' means. I'm making a boot floppy
+> for a box that has several hds.  For me the floppy is a transition/boot
+> device. Pwl is unclear at several points what target means for it.
+
+Here's the philosophical part - to me, "target" implies an embedded system -- and not a
+floppy that boots Linux on a system with multiple hard drives.  This isn't to say the PWL
+is inapproriate for your particular application; just keep in mind that embedded systems
+<usually> don't include large hard drives.
+
+In fact, I would argue that PWL does in fact "know" about the target system -- it knows it
+has a boot (target) device, and some RAM.  The biggest problem I've seen thus far was
+touched on earlier in this list -- how to configure a flash target with multiple
+partitions.
+
+>From your initial posts, I recall that you are trying to install Redhat via the LAN.
+Wouldn't it be easier to use one of the various Redhat boot floppy images designed for
+that purpose?  These images will probably have kernels that know all about hard drives,
+network cards, and ext2/fat16 partitions.
+
+Disclaimer: I realize that the "easiest" way isn't necessarily the most *fun* or
+*educational* way ;-).
+
+> Related to fstab, what do I need to include to read fat16 and extended?
+> Pwl fdisk -identifies- a partition but mount says it can't deal with them.
+
+You'll need to have fat16 and ext2 support either compiled into the kernel, or included as
+modules. If you're using the standard pwl kernel, you'll need to include the corresponding
+modules under "kernel-basic-2.2.17".
+
+Regards,
+
+Mark
+
+
+
+
+From peeweelinux@adis.on.ca  Wed Apr  3 00:39:44 2002
+From: peeweelinux@adis.on.ca (jim barchuk)
+Date: Tue, 2 Apr 2002 19:39:44 -0500 (EST)
+Subject: [Peeweelinux] edit fstab doesn't 'stick'
+In-Reply-To: <Pine.LNX.4.44.0204021248140.5476-100000@jbarchuk.com>
+Message-ID: <Pine.LNX.4.44.0204021937490.5476-100000@jbarchuk.com>
+
+Hi All!
+
+> > Peewee creates /etc/fstab dynamically, based on your particular target
+
+> I fixed it by copying my files over to pwl after Extract and before Load.
+
+Whoops, I misremembered that. Actually I patched pwl_target_functions but
+I know that's a complete hack and will look into something different.
+
+Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+jb@jbarchuk.com
+
+
+From peeweelinux@adis.on.ca  Wed Apr  3 07:12:27 2002
+From: peeweelinux@adis.on.ca (jim barchuk)
+Date: Wed, 3 Apr 2002 02:12:27 -0500 (EST)
+Subject: [Peeweelinux] edit fstab doesn't 'stick'
+In-Reply-To: <004901c1da80$c1de1270$0201a8c0@dellc800>
+Message-ID: <Pine.LNX.4.44.0204022352540.5476-100000@jbarchuk.com>
+
+Hi Mark!
+
+> > This has got to be some system design philosophical thing that I don't
+> > understand. Pwl has no idea what devices the target system has.
+>
+> True, but Pwl *does* know how your target file system is configured, and
+> the various mount points.  It knows what devices your target has
+> (/dev/fd0, /dev/ram, etc), the file system in question (ext2, FAT, etc),
+> and where the various directories are mounted (/, /home, etc).
+
+Yes, of the local/pwl filesystem, but not, in my case, of the hardware of
+the intended final system it'll run on.
+
+> For power users, this feature can be disabled:  After some poking around
+> in the Embedded_Build/scripts directory, it looks like there is a script
+> called "pwl_defaults" that you could run, and turn off the option
+> ("Modify System Boot Files") that causes fstab to be created.
+
+I'll look into that, tnx! The docs are a little thin and there's 500k
+worth of ~/scripts in there. :)
+
+> > I think I'm misunderstanding what 'target' means. I'm making a boot
+> > floppy for a box that has several hds.  For me the floppy is a
+> > transition/boot device. Pwl is unclear at several points what target
+> > means for it.
+>
+> Here's the philosophical part - to me, "target" implies an embedded
+> system -- and not a floppy that boots Linux on a system with multiple
+> hard drives.  This isn't to say the PWL is inapproriate for your
+> particular application; just keep in mind that embedded systems
+> <usually> don't include large hard drives.
+
+I meant it on a simpler level. Try looking at it from a pwl-noobee's POV.
+Main Menu has Configure Target and Load File into Target options. Now the
+casual observer might think there's 'a' target.' But Confugre Target
+Hardware has options for 'floppy target / Floppy Device' and 'ide flash
+target (or HD) / Target Device / Boot Device on Target System.' -Very-
+unclear what each actually intends. By a little trial and error I figured
+out that the Load File Into Target -will- use the 'floppy target' setting.
+Grepping through 500k worth of scripts I could probably figure out a lot
+more but all the user really wants to do is 'make it do what I need it to
+do.'
+
+> In fact, I would argue that PWL does in fact "know" about the target
+> system -- it knows it has a boot (target) device, and some RAM.  The
+> biggest problem I've seen thus far was touched on earlier in this list
+> -- how to configure a flash target with multiple partitions.
+
+I've got the full archives and will look further for that.
+
+> >From your initial posts, I recall that you are trying to install Redhat
+> >via the LAN.
+> Wouldn't it be easier to use one of the various Redhat boot floppy images designed for
+> that purpose?  These images will probably have kernels that know all about hard drives,
+> network cards, and ext2/fat16 partitions.
+
+I *seriously* distrust RH installations and won't risk it on drives that I
+intend to keep files. 7.2 -couldn't- recognise a very standard symbios
+53c875 /dev/sdb as a formatted and partitioned ext2 device. There were
+several bugzillas and ng posts. They offered a new boot/install floppy
+with zero positive effect. That, plus the way a 'server' install will grab
+every drive in the box makes me a little nervous. No, I don't intend a
+server install but once there are serious unfixed bugs all bets are off
+from my POV. Haven't checked in a couple of months, maybe the have a new
+boot image.
+
+> Disclaimer: I realize that the "easiest" way isn't necessarily the most
+> *fun* or *educational* way ;-).
+
+LOL! Yes, this is meant to be as much educational as functional. I know
+plenty about higher level operational stuff but not the real guts of the
+system. Pwl has been a real eye opener.
+
+> > Related to fstab, what do I need to include to read fat16 and
+> > extended? Pwl fdisk -identifies- a partition but mount says it can't
+> > deal with them.
+>
+> You'll need to have fat16 and ext2 support either compiled into the
+> kernel, or included as modules. If you're using the standard pwl kernel,
+> you'll need to include the corresponding modules under
+> "kernel-basic-2.2.17".
+
+Well gee I THOUGHT it ought to turn up in fat, vfat, or msdos, but
+nooooooo, rgrep -ir fat16 FINALLY found it in doc.o. Nope, that ain't
+right either. Finally found reference at google that I need to mount fat16
+as vfat. Seems to work, can ftp files out and such.
+
+Things are cranking along fine now, thanks for the clues.
+
+Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+jb@jbarchuk.com
+
+
+
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Apr  4 16:06:55 2002
+From: peeweelinux@adis.on.ca (Matthew L. Canny)
+Date: Thu, 4 Apr 2002 10:06:55 -0600 (CST)
+Subject: [Peeweelinux] Question about X
+Message-ID: <200204041606.KAA26631@mailhub-1.iastate.edu>
+
+I'm trying to get X to run, but I'm having problems.
+
+When I startx I get:
+execve failed for /usr/X11R6/bin/X (errno 2)
+_X11TransSocketUNIXConnect: Can't Connect: errno = 111
+giving up.
+xinit:  Connection refused (errno 111):  unable to connect to X server
+xinit:  No such process (errno 3):  Server error.
+
+I looked around and found some info on how to fix this for standard Linux
+installs, but I can't figure it out for PeeWee.
+
+I know that some people have gotten X to work on their systems.  Could somebody
+please let me know what I'm doing wrong, what I have setup wrong, or where I
+could read some documentation to help me with this?
+
+-----------------------------------------------
+Matthew L. Canny
+"Angels never know it's time...to close the book and gracefully decline..."
+
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Apr  4 16:12:51 2002
+From: peeweelinux@adis.on.ca (Mateo Garcia, Carlos)
+Date: Thu, 4 Apr 2002 18:12:51 +0200
+Subject: [Peeweelinux] Question about X
+Message-ID: <82DC6B639424D611A873001083F92DA237D171@madtorsv07.indra.es>
+
+Does your kernel support TCP?
+Since X works as client-server, it needs to communicate via TCP.
+
+I got an error like yours, but I don't remember if it was errno=111.
+
+Try to recompile your kernel with TCP support.
+--
+Carlos Mateo
+cmateo@indra.es
+
+
+-----Mensaje original-----
+De: Matthew L. Canny [mailto:pchan@iastate.edu]
+Enviado el: jueves, 04 de abril de 2002 18:07
+Para: peeweelinux@adis.on.ca
+Asunto: [Peeweelinux] Question about X
+
+
+I'm trying to get X to run, but I'm having problems.
+
+When I startx I get:
+execve failed for /usr/X11R6/bin/X (errno 2)
+_X11TransSocketUNIXConnect: Can't Connect: errno = 111
+giving up.
+xinit:  Connection refused (errno 111):  unable to connect to X server
+xinit:  No such process (errno 3):  Server error.
+
+I looked around and found some info on how to fix this for standard Linux
+installs, but I can't figure it out for PeeWee.
+
+I know that some people have gotten X to work on their systems.  Could somebody
+please let me know what I'm doing wrong, what I have setup wrong, or where I
+could read some documentation to help me with this?
+
+-----------------------------------------------
+Matthew L. Canny
+"Angels never know it's time...to close the book and gracefully decline..."
+
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+From peeweelinux@adis.on.ca  Fri Apr  5 15:55:55 2002
+From: peeweelinux@adis.on.ca (Bill Wimsatt)
+Date: Fri, 5 Apr 2002 08:55:55 -0700
+Subject: [Peeweelinux] Looking for a Bid
+In-Reply-To: <82DC6B639424D611A873001083F92DA237D171@madtorsv07.indra.es>
+Message-ID: <003001c1dcba$62def050$647ba8c0@bach>
+
+I am looking for a bid to build a small Linux build. We are beginning
+work on an embedded ARM based device that will essentially function as a
+browser only. Is there any interest from this someone in this group to
+build a Linux system that supports 16 bit color, sound, and an HTML 4.0
+Browser? The device will have 8Mb RAM and 16Mb Flash storage. We can
+place the OS and browser in a ROM.
+
+Regards,
+Bill Wimsatt
+VP, Engineering
+CorAccess Systems
+1600 Jackson Street
+Suite 150
+Golden, Colorado 80401
+303 477 7757 (o)
+720 480 2985 (c)
+ 
+http://www.coraccess.com
+ 
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]
+On Behalf Of Mateo Garcia, Carlos
+Sent: Thursday, April 04, 2002 9:13 AM
+To: peeweelinux@adis.on.ca
+Subject: RE: [Peeweelinux] Question about X
+
+Does your kernel support TCP?
+Since X works as client-server, it needs to communicate via TCP.
+
+I got an error like yours, but I don't remember if it was errno=111.
+
+Try to recompile your kernel with TCP support.
+--
+Carlos Mateo
+cmateo@indra.es
+
+
+-----Mensaje original-----
+De: Matthew L. Canny [mailto:pchan@iastate.edu]
+Enviado el: jueves, 04 de abril de 2002 18:07
+Para: peeweelinux@adis.on.ca
+Asunto: [Peeweelinux] Question about X
+
+
+I'm trying to get X to run, but I'm having problems.
+
+When I startx I get:
+execve failed for /usr/X11R6/bin/X (errno 2)
+_X11TransSocketUNIXConnect: Can't Connect: errno = 111
+giving up.
+xinit:  Connection refused (errno 111):  unable to connect to X server
+xinit:  No such process (errno 3):  Server error.
+
+I looked around and found some info on how to fix this for standard
+Linux
+installs, but I can't figure it out for PeeWee.
+
+I know that some people have gotten X to work on their systems.  Could
+somebody
+please let me know what I'm doing wrong, what I have setup wrong, or
+where I
+could read some documentation to help me with this?
+
+-----------------------------------------------
+Matthew L. Canny
+"Angels never know it's time...to close the book and gracefully
+decline..."
+
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+From peeweelinux@adis.on.ca  Wed Apr 10 15:18:54 2002
+From: peeweelinux@adis.on.ca (Reinaldo Mello)
+Date: Wed, 10 Apr 2002 16:18:54 +0200 (MEST)
+Subject: [Peeweelinux] peewee
+Message-ID: <Pine.GSO.4.33.0204101618420.8-100000@horus.imag.fr>
+
+.
+
+
+From peeweelinux@adis.on.ca  Wed Apr 10 20:52:16 2002
+From: peeweelinux@adis.on.ca (Matthew L. Canny)
+Date: Wed, 10 Apr 2002 14:52:16 -0500 (CDT)
+Subject: [Peeweelinux] X on PeeWee
+Message-ID: <200204101952.OAA07272@mailhub-2.iastate.edu>
+
+Is there anything specific you have to do to get X to work on PeeWeeLinux,
+besides including the X packages (i.e. other packages, configurations, scripts,
+etc...)?
+
+I can't seem to get X to work no matter what I do.
+
+Any help is greatly appreciated.
+
+-----------------------------------------------
+Matthew L. Canny
+CIRAS
+
+
+
+
+
+From peeweelinux@adis.on.ca  Tue Apr 16 23:09:44 2002
+From: peeweelinux@adis.on.ca (K West)
+Date: Tue, 16 Apr 2002 17:09:44 -0500
+Subject: [Peeweelinux] DiskOnChip Boot Problems
+Message-ID: <F119dTUL3x59qY4xyJN00013a8a@hotmail.com>
+
+I have a PWL file system built and working on a CompactFLASH device.  I am 
+now trying to move to a DiskOnChip (DOC) device.
+
+I used the latest driver from M-Systems (5.04) and have it working fine on 
+my development system.  I can mount the DOC and PeeWee can build the 
+filesystem on it just like it does on the CFLASH.  The problem occurs when I 
+reboot.  The system displays 'dLIL' and stops.
+
+I've read the 'Bootdisk HOWTO' which indicates that LILO may have a problem 
+with the system map file.  If this is true, I haven't figured out how to 
+correct the problem.
+
+Has anyone else had this experience and managed to solve the problem.
+
+Any suggestions would be appreciated.
+
+Thanks.
+
+
+_________________________________________________________________
+Get your FREE download of MSN Explorer at http://explorer.msn.com/intl.asp.
+
+
+From peeweelinux@adis.on.ca  Tue Apr 16 23:44:42 2002
+From: peeweelinux@adis.on.ca (Marc Wiz)
+Date: Tue, 16 Apr 2002 17:44:42 -0500 (CDT)
+Subject: [Peeweelinux] DiskOnChip Boot Problems
+In-Reply-To: <F119dTUL3x59qY4xyJN00013a8a@hotmail.com> from "K West" at Apr 16, 2002 05:09:44 PM
+Message-ID: <200204162244.g3GMihs18437@freshaire.wiz.com>
+
+> 
+> 
+> I have a PWL file system built and working on a CompactFLASH device.  I am 
+> now trying to move to a DiskOnChip (DOC) device.
+> 
+> I used the latest driver from M-Systems (5.04) and have it working fine on 
+> my development system.  I can mount the DOC and PeeWee can build the 
+> filesystem on it just like it does on the CFLASH.  The problem occurs when I 
+> reboot.  The system displays 'dLIL' and stops.
+> 
+> I've read the 'Bootdisk HOWTO' which indicates that LILO may have a problem 
+> with the system map file.  If this is true, I haven't figured out how to 
+> correct the problem.
+> 
+> Has anyone else had this experience and managed to solve the problem.
+> 
+> Any suggestions would be appreciated.
+
+Check the M-Systems site for their special version of LILO.
+
+That is what I am using.
+
+Marc
+
+-- 
+Marc Wiz
+marc@wiz.com
+Yes, that really is my last name.
+
+From peeweelinux@adis.on.ca  Wed Apr 17 01:38:30 2002
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Tue, 16 Apr 2002 21:38:30 -0300
+Subject: [Peeweelinux] DiskOnChip Boot Problems
+References: <F119dTUL3x59qY4xyJN00013a8a@hotmail.com>
+Message-ID: <3CBCC406.1040801@tutopia.com.br>
+
+K West wrote:
+> 
+> I have a PWL file system built and working on a CompactFLASH device.  I 
+> am now trying to move to a DiskOnChip (DOC) device.
+> 
+> I used the latest driver from M-Systems (5.04) and have it working fine 
+> on my development system.  I can mount the DOC and PeeWee can build the 
+> filesystem on it just like it does on the CFLASH.  The problem occurs 
+> when I reboot.  The system displays 'dLIL' and stops.
+> 
+> I've read the 'Bootdisk HOWTO' which indicates that LILO may have a 
+> problem with the system map file.  If this is true, I haven't figured 
+> out how to correct the problem.
+> 
+> Has anyone else had this experience and managed to solve the problem.
+> 
+> Any suggestions would be appreciated.
+
+Hello!
+
+Try to use lba=32 on /etc/lilo.conf or remove the indication 0x80
+
+[]s
+
+Adilson.
+
+P.S. Don't use the 5 version unless you needed it. Stick with the 4.3
+
+
+
+
+From peeweelinux@adis.on.ca  Thu Apr 18 19:01:54 2002
+From: peeweelinux@adis.on.ca (=?iso-8859-1?q?Jonathan=20E.=20Paton?=)
+Date: Thu, 18 Apr 2002 19:01:54 +0100 (BST)
+Subject: [Peeweelinux] Remote server boot system
+Message-ID: <20020418180154.549.qmail@web14602.mail.yahoo.com>
+
+Hi,
+
+Allow me to set the scene:
+
+I have a dream... an exciting dream... I dream of co-locating
+a rackmounted Linux box, hopefully someplace near the internet
+(the 'net backbone that is).
+
+However, the nearest co-location site (London) is about 400
+miles away - thus keeping the requirement for travel down
+would be important, and I'm currently thinking of a FLASH based
+disk and a small Linux installation.  It would do:
+
+ * Boot up the Linux kernel, with networking built-in.
+ * Start SSH and some form of file transfer
+ * Have enough to reconfigure and reinstall the main installation
+   remotely.
+
+Now, I'm wondering over the following issues related to FLASH:
+
+ 1. Can I easily make FLASH disks Read Only, for safety.
+ 2. What is the difference between the PeeWeeLinux PCMCIA->IDE
+convertor and more expensive ones such as:
+
+http://www.magicram.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=M&Product_Code=CDSDDA-03&Category_Code=PCA
+
+And relating to the Linux installation:
+
+ 1. Is it possible to execute the built-in kernel, and
+    instruct it to load another kernel from a HDD?
+    (Perhaps OT).
+
+ 2. Would the software watchdog timer be enough for
+    catching most failures?
+
+ 3. How would I reboot the system?  :)
+    (clever ideas required here)
+
+A rackmount PC gives me exactly one PCI slot - which may be used by a watchdog timer... so you can
+*almost* regard PCI as not an option (unless it's a good suggestion :)  My budget can be
+considered to be $0.01 for software, and limited to about $150 for hardware for supporting remote
+boot.
+
+Of course, I may have missed something so feel free to add suggestions/alternatives.  Pointers to
+relevent documentation is much appreciated, seemly not much hope from LinuxDoc.  Either impart
+valuable experience/knowledge, or simply ignore me :)
+
+Thanks,
+
+Jonathan Paton
+
+__________________________________________________
+Do You Yahoo!?
+Everything you'll ever need on one web page
+from News and Sport to Email and Music Charts
+http://uk.my.yahoo.com
+
+From peeweelinux@adis.on.ca  Thu Apr 18 19:26:10 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 18 Apr 2002 13:26:10 -0500 (CDT)
+Subject: [Peeweelinux] Remote server boot system
+In-Reply-To: <20020418180154.549.qmail@web14602.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.33.0204181313140.17783-100000@adibox.knet.ca>
+
+Hi Jonathan,
+
+This is an interesting idea. I've contemplated something similar, with the 
+additional thought of the server somehow falling back to this read-only 
+flash based system if the disk based filesystem is bad. However, I never 
+got time to take it any further than just the vague idea.
+
+If get something like this working I'd be very interested in hearing about 
+the results. Below are a couple of answers... 
+
+>  1. Can I easily make FLASH disks Read Only, for safety.
+
+I don't know if there's a hardware way of making the flash read-only. If 
+the system is running off a ramdisk, there would be no need to mount the 
+flash or it could be mounted read-only to access any content on it. 
+
+>  2. What is the difference between the PeeWeeLinux PCMCIA->IDE
+> convertor and more expensive ones such as:
+> 
+> http://www.magicram.com/Merchant2/merchant.mv?Screen=PROD&Store_Code=M&Product_Code=CDSDDA-03&Category_Code=PCA
+
+The adapters offered on the PeeWeeLinux site are not PCMCIA-IDE. The flash 
+card connector is meant for a CompactFlash card not PCMCIA.
+
+Regards,
+Adi
+
+
+From peeweelinux@adis.on.ca  Sat Apr 20 19:56:02 2002
+From: peeweelinux@adis.on.ca (Randy Torgerson)
+Date: Sat, 20 Apr 2002 11:56:02 -0700
+Subject: [Peeweelinux] PWL on Redhat 7.1
+Message-ID: <02042011090100.01284@localhost.localdomain>
+
+After many falls and stumbles I have PWL running on Redhat 7.1.  I wanted to 
+share with the group what has to be done so PWL works correctly and to 
+document the process for others.  
+
+All of the information here is posted somewhere in the archives but is not in 
+one location.  These are the steps that I took and maynot be the most 
+straight forward way of getting PWL working on Redhat 7.1.
+
+install ncurses4.  This may not be necessary with the latest version.
+
+install compat-glibc-6.2-2.1.3.2.i386.rpm.  These libraries are compatible 
+with the 2.2.17 kernel.
+
+After installing, run script "i386-glibc21-linux-env.sh"
+
+Modify your Makefile to use kgcc instead of cc
+
+CC	=$(CROSS_COMPILE)kgcc -D__KERNEL__ -I$(HPATH)
+
+Once I had made these changes I was able to get a project working on my 
+target very quickly.  
+
+TTFN,
+
+Randy Torgerson
+San Diego, CA
+
+From peeweelinux@adis.on.ca  Wed Apr 24 21:40:58 2002
+From: peeweelinux@adis.on.ca (Michael McManus)
+Date: Wed, 24 Apr 2002 21:40:58 +0100
+Subject: [Peeweelinux] PWL on Redhat 7.1
+In-Reply-To: <02042011090100.01284@localhost.localdomain>
+Message-ID: <ELEFKMBNKNECGPOFIKHGCEFADPAA.michael@durhamdomains.co.uk>
+
+Can you give me more details
+i.e. which Makefile and its location
+plus i have installed compat-glibc-6.2-2.1.3.2.i386.rpm
+but i cannot find "i386-glibc21-linux-env.sh" does red hat 7.1 change this?
+
+Regards
+Michael McManus
+Michael@durhamdomains.co.uk
+-= i dont suffer from insanity i enjoy every minute of it =-
+
+
+
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Randy Torgerson
+Sent: 20 April 2002 7:56 PM
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] PWL on Redhat 7.1
+
+
+After many falls and stumbles I have PWL running on Redhat 7.1.  I wanted to
+share with the group what has to be done so PWL works correctly and to
+document the process for others.
+
+All of the information here is posted somewhere in the archives but is not
+in
+one location.  These are the steps that I took and maynot be the most
+straight forward way of getting PWL working on Redhat 7.1.
+
+install ncurses4.  This may not be necessary with the latest version.
+
+install compat-glibc-6.2-2.1.3.2.i386.rpm.  These libraries are compatible
+with the 2.2.17 kernel.
+
+After installing, run script "i386-glibc21-linux-env.sh"
+
+Modify your Makefile to use kgcc instead of cc
+
+CC	=$(CROSS_COMPILE)kgcc -D__KERNEL__ -I$(HPATH)
+
+Once I had made these changes I was able to get a project working on my
+target very quickly.
+
+TTFN,
+
+Randy Torgerson
+San Diego, CA
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Thu Apr 25 00:39:46 2002
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Wed, 24 Apr 2002 19:39:46 -0400
+Subject: [Peeweelinux] PWL on Redhat 7.1
+In-Reply-To: <ELEFKMBNKNECGPOFIKHGCEFADPAA.michael@durhamdomains.co.uk>
+References: <ELEFKMBNKNECGPOFIKHGCEFADPAA.michael@durhamdomains.co.uk>
+Message-ID: <200204241938562.SM01096@there>
+
+Michael,
+
+I didn't have to modify any makefiles to compile applications for Peewee 
+Linux under Redhat 7.2.
+
+Assuming RH 7.1 is the same, the compatibility libraries install the 
+i386-glibc21-linux-env.sh script in /usr/i386-glibc-21-linux/linux/bin.  
+There are instructions in this file.
+
+When running this script, make sure to type in:
+
+. /usr/i386-glibc-21-linux/linux/i386-glibc21-linux-env.sh
+
+or 
+
+. ./i386-glibc21-linux-env.sh (in that directory)
+
+instead of typing:
+
+./i386-glibc21-linux-env.sh 
+
+I originally tried just running the script (as in the last example), but this 
+doesn't export the LDEMULATION and GCC_EXEC_PREFIX values properly.  When I 
+finally figured out what I was doing wrong, everything worked great.
+
+Regards,
+
+Mark
+
+On Wednesday 24 April 2002 04:40 pm, Michael McManus wrote:
+
+> Can you give me more details
+> i.e. which Makefile and its location
+> plus i have installed compat-glibc-6.2-2.1.3.2.i386.rpm
+> but i cannot find "i386-glibc21-linux-env.sh" does red hat 7.1 change this?
+>
+> Regards
+> Michael McManus
+> Michael@durhamdomains.co.uk
+> -= i dont suffer from insanity i enjoy every minute of it =-
+
+
+From peeweelinux@adis.on.ca  Thu Apr 25 00:56:49 2002
+From: peeweelinux@adis.on.ca (Michael McManus)
+Date: Thu, 25 Apr 2002 00:56:49 +0100
+Subject: [Peeweelinux] PWL on Redhat 7.1
+In-Reply-To: <200204241938562.SM01096@there>
+Message-ID: <ELEFKMBNKNECGPOFIKHGGEFBDPAA.michael@durhamdomains.co.uk>
+
+cheers
+
+Regards
+Michael McManus
+Michael@durhamdomains.co.uk
+-= i dont suffer from insanity i enjoy every minute of it =-
+
+
+
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Mark Meade
+Sent: 25 April 2002 12:40 AM
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] PWL on Redhat 7.1
+
+
+Michael,
+
+I didn't have to modify any makefiles to compile applications for Peewee
+Linux under Redhat 7.2.
+
+Assuming RH 7.1 is the same, the compatibility libraries install the
+i386-glibc21-linux-env.sh script in /usr/i386-glibc-21-linux/linux/bin.
+There are instructions in this file.
+
+When running this script, make sure to type in:
+
+. /usr/i386-glibc-21-linux/linux/i386-glibc21-linux-env.sh
+
+or
+
+. ./i386-glibc21-linux-env.sh (in that directory)
+
+instead of typing:
+
+./i386-glibc21-linux-env.sh
+
+I originally tried just running the script (as in the last example), but
+this
+doesn't export the LDEMULATION and GCC_EXEC_PREFIX values properly.  When I
+finally figured out what I was doing wrong, everything worked great.
+
+Regards,
+
+Mark
+
+On Wednesday 24 April 2002 04:40 pm, Michael McManus wrote:
+
+> Can you give me more details
+> i.e. which Makefile and its location
+> plus i have installed compat-glibc-6.2-2.1.3.2.i386.rpm
+> but i cannot find "i386-glibc21-linux-env.sh" does red hat 7.1 change
+this?
+>
+> Regards
+> Michael McManus
+> Michael@durhamdomains.co.uk
+> -= i dont suffer from insanity i enjoy every minute of it =-
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Sun Apr 28 18:00:35 2002
+From: peeweelinux@adis.on.ca (Kevin Brouelette)
+Date: Sun, 28 Apr 2002 10:00:35 -0700
+Subject: [Peeweelinux] Compact Flash newbie
+Message-ID: <20020428100035.36aa205c.kevin1a@socal.rr.com>
+
+
+Hello,
+I'm new to the Mini/Embedded Linux/Flash media world and need some help, here's my setup.
+
+Developing on a RedHat 7.1 with Sandisk SDDR-31 USB adapter, 8meg flash media. [/dev/sda]
+I've been able to build a simple  project on the flash media from scratch [no PWL] using Syslinux/Busybox/Kernel.
+I move the Flash to my test PC [an old 486 with a Compact Flash --> pcmcia..... pcmcia --> IDE adapter]  and it boots fine.
+Now, I'm working with PWL and have setup a small project using default packages from PWL and I can extract the project to the Flash card.  
+I move the card to my 486 can  starts to bootup,  detects the hardware and then kernel panics with:
+
+RAMDISK: Compressed image found at block 0
+VFS: mounted root (ext2 filesystem)
+Freeing unused kernel memory: 72k freed
+Kernel panic:  "No init found. Try passing init=option to kernel"
+
+
+I've used both Lilo/ext2 and Syslinux/fat16 and both reach the same error.
+Looks like the root filesystem 'was' able to mouunt which when I search the mailing list archives, it seems that others
+with this problem haven't succeeded with that step.
+
+Thanks for the help,
+
+Kevin Brouelette
+
+
+
+ 
+
+From peeweelinux@adis.on.ca  Mon Apr 29 15:24:04 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 29 Apr 2002 09:24:04 -0500 (CDT)
+Subject: [Peeweelinux] Compact Flash newbie
+In-Reply-To: <20020428100035.36aa205c.kevin1a@socal.rr.com>
+Message-ID: <Pine.LNX.4.33.0204290922110.17554-100000@adibox.knet.ca>
+
+Hi,
+
+Do you have "/sbin/init" in your filesystem? Have you tried using the 
+"minimal" project, it should be already to go and get you to a login and 
+shell prompt.
+
+Adi
+
+
+On Sun, 28 Apr 2002, Kevin Brouelette wrote:
+
+> 
+> 
+> Hello,
+> I'm new to the Mini/Embedded Linux/Flash media world and need some help, here's my setup.
+> 
+> Developing on a RedHat 7.1 with Sandisk SDDR-31 USB adapter, 8meg flash media. [/dev/sda]
+> I've been able to build a simple  project on the flash media from scratch [no PWL] using Syslinux/Busybox/Kernel.
+> I move the Flash to my test PC [an old 486 with a Compact Flash --> pcmcia..... pcmcia --> IDE adapter]  and it boots fine.
+> Now, I'm working with PWL and have setup a small project using default packages from PWL and I can extract the project to the Flash card.  
+> I move the card to my 486 can  starts to bootup,  detects the hardware and then kernel panics with:
+> 
+> RAMDISK: Compressed image found at block 0
+> VFS: mounted root (ext2 filesystem)
+> Freeing unused kernel memory: 72k freed
+> Kernel panic:  "No init found. Try passing init=option to kernel"
+> 
+> 
+> I've used both Lilo/ext2 and Syslinux/fat16 and both reach the same error.
+> Looks like the root filesystem 'was' able to mouunt which when I search the mailing list archives, it seems that others
+> with this problem haven't succeeded with that step.
+> 
+> Thanks for the help,
+> 
+> Kevin Brouelette
+> 
+
+
+From peeweelinux@adis.on.ca  Tue Apr 30 05:43:42 2002
+From: peeweelinux@adis.on.ca (Kevin Brouelette)
+Date: Mon, 29 Apr 2002 21:43:42 -0700
+Subject: [Peeweelinux] Compact Flash newbie
+In-Reply-To: <Pine.LNX.4.33.0204290922110.17554-100000@adibox.knet.ca>
+References: <20020428100035.36aa205c.kevin1a@socal.rr.com>
+ <Pine.LNX.4.33.0204290922110.17554-100000@adibox.knet.ca>
+Message-ID: <20020429214342.033c5cdb.kevin1a@socal.rr.com>
+
+On Mon, 29 Apr 2002 09:24:04 -0500 (CDT)
+"Adi Linden" <adi@adis.on.ca> wrote:
+
+> Hi,
+> 
+> Do you have "/sbin/init" in your filesystem? Have you tried using the 
+> "minimal" project, it should be already to go and get you to a login and 
+> shell prompt.
+> 
+> Adi
+> 
+> 
+Hi,
+Thanks fof the reply.
+
+I do have /sbin/init when I extract the project to the development system's
+drive.
+I did notice that when I extract it and look in /etc/lilo.conf it shows that
+it wants to boot /dev/sda
+which it the device I'm creating PWL on but then when I move the CF card to
+the other PC
+it is supposed to boot as /dev/hda.  Am I on the right track?
+Making changes in the 'Target Hardware' section causes PWL not to build if I
+change 'Target Device' to /dev/hda.  I'll post the lilo.conf from the
+..mnt/etc/lilo.conf and below that the results of the successfull build.
+
+Thank you
+
+Kevin B.
+
+---------------------------------------------
+
+disk=/dev/sda    <<<----  sda
+  bios=0x80
+  heads=4
+  sectors=32
+  cylinders=490
+
+boot=/dev/sda    <<<---sda
+map=/boot/map
+install=/boot/boot.b
+compact
+prompt
+timeout=20
+default=linux
+
+image=/boot/bzImage
+        label=linux
+        read-only
+        root=/dev/hda1   <<<---HDA!
+        vga=0x317
+-------------------------------------------------------
+
+
+ Mon Apr 29 21:12:36 PDT
+2002
+?
+  ? Loading target
+device....
+?
+  ? Testing for
+mkdosfs...ok
+?
+  ? Testing for
+syslinux...ok
+?
+  ? Testing for
+mke2fs...ok
+?
+  ? Testing for
+sfdisk...ok
+?
+  ? Testing for
+losetup...ok
+?
+  ? Testing for tmp
+directory...ok
+?
+  ? Testing for mount
+directory...ok
+?
+  ? Testing for target device
+/dev/sda...ok
+?
+  ? Testing that target /dev/sda is not
+mounted...ok                                                              ?
+  ? Testing that nothing is mounted on mount
+directory...ok                                                       ?
+  ? Testing for an existing project
+root...ok
+?
+  ? Creating a loopback device...6148+0 records
+in                                                                ?
+  ? 6148+0 records
+out
+?
+  ?
+ok
+?
+  ? Creating a filesystem on /dev/loop0...mke2fs 1.26
+(3-Feb-2002)                                                ?
+  ? Filesystem
+label=
+?
+  ? OS type:
+Linux
+?
+  ? Block size=1024
+(log=0)
+?
+  ? Fragment size=1024
+(log=0)
+?
+  ? 1544 inodes, 6148
+blocks
+?
+  ? 0 blocks (0.00%) reserved for the super
+user                                                                  ?
+  ? First data
+block=1
+?
+  ? 1 block
+group
+?
+  ? 8192 blocks per group, 8192 fragments per group
+ 1544 inodes per
+group
+?
+
+?
+?
+  ? Writing inode tables:
+done
+?
+  ? Writing superblocks and filesystem accounting information:
+done                                               ?
+
+?
+?
+  ? This filesystem will be automatically checked every 25 mounts
+or                                              ?
+  ? 180 days, whichever comes first.  Use tune2fs -c or -i to
+override.                                           ?
+  ?
+ok
+?
+  ? Mounting loopback
+device...ok
+?
+  ? Copying files to loopback
+device...ok
+?
+  ? Creating fstab and
+rc.init...ok
+?
+  ? Editing
+inittab...ok
+?
+  ? Building
+ld.so.cache.../usr/X11R6/lib:
+?
+  ?
+/lib:
+?
+  ?
+/usr/lib:
+?
+  ?        libncftp.so.2 ->
+libncftp.so.2
+?
+  ?
+/usr/X11R6/lib:
+?
+  ?
+ok
+?
+  ? Unmounting loopback
+device...ok
+?
+  ? Compressing /dev/loop0 into ramdisk...6148+0 records
+in                                                       ?
+  ? 6148+0 records
+out
+?
+  ?
+74.7%
+?
+  ?
+ok
+?
+  ? Free loopback device
+/dev/loop0...ok
+?
+  ? Determining space on target
+device...ok
+?
+  ? Partition traget device /dev/sda...Checking that no-one is using this
+disk right now ...
+
+OK
+?
+
+?
+?
+  ? Disk /dev/sda: 245 cylinders, 2 heads, 32
+sectors/track                                                       ?
+  ? Old
+situation:
+?
+  ? Units = cylinders of 32768 bytes, blocks of 1024 bytes, counting from
+0                                       ?
+
+?
+?
+  ?    Device Boot Start     End   #cyls   #blocks   Id
+System                                                   ?
+  ? /dev/sda1   *      0+    244     245-     7839+  83
+Linux                                                    ?
+  ? /dev/sda2          0       -       0         0    0
+Empty                                                    ?
+  ? /dev/sda3          0       -       0         0    0
+Empty                                                    ?
+  ? /dev/sda4          0       -       0         0    0
+Empty                                                    ?
+  ? New
+situation:
+?
+  ? Units = cylinders of 32768 bytes, blocks of 1024 bytes, counting from
+0                                       ?
+
+?
+?
+  ?    Device Boot Start     End   #cyls   #blocks   Id
+System                                                   ?
+  ? /dev/sda1   *      0+    244     245-     7839+  83
+Linux                                                    ?
+  ? /dev/sda2          0       -       0         0    0
+Empty                                                    ?
+  ? /dev/sda3          0       -       0         0    0
+Empty                                                    ?
+  ? /dev/sda4          0       -       0         0    0
+Empty                                                    ?
+  ? Successfully wrote the new partition
+table                                                                    ?
+
+?
+?
+  ? Re-reading the partition table
+....
+?
+
+?
+?
+  ? If you created or changed a DOS partition, /dev/foo7, say, then use
+dd(1)                                     ?
+  ? to zero the first 512 bytes:  dd if=/dev/zero of=/dev/foo7 bs=512
+count=1                                     ?
+  ? (See fdisk(8).)
+ok
+?
+  ? Creating ext2 filesystem...mke2fs 1.26
+(3-Feb-2002)                                                           ?
+  ? Filesystem
+label=
+?
+  ? OS type:
+Linux
+?
+  ? Block size=4096
+(log=2)
+?
+  ? Fragment size=4096
+(log=2)
+?
+  ? 992 inodes, 1959
+blocks
+?
+  ? 0 blocks (0.00%) reserved for the super
+user                                                                  ?
+  ? First data
+block=0
+?
+  ? 1 block
+group
+?
+  ? 32768 blocks per group, 32768 fragments per
+group                                                             ?
+  ? 992 inodes per
+group
+?
+
+?
+?
+  ? Writing inode tables:
+done
+?
+  ? Writing superblocks and filesystem accounting information:
+done                                               ?
+
+?
+?
+  ? This filesystem will be automatically checked every 37 mounts
+or                                              ?
+  ? 180 days, whichever comes first.  Use tune2fs -c or -i to
+override.                                           ?
+  ?
+ok
+?
+  ? Mount the target device
+/dev/sda1...ok
+?
+  ? Copying ramdisk, kernel and
+boot.b...ok
+?
+  ? Creating lilo.conf in a temporary
+location...ok
+?
+  ? Installing lilo bootloader...LILO version 21, Copyright 1992-1998 Werner
+Almesberger
+
+Reading boot sector from
+/dev/sda
+?
+  ? Merging with
+../mnt/boot.b
+?
+  ? Boot image:
+../mnt/bzImage
+?
+  ? Mapping RAM disk
+../mnt/ramdisk
+?
+  ? Added linux
+*
+?
+  ? /dev/null exists - no backup copy
+made.
+?
+  ? Writing boot
+sector.
+?
+  ?
+ok
+?
+  ? Unmounting target device /dev/sda1...ok
+
+
+
+From peeweelinux@adis.on.ca  Tue Apr 30 15:00:40 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 30 Apr 2002 09:00:40 -0500 (CDT)
+Subject: [Peeweelinux] Compact Flash newbie
+In-Reply-To: <41974.192.168.44.13.1020140198.squirrel@bookpc.kblan.com>
+Message-ID: <Pine.LNX.4.33.0204300852540.19279-100000@adibox.knet.ca>
+
+Hi,
+
+The lilo thing is a bit confusing. Because lilo.conf is as much relevant 
+during install as it is at runtime, it has to reference both /dev/hda and 
+/dev/sda. A USB reader attached CompactFlash card appears to the system as 
+/dev/sda. That's why there are all the references to /dev/sda. If you 
+change those to /dev/hda the installation of lilo on flash fails. Instead 
+it would install lilo on you physical /dev/hda HDD, breaking your running 
+system.
+
+>   bios=0x80
+>   heads=4
+>   sectors=32
+>   cylinders=490
+
+This tells lilo to boot off the first HDD it finds when actually booting 
+the embedded system on the target platform. 
+
+>From your earlier post I assume that lilo is functioning correctly. It 
+does find the root filesystem and dies after mounting the root filesystem.
+
+Can you mount /dev/sda1 on your development system and see if there 
+actually is a /sbin/init? It looks to me like you're missing something in 
+your filesystem.
+
+Adi
+
+
+
+On Mon, 29 Apr 2002 kevin1a@linuxprof.homelinux.com wrote:
+
+> > Hi,
+> >
+> > Do you have "/sbin/init" in your filesystem? Have you tried using the
+> > "minimal" project, it should be already to go and get you to a login
+> > and  shell prompt.
+> >
+> > Adi
+> >
+> [snipped but on the thread]
+> 
+> 
+> Hi,
+> Thanks fof the reply.
+> 
+> I do have /sbin/init when I extract the project to the development system's
+> drive.
+> I did notice that when I extract it and look in /etc/lilo.conf it shows that
+> it wants to boot /dev/sda
+> which it the device I'm creating PWL on but then when I move the CF card to
+> the other PC
+> it is supposed to boot as /dev/hda.  Am I on the right track?
+> Making changes in the 'Target Hardware' section causes PWL not to build if I
+> change 'Target Device' to /dev/hda.  I'll post the lilo.conf from the
+> ..mnt/etc/lilo.conf and below that the results of the successfull build.
+> 
+> Thank you
+> 
+> Kevin B.
+> 
+> ---------------------------------------------
+> 
+> disk=/dev/sda    <<<----  sda
+>   bios=0x80
+>   heads=4
+>   sectors=32
+>   cylinders=490
+> 
+> boot=/dev/sda    <<<---sda
+> map=/boot/map
+> install=/boot/boot.b
+> compact
+> prompt
+> timeout=20
+> default=linux
+> 
+> image=/boot/bzImage
+>         label=linux
+>         read-only
+>         root=/dev/hda1   <<<---HDA!
+>         vga=0x317
+> -------------------------------------------------------
+
+

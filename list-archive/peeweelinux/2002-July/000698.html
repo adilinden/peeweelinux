@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Filesystem Issues
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000712.html">
+   <LINK REL="Next"  HREF="000695.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Filesystem Issues
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Filesystem Issues">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 23 Jul 2002 17:03:26 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000712.html">Custom Kernels (was: [Peeweelinux] Filesystem Issues)
+</A></li>
+        <LI> Next message: <A HREF="000695.html">[Peeweelinux] New - IV
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#698">[ date ]</a>
+              <a href="thread.html#698">[ thread ]</a>
+              <a href="subject.html#698">[ subject ]</a>
+              <a href="author.html#698">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Stefan Willmert wrote:
+&gt;<i> 
+</I>&gt;<i> Now, for my questions:
+</I>&gt;<i> 1. I would like a read-only root filesystem on one partition, and a read-write 
+</I>&gt;<i> 1a. Does anyone have any suggestions on the best way to use a read-write partition? 
+</I>
+I solved this one by upgrading to kernel 2.4.18 (see my howto in 
+previous list archives), and then using ext3 as the filesystem for the 
+3rd &quot;leftover&quot; partition as (mounted as /opt on boot).  Here's a small 
+script I use that makes/populates /dev/sda3 after PWL rebuilds the flash 
+card:
+
+   #!/bin/sh
+
+   echo &quot;Creating filesystem...&quot;
+   mke2fs -j -b 1024 -m0 /dev/sda3
+
+   echo &quot;Populating filesystem...&quot;
+   mount -t ext3 /dev/sda3 /mnt/usbdev
+   cp -a /usr/local/pwl/Embedded_Build/opt_tree/* /mnt/usbdev/
+
+   echo &quot;Syncing and unmounting...&quot;
+   sync
+   umount /mnt/usbdev
+
+So, of course, this requires you keep the &quot;master&quot; /opt tree on your 
+build machine.  Couple this ext3 filesystem with a SanDisk industrial 
+grade CF disk, and you're set.  I've had nothing but good luck with ext3 
+recovers.
+
+&gt;<i> 2. Is there any documentation on how to use the custom features of PeeWeeLinux? I 
+</I>
+Besides my /opt dealio above, I just make custom .tar files that mimic 
+the PWL shipped ones, and throw them right into the mix.  They then show 
+up nicely in ./pwlconfig and you can just select them.  See the 2.4.18 
+howto, once again, for how I did this. Your mileage may vary. ;)
+
+&gt;<i> 3. In the same regard, certain config files need to be updated during operation of 
+</I>
+Make them symlinks to the files loaded on /opt (or just copy them over 
+from /opt on boot) and you're set.  Of course, make sure /opt is mounted 
+before doing anything fun. ;)
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+&quot;That's what the Internet is for, slandering others anonymously.&quot;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000712.html">Custom Kernels (was: [Peeweelinux] Filesystem Issues)
+</A></li>
+	<LI> Next message: <A HREF="000695.html">[Peeweelinux] New - IV
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#698">[ date ]</a>
+              <a href="thread.html#698">[ thread ]</a>
+              <a href="subject.html#698">[ subject ]</a>
+              <a href="author.html#698">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

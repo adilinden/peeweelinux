@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] help - static compiling
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000860.html">
+   <LINK REL="Next"  HREF="000863.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] help - static compiling
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] help - static compiling">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 11 Dec 2002 12:51:01 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000860.html">[Peeweelinux] rc.init
+</A></li>
+        <LI> Next message: <A HREF="000863.html">[Peeweelinux] rc.init
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#862">[ date ]</a>
+              <a href="thread.html#862">[ thread ]</a>
+              <a href="subject.html#862">[ subject ]</a>
+              <a href="author.html#862">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I use the following for GTK+ static compiles and it appears to work.
+
+hmi:$(HMI_FILE).c $(MCON_SRC)/hmi/sys_hmi.o
+	$(CC) -static $(HMI_FLAGS)  -o $@ $(HMI_FILE).c  $(MCON_SRC)/hmi/sys_hmi.o `gtk-config --libs --cflags`
+
+Of course, yours might be a bit simpler (I am linking to a precompiled object file called sys_hmi.o), but you get the idea. My files end up being about 3MB or so. Perhaps the -static option must come first?? 
+
+~Ken
+
+
+&gt;&gt;&gt;<i> Cem Eryasar &lt;<A HREF="mailto:cemer@softhome.net">cemer@softhome.net</A>&gt; 12/11 12:29 PM &gt;&gt;&gt;
+</I>Hi,
+
+I am trying to comile my app with -static option.
+However the application size is still the same.
+
+Is there any other things to look at in order to
+use -static?
+
+Thanks vey much
+Cem
+
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A> 
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000860.html">[Peeweelinux] rc.init
+</A></li>
+	<LI> Next message: <A HREF="000863.html">[Peeweelinux] rc.init
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#862">[ date ]</a>
+              <a href="thread.html#862">[ thread ]</a>
+              <a href="subject.html#862">[ subject ]</a>
+              <a href="author.html#862">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

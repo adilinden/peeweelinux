@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000461.html">
+   <LINK REL="Next"  HREF="000465.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 29 Jan 2002 14:24:14 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000461.html">[Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+</A></li>
+        <LI> Next message: <A HREF="000465.html">[Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#464">[ date ]</a>
+              <a href="thread.html#464">[ thread ]</a>
+              <a href="subject.html#464">[ subject ]</a>
+              <a href="author.html#464">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>There is some context sensitive help built into pwlconfig.  Select
+&quot;Configure Target Hardware&quot; and then &quot;Help&quot;.  There is also a filed called
+README.pwlconfig in the Embedded_Build/scripts directory that contains some
+useful information.
+
+Based on the description of your problem, it sounds like you may need to
+configure a &quot;custom&quot; kernel specifically for your application.
+
+In my case (8MB bootable DiskOnChip), I had to use a custom 2.4.17 kernel on
+the target, rather than the 2.2 era kernel included with Peewee.
+
+For what it's worth, here's some more information on some of the Peewee
+Linux Project options, as I understand them:
+
+    Project Mount Point: mnt
+        This is a directory where your project will be &quot;extracted&quot; to.
+    Device Mount Point: ./mnt
+        This is where pwlconfig will default to mounting your device.
+
+Typically, you shouldn't need to change these options.  If you have a
+project called &quot;test&quot;, the complete file system for the target would be
+created under Embedded_Build/projects/test/mnt.  After you use the &quot;Extract
+File System for Project&quot; option, this directory will contain the entire file
+system.  I often find it useful to manually go into this directory (and
+subdirectories) just to see what was extracted, prior to actually copying it
+to the target device.
+
+    IDE Flash (or HD) Target Parameters
+    Target Device: /dev/sda
+        The target device name on the development system your PeeWeeLinux
+        system will be build on. Be careful here. The target build script
+        will destroy any existing content on this device!
+
+      Boot Device: /dev/hda
+         How the target device will be known as on the final target system.
+
+These target parameters are used when you're ready to copy the complete
+project file system created earlier.  Peewee Linux is using the &quot;Target
+Device&quot; parameter to automatically copy the file system to the target, which
+could be a floppy, Compact flash, DiskOnChip device, etc.
+
+I'm not sure how this works with compact flash, but my DiskOnChip part is
+accessed via &quot;/dev/nftla&quot;.  In my case, the target device is specified as
+&quot;/dev/nftla&quot;.  Peewee Linux handles the partitioning (fdisk), file system
+creation (ext2 or FAT), file copying, and boot record creation
+automatically.
+
+Incidentally, if the Linux system does not recognize your target, the &quot;Load
+File System onto Target&quot; option will always fail.  As a quick sanity check,
+try &quot;sfdisk -l /dev/xx&quot; where xx is your actual target.
+
+If the &quot;Load File System onto Target&quot; option was successful, the target
+device should now be bootable.
+
+The &quot;Boot Device&quot; option specifies where the root file system is located.
+After the kernel boots, it will attempt to find and mount the root file
+system on the device specified.  Unless the root file system is not on the
+target device itself (for instance, a CD-ROM or harddrive), this option
+should be the same as the Target Device.
+
+I hope this helps,
+
+Mark
+
+----- Original Message -----
+From: &quot;Bob Tanner&quot; &lt;<A HREF="mailto:tanner@real-time.com">tanner@real-time.com</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Sent: Tuesday, January 29, 2002 1:19 AM
+Subject: Re: [Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+
+
+&gt;<i> Quoting Mark Meade (<A HREF="mailto:mark@lakeshoremicro.com">mark@lakeshoremicro.com</A>):
+</I>&gt;<i> &gt; A couple of thoughts (if you haven't tried them already):
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Try changing Device Mount Point to &quot;./mnt&quot;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Check the &quot;Boot Device on Target System&quot; option.  It should probably be
+</I>&gt;<i> &gt; &quot;/dev/sda&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Where can I find details on what these parameters mean and what they do?
+</I>&gt;<i>
+</I>&gt;<i> --
+</I>&gt;<i> Bob Tanner &lt;<A HREF="mailto:tanner@real-time.com">tanner@real-time.com</A>&gt;         | Phone : (952)943-8700
+</I>&gt;<i> <A HREF="http://www.mn-linux.org,">http://www.mn-linux.org,</A> Minnesota, Linux | Fax   : (952)943-8500
+</I>&gt;<i> Key fingerprint =  6C E9 51 4F D5 3E 4C 66 62 A9 10 E5 35 85 39 D9
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000461.html">[Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+</A></li>
+	<LI> Next message: <A HREF="000465.html">[Peeweelinux] 0.61.0 and MSN Companion (aka Compaq iPAQ line)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#464">[ date ]</a>
+              <a href="thread.html#464">[ thread ]</a>
+              <a href="subject.html#464">[ subject ]</a>
+              <a href="author.html#464">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

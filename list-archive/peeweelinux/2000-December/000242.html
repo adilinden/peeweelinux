@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Help - errors in script,  3rd req
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000239.html">
+   <LINK REL="Next"  HREF="000243.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Help - errors in script,  3rd req
+   </H1>
+    <B>Robert Heezeman
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Help - errors in script,  3rd req">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 13 Dec 2000 12:51:44 +1100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000239.html">Read only filesystem size issues.
+</A></li>
+        <LI> Next message: <A HREF="000243.html">Help - errors in script,  3rd req
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#242">[ date ]</a>
+              <a href="thread.html#242">[ thread ]</a>
+              <a href="subject.html#242">[ subject ]</a>
+              <a href="author.html#242">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Any luck with my problem making a peewee downloadable ???   Remember script
+failed  .....
+
+I downloaded the peeweelinux-0.53.21-bin.tar.gz binaries and the
+peeweelinux-0.53.22-cfg.tar.gz and tried it again
+
+SAME story,  
+
+I also used a different PC with 6.1 RedHat and
+/root/Embedded_Build/pwlconfig on hda and a standard 200 MB HDD as hdb
+
+Same errors, where do i go from here ?
+
+
+As usual I extracted the binaries from the RPM's built up a sample
+&quot;including minimal&quot; file system created in 
+/root/Embedded_Build/projects/mnt is there including some 2.5 MB of files it
+says.
+
+
+leave and configure Target as hdb  and boot hdb 
+
+
+Load to Target    AND AGAIN exactly the same errors as listed below
+(*)*&amp;^^%$@%^$@*&amp;@#)(*&amp;   (frustrated)
+
+
+Suerly if no one else is having this problem it must be something I am doing
+wrong ?
+
+
+I am really keen to try peewee and don't think it's ti me to give up.
+
+Anything you can think of to try.
+
+
+
+
+
+
+
+Robert  in Australia
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&gt;<i> still get the errors as listed below. There is nothing on my hda drive.
+</I>It
+&gt;<i> is accessible when mounted, 
+</I>&gt;<i> (as mount -a /dev/hda1 /mnt/xyz)
+</I>&gt;<i> 
+</I>&gt;<i> Even if I write stuff to it it does not get erased..  I don't think I am
+</I>&gt;<i> getting through the scripts far enough
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Any hope of getting a fix on my problem from the error line numbers below
+</I>&gt;<i> ???  (re syntax error line no. ####)
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Thank you 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Robert in Australia
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: Adi Linden [mailto:<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>]
+</I>&gt;<i> Sent: Monday, December 11, 2000 4:17 PM
+</I>&gt;<i> To: Robert Heezeman
+</I>&gt;<i> Subject: RE: Help - errors in script OR me?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> You are using /dev/hda1 as target? Is there anything else on the harddisk
+</I>&gt;<i> drive?
+</I>&gt;<i> 
+</I>&gt;<i> pwlconfig takes over the whole drive. It does fdisk, format, etc for you.
+</I>&gt;<i> So the target has to be the drive itself, i.e. /dev/hda and not /dev/hda1.
+</I>&gt;<i> The only disadvantage of this approach is you will loose everything on
+</I>&gt;<i> /dev/hda everythime you load the drive using pwlconfig.
+</I>&gt;<i> 
+</I>&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> On Mon, 11 Dec 2000, Robert Heezeman wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Downloaded new peeweelinux-0.53.22-cfg.tar.gz and installed in directory
+</I>&gt;<i> &gt; tree (using tar -xvzf) and all went well main screen said I was running
+</I>&gt;<i> &gt; 0.53.22.  
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; started ./pwlconfig
+</I>&gt;<i> &gt; Extracted &quot;minimal&quot; configuration and found it @ mnt t be 4.1 MB No
+</I>&gt;<i> errors,
+</I>&gt;<i> &gt;  /projects/minimal/mnt has file structure and files in it.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Went to Load into Target (default setting,except hda1 as load point (dos
+</I>&gt;<i> &gt; fs).
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; and recorded the same script errors:::
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &quot;./pwlconfig ./.script/pwl_target_functions: line 1145: Syntax error
+</I>&gt;<i> &gt; Unexpected End of File&quot;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; and
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &quot;./pwlconfig ./.script/pwl_target_load: line 1646: Syntax error
+</I>Unexpected
+&gt;<i> &gt; End of File&quot;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; and
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &quot;./pwlconfig : func_rd_build_fd_fat   command not found&quot;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Target build script failed to load onto target
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; View of results screen &quot;was blank&quot; no errors ?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I am running Linux 2.2.xx RedHat 6.5 release (it's a 6.1 I believe) on
+</I>&gt;<i> hdb1
+</I>&gt;<i> &gt; and am using hda1 as Target f.s Hda1 is DOS 200 MB HDD. I can write to
+</I>it
+&gt;<i> ok
+</I>&gt;<i> &gt; when mounted from Linux.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Is there anything that you can recommend I do to get some insight as to
+</I>&gt;<i> why
+</I>&gt;<i> &gt; my &quot;Target build script failed to load onto target&quot;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I'm sure it must be my set-up but I don't understand where ???   
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Robert
+</I>
+This communication is intended for use of the addressee(s) and may contain legally privileged and confidential information.
+Any views or opinions presented are solely those of the author and do not necessarily represent those of Thycon.
+If you are not the addressee you are notified that any transmission, distribution or replication of this message is strictly prohibited.
+The legal privilege and confidentiality attached to this email and its contents is not waived, lost or destroyed by reason of
+mistaken delivery to you. 
+If you have received this message in error, please notify Thycon immediately by E-mail to <A HREF="mailto:thycon@thycon.com.au">thycon@thycon.com.au</A> and
+permanently delete the email from your system.
+
+Email transmission cannot be guaranteed to be secure or error-free as information could be intercepted, corrupted,
+lost, destroyed, arrive late or incomplete, or contain viruses. The sender therefore does not accept liability for any errors 
+or omissions in the contents of this message, which arise as a result of email transmission. If verification is required please
+request a hard-copy version.
+
+Copyright 2000 Thycon. All rights reserved.
+
+PHONE : 61 3 9319 9000
+FAX : 61 3 9319 9001
+
+
+
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000239.html">Read only filesystem size issues.
+</A></li>
+	<LI> Next message: <A HREF="000243.html">Help - errors in script,  3rd req
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#242">[ date ]</a>
+              <a href="thread.html#242">[ thread ]</a>
+              <a href="subject.html#242">[ subject ]</a>
+              <a href="author.html#242">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

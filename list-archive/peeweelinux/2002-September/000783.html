@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Network Problems
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000782.html">
+   <LINK REL="Next"  HREF="000784.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Network Problems
+   </H1>
+    <B>Stefan Willmert
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Network Problems">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 11 Sep 2002 12:01:52 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000782.html">[Peeweelinux] Network Problems
+</A></li>
+        <LI> Next message: <A HREF="000784.html">[Peeweelinux] Network Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#783">[ date ]</a>
+              <a href="thread.html#783">[ thread ]</a>
+              <a href="subject.html#783">[ subject ]</a>
+              <a href="author.html#783">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Most likely, your system is not loading the driver module for your network
+card. PWL will not do this automatically as a normal linux system will. To
+test, just execute the command
+	insmod &lt;yournicmodule&gt;
+
+then do an
+	lsmod
+
+to see if your module is loaded correctly. If that works, add the &quot;insmod
+&lt;yournicmodule&gt;&quot; command to the rc.modules file in the /etc directory of
+your PWL build and it should load when your system boots.
+
+good luck
+
+-stefan
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of John Maddox
+Sent: Wednesday, September 11, 2002 11:52 AM
+To: '<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>'
+Subject: [Peeweelinux] Network Problems
+
+
+I am having problems being able to ping my machine.
+I have read and re-read some of the previous archives and I still can't get
+my
+network card seen on my PeeWee build.
+
+I am using a m-sys DOC 2000 with the MTD kernel support.  I have made
+my build image and have put my custom files and apps onto the build.
+I am also using kernel 2.4.18.  The system boots fine into my DOC and the
+file system looks fine and my app works except the networking part does not.
+I have put my own custom ifcfg-eth0 file into the /etc/config location and
+when
+the system boots and I go look at the file it has the correct information in
+it, but
+I cannot ping the system from another computer.
+
+Just to let you know I can see the system if I boot from the HD into my
+installed
+Linux Red Hat 7.3 version with the same ifcfg-eth0 and hosts files I am
+trying to use
+with PeeWee.  I can ping the system fine when I am booted into this system.
+
+One things that I have done to try to get this to work:
+Rebuilt the kernel so that my NIC is embedded into the kernel and not a
+module,  but after
+building and placing my bzImage under /boot is there anything else to do.
+Shouldn't the system
+find the ethernet card and use the config files and initialize my card??
+
+Or what about insmod or modules???
+
+I would appreciate any HELP!!!
+
+John Maddox
+Programmer Analyst II
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000782.html">[Peeweelinux] Network Problems
+</A></li>
+	<LI> Next message: <A HREF="000784.html">[Peeweelinux] Network Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#783">[ date ]</a>
+              <a href="thread.html#783">[ thread ]</a>
+              <a href="subject.html#783">[ subject ]</a>
+              <a href="author.html#783">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

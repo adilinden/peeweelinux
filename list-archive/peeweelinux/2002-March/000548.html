@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] edit fstab doesn't 'stick'
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000549.html">
+   <LINK REL="Next"  HREF="000550.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] edit fstab doesn't 'stick'
+   </H1>
+    <B>jim barchuk
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] edit fstab doesn't 'stick'">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 29 Mar 2002 03:32:20 -0500 (EST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000549.html">[Peeweelinux] adduser
+</A></li>
+        <LI> Next message: <A HREF="000550.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#548">[ date ]</a>
+              <a href="thread.html#548">[ thread ]</a>
+              <a href="subject.html#548">[ subject ]</a>
+              <a href="author.html#548">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi All!
+
+I've edited /etc/ hosts, inetd.conf, issue, resolv.conf, services, and
+ifcfg-eth0 and network in ~/config. They all 'stick' *except* fstab.
+Meaning create the boot disk, boot, and check everything out. The other
+edits are there but the fstab edits are not. Very weird.
+
+I noticed that some files in that tree such as fstab are not listed in
+packages/Network_Base/networkscripts.list. Don't know if it should be but
+it makes some sense. I added it but that had no effect.
+
+Do I need to 'extract file system?' I hope not because earlier on
+(fortunately with many fewer edits, just trying it out,) it reversed my
+edits. So I'd need to maintain the files I edit in a separate place and
+then move them into the tree after extract but before load file system.
+
+Any clues?
+
+Tnx much. Have a :) day!
+
+jb
+
+-- 
+jim barchuk
+<A HREF="mailto:jb@jbarchuk.com">jb@jbarchuk.com</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000549.html">[Peeweelinux] adduser
+</A></li>
+	<LI> Next message: <A HREF="000550.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#548">[ date ]</a>
+              <a href="thread.html#548">[ thread ]</a>
+              <a href="subject.html#548">[ subject ]</a>
+              <a href="author.html#548">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

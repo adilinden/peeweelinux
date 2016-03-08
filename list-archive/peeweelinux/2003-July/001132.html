@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Creating your own packages from RPMS Mini-HOWTO
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001131.html">
+   <LINK REL="Next"  HREF="001133.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Creating your own packages from RPMS Mini-HOWTO
+   </H1>
+    <B>Daniel Purcell
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Creating your own packages from RPMS Mini-HOWTO">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 9 Jul 2003 14:43:51 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001131.html">[Peeweelinux] QVWM?
+</A></li>
+        <LI> Next message: <A HREF="001133.html">[Peeweelinux] Graphical Interface
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1132">[ date ]</a>
+              <a href="thread.html#1132">[ thread ]</a>
+              <a href="subject.html#1132">[ subject ]</a>
+              <a href="author.html#1132">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>For this Mini-HOWTO, I'll use the example of creating a custom package out of 
+the web browser konquerer.
+
+1.  First, create a temporary directory:
+
+<A HREF="mailto:dan@duck">dan@duck</A> $ mkdir -p /tmp/rpmroot/
+
+This will become your root directory.  RPM will makes files from here on, such 
+as /tmp/rpmroot/usr/local/konquerer, or /tmp/rpmroot/var/log/konquerer.log, 
+etc.
+
+2.  Run this command (I'm using RPM version 4.1, but should work with RPM 3.0)
+
+<A HREF="mailto:dan@duck">dan@duck</A> $ rpm -i --root /tmp/rpmroot --nodeps --noscripts --ignoreos \
+	--ignorearch --force --notriggers --dbpath ./rpm.db \
+	konquerer-i386.rpm
+
+where the --root points to where your temporary root directory is, and where 
+konquerer-i386.rpm is the path to the rpm you want to unpack.
+
+3.  Tar it up, and make a list file.
+
+<A HREF="mailto:dan@duck">dan@duck</A> $ cd /tmp/rpmroot/
+
+<A HREF="mailto:dan@duck">dan@duck</A> $ ls
+usr 			var
+
+<A HREF="mailto:dan@duck">dan@duck</A> $ tar cvf konquerer.tar usr var &gt;konquerer.list
+
+In this example, the rpm made usr and var subdirectories.  The above tar 
+command creates a tar archive, calls it konquerer.tar, and includes the usr 
+and var directories in its archive.  All the output that usually goes to the 
+screen is redirected to a file called konquerer.list.  
+
+It is important that the filenames are similar, meaning the file that contains 
+the tar archive be named the filename.tar, and the file containing a list of 
+what's in the tar archive with the name filename.list.  
+
+4.  Copy these files to your PeeWeeLinux packages subdiretory.
+
+<A HREF="mailto:dan@duck">dan@duck</A> $ mkdir -p /root/Embedded_Build/packages/Web_Browsers/
+
+<A HREF="mailto:dan@duck">dan@duck</A> $ cp konquerer.* /root/Embedded_Build/packages/Web_Browsers/
+
+5.  Load up ./pwlconfig, and in the Configure Project Filesystem, you should 
+have the option now of selecting the Web_Browsers option, and then following 
+that the konquerer option.
+
+-Daniel Purcell
+StoneFly Technology
+St. George, Utah
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001131.html">[Peeweelinux] QVWM?
+</A></li>
+	<LI> Next message: <A HREF="001133.html">[Peeweelinux] Graphical Interface
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1132">[ date ]</a>
+              <a href="thread.html#1132">[ thread ]</a>
+              <a href="subject.html#1132">[ subject ]</a>
+              <a href="author.html#1132">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

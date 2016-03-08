@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> RPM Loader Script - V0.1
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000049.html">
+   <LINK REL="Next"  HREF="000051.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>RPM Loader Script - V0.1
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="RPM Loader Script - V0.1">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 2 Feb 2000 22:44:03 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000049.html">RPM Loader Script - V0.1
+</A></li>
+        <LI> Next message: <A HREF="000051.html">RPM Loader Script - V0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#50">[ date ]</a>
+              <a href="thread.html#50">[ thread ]</a>
+              <a href="subject.html#50">[ subject ]</a>
+              <a href="author.html#50">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> The problem with using binary rpms is that they might require PAM and/or
+</I>&gt;<i> ncurses...
+</I>&gt;<i>
+</I>
+awww..geeze, hadn't though of that...well, this might work for *Some* rpms...
+If you get a chance to run:
+./scripts/pwl_rpmload EXE fvwm2
+
+maybe you could tell me what needs to be done here (or script it :-))
+to build all the files I need.  I was going to install the package
+tomorrow and see if it works (slow, painful process for me).
+
+&gt;<i> You do 'ldd binary_name' or 'ldd lib_name'. That will result in a bunch of
+</I>&gt;<i> libs required for those libs and binaries to function. The 'file' command
+</I>&gt;<i> will tell you if the libs or binaries are stripped. The stripping can be
+</I>&gt;<i> done with 'objcopy' or 'strip'...
+</I>&gt;<i> 
+</I>
+Hmmmm...I got statically linked on a few of them...I think this is 
+going to be a manual process for a while. I'll build the depends file, 
+if you can think of any other automation I can add, let me know..
+PWL Package building...job security for linux hackers!
+
+&gt;<i> &gt; To Do: load the source rpm, install it, copy the source files
+</I>&gt;<i> &gt; and compile everything.  Then copy the binaries from the SRC 
+</I>&gt;<i> &gt; directory into the pkg.files directory.....
+</I>&gt;<i> 
+</I>&gt;<i> Yup, that would be the best way of doing it. Or... download the original
+</I>&gt;<i> sources and compile from scratch. Then make a build script and a patch
+</I>&gt;<i> file... Otherwise it might get messy if we build some packages from rpm
+</I>&gt;<i> and others from tar...
+</I>&gt;<i> 
+</I>Hey, if you have a link to each of the source files...we can ftp them
+over instead of using the RH CD...not bad...I guess RH does some 
+changes from the originals, not sure of other advantages of ftp vs RH RPM...
+
+&gt;<i> &gt; To Do: 
+</I>&gt;<i> &gt; I need to integrate this script, with the &quot;package&quot; script (should we
+</I>&gt;<i> &gt; change this to pwl_package?? ) under the &quot;Package Management&quot; Main
+</I>&gt;<i> &gt; menu Item.
+</I>&gt;<i> 
+</I>&gt;<i> package just creates a package from the contents of Embedded_Build/mnt
+</I>&gt;<i> doesn't it
+</I>
+yep..but my lastest version of your original lets you pass in the
+directory you want to package...ie:
+
+./scripts/rpm_load EXE fvwm2
+./scripts/package fvwm2
+
+Creates:
+fvwm2.list 
+fvwm2.tar  (1.1Mb - ouch again!)
+
+Anyhow, I guess this is the &quot;idiots tool for package building&quot; (just 
+my speed :-) your packages are still the best! But, Hey, if you 
+have 128MB flash disk...
+
+Later,
+Ralph
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000049.html">RPM Loader Script - V0.1
+</A></li>
+	<LI> Next message: <A HREF="000051.html">RPM Loader Script - V0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#50">[ date ]</a>
+              <a href="thread.html#50">[ thread ]</a>
+              <a href="subject.html#50">[ subject ]</a>
+              <a href="author.html#50">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

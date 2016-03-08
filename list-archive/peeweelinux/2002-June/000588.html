@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] bug in libstdc++ tarball
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000587.html">
+   <LINK REL="Next"  HREF="000589.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] bug in libstdc++ tarball
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] bug in libstdc++ tarball">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 4 Jun 2002 15:53:02 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000587.html">[Peeweelinux] newbie questions
+</A></li>
+        <LI> Next message: <A HREF="000589.html">[Peeweelinux] kernel 2.4, panic on boot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#588">[ date ]</a>
+              <a href="thread.html#588">[ thread ]</a>
+              <a href="subject.html#588">[ subject ]</a>
+              <a href="author.html#588">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Thank you for pointing this out. I will add a note to my todo list to 
+build a new fixed rpm...
+
+Thanks,
+Adi
+
+
+On Fri, 31 May 2002, Troy Engel wrote:
+
+&gt;<i> Hiya all,
+</I>&gt;<i> 
+</I>&gt;<i> I'm going through all the tarballs, replacing the defaults with my own 
+</I>&gt;<i> stuff, and there's a bug in the supplied libstdc++ (peewee-0.61.1) build:
+</I>&gt;<i> 
+</I>&gt;<i> libstdc++-libc6.1-1.so.2 -&gt; 
+</I>&gt;<i> /var/tmp/egcs-1.1.2-root/usr/lib/libstdc++-2-libc6.1-1-2.9.0.so
+</I>&gt;<i> 
+</I>&gt;<i> which, of course, should be just a simple symlink without the (/var/tmp) 
+</I>&gt;<i> path.
+</I>&gt;<i> 
+</I>&gt;<i> -te
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000587.html">[Peeweelinux] newbie questions
+</A></li>
+	<LI> Next message: <A HREF="000589.html">[Peeweelinux] kernel 2.4, panic on boot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#588">[ date ]</a>
+              <a href="thread.html#588">[ thread ]</a>
+              <a href="subject.html#588">[ subject ]</a>
+              <a href="author.html#588">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

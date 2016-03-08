@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] How to build 6.2 programs, or other ways
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000769.html">
+   <LINK REL="Next"  HREF="000771.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] How to build 6.2 programs, or other ways
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] How to build 6.2 programs, or other ways">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 4 Sep 2002 21:16:39 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000769.html">[Peeweelinux] How to build 6.2 programs, or other ways
+</A></li>
+        <LI> Next message: <A HREF="000771.html">[Peeweelinux] rc.pcmcia fails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#770">[ date ]</a>
+              <a href="thread.html#770">[ thread ]</a>
+              <a href="subject.html#770">[ subject ]</a>
+              <a href="author.html#770">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>As far as I know, the kernel is a static build binary. It does not depend
+on any particular libraries at runtime. So it doesn't really matter which
+libraries were installed on the system the kernel was build on.
+
+When it comes to applications this is different. It is certainly possible
+to build a statically compiled binary using any libraries of your choice
+and it will run on PeeWeeLinux. Being statically compiled it won't require
+any libraries to be present at runtime.
+
+If you build a dynamically linked library it is advisable to match the
+libraries as build time with the libraries at runtime. The binary require
+whatever libs is was linked against at runtime.
+
+I hope this makes sense...
+
+Adi
+
+On Wed, 4 Sep 2002, Barry Gershenfeld wrote:
+
+&gt;<i> I need to write myself a program to let my embedded board
+</I>&gt;<i> do control, and so to assure myself success I would need
+</I>&gt;<i> to compile it on a RedHat 6.2 system like everything
+</I>&gt;<i> else in peeweelinux.  But are there alternatives? Ken
+</I>&gt;<i> Emmons has put a 2.4 kernel in his system.  Does this
+</I>&gt;<i> cause any problems?  Will everything work like magic
+</I>&gt;<i> or is the real problem in the libraries?   And then the
+</I>&gt;<i> libraries have to match the kernel....I was able to
+</I>&gt;<i> build a 6.2 kernel using egcs, so can I repeat this
+</I>&gt;<i> trick on my own program?
+</I>&gt;<i>
+</I>&gt;<i> The answers, even if negative, would help me understand
+</I>&gt;<i> how the parts of the system link together.
+</I>&gt;<i>
+</I>&gt;<i> My host system is RH7.3
+</I>&gt;<i>
+</I>&gt;<i> Barry
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000769.html">[Peeweelinux] How to build 6.2 programs, or other ways
+</A></li>
+	<LI> Next message: <A HREF="000771.html">[Peeweelinux] rc.pcmcia fails
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#770">[ date ]</a>
+              <a href="thread.html#770">[ thread ]</a>
+              <a href="subject.html#770">[ subject ]</a>
+              <a href="author.html#770">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

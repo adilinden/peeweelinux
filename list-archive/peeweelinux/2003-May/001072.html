@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Adding Custom RPMS
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001071.html">
+   <LINK REL="Next"  HREF="001073.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Adding Custom RPMS
+   </H1>
+    <B>vwbug19
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Adding Custom RPMS">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 2 May 2003 00:35:00 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001071.html">[Peeweelinux] Adding Custom RPMS
+</A></li>
+        <LI> Next message: <A HREF="001073.html">[Peeweelinux] Which PeeWee script to use
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1072">[ date ]</a>
+              <a href="thread.html#1072">[ thread ]</a>
+              <a href="subject.html#1072">[ subject ]</a>
+              <a href="author.html#1072">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>those rpm has to be version for redhat 6.1 i learned that from it  and other
+versions made for other redhat or other will not be extracted to tar and
+list intresting idea by author
+
+
+
+---------------------------------------------------------------------
+&quot;Are you still wasting your time with spam?...
+There is a solution!&quot;
+
+Protected by GIANT Company's Spam Inspector
+The most powerful anti-spam software available.
+<A HREF="http://mail.spaminspector.com">http://mail.spaminspector.com</A>
+
+
+----- Original Message ----- 
+From: &quot;Correy Edmed&quot; &lt;<A HREF="mailto:correy.edmed@iinet.net.au">correy.edmed@iinet.net.au</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Sent: Friday, May 02, 2003 12:11 AM
+Subject: Re: [Peeweelinux] Adding Custom RPMS
+
+
+&gt;<i> But how do you add them?
+</I>&gt;<i>
+</I>&gt;<i> If I were to add an rpm file to the rpm directory where will it extract
+</I>into a .list and .tar file?
+&gt;<i>
+</I>&gt;<i> If so will it automatically appear within the &quot;Configure Project File
+</I>System&quot;. I have tried adding rpm files to the /Embedded_Build/RPMS dir but
+they are not extracted to a .tar or .list file nor can they be seen in
+pwlconfig.
+&gt;<i>
+</I>&gt;<i> Am I right in assuming that the &quot;Configure Custom files&quot; is not used for
+</I>configuring rpms?
+&gt;<i>
+</I>&gt;<i> Thanks for a fast reply though
+</I>&gt;<i>
+</I>&gt;<i> Correy
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Adi Linden wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt;pwlconfig extracts the rpm files into the .list and .tar files.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Adi
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;On Fri, 2 May 2003, Correy Edmed wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt;Hi
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;I would like to get a few more programs working on peeweelinux. Namely
+</I>&gt;<i> &gt;&gt;sndconfig to configure my sound card and comedi to configure my PCM-3730
+</I>&gt;<i> &gt;&gt;I/O controller.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;I notice that the &quot;Configure Custom Files&quot; allows you to update single
+</I>&gt;<i> &gt;&gt;files or add whole directories however this is no good if you want to
+</I>&gt;<i> &gt;&gt;add an RPM or make install an application.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;I notice that &quot;/Embedded_Build/RPMS&quot; holds all the rpm files for the
+</I>&gt;<i> &gt;&gt;&quot;Configure file system menu&quot; which somehow have been loaded into a
+</I>&gt;<i> &gt;&gt;directory &quot;/Embedded_Build/packages&quot;. If you enter one of these
+</I>&gt;<i> &gt;&gt;directories for arguments sake lets use &quot;/Embedded_Build/RPMS/Editors&quot;
+</I>&gt;<i> &gt;&gt;you would get the following listing:
+</I>&gt;<i> &gt;&gt;ee.list    e.tar    nano.list    nano.tar    vim-ncurses.list
+</I>&gt;<i> &gt;&gt;vim-ncurses.tar    vim.list    vim.tar
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;SO THE MILLION DOLLAR QUESTION IS -  How do I take an RPM file for eg
+</I>&gt;<i> &gt;&gt;&quot;sndconfig-0.43-1.i386.rpm&quot; (Redhat 6.2 file) and add it to say the
+</I>&gt;<i> &gt;&gt;directory /Embedded_Build/packages/Applications_Sound in the format
+</I>&gt;<i> &gt;&gt;&quot;sndconfig.tar sndconfig.list?
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;So that when I launch ./pwlconfig and go into Configure file systems and
+</I>&gt;<i> &gt;&gt;then enter Applications_Sound I will have the option of selecting
+</I>sndconfig?
+&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;Would be great if someone could do a HOWTO for this question because it
+</I>&gt;<i> &gt;&gt;is never dealt with fully in the archives however I would love to be
+</I>&gt;<i> &gt;&gt;proved wrong.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;Thanks
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;Correy
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;_______________________________________________
+</I>&gt;<i> &gt;&gt;Peeweelinux mailing list
+</I>&gt;<i> &gt;&gt;<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt;&gt;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;_______________________________________________
+</I>&gt;<i> &gt;Peeweelinux mailing list
+</I>&gt;<i> &gt;<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001071.html">[Peeweelinux] Adding Custom RPMS
+</A></li>
+	<LI> Next message: <A HREF="001073.html">[Peeweelinux] Which PeeWee script to use
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1072">[ date ]</a>
+              <a href="thread.html#1072">[ thread ]</a>
+              <a href="subject.html#1072">[ subject ]</a>
+              <a href="author.html#1072">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

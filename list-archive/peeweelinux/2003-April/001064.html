@@ -1,0 +1,268 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Kernel Panic
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001063.html">
+   <LINK REL="Next"  HREF="001065.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Kernel Panic
+   </H1>
+    <B>Correy Edmed
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Kernel Panic">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 29 Apr 2003 20:36:22 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001063.html">[Peeweelinux] Kernel Panic
+</A></li>
+        <LI> Next message: <A HREF="001065.html">[Peeweelinux] Kernel Panic
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1064">[ date ]</a>
+              <a href="thread.html#1064">[ thread ]</a>
+              <a href="subject.html#1064">[ subject ]</a>
+              <a href="author.html#1064">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there
+
+ &gt; &gt; the uncompressed ext2 image (second partition) is copied to a ramdisk
+ From what I understand that is what this line is doing
+ &gt; &gt; Copying filesystem /dev/hda2 to /dev/ram2.....
+However shouldn't that be /dev/hdc2 for my case.
+
+And what must I do to get the boot process past this fatal error.
+
+&gt;<i> tcsetpgrp: Inappropriate ioctl for device
+</I>&gt;<i> Invalid session number or type of track
+</I>&gt;<i> Kernel panic: VFS: Unable to mount root fs on 01:02
+</I>
+&gt;<i> &gt; as for a data partition the third partition is the way to go, just format it
+</I>&gt;<i> &gt; and add a line to mount it to fstab.
+</I>
+Yes I have formatted partition 3 however I am still unable to get to the login screen.
+
+Thankyou for your help.
+
+Correy
+
+
+
+
+
+ &gt; &gt; as umounted afterwards. from your post it looks like you are not 
+aware of this.
+
+ From what I underst
+
+Ricardo Trindade wrote:
+
+&gt;<i>the uncompressed ext2 image (second partition) is copied to a ramdisk as
+</I>&gt;<i>umounted afterwards. from your post it looks like you are not aware of this.
+</I>&gt;<i>
+</I>&gt;<i>as for a data partition the third partition is the way to go, just format it
+</I>&gt;<i>and add a line to mount it to fstab.
+</I>&gt;<i>
+</I>&gt;<i>-----Mensagem original-----
+</I>&gt;<i>De: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]Em
+</I>&gt;<i>nome de Correy Edmed
+</I>&gt;<i>Enviada: terca-feira, 29 de Abril de 2003 8:58
+</I>&gt;<i>Para: <A HREF="mailto:tengel@fluid.com">tengel@fluid.com</A>; <A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>; <A HREF="mailto:Ricardo.Trindade@myrealbox.com">Ricardo.Trindade@myrealbox.com</A>;
+</I>&gt;<i>Leif Steinhour; <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i>Assunto: [Peeweelinux] Kernel Panic
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Hi Troy and Adi and Ricardo and Leif and PWL archive
+</I>&gt;<i>
+</I>&gt;<i>**********************************************************************
+</I>&gt;<i>Target System = PCM-3350 GX1 300MHz
+</I>&gt;<i>Developement PC = Redhat 6.2 with all the rpm's installed as specified
+</I>&gt;<i>in Reference
+</I>&gt;<i>**********************************************************************
+</I>&gt;<i>
+</I>&gt;<i>Troy has helped me so far with this problem but I noticed in the
+</I>&gt;<i>peewelinux archives that you all seem to know a bit in this area so any
+</I>&gt;<i>help you can give me would be much appreciated.
+</I>&gt;<i>
+</I>&gt;<i>Thankyou for your answer Troy (attached at bottom) I have another CF
+</I>&gt;<i>that is branded Sandisk Ultra 256M compact flash. That I tried instead
+</I>&gt;<i>of the Kodac 128M CF
+</I>&gt;<i>
+</I>&gt;<i>I have recompiled the kernel and made sure that all of the filesystems
+</I>&gt;<i>including ext2 fat16 and all the other ones are compiled in and not only
+</I>&gt;<i>as modules.
+</I>&gt;<i>
+</I>&gt;<i>The things that I notice as fishy are
+</I>&gt;<i>
+</I>&gt;<i>when PWL configures it it creates 3 partitions
+</I>&gt;<i>
+</I>&gt;<i>Partition        Contents
+</I>&gt;<i>hdc1               boot.b    bzImage    initrd    map
+</I>&gt;<i>hdc2                bin    boot     dev    etc    lib    mnt    proc
+</I>&gt;<i>rc.init    root    sbin    tmp    usr    var
+</I>&gt;<i>hdc3                **Is there but I can't mount it and no documentation
+</I>&gt;<i>about formating it during target install**
+</I>&gt;<i>
+</I>&gt;<i>I then have a look at /etc/lilo.conf and find the following which seems
+</I>&gt;<i>really wacky so I have included the lines that I changed in bold
+</I>&gt;<i>*********************************
+</I>&gt;<i>disk=/dev/sda    *disk=/dev/hdc*
+</I>&gt;<i>    bios=0x80
+</I>&gt;<i>    heads=4
+</I>&gt;<i>    sectors=32
+</I>&gt;<i>    cylinders=490
+</I>&gt;<i>
+</I>&gt;<i>boot=/dev/sda        *disk=/dev/hdc*
+</I>&gt;<i>map=/boot/map
+</I>&gt;<i>install=/boot/boot.b
+</I>&gt;<i>compact
+</I>&gt;<i>prompt
+</I>&gt;<i>timeout=20
+</I>&gt;<i>default=linux
+</I>&gt;<i>
+</I>&gt;<i>image=/boot/bzImage-ipx    *image=/boot/bzImage*
+</I>&gt;<i>    label=linux
+</I>&gt;<i>    read-only
+</I>&gt;<i>    root=/dev/hda1                *root=/dev/hdc2*
+</I>&gt;<i>    vga=0x317
+</I>&gt;<i>***************************************
+</I>&gt;<i>However i don't even think it is accessing this file yet.
+</I>&gt;<i>
+</I>&gt;<i>After these changes (new kernel, updated lilo.conf file) I get the same
+</I>&gt;<i>errors as before (ioctl) plus more errors I am thinking because of all
+</I>&gt;<i>the extra file systems I built into the kernel that try and recognise it
+</I>&gt;<i>but fail.
+</I>&gt;<i>I have tried using the kernels supplied with pwl such as bzImage-full
+</I>&gt;<i>and selecting modules but no go there either.
+</I>&gt;<i>
+</I>&gt;<i>Incase some more of the errors being produced would be helpful here they
+</I>&gt;<i>are:
+</I>&gt;<i>
+</I>&gt;<i>*********************************************
+</I>&gt;<i>Partition check:
+</I>&gt;<i>hdc: hdc1 hdc2 hdc3
+</I>&gt;<i>RAMDISK: Compressed image found at block 0
+</I>&gt;<i>VFS: Mounted root (ext2 filesystem).
+</I>&gt;<i>Copying filesystem /dev/hda2 to /dev/ram2.....
+</I>&gt;<i>/dev/hda2Flushing buffers to disk....
+</I>&gt;<i>tcsetpgrp: Inappropriate ioctl for device
+</I>&gt;<i>Invalid session number or type of track
+</I>&gt;<i>Kernel panic: VFS: Unable to mount root fs on 01:02
+</I>&gt;<i>*********************************************
+</I>&gt;<i>
+</I>&gt;<i>I am able to get it to work when I use a Compressed ramdisk on ext2
+</I>&gt;<i>partition however that is not practical because it installs it all on
+</I>&gt;<i>hdc1 with no other partitions. I need it Uncompressed on ext2 partition
+</I>&gt;<i>so that I can write data to the hdc2 partition.
+</I>&gt;<i>
+</I>&gt;<i>Do you know what hdc3 is used for is it meant to be a swap or something?
+</I>&gt;<i>I tried partitioning it,(mke2fs) so that I could mount it and everything
+</I>&gt;<i>however to no avail at bootup.
+</I>&gt;<i>
+</I>&gt;<i>I have been reading the Bootdisk HOWTO and they have this error under
+</I>&gt;<i>their troubleshooting and say there is only a few problems here and to
+</I>&gt;<i>check the rdev -R on /dev/hdc1/bzImage. I followed through this
+</I>&gt;<i>possibility but it did nothing.
+</I>&gt;<i>
+</I>&gt;<i>Apparently you can look up what device 01:02 is in the format XX:YY in
+</I>&gt;<i>/usr/src/linux/Documentation/devices.txt however I didn't understand this.
+</I>&gt;<i>
+</I>&gt;<i>Thankyou for any help you can give me,  I will document any successful
+</I>&gt;<i>help I am given in my writeup.
+</I>&gt;<i>
+</I>&gt;<i>Correy
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>Troy Engel wrote:
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Hiya,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Correy Edmed said:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>tcsetpgrp: Inappropriate ioctl for device
+</I>&gt;&gt;&gt;<i>kernel panic: VFS: Unable to mount root fs on 01:02
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>I saw this thread, but I'm not part of it I think? In any case, I'll try
+</I>&gt;&gt;<i>to help...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>/dev/hda2Flushing buffers to disk....
+</I>&gt;&gt;&gt;<i>tcsetpgrp: Inappropriate ioctl for device
+</I>&gt;&gt;&gt;<i>Kernel panic: VFS: Unable to mount root fs on 01:02
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>      
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;<i>This smells like a CF error, or something in the subsystem like that. Do
+</I>&gt;&gt;<i>you have any other flash chips to try and use, besides this one? Likewise,
+</I>&gt;&gt;<i>do you have a different CF reader/writer to try?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Under normal circumstances, this is the kind of error I would expect when
+</I>&gt;&gt;<i>trying to mount a bad disk (or possibly a disk with a filesystem the
+</I>&gt;&gt;<i>kernel doesn't have compiled in? like Sun or SGI disk, etc)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Hope that helps some....
+</I>&gt;&gt;<i>-te
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Peeweelinux mailing list
+</I>&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Peeweelinux mailing list
+</I>&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001063.html">[Peeweelinux] Kernel Panic
+</A></li>
+	<LI> Next message: <A HREF="001065.html">[Peeweelinux] Kernel Panic
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1064">[ date ]</a>
+              <a href="thread.html#1064">[ thread ]</a>
+              <a href="subject.html#1064">[ subject ]</a>
+              <a href="author.html#1064">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

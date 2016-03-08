@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Linking against older glibc
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000506.html">
+   <LINK REL="Next"  HREF="000509.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Linking against older glibc
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Linking against older glibc">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 7 Mar 2002 11:00:25 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000506.html">[Peeweelinux] Linking against older glibc
+</A></li>
+        <LI> Next message: <A HREF="000509.html">[Peeweelinux] Linking against older glibc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#508">[ date ]</a>
+              <a href="thread.html#508">[ thread ]</a>
+              <a href="subject.html#508">[ subject ]</a>
+              <a href="author.html#508">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Carlos,
+
+There are &quot;compatibility packages&quot; available that allow you to do this without removing
+existing libraries on your machine.
+
+Maybe <A HREF="http://mail.adis.on.ca/pipermail/peeweelinux-devel/2002-February/000164.html">http://mail.adis.on.ca/pipermail/peeweelinux-devel/2002-February/000164.html</A> will
+help.
+
+The other alternative is to statically link your applications, removing the dependencies
+on shared libraries.  This, or course, makes your applications much larger.
+
+Mark
+
+Carlos Mateo wrote:
+
+&gt;<i> What is the easiest way to compile and link against the libraries installed in the
+</I>&gt;<i> embedded system? (provided I don't want to downgrade the libraries in my development
+</I>machine).
+
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000506.html">[Peeweelinux] Linking against older glibc
+</A></li>
+	<LI> Next message: <A HREF="000509.html">[Peeweelinux] Linking against older glibc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#508">[ date ]</a>
+              <a href="thread.html#508">[ thread ]</a>
+              <a href="subject.html#508">[ subject ]</a>
+              <a href="author.html#508">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] M-systems Disk-On-Chip installation instructions?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000638.html">
+   <LINK REL="Next"  HREF="000640.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] M-systems Disk-On-Chip installation instructions?
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] M-systems Disk-On-Chip installation instructions?">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 21 Jun 2002 09:22:15 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000638.html">[Peeweelinux] M-systems Disk-On-Chip installation instructions?
+</A></li>
+        <LI> Next message: <A HREF="000640.html">[Peeweelinux] Adding packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#639">[ date ]</a>
+              <a href="thread.html#639">[ thread ]</a>
+              <a href="subject.html#639">[ subject ]</a>
+              <a href="author.html#639">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jan De Geeter wrote:
+&gt;<i> Now, I would like to install PeeWeeLinux on an M-systems Disk-On-Chip. I am
+</I>&gt;<i> using redhat 7.2 with kernel version 2.4.2 as a development platform. The
+</I>&gt;<i> PeeWeeLinux kernel version I am using is 2.2.17. I have pwlconfig 0.61.
+</I>&gt;<i>
+</I>&gt;<i> Can anyone point me to an up-to-date instruction set on how to do this?
+</I>
+Hi Jan,
+
+My understanding of the DiskOnChip/Linux situation is that there are two ways 
+to accomplish this:
+
+1.  Use M-Systems &quot;TrueFFS v5.0 for Linux (x86)&quot;, from www.m-sys.com.
+2.  Use the Memory Technology Device (MTD) Subsystem for Linux:
+
+	<A HREF="http://www.linux-mtd.infradead.org/">http://www.linux-mtd.infradead.org/</A>
+	<A HREF="http://www.linux-mtd.infradead.org/doc2000.html">http://www.linux-mtd.infradead.org/doc2000.html</A>
+
+It's been my experience that using the MTD option is much easier.  Also, the 
+M-Systems option is a binary-only driver, and can only be used as a loadable 
+module.  From their installation instructions:
+
+	This installation manual will guide through the process installing the
+	DiskOnChip TrueFFS driver for Linux as a loadubale module (GPL complient).
+
+	Note: Installing this driver as part of the Linux kernel is NOT GPL complient
+	and should only be used for testing or R&amp;D purposes.
+
+In other words, you don't get the source code when using TrueFFS.  The MTD 
+source is part of the Linux kernel itself; you don't need to use &quot;initrd&quot; in 
+order to boot from the DoC.  
+
+Anyway, I typed up some instructions on using Peewee to configure a bootable 
+DoC, using MTD and a 2.4 kernel.  I'm not sure how things would work with a 
+2.2.17 kernel, but I believe there may be MTD patches available for 2.2. 
+kernels if needed.  For now, these instructions are at:
+
+	<A HREF="http://www.lakeshoremicro.com/peeweedoc.txt">http://www.lakeshoremicro.com/peeweedoc.txt</A>
+
+Additionally, if you decide to use a 2.4 kernel,  Troy Engel's kernel 2.4 
+mini-howto might help:
+
+	<A HREF="http://mail.adis.on.ca/pipermail/peeweelinux/2002-June/000608.html">http://mail.adis.on.ca/pipermail/peeweelinux/2002-June/000608.html</A>
+
+If your feeling adventurous, I also wrote up some instructions on using GRUB 
+(rather than LILO) to boot a DiskOnChip:
+
+	<A HREF="http://lists.infradead.org/pipermail/linux-mtd/2002-June/005240.html">http://lists.infradead.org/pipermail/linux-mtd/2002-June/005240.html</A>
+
+I hope this helps.
+
+Mark
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000638.html">[Peeweelinux] M-systems Disk-On-Chip installation instructions?
+</A></li>
+	<LI> Next message: <A HREF="000640.html">[Peeweelinux] Adding packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#639">[ date ]</a>
+              <a href="thread.html#639">[ thread ]</a>
+              <a href="subject.html#639">[ subject ]</a>
+              <a href="author.html#639">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

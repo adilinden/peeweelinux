@@ -1,0 +1,395 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: [Peeweelinux ] rootfilesystem isn't free after flushing to ramdisk
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001144.html">
+   <LINK REL="Next"  HREF="001146.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: [Peeweelinux ] rootfilesystem isn't free after flushing to ramdisk
+   </H1>
+    <B>correy
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: [Peeweelinux ] rootfilesystem isn't free after flushing to ramdisk">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 24 Jul 2003 10:30:35 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001144.html">[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+</A></li>
+        <LI> Next message: <A HREF="001146.html">[Peeweelinux] Re: [Peeweelinux ] rootfilesystem isn't free after flushing to
+ ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1145">[ date ]</a>
+              <a href="thread.html#1145">[ thread ]</a>
+              <a href="subject.html#1145">[ subject ]</a>
+              <a href="author.html#1145">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--------------090509000400020407030907
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+Hi there I changed my lilo configuration to use the /dev/ram2
+
+
+image=/mnt/cf1/bzImage
+       label=bzImage
+       ramdisk=9556
+       root=/dev/ram2
+       read-only
+
+The error I get is this
+=====================
+/dev/ram2: No sapce left on device
+19113+0 records in
+19112+0 records out
+Flushing buffers to disk....
+tcsetpgrp: Inappropriate ioctl for device
+VFS: Mounted root (ext2 filesystem) readonly
+Trying to move old root to /initrd ... failed
+Unmounting old root
+Trying to free ramdisk memory .... okay
+Freeing unused kernel memory: 200k freed
+attempt to access beyond end of device
+01:02: rw=0, want=49158, limit=9556
+EXT2-fs error (device ramdisk(1,2)): ext2_read_inode: unable to read inode blod - inode=12001,block49157
+Warning: unable to open an initial console
+attempt to access beyond end of device
+01:02: rw=0, want=57351, limit=9556
+EXT2-fs error (device ramdisk(1,2)): ext2_read_inode: unable to read inode block - inode=14011, block=57350
+Kernel panic: No init found. Try passing int= option to kernel.
+========================
+
+I then changed ramdisk=57351 however it just took longer to flush and I still got /dev/ram2: No space left on device.
+
+The reason I need to be able to do this is that I want to be able to save the image of the cf card as a tar.gz file and then simply copy it across to the appropriate partion and then chroot to this filesystem type lilo and then reboot the system. I no longer have the pwl project that I used to create the fielsystem either. Surely there is something simple that I am missing here??
+
+Correy
+
+
+
+&gt;<i>I ALSO discovered, in that same directory, the &quot;linuxrc&quot; file
+</I>&gt;<i>that the make-target scripts often talk about.  And the
+</I>&gt;<i>contents of that file are interesting:
+</I>&gt;<i>
+</I>&gt;<i>  echo &quot;Copying filesystem /dev/hda2 to /dev/ram2....&quot;
+</I>&gt;<i>  dd if=/dev/hda2 of=/dev/ram2
+</I>&gt;<i>  echo &quot;Flushing buffers to disk....&quot;
+</I>&gt;<i>  sync
+</I>&gt;<i>
+</I>&gt;<i>I said the other day this was built into the kernel--apparently
+</I>&gt;<i>not!  I am still trying to figure out how this script gets
+</I>&gt;<i>run before the real init is started.
+</I>&gt;<i>
+</I>&gt;<i>Anyway, the root line in my lilo.conf reads like this:
+</I>&gt;<i>
+</I>&gt;<i>  root      = /dev/ram2 
+</I>&gt;<i>
+</I>&gt;<i>also:
+</I>&gt;<i>
+</I>&gt;<i> ramdisk   = 9556
+</I>&gt;<i> 
+</I>&gt;<i>I can't be sure this is the answer for you, because none of the
+</I>&gt;<i>lilo.conf files you have posted (including the &quot;before&quot; example)
+</I>&gt;<i>show it this way.  But you can try it.   The number after &quot;ramdisk&quot;
+</I>&gt;<i>is the amount of memory needed to copy the ramdisk to.  It can be
+</I>&gt;<i>larger then needed.
+</I>&gt;<i>
+</I>&gt;<i>I would have to ask: Which of the target configurations did 
+</I>&gt;<i>you use?  Are you not using peeweelinux to generate your
+</I>&gt;<i>targets anymore?  Why not?  Do you need something they don't
+</I>&gt;<i>do?  Once you set out on your own you will find you have 
+</I>&gt;<i>to understand almost everything...
+</I>&gt;<i>
+</I>&gt;<i>Barry
+</I>&gt;<i>
+</I>&gt;<i>=====================================================================
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>I ALSO discovered, in that same directory, the &quot;linuxrc&quot; file
+</I>&gt;&gt;<i>that the make-target scripts often talk about.  And the
+</I>&gt;&gt;<i>contents of that file are interesting:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  echo &quot;Copying filesystem /dev/hda2 to /dev/ram2....&quot;
+</I>&gt;&gt;<i>  dd if=/dev/hda2 of=/dev/ram2
+</I>&gt;&gt;<i>  echo &quot;Flushing buffers to disk....&quot;
+</I>&gt;&gt;<i>  sync
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I said the other day this was built into the kernel--apparently
+</I>&gt;&gt;<i>not!  I am still trying to figure out how this script gets
+</I>&gt;&gt;<i>run before the real init is started.
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>The linuxrc file is part of the initrd mechanism. A really good 
+</I>&gt;<i>description of the initrd mechanism in in the kernel Documentation, 
+</I>&gt;<i>typically: /usr/src/linux/Documentation/initrd.txt
+</I>&gt;<i>
+</I>&gt;<i>Adi
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>correy wrote:
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>&gt;&gt;<i>Hi Troy
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Sorry for sending this email directly to you but it is just I bet you 
+</I>&gt;&gt;<i>would know the answer straight away. I sent it to the pwl mailing as well.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>My root filesystem isn't unmounted after the bootup. It use to free 
+</I>&gt;&gt;<i>itself before I changed the kernel using lilo. So the script that sets 
+</I>&gt;&gt;<i>up lilo in the PeeWeeLinux install program must be doing something 
+</I>&gt;&gt;<i>different in the way
+</I>&gt;&gt;<i>that it configures lilo I think.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Below is my lilo file that works. Perhaps my new kernel has something to 
+</I>&gt;&gt;<i>do with it however everything seems to work
+</I>&gt;&gt;<i>fine apart from this.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Can you see anything wrong for example should I be telling root that it 
+</I>&gt;&gt;<i>is at /dev/hdc2 or should I be telling it that
+</I>&gt;&gt;<i>it is in the ramdisk where the compact flash partition now resides after 
+</I>&gt;&gt;<i>the boot sequence.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>________________________
+</I>&gt;&gt;<i>boot=/dev/hdc
+</I>&gt;&gt;<i>disk=/dev/hdc
+</I>&gt;&gt;<i>       bios=0x80
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>linear
+</I>&gt;&gt;<i>map=/mnt/cf1/map
+</I>&gt;&gt;<i>install=/mnt/cf1/boot.b
+</I>&gt;&gt;<i>prompt
+</I>&gt;&gt;<i>timeout=50
+</I>&gt;&gt;<i>initrd=/mnt/cf1/initrd
+</I>&gt;&gt;<i>default=bzImage
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>image=/mnt/cf1/bzImage
+</I>&gt;&gt;<i>       label=bzImage
+</I>&gt;&gt;<i>       root=/dev/hdc2
+</I>&gt;&gt;<i>       read-only
+</I>&gt;&gt;<i>-----------------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Any help is welcome
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Many thanks
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Correy
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>    
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>  
+</I>&gt;<i>
+</I>
+
+--------------090509000400020407030907
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD HTML 4.01 Transitional//EN&quot;&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Hi there I changed my lilo configuration to use the /dev/ram2&lt;br&gt;
+&lt;pre wrap=&quot;&quot;&gt;
+
+image=/mnt/cf1/bzImage
+       label=bzImage
+       ramdisk=9556
+       root=/dev/ram2
+       read-only
+
+The error I get is this
+=====================
+/dev/ram2: No sapce left on device
+19113+0 records in
+19112+0 records out
+Flushing buffers to disk....
+tcsetpgrp: Inappropriate ioctl for device
+VFS: Mounted root (ext2 filesystem) readonly
+Trying to move old root to /initrd ... failed
+Unmounting old root
+Trying to free ramdisk memory .... okay
+Freeing unused kernel memory: 200k freed
+attempt to access beyond end of device
+01:02: rw=0, want=49158, limit=9556
+EXT2-fs error (device ramdisk(1,2)): ext2_read_inode: unable to read inode blod - inode=12001,block49157
+Warning: unable to open an initial console
+attempt to access beyond end of device
+01:02: rw=0, want=57351, limit=9556
+EXT2-fs error (device ramdisk(1,2)): ext2_read_inode: unable to read inode block - inode=14011, block=57350
+Kernel panic: No init found. Try passing int= option to kernel.
+========================
+
+I then changed ramdisk=57351 however it just took longer to flush and I still got /dev/ram2: No space left on device.
+
+The reason I need to be able to do this is that I want to be able to save the image of the cf card as a tar.gz file and then simply copy it across to the appropriate partion and then chroot to this filesystem type lilo and then reboot the system. I no longer have the pwl project that I used to create the fielsystem either. Surely there is something simple that I am missing here??
+
+Correy
+
+&lt;/pre&gt;
+&lt;br&gt;
+&lt;blockquote type=&quot;cite&quot;
+ cite=&quot;<A HREF="mailto:mid2AA4A15C835A1C49B9CF61F4490BB6EB45D837@bneprdmsg01.internal.qr.com.au">mid2AA4A15C835A1C49B9CF61F4490BB6EB45D837@bneprdmsg01.internal.qr.com.au</A>&quot;&gt;
+  &lt;pre wrap=&quot;&quot;&gt;I ALSO discovered, in that same directory, the &quot;linuxrc&quot; file
+that the make-target scripts often talk about.  And the
+contents of that file are interesting:
+
+  echo &quot;Copying filesystem /dev/hda2 to /dev/ram2....&quot;
+  dd if=/dev/hda2 of=/dev/ram2
+  echo &quot;Flushing buffers to disk....&quot;
+  sync
+
+I said the other day this was built into the kernel--apparently
+not!  I am still trying to figure out how this script gets
+run before the real init is started.
+
+Anyway, the root line in my lilo.conf reads like this:
+
+  root      = /dev/ram2 
+
+also:
+
+ ramdisk   = 9556
+ 
+I can't be sure this is the answer for you, because none of the
+lilo.conf files you have posted (including the &quot;before&quot; example)
+show it this way.  But you can try it.   The number after &quot;ramdisk&quot;
+is the amount of memory needed to copy the ramdisk to.  It can be
+larger then needed.
+
+I would have to ask: Which of the target configurations did 
+you use?  Are you not using peeweelinux to generate your
+targets anymore?  Why not?  Do you need something they don't
+do?  Once you set out on your own you will find you have 
+to understand almost everything...
+
+Barry
+
+=====================================================================
+  &lt;/pre&gt;
+  &lt;blockquote type=&quot;cite&quot;&gt;
+    &lt;pre wrap=&quot;&quot;&gt;I ALSO discovered, in that same directory, the &quot;linuxrc&quot; file
+that the make-target scripts often talk about.  And the
+contents of that file are interesting:
+
+  echo &quot;Copying filesystem /dev/hda2 to /dev/ram2....&quot;
+  dd if=/dev/hda2 of=/dev/ram2
+  echo &quot;Flushing buffers to disk....&quot;
+  sync
+
+I said the other day this was built into the kernel--apparently
+not!  I am still trying to figure out how this script gets
+run before the real init is started.
+    &lt;/pre&gt;
+  &lt;/blockquote&gt;
+  &lt;pre wrap=&quot;&quot;&gt;&lt;!----&gt;
+The linuxrc file is part of the initrd mechanism. A really good 
+description of the initrd mechanism in in the kernel Documentation, 
+typically: /usr/src/linux/Documentation/initrd.txt
+
+Adi
+
+
+
+
+correy wrote:
+  &lt;/pre&gt;
+  &lt;blockquote type=&quot;cite&quot;&gt;
+    &lt;pre wrap=&quot;&quot;&gt;Hi Troy
+
+Sorry for sending this email directly to you but it is just I bet you 
+would know the answer straight away. I sent it to the pwl mailing as well.
+
+My root filesystem isn't unmounted after the bootup. It use to free 
+itself before I changed the kernel using lilo. So the script that sets 
+up lilo in the PeeWeeLinux install program must be doing something 
+different in the way
+that it configures lilo I think.
+
+Below is my lilo file that works. Perhaps my new kernel has something to 
+do with it however everything seems to work
+fine apart from this.
+
+Can you see anything wrong for example should I be telling root that it 
+is at /dev/hdc2 or should I be telling it that
+it is in the ramdisk where the compact flash partition now resides after 
+the boot sequence.
+
+________________________
+boot=/dev/hdc
+disk=/dev/hdc
+       bios=0x80
+
+linear
+map=/mnt/cf1/map
+install=/mnt/cf1/boot.b
+prompt
+timeout=50
+initrd=/mnt/cf1/initrd
+default=bzImage
+
+image=/mnt/cf1/bzImage
+       label=bzImage
+       root=/dev/hdc2
+       read-only
+-----------------------
+
+Any help is welcome
+
+Many thanks
+
+Correy
+
+
+
+    &lt;/pre&gt;
+  &lt;/blockquote&gt;
+  &lt;pre wrap=&quot;&quot;&gt;&lt;!----&gt;
+  &lt;/pre&gt;
+&lt;/blockquote&gt;
+&lt;br&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+--------------090509000400020407030907--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001144.html">[Peeweelinux] rootfilesystem isn't free after flushing to
+ ramdisk
+</A></li>
+	<LI> Next message: <A HREF="001146.html">[Peeweelinux] Re: [Peeweelinux ] rootfilesystem isn't free after flushing to
+ ramdisk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1145">[ date ]</a>
+              <a href="thread.html#1145">[ thread ]</a>
+              <a href="subject.html#1145">[ subject ]</a>
+              <a href="author.html#1145">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

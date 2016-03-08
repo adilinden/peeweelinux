@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Error loading file system to target compact
+ flash card
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001181.html">
+   <LINK REL="Next"  HREF="001183.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Error loading file system to target compact
+ flash card
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Error loading file system to target compact
+ flash card">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 21 Aug 2003 17:09:48 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001181.html">[Peeweelinux] Error loading file system to target compact flash card
+</A></li>
+        <LI> Next message: <A HREF="001183.html">[Peeweelinux] Error loading file system to target compact
+ flash card
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1182">[ date ]</a>
+              <a href="thread.html#1182">[ thread ]</a>
+              <a href="subject.html#1182">[ subject ]</a>
+              <a href="author.html#1182">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I don't have an answer, but as much as I have been studying (or is
+that playing with?) the internals of PeeWeeLinux, maybe this could
+help.
+
+
+&gt;<i>Editing inittab...ok                                                   
+</I>&gt;<i>Building ld.so.cache...ldconfig: Can't stat /lib: No such file or direc 
+</I>&gt;<i>ldconfig: Can't stat /usr/lib: No such file or directory                
+</I>
+This won't necessarily break your system.  I get these a lot and
+while it may be my fault, it hasn't hurt.    If there were a 
+problem it would show up after you booted and tried to run some
+program that needed a particular library.
+
+&gt;<i>************
+</I>&gt;<i>`./projects/bootx/mnt/boot/bzImage-full': No such file or directory
+</I>
+&gt;<i>`./projects/bootx/mnt/boot/bzImage-full': No such file or directory
+</I>
+PeeWeeLinux (PWL) is the Embedded_Build directory and everything
+below.  There's a projects directory, and I see you made a project
+called bootx.  All the stuff you do happens within the bootx
+directory.  If you look in mnt (that's projects/bootx/mnt which
+is different from /mnt) what you see there is a replica of
+what is supposed to go onto your target.  If it's not there,
+it won't be in your target either.
+
+&gt;&gt;<i>Check to make sure that you have selected &quot;etc/&quot; ...
+</I>
+&gt;<i>I have checked this, under these options it just says 'estimated total 
+</I>&gt;<i>from selected files 0' even when I choose 'select all files from 
+</I>&gt;<i>package'. 
+</I>
+That's ok.  If you are selecting directories (and you do have
+to sometimes, to ensure that the directories themselves get
+created) the directories themselves don't take up any space.
+So what you saw is right.
+
+
+&gt;<i>When I try and 'Extract File System for Project' it just gives me lots
+</I>&gt;<i>of 'Not found in Archive' messages for all of the files.
+</I>
+This looks like the first error.  Meaning that you need to get this
+fixed first.  This is the step that creates your target's file
+tree on project/bootx/mnt
+
+I wonder if you managed to be missing the packages?  I did this once.
+Extracting them is supposed to happen automatically the first
+time it PWL is run.  I think a few others have managed this stunt
+as well.  Have a look in the Embedded_Build/packages directory
+and see if you see directories corresponding to PWL choices (I
+have about 24 of them).  In each of those directories you 
+should see pairs of files named .tar and .list
+If you don't, that's the first step.
+
+BTW, 'bzImage-full' is a kernel.  And Kernel is one of the packages.
+
+Barry
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001181.html">[Peeweelinux] Error loading file system to target compact flash card
+</A></li>
+	<LI> Next message: <A HREF="001183.html">[Peeweelinux] Error loading file system to target compact
+ flash card
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1182">[ date ]</a>
+              <a href="thread.html#1182">[ thread ]</a>
+              <a href="subject.html#1182">[ subject ]</a>
+              <a href="author.html#1182">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

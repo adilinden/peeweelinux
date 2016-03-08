@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Silent booting
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000149.html">
+   <LINK REL="Next"  HREF="000154.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Silent booting
+   </H1>
+    <B>Dean Brown
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Silent booting">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 09 Nov 2000 10:06:38 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000149.html">Silent booting
+</A></li>
+        <LI> Next message: <A HREF="000154.html">Silent booting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm currently using 0.53-10 of pwl, and the 2.2.14 kernel. When I
+changed to the 2.2.17 kernel however, I started having problems with the
+rtl8139 network driver. 
+
+I'm getting an error when the rc.modules script is executed which simply
+does an insmod on the rtl8139.o module. The errors I am getting are:
+/lib/modules/2.2.17/net/rtl8139.o: unresolved symbol pci_drv_unregister
+/lib/modules/2.2.17/net/rtl8139.o: unresolved symbol pci_drv_register
+
+This was using the precompiled binaries, so I downloaded the source
+files and recompiled the kernel RPM. I'm still getting the same error.
+
+Assuming I can get this issue solved, do you have any instructions on
+the 'silent.patch'?
+
+Thanks in advance!
+
+Adi Linden wrote:
+&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Which version of pwl and kernel are you using? The 2.2.17 kernel in
+</I>&gt;<i> 0.53 includes the silent.patch which allows for boot messages to be
+</I>&gt;<i> hidden.
+</I>&gt;<i> 
+</I>&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> On Wed, 8 Nov 2000, Dean Brown wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I've got my application running completely automated right from power
+</I>&gt;<i> &gt; up. I would now like to hide the bootup spew so that the first thing the
+</I>&gt;<i> &gt; user sees is the application. Does anyone know how to configure Lilo and
+</I>&gt;<i> &gt; the kernel to do such a thing?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Thanks in advance.
+</I>&gt;<i> &gt; --
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Dean Brown
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> &gt; See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> &gt; See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> &gt; ---------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>
+-- 
+
+Dean Brown
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000149.html">Silent booting
+</A></li>
+	<LI> Next message: <A HREF="000154.html">Silent booting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

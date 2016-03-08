@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] ftp, ext
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000681.html">
+   <LINK REL="Next"  HREF="000682.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] ftp, ext
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] ftp, ext">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 19 Jul 2002 08:07:07 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000681.html">[Peeweelinux] (no subject)
+</A></li>
+        <LI> Next message: <A HREF="000682.html">[Peeweelinux] ftp, ext
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#679">[ date ]</a>
+              <a href="thread.html#679">[ thread ]</a>
+              <a href="subject.html#679">[ subject ]</a>
+              <a href="author.html#679">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Guys,
+
+This is what I have done,
+I grabbed an ftpd rpm (version from Mandrake 8.1 I think but it doesn't
+matter)
+and just included the pam.permit.so (?) library, and basically used  a pam
+config file to set all pw checking to optional,
+and took root out of the ftpusers - this will not work for everyone, for
+example root can ftp in without a password but in the environment that we
+are deploying peewee on this is not an issue.
+
+Kind Regards,
+Delaney
+
+
+
+                                                                                                                        
+                    Adi Linden                                                                                          
+                    &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt;          To:     &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;                                          
+                    Sent by:                  cc:                                                                       
+                    peeweelinux-admin@          Subject:   RE: [Peeweelinux] ftp, ext                                   
+                    adis.on.ca                                                                                          
+                                             Project:                                                                   
+                                                                                                                        
+                    19/07/2002 01:25                                                                                    
+                    AM                                                                                                  
+                    Please respond to                                                                                   
+                    peeweelinux                                                                                         
+                                                                                                                        
+                                                                                                                        
+
+
+
+
+Hi Ricardo,
+
+A generic RedHat rpm will not likely work for PWL. They will all have PAM
+support if they were properly build. I'd recommend building one all static
+or using RedHat 6.2 but disabling PAM.
+
+Adi
+
+On Thu, 18 Jul 2002, Ricardo Trindade wrote:
+
+&gt;<i> ok, thanks, I'll try to find an RPM for ftpd.
+</I>&gt;<i>
+</I>&gt;<i> maybe I'll ask on the list and you can put it in your ftp server ? I've
+</I>seen
+&gt;<i> on the list that it's a fairly regular question...
+</I>&gt;<i>
+</I>&gt;<i> thanks
+</I>&gt;<i> Ricardo
+</I>
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+
+
+
+**********************************************************************
+This email and any files transmitted with it are confidential and
+intended solely for the use of the individual or entity to whom they
+are addressed. If you have received this email in error please notify
+<A HREF="mailto:mail.administrator@jupiters.com.au">mail.administrator@jupiters.com.au</A>
+
+**********************************************************************
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000681.html">[Peeweelinux] (no subject)
+</A></li>
+	<LI> Next message: <A HREF="000682.html">[Peeweelinux] ftp, ext
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#679">[ date ]</a>
+              <a href="thread.html#679">[ thread ]</a>
+              <a href="subject.html#679">[ subject ]</a>
+              <a href="author.html#679">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

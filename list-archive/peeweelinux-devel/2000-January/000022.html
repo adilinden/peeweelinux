@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> V0.19 and pwlconfig design notes...
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000021.html">
+   <LINK REL="Next"  HREF="000024.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>V0.19 and pwlconfig design notes...
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="V0.19 and pwlconfig design notes...">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Tue, 25 Jan 2000 22:50:52 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000021.html">New ftp site at adis.on.ca
+</A></li>
+        <LI> Next message: <A HREF="000024.html">V0.19 and pwlconfig design notes...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adi,
+I downloaded the 0.19 source file today (pretty good response for downloads
+from sourceforge...haven't tried your new ftp yet). Looks like a lot of stuff
+in there..not sure what it all is though...
+
+I started on the next release of pwlconfig.  I've integrated it so it can use
+my &quot;mkBootDevice&quot; shell script, now I just have to add a few parameters to the
+project.  So far I can only come up with a handfull of &quot;project&quot; specific
+parameters, but I'm planning on a menu that will let you enter these items into
+a &quot;...projects/myproject/project.default&quot; file. (you can manually edit it or
+use the menus).  Adding more parameters anytime should be a breeze...
+
+&gt;<i>From Main Menu-&gt;Manage project
+</I>&quot;Project Device Type: DOC&quot;
+&quot;Project Device Location: /dev/fla1&quot;
+&quot;Project Mount Point: ./mnt&quot;
+&quot;Boot Label: pwlboot&quot;
+&quot;File System Compressed: no&quot;
+&quot;Default source for custom files: /home/ralph/SRC&quot;
+&quot;&lt;suggestions ???&gt;&quot;
+
+Cursor through these items and select them to change them.  Its a little
+overhead (script coding) to provide an interactive menu, but it keeps all the
+pwl stuff integrated in the pwlconfig script.  I think I'll keep these
+functions in a small script, like &quot;pwl_default&quot;, that gets called by pwlconfig
+or from the command line.
+
+I split out some of the utility functions to shorten the pwlconfig script and
+also to share these between the scripts.  Small sharp tools and all that...
+
+Also, I plan on updating the help button to work for each package and fix the
+bugs I've listed on sourceforge.  If you notice any &quot;unexpected features&quot; (ok,
+bugs :-) list them there and I'll take a look at them.
+
+After this release, I'll start on integrating the &quot;build package&quot;
+scripts...then what ?? The compressed file system should be good challenge
+too...almost forgot about that one...
+
+Probably need to start building a couple of default projects..once users
+download the binaries, they should be able to download &quot;router&quot;, &quot;thin client&quot;
+and so on - maybe 5-10K each - or the &quot;Project of the Month&quot;.  Since I haven't
+gotten anything to work yet, I can't help here :-(  
+
+Best thing to do is see if you can build one of your working projects just
+using pwlconfig...that should be a good test :-)
+
+Later,
+Ralph
+
+BTW, I tried your generate_list script (after I noticed that my &quot;include all&quot;
+wasn't working since there were no list files to include).  It kept killing my
+xterm window...so, I played with it...(hacker mentality - not my code, it must
+be tweaked!;-) and add a &quot;--remove&quot; function...and set it up to work from
+either directory (Embedded_Build or Embedded_Build/scripts). I'll post it
+
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000021.html">New ftp site at adis.on.ca
+</A></li>
+	<LI> Next message: <A HREF="000024.html">V0.19 and pwlconfig design notes...
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#22">[ date ]</a>
+              <a href="thread.html#22">[ thread ]</a>
+              <a href="subject.html#22">[ subject ]</a>
+              <a href="author.html#22">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

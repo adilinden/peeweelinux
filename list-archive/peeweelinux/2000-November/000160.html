@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> experiences with PWL0.53.10 (some problems?)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000159.html">
+   <LINK REL="Next"  HREF="000161.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>experiences with PWL0.53.10 (some problems?)
+   </H1>
+    <B>Dr Jaime V. Miro
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="experiences with PWL0.53.10 (some problems?)">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 10 Nov 2000 21:02:32 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000159.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+        <LI> Next message: <A HREF="000161.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#160">[ date ]</a>
+              <a href="thread.html#160">[ thread ]</a>
+              <a href="subject.html#160">[ subject ]</a>
+              <a href="author.html#160">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ali,
+
+Adi Linden wrote:
+&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> I have some answers...
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I am experiencing the following with PWL0.53.10:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; a) when I tried to extract a file system to a CompactFlash IDE target
+</I>&gt;<i> &gt; device (/dev/hdc) from pwlconfig, I always get the following:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &quot;testing that nothing is mounted on mount directory&quot; ...failed
+</I>&gt;<i> 
+</I>&gt;<i> Seeing that rd_dialog works, the actual script that loads the filesystem
+</I>&gt;<i> is alright. What do you see when you go to
+</I>&gt;<i> 
+</I>&gt;<i>     Configure Target Hardware --&gt;
+</I>&gt;<i> 
+</I>
+
+A page with the various targets, ramdisk, floppy, IDE and the corresponding config parameters.
+
+
+&gt;<i> Did pwlconfig ask you to create a new configuration file (it should have)
+</I>&gt;<i> when you tried to load your target? 
+</I>
+
+I can't quite remember that. Sorry. I can always install it all again and see what it says. I am still playing around with it, so no major projects on it yet.
+
+
+&gt;<i> All I can think of is that the path to
+</I>&gt;<i> the temporary mount directory is not correct. It should say something
+</I>&gt;<i> like:
+</I>&gt;<i> 
+</I>&gt;<i>     Device Mount Point: &quot;./mnt&quot;
+</I>&gt;<i>
+</I>
+it does. In fact, I keep comparing with PWL0.51 and all the relevant parameters seem the same. That's why I am puzzled. 
+ 
+&gt;<i> &gt; b) On another note, the minimal configuration example that comes with
+</I>&gt;<i> &gt; PWL0.53.10 tries to extract, as kernel,
+</I>&gt;<i> &gt; ./packages/Kernel/kernel-basic-2.2.17.list, which does not exist (at
+</I>&gt;<i> &gt; least not in the distro I have). Hence,, the system generated does not
+</I>&gt;<i> &gt; have a kernel. Furthermore, I have noticed that even If you select
+</I>&gt;<i> &gt; another kernel, project.conf always includes
+</I>&gt;<i> &gt; ./packages/Kernel/kernel-basic-2.2.17.list, hence the error is also
+</I>&gt;<i> &gt; generated, despite your selected kernel included okay (that happens
+</I>&gt;<i> &gt; whenever your project is based on &quot;minimal&quot;. If you start your new
+</I>&gt;<i> &gt; project from the scratch, it does not happen).
+</I>&gt;<i> 
+</I>&gt;<i> Did you upgrade to 0.53.10 by downloading the peeweelinux-*-cfg.tar.gz
+</I>&gt;<i> package or did you download the complete bin or src archive?
+</I>&gt;<i> 
+</I>
+
+I downloaded peeweelinux-0.53-bin.tar.gz from <A HREF="ftp://metalab.unc.edu/pub/linux/distributions/peewee/,">ftp://metalab.unc.edu/pub/linux/distributions/peewee/,</A> and then I applied the patch <A HREF="http://peeweelinux.org/pub/Projects/Embedded/peeweelinux-0.53.10-cfg.tar.gz.">http://peeweelinux.org/pub/Projects/Embedded/peeweelinux-0.53.10-cfg.tar.gz.</A>
+
+
+Thanks
+
+Jaime
+
+
+-- 
+Dr Jaime V. Miro
+Sw and control systems analyst
+H2eye Ltd
+24-28 Hatton Wall
+London EC1N 8JH
+
+Tel:020-7404 9600
+Fax:020-7404 9490
+<A HREF="mailto:j.v.miro@h2eye.com">j.v.miro@h2eye.com</A>
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000159.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+	<LI> Next message: <A HREF="000161.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#160">[ date ]</a>
+              <a href="thread.html#160">[ thread ]</a>
+              <a href="subject.html#160">[ subject ]</a>
+              <a href="author.html#160">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] project status
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000841.html">
+   <LINK REL="Next"  HREF="000843.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] project status
+   </H1>
+    <B>Ed Anuff
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] project status">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 26 Nov 2002 15:40:06 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000841.html">[Peeweelinux] project status
+</A></li>
+        <LI> Next message: <A HREF="000843.html">[Peeweelinux] Newbie question: vmlinux or zImage instead of bzImage?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#842">[ date ]</a>
+              <a href="thread.html#842">[ thread ]</a>
+              <a href="subject.html#842">[ subject ]</a>
+              <a href="author.html#842">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I don't know much about the sourceforge system that peeweelinux is hosted
+on, but might that be a way of getting some of these efforts coordinated?
+
+Ed
+
+----- Original Message -----
+From: &quot;Stefan Willmert&quot; &lt;<A HREF="mailto:stefanw@intellanet.com">stefanw@intellanet.com</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Sent: Tuesday, November 26, 2002 7:20 AM
+Subject: RE: [Peeweelinux] project status
+
+
+&gt;<i> Hello,
+</I>&gt;<i> I've used PWL to initially create our embedded system. Because it wasn't
+</I>&gt;<i> updated though, I made my own custom scripts with updated kernel,
+</I>libraries,
+&gt;<i> etc, and built an install for my purposes.
+</I>&gt;<i>
+</I>&gt;<i> I don't have much freetime either, but would be happy to contribute what i
+</I>&gt;<i> can to the advancement of PWL. If someone wants to take the lead, and
+</I>&gt;<i> organize the necessary changes, please let me know how i can help.
+</I>&gt;<i>
+</I>&gt;<i> -stefan willmert
+</I>&gt;<i>
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;<i> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Adi Linden
+</I>&gt;<i> Sent: Tuesday, November 26, 2002 9:12 AM
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: [Peeweelinux] project status
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> You're asking a difficult question. I have a list of things I'd like to do
+</I>&gt;<i> with PeeWeeLinux. Perhaps the most significant is to build a dedicated
+</I>&gt;<i> build environment that one chroots into for building PeeWeeLinux binaries.
+</I>&gt;<i> This would be part of the source distribution. The idea is to make
+</I>&gt;<i> PeeWeeLinux independent of the underlying Linux distribution and version.
+</I>&gt;<i> Now the binaries were linked against the existing system libraries, then
+</I>&gt;<i> the binaries will be linked against PeeWeeLinux libraries.
+</I>&gt;<i>
+</I>&gt;<i> Beyond that, I think 2.4.x kernal is need in addition to what's there and
+</I>&gt;<i> some of the binaries need to be updated. With the above environment and
+</I>&gt;<i> proper scripting it should be pretty easy to rebuild all of the
+</I>&gt;<i> PeeWeeLinux packages automatically. A big improvement when it comes to
+</I>&gt;<i> updating libraries. That might even allow for a PeeWeeLinuxLite version,
+</I>&gt;<i> linked against ulibc...
+</I>&gt;<i>
+</I>&gt;<i> Right now my problem is time. I mentioned the above before and hoped long
+</I>&gt;<i> time ago to have time to work on PeeWeeLinux again. My job has not brought
+</I>&gt;<i> any new embedded Linux projects as I hoped, instead im very busy building
+</I>&gt;<i> a satellite network. What little time I have left is mostly spend with
+</I>&gt;<i> family. What I need is a couple of weeks or so of uncommited evenings to
+</I>&gt;<i> get the basics of the ground. I am now hoping for that break to come
+</I>&gt;<i> shortly after Christmas, all the things that keep me busy now should be
+</I>&gt;<i> wrapped up then.
+</I>&gt;<i>
+</I>&gt;<i> I open to input, if anyone wants to contribute and make these things
+</I>&gt;<i> happen, I'd love to assist in any way I can to get things integrated
+</I>&gt;<i> smoothly and take PeeWeeLinux to the next level.
+</I>&gt;<i>
+</I>&gt;<i> Adi
+</I>&gt;<i>
+</I>&gt;<i> On Mon, 25 Nov 2002, Ricardo Trindade wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I've been using peewee for a while now, and I'm very happy with it. I
+</I>&gt;<i> &gt; tried several embedded linux distros, and I found peewee the best. So
+</I>&gt;<i> &gt; thanks Adi.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; However peewee hasn't been maintained for a while now, so I'm wondering
+</I>if
+&gt;<i> &gt; there is a project roadmap, what's the status, etc..
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Can you give some pointers Adi ?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; thanks
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000841.html">[Peeweelinux] project status
+</A></li>
+	<LI> Next message: <A HREF="000843.html">[Peeweelinux] Newbie question: vmlinux or zImage instead of bzImage?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#842">[ date ]</a>
+              <a href="thread.html#842">[ thread ]</a>
+              <a href="subject.html#842">[ subject ]</a>
+              <a href="author.html#842">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

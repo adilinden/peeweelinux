@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Almost working, newbie needs a couple of
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000779.html">
+   <LINK REL="Next"  HREF="000781.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Almost working, newbie needs a couple of
+   </H1>
+    <B>Leif Steinhour
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Almost working, newbie needs a couple of">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 10 Sep 2002 18:02:19 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000779.html">[Peeweelinux] Almost working, newbie needs a couple of
+</A></li>
+        <LI> Next message: <A HREF="000781.html">[Peeweelinux] Almost working, newbie needs a couple of
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#780">[ date ]</a>
+              <a href="thread.html#780">[ thread ]</a>
+              <a href="subject.html#780">[ subject ]</a>
+              <a href="author.html#780">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On 2002.09.10 16:54 Barry Gershenfeld wrote:
+&gt;<i> 
+</I>&gt;<i> &gt;My build environment is a Red Hat 7.2 / 2.4.17 setup with an
+</I>&gt;<i> &gt;ISA PCMCIA bridge.
+</I>&gt;<i> 
+</I>&gt;<i> Have I got this right?  Your host is RH 7.2  Your target is peewee
+</I>&gt;<i> with the 6.2 packages, but you have a custom kernel that's 2.4.17
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+Yep.
+
+
+&gt;<i> &gt;In my build script I've tried to include syslog and turn on as
+</I>&gt;<i> &gt;much logging as possible but may have screwed that up.
+</I>&gt;<i> 
+</I>&gt;<i> syslog is on my to-learn list.
+</I>&gt;<i> 
+</I>&gt;<i> &gt;loads the kernel
+</I>&gt;<i> &gt;and gets it to a screen with a bunch of startup and routing (which is
+</I>&gt;<i> &gt;strange because I've not installed any networking either in the kernel
+</I>&gt;<i> or
+</I>&gt;<i> &gt;the packages) information but it halts there with no login prompt. I'm
+</I>&gt;<i> &gt;guessing it's getting to a serial console?
+</I>&gt;<i> 
+</I>&gt;<i> I would think it would go to a serial console (1) if you told it to,
+</I>&gt;<i> or (2) if it couldn't find the native (?) console.  Since you see
+</I>&gt;<i> all those messages it must be that it knows how to talk to the
+</I>&gt;<i> native console (an LCD screen?)
+</I>&gt;<i> 
+</I>&gt;<i> &gt;if there is any trick to getting regular bootup information viewable
+</I>&gt;<i> &gt;after a boot I'd sure love to hear about it.
+</I>&gt;<i> 
+</I>&gt;<i> There is a line in the scripts that checks for the existence of a
+</I>&gt;<i> file /etc/boot.silent and it looks like it would send output to
+</I>&gt;<i> /var/log/boot, otherwise the screen...That silent file doesn't
+</I>&gt;<i> appear so it should go to the screen.   Of course that is
+</I>&gt;<i> for the init scripts that run after the kernel has come up.
+</I>&gt;<i> I did put an 'echo &quot;hi world&quot; ' in one of the init scripts and
+</I>&gt;<i> it does indeed show up on my screen.    Now that I've looked
+</I>&gt;<i> at what it actually does, maybe I should try creating the
+</I>&gt;<i> quiet file and see what I get...
+</I>&gt;<i> 
+</I>&gt;<i> Which part of the sequence is missing?
+</I>&gt;<i> 
+</I>
+
+The only thing that I have in the /var/log directory is the wtmp file, 
+which is empty. This is probably my main problem, without feedback I don't 
+really know where to look...
+
+
+&gt;<i> 
+</I>&gt;<i> &gt;2). (Intermediate) The 6100 has a dos 5.x ROM, so I think I have to use
+</I>&gt;<i> &gt;loadlin as my bootloader: when I try to use the FAT 16 / ramdisk setup,
+</I>&gt;<i> &gt;the unit won't seem to recognize the partition as bootable. Has anyone
+</I>&gt;<i> &gt;used loadlin with pee wee? I looked at the FAT 12 partition that the
+</I>&gt;<i> &gt;script is creating for the booting off of and it looks like something
+</I>&gt;<i> &gt;similar is going on, but I think the norand hardware needs an
+</I>&gt;<i> autoexec.bat
+</I>&gt;<i> &gt;file in order to get loadlin working.
+</I>&gt;<i> 
+</I>&gt;<i> In the beginning I was able to boot my system using loadlin.  What I
+</I>&gt;<i> was doing was making a &quot;floppy&quot; (actually writing the fat12 image
+</I>&gt;<i> to a hard drive partition).  The resulting syslinux.cfg file has
+</I>&gt;<i> all the parameter information you need to construct a loadlin command.
+</I>&gt;<i> You put the kernel image and the ramdisk image where you want to
+</I>&gt;<i> boot from and those filenames are the ones you use with loadlin.
+</I>&gt;<i> I haven't figured out what the other target image generating options
+</I>&gt;<i> in peewee do; unfortunately I don't know of any documentation about
+</I>&gt;<i> that.  All I can do is select one of the Target image choices, let
+</I>&gt;<i> it make it, and then inspect the results on a running system.
+</I>&gt;<i> 
+</I>&gt;<i> I don't usually offer such dubious help, but it's pretty quiet
+</I>&gt;<i> here otherwise.  Hope it helps.
+</I>
+Any little bit, this was much appreciated. I hadn't thought to fool around 
+with the syslinux.cfg file, I'll definitely try that out. And if I figure 
+out anything about the syslog files I'll definitely pass it on. Thanks 
+again,
+
+	-LS
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000779.html">[Peeweelinux] Almost working, newbie needs a couple of
+</A></li>
+	<LI> Next message: <A HREF="000781.html">[Peeweelinux] Almost working, newbie needs a couple of
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#780">[ date ]</a>
+              <a href="thread.html#780">[ thread ]</a>
+              <a href="subject.html#780">[ subject ]</a>
+              <a href="author.html#780">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

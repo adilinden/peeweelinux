@@ -1,0 +1,149 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Help - bash &amp; script errors
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000258.html">
+   <LINK REL="Next"  HREF="000260.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Help - bash &amp; script errors
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Help - bash &amp; script errors">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 19 Dec 2000 23:52:13 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000258.html">Error message during boot.
+</A></li>
+        <LI> Next message: <A HREF="000260.html">pwl_target_load: line 1656: syntax error: unexpected end of file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Robert,
+
+We're getting closer. If I run the pwl_target_load script through the
+stock bash (bash-1.14.7) on my RedHat system I get:
+
+    [<A HREF="mailto:root@big">root@big</A> scripts]# bash -x pwl_target_load 
+    + [ -f /etc/bashrc ]
+    + . /etc/bashrc
+    ++ [  ]
+
+Now the same using bash2 (bash2-2.03) I just installed:
+
+    [<A HREF="mailto:root@big">root@big</A> scripts]# bash2 -x pwl_target_load 
+    + '[' -f /etc/bashrc ']'
+    + . /etc/bashrc
+    ++ '[' '' ']'
+    pwl_target_load: line 1656: syntax error: unexpected end of file
+
+This meand the pwl_target_load and pwl_target_functions scripts do not
+work with bash-2.x versions.
+
+I will look fixing this shortly. Alternately you could try installing
+bash-1.14 for now.
+
+TTYL,
+Adi
+
+
+
+On Wed, 20 Dec 2000, Robert Heezeman wrote:
+
+&gt;<i> 
+</I>&gt;<i> My rpm -qa |grep bash reports
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> bash-2.03-16mdk
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> The errors reported Ralph have a strong degree of familiarity although
+</I>&gt;<i> playing with the scripts is beyond my current capability. Perhaps you can do
+</I>&gt;<i> me a new version ?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Robert in Australia
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> This communication is intended for use of the addressee(s) and may contain legally privileged and confidential information.
+</I>&gt;<i> Any views or opinions presented are solely those of the author and do not necessarily represent those of Thycon.
+</I>&gt;<i> If you are not the addressee you are notified that any transmission, distribution or replication of this message is strictly prohibited.
+</I>&gt;<i> The legal privilege and confidentiality attached to this email and its contents is not waived, lost or destroyed by reason of
+</I>&gt;<i> mistaken delivery to you. 
+</I>&gt;<i> If you have received this message in error, please notify Thycon immediately by E-mail to <A HREF="mailto:thycon@thycon.com.au">thycon@thycon.com.au</A> and
+</I>&gt;<i> permanently delete the email from your system.
+</I>&gt;<i> 
+</I>&gt;<i> Email transmission cannot be guaranteed to be secure or error-free as information could be intercepted, corrupted,
+</I>&gt;<i> lost, destroyed, arrive late or incomplete, or contain viruses. The sender therefore does not accept liability for any errors 
+</I>&gt;<i> or omissions in the contents of this message, which arise as a result of email transmission. If verification is required please
+</I>&gt;<i> request a hard-copy version.
+</I>&gt;<i> 
+</I>&gt;<i> Copyright 2000 Thycon. All rights reserved.
+</I>&gt;<i> 
+</I>&gt;<i> PHONE : 61 3 9319 9000
+</I>&gt;<i> FAX : 61 3 9319 9001
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000258.html">Error message during boot.
+</A></li>
+	<LI> Next message: <A HREF="000260.html">pwl_target_load: line 1656: syntax error: unexpected end of file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

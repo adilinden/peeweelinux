@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: Peewee on Rocky 328E
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000503.html">
+   <LINK REL="Next"  HREF="000506.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Peewee on Rocky 328E
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Peewee on Rocky 328E">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 7 Mar 2002 09:02:12 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000503.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+        <LI> Next message: <A HREF="000506.html">[Peeweelinux] Linking against older glibc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#505">[ date ]</a>
+              <a href="thread.html#505">[ thread ]</a>
+              <a href="subject.html#505">[ subject ]</a>
+              <a href="author.html#505">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Guillaume,
+
+When you configure your target as a compressed (or uncompressed) ramdisk, the entire root
+file system is copied to RAM after booting the kernel.  In other words, the target device
+(floppy, flash, etc) is used only for booting.  All the files on your system exist in RAM,
+so if you make changes to any of the files, they won't survive a power fail.
+
+Having the file system entirely in RAM is a good thing for embedded systems.  It the
+system loses power, file system corruption is not an issue because everything will be
+restored from the target device on the next boot.
+
+Your system should not run noticeably slower, but be aware that power failures could cause
+the file system on your hard drive to have errors.
+
+Depending on what exactly you are trying to do, it might be best to try to find some more
+RAM for the PC.
+
+Mark
+
+Guillaume PREVOST wrote:
+
+&gt;<i>Then I've successfully tried with &quot;Read-write root on a single partition&quot;.
+</I>&gt;<i>
+</I>&gt;<i>What is the consequence of this &quot;Read-write root on a single partition&quot; option ?
+</I>&gt;<i> My PC card will run slowly ?
+</I>
+
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000503.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+	<LI> Next message: <A HREF="000506.html">[Peeweelinux] Linking against older glibc
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#505">[ date ]</a>
+              <a href="thread.html#505">[ thread ]</a>
+              <a href="subject.html#505">[ subject ]</a>
+              <a href="author.html#505">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

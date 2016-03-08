@@ -1,0 +1,686 @@
+From PeeWeeLinux-devel@adis.on.ca  Thu Mar  2 04:25:17 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Wed, 1 Mar 2000 22:25:17 -0600 (CST)
+Subject: PeeWeeLinux v0.20
+Message-ID: <Pine.LNX.4.10.10003012221230.7156-100000@big.adis.on.ca>
+
+Hi,
+
+PeeWeeLinux v0.20 is now available. The biggest changes from 0.19 are the
+patch files to turn sources into PWL packages. As a result the source
+distribution is now less than half the size.
+
+Added thttpd a single threaded webserver with htaccess style
+authentication and cgi capabilities.
+
+Added dhcpcd a dhcp client dor situations where pump fails to work
+properly.
+
+TTYL,
+Adi
+ 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Sun Mar  5 18:27:29 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Sun, 5 Mar 2000 12:27:29 -0600 (CST)
+Subject: PeeWeeLinux Ideas
+Message-ID: <Pine.LNX.4.10.10003051201590.10927-100000@big.adis.on.ca>
+
+Hi Ralph,
+
+Just making notes of some random PeeWeeLinux ideas. Thought I'd email them
+to you to see what you think...
+
+I cc'd this to the PeeWeeLinux lists. Perhaps someone else using PWL has
+ideas or suggestions, too?
+
+Package Names
+-------------
+
+Currently packages are named like thttpd-1.2.3.tar indicating the name and
+version of the software. This naming applies to all packages build from
+original sources regardless of whether they came from the original author
+or were taken from a SRPM.
+
+Currently packages build from precompiled binaries (RedHat rpm or running
+system) are named thttpd-1.2.3-rh.tar to indicate the fact they were not
+compiled and taken from the system. Perhaps still stripped and dependency
+checked and associated scripts changed, but no other changes.
+
+Would it make sense to start adding a version numer similar to what RedHat
+does? Like creating thttpd-1.2.3-1.tar for the initial release. When a
+package is changed due to bugfixes, etc, the version number of the package
+could be incremented like thttpd-1.2.3-2.tar. Obviously this wouldn't
+happen with every PeeWeeLinux release but as bugs are reported and fixed
+or as other features are added.
+
+File List
+---------
+
+If you look at the Embedded_Build directory, there is a file called
+Filelist (I think) which contains the package names and files associated
+with it. Would it make sense to keep a file like it, indicating the
+included package name and the related files?
+
+As one of the todo tasks I want to eliminate duplicate files in packages.
+Since networking is an obvious feature of Linux I will change the
+arrangements of packages in a way that it assumed that networking is going
+to be installed. I want to remove all the configuration files from the
+base_filesystem and base_libs packages and create a base_script or
+base_configuration package that contains all those. Things to include
+there would be:
+
+/etc/services
+/etc/protocols
+/etc/nsswitch
+
+Subsequently I am removing those files from their duplicate places...
+
+Should the Filelist file include the descriptions entered in the
+package.README files? I tend to not to include them to not clutter up the
+filelist file.
+
+Maintaining the filelist file would make it easy to chack for duplicate
+files within the PWL distribution and to enable on to quickly find a
+particular binary, i.e. which package includes 'su'?
+
+Distributing PWL
+----------------
+
+I am thinking about creating a PWL packages directory on the server in
+which to keep all the packages for individual download. Perhaps gzip the
+packages, though. This would allow for individual packages to be
+downloaded rather than the complete archive if some packages are added.
+Also, it would allow for newly build packages to be made available
+immediately without having to wait for a new release.
+
+I am a bit torn between the idea of creating a new release too often or
+not often enough. Just adding a couple of packes doesn't necessarily
+justify creating a new release, especially if some known bugs haven't been
+addressed. On the other hand I don't want to not release new features and
+additions because I won't have time to address some issues immediately. I
+need some guidance here.
+
+Closing
+-------
+
+This all comes to mind because I will have a crude X package compiled from
+sources soon. This will add some 40MB to the source distribution. I think
+it's a bit of a waste to have to download a 50MB file for some minor
+changes... I guess there's always the binary distribution.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Wed Mar  8 20:06:24 2000
+From: PeeWeeLinux-devel@adis.on.ca (Dennis W. Tokarski)
+Date: Wed, 08 Mar 2000 15:06:24 -0500
+Subject: Greetings--may I be of service?
+Message-ID: <38C6B2C0.670D04DF@PolTec.COM>
+
+Hi Adi, Hi Ralph.
+
+My name is Dennis Tokarski. I run a little one-man consulting shop in
+Ann Arbor, Michigan, USA. Mostly my work is software development for
+real time and embedded systems, much of that driver writing, and almost
+all of it for QNX (at least for the past 6 years or so).
+
+However, I am finding Linux a compelling alternative for some
+applications. The learning curve has been a bit steep, and have found
+Beck & Co's book "Linux Kernel Internals" very helpful. I am now
+part way through Rubini's very excellent "Linux Device Drivers".
+
+Recently a client approached me about putting together a small footprint
+Linux package for use in their embedded product. The hardware isn't
+really constrained (Pentium/133 at least, 64MB RAM, all the usual PC
+desktop facilities like SVGA, etc), but they do have a peculiar
+requirement in they aren't allowed to use a hard drive, or any kind
+of alterable media for program storage.
+
+In a previous incarnation of this project, we've booted QNX4 from ROM,
+with all the ancillary applications loaded from a ROM disk. I'd like to
+work my way toward a similar capability using Linux.
+
+PeeWeeLinux seems to be the best starting point. I've spent a couple of
+days looking for small-footprint distributions. There are lots out
+there, but as Ralph noted in a January 26 post about YASL, some have
+just sort of faded away. I didn't find anyone else using the 2.2 kernel,
+it's all 2.0 as far as I could tell. Nor does anyone appear to have
+their project as cleanly organized as yours, or set up to use as current
+a development platform as current as RH 6.1, which is what I'm running
+in my office. By the way, while I've downloaded your latest (0.20) I've
+not taken it for a test drive. I expect to have that pleasure later
+today or tomorrow.
+
+The one common thread amongst all the small Linices seems to be that
+they boot from floppy, or more rarely as in your case, Disk On Chip.
+I've used the DOC parts before with QNX. They're OK, but in my current
+project the fact that they behave like writeable disks is a problem.
+
+Adi, I think you mentioned in a readme file somewhere something about
+writing an open source file system driver. Have you done anything with
+that idea yet?
+
+If not, perhaps this is where I can make a contribution in the near
+future. I was thinking of using the existing dos/fat file system as a
+starting point, then seeing what I could carve out and otherwise modify
+to suit my customer's requirements. The result would have to be
+suitable for use with a disk image on ROM (hopefully using compression
+to save space), and could probably be used with battery backed SRAM
+(which we also have on our hardware).
+
+The other thing I'm looking to do is solve the boot-from-ROM problem.
+Nobody has done this so far as I can tell. My current thought is to
+locate a modified version of lilo in one of our user bios ROMs. It would
+have hard-wired knowledge of a ROM address where it would find an
+essentially conventional Linux boot image which it would relocate to low
+RAM and start up. After that it would be business as usual. This is
+basically what we did with QNX, so the idea is at least workable.
+Ultimately what we'd like to achieve is an execute-from-ROM ability, but
+I'm most definitely not knowledgeable enough about Lines yet to tackle
+that one.
+
+So, do think these sorts of things would be useful additions to your
+project? Of course, any advice and moral support you can provide while I
+do the dog work will be greatly appreciated.
+
+You've put together a nice package. I look forward to using it and
+giving something back.
+
+   Regards,
+
+   Dennis Tokarski
+   PolTec Electronics
+   921 S. Seventh St.
+   Ann Arbor, MI  48103
+   (734) 994-0212
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Wed Mar  8 21:10:54 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Wed, 8 Mar 2000 13:10:54 -0800 (PST)
+Subject: Greetings--may I be of service?
+Message-ID: <20000308211054.10655.qmail@web1102.mail.yahoo.com>
+
+Hi Dennis,
+
+I hope we have something here you can use. Like you, I think both Adi
+and I want to build on the "latest" RH distribution, but finding nothing
+available we ended up doing it ourselves.
+
+We are currently trying to get the system up with X windows. Adi is
+doing all the library and binary compiling and configuring (all the
+in-depth technical stuff).  I am developing the pwlconfig program 
+as a means 1) to stop the never ending studying of How-Tos and
+2) because nobody else has done it.  I started reading all the 
+How-Tos and then would have to go back and re-read them...never 
+being good at following the instructions, I could never get anything
+to work twice in a row :-o
+
+I am configuring and booting from Disk-On-Chip (Msystems) Disk-On-Module
+(PQI) and Compact flash cards (IDE to CF adaptor from PC-Engines).
+This will also work from any partition on any mounted hard drive.
+We haven't done the Floppy or CD-ROM boot image yet.
+
+The next big ToDo is a read-only partition and/or ramdisk boot...
+
+Note: the freeBIOS group is currently working to install LILO in
+ROM and maybe even the kernel in rom.  I recommend checking with them
+to figure out where they are ...
+
+More...
+
+--- "Dennis W. Tokarski" <dwt@PolTec.COM> wrote:
+> Hi Adi, Hi Ralph.
+> 
+> My name is Dennis Tokarski. I run a little one-man consulting shop in
+> Ann Arbor, Michigan, USA. Mostly my work is software development for
+> real time and embedded systems, much of that driver writing, and almost
+> all of it for QNX (at least for the past 6 years or so).
+>
+
+As a little background: I spent a year or so working with QNX - it 
+seems a bit cleaner than the Linux stuff, probably because it all came 
+from the same shop, but the costs are way too high for the project I'm 
+working on now.  You can see our "thin client" at:
+http:/www.datalux.com/ipix
+
+ 
+> However, I am finding Linux a compelling alternative for some
+> applications. The learning curve has been a bit steep, and have found
+> Beck & Co's book "Linux Kernel Internals" very helpful. I am now
+> part way through Rubini's very excellent "Linux Device Drivers".
+> 
+> Recently a client approached me about putting together a small footprint
+> Linux package for use in their embedded product. The hardware isn't
+> really constrained (Pentium/133 at least, 64MB RAM, all the usual PC
+> desktop facilities like SVGA, etc), but they do have a peculiar
+> requirement in they aren't allowed to use a hard drive, or any kind
+> of alterable media for program storage.
+> 
+
+Is a write protected flash drive sufficient ? This would make development
+a lot easier.  Maybe start here, get it working then migrate to a ROM...
+Do you have the Source for your BIOS ? (BTW, General Software BIOS is 
+fairly cheap if you have any development budget...FreeBIOS isn't quite
+there yet)
+
+Several commerical "Thin Clients" are being sold with write protected
+M-Systems devices.  With the proper tools from the server, they can
+be in-field upgraded by application, services or kernel.  Maybe a
+CD-ROM boot would work if you have the hardware, but the upgrade
+is more on-site than most would like for large numbers of installed
+units.
+
+> In a previous incarnation of this project, we've booted QNX4 from ROM,
+> with all the ancillary applications loaded from a ROM disk. I'd like to
+> work my way toward a similar capability using Linux.
+> 
+> PeeWeeLinux seems to be the best starting point. I've spent a couple of
+> days looking for small-footprint distributions. There are lots out
+> there, but as Ralph noted in a January 26 post about YASL, some have
+> just sort of faded away. I didn't find anyone else using the 2.2 kernel,
+> it's all 2.0 as far as I could tell. Nor does anyone appear to have
+> their project as cleanly organized as yours, or set up to use as current
+> a development platform as current as RH 6.1, which is what I'm running
+> in my office. By the way, while I've downloaded your latest (0.20) I've
+> not taken it for a test drive. I expect to have that pleasure later
+> today or tomorrow.
+> 
+> The one common thread amongst all the small Linices seems to be that
+> they boot from floppy, or more rarely as in your case, Disk On Chip.
+> I've used the DOC parts before with QNX. They're OK, but in my current
+> project the fact that they behave like writeable disks is a problem.
+> 
+> Adi, I think you mentioned in a readme file somewhere something about
+> writing an open source file system driver. Have you done anything with
+> that idea yet?
+> 
+> If not, perhaps this is where I can make a contribution in the near
+> future. I was thinking of using the existing dos/fat file system as a
+> starting point, then seeing what I could carve out and otherwise modify
+> to suit my customer's requirements. The result would have to be
+> suitable for use with a disk image on ROM (hopefully using compression
+> to save space), and could probably be used with battery backed SRAM
+> (which we also have on our hardware).
+> 
+> The other thing I'm looking to do is solve the boot-from-ROM problem.
+> Nobody has done this so far as I can tell. My current thought is to
+> locate a modified version of lilo in one of our user bios ROMs. It would
+> have hard-wired knowledge of a ROM address where it would find an
+> essentially conventional Linux boot image which it would relocate to low
+> RAM and start up. After that it would be business as usual. This is
+> basically what we did with QNX, so the idea is at least workable.
+> Ultimately what we'd like to achieve is an execute-from-ROM ability, but
+> I'm most definitely not knowledgeable enough about Lines yet to tackle
+> that one.
+> 
+> So, do think these sorts of things would be useful additions to your
+> project? Of course, any advice and moral support you can provide while I
+> do the dog work will be greatly appreciated.
+> 
+I think PWL will be a nice starting point. Just using this in a different
+environment and testing the stuff that is currently installed will be a big
+help.  Our ultimate goal is to have available Pee Wee Linux projects" for a
+router, print server, thin client and whatever...you didn't mention the end
+product, but if they let you GPL everything, any projects you create would be a
+welcome addition (Note, a project is simply a list of tar files (packages) and
+lists of files within the tar files to include in the final file system - any
+custom code or drivers could easily be excluded)
+
+> You've put together a nice package. I look forward to using it and
+> giving something back.
+>
+
+Thanks, let us know of any problems you find.  The latest code for pwlconfig is
+not fully installed in the CVS tree, but the download has a reasonably updated
+version. I'll try to get another version posted as soon as I "just a few more
+features" working (actually Adi does the web page updating :-). 
+ 
+Good luck,
+Ralph
+ 
+>    Regards,
+> 
+>    Dennis Tokarski
+>    PolTec Electronics
+>    921 S. Seventh St.
+>    Ann Arbor, MI  48103
+>    (734) 994-0212
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Tue Mar 14 16:00:12 2000
+From: PeeWeeLinux-devel@adis.on.ca (Dennis W. Tokarski)
+Date: Tue, 14 Mar 2000 16:00:12 +0000
+Subject: Greetings--may I be of service?
+References: <20000308211054.10655.qmail@web1102.mail.yahoo.com>
+Message-ID: <38CE620C.E771D6A7@PolTec.COM>
+
+Ralph,
+
+Ralph Stickley wrote:
+> 
+> Hi Dennis,
+> 
+> I hope we have something here you can use. Like you, I think both Adi
+> and I want to build on the "latest" RH distribution, but finding nothing
+> available we ended up doing it ourselves.
+> 
+Somebody's gotta be the first ;)
+
+> We are currently trying to get the system up with X windows. Adi is
+> doing all the library and binary compiling and configuring (all the
+
+A subset of that work will be useful to us as well. I'm thinking we
+might
+use just the SVGA server, maybe even a stripped down version of it, to
+do mode switching and provide low level graphics primitives. We have an
+existing applications level graphics library that's compact and well
+suited
+to the application which we could layer on top of that.
+
+I just can't see trying to use all of X, it's whopping huge.
+
+> in-depth technical stuff).  I am developing the pwlconfig program
+> as a means 1) to stop the never ending studying of How-Tos and
+> 2) because nobody else has done it.  I started reading all the
+> How-Tos and then would have to go back and re-read them...never
+> being good at following the instructions, I could never get anything
+> to work twice in a row :-o
+> 
+
+That makes two of us. I'm wading through lots of docs right now to
+figure
+out the minimal set of components in your distro that will fit on a
+single
+floppy and still boot. 
+
+> I am configuring and booting from Disk-On-Chip (Msystems) Disk-On-Module
+> (PQI) and Compact flash cards (IDE to CF adaptor from PC-Engines).
+> This will also work from any partition on any mounted hard drive.
+> We haven't done the Floppy or CD-ROM boot image yet.
+> 
+> The next big ToDo is a read-only partition and/or ramdisk boot...
+> 
+Yeah, that's what I found to be missing right off.
+
+I'm running your pwlconfig 0.82. Looks like you've got some floppy
+support
+there, but so far you assume the target device is big enough to hold
+everything
+on an uncompressed file system. Support for a compressed ramdisk image
+might
+be useful.
+
+In a couple more days I should have a page or two of notes for you on my
+pwlconfig experience. I found one trivial bug so far, most of my items
+are
+just user interface issues.
+
+
+> As a little background: I spent a year or so working with QNX - it 
+> seems a bit cleaner than the Linux stuff, probably because it all came 
+> from the same shop, but the costs are way too high for the project I'm 
+            ^^^^^^
+Well, only partly. I've had a lot of discussions/arguments with a friend
+about this lately, and I am really convinced that architecture matters.
+There
+is just so much messy baggage and clunkiness that comes along with a
+monolithic
+architecture. I think micro kernels got a bad rap because Mach was so
+poorly
+done, and was hardly "micro". As QNX has forced me to realize, the data
+copying
+that goes with synchronous message passing is generally so little as to
+impose
+no meaningful performance penalty. And the notion that you can use a
+user-space
+debugger on a driver (except for the ISR), even to the point of doing
+post mortem
+dump analysis, is a wonderful thing.
+
+But you are right, QNX is expensive in an absolute sense, even if it's
+not when compared to some of its competitors.
+
+> Note: the freeBIOS group is currently working to install LILO in
+> ROM and maybe even the kernel in rom.  I recommend checking with them
+> to figure out where they are ...
+> 
+I'll check it out, thanks!
+
+> 
+> Is a write protected flash drive sufficient ? This would make development
+> a lot easier.  Maybe start here, get it working then migrate to a ROM...
+
+Oh sure, for development we can do anything we find convenient. Products
+which go into the field can not use run-time writeable program store,
+it's
+a regulatory requirement. There's even a question of whether it's
+permissible
+to load from ROM and execute from RAM. We *may* wind up having to have
+our
+code segments in ROM. I hope not though.
+
+> Do you have the Source for your BIOS ? (BTW, General Software BIOS is
+> fairly cheap if you have any development budget...FreeBIOS isn't quite
+> there yet)
+
+No source, but we don't need it. The CPU board is a Radisys thing, and
+Radisys will supply us with the BIOS as a binary image which we burn
+into
+the BIOS ROM along with our own user BIOS extension. The interface
+between
+the two is minimal and well defined.
+
+> CD-ROM boot would work if you have the hardware, but the upgrade
+> is more on-site than most would like for large numbers of installed
+> units.
+
+That would be a real no-no for us.
+
+That's it for now, time to hit the HOWTOs some more. I'll get you some
+substantive feedback presently.
+
+--Cheers!
+  Dennis
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Tue Mar 14 18:02:31 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Tue, 14 Mar 2000 10:02:31 -0800 (PST)
+Subject: Greetings--may I be of service?
+Message-ID: <20000314180231.16920.qmail@web1101.mail.yahoo.com>
+
+Hey,
+
+> I just can't see trying to use all of X, it's whopping huge.
+> 
+I think there are some smaller graphics libraries... X is not the place to
+start if your space constrained...the smallest SVGA server I've seen is about
+1MB...
+
+> 
+> That makes two of us. I'm wading through lots of docs right now to
+> figure
+> out the minimal set of components in your distro that will fit on a
+> single
+> floppy and still boot. 
+
+Check out RH /sbin/mkbootdisk for a minimal set of files...then optimize the
+kernel to shrink that too. Of couse, you probably want some applications -
+oops, now your floppy is full, fast.
+
+If 1 floppy is your goal, then you can count out X entirely...note that the
+older kernels 2.0.36 are supposed to be smaller also.
+
+> Support for a compressed ramdisk image might be useful.
+> 
+I hope that Adi gets the 0.90 released today...I now have the floppy thing
+going but still no Ramdisk.  Hmmm...somebody else was asking about the ramdisk
+thing :-)
+
+> In a couple more days I should have a page or two of notes for you on my
+> pwlconfig experience. I found one trivial bug so far, most of my items
+> are
+> just user interface issues.
+> 
+Great! I'm probably too close to the code to test it throughly or see what
+could be improved.  Check out the 0.90 changes for a few new features and bug
+fixes :-)
+
+
+> > 
+> > Is a write protected flash drive sufficient ? This would make development
+> > a lot easier.  Maybe start here, get it working then migrate to a ROM...
+> 
+> Oh sure, for development we can do anything we find convenient. Products
+> which go into the field can not use run-time writeable program store,
+> it's
+> a regulatory requirement. There's even a question of whether it's
+> permissible
+> to load from ROM and execute from RAM. We *may* wind up having to have
+> our
+> code segments in ROM. I hope not though.
+> 
+As if your program could run without RAM - either the RAM works or it doesn't.
+If it works, then execute from there, if it doesn't, shut the thing off.  If
+your program is going in the weeds and overwritting RAM, then nothing is
+guarenteed, wether its code or data space, it doesn't matter (try to trash 1
+bit on your stack space and see what happens)...
+
+I've seen some regulations that require "NO INTERRUPTS" because its impossible
+to test every possible path (since an interrupt path can be added at
+anytime)...you just have to wonder...where do these "regulation people:" come
+from ?
+
+Anyhow, you might do a search for Linux and XIP (eXecute In Place). 
+
+Later,
+Ralph
+
+
+> --Cheers!
+>   Dennis
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Mar 24 05:50:16 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Thu, 23 Mar 2000 23:50:16 -0600 (CST)
+Subject: embedded-0.32 is now available
+Message-ID: <Pine.LNX.4.10.10003232343120.15264-100000@big.adis.on.ca>
+
+Hi,
+
+The latest stable PeeWeeLinux release is now available. Downloading from
+the adis.on.ca server is difficult these days. So I waited with this
+announcement until all the files are available on sourceforge.
+
+The sources:
+    http://download.sourceforge.net/embedded/embedded-0.32-src.tar.gz
+
+The binaries:
+    http://download.sourceforge.net/embedded/embedded-0.32-bin.tar.gz
+    http://download.sourceforge.net/embedded/embedded-0.32-bin.supp.tar.gz
+
+The uncompressed source tree of the latest PeeWeeLinux release is from now
+on available on the adis.on.ca server:
+
+    http://adis.on.ca/pub/Projects/Embedded/Embedded_Build/
+
+A list of the latest changes:
+
+    v0.32 -- March 19, 2000
+    -----------------------
+     o Added netscape navigator 4.72
+     o Added /usr/X11R6/lib/X11/locale to XFree86
+     o Added additional accelerated Xservers
+     o Added fonts needed by citrix and netscape
+     o Properly generate fonts.dir in the font directories now 
+
+    v0.31 -- March 18, 2000
+    -----------------------
+     o Added libc5 libraries under packages/libc5/libs
+     o Added netscape 3.04 under packages/libc5/network
+     o Added citrix client under packages/libc5/network
+     o Added a commented entry for xdm to inittab
+
+    v0.30 -- March 17, 2000
+    -----------------------
+     o Added a standard lilo package.
+     o Netscape 3.04 requires libc5 libs. What to do???
+     o Thought of netscape 4.72. The patchfile is still here.
+       Netscape package comes in at 21,580k plus dependend libs.
+     o New kernel, again, now with M-SYS DOC and PS/2 mouse and
+       without M-SYS DOC but with PS/2 mouse.
+     o Added tinylogin
+     o Added vim editor in a featured and minimal configuration
+       Renamed vim binary to vi
+     o Added ee editor
+     o Replaced bash 1.4 with bash 2.03
+     o Added lildl.so.2 to the base_libs package, removed duplicates
+       from other packages
+     o Removed resolv.conf from base_configuration
+     o Removed uptime from sh-utils 
+     o Fixed the thttpd package and added uucp to system files
+     o Changed the basefilesystem to include the X directories and
+       changed /usr and /local symlinks to a real directory
+     o Added base_filesystem-minimal-1.tar for memory constrained systems
+     o Added the syslinux-1.48.zip containing syslinux for DOS
+     o Revised several packages to support the XFree86 packages
+     o Continued work on eliminating duplicate files across packages
+     o Adding revision numbers to packages, i.e. thttp-1.2.3-1.tar
+                This is the first revision of the package ---^
+     o Renamed packages/base/<packages>
+     o Removed configuration from base_filesystem and created
+       base_configuration
+     o Compiled and added XFree86 packages
+
+Enjoy!
+
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+

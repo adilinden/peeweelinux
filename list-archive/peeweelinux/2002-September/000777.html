@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] possible (tiny) problem with peewee script ?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000776.html">
+   <LINK REL="Next"  HREF="000778.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] possible (tiny) problem with peewee script ?
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] possible (tiny) problem with peewee script ?">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 10 Sep 2002 13:35:04 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000776.html">[Peeweelinux] rc.pcmcia fails
+</A></li>
+        <LI> Next message: <A HREF="000778.html">[Peeweelinux] Almost working, newbie needs a couple of
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#777">[ date ]</a>
+              <a href="thread.html#777">[ thread ]</a>
+              <a href="subject.html#777">[ subject ]</a>
+              <a href="author.html#777">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+just wondering if someone could confirm something for me.
+
+I have modified (butchered is probably the correct term) some of Adis'
+peewee scripts to create some extra load options so that peewee
+creates/populates some partitions etc. that are specific to a project I am
+working on.
+
+in the &lt;peewee_path&gt;/Embedded_Build/scripts directory there is a
+pwl_target_functions script that contains a function called
+func_rd_fstab_ro_root_rd
+which creates the /etc/fstab entry for the project option that allows you
+to create a ro root partition with multiple ramdisks.
+
+now in the original pwl_target_functions that ships with peewee, the line
+marked with a &lt;&lt;------- below reads:
+${rd_boot}2       /            ext2    defaults,ro
+
+I think it should read as below. The root partition is definitely the first
+partition. Anyone else come across this ?
+
+######################################################################
+#
+# func_rd_fstab_ro_root_rd
+#
+# This function creates the fstab file for the read-only root target
+# layout. It contains multiple partitions.
+#
+
+func_rd_fstab_ro_root_rd () {
+    cat &lt;&lt;-EOF
+        ${rd_boot}1       /            ext2    defaults,ro        &lt;&lt;-------
+        /dev/ram2       /dev         ext2    defaults
+        /dev/ram3       /etc         ext2    defaults
+        /dev/ram4       /home        ext2    defaults
+        none            /proc        proc    defaults
+EOF
+}
+
+It's no big deal, just took me 1/2 hour to work out what was going on when
+mount reported / being mounted on /dev/hdc2 and /dev/hdc2/ only having
+a/home filesystem :)
+
+anyway, hope this stops someone else from doubting their sanity :)
+Happy PeeWeeing.
+
+
+Delaney.
+
+
+
+**********************************************************************
+This email and any files transmitted with it are confidential and
+intended solely for the use of the individual or entity to whom they
+are addressed. If you have received this email in error please notify
+<A HREF="mailto:mail.administrator@jupiters.com.au">mail.administrator@jupiters.com.au</A>
+
+**********************************************************************
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000776.html">[Peeweelinux] rc.pcmcia fails
+</A></li>
+	<LI> Next message: <A HREF="000778.html">[Peeweelinux] Almost working, newbie needs a couple of
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#777">[ date ]</a>
+              <a href="thread.html#777">[ thread ]</a>
+              <a href="subject.html#777">[ subject ]</a>
+              <a href="author.html#777">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

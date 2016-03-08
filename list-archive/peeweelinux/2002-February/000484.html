@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Configuring the Ethernet port
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000482.html">
+   <LINK REL="Next"  HREF="000485.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Configuring the Ethernet port
+   </H1>
+    <B>Shawn Perkins
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Configuring the Ethernet port">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 22 Feb 2002 13:34:47 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000482.html">[Peeweelinux] Configuring the Ethernet port
+</A></li>
+        <LI> Next message: <A HREF="000485.html">[Peeweelinux] HELP
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#484">[ date ]</a>
+              <a href="thread.html#484">[ thread ]</a>
+              <a href="subject.html#484">[ subject ]</a>
+              <a href="author.html#484">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adi,
+Thanks for your help, I'll give it a try.
+-Shawn
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]
+On Behalf Of Adi Linden
+Sent: Friday, February 22, 2002 11:53 AM
+To: Shawn Perkins
+Cc: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: RE: [Peeweelinux] Configuring the Ethernet port
+
+Hi,
+
+Is the network card you're trying to get to work ISA or PCI? If it is
+ISA 
+or if the drivers requires parameters, they will have to be passed to
+the 
+kernel at boot. If it's a loadable mdule the paramters are passed to the
+
+driver when the module is loaded.
+
+If you're building modules, you have to load the module using modprobe
+or 
+insmod. I believe the initscrips include support for /etc/rc.module
+which 
+would be the place for all your insmod statement if you're using kernel 
+modules.
+
+Adi
+
+On Fri, 22 Feb 2002, Shawn Perkins wrote:
+
+&gt;<i> Adi,
+</I>&gt;<i> I selected the driver when I built the kernel. It was selected as an
+</I>&gt;<i> asterisk and not an M. I don't know a lot about the loadable modules,
+</I>is
+&gt;<i> there an additional step I would need to take?
+</I>&gt;<i> -Shawn
+</I>&gt;<i> 
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]
+&gt;<i> On Behalf Of Adi Linden
+</I>&gt;<i> Sent: Friday, February 22, 2002 10:05 AM
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: [Peeweelinux] Configuring the Ethernet port
+</I>&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Did you include the network driver as module? If so, are you loading
+</I>the
+&gt;<i> 
+</I>&gt;<i> module before configuring IP?
+</I>&gt;<i> 
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> On Fri, 22 Feb 2002, Shawn Perkins wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt; My name is Shawn Perkins and I seem to be having problems with my
+</I>&gt;<i> &gt; Ethernet port on my advantech single board computer. Using
+</I>pwlconfig,
+&gt;<i> I
+</I>&gt;<i> &gt; rebuilt the kernel with the appropriate Ethernet driver, configured
+</I>&gt;<i> the
+</I>&gt;<i> &gt; system, and downloaded the whole ball of wax to my flash card. The
+</I>&gt;<i> &gt; system boots up and when I try to configure eth0 (ifconfig eth0
+</I>&gt;<i> &gt; 192.168.1.1) I get a message saying no such device. I do notice when
+</I>&gt;<i> the
+</I>&gt;<i> &gt; kernel is booting it configures a device called 'brg0' this can be
+</I>&gt;<i> &gt; configured with an IP, but does not seem to work for passing
+</I>traffic.
+&gt;<i> &gt; Does anyone have some ideas, it's probably something very simple I'm
+</I>&gt;<i> &gt; overlooking. I believe the onboard Ethernet chip is made by Realtek.
+</I>&gt;<i> &gt;  
+</I>&gt;<i> &gt; Also, on to a different topic, has anyone been able to get the
+</I>Linksys
+&gt;<i> &gt; USB 100M to work with PeeWee? It's a USB Ethernet adapter, and I
+</I>&gt;<i> believe
+</I>&gt;<i> &gt; it's using the Pegasus chipset. Once I get the onboard Ethernet to
+</I>&gt;<i> work,
+</I>&gt;<i> &gt; I'm going to attempt to get this guy up and running. Wish me luck
+</I>:<i>-)
+</I>&gt;<i> &gt;  
+</I>&gt;<i> &gt; Thanks for your help,
+</I>&gt;<i> &gt; Shawn
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000482.html">[Peeweelinux] Configuring the Ethernet port
+</A></li>
+	<LI> Next message: <A HREF="000485.html">[Peeweelinux] HELP
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#484">[ date ]</a>
+              <a href="thread.html#484">[ thread ]</a>
+              <a href="subject.html#484">[ subject ]</a>
+              <a href="author.html#484">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

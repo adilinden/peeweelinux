@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] FTP server &amp; Web Server
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001127.html">
+   <LINK REL="Next"  HREF="001129.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] FTP server &amp; Web Server
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] FTP server &amp; Web Server">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 7 Jul 2003 16:39:30 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001127.html">[Peeweelinux] (no subject)
+</A></li>
+        <LI> Next message: <A HREF="001129.html">[Peeweelinux] FTP server &amp; Web Server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1128">[ date ]</a>
+              <a href="thread.html#1128">[ thread ]</a>
+              <a href="subject.html#1128">[ subject ]</a>
+              <a href="author.html#1128">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Daniel,
+
+That was some pretty useful information in your recent post about
+creating packages.  Due to sparse documentation--and lack of
+equivalent experience--I am trying to work out how the packages
+are built (and creative uses for rpm &amp; tar).
+
+I am trying to follow your suggestions with rpm and I ran into 
+some difficulty.
+
+I downloaded a small package at random to try this with.
+I made a few tweaks to your sample command line:
+
+&gt;<i>shell $ rpm -i --root /temporary/directory/to/install --nodeps 
+</I>&gt;<i>--noscripts --force --nodeps --notriggers --dbpath= ./rpm.db 
+</I>&gt;<i>--ignorearch --ignoreos myftppackage-i386.rpm
+</I>
+1. --nodeps is mentioned twice.
+2. dbpath shouldn't have an = sign after it.
+3. dbpath is a directory, not a file.
+4. from what I can tell, --dbpath is relative to --root.  In
+   fact, rpm version 3 demands both paths start with /
+
+I created a directory in my home directory called tarpit.
+I created a directory in that directory called rdata.
+I issued this command:
+
+$  rpm -i --root /home/phpmaker/tarpit/ --nodeps --noscripts --notriggers
+--force --dbpath /rdata --ignorearch --ignoreos gtactoe-0.2.1-1.i386.rpm
+
+  error: cannot open Basenames index using db3 - No such file or directory (2)
+
+I tried an init db (an effort left over from earlier difficulties)
+$ rpm -initdb --root /home/phpmaker/tarpit/ --dbpath /rdata
+
+It doesn't help.
+
+The rpm -i did create two files (Name and Packages) in the rdata
+directory so I think it is interpreting the command as I intend.
+
+I have done all my peewee work on a RH7.3 system (never had trouble
+except I had to discover kgcc when building a kernel), but
+given Scott McKay's recent problems with rpm, I booted up
+6.2 and tried this there.  (7.3 uses rpm 4; 6.2 has rpm 3.)
+On 6.2 I get similar results, but for the install I actually 
+get no error messages.  But I don't get any files extracted, either!
+
+I wonder if you could actually try the command and see what happens.
+
+At least the tar command in the second step doesn't look exotic.  And I
+may have to build the file trees by hand if I can't get this rpm
+trick to work.
+
+Barry
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001127.html">[Peeweelinux] (no subject)
+</A></li>
+	<LI> Next message: <A HREF="001129.html">[Peeweelinux] FTP server &amp; Web Server
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1128">[ date ]</a>
+              <a href="thread.html#1128">[ thread ]</a>
+              <a href="subject.html#1128">[ subject ]</a>
+              <a href="author.html#1128">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

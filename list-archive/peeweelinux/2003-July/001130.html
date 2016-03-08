@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] FTP server &amp; Web Server
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001129.html">
+   <LINK REL="Next"  HREF="001131.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] FTP server &amp; Web Server
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] FTP server &amp; Web Server">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 08 Jul 2003 12:46:44 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001129.html">[Peeweelinux] FTP server &amp; Web Server
+</A></li>
+        <LI> Next message: <A HREF="001131.html">[Peeweelinux] QVWM?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1130">[ date ]</a>
+              <a href="thread.html#1130">[ thread ]</a>
+              <a href="subject.html#1130">[ subject ]</a>
+              <a href="author.html#1130">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>A HOWTO posted on the list would be rockin, you know.... :)
+
+nudge nudge,
+-te
+
+Daniel Purcell wrote:
+&gt;<i> Barry,
+</I>&gt;<i> 
+</I>&gt;<i> Thank you for the e-mail.  I'll e-mail you later this day with the information 
+</I>&gt;<i> you requested.  The previous post with those commands were (unfortunately) 
+</I>&gt;<i> off the top of my head; I'll e-mail you the correct commands.  I did it all 
+</I>&gt;<i> on my RedHat 8.0 machine.  Redhat 8.0 uses RPM version 4.1.
+</I>&gt;<i> 
+</I>&gt;<i> -Daniel
+</I>&gt;<i> 
+</I>&gt;<i> On Monday 07 July 2003 5:39 pm, Barry Gershenfeld wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Daniel,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>That was some pretty useful information in your recent post about
+</I>&gt;&gt;<i>creating packages.  Due to sparse documentation--and lack of
+</I>&gt;&gt;<i>equivalent experience--I am trying to work out how the packages
+</I>&gt;&gt;<i>are built (and creative uses for rpm &amp; tar).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I am trying to follow your suggestions with rpm and I ran into
+</I>&gt;&gt;<i>some difficulty.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I downloaded a small package at random to try this with.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I made a few tweaks to your sample command line:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>shell $ rpm -i --root /temporary/directory/to/install --nodeps
+</I>&gt;&gt;&gt;<i>--noscripts --force --nodeps --notriggers --dbpath= ./rpm.db
+</I>&gt;&gt;&gt;<i>--ignorearch --ignoreos myftppackage-i386.rpm
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>1. --nodeps is mentioned twice.
+</I>&gt;&gt;<i>2. dbpath shouldn't have an = sign after it.
+</I>&gt;&gt;<i>3. dbpath is a directory, not a file.
+</I>&gt;&gt;<i>4. from what I can tell, --dbpath is relative to --root.  In
+</I>&gt;&gt;<i>   fact, rpm version 3 demands both paths start with /
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I created a directory in my home directory called tarpit.
+</I>&gt;&gt;<i>I created a directory in that directory called rdata.
+</I>&gt;&gt;<i>I issued this command:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>$  rpm -i --root /home/phpmaker/tarpit/ --nodeps --noscripts --notriggers
+</I>&gt;&gt;<i>--force --dbpath /rdata --ignorearch --ignoreos gtactoe-0.2.1-1.i386.rpm
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  error: cannot open Basenames index using db3 - No such file or directory
+</I>&gt;&gt;<i>(2)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I tried an init db (an effort left over from earlier difficulties)
+</I>&gt;&gt;<i>$ rpm -initdb --root /home/phpmaker/tarpit/ --dbpath /rdata
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>It doesn't help.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>The rpm -i did create two files (Name and Packages) in the rdata
+</I>&gt;&gt;<i>directory so I think it is interpreting the command as I intend.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I have done all my peewee work on a RH7.3 system (never had trouble
+</I>&gt;&gt;<i>except I had to discover kgcc when building a kernel), but
+</I>&gt;&gt;<i>given Scott McKay's recent problems with rpm, I booted up
+</I>&gt;&gt;<i>6.2 and tried this there.  (7.3 uses rpm 4; 6.2 has rpm 3.)
+</I>&gt;&gt;<i>On 6.2 I get similar results, but for the install I actually
+</I>&gt;&gt;<i>get no error messages.  But I don't get any files extracted, either!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I wonder if you could actually try the command and see what happens.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>At least the tar command in the second step doesn't look exotic.  And I
+</I>&gt;&gt;<i>may have to build the file trees by hand if I can't get this rpm
+</I>&gt;&gt;<i>trick to work.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Barry
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+-- 
+Troy Engel, Systems Engineer
+...his bash-fu is great.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001129.html">[Peeweelinux] FTP server &amp; Web Server
+</A></li>
+	<LI> Next message: <A HREF="001131.html">[Peeweelinux] QVWM?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1130">[ date ]</a>
+              <a href="thread.html#1130">[ thread ]</a>
+              <a href="subject.html#1130">[ subject ]</a>
+              <a href="author.html#1130">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

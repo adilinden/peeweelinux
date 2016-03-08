@@ -1,0 +1,2597 @@
+From PeeWeeLinux@adis.on.ca  Fri Sep  1 15:23:28 2000
+From: PeeWeeLinux@adis.on.ca (Michael George)
+Date: Fri, 1 Sep 2000 10:23:28 -0400
+Subject: Neophyte question
+Message-ID: <20000901102327.A15779@tutus.mintcity.com>
+
+I am interested in trying out the PeeWeeLinux project.  I got the binary
+distribution (0.50), I've read the document (labeled 0.19) which comes with it
+and also the BootDisk HOWTO.
+
+I unpacked the archive and I've run (as root) pwlconfig, and it seems to run.
+But there's a message printed to stdout or stderr which says:
+	....Packages not found
+
+And as I try to follow the quick reference, I can select "Configure Project
+File System", but the menu doesn't display any files within the package.  I'm
+stopped there.
+
+I tried to poke around the menus a bit, but I got repeated errors on stderr
+which said:
+	find: ./packages: No such file or directory
+
+Is there something out of sync here?  It looks in the pwlconfig script that it
+expects a directory Packages which contains tarballs.  But this package has
+all RPM files, and there's no references to RPM files in the pwlconfig script.
+
+Any hints?
+
+-Michael
+
+-- 
+No, my friend, the way to have good and safe government, is not to trust it
+all to one, but to divide it among the many, distributing to every one exactly
+the functions he is competent to.  It is by dividing and subdividing these
+republics from the national one down through all its subordinations, until it
+ends in the administration of every man's farm by himself; by placing under
+every one what his own eye may superintend, that all will be done for the
+best.
+                -- Thomas Jefferson, to Joseph Cabell, 1816
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  1 15:41:58 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 1 Sep 2000 07:41:58 -0700 (PDT)
+Subject: Neophyte question
+Message-ID: <20000901144158.78919.qmail@web9102.mail.yahoo.com>
+
+Hello,
+Sorry, so far the most out of sync part is the docs :-O
+
+You first have to convert the RPM files to the tar file packages.
+Use the Menu options:
+Manage Package Files
+Extract All Binary RPM files.
+
+If you download the Source distribution, then you have an extra step:
+
+Manage Package Files
+Compile All sources to Binary RPM
+Extract All Binary RPM files
+
+(Of course, the program should prompt you for this automagically AND the
+docs should describe this too...)
+
+This copies all the RPM files into the packages directory in tar file format.
+We use the tar file to allow our scripts to extract individual files.
+
+Hope this helps. Let me know if anything else seems broken.
+
+Later,
+Ralph Stickley
+
+--- Michael George <george@mintcity.com> wrote:
+> I am interested in trying out the PeeWeeLinux project.  I got the binary
+> distribution (0.50), I've read the document (labeled 0.19) which comes with
+> it
+> and also the BootDisk HOWTO.
+> 
+> I unpacked the archive and I've run (as root) pwlconfig, and it seems to run.
+> But there's a message printed to stdout or stderr which says:
+> 	....Packages not found
+> 
+> And as I try to follow the quick reference, I can select "Configure Project
+> File System", but the menu doesn't display any files within the package.  I'm
+> stopped there.
+> 
+> I tried to poke around the menus a bit, but I got repeated errors on stderr
+> which said:
+> 	find: ./packages: No such file or directory
+> 
+> Is there something out of sync here?  It looks in the pwlconfig script that
+> it
+> expects a directory Packages which contains tarballs.  But this package has
+> all RPM files, and there's no references to RPM files in the pwlconfig
+> script.
+> 
+> Any hints?
+> 
+> -Michael
+> 
+> -- 
+> No, my friend, the way to have good and safe government, is not to trust it
+> all to one, but to divide it among the many, distributing to every one
+> exactly
+> the functions he is competent to.  It is by dividing and subdividing these
+> republics from the national one down through all its subordinations, until it
+> ends in the administration of every man's farm by himself; by placing under
+> every one what his own eye may superintend, that all will be done for the
+> best.
+>                 -- Thomas Jefferson, to Joseph Cabell, 1816
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  1 17:08:19 2000
+From: PeeWeeLinux@adis.on.ca (Michael George)
+Date: Fri, 1 Sep 2000 12:08:19 -0400
+Subject: Neophyte question
+In-Reply-To: From Ralph Stickley on Sep 01
+References: <20000901144158.78919.qmail@web9102.mail.yahoo.com>
+Message-ID: <20000901120819.A21929@tutus.mintcity.com>
+
+On Sep 01, Ralph Stickley wrote:
+>
+> Sorry, so far the most out of sync part is the docs :-O
+> 
+> You first have to convert the RPM files to the tar file packages.
+> Use the Menu options:
+> Manage Package Files
+> Extract All Binary RPM files.
+
+Okay, great!  This helped immensely.  I got to where I have a small sample
+system in my projects directory.  Since there is still no menu choice for
+making a boot floppy, I presume this is left "as an exercise for the reader"?
+That would explain recommending that the users read the Bootdisk HOWTO...
+
+Eventually I will be putting a system onto a flash disk, but I'd like to test
+the system and make sure I know what I'm doing with just a boot floppy for a
+desktop system...
+
+Thanks for the help!
+
+-Michael
+
+-- 
+No, my friend, the way to have good and safe government, is not to trust it
+all to one, but to divide it among the many, distributing to every one exactly
+the functions he is competent to.  It is by dividing and subdividing these
+republics from the national one down through all its subordinations, until it
+ends in the administration of every man's farm by himself; by placing under
+every one what his own eye may superintend, that all will be done for the
+best.
+                -- Thomas Jefferson, to Joseph Cabell, 1816
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  1 18:26:39 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 1 Sep 2000 10:26:39 -0700 (PDT)
+Subject: Neophyte question
+Message-ID: <20000901172639.4285.qmail@web9102.mail.yahoo.com>
+
+Yep...the floppy stuff in "in-the-works" :)
+
+Best for testing is to use a 32MB (or 2MB or whatever size your target is)
+hard disk partition.  Then you can extract your files, load them and
+then LILO your main drive to boot from that partition - Granted, the
+floppy or CF target keeps you from rebooting your development station
+all day...
+
+Let me know if you find an glitches in the scripts (or just send a patch:)
+
+Good luck!
+Later,
+Ralph
+
+--- Michael George <george@mintcity.com> wrote:
+> On Sep 01, Ralph Stickley wrote:
+> >
+> > Sorry, so far the most out of sync part is the docs :-O
+> > 
+> > You first have to convert the RPM files to the tar file packages.
+> > Use the Menu options:
+> > Manage Package Files
+> > Extract All Binary RPM files.
+> 
+> Okay, great!  This helped immensely.  I got to where I have a small sample
+> system in my projects directory.  Since there is still no menu choice for
+> making a boot floppy, I presume this is left "as an exercise for the reader"?
+> That would explain recommending that the users read the Bootdisk HOWTO...
+> 
+> Eventually I will be putting a system onto a flash disk, but I'd like to test
+> the system and make sure I know what I'm doing with just a boot floppy for a
+> desktop system...
+> 
+> Thanks for the help!
+> 
+> -Michael
+> 
+> -- 
+> No, my friend, the way to have good and safe government, is not to trust it
+> all to one, but to divide it among the many, distributing to every one
+> exactly
+> the functions he is competent to.  It is by dividing and subdividing these
+> republics from the national one down through all its subordinations, until it
+> ends in the administration of every man's farm by himself; by placing under
+> every one what his own eye may superintend, that all will be done for the
+> best.
+>                 -- Thomas Jefferson, to Joseph Cabell, 1816
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  1 19:33:35 2000
+From: PeeWeeLinux@adis.on.ca (fred anger)
+Date: Fri, 1 Sep 2000 11:33:35 -0700 (MST)
+Subject: making floppy systems
+Message-ID: <Pine.BSO.4.21.0009011123430.32058-100000@tattooed.rightarm.org>
+
+Hello all.  I'm new to PWL, and haven't seen any specific docs on creating
+bootable floppy systems.  Please point me to docs if there are any.  
+pwlconfig seems to want to flash to /dev/hda1, and unlike some docs I've
+read, I'm not given the opportunity to specify that I want a floppy
+system.  Perhaps it's buried in the menus?
+ 
+I have a need to build a mini-system that'll fit on a floppy, which can be
+inserted, booted, then flashed onto the hard drive of an "embedded"
+system, which will then be a standalone Linux machine (i.e. boots from
+it's own hard drive from then on).  This sorta seems to be what PWL was
+going for, only it seems that you actually need to have the hard drive
+plugged into the development box to do this.  Is this true?  Or is there a
+way around this?
+
+-fa
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  1 20:39:34 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 1 Sep 2000 12:39:34 -0700 (PDT)
+Subject: making floppy systems
+Message-ID: <20000901193934.48529.qmail@web9104.mail.yahoo.com>
+
+
+--- fred anger <anger@rightarm.org> wrote:
+> Hello all.  I'm new to PWL, and haven't seen any specific docs on creating
+> bootable floppy systems.  Please point me to docs if there are any.  
+> pwlconfig seems to want to flash to /dev/hda1, and unlike some docs I've
+> read, I'm not given the opportunity to specify that I want a floppy
+> system.  Perhaps it's buried in the menus?
+>  
+The floppy support is not provided as originally envisioned (and documented).
+
+To access floppies, use the 
+Manage Projects / Project Defaults for "my project"
+
+Device boot location  /dev/fd
+Device Partition: 0
+Device Type: FLOPPY
+Device Type Node: /dev/fd
+
+This will allow the Erase and Load operations to work. Check the mkBootDisk
+script to see what else has to be done to boot a floppy (I haven't tried to
+make a boot flooppy yet so the Lilo thing may not be the best way to go).
+
+> I have a need to build a mini-system that'll fit on a floppy, which can be
+> inserted, booted, then flashed onto the hard drive of an "embedded"
+> system, which will then be a standalone Linux machine (i.e. boots from
+> it's own hard drive from then on).  This sorta seems to be what PWL was
+> going for, only it seems that you actually need to have the hard drive
+> plugged into the development box to do this.  Is this true?  Or is there a
+> way around this?
+> 
+Yes...So far, all my development has been on DOC flash (M-Systems Disk-On-Chip
+which was quickly abanonded for cost reasons) and Compact Flash (PCMCIA Adaptor
+and USB/CF adaptor).  These are all "integrated" hard drives available directly
+to pwlconfig.  
+
+Hope this help. Also, Adi is approaching the boot/ramdisk file system support.
+
+Thanks,
+Ralph
+
+> -fa
+> 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  1 21:15:34 2000
+From: PeeWeeLinux@adis.on.ca (fred anger)
+Date: Fri, 1 Sep 2000 13:15:34 -0700 (MST)
+Subject: making floppy systems
+In-Reply-To: <20000901193934.48529.qmail@web9104.mail.yahoo.com>
+Message-ID: <Pine.BSO.4.21.0009011311070.29205-100000@tattooed.rightarm.org>
+
+On Fri, 1 Sep 2000, Ralph Stickley wrote:
+> Yes...So far, all my development has been on DOC flash (M-Systems Disk-On-Chip
+> which was quickly abanonded for cost reasons) and Compact Flash (PCMCIA Adaptor
+> and USB/CF adaptor).  These are all "integrated" hard drives available directly
+> to pwlconfig.  
+
+Those devices still require you to detach them from the "embedded" system,
+and to the machine running pwlconfig though.  That's what I was hoping to
+get around.  I don't think it's possible with PWL.
+ 
+> Hope this help. Also, Adi is approaching the boot/ramdisk file system support.
+
+That would be incredibly useful :)
+
+Thanks for your help.
+
+-fa
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  1 21:35:55 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Fri, 1 Sep 2000 15:35:55 -0500 (CDT)
+Subject: making floppy systems
+In-Reply-To: <20000901193934.48529.qmail@web9104.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10009011527250.1213-100000@develop.knet.on.ca>
+
+Hi,
+
+Building a compressed ramdisk to fit on a floppy is no problem especially
+if you use the tinylogin/busybox combination.
+
+So far I've been doing the task of building the ramdisk and loading the
+kernel and ramdisk onto the floppy by hand.
+
+I am working on a bunch of scripts that will build systems on a attached
+harddrive (primarly meant for CompactFlash or DOC accessed like an IDE
+drive). Since the HD loading involves partitioning the target device this
+isn't really feasable for a floppy disk.
+
+Reading this note I will add floppy to another type of target to build
+using those script which will eventually driven by pwlconfig as a user
+interface.
+
+I have some scanned pages of my notebook (pen and pencil notebook) from
+the early beginnings of my embedded systems building experience. Have a
+look at it and see if it makes sense.
+ 
+http://adis.on.ca/BlackBook/bootdisk1.jpeg
+http://adis.on.ca/BlackBook/bootdisk2.jpeg
+http://adis.on.ca/BlackBook/bootdisk3.jpeg
+
+I can take the relevant portions out of it and write some quick
+instructions of how to load a filesystem build using pwlconfig and located
+in Embedded_Build/projects/<your project name>/mnt onto a floppy disk.
+
+Hope this helps!
+
+TTYL,
+Adi
+
+> --- fred anger <anger@rightarm.org> wrote:
+> > Hello all.  I'm new to PWL, and haven't seen any specific docs on creating
+> > bootable floppy systems.  Please point me to docs if there are any.  
+> > pwlconfig seems to want to flash to /dev/hda1, and unlike some docs I've
+> > read, I'm not given the opportunity to specify that I want a floppy
+> > system.  Perhaps it's buried in the menus?
+> >  
+> The floppy support is not provided as originally envisioned (and documented).
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  1 21:37:48 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 1 Sep 2000 13:37:48 -0700 (PDT)
+Subject: making floppy systems
+Message-ID: <20000901203748.30221.qmail@web9102.mail.yahoo.com>
+
+Fred,
+
+--- fred anger <anger@rightarm.org> wrote:
+> On Fri, 1 Sep 2000, Ralph Stickley wrote:
+> > Yes...So far, all my development has been on DOC flash (M-Systems
+> Disk-On-Chip
+> > which was quickly abanonded for cost reasons) and Compact Flash (PCMCIA
+> Adaptor
+> > and USB/CF adaptor).  These are all "integrated" hard drives available
+> directly
+> > to pwlconfig.  
+> 
+> Those devices still require you to detach them from the "embedded" system,
+> and to the machine running pwlconfig though.  That's what I was hoping to
+> get around.  I don't think it's possible with PWL.
+> 
+Hmmmm...I see your point. I my systems, the actual device that is embedded is
+physically mounted on my development box then transfered to the embedded
+system.
+
+If you exract the file system then compress that to one file. Put that one file
+on your boot floppy and then extract it to the embedded hard drive. (you may
+have to boot off a floppy that loads the "boot" filesystem into ramdisk - then
+insert the new file system from a floppy created by pwlconfig.  
+1. build a boot floppy include tar/gzip/cp/lilo/mkfs/..etc.. utilities
+2. create a working file system using pwlconfig
+3. Boot the embedded target with the boot floppy - run system out of a ramdisk
+4. Isert the pwlconfig filesystem and copy the files to the embedded hard disk.
+
+Is there a way to automate this ? If your only interface to the embedded system
+is a floppies I don't know what else could be done.
+
+However,
+
+Is there any way you can have the Embedded system boot and access a network ?
+Then you could ftp files from your pwl development system. (Or better yet,
+mount the embedded system as a disk - NFS or something like that).  
+I'm guessing here, but something like this:
+
+Embedded box 
+- partition 1 - boot and allow access via network
+- partition 2 - system application - erased/replaced as requested remotely
+ 
+> > Hope this help. Also, Adi is approaching the boot/ramdisk file system
+> support.
+> 
+> That would be incredibly useful :)
+>
+I think this is mostly working but not integrated into pwlconfig.  Maybe next
+week will see a flurry of activity on this...let me know if anything else would
+be helpful here...
+
+Enjoy the weekend,
+Ralph
+
+ 
+> Thanks for your help.
+> 
+> -fa
+> 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  1 23:40:17 2000
+From: PeeWeeLinux@adis.on.ca (fred anger)
+Date: Fri, 1 Sep 2000 15:40:17 -0700 (MST)
+Subject: making floppy systems
+In-Reply-To: <Pine.LNX.4.10.10009011527250.1213-100000@develop.knet.on.ca>
+Message-ID: <Pine.BSO.4.21.0009011537290.6918-100000@tattooed.rightarm.org>
+
+On Fri, 1 Sep 2000, Adi Linden wrote:
+> Building a compressed ramdisk to fit on a floppy is no problem especially
+> if you use the tinylogin/busybox combination.
+> 
+> So far I've been doing the task of building the ramdisk and loading the
+> kernel and ramdisk onto the floppy by hand.
+
+Is this after configuring the packages with pwlconfig?  Care to share the
+steps for this task :)
+
+> I have some scanned pages of my notebook (pen and pencil notebook)
+> from the early beginnings of my embedded systems building experience.
+> Have a look at it and see if it makes sense.
+>  
+> http://adis.on.ca/BlackBook/bootdisk1.jpeg
+> http://adis.on.ca/BlackBook/bootdisk2.jpeg
+> http://adis.on.ca/BlackBook/bootdisk3.jpeg
+> 
+> I can take the relevant portions out of it and write some quick
+> instructions of how to load a filesystem build using pwlconfig and located
+> in Embedded_Build/projects/<your project name>/mnt onto a floppy disk.
+
+That would be much appreciated!
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  1 23:59:47 2000
+From: PeeWeeLinux@adis.on.ca (fred anger)
+Date: Fri, 1 Sep 2000 15:59:47 -0700 (MST)
+Subject: making floppy systems
+In-Reply-To: <20000901203748.30221.qmail@web9102.mail.yahoo.com>
+Message-ID: <Pine.BSO.4.21.0009011552450.6918-100000@tattooed.rightarm.org>
+
+So, assuming I have a bootable floppy and some means of transferring a
+tarred-up filesystem image to the embedded system's harddrive, how do I go
+about getting that image out of PWL?  Simply tar up the
+./Embedded_Build/projects/blah/mnt directory?  Then once I partition and
+format the embedded system's hard drive, I untar the file system on to it,
+but how do I get a boot loader installed (lilo)?  Would I make the
+appropriate changes to the ramdisked /etc/lilo.conf and run lilo, or would
+I have to make a lilo boot disk to boot from the newly-created hard-drive
+filesystem first?
+
+-fa
+
+On Fri, 1 Sep 2000, Ralph Stickley wrote:
+
+> Fred,
+> 
+> --- fred anger <anger@rightarm.org> wrote:
+> > On Fri, 1 Sep 2000, Ralph Stickley wrote:
+> > > Yes...So far, all my development has been on DOC flash (M-Systems
+> > Disk-On-Chip
+> > > which was quickly abanonded for cost reasons) and Compact Flash (PCMCIA
+> > Adaptor
+> > > and USB/CF adaptor).  These are all "integrated" hard drives available
+> > directly
+> > > to pwlconfig.  
+> > 
+> > Those devices still require you to detach them from the "embedded" system,
+> > and to the machine running pwlconfig though.  That's what I was hoping to
+> > get around.  I don't think it's possible with PWL.
+> > 
+> Hmmmm...I see your point. I my systems, the actual device that is embedded is
+> physically mounted on my development box then transfered to the embedded
+> system.
+> 
+> If you exract the file system then compress that to one file. Put that one file
+> on your boot floppy and then extract it to the embedded hard drive. (you may
+> have to boot off a floppy that loads the "boot" filesystem into ramdisk - then
+> insert the new file system from a floppy created by pwlconfig.  
+> 1. build a boot floppy include tar/gzip/cp/lilo/mkfs/..etc.. utilities
+> 2. create a working file system using pwlconfig
+> 3. Boot the embedded target with the boot floppy - run system out of a ramdisk
+> 4. Isert the pwlconfig filesystem and copy the files to the embedded hard disk.
+> 
+> Is there a way to automate this ? If your only interface to the embedded system
+> is a floppies I don't know what else could be done.
+> 
+> However,
+> 
+> Is there any way you can have the Embedded system boot and access a network ?
+> Then you could ftp files from your pwl development system. (Or better yet,
+> mount the embedded system as a disk - NFS or something like that).  
+> I'm guessing here, but something like this:
+> 
+> Embedded box 
+> - partition 1 - boot and allow access via network
+> - partition 2 - system application - erased/replaced as requested remotely
+>  
+> > > Hope this help. Also, Adi is approaching the boot/ramdisk file system
+> > support.
+> > 
+> > That would be incredibly useful :)
+> >
+> I think this is mostly working but not integrated into pwlconfig.  Maybe next
+> week will see a flurry of activity on this...let me know if anything else would
+> be helpful here...
+> 
+> Enjoy the weekend,
+> Ralph
+> 
+>  
+> > Thanks for your help.
+> > 
+> > -fa
+> > 
+> > 
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+> 
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Yahoo! Mail - Free email you can access from anywhere!
+> http://mail.yahoo.com/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sat Sep  2 17:18:24 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Sat, 2 Sep 2000 11:18:24 -0500 (CDT)
+Subject: Making a floppy system with PeeWeeLinux
+In-Reply-To: <Pine.BSO.4.21.0009011537290.6918-100000@tattooed.rightarm.org>
+Message-ID: <Pine.LNX.4.10.10009021051410.1289-100000@big.adis.on.ca>
+
+Hi,
+
+Here are some instructions on how to create a floppy run system using
+PeeWeeLinux.
+
+1.  Use pwlconfig to pick the packages and files required.
+
+2.  Use the custom files option to customize your system.
+
+3.  Use the extract filesystem option to create a filesystem.
+
+4.  Exit pwlconfig at this point.
+
+5.  Create an empty ramdisk. Filling it with zero ensure optimal
+    compression. Note that most Linux distributions include a kernel
+    that allows 16 ramdisks of 4000kB each. I found the maximum
+    uncompressed filesystem size on a floppy is about 3MB.
+    Command to run for a 3MB filesystem:
+        dd if=/dev/zero of=/dev/ram bs=1k count=3000
+
+6.  Create a filesystem
+        mke2fs -m0 -b 1024 /dev/ram 3000
+
+7.  Mount the filesystem at a suitable location
+        mount -t ext2 /dev/ram /mnt/flash
+
+8.  Remove some unneeded stuff
+        rm -rf /mnt/flash/lost+found
+
+9.  Copy the extracted filesystem to the mounted ramdisk. Note that this
+    filesystem does not require a kernel! The kernel will be put onto the
+    floppy disk seperately. Nor will lilo be required in the package
+    selection process.
+    
+    a. First option, use the 'cp' command:
+        cp -a Embedded_Build/projects/<your project>/mnt/* /mnt/flash
+        rm /mnt/flash/boot/bzImage
+
+    b. Second option, use tar
+        tar cp \
+            --exclude=bzImage \
+            --directory=Embedded_Build/projects/<your project>/mnt \
+            ./ | tar xp --directory=/mnt/flash
+
+10. ldconfig is a rather large binary which can be ommitted as long as it
+    is run prior to compressing the ramdisk. We do it now.
+        ldconfig -r /mnt/flash
+
+11. Unmount the ramdisk
+        umount /mnt/flash
+
+12. Create a compressed image
+        dd if=/dev/ram bs=1k count=3000 | gzip -v9 > ramdisk.img
+
+13. Insert an empty floppy into the drive
+
+14. Place the kernel on the floppy
+        dd if=Embedded_Build/projects/<your project>/mnt/boot/bzImage \
+            of=/dev/fd0
+
+15. When dd finishes you will get a message similar to
+        410+1 records in
+        410+1 records out
+
+    Record the number reported and add 1. The number indicated is the last
+    1k block the kernel was written to. We want to start the compressed
+    ramdisk image beyond the end of the kernel without overwriting the
+    last block occupied by the kernel. So the number for our example would
+    be 411
+
+16. Place the ramdisk image on the floppy
+        dd if=ramdisk.img of=/dev/fd0 bs=1k seek=411
+
+17. Last we need to tell the kernel where our ramdisk can be found on the
+    kernel. Calculate the sum of 16384 and the earlier recorded number of
+    blocks. I.e 16384 + 411 = 16795
+
+18. Tell the kernel what's up...
+        rdev /dev/fd0 /dev/fd0
+        rdev -r /dev/fd0 16795
+        rdev -R /dev/fd0 0
+
+    A quick explaination: 
+        The first statement tells the kernel that it is booting from the
+          floppy disk device.
+        The second statement tells the kernel to load a compressed ramdisk
+          starting at block 411 of the floppy device without prompting for
+          a second disk. Details of the meaning of 16384 can be found in
+          the kernel documentation.
+        The third statement tells the kernel that it is starting at block
+          0 of the floppy device (I might be wrong about this last rdev
+          statement, though, but that's what I remember it was for).
+
+19. That's it. Boot with the floppy and enjoy!
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sat Sep  2 17:38:20 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Sat, 2 Sep 2000 11:38:20 -0500 (CDT)
+Subject: making floppy systems
+In-Reply-To: <Pine.BSO.4.21.0009011552450.6918-100000@tattooed.rightarm.org>
+Message-ID: <Pine.LNX.4.10.10009021118380.1289-100000@big.adis.on.ca>
+
+Hi,
+
+> So, assuming I have a bootable floppy and some means of transferring a
+> tarred-up filesystem image to the embedded system's harddrive, how do I go
+> about getting that image out of PWL?  Simply tar up the
+> ./Embedded_Build/projects/blah/mnt directory?  Then once I partition and
+> format the embedded system's hard drive, I untar the file system on to it,
+> but how do I get a boot loader installed (lilo)?  Would I make the
+> appropriate changes to the ramdisked /etc/lilo.conf and run lilo, or would
+> I have to make a lilo boot disk to boot from the newly-created hard-drive
+> filesystem first?
+> 
+> -fa
+
+Ok, first off all of pwlconfig assumes and will assume in the future that
+you intalled the target drive as a drive on your development system. 
+
+In some instances you might be developing right on your target device. I.e
+/dev/hda is your flash, hd, whatever and /dev/hdb is your development
+system attached to your target platform. This arrangement is suitable for
+dualbooting. However, the current scripts I am working on do not support
+dualbooting at this time.
+
+Assuming the first instance, a drive mounted on your development system is
+what I find easiest. I now settled on using a USB flash reader (Sandisk
+SDDR-31) which treats an inserted CF card like a SCSI hard disk drive. A
+PentiumII 333 box with RedHat 6.2 is the development platform. Once the
+flash has been loaded it is simply removed from the flash reader and
+inserted in the CompactFlash-IDE adaptor on the target machine.
+
+Another option I used with a target system that contains a floppy drive
+(even if it's just temporarily) is to use a DOS floppy with a TCP/IP stack
+for the network card used to copy the contents from the development system
+(running SAMBA for filesharing with non-Linux machines) to the target. In
+this case I use syslinux for a bootloader, a system that runs entirely in
+ram and a fat12 or fat16 filesystem on the drive on the target machine.
+
+An option I pursued briefly is to use a Linux bootfloppy with network
+support and use nfs or ftp to copy the filesystem onto the target drive.
+This allows a lot of flexibility depending on the tools available on the
+floppy since you can implement almost any conceivable scheme to boot from
+the target drive.
+
+The disadvantage of not having your actual target drive mounted on the
+development system to be loaded is that you need to build a special floppy
+be it either DOS or Linux for every different platform you're working
+with. Since the floppy is very likely a ramdisk based design this doen't
+work well if your intended target machine has limited ram available. You
+end up loading a kernel with approx 500k and a 3MB ramdisk on average.
+Then you still need RAM to actually run things.
+
+Anyways, got to go!
+
+TTYL,
+Adi
+
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Tue Sep  5 04:30:26 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Mon, 4 Sep 2000 22:30:26 -0500 (CDT)
+Subject: PeeWeeLinux 0.51
+Message-ID: <Pine.LNX.4.10.10009042212140.7876-100000@big.adis.on.ca>
+
+Hi,
+
+I just finished uploading PeeWeeLinux 0.51 to sourceforge and metalab at
+the following URL's:
+
+http://sourceforge.net/project/filelist.php?group_id=818
+ftp://metalab.unc.edu/pub/linux/distributions/peewee/
+
+Here's a quick overview of the changes:
+
+  v0.51 -- September 4, 2000
+  --------------------------
+   o Bugfixes in:
+     - filesystem
+     - mgetty+sendfax
+     - ncurses
+     - sysklogd
+     - fileutils
+     - crond
+   o Simplified rocketmodem initscript
+   o Changed initscripts to support rd_dialog and rd_functions
+   o Added telinit symlink to sysvinit
+   o Added sh symlink to ash
+   o Default login shell in passwd is sh now
+   o Added rd_dialog and rd_functions to build target devices
+
+The rd_dialog script has been added. It allows for easy loading of a
+extracted filesystem onto a target drive attached to the development
+system. The following schemes are supported:
+
+  Compressed Ramdisk from a FAT partition
+    - Target dirve is partitioned into a single FAT16 partition
+    - syslinux bootloader is installed
+    - Compressed ramdisk and kernel are loaded onto the device
+
+  Compressed Ramdisk from a ext2 partition
+    - Target dirve is partitioned into a single ext2 partition
+    - Compressed ramdisk and kernel are loaded onto the device
+    - Lilo is installed onto the target device
+
+  Uncompressed Partition is Loaded into Memory as Ramdisk
+    - Target drive is partitioned into 2 partitions
+      - a FAT16 or ext2 boot partition
+      - a ext2 root partition
+    - a initrd is build which dd's the root partition into memory
+    - the ramdisk is mounted as root
+    - the ext2 root partition from the target drive can be mounted
+      and changes can be made which take effect after a reboot
+
+  Read-Only Root Partition
+    - target drive is partition into multiple partitions
+    - the root partition is mounted r/o at all times
+    - ramdisks are loaded for /dev, /var, /etc and /home
+
+  Raw floppy disk
+    - the kernel is dd'd onto the floppy disk
+    - a ramdisk is dd'd onto the floppy disk
+
+To use the rd_dialog script configure a project using pwlconfig. Extract
+the filesystem using pwlconfig. Now quit pwlconfig and run the
+./misc/rd_dialog script. Select the type of target to create, answer the
+configuration question (the defaults should be fine) and let it go...
+
+Hopefully rd_dialog will be integrated into pwlconfig soon.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep  6 01:09:11 2000
+From: PeeWeeLinux@adis.on.ca (fred anger)
+Date: Tue, 5 Sep 2000 17:09:11 -0700 (MST)
+Subject: Making a floppy system with PeeWeeLinux
+In-Reply-To: <Pine.LNX.4.10.10009021051410.1289-100000@big.adis.on.ca>
+Message-ID: <Pine.BSO.4.21.0009051656280.2881-100000@tattooed.rightarm.org>
+
+On Sat, 2 Sep 2000, Adi Linden wrote:
+> Here are some instructions on how to create a floppy run system using
+> PeeWeeLinux.
+
+Thank you very much!  I do have a problem though:
+ 
+> 4.  Exit pwlconfig at this point.
+
+Had to go into the filesystem's dev directory and delete a whole mess of
+unecessary device file that were eating up inodes to get it to fit on the
+3M ram disk, BTW...
+ 
+> 14. Place the kernel on the floppy
+>         dd if=Embedded_Build/projects/<your project>/mnt/boot/bzImage \
+>             of=/dev/fd0
+> 
+> 15. When dd finishes you will get a message similar to
+>         410+1 records in
+>         410+1 records out
+
+Here's mine - something's wrong cuz mine looks WAY too big...
+
+[root@blowtorch /]# ls -l \
+/home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage 
+-rw-r--r--    1 root     root       567580 Sep  2 07:22
+/home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage
+[root@blowtorch /]# dd \
+if=/home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage \
+of=/dev/fd0
+1108+1 records in
+1108+1 records out
+
+What am I doing wrong?  And how did you get your kernel smaller?  I'm
+using the latest binary distro (.51).  Should I be configuring my own
+kernel and rebuilding from the src distro?
+ 
+Needless to say, the kernel and the compressed ramdisk image (1107131
+bytes) don't fit on the floppy...
+
+Thank you for your time.
+
+-fa
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep  6 01:27:50 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Tue, 5 Sep 2000 19:27:50 -0500 (CDT)
+Subject: Making a floppy system with PeeWeeLinux
+In-Reply-To: <Pine.BSO.4.21.0009051656280.2881-100000@tattooed.rightarm.org>
+Message-ID: <Pine.LNX.4.10.10009051917560.19531-100000@big.adis.on.ca>
+
+Hi,
+
+> Had to go into the filesystem's dev directory and delete a whole mess of
+> unecessary device file that were eating up inodes to get it to fit on the
+> 3M ram disk, BTW...
+
+When you create the filesystem make sure you do:
+
+mke2fs -m0 -b 1024 -i 1024 /dev/ram
+                   ^^^^^^^
+
+This makes sure you're building enough inodes for all those devices. I
+will be splitting the dev package into a basic one and one that adds the
+devices required for X and stick it into the X directory.
+
+> Here's mine - something's wrong cuz mine looks WAY too big...
+> 
+> [root@blowtorch /]# ls -l \
+> /home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage 
+> -rw-r--r--    1 root     root       567580 Sep  2 07:22
+
+A 567k kernel looks alright
+
+> [root@blowtorch /]# dd \
+> if=/home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage \
+> of=/dev/fd0
+
+When you do the above command line make sure you do a bs=1k otherwise dd
+defaults to 512 byte blocksize. This results in your 
+
+> 1108+1 records in
+> 1108+1 records out
+
+being way too big! So do:
+
+dd \
+if=/home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage \
+of=/dev/fd0 \
+bs=1k
+
+and you'll get the right numbers.
+
+> What am I doing wrong?  And how did you get your kernel smaller?  I'm
+> using the latest binary distro (.51).  Should I be configuring my own
+> kernel and rebuilding from the src distro?
+
+If you require network support for something other than what's there or
+other kernel feature you need to compile your own. Instead of doing the
+rpm thing I'd suggest installing the source rpm and doing a manual compile
+of the kernel source that get put into the src/SOURCES directory.
+
+> Needless to say, the kernel and the compressed ramdisk image (1107131
+> bytes) don't fit on the floppy...
+
+Yup, the above is still too big. You need to trim your filesystem a bit
+more or use busybox instead of traditional binaries. Doing the scripts for
+0.51 I build a small floppy test system. You really need to agressively go
+into all the packages and unselect anything you don't need.
+
+Another hint, you need to make a symlink, have /bin/sh point to /bin/ash
+and edit /etc/passwd to use /bin/sh as login shell or you won't be able to
+log into the system once it's booted. I am assuming you're installing ash
+and not bash for a shell. This has been fixed in 0.51
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep  6 02:22:26 2000
+From: PeeWeeLinux@adis.on.ca (Paul Monaghan)
+Date: Tue, 5 Sep 2000 21:22:26 -0400 (EDT)
+Subject: CDROM Installation?
+Message-ID: <Pine.LNX.4.10.10009052116360.6584-100000@titanium.spider.org>
+
+
+So I don't waste my time downloading the entire PeeWeeLinux distribution I
+was wondering if there is a way to create a bootable PeeWeeLinux from a
+CDROM?  I'm assuming that this could be done by making the install and
+"Read-Only Root File System" type of installation.  If I am correct it
+would then place /var, /etc, /usr and /home in ramdisks.
+
+On a related note, if the above is true, why is /usr being mounted in a
+ramdisk?  Why not make it read-only too therefore freeing up the ram that
+would have been used for all the stuff in /usr?  In fact the only real
+filesystems that would need a ramdisk would be /tmp, /var, and optionally
+/home.
+
+Comments? 
+
+Paul
+---
+PM1819 | paulm@spider.org
+http://www.spider.org/
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep  6 02:38:00 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Tue, 5 Sep 2000 20:38:00 -0500 (CDT)
+Subject: CDROM Installation?
+In-Reply-To: <Pine.LNX.4.10.10009052116360.6584-100000@titanium.spider.org>
+Message-ID: <Pine.LNX.4.10.10009052023420.19531-100000@big.adis.on.ca>
+
+Hi,
+
+> So I don't waste my time downloading the entire PeeWeeLinux distribution I
+> was wondering if there is a way to create a bootable PeeWeeLinux from a
+> CDROM?  I'm assuming that this could be done by making the install and
+> "Read-Only Root File System" type of installation.  If I am correct it
+> would then place /var, /etc, /usr and /home in ramdisks.
+
+Yes and no. A CDROM embedded system is planned for the future. There are 2
+possible ways of doing this:
+
+1. Load the entire filesystem from the CD into a ramdisk
+2. Load the kernel and some ramdisks mount a read-only root on CD
+
+Option 1 would be fine for a small system that just won't fit onto a
+floppy.
+
+Option 2 would be almost limitless. In fact a quite complete Linux system
+can be run that way (done that a while back).
+
+The current read-only root installation doesn't do the trick. It
+partitions the target drive which is useless for a CD. Right now the
+arrangement is as follows:
+
+/               --> read-only on target drive
+/dev & /var     --> compressed ramdisk loaded from /boot
+/etc            --> compressed ramdisk loaded from /boot
+/home & /root   --> partition copied into ram
+
+A note to the above, /var is a symlink to /dev/var and /root is a symlink
+to /home/root and /tmp is a symlink to /dev/var/tmp.
+
+This could be modified to have a partition for /etc instead of a ramdisk.
+This might make runtime configuration easier. But as you can see the /usr
+partition is part of the read-only / partition just as /bin, /sbin, /lib
+and all the other directories.
+
+A CD-ROM system doesn't have the option of saving anything back to the
+boot media. So all the ramdisk stuff including /home could be loaded from
+compressed ramdisks on the root filesystem. Doing this kind of thing
+wouldn't be too hard that's why I planned on doing it sometime soon.
+
+I think /home and /root should be ramdisks for sure, except they could be
+made really small if nothing really gets written to it ever. Some
+applications like netscape complain if they don't find a writeable home
+for the user.
+
+Off hand I don't think the kernels currently included have iso9660 support
+which would be rather essential for a CD-ROM system. Maybe the basic
+kernel does as it was meant for rescue disks and such.
+
+So for the short answer, PeeWeeLinux 0.51 doesn't have CD-ROM support out
+of the box.
+
+Hope this helps.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep  6 03:59:00 2000
+From: PeeWeeLinux@adis.on.ca (Paul Monaghan)
+Date: Tue, 5 Sep 2000 22:59:00 -0400 (EDT)
+Subject: CDROM Installation?
+In-Reply-To: <Pine.LNX.4.10.10009052023420.19531-100000@big.adis.on.ca>
+Message-ID: <Pine.LNX.4.10.10009052258130.7008-100000@titanium.spider.org>
+
+On Tue, 5 Sep 2000, Adi Linden wrote:
+
+> So for the short answer, PeeWeeLinux 0.51 doesn't have CD-ROM support out
+> of the box.
+
+Oh well, that's a shame.  Wouldn't happen to know of a small footprint
+linux that can run competely from CDROM would you?
+
+Paul
+---
+PM1819 | paulm@spider.org
+http://www.spider.org/
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep  6 04:01:22 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Tue, 5 Sep 2000 22:01:22 -0500 (CDT)
+Subject: CDROM Installation?
+In-Reply-To: <Pine.LNX.4.10.10009052258130.7008-100000@titanium.spider.org>
+Message-ID: <Pine.LNX.4.10.10009052200220.19531-100000@big.adis.on.ca>
+
+Hi,
+
+> 
+> > So for the short answer, PeeWeeLinux 0.51 doesn't have CD-ROM support out
+> > of the box.
+> 
+> Oh well, that's a shame.  Wouldn't happen to know of a small footprint
+> linux that can run competely from CDROM would you?
+
+Nope, stay tuned for a future PeeWeeLinux release or build a script that
+can turn an extracted filesystem into a bootable iso image...
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep  6 05:30:27 2000
+From: PeeWeeLinux@adis.on.ca (Ray Olszewski)
+Date: Tue, 05 Sep 2000 21:30:27 -0700
+Subject: CDROM Installation?
+Message-ID: <2.2.32.20000906043027.00d2eff0@[192.168.1.23]>
+
+At 10:59 PM 9/5/00 -0400, Paul Monaghan wrote:
+>On Tue, 5 Sep 2000, Adi Linden wrote:
+>
+>> So for the short answer, PeeWeeLinux 0.51 doesn't have CD-ROM support out
+>> of the box.
+>
+>Oh well, that's a shame.  Wouldn't happen to know of a small footprint
+>linux that can run competely from CDROM would you?
+
+
+No such thing; Linux needs to have access to a writable partition for logs,
+wtmp and utmp, as well as anything that needs local configuration
+(/etc/passwd and /etc/shadow come to mind). So you need a small disk
+partition or a RAM disk to work, combined with some clever symlinking.
+
+The closest I can think of to what you want are:
+
+        Slackware's "live" CD -- part of the Slackware you pay for,
+                not the free download version. Buy it wherever 
+                official Slackware is sold.
+
+        Linux Router Project EigerStein -- not quite ready for release,
+                but probably soon.  Check on lrp.steinkuehler.net for
+                details (not sure exactly where; you'll have to look
+                around).
+
+There was a project kicking around at Debian to do something similar to
+Slackware-Live, but I don't know the details or if it ever was completed.
+
+
+--
+------------------------------------"Never tell me the odds!"---
+Ray Olszewski                                        -- Han Solo
+Palo Alto, CA           	 	         ray@comarre.com        
+----------------------------------------------------------------
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Sep  7 00:10:56 2000
+From: PeeWeeLinux@adis.on.ca (David Wood)
+Date: Wed, 6 Sep 2000 18:10:56 -0500 (CDT)
+Subject: Missing network modules
+Message-ID: <Pine.LNX.4.21.0009061810140.19083-100000@cerberus>
+
+
+I'd like to use my 3com 509 with Peewee Linux but there isnt a 3c509.o
+module anywhere in the pwl distribution that I can find. ;)
+
+Let me know what needs be done (since the kernel srpm wont compile either)
+
+-David
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Sep  7 00:13:20 2000
+From: PeeWeeLinux@adis.on.ca (David Wood)
+Date: Wed, 6 Sep 2000 18:13:20 -0500 (CDT)
+Subject: Testing. :) (no text)
+Message-ID: <Pine.LNX.4.21.0009061813070.19083-100000@cerberus>
+
+So I lied.
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Sep  7 00:26:20 2000
+From: PeeWeeLinux@adis.on.ca (David Wood)
+Date: Wed, 6 Sep 2000 18:26:20 -0500 (CDT)
+Subject: Um..
+Message-ID: <Pine.LNX.4.21.0009061826050.19113-100000@cerberus>
+
+ <taps microphone>
+
+Is this thing on?
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Sep  7 00:41:42 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Wed, 6 Sep 2000 18:41:42 -0500 (CDT)
+Subject: Missing network modules
+In-Reply-To: <Pine.LNX.4.21.0009061810140.19083-100000@cerberus>
+Message-ID: <Pine.LNX.4.10.10009061838001.24452-100000@big.adis.on.ca>
+
+Hi,
+
+The kernel SRPM will compile all 5 or 6 kernels that are there. I would
+install the kernel SRPM. Then manually extract the sources, configure and
+compile... That allows you to choose whichever kernel modules you
+like/need.
+
+Alternately you could copy the basic kernel config file into the source
+tree and use it as a base to configure from.
+
+There isn't anything special about the PeeWeeLinux kernels, except for
+some added drivers for the ipix and pcm4823 kernels. The criteria is to
+turn everything off by default and start adding only the required things
+to keep the kernel as small as possible.
+
+TTYL,
+Adi
+
+
+On Wed, 6 Sep 2000, David Wood wrote:
+
+> 
+> I'd like to use my 3com 509 with Peewee Linux but there isnt a 3c509.o
+> module anywhere in the pwl distribution that I can find. ;)
+> 
+> Let me know what needs be done (since the kernel srpm wont compile either)
+> 
+> -David
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Sep  7 20:33:22 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Thu, 7 Sep 2000 12:33:22 -0700 (PDT)
+Subject: Multiple Targets for PeeWee Linux
+Message-ID: <20000907193322.79271.qmail@web9102.mail.yahoo.com>
+
+We are beginning to integrate the ramdisk configuration utilities into 
+the latest version of pwlconfig.  I plan on working on this over the next few
+days...Anybody have any suggestions please let me know...
+======
+Requirement: To build a project on several different targets. Users should
+configure each target as required, then choose the proper target configuration
+before doing the Erase/load operations on the target device.
+
+                  Main menu changes:
+                  ==================
+                  ...
+                  ---
+                  Configure Target Device "CF 32Mb"-->
+                  Erase "Flash" -->
+                  Load Filesystem to Flash -->
+                  Lilo...
+                  ---
+                  ...
+
+
+Selecting "Configure Target Device -->" gives the following menu from
+"pwl_targets" script file:
+
+                  PWL Target Menu
+                  ===============
+                  Select Target Type -->
+                  Save Target Configuration for "my floppy" 
+                  Create New Target
+                  ---
+                  Configure "CF 32Mb" Parameters
+                  [*] CF 32Mb
+                  [ ] CF 16Mb
+                  [ ] RAM 256Mb
+                  [ ] My test Floppy
+                  [ ] My CDROM release
+
+Now each target file would contain all the default parameters as configured for
+that target.  The "Configure "CF 32Mb" menu item would then display the
+parameters (basically just like the current "project defaults" menu )
+
+                  Configure Target parameters
+                  =================
+                  ---- Boot defaults ---
+                  boot image file: /boot/bzImage
+                  boot location: /dev/hda1
+                  ---- Lilo defaults ---
+                  Lilo boot label: pwlinuz
+                  Lilo timeout: 2
+                  Lilo custom command: linear
+                  Lilo image command: vga=0x317
+                  ---- Device defaults ---
+                  Mount point: ./mnt
+                  Device name: FLASH
+                  Device node: /dev/hda
+                  ---- Partition defaults ---
+                  Boot partition: 1  size: 1Mb
+                  system partition: 2 size: 28Mb
+                  Other partition: 3 size 2Mb
+                  ---- Ram Disk Defaults ---
+                  initrd name: rd_image
+                  verbose operation: On
+                  ???
+
+And Where the Select Target Type menu is as Adi proposed:
+
+                  Select Target Type
+                  ==================
+                  1)  Compressed ramdisk on FAT 16 partition"
+                  2)  Compressed ramdisk on ext2 partition"
+                  3)  Uncompressed ramdisk, boot from FAT 16 partition"
+                  4)  Uncompressed ramdisk, boot from ext2 partition"
+                  5)  Read-only root fs with multiple ramdisks"
+                    ----- Non-flash target devices -----"
+                  6)  Compressed ramdisk on floppy disk w/o bootloader"
+                  7)  Compressed ramdisk on FAT12 floppy disk w/syslinux"
+                  8)  Bootable iso image w/ramdisk"
+                  9)  Bootable iso image w/read-only root"
+                  "  -----    For testing only!     -----"
+                  10) Read-write root on a single partition"  > 
+
+
+Ok, I can integrate this and get any/all parameters stored and loaded fairly
+easily.  I'll try to get the parameters from your rd_dialog functions...any
+list you have would be appreciated...
+
+The next step is to activate the Erase/Foramt command to handle all the various
+partitions; and the Load command must build the ramdisk images etc..
+
+Does this look like something that would work for all different targets ? 
+Suggestions ??
+Thanks,
+Ralph
+
+
+
+
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  8 22:26:03 2000
+From: PeeWeeLinux@adis.on.ca (fred anger)
+Date: Fri, 8 Sep 2000 14:26:03 -0700 (MST)
+Subject: Problem installing LILO
+Message-ID: <Pine.BSO.4.21.0009081420030.25682-100000@tattooed.rightarm.org>
+
+Hi again.  I'm trying to build a system from PWL onto the hard drive of an
+"embedded" device.  The hard drive is a 2G Hitachi laptop hard drive,
+which I've removed from the embedded device and plugged into my
+development PC's IDE bus as /dev/hdd.  I built the filesystem and
+"flashed" it to the drive ok (the disk is split into 2 partitions, with
+the second partition being the one to be booted), but when I try to
+install LILO, I get an error from mkBootDevice saying: "invalid Boot
+Directory /mnt/boot".  Here are my project.defaults:
+
+export prjMnt="mnt"                    # Prompt: Project Mount Point
+export prjCustomSrc="/usr/local/src"   # Prompt: Project Custom Source
+File pathexport bootLabel="pwlinuz"             # Prompt: LILO Boot Label
+
+#   Initial defaults from flash disk (IDE type) parameters
+
+export deviceType="FLASH"              # Prompt: Device Type (DOC FLOPPY
+CDROM FLASH)
+export deviceName="Flash Disk"         # Prompt: Device Name
+export liloCustom="linear"             # Prompt: LILO Custom Command
+export liloImageCustom=""              # Prompt: LILO Image Custom Command
+
+export deviceMnt="/mnt"   # Prompt: Device Mount Point
+export deviceLoc="/dev/hdd"   # Prompt: Device Type Node (/dev/xxx)
+export devicePartition="2"   # Prompt: Device Type Partition
+export bootKernel="/boot/bzImage"   # Prompt: Boot Image Path/name
+export bootDevice="/dev/hda2"   # Prompt: Boot Location
+
+What am I doing wrong?
+
+-fa
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  8 22:44:54 2000
+From: PeeWeeLinux@adis.on.ca (fred anger)
+Date: Fri, 8 Sep 2000 14:44:54 -0700 (MST)
+Subject: Problem installing LILO
+In-Reply-To: <Pine.BSO.4.21.0009081420030.25682-100000@tattooed.rightarm.org>
+Message-ID: <Pine.BSO.4.21.0009081444120.4287-100000@tattooed.rightarm.org>
+
+Never mind!  I did something stupid at some point and didn't have the
+filesystem anymore...sorry for wasting time...
+
+On Fri, 8 Sep 2000, fred anger wrote:
+
+> Hi again.  I'm trying to build a system from PWL onto the hard drive of an
+> "embedded" device.  The hard drive is a 2G Hitachi laptop hard drive,
+> which I've removed from the embedded device and plugged into my
+> development PC's IDE bus as /dev/hdd.  I built the filesystem and
+> "flashed" it to the drive ok (the disk is split into 2 partitions, with
+> the second partition being the one to be booted), but when I try to
+> install LILO, I get an error from mkBootDevice saying: "invalid Boot
+> Directory /mnt/boot".  Here are my project.defaults:
+> 
+> export prjMnt="mnt"                    # Prompt: Project Mount Point
+> export prjCustomSrc="/usr/local/src"   # Prompt: Project Custom Source
+> File pathexport bootLabel="pwlinuz"             # Prompt: LILO Boot Label
+> 
+> #   Initial defaults from flash disk (IDE type) parameters
+> 
+> export deviceType="FLASH"              # Prompt: Device Type (DOC FLOPPY
+> CDROM FLASH)
+> export deviceName="Flash Disk"         # Prompt: Device Name
+> export liloCustom="linear"             # Prompt: LILO Custom Command
+> export liloImageCustom=""              # Prompt: LILO Image Custom Command
+> 
+> export deviceMnt="/mnt"   # Prompt: Device Mount Point
+> export deviceLoc="/dev/hdd"   # Prompt: Device Type Node (/dev/xxx)
+> export devicePartition="2"   # Prompt: Device Type Partition
+> export bootKernel="/boot/bzImage"   # Prompt: Boot Image Path/name
+> export bootDevice="/dev/hda2"   # Prompt: Boot Location
+> 
+> What am I doing wrong?
+> 
+> -fa
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Fri Sep  8 23:43:38 2000
+From: PeeWeeLinux@adis.on.ca (fred anger)
+Date: Fri, 8 Sep 2000 15:43:38 -0700 (MST)
+Subject: login
+Message-ID: <Pine.BSO.4.21.0009081541580.26900-100000@tattooed.rightarm.org>
+
+Ok, am I a total moron today, or is the default login not posted anywhere
+on the site or in the documentation?
+
+-fa
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sat Sep  9 00:22:22 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Fri, 8 Sep 2000 18:22:22 -0500 (CDT)
+Subject: login
+In-Reply-To: <Pine.BSO.4.21.0009081541580.26900-100000@tattooed.rightarm.org>
+Message-ID: <Pine.LNX.4.10.10009081821220.3213-100000@develop.knet.on.ca>
+
+Hi,
+
+It's in the README...
+
+There is a generic user:
+user: admin
+pass: admin
+
+There is root:
+user: root
+pass: redhat
+
+TTYL,
+Adi
+
+On Fri, 8 Sep 2000, fred anger wrote:
+
+> Ok, am I a total moron today, or is the default login not posted anywhere
+> on the site or in the documentation?
+> 
+> -fa
+> 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sat Sep  9 03:33:19 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 8 Sep 2000 19:33:19 -0700 (PDT)
+Subject: Problem installing LILO
+Message-ID: <20000909023319.91741.qmail@web9102.mail.yahoo.com>
+
+Hey,
+> install LILO, I get an error from mkBootDevice saying: "invalid Boot
+> Directory /mnt/boot".  Here are my project.defaults:
+
+I suspect that your target disk /dev/hdd2 is mounted at ./mnt (dot/mnt is the
+mnt directory under Embedded_Build directory) thus, your boot directory would
+be at ./mnt/boot.  Just change the project/default parameters to use this mount
+point...
+
+Hope this helps
+Ralph
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sat Sep  9 03:35:32 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Fri, 8 Sep 2000 19:35:32 -0700 (PDT)
+Subject: Problem installing LILO
+Message-ID: <20000909023532.71271.qmail@web9105.mail.yahoo.com>
+
+Hey,
+--- fred anger <anger@rightarm.org> wrote:
+> Never mind!  I did something stupid at some point and didn't have the
+> filesystem anymore...sorry for wasting time...
+> 
+
+(I should read all my mail first too..).  
+Glad you got it going.  Hope everything works out - keep us posted if you find
+any problems.
+
+Thanks,
+Ralph
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sat Sep  9 15:50:38 2000
+From: PeeWeeLinux@adis.on.ca (fred anger)
+Date: Sat, 9 Sep 2000 07:50:38 -0700 (MST)
+Subject: Problem installing LILO
+In-Reply-To: <20000909023532.71271.qmail@web9105.mail.yahoo.com>
+Message-ID: <Pine.BSO.4.21.0009090747310.13490-100000@tattooed.rightarm.org>
+
+On Fri, 8 Sep 2000, Ralph Stickley wrote:
+> (I should read all my mail first too..).  
+> Glad you got it going.  Hope everything works out - keep us posted if you find
+> any problems.
+
+Actually, I do remember one problem I had.  The first time I tried to
+boot, I got an error stating that /rc.init couldn't be executed.  I
+mounted the disk back in the development machine, and sure enough, rc.init
+didn't have execute permissions.  I added execute permissions, and it
+booted just fine.
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sun Sep 10 07:46:23 2000
+From: PeeWeeLinux@adis.on.ca (David Wood)
+Date: Sun, 10 Sep 2000 01:46:23 -0500 (CDT)
+Subject: Multiple Targets for PeeWee Linux
+In-Reply-To: <20000907193322.79271.qmail@web9102.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.21.0009100141120.3343-100000@cerberus>
+
+
+
+On Thu, 7 Sep 2000, Ralph Stickley wrote:
+
+> We are beginning to integrate the ramdisk configuration utilities into the
+> latest version of pwlconfig.  I plan on working on this over the next few
+> days...Anybody have any suggestions please let me know...
+
+Great! :)
+
+> ======
+> Requirement: To build a project on several different targets. Users should
+> configure each target as required, then choose the proper target
+> configuration before doing the Erase/load operations on the target device.
+> 
+>                   Main menu changes:
+>                   ==================
+>                   ...
+>                   ---
+>                   Configure Target Device "CF 32Mb"-->
+
+How about:          Manage Target Devices -->
+                    Select Target Device -->
+
+>                   Erase "Flash" -->
+               of course, erase "flash" would be in the management,
+>                   Load Filesystem to Flash -->
+               as well as the loading of the filesystem,
+>                   Lilo...
+               and lilo ;)
+>                   ---
+>                   ...
+> 
+> 
+> Selecting "Configure Target Device -->" gives the following menu from
+> "pwl_targets" script file:
+> 
+>                   PWL Target Menu
+>                   ===============
+>                   Select Target Type -->
+>                   Save Target Configuration for "my floppy" 
+>                   Create New Target
+>                   ---
+>                   Configure "CF 32Mb" Parameters
+>                   [*] CF 32Mb
+>                   [ ] CF 16Mb
+>                   [ ] RAM 256Mb
+>                   [ ] My test Floppy
+>                   [ ] My CDROM release
+                    [ ] TFTPboot directory
+> 
+> Now each target file would contain all the default parameters as
+> configured for that target.  The "Configure "CF 32Mb" menu item would then
+> display the parameters (basically just like the current "project defaults"
+> menu )
+> 
+>                   Configure Target parameters
+>                   =================
+>                   ---- Boot defaults ---
+>                   boot image file: /boot/bzImage
+>                   boot location: /dev/hda1
+>                   ---- Lilo defaults ---
+>                   Lilo boot label: pwlinuz
+>                   Lilo timeout: 2
+>                   Lilo custom command: linear
+>                   Lilo image command: vga=0x317
+>                   ---- Device defaults ---
+>                   Mount point: ./mnt
+>                   Device name: FLASH
+>                   Device node: /dev/hda
+>                   ---- Partition defaults ---
+>                   Boot partition: 1  size: 1Mb
+>                   system partition: 2 size: 28Mb
+>                   Other partition: 3 size 2Mb
+>                   ---- Ram Disk Defaults ---
+>                   initrd name: rd_image
+>                   verbose operation: On
+>                   ???
+> 
+> And Where the Select Target Type menu is as Adi proposed:
+> 
+>                   Select Target Type
+>                   ==================
+>                   1)  Compressed ramdisk on FAT 16 partition"
+>                   2)  Compressed ramdisk on ext2 partition"
+>                   3)  Uncompressed ramdisk, boot from FAT 16 partition"
+>                   4)  Uncompressed ramdisk, boot from ext2 partition"
+>                   5)  Read-only root fs with multiple ramdisks"
+>                     ----- Non-flash target devices -----"
+>                   6)  Compressed ramdisk on floppy disk w/o bootloader"
+>                   7)  Compressed ramdisk on FAT12 floppy disk w/syslinux"
+>                   8)  Bootable iso image w/ramdisk"
+>                   9)  Bootable iso image w/read-only root"
+>                   "  -----    For testing only!     -----"
+>                   10) Read-write root on a single partition"  > 
+> 
+> 
+> Ok, I can integrate this and get any/all parameters stored and loaded
+> fairly easily.  I'll try to get the parameters from your rd_dialog
+> functions...any list you have would be appreciated...
+> 
+> The next step is to activate the Erase/Foramt command to handle all the
+> various partitions; and the Load command must build the ramdisk images
+> etc..
+> 
+> Does this look like something that would work for all different targets ? 
+> Suggestions ??
+> Thanks,
+> Ralph
+
+While I have the author's attention,
+
+The current version builds the filesystem into projects/<projectname>/mnt/. 
+There's no note about where the filesystem is built (I discovered with
+find).  Also, if I mount a ramdisk/drive/device to the mountpoint, the
+filesystem build fails on a failure to make the directory.  Could you
+possibly make that specific mkdir check to see if its a mountpoint first?
+
+-David
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Sep 11 15:19:52 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Mon, 11 Sep 2000 09:19:52 -0500 (CDT)
+Subject: Problem installing LILO
+In-Reply-To: <Pine.BSO.4.21.0009090747310.13490-100000@tattooed.rightarm.org>
+Message-ID: <Pine.LNX.4.10.10009110918020.1073-100000@develop.knet.on.ca>
+
+Hi,
+
+I made a not of the rc.init thing and I will fix this in the next release.
+It could be that the rc.init installed by pwlconfig is not executable.
+However, when rd_dialog is used to copy the filesystem to the target
+device it modifies rc.init and makes it executable.
+
+S when I tested 0.51 I never encountered this problem. I used rd_dialog to
+build the target device.
+
+TTYL,
+Adi
+
+On Sat, 9 Sep 2000, fred anger wrote:
+
+> On Fri, 8 Sep 2000, Ralph Stickley wrote:
+> > (I should read all my mail first too..).  
+> > Glad you got it going.  Hope everything works out - keep us posted if you find
+> > any problems.
+> 
+> Actually, I do remember one problem I had.  The first time I tried to
+> boot, I got an error stating that /rc.init couldn't be executed.  I
+> mounted the disk back in the development machine, and sure enough, rc.init
+> didn't have execute permissions.  I added execute permissions, and it
+> booted just fine.
+> 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Sep 11 15:23:59 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Mon, 11 Sep 2000 09:23:59 -0500 (CDT)
+Subject: Multiple Targets for PeeWee Linux
+In-Reply-To: <Pine.LNX.4.21.0009100141120.3343-100000@cerberus>
+Message-ID: <Pine.LNX.4.10.10009110920580.1073-100000@develop.knet.on.ca>
+
+Hi,
+
+> How about:          Manage Target Devices -->
+>                     Select Target Device -->
+
+If managing the target device includes configuring the particluar
+configuration (ramdisk, ro, etc) the secons selection could simply be:
+
+>                     Load Target Device -->
+
+That would make development a bit smoother since you wouldn't have to
+descent into menu levels to rebuild a system that's already been
+configured. 
+
+> The current version builds the filesystem into projects/<projectname>/mnt/. 
+> There's no note about where the filesystem is built (I discovered with
+> find).  Also, if I mount a ramdisk/drive/device to the mountpoint, the
+> filesystem build fails on a failure to make the directory.  Could you
+> possibly make that specific mkdir check to see if its a mountpoint first?
+
+The new script includes various checks including the existance of mnt,
+that there is nothing mounted on mnt and that mnt is in fact a
+directory...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Sep 11 16:01:12 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Mon, 11 Sep 2000 08:01:12 -0700 (PDT)
+Subject: Multiple Targets for PeeWee Linux
+Message-ID: <20000911150112.31365.qmail@web9104.mail.yahoo.com>
+
+David,
+
+--- David Wood <jbevren@yahoo.com> wrote:
+> 
+> 
+> > 
+> >                   Main menu changes:
+> >                   ==================
+> >                   ...
+> >                   ---
+> >                   Configure Target Device "CF 32Mb"-->
+> 
+> How about:          Manage Target Devices -->
+>                     Select Target Device -->
+> 
+> >                   Erase "Flash" -->
+>                of course, erase "flash" would be in the management,
+> >                   Load Filesystem to Flash -->
+>                as well as the loading of the filesystem,
+> >                   Lilo...
+>                and lilo ;)
+> >                   ---
+> >                   ...
+> >
+Hmmm...Adi mentioned an approach like this also.  I think all the steps
+involved should be evident from the main menu... My reasoning (however flawed
+it may be) is something like this:
+
+The main menu shows a progression of steps that must be followed to embed the
+system software to the target. First pick and choose the files you want
+embedded, next pick your target environment (new step now shown in proper order
+:), erase all existing files from the target, load the selected system files
+onto the target and then perform a Lilo operation on the target.
+
+My initial justification for this was to show the steps involved.  Its "bad"
+enough to be hiding all the command line  commands normally required for this
+operation, much less hide the procedure that has to be done.
+
+One of my original goals was to also be able to operate pwlconfig entirely from
+the command line (or shell script) for a manufacturing environment, but this
+has gone largely untested (we use a disk duplicator instead). Here each
+commandline flag roughly corresponded to one of the steps - something like:
+pwlconfig --erase --load --boot
+
+So this may have had a driving effect on the user interface also - some
+consistancy between the commandline and the GUI...
+
+Maybe this argument doesn't make sense now that I actually understand what is
+going on (as opposed to when I started this project and didn't know what had to
+be done to embedd linux :-O).  Hmmmmmm....more thoughts ???
+
+ 
+> 
+> While I have the author's attention,
+> 
+> The current version builds the filesystem into projects/<projectname>/mnt/. 
+> There's no note about where the filesystem is built (I discovered with
+> find). 
+As you found, the custom files and extracted package files are combined
+together under the /projects/prjname/mnt directory.  In theory, the user should
+not have to traverse the projects directory manually - thats what pwlconfig
+does.  While you can do this, if you find yourself doing it on a regular basis,
+then pwlconfig should be extended.
+
+Note: If pwlconfig is comprehensive then you should not have to manually go
+into any of the Embedded_Build subdirectories.
+
+> Also, if I mount a ramdisk/drive/device to the mountpoint, the
+> filesystem build fails on a failure to make the directory.  Could you
+> possibly make that specific mkdir check to see if its a mountpoint first?
+> 
+> -David
+>
+The offending code would be in pwlconfig, function extract_project(), in or
+about line 320...
+
+rm -rf $mntName
+mkdir $mntName
+
+Removing the directory removes all hidden files and everything....
+However if $mntName directory is another device, then it won't disappear and
+the mkdir fails.
+
+Ok to fix this, the code should read (untested):
+
+rm -rf $mntName
+if [ -d $mntName ] ; then  # check for directory
+   ;                       #  directory not deleted, may be mounted
+   ..  .                   #  could test for read/write access ??
+else
+   mkdir $mntName
+   if [ ! "$?" = "0" ] ; then
+    ...   # same stuff...
+fi
+
+Give that a try and let me know if it works in your environment.
+Thanks for the feedback...
+
+Later,
+Ralph
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+http://mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep 13 18:31:08 2000
+From: PeeWeeLinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Wed, 13 Sep 2000 18:31:08 +0100
+Subject: testing, ignore please.
+Message-ID: <39BFB9DC.80232952@h2eye.com>
+
+J.
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Sep 14 03:22:23 2000
+From: PeeWeeLinux@adis.on.ca (David Wood)
+Date: Wed, 13 Sep 2000 21:22:23 -0500 (CDT)
+Subject: testing, ignore please.
+In-Reply-To: <39BFB9DC.80232952@h2eye.com>
+Message-ID: <Pine.LNX.4.21.0009132122130.1885-100000@cerberus>
+
+
+Just so you know, it worked ;)
+
+
+On Wed, 13 Sep 2000, Dr Jaime V. Miro wrote:
+
+> Date: Wed, 13 Sep 2000 18:31:08 +0100
+> From: Dr Jaime V. Miro <j.v.miro@h2eye.com>
+> Reply-To: PeeWeeLinux@adis.on.ca
+> To: peeweelinux@adis.on.ca
+> Subject: testing, ignore please.
+> 
+> J.
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Sep 14 18:24:39 2000
+From: PeeWeeLinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Thu, 14 Sep 2000 18:24:39 +0100
+Subject: Newbie question
+Message-ID: <39C109D7.617F7B1F@h2eye.com>
+
+Hi, 
+
+I just downloaded and got working PeeWeeLinux 0.51. (did the rpms to tar conversion that I read in the mailing list, and everything is okay now).
+I have also learned from the mailing list that dosumentation is fairly outdated, hence part of my enquiry is probably easy to answer:
+
+a) from the on-line (and .ps) documentation, I read the following: 
+"Managing Projects. The first time you run pwlconfig, you are prompted for the name of the project you wish to create. Enter a name that describes your project. For example (...) When a project is newly created, all the files in all the default packages are included. These should be most of the files required to boot your system to a login prompt. Try it and see!"
+
+I did that, and it generated practically nothing (4K of code if I remember correctly). Am I missing something ? (likely if you ask me ... :-))
+
+b) My next question is probably obvious by now : can I do just that in as easy way, generate a minimal system that will be runnable? 
+
+c) Since a) was not successful, and don't have the answer for b) yet, I selected a few things (filesystem and not much more) to see what the generated root filesystem looked like. It looked reasonable, so I copied the whole tree into a partition on my HD (which emulated the future flash boot-up drive), edited lilo.conf, and got a new entry. Rebooted, kernel loaded okay, but it then freezes after mounting the root fs read-only and enter INIT, displaying "Starting system loggers ....". Am I doing
+somthing wrong ... again? (very likely this time, if you ask me ... ;-))
+
+And I'll stop here b4 somebody gets very tired of reading me.
+
+Thanks in advance for your help. 
+
+Jaime
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Sep 14 18:54:50 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Thu, 14 Sep 2000 12:54:50 -0500 (CDT)
+Subject: Newbie question
+In-Reply-To: <39C109D7.617F7B1F@h2eye.com>
+Message-ID: <Pine.LNX.4.10.10009141242000.2281-100000@develop.knet.on.ca>
+
+Hi,
+
+When you initially run pwlconfig no packages are selected. We hope that at
+somepoint there'll be some predefined projects included that can be used
+as starting point for your own development. Those predefined projects
+would consist of a basic bootable system with some added functionality
+like X oriented, router oriented, etc... But those are future plans...
+
+For now you need to do all that yourself.
+
+To give you a quick idea of packages required to boot:
+
+filesystem
+dev
+initscripts
+kernel of your choice
+
+either:
+-------
+util-linux (it contains login)
+mingetty (a small tty only getty)
+sysvinit (contains init among things)
+ash -or- ash-static -or- bash
+glibc
+
+or (still untested):
+--------------------
+busybox
+tiny-login
+
+This should get you to a login prompt. Beyond that there isn't much
+functionality unless you add more stuff.
+
+I did the list above of the top of my head and I hope I am not missing
+something.
+
+> boot-up drive), edited lilo.conf, and got a new entry. Rebooted, kernel
+> loaded okay, but it then freezes after mounting the root fs read-only
+> and enter INIT, displaying "Starting system loggers ....". Am I doing
+> somthing wrong ... again? (very likely this time, if you ask me ... ;-))
+
+Since service start it looks like /sbin/init is there and working. I
+suspect you're missing mingetty or login...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Tue Sep 19 17:00:12 2000
+From: PeeWeeLinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Tue, 19 Sep 2000 17:00:12 +0100
+Subject: booting into a ram disk
+References: <Pine.LNX.4.10.10009141242000.2281-100000@develop.knet.on.ca>
+Message-ID: <39C78D8C.927B2166@h2eye.com>
+
+Hi,
+
+I've got a minimalistic embedded linux system developed from peeweelinux (0.51). It was done with pwlconfig. I had to add a couple of libs manually, otherwise it would not boot up (libncurses.so.4 and libtermcap.so.2), but it does now. It resides in the HD, boots up, and let's me login with "root" or "admin".(not much more, as yet)
+
+Feeling brave, I attempted the next step with the ultimate goal of booting from a CF disk: booting from a ram disk. I first tried the tool that comes with pwlconfig (rd_dialog), but it keeps asking me for a project, and while it recognises the name of the last one (the ever present "simple"), no matter what I do or write, can't go past this point. I am probably doing something wrong, but don't know what it is, so I've tried to do it manually (I've done it successfully b4 with another / and
+kernel). I mounted the ram disk, copied the fs into it, unmount it, created the image, compress it, edit lilo to refer to this new image, and reboot. After a couple of glitches (it never likes /devram1, whilst /dev/ram0 is okay ...?), the system boots, mounts the fs into ram, and gives me the peewee prompt ... but I can't login using "root" or "admin" like before! I don't know why. It is exactly the same image and kernel as the one residing in the HD, so passwd and permissions are the same. But
+it does not go past the login screen. Any pointers? 
+ 
+thanks in advance
+
+Jaime
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep 20 02:34:26 2000
+From: PeeWeeLinux@adis.on.ca (Michael George)
+Date: Tue, 19 Sep 2000 21:34:26 -0400
+Subject: Extraction problem...
+Message-ID: <20000919213426.A12333@brutus.mintcity.com>
+
+Hi all!
+
+I have a bizarre problem that I'm hoping someone has seen before, or perhaps
+might have a workaround.  I have peeweelinux-0.50-bin.tar.gz, and I've
+installed it at work and at home.  Both machines are running a basic RHL6.1
+system.  The one at work is running just fine.  But I am trying to Extract the
+rpm files into the package directory.  When I try to do so, though, the
+extraction process gets stuck at the dev*.rpm package.
+
+It doesn't freeze, for I can watch the rpm process consuming time and nearly
+100% of the processor, but I just get the "Extracting ... dev...rpm." message.
+The additional "." never appear and it just sits there indefinately.
+
+Very strange, indeed!
+
+Has anyone else ever heard of this or seen it?  Is there a way I can work
+around it and get the packages all unpacked?
+
+Thanks for any help!
+
+-Michael
+
+-- 
+No, my friend, the way to have good and safe government, is not to trust it
+all to one, but to divide it among the many, distributing to every one exactly
+the functions he is competent to.  It is by dividing and subdividing these
+republics from the national one down through all its subordinations, until it
+ends in the administration of every man's farm by himself; by placing under
+every one what his own eye may superintend, that all will be done for the
+best.
+                -- Thomas Jefferson, to Joseph Cabell, 1816
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep 20 15:40:47 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Wed, 20 Sep 2000 07:40:47 -0700 (PDT)
+Subject: Extraction problem...
+Message-ID: <20000920144047.68853.qmail@web9104.mail.yahoo.com>
+
+Hey,
+Ok..that is bizarre...I don't have the 0.50 version, I just upgraded to the
+V0.51.  I was able to extract all the packages with that version.
+
+So, lets see whats happening here.
+First, is it possible to install the rpm manually ?
+The RPM command being used is built as follows:
+
+   srcName="dev....rpm"              # filename
+   rootDir=".../Embedded_Build/rpm"  # fill your path in here
+   
+   rpmOptions="--force  --noscripts --nodeps --notriggers \
+               --dbpath /.rpm_db  --ignorearch --ignoreos"  
+
+   $RPM -i --root $rootDir $rpmOptions $srcName                                
+
+
+Try that script and see if it you can tell what is going wrong.
+(The actual extraction occurs in pwl_pkgmgr in function "pkgmgr_rpm_extract")
+                    
+Another potential point of failure is that some of the "info" stuff associated
+with the rpm file may not be what the package manager is expecting.
+
+If you don't find anything wrong here, try the upgrade. Meanwhile, I'll
+download this version and see what happens here.
+Thanks,
+Ralph
+
+One thing to do is to 
+--- Michael George <george@mintcity.com> wrote:
+> Hi all!
+> 
+> I have a bizarre problem that I'm hoping someone has seen before, or perhaps
+> might have a workaround.  I have peeweelinux-0.50-bin.tar.gz, and I've
+> installed it at work and at home.  Both machines are running a basic RHL6.1
+> system.  The one at work is running just fine.  But I am trying to Extract
+> the
+> rpm files into the package directory.  When I try to do so, though, the
+> extraction process gets stuck at the dev*.rpm package.
+> 
+> It doesn't freeze, for I can watch the rpm process consuming time and nearly
+> 100% of the processor, but I just get the "Extracting ... dev...rpm."
+> message.
+> The additional "." never appear and it just sits there indefinately.
+> 
+> Very strange, indeed!
+> 
+> Has anyone else ever heard of this or seen it?  Is there a way I can work
+> around it and get the packages all unpacked?
+> 
+> Thanks for any help!
+> 
+> -Michael
+> 
+> -- 
+> No, my friend, the way to have good and safe government, is not to trust it
+> all to one, but to divide it among the many, distributing to every one
+> exactly
+> the functions he is competent to.  It is by dividing and subdividing these
+> republics from the national one down through all its subordinations, until it
+> ends in the administration of every man's farm by himself; by placing under
+> every one what his own eye may superintend, that all will be done for the
+> best.
+>                 -- Thomas Jefferson, to Joseph Cabell, 1816
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages & get email alerts with Yahoo! Messenger.
+http://im.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep 20 16:22:21 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Wed, 20 Sep 2000 08:22:21 -0700 (PDT)
+Subject: Extraction problem...
+Message-ID: <20000920152221.75800.qmail@web9104.mail.yahoo.com>
+
+Hmmm...I downloaded the 0.50 stuff and extracted everything without fail.
+I suspect that your file got corrupted (or you disk is full ??:O). Let me know
+if you find out anything...
+
+Good luck,
+Ralph
+
+--- Ralph Stickley <r_stickley@yahoo.com> wrote:
+> Hey,
+> Ok..that is bizarre...I don't have the 0.50 version, I just upgraded to the
+> V0.51.  I was able to extract all the packages with that version.
+> 
+> So, lets see whats happening here.
+> First, is it possible to install the rpm manually ?
+> The RPM command being used is built as follows:
+> 
+>    srcName="dev....rpm"              # filename
+>    rootDir=".../Embedded_Build/rpm"  # fill your path in here
+>    
+>    rpmOptions="--force  --noscripts --nodeps --notriggers \
+>                --dbpath /.rpm_db  --ignorearch --ignoreos"  
+> 
+>    $RPM -i --root $rootDir $rpmOptions $srcName                              
+>  
+> 
+> 
+> Try that script and see if it you can tell what is going wrong.
+> (The actual extraction occurs in pwl_pkgmgr in function "pkgmgr_rpm_extract")
+>                     
+> Another potential point of failure is that some of the "info" stuff
+> associated
+> with the rpm file may not be what the package manager is expecting.
+> 
+> If you don't find anything wrong here, try the upgrade. Meanwhile, I'll
+> download this version and see what happens here.
+> Thanks,
+> Ralph
+> 
+> One thing to do is to 
+> --- Michael George <george@mintcity.com> wrote:
+> > Hi all!
+> > 
+> > I have a bizarre problem that I'm hoping someone has seen before, or
+> perhaps
+> > might have a workaround.  I have peeweelinux-0.50-bin.tar.gz, and I've
+> > installed it at work and at home.  Both machines are running a basic RHL6.1
+> > system.  The one at work is running just fine.  But I am trying to Extract
+> > the
+> > rpm files into the package directory.  When I try to do so, though, the
+> > extraction process gets stuck at the dev*.rpm package.
+> > 
+> > It doesn't freeze, for I can watch the rpm process consuming time and
+> nearly
+> > 100% of the processor, but I just get the "Extracting ... dev...rpm."
+> > message.
+> > The additional "." never appear and it just sits there indefinately.
+> > 
+> > Very strange, indeed!
+> > 
+> > Has anyone else ever heard of this or seen it?  Is there a way I can work
+> > around it and get the packages all unpacked?
+> > 
+> > Thanks for any help!
+> > 
+> > -Michael
+> > 
+> > -- 
+> > No, my friend, the way to have good and safe government, is not to trust it
+> > all to one, but to divide it among the many, distributing to every one
+> > exactly
+> > the functions he is competent to.  It is by dividing and subdividing these
+> > republics from the national one down through all its subordinations, until
+> it
+> > ends in the administration of every man's farm by himself; by placing under
+> > every one what his own eye may superintend, that all will be done for the
+> > best.
+> >                 -- Thomas Jefferson, to Joseph Cabell, 1816
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+> 
+> 
+> __________________________________________________
+> Do You Yahoo!?
+> Send instant messages & get email alerts with Yahoo! Messenger.
+> http://im.yahoo.com/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages & get email alerts with Yahoo! Messenger.
+http://im.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Sep 20 16:37:31 2000
+From: PeeWeeLinux@adis.on.ca (Dr Jaime V. Miro)
+Date: Wed, 20 Sep 2000 16:37:31 +0100
+Subject: booting into a ram disk
+References: <Pine.LNX.4.10.10009141242000.2281-100000@develop.knet.on.ca> <39C78D8C.927B2166@h2eye.com>
+Message-ID: <39C8D9BB.BD3CB51B@h2eye.com>
+
+"Dr Jaime V. Miro" wrote:
+> 
+> Hi,
+> 
+> I've got a minimalistic embedded linux system developed from peeweelinux (0.51). It was done with pwlconfig. I had to add a couple of libs manually, otherwise it would not boot up (libncurses.so.4 and libtermcap.so.2), but it does now. It resides in the HD, boots up, and let's me login with "root" or "admin".(not much more, as yet)
+> 
+> Feeling brave, I attempted the next step with the ultimate goal of booting from a CF disk: booting from a ram disk. I first tried the tool that comes with pwlconfig (rd_dialog), but it keeps asking me for a project, and while it recognises the name of the last one (the ever present "simple"), no matter what I do or write, can't go past this point. I am probably doing something wrong, but don't know what it is, 
+
+
+found out: select the "number" of the project. I feel a bit stupid now, 'cause it just did not cross my mind. But here is my admission, in case somebody is stuck on the same thing ( probably not ... ;-) )
+
+
+so I've tried to do it manually (I've done it successfully b4 with another / and
+> kernel). I mounted the ram disk, copied the fs into it, unmount it, created the image, compress it, edit lilo to refer to this new image, and reboot. After a couple of glitches (it never likes /devram1, whilst /dev/ram0 is okay ...?), the system boots, mounts the fs into ram, and gives me the peewee prompt ... but I can't login using "root" or "admin" like before! I don't know why. It is exactly the same image and kernel as the one residing in the HD, so passwd and permissions are the same. But
+> it does not go past the login screen. Any pointers?
+
+
+still stuck on that one though! I'll try rd_dialog and see what happens.
+
+thanks in advance
+
+Jaime
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Sep 25 05:52:56 2000
+From: PeeWeeLinux@adis.on.ca (Michael J. Hoyt)
+Date: Sun, 24 Sep 2000 21:52:56 -0700
+Subject: ./bin/Lilo6_21 ?
+Message-ID: <39CEDA27.8132AE2D@san.rr.com>
+
+I am trying to use pwlconfig to write my newly created file system to a
+Disk On Chip device.  I keep getting the following error:
+
+./bin/Lilo6_21 Not found
+
+Total Size of new file system:13k /diskonchip
+
+I purposely didn't include lilo in the configuration step since have the
+patched version (plilo) that I'll be using so I don't really understand
+the reference to lilo here.
+
+Any ideas on what the problem may be?
+
+thanks,
+
+Mike
+mhoyt@san.rr.com
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Sep 25 14:59:01 2000
+From: PeeWeeLinux@adis.on.ca (Ralph Stickley)
+Date: Mon, 25 Sep 2000 06:59:01 -0700 (PDT)
+Subject: ./bin/Lilo6_21 ?
+Message-ID: <20000925135901.38430.qmail@web9103.mail.yahoo.com>
+
+Michael,
+The Lilo6_21 was a version of the patched lilo thing from M-Systems.
+The scripts verify that this file exists - however, I think that 
+this file has not been included in some of the latest versions of 
+PeeWee Linux. Best thing to do is to upgrade if you get a chance...
+
+BTW, The reference to LILO is defined in pwl_functions - just change
+the definition to look like the following:
+
+PLILO=./bin/plilo
+
+and place your plilo program in the Embedded_Build/bin directory.
+
+Hmmmm...this would be nice default for DOC section in the 
+project.defaults file...
+
+Good luck...
+Ralph
+
+--- "Michael J. Hoyt" <mhoyt@san.rr.com> wrote:
+> I am trying to use pwlconfig to write my newly created file system to a
+> Disk On Chip device.  I keep getting the following error:
+> 
+> ./bin/Lilo6_21 Not found
+> 
+> Total Size of new file system:13k /diskonchip
+> 
+> I purposely didn't include lilo in the configuration step since have the
+> patched version (plilo) that I'll be using so I don't really understand
+> the reference to lilo here.
+> 
+> Any ideas on what the problem may be?
+> 
+> thanks,
+> 
+> Mike
+> mhoyt@san.rr.com
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+
+__________________________________________________
+Do You Yahoo!?
+Send instant messages & get email alerts with Yahoo! Messenger.
+http://im.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Tue Sep 26 06:31:26 2000
+From: PeeWeeLinux@adis.on.ca (Michael J. Hoyt)
+Date: Mon, 25 Sep 2000 22:31:26 -0700
+Subject: ./bin/Lilo6_21 ?
+References: <20000925135901.38430.qmail@web9103.mail.yahoo.com>
+Message-ID: <39D034AE.347799BA@san.rr.com>
+
+thanks.  I'll give it a try.
+
+Mike
+
+Ralph Stickley wrote:
+
+> Michael,
+> The Lilo6_21 was a version of the patched lilo thing from M-Systems.
+> The scripts verify that this file exists - however, I think that
+> this file has not been included in some of the latest versions of
+> PeeWee Linux. Best thing to do is to upgrade if you get a chance...
+>
+> BTW, The reference to LILO is defined in pwl_functions - just change
+> the definition to look like the following:
+>
+> PLILO=./bin/plilo
+>
+> and place your plilo program in the Embedded_Build/bin directory.
+>
+> Hmmmm...this would be nice default for DOC section in the
+> project.defaults file...
+>
+> Good luck...
+> Ralph
+>
+> --- "Michael J. Hoyt" <mhoyt@san.rr.com> wrote:
+> > I am trying to use pwlconfig to write my newly created file system to a
+> > Disk On Chip device.  I keep getting the following error:
+> >
+> > ./bin/Lilo6_21 Not found
+> >
+> > Total Size of new file system:13k /diskonchip
+> >
+> > I purposely didn't include lilo in the configuration step since have the
+> > patched version (plilo) that I'll be using so I don't really understand
+> > the reference to lilo here.
+> >
+> > Any ideas on what the problem may be?
+> >
+> > thanks,
+> >
+> > Mike
+> > mhoyt@san.rr.com
+> >
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+>
+> __________________________________________________
+> Do You Yahoo!?
+> Send instant messages & get email alerts with Yahoo! Messenger.
+> http://im.yahoo.com/
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

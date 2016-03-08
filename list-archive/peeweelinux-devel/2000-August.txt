@@ -1,0 +1,71 @@
+From PeeWeeLinux-devel@adis.on.ca  Sat Aug 12 10:29:51 2000
+From: PeeWeeLinux-devel@adis.on.ca (core)
+Date: Sat, 12 Aug 2000 03:29:51 -0600
+Subject: test...
+Message-ID: <00081203301900.12410@down.terraplex.com>
+
+test....
+
+Best Regards,
+Charles Stevenson
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Sat Aug 12 10:37:49 2000
+From: PeeWeeLinux-devel@adis.on.ca (core)
+Date: Sat, 12 Aug 2000 03:37:49 -0600
+Subject: Broken Link
+Message-ID: <00081203394501.12410@down.terraplex.com>
+
+There is a broken link on the main page:
+
+http://linuxdoc.org/HOWTO/Bootdisk-HOWTO.html
+
+it should point to:
+
+http://linuxdoc.org/HOWTO/Bootdisk-HOWTO/index.html
+
+The site is very nice looking... going to brush up on the distro as well as the
+config tool. 
+
+Regards,
+Charles Stevenson
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Sat Aug 12 11:01:02 2000
+From: PeeWeeLinux-devel@adis.on.ca (core)
+Date: Sat, 12 Aug 2000 04:01:02 -0600
+Subject: PeeWee Linux for the Power PC
+Message-ID: <00081204053302.12410@down.terraplex.com>
+
+Hi all,
+
+I work for a Power PC Linux company as a software engineer.  I would like to
+see about getting PeeWee Linux working under the ppc architecture.  Since most
+embedded systems are designed for the Motorola chips I believe this is a
+logical step.
+
+So, I look forward to working with everyone and I'll be in touch. :-)
+
+Best Regards,
+Charles Stevenson
+Software Engineer
+--
+  Terra Soft Solutions, Inc.
+  http://www.terrasoftsolutions.com/
+  Yellow Dog Linux
+  "The Ultimate Companion for a Dedicated Server"
+  http://www.yellowdoglinux.com/
+  Black Lab Linux
+  Advanced Workstations, Parallel, and Embedded Solutions
+  http://www.blacklablinux.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+

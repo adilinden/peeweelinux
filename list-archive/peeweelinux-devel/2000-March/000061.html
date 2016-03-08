@@ -1,0 +1,186 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Greetings--may I be of service?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000060.html">
+   <LINK REL="Next"  HREF="000062.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Greetings--may I be of service?
+   </H1>
+    <B>Dennis W. Tokarski
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Greetings--may I be of service?">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Tue, 14 Mar 2000 16:00:12 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000060.html">Greetings--may I be of service?
+</A></li>
+        <LI> Next message: <A HREF="000062.html">Greetings--may I be of service?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ralph,
+
+Ralph Stickley wrote:
+&gt;<i> 
+</I>&gt;<i> Hi Dennis,
+</I>&gt;<i> 
+</I>&gt;<i> I hope we have something here you can use. Like you, I think both Adi
+</I>&gt;<i> and I want to build on the &quot;latest&quot; RH distribution, but finding nothing
+</I>&gt;<i> available we ended up doing it ourselves.
+</I>&gt;<i> 
+</I>Somebody's gotta be the first ;)
+
+&gt;<i> We are currently trying to get the system up with X windows. Adi is
+</I>&gt;<i> doing all the library and binary compiling and configuring (all the
+</I>
+A subset of that work will be useful to us as well. I'm thinking we
+might
+use just the SVGA server, maybe even a stripped down version of it, to
+do mode switching and provide low level graphics primitives. We have an
+existing applications level graphics library that's compact and well
+suited
+to the application which we could layer on top of that.
+
+I just can't see trying to use all of X, it's whopping huge.
+
+&gt;<i> in-depth technical stuff).  I am developing the pwlconfig program
+</I>&gt;<i> as a means 1) to stop the never ending studying of How-Tos and
+</I>&gt;<i> 2) because nobody else has done it.  I started reading all the
+</I>&gt;<i> How-Tos and then would have to go back and re-read them...never
+</I>&gt;<i> being good at following the instructions, I could never get anything
+</I>&gt;<i> to work twice in a row :-o
+</I>&gt;<i> 
+</I>
+That makes two of us. I'm wading through lots of docs right now to
+figure
+out the minimal set of components in your distro that will fit on a
+single
+floppy and still boot. 
+
+&gt;<i> I am configuring and booting from Disk-On-Chip (Msystems) Disk-On-Module
+</I>&gt;<i> (PQI) and Compact flash cards (IDE to CF adaptor from PC-Engines).
+</I>&gt;<i> This will also work from any partition on any mounted hard drive.
+</I>&gt;<i> We haven't done the Floppy or CD-ROM boot image yet.
+</I>&gt;<i> 
+</I>&gt;<i> The next big ToDo is a read-only partition and/or ramdisk boot...
+</I>&gt;<i> 
+</I>Yeah, that's what I found to be missing right off.
+
+I'm running your pwlconfig 0.82. Looks like you've got some floppy
+support
+there, but so far you assume the target device is big enough to hold
+everything
+on an uncompressed file system. Support for a compressed ramdisk image
+might
+be useful.
+
+In a couple more days I should have a page or two of notes for you on my
+pwlconfig experience. I found one trivial bug so far, most of my items
+are
+just user interface issues.
+
+
+&gt;<i> As a little background: I spent a year or so working with QNX - it 
+</I>&gt;<i> seems a bit cleaner than the Linux stuff, probably because it all came 
+</I>&gt;<i> from the same shop, but the costs are way too high for the project I'm 
+</I>            ^^^^^^
+Well, only partly. I've had a lot of discussions/arguments with a friend
+about this lately, and I am really convinced that architecture matters.
+There
+is just so much messy baggage and clunkiness that comes along with a
+monolithic
+architecture. I think micro kernels got a bad rap because Mach was so
+poorly
+done, and was hardly &quot;micro&quot;. As QNX has forced me to realize, the data
+copying
+that goes with synchronous message passing is generally so little as to
+impose
+no meaningful performance penalty. And the notion that you can use a
+user-space
+debugger on a driver (except for the ISR), even to the point of doing
+post mortem
+dump analysis, is a wonderful thing.
+
+But you are right, QNX is expensive in an absolute sense, even if it's
+not when compared to some of its competitors.
+
+&gt;<i> Note: the freeBIOS group is currently working to install LILO in
+</I>&gt;<i> ROM and maybe even the kernel in rom.  I recommend checking with them
+</I>&gt;<i> to figure out where they are ...
+</I>&gt;<i> 
+</I>I'll check it out, thanks!
+
+&gt;<i> 
+</I>&gt;<i> Is a write protected flash drive sufficient ? This would make development
+</I>&gt;<i> a lot easier.  Maybe start here, get it working then migrate to a ROM...
+</I>
+Oh sure, for development we can do anything we find convenient. Products
+which go into the field can not use run-time writeable program store,
+it's
+a regulatory requirement. There's even a question of whether it's
+permissible
+to load from ROM and execute from RAM. We *may* wind up having to have
+our
+code segments in ROM. I hope not though.
+
+&gt;<i> Do you have the Source for your BIOS ? (BTW, General Software BIOS is
+</I>&gt;<i> fairly cheap if you have any development budget...FreeBIOS isn't quite
+</I>&gt;<i> there yet)
+</I>
+No source, but we don't need it. The CPU board is a Radisys thing, and
+Radisys will supply us with the BIOS as a binary image which we burn
+into
+the BIOS ROM along with our own user BIOS extension. The interface
+between
+the two is minimal and well defined.
+
+&gt;<i> CD-ROM boot would work if you have the hardware, but the upgrade
+</I>&gt;<i> is more on-site than most would like for large numbers of installed
+</I>&gt;<i> units.
+</I>
+That would be a real no-no for us.
+
+That's it for now, time to hit the HOWTOs some more. I'll get you some
+substantive feedback presently.
+
+--Cheers!
+  Dennis
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000060.html">Greetings--may I be of service?
+</A></li>
+	<LI> Next message: <A HREF="000062.html">Greetings--may I be of service?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: Using DOC
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000424.html">
+   <LINK REL="Next"  HREF="000426.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Using DOC
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Using DOC">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 18 Dec 2001 10:16:29 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000424.html">[Peeweelinux] newbee question about linkng against peewee linux
+</A></li>
+        <LI> Next message: <A HREF="000426.html">[Peeweelinux] Problems running version 0.61 on Redhat 7.2 system
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#425">[ date ]</a>
+              <a href="thread.html#425">[ thread ]</a>
+              <a href="subject.html#425">[ subject ]</a>
+              <a href="author.html#425">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+&gt;<i> I would rather use an uncompressed filesystem (I know this adds some
+</I>&gt;<i> confusion), as I want to be able to save configuration changes and new
+</I>&gt;<i> files, etc... I do not know how the compressed disk is made, or how I would
+</I>&gt;<i> edit a particular file within the compressed disk... Anyways...
+</I>
+pwlconfig has an option available which will create 2 partitions on the 
+target device, a bootable  FAT partition with kernel and an ext2 partition 
+with an uncompressed filesystem which is copied into a RAM disk at boot 
+time. This option should work with the DOC.
+
+&gt;<i> I am running pwlconfig from an HDD (/dev/hda) on the Wafer board with the
+</I>&gt;<i> DOC. I can mount and the pwlconfig works just fine.
+</I>
+I have never tried running pwlconfig on the same platform as my target, so 
+I never attempted to actually have pwlconfig load a filesystem onto an 
+attached DOC. I always used the intermediate step of loading a CF and 
+moving files from it to the DOC once its running on the target system.
+
+&gt;<i> Can you set the target device as /dev/msys/fla1? How id your syslinux.cfg
+</I>&gt;<i> file setup? Does it somehow load that doc.b or something?
+</I>
+I think /dev/fla or /dev/msys/fla should work. pwlconfig works on the 
+complete target device, not a single partition. It will use fdisk and 
+filesystem tools to prepare and load the device.
+
+&gt;<i> What should the root= parameter be set to in the syslinux.cfg?
+</I>
+Not sure, it's been a while since I manually tweaked syslinux.cfg. 
+pwlconfig should do all that for you...
+
+&gt;<i> I am a little lost when it comes to syslinux. I was just so impressed at how
+</I>&gt;<i> easy it was to do with CF, that this DOC system is almost making me cry :(.
+</I>
+Yup, been there, done that. In my opinion getting DOC to support an ext2 
+filesystem to boot from is nothing short of a nightmare. I would avoid 
+that scenario at all costs. Keeping the bootpartition FAT and using 
+syslinux should be quite doable and fairly easy to reproduce once 
+succeeded.
+
+BTW, I think you had asked me to be added to the PWL mailing list. I just 
+added you manually. Hope this is ok.
+
+Adi
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000424.html">[Peeweelinux] newbee question about linkng against peewee linux
+</A></li>
+	<LI> Next message: <A HREF="000426.html">[Peeweelinux] Problems running version 0.61 on Redhat 7.2 system
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#425">[ date ]</a>
+              <a href="thread.html#425">[ thread ]</a>
+              <a href="subject.html#425">[ subject ]</a>
+              <a href="author.html#425">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

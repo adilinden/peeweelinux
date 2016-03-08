@@ -1,0 +1,184 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> New Feature? Configuration for ramdisks/hdd...
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000297.html">
+   <LINK REL="Next"  HREF="000299.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>New Feature? Configuration for ramdisks/hdd...
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="New Feature? Configuration for ramdisks/hdd...">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sat, 20 Jan 2001 00:21:05 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000297.html">New Feature? Configuration for ramdisks/hdd...
+</A></li>
+        <LI> Next message: <A HREF="000299.html">0.60.0 release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#298">[ date ]</a>
+              <a href="thread.html#298">[ thread ]</a>
+              <a href="subject.html#298">[ subject ]</a>
+              <a href="author.html#298">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+&gt;<i> However, the pwl_target* scripts force us to use the /home directory
+</I>&gt;<i> as a ramdisk, mirrored from another partition.  While this may be a
+</I>&gt;<i> good choice, it seems that the configuration tool should not dictate
+</I>&gt;<i> the file system (since everything else is configurable).
+</I>
+You're right, the filesystems which reside entirely in a ramdisk are
+pretty straight forward and there aren't really any more choices than
+what's been presented.
+
+I still like to add the load onto existing partition type. This should
+make for an easy to use dual-boot without the need for a dedicted drive.
+
+Anyhow, the read-only root system doesn't offer much flexibility as it is
+now... hmmm... make that no flexebility? One of the features I hope to add
+in the near future is a kernel with devfs. This would eliminate the /dev
+ramdisk all together. So making the read-only ramdisk target more flexible
+is certainly a great idea.
+
+&gt;<i> Also, by specifying the partitions, we should be able to boot this
+</I>&gt;<i> from a small partition on the development drive...have to work out
+</I>&gt;<i> the lilo thing, but this looks like it would work...
+</I>
+Wouldn't that remove the fdisk step and prevent the use of a totally
+unconditioned target?
+
+&gt;<i> And some questions:
+</I>&gt;<i> Is there some reason that /var is linked under /dev ?
+</I>
+Yes, /var is a 'scrap' area for the most part that needs to be writable.
+Since devices take 0 filespace but 1 inode each I found it made a lot of
+sense to build a ramdisk to contain both filesystems. Since some system
+binaries expect devices to live in /dev it is not possible to symlink /dev
+without breaking things. By linking /var under /dev a lot less space is
+required than building a /dev ramdisk individually.
+
+&gt;<i> Does the initrd use the same fstab (why is fstab built twice in the
+</I>&gt;<i> build_ro_root function ?)
+</I>
+Because we need fstab twice along with a bunch of other files. All the
+initrd does is uncompress the ramdisks images into ram. I think it might
+be possible to do without initrd and move these tsks into rc.init. Not
+sure, though. Anyhow, here's how we boot...
+
+1.  Load the initrd image into ram (I think it comes first)
+2.  Load the kernel
+3.  Execute the kernel
+4.  Mount initrd
+5.  Execute linuxrc
+   a. decompress ramdisk images into ram
+   b. point kernel to new and final root device
+   Note: initrd needs to contain any libs, devices, etc used by linuxrc
+6.  kernel mounts final root filesystem read-only
+7.  init is started and executes rc.init
+8.  rc.init mounts ramdisks
+9.  rc.init executes /etc/rc.sysinit
+
+Around number 7 things get hairy: 
+  Init requires /etc/inittab
+  We need to have a console
+  rc.init requires devices 
+  Mount requires an /etc/fstab, /etc/mtab
+
+BUT, when init is executed the contents of the /etc directory still reside
+in an unmounted ramdisk as do the devices.
+
+So we need to create and duplicate anything that's needed prior to /etc,
+/dev and /var being mounted on the root filesystem. Hence, we need fstab
+created for the /etc ramdisk and again for the root filesystem.
+   
+&gt;<i> Is the /home directory mirrored from a partition a common/desirable
+</I>&gt;<i> thing to do ? 
+</I>&gt;<i> -- I'd need to define someway to specify that ramdisk=/home is not
+</I>&gt;<i> compressed by pwlconfig but copied at boot time from some other
+</I>&gt;<i> configured partition
+</I>
+It was my idea of possibly doing a dd or something like that to save
+anything written to /home if so desired. No specific reason, perhaps not
+even desired, just a thought of possibly saving the contents of /home on a
+running system.
+
+&gt;<i> Your thoughts ? Is this interesting or just something we need ?
+</I>&gt;<i> I'll try to get a system to boot today and send you a copy - or
+</I>&gt;<i> anyone else who is very brave, let me know...(of course, I'm out to
+</I>&gt;<i> BIOS world next week, so we can just let the code fester for a while
+</I>&gt;<i> :)
+</I>
+This is very interesting. The read-only ramdisk target defenitely need
+improvement and your idea of making it completely configurable is great.
+
+I hit 2 big stumbling blocks. One that came up is the calculation of
+filesystem sizes: How do you determine a filesystem size independent from
+the block size of the development system? How can the filesystem size be
+calculated more acurately.
+
+Some devices and files are needed on the read-only root before the
+ramdisks are mounted and available. This list is different for every
+application. How can this be made more flexible?
+
+Some points to keep in mind:
+
+/var and /dev need to be writable. Period. So combining both in a common
+ramdisk might sound inflexible but makes a lot of sense when you consider
+that 50 devices require 50 inodes containing nothing.  Considering minimal
+filesystem requirements it becomes a waste of space, especially if those
+50 inodes can be easily provided for in an existing ramdisk without
+sacrifice and additional space requirements.
+
+Portions of /etc need to writeable. For ease of maintenance and
+configuration changes I created an independent ramdisk. It could as well
+be another symlink into the /dev/var ramdisk.
+
+I think I ran into problems running X if /root or /home/&lt;username&gt; wasn't
+writable. Don't remember. Again this could be its own ramdisk or a
+symlinks.
+
+I don't know what happens the next few days. I am on a days notice for a 2
+day trip which will happen during the next few days. If I don't have to go
+anywhere this weekend there will be time to look at the funtiones you send
+over and make some comments.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000297.html">New Feature? Configuration for ramdisks/hdd...
+</A></li>
+	<LI> Next message: <A HREF="000299.html">0.60.0 release
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#298">[ date ]</a>
+              <a href="thread.html#298">[ thread ]</a>
+              <a href="subject.html#298">[ subject ]</a>
+              <a href="author.html#298">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

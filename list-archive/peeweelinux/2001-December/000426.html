@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Problems running version 0.61 on Redhat 7.2 system
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000425.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Problems running version 0.61 on Redhat 7.2 system
+   </H1>
+    <B>Steve Rodgers
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Problems running version 0.61 on Redhat 7.2 system">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 28 Dec 2001 12:58:34 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000425.html">[Peeweelinux] Re: Using DOC
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#426">[ date ]</a>
+              <a href="thread.html#426">[ thread ]</a>
+              <a href="subject.html#426">[ subject ]</a>
+              <a href="author.html#426">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have a few questions about PeeWee linux. I've been able to get the basic 
+kernel in version 0.61 to boot on my X86 embedded board using a 8MB compact 
+flash card but there are a number of issues I am tryng to resolve. I beleive 
+all of my problems can be traced to installing PeeWee on a Redhat 7.2 system
+but I am not completely convinced.
+
+First, the problems-
+
+The kernel seems slow to boot (abt. 1 min). I am using a compressed bzImage 
+and a compressed file system  on a single ext2 partition with LILO. I am 
+passing append=&quot;console=ttyS1,9600n8&quot; to the kernel 
+which should re-direct all the boot info to the ttyS1 device. Could it be that
+the lilo binary in the Redhat 7.2 system is causing this problem? The 
+initialization sequence also indicates there is a PC keyboard timeout.
+Since I don't have hardware for a PC keyboard, should I be looking here?
+
+I can't seem to compile any custom kernel without the make bzImage failing
+with a problem in checksum.s. Is this because the assember installed on the
+redhat 7.2 system has been changed in some manner to not allow the checksum/s 
+file to be assembled cleanly? Is it possible to install and run PeeWee 
+version 0.61 on a sysem running version a version 2.4 kernel  such as Redhat 
+7.2 without modifications?
+
+If modifications are required to make Pee Wee Linux version 0.61 run cleanly 
+on a Redhat 7.2 box. Would the procedure make it work be more painful than
+getting a new hard disk and installing Redhat 6.2 on it?
+
+Thanks,
+
+Steve Rodgers
+San Diego, CA
+
+
+
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000425.html">[Peeweelinux] Re: Using DOC
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#426">[ date ]</a>
+              <a href="thread.html#426">[ thread ]</a>
+              <a href="subject.html#426">[ subject ]</a>
+              <a href="author.html#426">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

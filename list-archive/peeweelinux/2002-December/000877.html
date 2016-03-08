@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Cannot stat /dev/hdc11, compact flash, **urgent**
+ pls help
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000876.html">
+   <LINK REL="Next"  HREF="000878.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Cannot stat /dev/hdc11, compact flash, **urgent**
+ pls help
+   </H1>
+    <B>Adilson Oliveira
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Cannot stat /dev/hdc11, compact flash, **urgent**
+ pls help">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sat, 21 Dec 2002 09:00:38 -0200</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000876.html">[Peeweelinux] Cannot stat /dev/hdc11, compact flash, **urgent** pls help
+</A></li>
+        <LI> Next message: <A HREF="000878.html">[Peeweelinux] Cannot stat /dev/hdc11, compact flash, **urgent** pls help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#877">[ date ]</a>
+              <a href="thread.html#877">[ thread ]</a>
+              <a href="subject.html#877">[ subject ]</a>
+              <a href="author.html#877">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Rushi(temp) wrote:
+&gt;<i> Hi friends
+</I>
+Hello!
+
+&gt;<i> 
+</I>&gt;<i> 1)     I connect the CF as a secondary master IDE\
+</I>
+Ok, hdc.
+
+&gt;<i> 2)     Do Cfdisk /dev/hdc  to make primary ex2 partition and make it 
+</I>&gt;<i> bootable which is /dev/hdc1
+</I>
+You don't have to. The pwconfig does it for you.
+
+&gt;<i> 
+</I>&gt;<i> 3)     Reboot
+</I>&gt;<i> 
+</I>&gt;<i> 4)     Start ./pwlconfig
+</I>&gt;<i> 
+</I>&gt;<i> 5)     Configure kernel 2.4.17 and all other packages
+</I>&gt;<i> 
+</I>&gt;<i> 6)     When I try to write the thing on my target , which I spacidied as 
+</I>&gt;<i> /dev/hdc1 in target configuration, it come up with this error L
+</I>
+The target must be a device, not a partition. You have to poit to 
+/dev/hdc not hdc1
+That should do the trick.
+
+[]s and good luck from Brazil.
+
+Adilson.
+
+P.S. Today it's our first day of summer and it's rainning dogs ;)
+
+-- 
+Existem 10 tipos de pessoas no mundo: as que entendem numeração binária 
+e as que não.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000876.html">[Peeweelinux] Cannot stat /dev/hdc11, compact flash, **urgent** pls help
+</A></li>
+	<LI> Next message: <A HREF="000878.html">[Peeweelinux] Cannot stat /dev/hdc11, compact flash, **urgent** pls help
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#877">[ date ]</a>
+              <a href="thread.html#877">[ thread ]</a>
+              <a href="subject.html#877">[ subject ]</a>
+              <a href="author.html#877">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

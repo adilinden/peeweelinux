@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] [peewee and cramfs] mounting a cramfs partition
+ in  linux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000466.html">
+   <LINK REL="Next"  HREF="000468.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] [peewee and cramfs] mounting a cramfs partition
+ in  linux
+   </H1>
+    <B>Dennis W. Tokarski
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] [peewee and cramfs] mounting a cramfs partition
+ in  linux">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 7 Feb 2002 22:57:11 -0500 (EST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000466.html">[Peeweelinux] [peewee and cramfs] mounting a cramfs partition in linux
+</A></li>
+        <LI> Next message: <A HREF="000468.html">[Peeweelinux] Kernel update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#467">[ date ]</a>
+              <a href="thread.html#467">[ thread ]</a>
+              <a href="subject.html#467">[ subject ]</a>
+              <a href="author.html#467">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&quot;Charles T. Houghtby IV&quot; wrote:
+&gt;<i>
+</I>&gt;<i> Hi all!
+</I>&gt;<i>
+</I>
+Hi Charles,
+
+If mount says that cramfs isn't supported by the kernel and cramfs
+is absent from the list in /proc/filesystems, then it's probably
+true ;)
+
+&gt;<i> my kernel version is 2.4.17 with both romfs and cramfs support &lt;*&gt; compiled in.
+</I>&gt;<i>
+</I>&gt;<i> /proc/filesystems
+</I>&gt;<i> nodev           rootfs
+</I>&gt;<i> nodev           bdev
+</I>&gt;<i> nodev           proc
+</I>&gt;<i> nodev           sockfs
+</I>&gt;<i> nodev           tmpfs
+</I>&gt;<i> nodev           shm
+</I>&gt;<i> nodev           pipefs
+</I>&gt;<i> nodev           binfmt_misc
+</I>&gt;<i> ext2
+</I>&gt;<i> msdos
+</I>&gt;<i> iso9660
+</I>&gt;<i> nodev           nfs
+</I>&gt;<i> nodev           devpts
+</I>&gt;<i>
+</I>
+At a guess, you may have accidentally configured the kernel to have
+*modular* support for cramfs and romfs rather than building it into
+the actual kernel image. Run the kernel configurator again (e.g.,
+'make xconfig' in the kernel source directory) and double check
+under filesystems that you selected built-in rather than modular
+cramfs and romfs support. If you're using xconfig, the built-in
+button is the left-most one, the middle one is for modular support.
+
+Good luck,
+
+ Dennis Tokarski
+ PolTec Electronics
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000466.html">[Peeweelinux] [peewee and cramfs] mounting a cramfs partition in linux
+</A></li>
+	<LI> Next message: <A HREF="000468.html">[Peeweelinux] Kernel update
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#467">[ date ]</a>
+              <a href="thread.html#467">[ thread ]</a>
+              <a href="subject.html#467">[ subject ]</a>
+              <a href="author.html#467">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

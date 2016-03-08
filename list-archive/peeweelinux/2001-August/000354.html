@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Can mount ramdisk root (/) ; Can't find /sbin/init
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000353.html">
+   <LINK REL="Next"  HREF="000355.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Can mount ramdisk root (/) ; Can't find /sbin/init
+   </H1>
+    <B>Tim Westbrook
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Can mount ramdisk root (/) ; Can't find /sbin/init">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 23 Aug 2001 22:10:03 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000353.html">Telnet problem
+</A></li>
+        <LI> Next message: <A HREF="000355.html">notice from your webhost
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#354">[ date ]</a>
+              <a href="thread.html#354">[ thread ]</a>
+              <a href="subject.html#354">[ subject ]</a>
+              <a href="author.html#354">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Howdy.
+   4 nights and nothing to show for it but a greatly
+enhanced knowledge of the linux boot process... and
+yet.....
+   I am using a DOC system with an uncompressed ext2
+ramdisk and initrd.
+   When I boot up , 
+       initrd runs (which installs my DOC driver),
+       the /dev/msys/fla2 gets successfully
+transferred to /dev/ram2,
+       the kernel reports a successful mount of the
+root filesystem,
+       The kernel reports it can't find init.
+
+   I also have a development hda on this system and if
+I pass the &quot;root=/dev/hda1 init=/bin/sh&quot; command to
+the kernel/bootloader it comes up fine. I can even
+mount /dev/ram2 and run /ram/mount/point/sbin/init.
+
+   Any ideas? 
+   I am getting a psychic vibration from the ramdisk
+configuration. Could this be a library issue? 
+
+Thanks
+-Tim
+
+
+__________________________________________________
+Do You Yahoo!?
+Make international calls for as low as $.04/minute with Yahoo! Messenger
+<A HREF="http://phonecard.yahoo.com/">http://phonecard.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000353.html">Telnet problem
+</A></li>
+	<LI> Next message: <A HREF="000355.html">notice from your webhost
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#354">[ date ]</a>
+              <a href="thread.html#354">[ thread ]</a>
+              <a href="subject.html#354">[ subject ]</a>
+              <a href="author.html#354">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

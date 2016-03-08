@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] nfs with peewee, kernel 2.4.20
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000980.html">
+   <LINK REL="Next"  HREF="000976.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] nfs with peewee, kernel 2.4.20
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] nfs with peewee, kernel 2.4.20">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 24 Mar 2003 11:20:24 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000980.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+</A></li>
+        <LI> Next message: <A HREF="000976.html">[Peeweelinux] nfs with peewee, kernel 2.4.20
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#975">[ date ]</a>
+              <a href="thread.html#975">[ thread ]</a>
+              <a href="subject.html#975">[ subject ]</a>
+              <a href="author.html#975">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I am using kernel 2.4.20  (with RTAI patches). I have built the kernel custom and put it in the custom/boot directory. I have put my modules in the appropriate place in custom/lib. 
+
+I have built nfs into my custom kernel and am subsequently trying to mount an nfs filesystem off of my debian server machine. 
+
+I modified the peewee fstab manually and checked off not to generate boot files. 
+
+when I try to mount the nfs export the mount command hangs, and I am able to switch to another terminal and run dmesg, which reports the following:
+
+begin***
+
+NFS: NFSv3 not supported.
+nfs warning: mount version older than kernel.
+ hda:hda1
+ hda:hda1
+portmap: server localhost not responding, timed out.
+
+***end
+
+The NFSv3 message I can see is possibly because I didn't enable v3 support in my custom kernel. The mount message kind of worries me, and I am not sure if it is the culprit or not. 
+
+I am not sure what the timeout message means, but I ran ifconfig and got the following from lo device:
+
+begin***
+inet addr: 127.0.0.1     Mask:255.0.0.0
+UP LOOPBACK RUNNING
+***end
+
+etc etc...
+
+I am not sure where to start debugging this. I tried copying a new version of mount, but it is dynamically linked to GLIBC 2.2, so I can't use it. 
+
+any ideas are appreciated.
+
+~Ken
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000980.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+</A></li>
+	<LI> Next message: <A HREF="000976.html">[Peeweelinux] nfs with peewee, kernel 2.4.20
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#975">[ date ]</a>
+              <a href="thread.html#975">[ thread ]</a>
+              <a href="subject.html#975">[ subject ]</a>
+              <a href="author.html#975">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

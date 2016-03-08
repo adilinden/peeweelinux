@@ -1,0 +1,74 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> signal catching in PeeWeeLinux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000141.html">
+   <LINK REL="Next"  HREF="000144.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>signal catching in PeeWeeLinux
+   </H1>
+    <B>Dr Jaime V. Miro
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="signal catching in PeeWeeLinux">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 08 Nov 2000 12:10:18 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000141.html">PeeWeeLinux updated
+</A></li>
+        <LI> Next message: <A HREF="000144.html">signal catching in PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#143">[ date ]</a>
+              <a href="thread.html#143">[ thread ]</a>
+              <a href="subject.html#143">[ subject ]</a>
+              <a href="author.html#143">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've sent a few posting lately regarding signal catching during booting-up (see messages above, in Nov'00), only to realise that the problem I am having is not specific to the boot-up process but seems to be general to PWL.
+
+Essentially, I am writing an application that needs catching a signal sent by the user. I dont't need a shell, being an embedded application, so I have chosen SIGQUIT (typing Ctrl+\ in kdb, but it could also easily be SIGINT, by typing CTRL+C). The application has been writen in a RH6.1 development machine with kernel 2.2.12, and static libraries linked into it. It works fine. 
+
+Now, I have PeeWeeLinux 0.51, which casually seems to be based on the same system (RH6.1). I've got it working fine. Boots up, gives me the prompt, loging in. No probs. Now, if I run my application (previosly copied accross from the dev machine), it starts fine, and works fine, but never catches the signal, i.e., loops forever. While this is the behaviour that will exhibit in the future, when it is a proper embedded system, during development is proving a pain to have to shutdown the system
+(ctrl+alt+del works, hence that signal is being cought by init, I guess) to terminate the application. 
+
+I can't quite work out the reason. Maybe I should link something else in PWL? maybe upgrading to 0.53 will solve it? (does not seem the reason to me, though)
+
+Any wild guesses? Thanks very much in advance,
+
+Jaime
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000141.html">PeeWeeLinux updated
+</A></li>
+	<LI> Next message: <A HREF="000144.html">signal catching in PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#143">[ date ]</a>
+              <a href="thread.html#143">[ thread ]</a>
+              <a href="subject.html#143">[ subject ]</a>
+              <a href="author.html#143">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> experiences with PWL0.53.10 (some problems?)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000169.html">
+   <LINK REL="Next"  HREF="000164.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>experiences with PWL0.53.10 (some problems?)
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="experiences with PWL0.53.10 (some problems?)">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 13 Nov 2000 15:15:18 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000169.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+        <LI> Next message: <A HREF="000164.html">Silent booting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#170">[ date ]</a>
+              <a href="thread.html#170">[ thread ]</a>
+              <a href="subject.html#170">[ subject ]</a>
+              <a href="author.html#170">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+It's solved!
+
+&gt;<i> /dev/hdc is not mounted. I don't know what else to do. Particularly
+</I>&gt;<i> since the script rd_dialog works fine. I am utterly puzzled,
+</I>&gt;<i> particularly since nobody else seems to have that problem. 
+</I>
+The problem with it is that pwlconfig defaults to relative paths. That is
+the default settings for the mount directory is relative to the
+Embedded_Build directory. Part of the checks done before running the
+target load script is to see if anything is mounted on the proposed
+loacation. If something is mounted subsequent mount commands on the same
+point will fail if something else is mounted.
+
+I came across it once I mounted /mnt/cdrom. The ./mnt matches /mnt/cdrom
+for some reason.
+
+I am working on a fix. A temporary solution is to enter the complete path
+to the mount pint in the 'Target Hardware Configuration' screen:
+
+   Device Mount Point: &quot;/root/Embedded_Build/mnt&quot;
+
+Make sure you match your actual path! 
+
+I will work on a more permanent and reliable fix tonight!
+
+&gt;<i> The latest attempt to solve it was to reinstall from scratch 0.53-bin
+</I>&gt;<i> file, and then add on top the new patch for 0.53.14 (only). Same result.
+</I>&gt;<i> I even tried to update patch after patch (8,10,14), with same results.
+</I>
+The peeweelinux-*-cfg.tag.gz archives are not incremental. They basically
+replace all the contents of scripts, bin and pwlconfig.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000169.html">experiences with PWL0.53.10 (some problems?)
+</A></li>
+	<LI> Next message: <A HREF="000164.html">Silent booting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#170">[ date ]</a>
+              <a href="thread.html#170">[ thread ]</a>
+              <a href="subject.html#170">[ subject ]</a>
+              <a href="author.html#170">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

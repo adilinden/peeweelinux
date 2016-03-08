@@ -1,0 +1,118 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] FAQ: New RedHat, no errors, no bzImage
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000732.html">
+   <LINK REL="Next"  HREF="000734.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] FAQ: New RedHat, no errors, no bzImage
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] FAQ: New RedHat, no errors, no bzImage">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 5 Aug 2002 12:45:25 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000732.html">[Peeweelinux] Cancel me from your mailing list.
+</A></li>
+        <LI> Next message: <A HREF="000734.html">[Peeweelinux] FAQ: New RedHat, no errors, no bzImage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#733">[ date ]</a>
+              <a href="thread.html#733">[ thread ]</a>
+              <a href="subject.html#733">[ subject ]</a>
+              <a href="author.html#733">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>So you all saw my lament about building a custom kernel, and
+smiled to yourselves, thinking, &quot;He'll find out soon enough&quot;.  Well,
+he's found out alright; I'd just suggest that if I could get through
+this sooner I might have some time to contribute to the project.
+Your punishment is you get to read the same answers again.
+
+I post this now because there are always new people always coming by 
+and this needs to stay visible.
+
+Problem: Redhat 7.3, &quot;Compile the Kernel&quot; succeeds, but &quot;Load 
+File System onto Target&quot; fails.  A little digging reveals that no
+kernel image (bzImage) was ever produced.
+
+Reason: &quot;Compile the Kernel&quot; did NOT succeed. 
+
+   Reason: checksum.S did not compile (ok, assemble).
+
+      Reason: gcc version 2.96 is broken.
+
+         Reason: Red Hat distributed it with 7.0 +
+
+Okay, solutions.
+
+First of all, (Ralph,) be aware that the pwlconfig script won't 
+catch this!  So don't be mislead.  If you want to check, go on
+to the next step  &quot;Create Custom Kernel Package (not rpm!)&quot;,
+then go back to &quot;Configure Project File System --&gt;&quot;,
+&quot;Kernel_Custom --&gt;&quot;,     then select the kernel you just built, 
+and look in the list for /boot/bzImage.  If you only see /boot, 
+then you didn't get a kernel.
+
+Next, RedHat supplies an older version of gcc especially for
+compiling kernels.  It's called kgcc.  It's an older egcs-2.91.66
+compiler that works just fine.  It should already be on your
+system.  Try 'which kgcc' and 'kgcc --version' to be sure.  There
+is no kgcc.rpm on my disks so I don't know where it came from.
+All you need to do now, to use it, is to edit your Makefile.  This is in  
+
+Embedded_Build/kernelbuild/usr/src/linux-2.2.17-13
+
+find the &quot;cc&quot; line:
+
+CC      =$(CROSS_COMPILE)kgcc -D__KERNEL__ -I$(HPATH)
+
+change &quot;cc&quot; to &quot;kgcc&quot; as I have done, 
+then compile once again, and things will start to
+work.
+
+
+About that &quot;2.96 is broken&quot; remark.  This was a development
+version that should not have been distributed.  The GNU 
+folks moved the version up to 2.97 in response and announced
+there would never be a stable version of 2.96  (So you'll know
+they are all broken).   I remember the discussions at the time
+(remember this was almost two years ago) and while I didn't
+retain all the kernel-related particulars I do know it 
+reinforced my own feelings that I should get a good version
+(2.95) and refuse to upgrade it until someone (several 
+someones!) announced an &quot;all clear&quot;.  
+
+searching on &quot;bzImage&quot; or &quot;checksum&quot; will find similar 
+problems and answers like this one.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000732.html">[Peeweelinux] Cancel me from your mailing list.
+</A></li>
+	<LI> Next message: <A HREF="000734.html">[Peeweelinux] FAQ: New RedHat, no errors, no bzImage
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#733">[ date ]</a>
+              <a href="thread.html#733">[ thread ]</a>
+              <a href="subject.html#733">[ subject ]</a>
+              <a href="author.html#733">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

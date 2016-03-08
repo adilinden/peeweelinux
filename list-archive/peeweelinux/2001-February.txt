@@ -1,0 +1,371 @@
+From peeweelinux@adis.on.ca  Wed Feb 14 21:01:14 2001
+From: peeweelinux@adis.on.ca (David Christensen)
+Date: Wed, 14 Feb 2001 13:01:14 -0800
+Subject: Needed: Simple PeeWee Linux Configuration with X & FrameBuffer Su
+ pport
+Message-ID: <D973CF70008ED411B273009027893BA409725D@irv-exch.phoenix.com>
+
+I'm trying to put together a simple configuration with PeeWeeLinux 0.60 to
+support X-Windows on a framebuffer device.  I've selected what appears to be
+the appropriate packages for X (XFree86, XFree86-100dpi-fonts,
+XFree86-75dpi-fonts, XFree86-FBDev, XFree86-libs, XFree86-stuff,
+XFree86-twm, XFree86-xdm, XFree86-xfs, and xpm) and when I reboot to test my
+system I get the error message "execve failed for /usr/X11R6/bin/X (errno
+2)" after typing startx.  Looking around I noticed that a symlink from
+Xwrapper -> X seems to be missing (at least that's the way it is on the RH
+6.2 development system I'm using).  When I create the symlink and run startx
+again I get a different error: "_X11TransSocketUNIXConnect: Can't connect:
+errno = 111".  What do I have to do to create a simple configuration that
+support X?
+
+David Christensen
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Feb 15 14:36:22 2001
+From: peeweelinux@adis.on.ca (Thomas Boore)
+Date: Thu, 15 Feb 2001 06:36:22 -0800 (PST)
+Subject: XDM question
+Message-ID: <20010215143622.1505.qmail@web612.mail.yahoo.com>
+
+Hello in peeweelinux land.
+
+I am looking for away to boot straight to an X-based
+login prompt using XDM, instead of the old
+black-and-white test console?
+
+What I am looking for are example of the following
+files.
+
+.Xsession
+.Xresource
+.Xsetup_0
+.Xservers
+
+This unit is not connect to a network. insead the unit
+is stand alone.
+
+thanks
+Thomas Boore
+tnboore@yahoo.com
+tnboore@hereintown.net
+tboore@datalux.com
+
+__________________________________________________
+Do You Yahoo!?
+Get personalized email addresses from Yahoo! Mail - only $35 
+a year!  http://personal.mail.yahoo.com/
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Feb 17 09:16:44 2001
+From: peeweelinux@adis.on.ca (Peter Gehring)
+Date: Sat, 17 Feb 2001 10:16:44 +0100
+Subject: PEEWEE 0.53.27 network configuration? problem
+Message-ID: <3A8E417C.4CB57FC8@vipco.de>
+
+I have some problems to run my peewee linux box at the network. My goal
+is to establish a simple telnet session to the linux box inside a
+intranet (192.168.0.xxx).
+
+I´m working with peewee 0.53.27.
+
+My peewee linux box has one network interface eth0 and my peewee system
+is based onto the example project "wireless isa" and it´s network
+scripts.
+
+I have connected a laptop at the linux box. The ping command will work
+fine from the laptop to the linux box and vice versa.
+
+A Telnet session locally at the linux box will work properly, but an
+attempt to start a telnet session from the laptop to the linuxbox will
+fail. With tcpdump i can see the telnet request, but an answer from the
+linux-box is missing.
+
+A telnet session from the linux box to the laptop will fail, too. With
+tcpdump I can see the request from the linux-box and the response from
+the laptop but nothing more will happen.
+
+It seems that all incoming ip-packets were lost at the linux box and
+don´t reach the application (INETD or TELNET).
+
+In my tests i´m working always with ip-addresses not with hostnames. I
+build different systems with all peewee kernels and my own custom
+kernel, but the result is always the same.
+
+It seems to be a configuration problem.
+
+Maybe I have to configure IP-masquerading or routing in a certain
+manner?
+
+Any idea why this isnt working?
+
+Thank you for helping and reading my problem
+
+Peter
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Feb 17 16:23:57 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 17 Feb 2001 10:23:57 -0600 (CST)
+Subject: PEEWEE 0.53.27 network configuration? problem
+In-Reply-To: <3A8E417C.4CB57FC8@vipco.de>
+Message-ID: <Pine.LNX.4.10.10102171020350.4095-100000@develop.knet.on.ca>
+
+Hi,
+
+There shouldn't be unusual configurations necessary to get networking to
+work. If you're working on a private network make sure the /etc/hosts file
+contains the ip numbers and names of all the hosts you communicate with.
+Telnet attempts to reverse resolve all ip numbers before allowing access.
+This causes a timeout of a minute or two if there is no name associated
+with the ip number.
+
+If someone can tell me how to turn off the reverse DNS or even what does
+it (inetd?) I'd be interested in making it disableable.
+
+TTYL,
+Adi
+
+
+On Sat, 17 Feb 2001, Peter Gehring wrote:
+
+> I have some problems to run my peewee linux box at the network. My goal
+> is to establish a simple telnet session to the linux box inside a
+> intranet (192.168.0.xxx).
+> 
+> I´m working with peewee 0.53.27.
+> 
+> My peewee linux box has one network interface eth0 and my peewee system
+> is based onto the example project "wireless isa" and it´s network
+> scripts.
+> 
+> I have connected a laptop at the linux box. The ping command will work
+> fine from the laptop to the linux box and vice versa.
+> 
+> A Telnet session locally at the linux box will work properly, but an
+> attempt to start a telnet session from the laptop to the linuxbox will
+> fail. With tcpdump i can see the telnet request, but an answer from the
+> linux-box is missing.
+> 
+> A telnet session from the linux box to the laptop will fail, too. With
+> tcpdump I can see the request from the linux-box and the response from
+> the laptop but nothing more will happen.
+> 
+> It seems that all incoming ip-packets were lost at the linux box and
+> don´t reach the application (INETD or TELNET).
+> 
+> In my tests i´m working always with ip-addresses not with hostnames. I
+> build different systems with all peewee kernels and my own custom
+> kernel, but the result is always the same.
+> 
+> It seems to be a configuration problem.
+> 
+> Maybe I have to configure IP-masquerading or routing in a certain
+> manner?
+> 
+> Any idea why this isnt working?
+> 
+> Thank you for helping and reading my problem
+> 
+> Peter
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Feb 17 16:01:15 2001
+From: peeweelinux@adis.on.ca (Lloyd Ferguson)
+Date: Sat, 17 Feb 2001 08:01:15 -0800
+Subject: PEEWEE 0.53.27 network configuration? problem
+In-Reply-To: <3A8E417C.4CB57FC8@vipco.de>
+Message-ID: <3.0.6.32.20010217080115.007e17a0@1stnetusa.com>
+
+I had similar problems when I started using Redhat linux, it turned out
+that when you try to start a telnet session linux looks up the incoming IP
+address in the /etc/hosts file.  If it does not find it, it will sit there
+for what seems like forever and then eventually give you the login prompt.
+Adding a dummy entry to the hosts file fixed it.  
+
+ At 10:16 AM 2/17/01 +0100, you wrote:
+>I have some problems to run my peewee linux box at the network. My goal
+>is to establish a simple telnet session to the linux box inside a
+>intranet (192.168.0.xxx).
+>
+>I´m working with peewee 0.53.27.
+>
+>My peewee linux box has one network interface eth0 and my peewee system
+>is based onto the example project "wireless isa" and it´s network
+>scripts.
+>
+>I have connected a laptop at the linux box. The ping command will work
+>fine from the laptop to the linux box and vice versa.
+>
+>A Telnet session locally at the linux box will work properly, but an
+>attempt to start a telnet session from the laptop to the linuxbox will
+>fail. With tcpdump i can see the telnet request, but an answer from the
+>linux-box is missing.
+>
+>A telnet session from the linux box to the laptop will fail, too. With
+>tcpdump I can see the request from the linux-box and the response from
+>the laptop but nothing more will happen.
+>
+>It seems that all incoming ip-packets were lost at the linux box and
+>don´t reach the application (INETD or TELNET).
+>
+>In my tests i´m working always with ip-addresses not with hostnames. I
+>build different systems with all peewee kernels and my own custom
+>kernel, but the result is always the same.
+>
+>It seems to be a configuration problem.
+>
+>Maybe I have to configure IP-masquerading or routing in a certain
+>manner?
+>
+>Any idea why this isnt working?
+>
+>Thank you for helping and reading my problem
+>
+>Peter
+>
+>---------------------------------------------------
+>See the list archives at http://adis.on.ca/archives/
+>See the PWL homepage at  http://peeweelinux.com
+>---------------------------------------------------
+>
+>
+>
+
+Lloyd Ferguson
+lloyd.ferguson@usa.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Feb 17 16:38:26 2001
+From: peeweelinux@adis.on.ca (andu)
+Date: Sat, 17 Feb 2001 11:38:26 -0500 (EST)
+Subject: PEEWEE 0.53.27 network configuration? problem
+Message-ID: <20010217163826.D334528B4A@russian-caravan.cloud9.net>
+
+>
+>I have some problems to run my peewee linux box at the network. My goal
+>is to establish a simple telnet session to the linux box inside a
+>intranet (192.168.0.xxx).
+>
+>I´m working with peewee 0.53.27.
+>
+>My peewee linux box has one network interface eth0 and my peewee system
+>is based onto the example project "wireless isa" and it´s network
+>scripts.
+>
+>I have connected a laptop at the linux box. The ping command will work
+>fine from the laptop to the linux box and vice versa.
+>
+>A Telnet session locally at the linux box will work properly, but an
+>attempt to start a telnet session from the laptop to the linuxbox will
+>fail. With tcpdump i can see the telnet request, but an answer from the
+>linux-box is missing.
+>
+>A telnet session from the linux box to the laptop will fail, too. With
+>tcpdump I can see the request from the linux-box and the response from
+>the laptop but nothing more will happen.
+>
+>It seems that all incoming ip-packets were lost at the linux box and
+>don´t reach the application (INETD or TELNET).
+>
+>In my tests i´m working always with ip-addresses not with hostnames. I
+>build different systems with all peewee kernels and my own custom
+>kernel, but the result is always the same.
+>
+>It seems to be a configuration problem.
+>
+>Maybe I have to configure IP-masquerading or routing in a certain
+>manner?
+>
+>Any idea why this isnt working?
+
+Do you have telnet enabled in inetd.conf?
+
+>
+>Thank you for helping and reading my problem
+>
+>Peter
+>
+>---------------------------------------------------
+>See the list archives at http://adis.on.ca/archives/
+>See the PWL homepage at  http://peeweelinux.com
+>---------------------------------------------------
+>.
+
+
+Regards, Andu 
+_______________________
+undo@cloud9.net
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Feb 17 16:44:27 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 17 Feb 2001 10:44:27 -0600 (CST)
+Subject: Needed: Simple PeeWee Linux Configuration with X & FrameBuffer
+ Su pport
+In-Reply-To: <D973CF70008ED411B273009027893BA409725D@irv-exch.phoenix.com>
+Message-ID: <Pine.LNX.4.10.10102171034220.4095-100000@develop.knet.on.ca>
+
+Hi,
+
+I haven't worked with X on PeeWeeLinux in quite a long time. I think there
+is symlink required from the X server (Xfbdev?) to X...
+
+Yes, I need to build a basic X structure and include it as an example. As
+well as a basic console system with networking.
+
+TTYL,
+Adi
+
+On Wed, 14 Feb 2001, David Christensen wrote:
+
+> I'm trying to put together a simple configuration with PeeWeeLinux 0.60 to
+> support X-Windows on a framebuffer device.  I've selected what appears to be
+> the appropriate packages for X (XFree86, XFree86-100dpi-fonts,
+> XFree86-75dpi-fonts, XFree86-FBDev, XFree86-libs, XFree86-stuff,
+> XFree86-twm, XFree86-xdm, XFree86-xfs, and xpm) and when I reboot to test my
+> system I get the error message "execve failed for /usr/X11R6/bin/X (errno
+> 2)" after typing startx.  Looking around I noticed that a symlink from
+> Xwrapper -> X seems to be missing (at least that's the way it is on the RH
+> 6.2 development system I'm using).  When I create the symlink and run startx
+> again I get a different error: "_X11TransSocketUNIXConnect: Can't connect:
+> errno = 111".  What do I have to do to create a simple configuration that
+> support X?
+> 
+> David Christensen
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

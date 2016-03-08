@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> RPM Loader Script - V0.1
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000051.html">
+   <LINK REL="Next"  HREF="000053.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>RPM Loader Script - V0.1
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="RPM Loader Script - V0.1">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Thu, 3 Feb 2000 08:22:48 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000051.html">RPM Loader Script - V0.1
+</A></li>
+        <LI> Next message: <A HREF="000053.html">RPM Loader Script - V0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#52">[ date ]</a>
+              <a href="thread.html#52">[ thread ]</a>
+              <a href="subject.html#52">[ subject ]</a>
+              <a href="author.html#52">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> 
+</I>&gt;<i> Here's what I am doing. I'd like PeeWeeLinux to become a platform that can
+</I>&gt;<i> be build entirely from sources. My goal would be a distibution where you
+</I>&gt;<i> can run a single script to build all packages from sources.
+</I>&gt;<i> 
+</I>
+?? 
+If the optimized list of files for an RPM are manually generated, the package
+files created by pwl_rpmloader *should* be close in size to the manually
+compiled files (+ 10% maybe).
+
+The problem is removing dependencies (link ncurses, pam) - these have to
+be &quot;compiled out&quot;.
+??
+Is that a reasonable summary ?? Hmmmm...
+
+If we have to use the source tars (w/o RH patches) to get rid of
+the pam secuirity and whatever else, thats no problem for me. However,
+actually compiling the programs I'd rather not do if I don't have to...
+but then, I'm not counting bytes here, only Mega bytes....A truely
+memory restrained embedded system might be more concerned with size.
+
+&gt;<i> Still the question is if PeeWeeLinux should be based on Redhat source RPMS
+</I>&gt;<i> or generic tar balls and patches of packes.
+</I>&gt;<i> 
+</I>&gt;<i> Until then I am building packages more for my own consumption. 
+</I>
+Yep, and as more and more people build packages (Hey, my package is 
+smaller than YOUR package!) the package sources will continue to grow
+in number and shrink in size :-)
+
+&gt;<i> Makes them pretty big! Your X is 16M? 
+</I>
+Ummm...well, its only 10M now that I don't have 3 copies of all the lib 
+files (somewhere along the line, I didn't do a cp -ax, and the links weren't
+copied, the files were duplicated)...my X11 package file is getting smaller!
+
+&gt;<i> Yup, it's a painstaking manual
+</I>&gt;<i> process. Scripting would be a bit of a pain since you would need a custom
+</I>&gt;<i> script for each package. It makes reproducing the package easier. But
+</I>&gt;<i> then, that why I did PWL in the very beginning, so I didn't have to do the
+</I>&gt;<i> manual prosess of selecting and stripping executables and checking for
+</I>&gt;<i> dependencies every single time I build a project.
+</I>&gt;<i> 
+</I>
+The key here is that this *painful process* need only be done once...
+Is it time to start to ask for help / Announce Pee Wee to a 
+bunch of news groups /mailing lists ?? (Pee Wee Comes out of the closet!)
+
+Maybe after I integrate the package stuff and the ram disk stuff...and
+we get a few projects working...of course, we can always come up with 
+more features...We need a marketing guy to say STOP, SHIP it NOW!:-)
+
+&quot;Software programs are never finished...only abandoned&quot;
+
+
+&gt;<i> PeeWeeLinux has met it's original goal of why I build it. I still think
+</I>&gt;<i> that it's worthwhile to develop it further by automating the build from
+</I>&gt;<i> sources once the original build has been done. That would also make it
+</I>&gt;<i> possible to establish guidelines for contributed packages and what's
+</I>&gt;<i> expected from them....
+</I>&gt;<i> 
+</I>Hmmm... a true &quot;raw&quot; distribution...sounds tough, but if we have patch
+files, ftp sites...doesn't sound too hard (just send me your patches!).
+
+&gt;<i> &gt; &gt; &gt; To Do: load the source rpm, install it, copy the source files
+</I>&gt;<i> &gt; &gt; &gt; and compile everything.  Then copy the binaries from the SRC 
+</I>&gt;<i> &gt; &gt; &gt; directory into the pkg.files directory.....
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Yup, that would be the best way of doing it. Or... download the original
+</I>&gt;<i> &gt; &gt; sources and compile from scratch. Then make a build script and a patch
+</I>&gt;<i> &gt; &gt; file... Otherwise it might get messy if we build some packages from rpm
+</I>&gt;<i> &gt; &gt; and others from tar...
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; Hey, if you have a link to each of the source files...we can ftp them
+</I>&gt;<i> &gt; over instead of using the RH CD...not bad...I guess RH does some 
+</I>&gt;<i> &gt; changes from the originals, not sure of other advantages of ftp vs RH
+</I>&gt;<i> RPM...
+</I>&gt;<i> 
+</I>&gt;<i> The changes Redhat did to the Redhat RPMS are in the form of patches.
+</I>&gt;<i> Sooo, it's easy to build whatever you like from the source rpm because the
+</I>&gt;<i> original tar ball is still there (plus a number patches, some redhat some
+</I>&gt;<i> not).
+</I>&gt;<i> 
+</I>&gt;<i> I guess one way to build packages would be to take the source rpm and
+</I>&gt;<i> extract the original tarball and non-redhat specific patches... Then keep
+</I>&gt;<i> these as the PWL sources and build our packages from the tar files...
+</I>&gt;<i> 
+</I>&gt;<i> Or use rpm and build redhat rpms for every package that's not part of
+</I>&gt;<i> RedHat (elvis-tiny, busybox, tinylogin, to name a few that instantly come
+</I>&gt;<i> to mind)
+</I>&gt;<i> 
+</I>Not bad...then we don't have to stop at RH, but all the rpm stuff still
+works..
+
+&gt;<i> The nice thin about Redhat rpms is they compile as is. With orignal tar
+</I>&gt;<i> balls quite often they have to be 'fixed' before they will compile....
+</I>&gt;<i> 
+</I>Geeze, thats handy!
+
+&gt;<i> &gt; Anyhow, I guess this is the &quot;idiots tool for package building&quot; (just 
+</I>&gt;<i> &gt; my speed :-) your packages are still the best! But, Hey, if you 
+</I>&gt;<i> &gt; have 128MB flash disk...
+</I>&gt;<i> 
+</I>&gt;<i> Almost fit a Gnome workstation on that sucker... Just have to rmember not
+</I>&gt;<i> to use swap space on flash then :) 
+</I>&gt;<i> 
+</I>I'd be happy to get fvwm2 working!!!
+
+&gt;<i> BTW, someone asked me that question... seriously! If 32MB of RAM isn't
+</I>&gt;<i> enough, couldn't we use a 64MB flash drive and make a 32MB swap partition?
+</I>&gt;<i> Interesting thought, eh...?  Ouch... :)
+</I>&gt;<i> 
+</I>Maybe they could add a hard disk for the swap space ?;-)
+
+Later,
+Ralph
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000051.html">RPM Loader Script - V0.1
+</A></li>
+	<LI> Next message: <A HREF="000053.html">RPM Loader Script - V0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#52">[ date ]</a>
+              <a href="thread.html#52">[ thread ]</a>
+              <a href="subject.html#52">[ subject ]</a>
+              <a href="author.html#52">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

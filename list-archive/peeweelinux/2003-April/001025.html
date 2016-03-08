@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Peewee for rtai linux on flash disk?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001027.html">
+   <LINK REL="Next"  HREF="001026.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Peewee for rtai linux on flash disk?
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Peewee for rtai linux on flash disk?">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 15 Apr 2003 07:58:44 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001027.html">[Peeweelinux] Peewee for rtai linux on flash disk?
+</A></li>
+        <LI> Next message: <A HREF="001026.html">[Peeweelinux] newbies question .list files empty and tar's contain all 0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1025">[ date ]</a>
+              <a href="thread.html#1025">[ thread ]</a>
+              <a href="subject.html#1025">[ subject ]</a>
+              <a href="author.html#1025">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I have done just this. 
+
+With Peewee you just put your RTAI kernel in /boot and your modules in /lib in the custom folder of your proect. They get copied over the stock peewee kernel during the build. 
+
+The only other hitch is that I had to use insmod from my debian system since the one that came with peewee doesn't seem to find the modules automatically. If you can live with typing in full paths to the modules it isnt a big deal though. There may be other ways around this, I am not sure. 
+
+~Ken
+
+&gt;&gt;&gt;<i> &quot;Massimo Rossi&quot; &lt;<A HREF="mailto:m.assimorossi@libero.it">m.assimorossi@libero.it</A>&gt; 04/15 5:18 AM &gt;&gt;&gt;
+</I>Hi everybody,
+I developed an embedded real time application under linux kernel 2.4.18 patched with rtai 24.1.11. My goal is now to put a reduced version of the system in a flash disk, for the final version of the embedded system. 
+I'd really appreciate any help on using peeweelinux to obtain that. Does exist any documentation beside the one distributed with peeweelinux?
+If anyone has already faced with similar problem, could give me some advice on the size needed for the flash disk?
+
+Thank you
+
+Massimo Rossi
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001027.html">[Peeweelinux] Peewee for rtai linux on flash disk?
+</A></li>
+	<LI> Next message: <A HREF="001026.html">[Peeweelinux] newbies question .list files empty and tar's contain all 0
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1025">[ date ]</a>
+              <a href="thread.html#1025">[ thread ]</a>
+              <a href="subject.html#1025">[ subject ]</a>
+              <a href="author.html#1025">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

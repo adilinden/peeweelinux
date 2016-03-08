@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Multiple Targets for PeeWee Linux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000073.html">
+   <LINK REL="Next"  HREF="000075.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Multiple Targets for PeeWee Linux
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Multiple Targets for PeeWee Linux">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Fri, 8 Sep 2000 10:50:51 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000073.html">Multiple Targets for PeeWee Linux
+</A></li>
+        <LI> Next message: <A HREF="000075.html">Hello
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#74">[ date ]</a>
+              <a href="thread.html#74">[ thread ]</a>
+              <a href="subject.html#74">[ subject ]</a>
+              <a href="author.html#74">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+Crapscape sucks...! Big time...! I use pine for email and vi for editing
+:<i>)
+</I>
+&gt;<i> &gt; Bootlocation should not include the partition, just the device. The script
+</I>&gt;<i> &gt; picks the proper partition.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Hmmmm....need to look into that - when do I use it now - mkBootDevice....
+</I>
+What does mkBootDevice do? I suspect you wouldn't need this anymore.
+
+&gt;<i> &gt;     # define the initrd size
+</I>&gt;<i> &gt;     rd_initrd_size=                {3,4,5,8,9}
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;     # define the safety margin for the boot partition
+</I>&gt;<i> &gt;     rd_size_boot_margin=           {3,4,5}
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;     # define the safety margin for fit in flash calculations
+</I>&gt;<i> &gt;     rd_size_margin=                {1,2,3,4,5,6,7,8,9,10}
+</I>&gt;<i> &gt; 
+</I>&gt;<i> these in kb ?? or percent ??
+</I>
+All sizes are in kB
+
+&gt;<i> 1. write a &quot;main&quot; function that
+</I>&gt;<i> -- reads the project.defaults file and converts those parameters into rd_xxx
+</I>&gt;<i> variables (or rename some of your variables to match the defaults)
+</I>&gt;<i> -- activates the choosen scheme as outlined in 1-6 above
+</I>
+So you'll change project.defaults to include the rd_functions parameters?
+
+&gt;<i> 2. Call pwl_ramdisk or mkbootDevice from pwlconfig 
+</I>
+Ok, I see, it's just a matter of name... pwl_ramdisk or mkbootDevice would
+both call the appropriate function in rd_function...
+
+&gt;<i> 3. Add parameters to project.defaults file as required.
+</I>
+Now if you add rd_ style paramters you won't need to translate those for
+rd_function, except perhaps define rd_base prior to calling func_rd_env
+
+&gt;<i> You might think about the &quot;main&quot; function and the variable names (note read
+</I>&gt;<i> project.defaults file to see the names of the variables used in pwl_xxx files).
+</I>
+I would think that the rd_functions script would replace the current
+arrangement for configuring and loading a target device in pwlconfig. The
+current method would be taken car of by '10. single r/w root partition'.
+
+The rd_function script 'should' be safe to some degree even if a
+configuration mistake is made. I.e. you specify /dev/hda as target but it
+is also your current HD your working from. Part of the standard checks is
+to see if there is any match for /dev/hda in the mounted devices. Since
+it's not safe to fdisk or format a mounted partition the process will
+aboard. Mind you, if you thesis or mp3 collection is on /dev/hdb and it's
+a dual-boot WIN box... it'll be replaced by the latest and greatest
+PeeWeeLinux... :)
+
+Yup, I would think edit the projects default mechanism to include the
+rd_function variables.
+
+Followed by a routine to set the environment and variables for rd_function
+followed by a call to the build function in rd_function. This last part I
+played with before and it's pretty straight forward.
+
+A last idea or variation...
+
+If the rd_scheme variable is define in project.defaults it would be
+possible to have a single
+
+   Load Target Device --&gt;
+
+in the main menu. What this single command does and which target it will
+build would be entirly based on what's configured in project.defaults.
+
+So the script that defines project.defaults would have to provide the
+selection of the targets partitioning scheme... Can you do radio buttons
+in a menu (i.e. 10 selections that are exclusive, check 1 the other 9
+uncheck?).
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000073.html">Multiple Targets for PeeWee Linux
+</A></li>
+	<LI> Next message: <A HREF="000075.html">Hello
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#74">[ date ]</a>
+              <a href="thread.html#74">[ thread ]</a>
+              <a href="subject.html#74">[ subject ]</a>
+              <a href="author.html#74">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

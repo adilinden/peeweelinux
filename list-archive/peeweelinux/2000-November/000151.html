@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> signal catching in PeeWeeLinux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000150.html">
+   <LINK REL="Next"  HREF="000152.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>signal catching in PeeWeeLinux
+   </H1>
+    <B>Dr Jaime V. Miro
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="signal catching in PeeWeeLinux">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 09 Nov 2000 10:50:08 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000150.html">signal catching in PeeWeeLinux
+</A></li>
+        <LI> Next message: <A HREF="000152.html">signal catching in PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#151">[ date ]</a>
+              <a href="thread.html#151">[ thread ]</a>
+              <a href="subject.html#151">[ subject ]</a>
+              <a href="author.html#151">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi Ralph,
+
+
+Ralph Stickley wrote:
+&gt;<i> 
+</I>&gt;<i> Notes from the clueless here....
+</I>&gt;<i> 
+</I>&gt;<i> Is this a Bash/Ash or busybox difference ?
+</I>&gt;<i>
+</I>
+I run everything from the bash shell that comes with PWL051 (GNU bash v2.03.0(1). Haven't given busybox a try yet.
+ 
+&gt;<i> Does bash actually trap signals and/or keystrokes and pass them on ?
+</I>&gt;<i>
+</I>
+AFAIK yes. But it is worth investigating further ... (investigation in proces) ... in fact, my development machin uses GNU bash, version 1.14.7(1). Should that matter? probably not, but I'll find out. Thanks fpr the pointer.
+
+ 
+&gt;<i> Sorry for the interruption...now back to your regulary scheduled e-mail...
+</I>&gt;<i> 
+</I>
+Most welcome. Ta.
+
+Jaime
+
+&gt;<i> Later,
+</I>&gt;<i> Ralph
+</I>&gt;<i> 
+</I>&gt;<i> --- Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; wrote:
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; In PWL the response is the same, whether my code being started from init or
+</I>&gt;<i> &gt; from an interactive shell after loggin in. Hence, in the development system
+</I>&gt;<i> &gt; in RH6.1 I have not bother testing from init, since it works from a shell.  I
+</I>&gt;<i> &gt; believe it should work from the (PWL) shell first (as it does in RH6.1), and
+</I>&gt;<i> &gt; then I'll worry about starting from init (from all the mails that I got back
+</I>&gt;<i> &gt; as an answer to this problem, I believe I know how to work that out ... once
+</I>&gt;<i> &gt; the application works from the (PWL)
+</I>&gt;<i> &gt; &gt; shell). One step at a time.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; So it should run from the shell just fine....
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; I was focused on getting my stuff working, and I don't think is the kernel,
+</I>&gt;<i> &gt; so I haven't updated yet. Also, there were quite a few buggy scripts reports
+</I>&gt;<i> &gt; that seem to be sorted now, so I will give it a shot soon.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I just mentioned the changes, I don't think the differences between 0.51
+</I>&gt;<i> &gt; and 0.53 relate to your problem.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; &gt; Do you have a sample application to 'play' with? Then I can see if I can
+</I>&gt;<i> &gt; &gt; &gt; recreate your problem...
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Right now the application is kinda biggish (a few threads and shared areas
+</I>&gt;<i> &gt; of memo), so I'll try and get a cut down version with the problem. Any
+</I>&gt;<i> &gt; pointers welcome meanwhile.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I am not sure how to approach this, since I haven't come across anything
+</I>&gt;<i> &gt; showing this type of behaviour. As far as I can tell the PWL application
+</I>&gt;<i> &gt; react as expected to signals (kill -HUP &lt;inetd ID&gt; causes the inet daemon
+</I>&gt;<i> &gt; to reread it's configuration). If I CTRL-C an application it will quit.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; You said it's compiled statically... So you shouldn't be missing any libs
+</I>&gt;<i> &gt; on the PWL system.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; TTYL,
+</I>&gt;<i> &gt; Adi
+</I>&gt;<i> &gt;
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000150.html">signal catching in PeeWeeLinux
+</A></li>
+	<LI> Next message: <A HREF="000152.html">signal catching in PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#151">[ date ]</a>
+              <a href="thread.html#151">[ thread ]</a>
+              <a href="subject.html#151">[ subject ]</a>
+              <a href="author.html#151">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

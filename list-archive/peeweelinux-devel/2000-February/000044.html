@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> X startup stuff - questions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="000045.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>X startup stuff - questions
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="X startup stuff - questions">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Mon, 31 Jan 2000 18:02:34 -0800 (PST)</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="000045.html">X startup stuff - questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#44">[ date ]</a>
+              <a href="thread.html#44">[ thread ]</a>
+              <a href="subject.html#44">[ subject ]</a>
+              <a href="author.html#44">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+&gt;<i> &gt; 3. mknod /dev/mouse c 10 1
+</I>&gt;<i> 
+</I>&gt;<i> Wouldn't the above be part of the installation process of putting X onto
+</I>&gt;<i> the flash device/into the filesystem?
+</I>&gt;<i> 
+</I>
+I hadn't thought of that...the /dev/mouse /dev/usb ... stuff that X uses
+would be part of the X package. Good fit!
+
+I did notice that the normal RH devices directory 
+contains an ungodly number of nodes in it.  Also, configuring the
+_base_filesystem takes a while because of the large number of files included in
+this.
+
+Would it make sense to have a _devices package ? This would shrink the size of
+_base_filesystem file and configuring both would be quicker.
+
+
+&gt;<i> &gt; 4. insmod unix.o 
+</I>&gt;<i> &gt; 5. xfs -droppriv -daemon -port -1
+</I>&gt;<i> &gt; 6. XF86_SVGA
+</I>&gt;<i> 
+</I>&gt;<i> I would do a startup script to run from the etc/rcS.d directory. All
+</I>&gt;<i> scripts in there are run automatically at startup in alphanumerical order.
+</I>&gt;<i> To have good control over what runs when they're numbered, like: 05modules
+</I>&gt;<i> 20firewall, etc....
+</I>&gt;<i>
+</I>
+ Oh...there they be...in my standard RH, I have XFS and gpm(which I don't know
+if I need or not).  Now I just have to go back and dig into the magic that is
+RH Init stuff...insmod doesn't seem to get called...geeze, could this *be* more
+confusing? (QNX has a very clean startup process conpared to this, but I guess
+thats the price you pay for flexibility!)
+
+Thanks,
+Ralph
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="000045.html">X startup stuff - questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#44">[ date ]</a>
+              <a href="thread.html#44">[ thread ]</a>
+              <a href="subject.html#44">[ subject ]</a>
+              <a href="author.html#44">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

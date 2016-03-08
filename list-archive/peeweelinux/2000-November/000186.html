@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Modules
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000198.html">
+   <LINK REL="Next"  HREF="000189.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Modules
+   </H1>
+    <B>Matt Carlson
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Modules">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sun, 19 Nov 2000 01:58:04 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000198.html">How small is PeeWeeLinux?
+</A></li>
+        <LI> Next message: <A HREF="000189.html">what difference
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#186">[ date ]</a>
+              <a href="thread.html#186">[ thread ]</a>
+              <a href="subject.html#186">[ subject ]</a>
+              <a href="author.html#186">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This is a multi-part message in MIME format.
+
+------=_NextPart_000_0007_01C051CC.27949100
+Content-Type: text/plain;
+	charset=&quot;iso-8859-1&quot;
+Content-Transfer-Encoding: quoted-printable
+
+PeeWeeLinux is a god send!
+In the last 2 weeks I have spent many sleepless nights trying to 'roll =
+my own' bootable system for a DiskOnChip.  I learned many ways not to do =
+it, but hadn't figured out how to do it.
+In the last few hours I have used PeeWeeLinux to setup the system, =
+install my custom 2.2.17 kernel with DOC and PCMCIA support for my WLAN =
+card.  Basicly in a few hours I got more done than 2 weeks worth of hard =
+work and trial and error.
+
+The last thing that I am having trouble with is loading my moduals. =
+(spacificly sound)
+I found that I needed to add 45pcmcia to /etc/rcS.d/ as well as copy =
+cardctl and cardmgr to /sbin but I haven't found the magic that will =
+tell the system that my moduals are in /lib/modules/2.2.17-doc/ in the =
+subdirs misc,pcmcia,ect.. like they are on my RedHat 6.2 partition.
+Does anyone know what I'm missing here?
+
+when I try to run=20
+modprobe sb.o io=3D0x220 irq=3D0x5 dma=3D0x1
+it tells me that it can't find sb.o
+
+Any help would be greatly appriciated.
+M@
+
+
+
+------=_NextPart_000_0007_01C051CC.27949100
+Content-Type: text/html;
+	charset=&quot;iso-8859-1&quot;
+Content-Transfer-Encoding: quoted-printable
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0 Transitional//EN&quot;&gt;
+&lt;HTML&gt;&lt;HEAD&gt;
+&lt;META content=3D&quot;text/html; charset=3Diso-8859-1&quot; =
+http-equiv=3DContent-Type&gt;
+&lt;META content=3D&quot;MSHTML 5.00.2614.3500&quot; name=3DGENERATOR&gt;
+&lt;STYLE&gt;&lt;/STYLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY bgColor=3D#ffffff&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial size=3D2&gt;PeeWeeLinux is a god send!&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial&gt;In the last 2 weeks I have spent many sleepless =
+nights=20
+trying to 'roll my own' bootable system for a DiskOnChip.&amp;nbsp; I =
+learned many=20
+ways not to do it, but hadn't figured out how to do it.&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial&gt;In the last few hours I have used PeeWeeLinux to =
+setup the=20
+system, install my custom 2.2.17 kernel with DOC and PCMCIA support for =
+my WLAN=20
+card.&amp;nbsp; Basicly in a few hours I got more done than 2 weeks worth of =
+hard=20
+work and trial and error.&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&amp;nbsp;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial size=3D2&gt;The last thing that I am having trouble =
+with is=20
+loading my moduals. (spacificly sound)&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial size=3D2&gt;I found that I needed to add 45pcmcia =
+to=20
+/etc/rcS.d/ as well as copy cardctl and cardmgr to /sbin but I haven't =
+found the=20
+magic that will tell the system that my moduals are in =
+/lib/modules/2.2.17-doc/=20
+in the subdirs misc,pcmcia,ect.. like they are on my RedHat 6.2=20
+partition.&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial&gt;Does anyone know what I'm missing =
+here?&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&amp;nbsp;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial&gt;when I try to run &lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial&gt;modprobe sb.o io=3D0x220 irq=3D0x5 =
+dma=3D0x1&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial&gt;it tells me that it can't find sb.o&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&amp;nbsp;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial&gt;Any help would be greatly =
+appriciated.&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&lt;FONT face=3DArial&gt;M@&lt;/FONT&gt;&lt;/DIV&gt;
+&lt;DIV&gt;&amp;nbsp;&lt;/DIV&gt;
+&lt;DIV&gt;&amp;nbsp;&lt;/DIV&gt;&lt;/BODY&gt;&lt;/HTML&gt;
+
+------=_NextPart_000_0007_01C051CC.27949100--
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000198.html">How small is PeeWeeLinux?
+</A></li>
+	<LI> Next message: <A HREF="000189.html">what difference
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#186">[ date ]</a>
+              <a href="thread.html#186">[ thread ]</a>
+              <a href="subject.html#186">[ subject ]</a>
+              <a href="author.html#186">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

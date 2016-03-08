@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] trouble compiling custom kernel
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001219.html">
+   <LINK REL="Next"  HREF="001217.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] trouble compiling custom kernel
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] trouble compiling custom kernel">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 23 Dec 2003 09:29:28 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001219.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+        <LI> Next message: <A HREF="001217.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1220">[ date ]</a>
+              <a href="thread.html#1220">[ thread ]</a>
+              <a href="subject.html#1220">[ subject ]</a>
+              <a href="author.html#1220">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>PWL is built upon RedHat 6.2, and as such the glibc (and everything 
+else) is compiled using that egcs/glibc combo. Unless you've replaced 
+all the packages shipped with PWL with RedHat8 (eg) versions, you need 
+to develop under a RedHat 6.2 model.
+
+So, if not compiling on an actual 6.2 box (most people aren't - I'm 
+using a 7.2 machine), you need to install all the compat-* packages to 
+provide 6.2 compiling/dev capabilities.
+
+-te
+
+Jonathan Sturges wrote:
+&gt;<i> Hmmm.  What's the significance of the RH62 compat-* packages?
+</I>&gt;<i> 
+</I>&gt;<i> thanks,
+</I>&gt;<i> Jonathan
+</I>&gt;<i> 
+</I>&gt;<i> ----- Original Message ----- 
+</I>&gt;<i> From: &quot;Troy Engel&quot; &lt;<A HREF="mailto:tengel@fluid.com">tengel@fluid.com</A>&gt;
+</I>&gt;<i> To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+</I>&gt;<i> Sent: Monday, December 22, 2003 7:13 PM
+</I>&gt;<i> Subject: Re: [Peeweelinux] trouble compiling custom kernel
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Hi,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I'm assuming you're following my instructions to make this kernel -- 
+</I>&gt;&gt;<i>check two things:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>1) the RH62 compat-* packages are installed, and you are invoking the
+</I>&gt;&gt;<i>script /usr/i386-glibc21-linux/bin/i386-glibc21-linux-env.sh *prior* to
+</I>&gt;&gt;<i>running/configuring/building the kernel
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>2) that you've edited the kernel Makefile to use &quot;kgcc&quot; instead of &quot;gcc&quot;
+</I>&gt;&gt;<i>(/usr/bin/kgcc is installed as part of compat-egcs-&lt;VER&gt;.rpm)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>-te
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Jonathan Sturges wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>I was able to compile 2.2.25 in gcc 3.2, but the resulting kernel
+</I>&gt;<i> 
+</I>&gt;<i> &quot;Oops&quot;es
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>when initialized on my Advantech boards, which are using National
+</I>&gt;&gt;&gt;<i>Semiconductor's Geode CPU.  You might be right about gcc 3.2 with 2.2.17
+</I>&gt;&gt;&gt;<i>though.  If I cd into the $PWL_HOME/kernelbuild/usr/src/linux, after
+</I>&gt;<i> 
+</I>&gt;<i> trying
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>to make a custom kernel within PWL, and do a 'make bzImage' it does
+</I>&gt;<i> 
+</I>&gt;<i> choke
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>without producing an image.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>I will try a 2.4 kernel and see how it goes.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>thanks,
+</I>&gt;&gt;&gt;<i>Jonathan
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>----- Original Message ----- 
+</I>&gt;&gt;&gt;<i>From: &quot;Ken Emmons, Jr.&quot; &lt;<A HREF="mailto:kemmons@qatech.com">kemmons@qatech.com</A>&gt;
+</I>&gt;&gt;&gt;<i>To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+</I>&gt;&gt;&gt;<i>Sent: Monday, December 22, 2003 3:05 PM
+</I>&gt;&gt;&gt;<i>Subject: RE: [Peeweelinux] trouble compiling custom kernel
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>I think the 2.2 kernel compile will die with GCC 3.2, but I am not sure.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Compile a kernel version (2.4 something) that will work with your
+</I>&gt;<i> 
+</I>&gt;<i> compiler
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>(view the README docs in the kernel source for where to findd out what
+</I>&gt;&gt;&gt;<i>version of GCC to use). If you can, compile everything static, so you
+</I>&gt;<i> 
+</I>&gt;<i> don't
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>have to deal with modules.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>Now you need to Copy the bzImage file (your compiled kernel) into your
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>peewee projects &quot;custom&quot; folder. This custom folder mimics the root
+</I>&gt;&gt;&gt;<i>filesystem of your target, which allows you to overwrite or add files.
+</I>&gt;<i> 
+</I>&gt;<i> Make
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>a &quot;boot&quot; directory if it is not already there, and put your bzImage file
+</I>&gt;&gt;&gt;<i>there.  If you don't need modules, you are now done. Otherwise, copy all
+</I>&gt;<i> 
+</I>&gt;<i> of
+</I>&gt;<i> 
+</I>&gt;&gt;&gt;<i>your module files intot he appropriate directories, and hope it works.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>~Ken
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>-----Original Message-----
+</I>&gt;&gt;&gt;&gt;&gt;<i>From: Jonathan Sturges [mailto:<A HREF="mailto:jonathan@sprintmail.com">jonathan@sprintmail.com</A>]
+</I>&gt;&gt;&gt;&gt;&gt;<i>Sent: Monday, December 22, 2003 2:52 PM
+</I>&gt;&gt;&gt;&gt;&gt;<i>To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>Subject: [Peeweelinux] trouble compiling custom kernel
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>Hi,
+</I>&gt;&gt;&gt;&gt;&gt;<i>I'm a PWL newbie.  I've been playing with 0.61.1 for a week
+</I>&gt;&gt;&gt;&gt;&gt;<i>or so now and
+</I>&gt;&gt;&gt;&gt;&gt;<i>have made several successful test images with it... pretty
+</I>&gt;&gt;&gt;&gt;&gt;<i>darn intuitive
+</I>&gt;&gt;&gt;&gt;&gt;<i>and easy!
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>However I cannot seem to compile a custom kernel from the
+</I>&gt;&gt;&gt;&gt;&gt;<i>2.2.17 sources
+</I>&gt;&gt;&gt;&gt;&gt;<i>that came with PWL.  It never seems to produce a bzImage.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>I was able to follow some directions I found in the list
+</I>&gt;&gt;&gt;&gt;&gt;<i>archive and build a
+</I>&gt;&gt;&gt;&gt;&gt;<i>kernel outside of PWL and bring that in... that did work for
+</I>&gt;&gt;&gt;&gt;&gt;<i>me though.
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>FWIW, my host OS is RH 8.0 with gcc 3.2; is that likely a
+</I>&gt;&gt;&gt;&gt;&gt;<i>problem area or is
+</I>&gt;&gt;&gt;&gt;&gt;<i>the host platform pretty flexible with PWL?
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>thanks,
+</I>&gt;&gt;&gt;&gt;&gt;<i>Jonathan
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;&gt;&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;&gt;&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>-- 
+</I>&gt;&gt;<i>Troy Engel, Systems Engineer
+</I>&gt;&gt;<i>we code so you don't have to
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+-- 
+Troy Engel, Systems Engineer
+we code so you don't have to
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001219.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+	<LI> Next message: <A HREF="001217.html">[Peeweelinux] trouble compiling custom kernel
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1220">[ date ]</a>
+              <a href="thread.html#1220">[ thread ]</a>
+              <a href="subject.html#1220">[ subject ]</a>
+              <a href="author.html#1220">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

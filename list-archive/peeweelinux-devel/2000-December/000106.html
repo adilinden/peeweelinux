@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> 0.53.24
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000105.html">
+   <LINK REL="Next"  HREF="000107.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>0.53.24
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="0.53.24">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Sun, 17 Dec 2000 14:24:17 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000105.html">kernel versions in PeeWeeLinux
+</A></li>
+        <LI> Next message: <A HREF="000107.html">pwl_target_load: line 1656: syntax error: unexpected end of file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#106">[ date ]</a>
+              <a href="thread.html#106">[ thread ]</a>
+              <a href="subject.html#106">[ subject ]</a>
+              <a href="author.html#106">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I am in the process of uploading PeeWeeLinux 0.53.24. It includes the
+latest bug fixes and added features to pwlconfig that have come up.
+
+Issues resolved:
+
+- Filesystem sizes should be calculated properly now for the 
+  &quot;Read-only root fs with multiple ramdisks&quot;, thanks to Dean Brown
+  for pointing this out and providing the fix.
+
+- Added a check for the ./packages directory when pwlconfig is run
+  and prompt for a choice to extract rpms immediately.
+
+- Added rd_initscripts variable to project.defaults. Now the automatic
+  modification of rc.init and etc/fstab by the target load scripts can
+  be turned off.
+
+- Cosmetic fixes, typos and help screen updates.
+
+Please post any experiences with 0.53.24. I hope to turn this into the
+0.60 stable release soon.
+
+Only the peeweelinux-0.53.24-cfg.tar.gz file is required to upgrade an
+existing PeeWeeLinux install to 0.53.24!
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000105.html">kernel versions in PeeWeeLinux
+</A></li>
+	<LI> Next message: <A HREF="000107.html">pwl_target_load: line 1656: syntax error: unexpected end of file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#106">[ date ]</a>
+              <a href="thread.html#106">[ thread ]</a>
+              <a href="subject.html#106">[ subject ]</a>
+              <a href="author.html#106">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

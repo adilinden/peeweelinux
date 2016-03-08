@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] system initialization
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000753.html">
+   <LINK REL="Next"  HREF="000758.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] system initialization
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] system initialization">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 22 Aug 2002 13:00:15 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000753.html">[Peeweelinux] system initialization
+</A></li>
+        <LI> Next message: <A HREF="000758.html">[Peeweelinux] system initialization
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#754">[ date ]</a>
+              <a href="thread.html#754">[ thread ]</a>
+              <a href="subject.html#754">[ subject ]</a>
+              <a href="author.html#754">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>   - network card module present but I had to load it with &quot;modprobe&quot;
+</I>&gt;<i>   - modprobe fails because no modules.dep
+</I>&gt;<i>   - modules.dep is created by &quot;depmod&quot;
+</I>&gt;<i>   - have to run &quot;depmod&quot;
+</I>&gt;<i>   - have to run ifconfig to bring up network card
+</I>
+I usually use insmod and have it load the required modules in the 
+proper sequence. This eliminates the need for depmod and /etc/modules.conf 
+amongst things.
+
+&gt;<i> The issue with ifconfig led me through the 10Network script, 
+</I>&gt;<i> wherein I found that it will find the ifcfg-eth0 file in
+</I>&gt;<i> /etc/config and use the contents of that to construct an
+</I>&gt;<i> appropriate ifconfig...up command.   The assumption that
+</I>&gt;<i> this would work by itself proved to be correct after I
+</I>&gt;<i> fixed the driver issue.   However, at this time I discovered
+</I>&gt;<i> the place to put the IP address (or to set dhcp if I wish
+</I>&gt;<i> to try that).
+</I>
+If you create /etc/config/ifcfg-eth0 with the appropriate content the 
+network startup script will automatically configure the network interface. 
+The syntax for the file is similar to RedHats. I.e.
+
+  DEVICE=eth0
+  IPADDR=192.168.1.1
+  NETMASK=255.255.255.0
+  
+There is also support for specifying BROADCAST and NETWORK addresses if 
+needed. If dhcp is used instead of static addressing do this instead:
+
+  DEVICE=eth0
+  BOOTPROTO=dhcp
+
+This will reqire that either pump or dhcpcd are installed.
+
+&gt;<i> The driver modules was a little more interesting.  Looking
+</I>&gt;<i> through the target scripts I find that there could be 
+</I>&gt;<i> an /etc/rc.modules, which, if present, will read a file
+</I>&gt;<i> /etc/modules and use that as a list of modules to
+</I>&gt;<i> be loaded.   This pair of files was not present in my 
+</I>&gt;<i> target system, nor was it present on my host RedHat system;
+</I>&gt;<i> but they were present on my Coyote (LRP) system.  So, 
+</I>&gt;<i> without any more clues, I decided to write my own rc.modules
+</I>&gt;<i> file which runs depmod, then loads the modules for the
+</I>&gt;<i> network card.  That way I have kept the customizations to a
+</I>&gt;<i> minimum.  
+</I>&gt;<i> 
+</I>&gt;<i> I know that insmod will load modules without the help of
+</I>&gt;<i> modules.dep   The issue of depmod was somewhat of an experimental
+</I>&gt;<i> investigation (I figured I should know about it).  One thing
+</I>&gt;<i> that seems to be likely is that depmod can be run on the
+</I>&gt;<i> kernel libraries after they are compiled, and possibly the
+</I>&gt;<i> resulting modules.dep can be copied to the target system and
+</I>&gt;<i> then no depmod is required.
+</I>&gt;<i> 
+</I>&gt;<i> The last issue is that I put &quot;alias eth0 ne2k-pci&quot; into modules.conf
+</I>&gt;<i> but I was unable to discover who reads that information.  That would
+</I>&gt;<i> be the other way these modules get loaded (and seems to be the way
+</I>&gt;<i> it's done in our real linux boxes.)
+</I>&gt;<i> 
+</I>&gt;<i> So the questions are:
+</I>&gt;<i>   - what runs depmod during startup?
+</I>&gt;<i>   - do embedded systems usually have a prebuilt modules.dep?
+</I>&gt;<i>   - what uses modules.conf to find out what modules to load?
+</I>
+There is no automatic way to run depmod since the intend was to run insmod 
+instead. So you would create an /etc/rc.modules containing something like:
+
+  insmod ne2k-pci
+  
+And what ever else modules you need to load. If there are module 
+dependencies you would need to add insmod lines for those in the proper 
+order to satisfy dependencies.
+
+Hope this helps,
+Adi
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000753.html">[Peeweelinux] system initialization
+</A></li>
+	<LI> Next message: <A HREF="000758.html">[Peeweelinux] system initialization
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#754">[ date ]</a>
+              <a href="thread.html#754">[ thread ]</a>
+              <a href="subject.html#754">[ subject ]</a>
+              <a href="author.html#754">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

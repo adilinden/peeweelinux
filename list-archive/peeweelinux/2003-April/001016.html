@@ -1,0 +1,122 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] how to creat a standalone image file on my HD
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001015.html">
+   <LINK REL="Next"  HREF="001017.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] how to creat a standalone image file on my HD
+   </H1>
+    <B>vwbug19
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] how to creat a standalone image file on my HD">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 3 Apr 2003 02:06:12 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001015.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+        <LI> Next message: <A HREF="001017.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1016">[ date ]</a>
+              <a href="thread.html#1016">[ thread ]</a>
+              <a href="subject.html#1016">[ subject ]</a>
+              <a href="author.html#1016">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>try the  ide internal zipdrive it holds up to 100mb
+
+----- Original Message ----- 
+From: &quot;Yuval Yohai&quot; &lt;<A HREF="mailto:yuval_yohai@yahoo.com">yuval_yohai@yahoo.com</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Sent: Thursday, April 03, 2003 1:43 AM
+Subject: Re: [Peeweelinux] how to creat a standalone image file on my HD
+
+
+&gt;<i> Thanks, but that I know, the problem I need an image larger that a
+</I>&gt;<i> floppy size.
+</I>&gt;<i> 
+</I>&gt;<i> Yuval
+</I>&gt;<i> 
+</I>&gt;<i> --- Troy Engel &lt;<A HREF="mailto:tengel@fluid.com">tengel@fluid.com</A>&gt; wrote:
+</I>&gt;<i> &gt; Do it to an actual floppy, then use 'dd' to pull it off the floppy
+</I>&gt;<i> &gt; to a 
+</I>&gt;<i> &gt; file. Something like 'dd if=/dev/fd0 of=/var/tmp/floppy.img
+</I>&gt;<i> &gt; bs=2048' 
+</I>&gt;<i> &gt; should do the trick (check that for errors first).
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; -te
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Yuval Yohai wrote:
+</I>&gt;<i> &gt; &gt; Hello,
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; I'm trying to create an floppy image file on my HD and then send
+</I>&gt;<i> &gt; it
+</I>&gt;<i> &gt; &gt; to a friend. But I am not able to it since the only options i see
+</I>&gt;<i> &gt; in
+</I>&gt;<i> &gt; &gt; the pwlconfig is doing it into a partition or a device. I tried
+</I>&gt;<i> &gt; to
+</I>&gt;<i> &gt; &gt; attach a loop device with no luck.
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Any suggestions?
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; Thanks,
+</I>&gt;<i> &gt; &gt; Yuval
+</I>&gt;<i> &gt; &gt; 
+</I>&gt;<i> &gt; &gt; __________________________________________________
+</I>&gt;<i> &gt; &gt; Do you Yahoo!?
+</I>&gt;<i> &gt; &gt; Yahoo! Tax Center - File online, calculators, forms, and more
+</I>&gt;<i> &gt; &gt; <A HREF="http://tax.yahoo.com">http://tax.yahoo.com</A>
+</I>&gt;<i> &gt; &gt; _______________________________________________
+</I>&gt;<i> &gt; &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; -- 
+</I>&gt;<i> &gt; Troy Engel, Systems Engineer
+</I>&gt;<i> &gt; &quot;Now, Beakie, we'll just flip this switch and 60,000 refreshing
+</I>&gt;<i> &gt;   volts of electricity will surge through your body. Ready?&quot;
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Peeweelinux mailing list
+</I>&gt;<i> &gt; <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt; <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> __________________________________________________
+</I>&gt;<i> Do you Yahoo!?
+</I>&gt;<i> Yahoo! Tax Center - File online, calculators, forms, and more
+</I>&gt;<i> <A HREF="http://tax.yahoo.com">http://tax.yahoo.com</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001015.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+	<LI> Next message: <A HREF="001017.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1016">[ date ]</a>
+              <a href="thread.html#1016">[ thread ]</a>
+              <a href="subject.html#1016">[ subject ]</a>
+              <a href="author.html#1016">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

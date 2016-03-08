@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] gunzipping ramdisk
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001041.html">
+   <LINK REL="Next"  HREF="001045.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] gunzipping ramdisk
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] gunzipping ramdisk">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 21 Apr 2003 11:26:00 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001041.html">[Peeweelinux] gunzipping ramdisk
+</A></li>
+        <LI> Next message: <A HREF="001045.html">[Peeweelinux] Compact Flash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1042">[ date ]</a>
+              <a href="thread.html#1042">[ thread ]</a>
+              <a href="subject.html#1042">[ subject ]</a>
+              <a href="author.html#1042">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>Thanks Barry. I was hoping to be able to make permanent changes to the
+</I>&gt;<i>ramdisk file while running pwl/doc. Is there any other way other than to
+</I>&gt;<i>uncompress the whole ramdisk file to the ramdisk? Ultimately I would
+</I>&gt;<i>like to make modifications to lilo.conf or any other file in pwl without
+</I>&gt;<i>having to pull out the DOC and doing it in a reader.     &gt;Stephen
+</I>
+
+I don't have a DOC so my drive looks like an ordinary IDE 
+drive.  I'd hope the DOC, once the right drivers are attached,
+would behave similarly.  But I can't help with those 
+specifics.
+
+As I said, pwl gives various disk-making options, but I 
+don't understand it well enough to know what I'm getting
+without trying it and looking at the results, or to alter 
+the scripts to give me a different combination.
+
+But I am faced with the same challenge as you.  I will 
+want to store altered information.  I can offer two ideas.
+
+(1) Add a separate partition that is mounted read/write and
+use that for the modified info.  You have probably seen 
+discussions about this before.
+
+(2) As for your approach, when my system boots, it does 
+exactly what you are trying to do.  It says, &quot;copying 
+filesystem /dev/hda2 to /dev/ram2&quot; and it is 
+uncompressed into memory.  The running system runs from
+/dev/ram2.  I can log in and I can modify
+files just like you say.  The missing link then, is to
+be able to compress the results into a new ramdisk image
+and write it back to your disk-on-chip.  Although at this
+point is doesn't seem all that different from the idea
+in #(1), and perhaps more work (and risk).
+
+I use the option &quot;Compressed ramdisk on ext2 partition&quot; as
+the target environment to make my system.  Note that you 
+can ask for an uncompressed one as well, and at least
+see what size you get.
+
+Barry
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001041.html">[Peeweelinux] gunzipping ramdisk
+</A></li>
+	<LI> Next message: <A HREF="001045.html">[Peeweelinux] Compact Flash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1042">[ date ]</a>
+              <a href="thread.html#1042">[ thread ]</a>
+              <a href="subject.html#1042">[ subject ]</a>
+              <a href="author.html#1042">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

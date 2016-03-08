@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> RPM Loader Script - V0.1
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000052.html">
+   <LINK REL="Next"  HREF="000054.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>RPM Loader Script - V0.1
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="RPM Loader Script - V0.1">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Thu, 3 Feb 2000 12:08:21 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000052.html">RPM Loader Script - V0.1
+</A></li>
+        <LI> Next message: <A HREF="000054.html">RPM Loader Script - V0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#53">[ date ]</a>
+              <a href="thread.html#53">[ thread ]</a>
+              <a href="subject.html#53">[ subject ]</a>
+              <a href="author.html#53">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+&gt;<i> &gt; Here's what I am doing. I'd like PeeWeeLinux to become a platform that can
+</I>&gt;<i> &gt; be build entirely from sources. My goal would be a distibution where you
+</I>&gt;<i> &gt; can run a single script to build all packages from sources.
+</I>&gt;<i> 
+</I>&gt;<i> ?? 
+</I>&gt;<i> If the optimized list of files for an RPM are manually generated, the package
+</I>&gt;<i> files created by pwl_rpmloader *should* be close in size to the manually
+</I>&gt;<i> compiled files (+ 10% maybe).
+</I>
+Unless you need to include additional libs that are purposely left out of
+PWL.
+
+&gt;<i> The problem is removing dependencies (link ncurses, pam) - these have to
+</I>&gt;<i> be &quot;compiled out&quot;.
+</I>&gt;<i> ??
+</I>&gt;<i> Is that a reasonable summary ?? Hmmmm...
+</I>
+Correct.
+
+&gt;<i> If we have to use the source tars (w/o RH patches) to get rid of
+</I>&gt;<i> the pam secuirity and whatever else, thats no problem for me. However,
+</I>&gt;<i> actually compiling the programs I'd rather not do if I don't have to...
+</I>&gt;<i> but then, I'm not counting bytes here, only Mega bytes....A truely
+</I>&gt;<i> memory restrained embedded system might be more concerned with size.
+</I>
+The compile process would only have to be once, to build the package. The
+PeeWeeLinux binary distribution includes all the pre-compiled binaries
+within the packages.
+
+But all PeeWeeLinux packages should be build from source tar balls or
+source rpms, I think. None of the copying from a running system or a
+binary rpm.
+
+&gt;<i> Yep, and as more and more people build packages (Hey, my package is 
+</I>&gt;<i> smaller than YOUR package!) the package sources will continue to grow
+</I>&gt;<i> in number and shrink in size :-)
+</I>
+There is only so much you can do as far as size is concerned without
+starting to cut on the functionality. But as people compile there 'own'
+packages and contribute those the list of available, supported packages
+should grow.
+
+I think the key to that happening is to have a well defined and documented
+process of how to create a PeeWeeLinux package.
+
+So as far as creating packages is concerned this has become a rather
+urgent thing to be decided on. Since the build process for packages should
+be reproduceable. So here is what needs to be done:
+
+Raw Sources           ---&gt;  PeeWeeLinux Sources
+PeeWeeLinux Sources   ---&gt;  PeeWeeLinux Binaries
+PeeWeeLinux Binaries  ---&gt;  PeeWeeLinux Packages
+
+1. What do we use for Raw sources?
+  a. Source tarballs
+     We can extract the tarballs from Redhat source rpms where
+     source rpms exist.
+  b. Redhat RPMS
+     Where source rpms don't exist we have to create either
+     Redhat RPMS or Source RPMS first
+
+2. Do we create and keep PeeWeeLinux sources (already patched
+   and ready to compile?). Or do we keep the original sources
+   and apply PeeWeeLinux patches?
+
+3. Do we create PeeWeeLinux tar packages or PeeWeeLinux rpms
+   (both binaries)?
+
+&gt;<i> &gt; Yup, it's a painstaking manual
+</I>&gt;<i> &gt; process. Scripting would be a bit of a pain since you would need a custom
+</I>&gt;<i> &gt; script for each package. It makes reproducing the package easier. But
+</I>&gt;<i> &gt; then, that why I did PWL in the very beginning, so I didn't have to do the
+</I>&gt;<i> &gt; manual prosess of selecting and stripping executables and checking for
+</I>&gt;<i> &gt; dependencies every single time I build a project.
+</I>&gt;<i> 
+</I>&gt;<i> The key here is that this *painful process* need only be done once...
+</I>
+That's correct. But what we use to start with and what it results in
+should be well defined. I looked at the Linux Router Project and I thought
+making LPR packages is a mess. I don't want the same for PeeWeeLinux.
+
+The easier the process is to follow the more likely people will contribute
+a complete set of sources/patches/binaries for PeeWeeLinux...
+
+&gt;<i> Is it time to start to ask for help / Announce Pee Wee to a 
+</I>&gt;<i> bunch of news groups /mailing lists ?? (Pee Wee Comes out of the closet!)
+</I>
+It's still far from a plug-and-play solution. I think I'd rather stick to
+announcing updates on freshmeat for now.
+
+&gt;<i> Maybe after I integrate the package stuff and the ram disk stuff...and
+</I>&gt;<i> we get a few projects working...of course, we can always come up with 
+</I>&gt;<i> more features...We need a marketing guy to say STOP, SHIP it NOW!:-)
+</I>&gt;<i> 
+</I>&gt;<i> &quot;Software programs are never finished...only abandoned&quot;
+</I>
+I think it'll be never finished. But the framework needs to be
+established.
+
+&gt;<i> &gt; PeeWeeLinux has met it's original goal of why I build it. I still think
+</I>&gt;<i> &gt; that it's worthwhile to develop it further by automating the build from
+</I>&gt;<i> &gt; sources once the original build has been done. That would also make it
+</I>&gt;<i> &gt; possible to establish guidelines for contributed packages and what's
+</I>&gt;<i> &gt; expected from them....
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Hmmm... a true &quot;raw&quot; distribution...sounds tough, but if we have patch
+</I>&gt;<i> files, ftp sites...doesn't sound too hard (just send me your patches!).
+</I>
+The question is do I want the hassle of making it distribution
+independent? I think if someone wants to compile it on Caldera they're on
+their own to make it work but share the results and create a PeeWeeLinux
+for Caldera :)
+
+Since the system is build on Redhat 6.1 it's dependednt on the installed
+libs, etc. So the development system as far as compiling anything is a
+Redhat 6.1.
+
+&gt;<i> &gt; The nice thin about Redhat rpms is they compile as is. With orignal tar
+</I>&gt;<i> &gt; balls quite often they have to be 'fixed' before they will compile....
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Geeze, thats handy!
+</I>
+Yup.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000052.html">RPM Loader Script - V0.1
+</A></li>
+	<LI> Next message: <A HREF="000054.html">RPM Loader Script - V0.1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#53">[ date ]</a>
+              <a href="thread.html#53">[ thread ]</a>
+              <a href="subject.html#53">[ subject ]</a>
+              <a href="author.html#53">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

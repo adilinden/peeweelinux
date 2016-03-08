@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Error Log viewing
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000288.html">
+   <LINK REL="Next"  HREF="000290.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Error Log viewing
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Error Log viewing">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 11 Jan 2001 12:25:59 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000288.html">PeeWee todo...was lilo failed
+</A></li>
+        <LI> Next message: <A HREF="000290.html">Error Log viewing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#289">[ date ]</a>
+              <a href="thread.html#289">[ thread ]</a>
+              <a href="subject.html#289">[ subject ]</a>
+              <a href="author.html#289">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Anyone interested in viewing a more detailed listing of the log
+files, try inserting the following two lines of script
+
+----------------------
+pwl_target_functions:
+
+ copy messages to the log files to keep track of whats 
+ being done (at about line 462)
+----------------------
+func_rd_action()
+     ...
+     m*)
+        ...
+        echo $2 &gt;&gt; $rd_log        # &lt;&lt; add this line
+        ;;
+ 
+----------
+pwl_config:
+  append the log file to the result list file (at about line 400)
+----------
+func device_load_fs()
+{
+  ...
+  # Show Results if selected
+  ...
+  else
+    cat $rd_log &gt;&gt; .load.log     # &lt;&lt; add this line
+    show_results ...
+----------
+
+This shows the list of action messages and their results followed by
+each message and the data collected when that action item was
+executed.  This should help in debugging any target loading problems.
+
+Enjoy
+Ralph
+
+Adi - you might add this to the mainline code unless you can come up 
+with something better...
+
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Photos - 35mm Quality Prints, Now Get 15 Free!
+<A HREF="http://photos.yahoo.com/">http://photos.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000288.html">PeeWee todo...was lilo failed
+</A></li>
+	<LI> Next message: <A HREF="000290.html">Error Log viewing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#289">[ date ]</a>
+              <a href="thread.html#289">[ thread ]</a>
+              <a href="subject.html#289">[ subject ]</a>
+              <a href="author.html#289">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

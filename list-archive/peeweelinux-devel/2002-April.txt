@@ -1,0 +1,50 @@
+From peeweelinux-devel@adis.on.ca  Mon Apr  8 13:48:01 2002
+From: peeweelinux-devel@adis.on.ca (Giuseppe Scarpi)
+Date: 8 Apr 2002 12:48:01 -0000
+Subject: [Peeweelinux-devel] reiserfs on peeweelinux
+Message-ID: <20020408124801.19049.qmail@daitarn.register.it>
+
+Hi everybody!
+For a project I'm currently on charge of, I need to install a linux with very small footprint AND a journalised fs.
+At the end, I decided to adopt peeweelinux because it seems much more flexible than other tiny distributions, and ReiserFS because its seems the best around so far.
+Here is the strategy I plan to apply, I would like to receive your comments and share experiences:
+
+1) apply the ReiserFS 3.5.28 for kernel 2.2.17
+2) slightly modify the PW scripts in order to create a Reiser partition instead of an ext2 (I am developing on a DOM that acts as an IDE disk).
+
+Should 3.5.28 prove itself unstable for some reasons, I could apply a different strategy:
+
+1) upgrade PWL kernel to 2.2.19 applying the appropriate patches
+2) apply the ReiserFS 3.5.34 for kernel 2.2.19
+3) modify scripts as said before.
+
+What do you think of this? Suggestions? Better methods? Deja-vu? ;-)
+tks
+  Giuseppe
+
+
+From peeweelinux-devel@adis.on.ca  Mon Apr  8 13:48:25 2002
+From: peeweelinux-devel@adis.on.ca (Giuseppe Scarpi)
+Date: 8 Apr 2002 12:48:25 -0000
+Subject: [Peeweelinux-devel] reiserfs on peeweelinux
+Message-ID: <20020408124825.19194.qmail@daitarn.register.it>
+
+Hi everybody!
+For a project I'm currently on charge of, I need to install a linux with very small footprint AND a journalised fs.
+At the end, I decided to adopt peeweelinux because it seems much more flexible than other tiny distributions, and ReiserFS because its seems the best around so far.
+Here is the strategy I plan to apply, I would like to receive your comments and share experiences:
+
+1) apply the ReiserFS 3.5.28 for kernel 2.2.17
+2) slightly modify the PW scripts in order to create a Reiser partition instead of an ext2 (I am developing on a DOM that acts as an IDE disk).
+
+Should 3.5.28 prove itself unstable for some reasons, I could apply a different strategy:
+
+1) upgrade PWL kernel to 2.2.19 applying the appropriate patches
+2) apply the ReiserFS 3.5.34 for kernel 2.2.19
+3) modify scripts as said before.
+
+What do you think of this? Suggestions? Better methods? Deja-vu? ;-)
+tks
+  Giuseppe
+
+

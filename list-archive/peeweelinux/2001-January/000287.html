@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Question about remote ext2 filesystem support in pwlconfig...
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000284.html">
+   <LINK REL="Next"  HREF="000285.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Question about remote ext2 filesystem support in pwlconfig...
+   </H1>
+    <B>Rich Riendeau
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Question about remote ext2 filesystem support in pwlconfig...">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 11 Jan 2001 11:59:33 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000284.html">PeeWee:  Installing Lilo.....failed
+</A></li>
+        <LI> Next message: <A HREF="000285.html">PeeWee todo...was lilo failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#287">[ date ]</a>
+              <a href="thread.html#287">[ thread ]</a>
+              <a href="subject.html#287">[ subject ]</a>
+              <a href="author.html#287">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I have a ruggedized 386sx with built-in 85MB Harddisk, ethernet - but no
+CDROM or standard IDE bus. I have gotten peewee linux to work by doing a
+manual install of the filesystem from a network-live boot disk and used
+lilo to get the machine to boot from it's internal hard disk.
+
+One of the means I was trying to use before I went manual was to use a
+loopback mounted file with a filesystem created in it. i.e.:
+
+dd if=/dev/zero of=PARTITION bs=1024 count=3096  # Create a 32 Meg partition
+mke2fs PARTITION						 # Create a ext2 partition on the file
+mkdir pmnt
+mount -o loop PARTITION					 # Mount it to ensure all is ok
+umount pmnt
+
+At this point I am not allowed to access this file as /directory/PARTITION
+as if
+I would access /dev/hda because the scripts make sure that the file is a
+special
+device (which it isn't).
+
+Is this path at all feasible? My ultimate intention is to be able to prepare
+the
+filesystem with pwlconfig and &quot;burn&quot; it to the file PARTITION and then boot
+from a
+floppy on my destination machine and use something like tftp and dd to load
+it onto a
+32MB partition on the remote computers harddisk...
+
+Comments?
+
+-Rich Riendeau
+
+
+&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="mailto:owner-peeweelinux@adis.on.ca">owner-peeweelinux@adis.on.ca</A>
+</I>&gt;<i> [mailto:<A HREF="mailto:owner-peeweelinux@adis.on.ca">owner-peeweelinux@adis.on.ca</A>]On Behalf Of Adi Linden
+</I>&gt;<i> Sent: Thursday, January 11, 2001 10:59 AM
+</I>&gt;<i> To: Ralph Stickley
+</I>&gt;<i> Cc: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: PeeWee: Installing Lilo.....failed
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Hi Ralph,
+</I>&gt;<i>
+</I>&gt;<i> The pwl_target scripts creates a log file in Embedded_Build/tmp/rd.log  I
+</I>&gt;<i> plan on an option to view this file from within pwlconfig if the target
+</I>&gt;<i> load failed... Yup, another one to add to the todo list.
+</I>&gt;<i>
+</I>&gt;<i> Some important items on the todo list:
+</I>&gt;<i>
+</I>&gt;<i> - proper handling of custom files with embedded spaces
+</I>&gt;<i> - add xterm-color to termcap
+</I>&gt;<i> - pwl_kernel development
+</I>&gt;<i> - new 2.2.17 kernel w/pwl_kernel_functions and icmp masq
+</I>&gt;<i> - single partition target for dualboot applications
+</I>&gt;<i>   - with instructions for manual lilo.conf manipulation
+</I>&gt;<i>
+</I>&gt;<i> Some enhancements:
+</I>&gt;<i>
+</I>&gt;<i> - 2.2.18 kernel
+</I>&gt;<i> - 2.4.x kernel
+</I>&gt;<i>   - devfs
+</I>&gt;<i>   - reiserfs and/or ext3
+</I>&gt;<i> - example/starter configuration with busybox/tinylogin
+</I>&gt;<i>
+</I>&gt;<i> And still... Documentation...!!! I want to get a FAQ started since there
+</I>&gt;<i> are a lot of questions and answers in the list archives.
+</I>&gt;<i>
+</I>&gt;<i> Anything I missed?
+</I>&gt;<i>
+</I>&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000284.html">PeeWee:  Installing Lilo.....failed
+</A></li>
+	<LI> Next message: <A HREF="000285.html">PeeWee todo...was lilo failed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#287">[ date ]</a>
+              <a href="thread.html#287">[ thread ]</a>
+              <a href="subject.html#287">[ subject ]</a>
+              <a href="author.html#287">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

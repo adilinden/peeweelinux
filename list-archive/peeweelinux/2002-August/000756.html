@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] system initialization
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000755.html">
+   <LINK REL="Next"  HREF="000757.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] system initialization
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] system initialization">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 22 Aug 2002 13:41:45 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000755.html">[Peeweelinux] system initialization
+</A></li>
+        <LI> Next message: <A HREF="000757.html">[Peeweelinux] Transparent cursor
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#756">[ date ]</a>
+              <a href="thread.html#756">[ thread ]</a>
+              <a href="subject.html#756">[ subject ]</a>
+              <a href="author.html#756">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> &gt;I usually use insmod and have it load the required modules in the 
+</I>&gt;<i> &gt;proper sequence. This eliminates the need for depmod and /etc/modules.conf 
+</I>&gt;<i> &gt;amongst things.
+</I>&gt;<i> 
+</I>&gt;<i> I think you meant &quot;modules.dep&quot; ; or do you put your insmod 
+</I>&gt;<i> in something other than /etc/rc.modules as you described above?
+</I>&gt;<i> 
+</I>&gt;<i> &gt;  DEVICE=eth0
+</I>&gt;<i> &gt;  IPADDR=192.168.1.1
+</I>&gt;<i> &gt;  NETMASK=255.255.255.0
+</I>
+Not using modprobe eliminates the need to have a &quot;/etc/modules.conf&quot; file. 
+Everything can be specified on the &quot;insmod&quot; command line. &quot;modules.dep&quot; is 
+not required either, nor is &quot;depmod&quot;...
+
+Adi
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000755.html">[Peeweelinux] system initialization
+</A></li>
+	<LI> Next message: <A HREF="000757.html">[Peeweelinux] Transparent cursor
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#756">[ date ]</a>
+              <a href="thread.html#756">[ thread ]</a>
+              <a href="subject.html#756">[ subject ]</a>
+              <a href="author.html#756">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Help request booting  IBM Netvista thin
+ client
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001203.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Help request booting  IBM Netvista thin
+ client
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Help request booting  IBM Netvista thin
+ client">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 21 Oct 2003 13:53:56 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001203.html">[Peeweelinux] Help request booting  IBM Netvista thin client
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1204">[ date ]</a>
+              <a href="thread.html#1204">[ thread ]</a>
+              <a href="subject.html#1204">[ subject ]</a>
+              <a href="author.html#1204">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Michael,
+
+I don't have any experience with you hardware but if it says it
+can boot off IDE0 then you ought to be able to get *something*
+out of it.
+
+Look at the text of the OS boot failure message carefully.
+Also compare to what you see if you pull the CF card out
+and try to boot.  Most non-bootable media still has a 
+boot program in it that says in effect &quot;Can't boot this&quot;.
+
+Is there a BIOS message that shows it detects the flash disk?
+
+Next, dd the first sector of your CF card back off the
+card and look at it, and see if it looks like a boot sector.
+Or post a hex dump of it if you don't have that experience.
+
+Make sure the IBM really boots that drive as IDE0 and that
+you told peeweelinux that it is &quot;hda&quot;.  A lot of boards
+that have a CF drive use hdc (master drive but second
+controller.)  Make sure peewee didn't throw an error,
+especially in the lilo installation.
+
+A floppy's boot sector, and a hard drive's boot + partition
+table aren't the same.  I don't think the floppy sector
+will boot a hard drive but I don't recall trying (now
+I'll have to...)
+
+A linux kernel will boot from a floppy if you dd it.  But
+again I don't think this would work on a hard drive.
+
+The point I'm trying to make is to find out what happens
+in that first access to IDE0.  If that doesn't happen,
+then it matters little how your Linux was built.
+
+Barry
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001203.html">[Peeweelinux] Help request booting  IBM Netvista thin client
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1204">[ date ]</a>
+              <a href="thread.html#1204">[ thread ]</a>
+              <a href="subject.html#1204">[ subject ]</a>
+              <a href="author.html#1204">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

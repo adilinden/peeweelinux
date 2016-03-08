@@ -1,0 +1,696 @@
+From peeweelinux-devel@adis.on.ca  Wed Feb 13 17:21:27 2002
+From: peeweelinux-devel@adis.on.ca (gorialiu)
+Date: Thu, 14 Feb 2002 01:21:27 +0800
+Subject: [Peeweelinux-devel] How do I make a Linux Syetem for ARM ?
+Message-ID: <3C6AA0972BC.E117GORIALIU@smtp.giga.net.tw>
+
+Hello, Everyone :
+
+This is Goria.Liu., come from Taiwan.
+Today is my first day to use PeeWeeLinux. I had built a small x86
+bootable system in floppy. ( use the example : minimal)
+
+I hope to create a Linux system for ARM. But I don't know how to do this
+work. How to change the HAL by using PeeWeeLinux ?
+
+Could anyone kindly give me some advices ?
+
+
+Best Regards,
+
+Goria.Liu.
+
+
+From peeweelinux-devel@adis.on.ca  Thu Feb 14 23:49:32 2002
+From: peeweelinux-devel@adis.on.ca (peeweelinux-devel@adis.on.ca)
+Date: Fri, 15 Feb 2002 09:49:32 +1000
+Subject: [Peeweelinux-devel] Moving Peewee to the 2.4 series - suggestions ?
+Message-ID: <OF6500ED09.0192DC13-ON4A256B60.00812967@juptech.com>
+
+Hi all, 
+
+We currently use Peewee to create auto-installing CDs for client Servers, 
+works a charm - love the way peewee is put together.
+
+Our next project invlolves creating a very (very) trim linux install for 
+use in a terminal, However, we need to use the 2.4 series kernel
+for this particular project.
+
+We are looking at rebuilding peewee for a 2.4.8 kernel, and my question(s) 
+is/are - 
+
+1. Has anyone begun this already ?
+2. Does anyone have any tips that they would like to share ? :)
+
+I have spent a fair amount of time, googling, and reading the peewee mail 
+list archives, but unfortunately, to date I have not found any indication 
+that
+any is starting (has started/completed) this.
+
+
+Kind Regards, 
+
+Delaney
+
+
+
+*********************************************************************
+This email message (and attachments) may contain information 
+that is confidential to Jupiters Technology. If you are not the 
+intended recipient you cannot use, distribute or copy the message 
+or attachments. In such a case, please notify the sender by return 
+email immediately and erase all copies of the message and 
+attachments. Opinions, conclusions and other information in this 
+message and attachments that do not relate to the official business 
+of Jupiters Technology are neither given nor endorsed by it.
+*********************************************************************
+
+
+From peeweelinux-devel@adis.on.ca  Mon Feb 18 15:04:26 2002
+From: peeweelinux-devel@adis.on.ca (Mark Meade)
+Date: Mon, 18 Feb 2002 10:04:26 -0500
+Subject: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+Message-ID: <002d01c1b88d$9ecb7d00$0101a8c0@dellc800>
+
+Delaney,
+
+I have been using Peewee Linux with the 2.4.17 kernel (DiskOnChip with open
+source MTD drivers), installing the kernel using the "Custom Files" options
+available under the "Configure File System" menu.
+
+I just posted a message to the other (general discussion) Peewee mailing
+list detailing how this was done.  As I said in that message, this may not
+be the "best way" to do this, but it has worked well thus far.
+
+I'm not sure what Adi's long term plans are for handling "custom" kernels,
+but I've found that creating my own custom image (completely separate from
+Peewee), and then adding it to the custom files directory has worked
+extremely well.  The real power (IMHO) of Peewee is the package selection,
+automatic partitioning/formatting of the target, and flexible target
+options.
+
+Regards,
+
+Mark
+
+----- Original Message -----
+
+> Hi all,
+>
+> We currently use Peewee to create auto-installing CDs for client Servers,
+> works a charm - love the way peewee is put together.
+>
+> Our next project invlolves creating a very (very) trim linux install for
+> use in a terminal, However, we need to use the 2.4 series kernel
+> for this particular project.
+>
+> We are looking at rebuilding peewee for a 2.4.8 kernel, and my question(s)
+> is/are -
+>
+> 1. Has anyone begun this already ?
+> 2. Does anyone have any tips that they would like to share ? :)
+>
+> I have spent a fair amount of time, googling, and reading the peewee mail
+> list archives, but unfortunately, to date I have not found any indication
+> that any is starting (has started/completed) this.
+>
+> Kind Regards,
+>
+> Delaney
+
+
+
+
+
+From peeweelinux-devel@adis.on.ca  Mon Feb 18 22:18:24 2002
+From: peeweelinux-devel@adis.on.ca (peeweelinux-devel@adis.on.ca)
+Date: Tue, 19 Feb 2002 08:18:24 +1000
+Subject: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+Message-ID: <OFE06665E8.7992CF33-ON4A256B64.0078A468@juptech.com>
+
+Hi Mark, thanks for your response, 
+
+This is exactly the approach that we have used to date.
+I friend of mine has contacted Adi (love your work) - who has said he is 
+not planning to move peewee to the 2.4 series at the moment - mainly 
+because the
+2.2-17 kernel is rock solid and the 2.4.* kernels aren't, yet :) 
+
+What I should have said is, we are looking to move  the entire peewee 
+package, libraries, packages etc to 2.4 and glibc 2.2(?)
+I agree that the power of peewee is in it's "automation" of selection and 
+preparation - it's just that we are looking to move it along from the
+2.2 series and older version of glibc (and all associated goods and 
+shattles)
+
+Kind Regards, 
+Delaney
+
+
+
+
+
+
+
+"Mark Meade" <mark@lakeshoremicro.com>
+Sent by: peeweelinux-devel-admin@adis.on.ca
+19/02/2002 01:04
+Please respond to peeweelinux-devel
+
+ 
+        To:     <peeweelinux-devel@adis.on.ca>
+        cc: 
+          Subject:      [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+      Project: 
+
+
+Delaney,
+
+I have been using Peewee Linux with the 2.4.17 kernel (DiskOnChip with 
+open
+source MTD drivers), installing the kernel using the "Custom Files" 
+options
+available under the "Configure File System" menu.
+
+I just posted a message to the other (general discussion) Peewee mailing
+list detailing how this was done.  As I said in that message, this may not
+be the "best way" to do this, but it has worked well thus far.
+
+I'm not sure what Adi's long term plans are for handling "custom" kernels,
+but I've found that creating my own custom image (completely separate from
+Peewee), and then adding it to the custom files directory has worked
+extremely well.  The real power (IMHO) of Peewee is the package selection,
+automatic partitioning/formatting of the target, and flexible target
+options.
+
+Regards,
+
+Mark
+
+----- Original Message -----
+
+> Hi all,
+>
+> We currently use Peewee to create auto-installing CDs for client 
+Servers,
+> works a charm - love the way peewee is put together.
+>
+> Our next project invlolves creating a very (very) trim linux install for
+> use in a terminal, However, we need to use the 2.4 series kernel
+> for this particular project.
+>
+> We are looking at rebuilding peewee for a 2.4.8 kernel, and my 
+question(s)
+> is/are -
+>
+> 1. Has anyone begun this already ?
+> 2. Does anyone have any tips that they would like to share ? :)
+>
+> I have spent a fair amount of time, googling, and reading the peewee 
+mail
+> list archives, but unfortunately, to date I have not found any 
+indication
+> that any is starting (has started/completed) this.
+>
+> Kind Regards,
+>
+> Delaney
+
+
+
+
+_______________________________________________
+Peeweelinux-devel mailing list
+Peeweelinux-devel@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel
+
+
+
+
+*********************************************************************
+This email message (and attachments) may contain information 
+that is confidential to Jupiters Technology. If you are not the 
+intended recipient you cannot use, distribute or copy the message 
+or attachments. In such a case, please notify the sender by return 
+email immediately and erase all copies of the message and 
+attachments. Opinions, conclusions and other information in this 
+message and attachments that do not relate to the official business 
+of Jupiters Technology are neither given nor endorsed by it.
+*********************************************************************
+
+
+From peeweelinux-devel@adis.on.ca  Mon Feb 18 23:11:47 2002
+From: peeweelinux-devel@adis.on.ca (Mark Meade)
+Date: Mon, 18 Feb 2002 18:11:47 -0500
+Subject: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+References: <OFE06665E8.7992CF33-ON4A256B64.0078A468@juptech.com>
+Message-ID: <001301c1b8d1$b8a74490$0101a8c0@dellc800>
+
+Delaney,
+
+My apologies for misunderstanding your question.  I wasn't sure if you meant
+just the kernel, or all of the packages, libraries, etc.
+
+I certainly understand the need to update to 2.4 kernels, but it's not
+completely obvious to me why the latest revisions of gcc/glibc are
+important.  I've been using the glibc 2.1.x compatibility packages (under
+Redhat 7.2) for development, and I haven't come across any problems so far.
+
+Am I missing something?  Do the latest versions offer any major advantages
+for embedded systems development?
+
+Regards,
+
+Mark
+
+----- Original Message -----
+From: <drowe@juptech.com>
+To: <peeweelinux-devel@adis.on.ca>
+Sent: Monday, February 18, 2002 5:18 PM
+Subject: Re: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series -
+suggestions ?
+
+
+> Hi Mark, thanks for your response,
+>
+> This is exactly the approach that we have used to date.
+> I friend of mine has contacted Adi (love your work) - who has said he is
+> not planning to move peewee to the 2.4 series at the moment - mainly
+> because the
+> 2.2-17 kernel is rock solid and the 2.4.* kernels aren't, yet :)
+>
+> What I should have said is, we are looking to move  the entire peewee
+> package, libraries, packages etc to 2.4 and glibc 2.2(?)
+> I agree that the power of peewee is in it's "automation" of selection and
+> preparation - it's just that we are looking to move it along from the
+> 2.2 series and older version of glibc (and all associated goods and
+> shattles)
+>
+> Kind Regards,
+> Delaney
+>
+
+
+
+
+
+
+From peeweelinux-devel@adis.on.ca  Tue Feb 19 23:32:54 2002
+From: peeweelinux-devel@adis.on.ca (peeweelinux-devel@adis.on.ca)
+Date: Wed, 20 Feb 2002 09:32:54 +1000
+Subject: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+Message-ID: <OFE5FCAB20.B8B7CBEA-ON4A256B65.007FF5BD@juptech.com>
+
+Hi Mark, sorry for the delay in getting back to you.
+
+To my knowledge, know that later versions do not offer any significant 
+advantages over the newer libraries (except the obvious size savings).
+
+Currently our developer's are using Mandrake linux 8.1 - some initial 
+reasons we were looking at later packages/libraries/kernels etc for peewee
+is that :
+
+1) we wanted the live running environment to match the development 
+environment, as closely as possible, rather than having to perform some 
+weird configuration juggling to ensure all ~12 developers are working from 
+the same base, and that that the base dev setup and live setup match
+
+As a note (I haven't looked into this yet ) some of the tools they use 
+(e.g. GTK2) I would have thought would need the later libraries to run - 
+if this is the case rather than mixing and matching libraries from 
+different versions, we'd prefer to use the one set of libs.
+
+2) The hardware guys want the USB support that the 2.4 kernel offers. 
+While the 2.2 series can be patched to add USB support, that's (for 
+reasons of their own) not the path the want to take.
+
+
+I had not heard of the glibc compatibility packages - they sound like they 
+may be worth a look - thanks for the tip.
+
+
+I hope you can extract some sense from the above ramblings, 
+I really need a coke right about now :)
+
+Kind Regards, 
+Delaney
+
+
+
+
+
+"Mark Meade" <mark@lakeshoremicro.com>
+Sent by: peeweelinux-devel-admin@adis.on.ca
+19/02/2002 09:11
+Please respond to peeweelinux-devel
+
+ 
+        To:     <peeweelinux-devel@adis.on.ca>
+        cc: 
+          Subject:      Re: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions 
+?
+      Project: 
+
+
+Delaney,
+
+My apologies for misunderstanding your question.  I wasn't sure if you 
+meant
+just the kernel, or all of the packages, libraries, etc.
+
+I certainly understand the need to update to 2.4 kernels, but it's not
+completely obvious to me why the latest revisions of gcc/glibc are
+important.  I've been using the glibc 2.1.x compatibility packages (under
+Redhat 7.2) for development, and I haven't come across any problems so 
+far.
+
+Am I missing something?  Do the latest versions offer any major advantages
+for embedded systems development?
+
+Regards,
+
+Mark
+
+----- Original Message -----
+From: <drowe@juptech.com>
+To: <peeweelinux-devel@adis.on.ca>
+Sent: Monday, February 18, 2002 5:18 PM
+Subject: Re: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series -
+suggestions ?
+
+
+> Hi Mark, thanks for your response,
+>
+> This is exactly the approach that we have used to date.
+> I friend of mine has contacted Adi (love your work) - who has said he is
+> not planning to move peewee to the 2.4 series at the moment - mainly
+> because the
+> 2.2-17 kernel is rock solid and the 2.4.* kernels aren't, yet :)
+>
+> What I should have said is, we are looking to move  the entire peewee
+> package, libraries, packages etc to 2.4 and glibc 2.2(?)
+> I agree that the power of peewee is in it's "automation" of selection 
+and
+> preparation - it's just that we are looking to move it along from the
+> 2.2 series and older version of glibc (and all associated goods and
+> shattles)
+>
+> Kind Regards,
+> Delaney
+>
+
+
+
+
+
+_______________________________________________
+Peeweelinux-devel mailing list
+Peeweelinux-devel@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel
+
+
+
+
+*********************************************************************
+This email message (and attachments) may contain information 
+that is confidential to Jupiters Technology. If you are not the 
+intended recipient you cannot use, distribute or copy the message 
+or attachments. In such a case, please notify the sender by return 
+email immediately and erase all copies of the message and 
+attachments. Opinions, conclusions and other information in this 
+message and attachments that do not relate to the official business 
+of Jupiters Technology are neither given nor endorsed by it.
+*********************************************************************
+
+
+From peeweelinux-devel@adis.on.ca  Wed Feb 20 14:05:01 2002
+From: peeweelinux-devel@adis.on.ca (Mark Meade)
+Date: Wed, 20 Feb 2002 09:05:01 -0500
+Subject: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+References: <OFE5FCAB20.B8B7CBEA-ON4A256B65.007FF5BD@juptech.com>
+Message-ID: <006001c1ba17$b7881ed0$0101a8c0@dellc800>
+
+Hi Delaney,
+
+Thanks for your response.  Library (in)compatibilities were causing me some grief early
+on, and I'm still trying to sort out all the details.
+
+FWIW, the compatibility packages really helped.  I have a Redhat 7.2 system for
+development, and using these packages allowed me to compile and link my applications
+against the shared libraries used in the current release of Peewee Linux.  This, of
+course, made my applications *much* smaller (no longer statically linked).
+
+I'm not sure how it's done with Mandrake, but in Redhat 7.2 it was simply installing some
+.rpm packages:
+
+compat-glibc-6.2-2.1.3.2
+compat-egcs-6.2-1.1.2.16
+compat-libs-6.2-3
+compat-libstdc++-6.2-2.9
+
+After installing these packages, running a script called "i386-glibc21-linux-env.sh"
+allowed me to link all my applications against glibc 2.1.x libraries.
+
+Regards,
+
+Mark
+
+----- Original Message -----
+From: <drowe@juptech.com>
+To: <peeweelinux-devel@adis.on.ca>
+Sent: Tuesday, February 19, 2002 6:32 PM
+Subject: Re: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+
+
+> Hi Mark, sorry for the delay in getting back to you.
+>
+> To my knowledge, know that later versions do not offer any significant
+> advantages over the newer libraries (except the obvious size savings).
+>
+> Currently our developer's are using Mandrake linux 8.1 - some initial
+> reasons we were looking at later packages/libraries/kernels etc for peewee
+> is that :
+>
+> 1) we wanted the live running environment to match the development
+> environment, as closely as possible, rather than having to perform some
+> weird configuration juggling to ensure all ~12 developers are working from
+> the same base, and that that the base dev setup and live setup match
+>
+> As a note (I haven't looked into this yet ) some of the tools they use
+> (e.g. GTK2) I would have thought would need the later libraries to run -
+> if this is the case rather than mixing and matching libraries from
+> different versions, we'd prefer to use the one set of libs.
+>
+> 2) The hardware guys want the USB support that the 2.4 kernel offers.
+> While the 2.2 series can be patched to add USB support, that's (for
+> reasons of their own) not the path the want to take.
+>
+>
+> I had not heard of the glibc compatibility packages - they sound like they
+> may be worth a look - thanks for the tip.
+>
+>
+> I hope you can extract some sense from the above ramblings,
+> I really need a coke right about now :)
+>
+> Kind Regards,
+> Delaney
+>
+
+
+
+
+From peeweelinux-devel@adis.on.ca  Wed Feb 27 02:35:56 2002
+From: peeweelinux-devel@adis.on.ca (Adi Linden)
+Date: Tue, 26 Feb 2002 20:35:56 -0600 (CST)
+Subject: [Peeweelinux-devel] Creating packages for PeeWeeLinux
+Message-ID: <Pine.LNX.4.33.0202262030400.16233-100000@big.adis.on.ca>
+
+Hi,
+
+Has anyone created any packages for PeeWeeLinux?
+
+I am working on some updated and new packages. Back when I had choosen rpm
+as a package maintenance tool. I don't remember why. The pwlconfig
+scripts deal entirely with tar files. The only time rpm comes into play
+is when the rpm files are extracted into tar files.
+
+I wonder if it would be easier to do away with rpm and use shell scripts
+to generate PeeWeeLinux packages?
+
+Any suggestions?
+
+Adi
+
+
+From peeweelinux-devel@adis.on.ca  Wed Feb 27 06:13:21 2002
+From: peeweelinux-devel@adis.on.ca (rick philbrick)
+Date: Tue, 26 Feb 2002 22:13:21 -0800 (PST)
+Subject: [Peeweelinux-devel] Creating packages for PeeWeeLinux
+In-Reply-To: <Pine.LNX.4.33.0202262030400.16233-100000@big.adis.on.ca>
+Message-ID: <20020227061321.96692.qmail@web20404.mail.yahoo.com>
+
+Hi Adi,
+
+I am not sure that all binary packages come in tar
+format. For example, Samba. Sure the source is tar.gz
+but looking at the binary i found the .rpm is upto
+date. So ditching rpm entirely could be difficult.
+
+Just a thought.
+
+
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> Has anyone created any packages for PeeWeeLinux?
+> 
+> I am working on some updated and new packages. Back
+> when I had choosen rpm
+> as a package maintenance tool. I don't remember why.
+> The pwlconfig
+> scripts deal entirely with tar files. The only time
+> rpm comes into play
+> is when the rpm files are extracted into tar files.
+> 
+> I wonder if it would be easier to do away with rpm
+> and use shell scripts
+> to generate PeeWeeLinux packages?
+> 
+> Any suggestions?
+> 
+> Adi
+> 
+> _______________________________________________
+> Peeweelinux-devel mailing list
+> Peeweelinux-devel@adis.on.ca
+>
+http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel
+
+
+=====
+
+       _     __  _
+     (            `   )  
+  ( __SEATTLE__) 
+       ///////////
+    ////////////
+
+ 
+
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Greetings - Send FREE e-cards for every occasion!
+http://greetings.yahoo.com
+
+From peeweelinux-devel@adis.on.ca  Wed Feb 27 06:33:59 2002
+From: peeweelinux-devel@adis.on.ca (Adi Linden)
+Date: Wed, 27 Feb 2002 00:33:59 -0600 (CST)
+Subject: [Peeweelinux-devel] Creating packages for PeeWeeLinux
+In-Reply-To: <20020227061321.96692.qmail@web20404.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.33.0202270031370.16233-100000@big.adis.on.ca>
+
+Hi Rick,
+
+The pwlconfig script converts the rpm to a tar archive and
+deals just with the tar file from then on.
+
+I remember one of the reasons for going rpm, it a neat way
+to keep all patches and sources required in a neat package.
+Not sure if that couldn't be accomplished with clever
+directory tree jsut the same...
+
+Adi
+
+
+On Tue, 26 Feb 2002, rick philbrick wrote:
+
+>
+> Hi Adi,
+>
+> I am not sure that all binary packages come in tar
+> format. For example, Samba. Sure the source is tar.gz
+> but looking at the binary i found the .rpm is upto
+> date. So ditching rpm entirely could be difficult.
+>
+> Just a thought.
+>
+>
+>
+> --- Adi Linden <adi@adis.on.ca> wrote:
+> > Hi,
+> >
+> > Has anyone created any packages for PeeWeeLinux?
+> >
+> > I am working on some updated and new packages. Back
+> > when I had choosen rpm
+> > as a package maintenance tool. I don't remember why.
+> > The pwlconfig
+> > scripts deal entirely with tar files. The only time
+> > rpm comes into play
+> > is when the rpm files are extracted into tar files.
+> >
+> > I wonder if it would be easier to do away with rpm
+> > and use shell scripts
+> > to generate PeeWeeLinux packages?
+> >
+> > Any suggestions?
+> >
+> > Adi
+> >
+> > _______________________________________________
+> > Peeweelinux-devel mailing list
+> > Peeweelinux-devel@adis.on.ca
+> >
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel
+>
+>
+> =====
+>
+>        _     __  _
+>      (            `   )
+>   ( __SEATTLE__)
+>        ///////////
+>     ////////////
+>
+>
+>
+>
+> __________________________________________________
+> Do You Yahoo!?
+> Yahoo! Greetings - Send FREE e-cards for every occasion!
+> http://greetings.yahoo.com
+> _______________________________________________
+> Peeweelinux-devel mailing list
+> Peeweelinux-devel@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel
+>
+
+
+From peeweelinux-devel@adis.on.ca  Wed Feb 27 06:40:52 2002
+From: peeweelinux-devel@adis.on.ca (Adi Linden)
+Date: Wed, 27 Feb 2002 00:40:52 -0600 (CST)
+Subject: [Peeweelinux-devel] New PeeWeeLinux release, Version 0.61.1
+Message-ID: <Pine.LNX.4.33.0202270034020.16233-100000@big.adis.on.ca>
+
+Hi,
+
+This is just a minor update. Pwlconfig relies on the lxdialog binary to
+create and display its graphical interface. The lxdialog supplied with pre
+0.61.1 version was dynamically linked and doesn't work out of the box with
+some Linux distribution, notably distributions newer than RedHat 6.2.
+
+This release included a copy of the lxdialog sources from the kernel
+source tree. The lxdialog binary is no build the first time pwlconfig is
+run on a system. This makes PeeWeeLinux easier to use on Linux installs
+with ncurses5.
+
+If you have a working 0.61.0 install, there won't be any benefit in
+upgrading to 0.61.1!
+
+Regards,
+Adi
+
+

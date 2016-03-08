@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> signal catching in PeeWeeLinux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000143.html">
+   <LINK REL="Next"  HREF="000145.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>signal catching in PeeWeeLinux
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="signal catching in PeeWeeLinux">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 8 Nov 2000 09:29:42 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000143.html">signal catching in PeeWeeLinux
+</A></li>
+        <LI> Next message: <A HREF="000145.html">signal catching in PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#144">[ date ]</a>
+              <a href="thread.html#144">[ thread ]</a>
+              <a href="subject.html#144">[ subject ]</a>
+              <a href="author.html#144">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+When you say it works fine on the development system, are you starting it
+from init on your redhat 6.1 system just as you do in PWL?
+
+The majority of changes between 0.51 and 0.53 are relating to the
+pwlconfig scripts. The kernel has been upgraded to 2.2.17 and some minor
+packages were added.
+
+Do you have a sample application to 'play' with? Then I can see if I can
+recreate your problem...
+
+TTYL,
+Adi
+
+&gt;<i> I've sent a few posting lately regarding signal catching during
+</I>&gt;<i> booting-up (see messages above, in Nov'00), only to realise that the
+</I>&gt;<i> problem I am having is not specific to the boot-up process but seems to
+</I>&gt;<i> be general to PWL.
+</I>&gt;<i> 
+</I>&gt;<i> Essentially, I am writing an application that needs catching a signal
+</I>&gt;<i> sent by the user. I dont't need a shell, being an embedded application,
+</I>&gt;<i> so I have chosen SIGQUIT (typing Ctrl+\ in kdb, but it could also easily
+</I>&gt;<i> be SIGINT, by typing CTRL+C). The application has been writen in a RH6.1
+</I>&gt;<i> development machine with kernel 2.2.12, and static libraries linked into
+</I>&gt;<i> it. It works fine. 
+</I>&gt;<i>  
+</I>&gt;<i> Now, I have PeeWeeLinux 0.51, which casually seems to be based on the
+</I>&gt;<i> same system (RH6.1). I've got it working fine. Boots up, gives me the
+</I>&gt;<i> prompt, loging in. No probs. Now, if I run my application (previosly
+</I>&gt;<i> copied accross from the dev machine), it starts fine, and works fine,
+</I>&gt;<i> but never catches the signal, i.e., loops forever. While this is the
+</I>&gt;<i> behaviour that will exhibit in the future, when it is a proper embedded
+</I>&gt;<i> system, during development is proving a pain to have to shutdown the
+</I>&gt;<i> system (ctrl+alt+del works, hence that signal is being cought by init, I
+</I>&gt;<i> guess) to terminate the application. 
+</I>&gt;<i> 
+</I>&gt;<i> I can't quite work out the reason. Maybe I should link something else
+</I>&gt;<i> in PWL? maybe upgrading to 0.53 will solve it? (does not seem the reason
+</I>&gt;<i> to me, though)
+</I>&gt;<i> 
+</I>&gt;<i> Any wild guesses? Thanks very much in advance,
+</I>&gt;<i> 
+</I>&gt;<i> Jaime
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000143.html">signal catching in PeeWeeLinux
+</A></li>
+	<LI> Next message: <A HREF="000145.html">signal catching in PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#144">[ date ]</a>
+              <a href="thread.html#144">[ thread ]</a>
+              <a href="subject.html#144">[ subject ]</a>
+              <a href="author.html#144">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

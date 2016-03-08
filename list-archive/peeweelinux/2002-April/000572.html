@@ -1,0 +1,402 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Compact Flash newbie
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000571.html">
+   <LINK REL="Next"  HREF="000573.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Compact Flash newbie
+   </H1>
+    <B>Kevin Brouelette
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Compact Flash newbie">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 29 Apr 2002 21:43:42 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000571.html">[Peeweelinux] Compact Flash newbie
+</A></li>
+        <LI> Next message: <A HREF="000573.html">[Peeweelinux] Compact Flash newbie
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#572">[ date ]</a>
+              <a href="thread.html#572">[ thread ]</a>
+              <a href="subject.html#572">[ subject ]</a>
+              <a href="author.html#572">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 29 Apr 2002 09:24:04 -0500 (CDT)
+&quot;Adi Linden&quot; &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Do you have &quot;/sbin/init&quot; in your filesystem? Have you tried using the 
+</I>&gt;<i> &quot;minimal&quot; project, it should be already to go and get you to a login and 
+</I>&gt;<i> shell prompt.
+</I>&gt;<i> 
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>Hi,
+Thanks fof the reply.
+
+I do have /sbin/init when I extract the project to the development system's
+drive.
+I did notice that when I extract it and look in /etc/lilo.conf it shows that
+it wants to boot /dev/sda
+which it the device I'm creating PWL on but then when I move the CF card to
+the other PC
+it is supposed to boot as /dev/hda.  Am I on the right track?
+Making changes in the 'Target Hardware' section causes PWL not to build if I
+change 'Target Device' to /dev/hda.  I'll post the lilo.conf from the
+..mnt/etc/lilo.conf and below that the results of the successfull build.
+
+Thank you
+
+Kevin B.
+
+---------------------------------------------
+
+disk=/dev/sda    &lt;&lt;&lt;----  sda
+  bios=0x80
+  heads=4
+  sectors=32
+  cylinders=490
+
+boot=/dev/sda    &lt;&lt;&lt;---sda
+map=/boot/map
+install=/boot/boot.b
+compact
+prompt
+timeout=20
+default=linux
+
+image=/boot/bzImage
+        label=linux
+        read-only
+        root=/dev/hda1   &lt;&lt;&lt;---HDA!
+        vga=0x317
+-------------------------------------------------------
+
+
+ Mon Apr 29 21:12:36 PDT
+2002
+?
+  ? Loading target
+device....
+?
+  ? Testing for
+mkdosfs...ok
+?
+  ? Testing for
+syslinux...ok
+?
+  ? Testing for
+mke2fs...ok
+?
+  ? Testing for
+sfdisk...ok
+?
+  ? Testing for
+losetup...ok
+?
+  ? Testing for tmp
+directory...ok
+?
+  ? Testing for mount
+directory...ok
+?
+  ? Testing for target device
+/dev/sda...ok
+?
+  ? Testing that target /dev/sda is not
+mounted...ok                                                              ?
+  ? Testing that nothing is mounted on mount
+directory...ok                                                       ?
+  ? Testing for an existing project
+root...ok
+?
+  ? Creating a loopback device...6148+0 records
+in                                                                ?
+  ? 6148+0 records
+out
+?
+  ?
+ok
+?
+  ? Creating a filesystem on /dev/loop0...mke2fs 1.26
+(3-Feb-2002)                                                ?
+  ? Filesystem
+label=
+?
+  ? OS type:
+Linux
+?
+  ? Block size=1024
+(log=0)
+?
+  ? Fragment size=1024
+(log=0)
+?
+  ? 1544 inodes, 6148
+blocks
+?
+  ? 0 blocks (0.00%) reserved for the super
+user                                                                  ?
+  ? First data
+block=1
+?
+  ? 1 block
+group
+?
+  ? 8192 blocks per group, 8192 fragments per group
+ 1544 inodes per
+group
+?
+
+?
+?
+  ? Writing inode tables:
+done
+?
+  ? Writing superblocks and filesystem accounting information:
+done                                               ?
+
+?
+?
+  ? This filesystem will be automatically checked every 25 mounts
+or                                              ?
+  ? 180 days, whichever comes first.  Use tune2fs -c or -i to
+override.                                           ?
+  ?
+ok
+?
+  ? Mounting loopback
+device...ok
+?
+  ? Copying files to loopback
+device...ok
+?
+  ? Creating fstab and
+rc.init...ok
+?
+  ? Editing
+inittab...ok
+?
+  ? Building
+ld.so.cache.../usr/X11R6/lib:
+?
+  ?
+/lib:
+?
+  ?
+/usr/lib:
+?
+  ?        libncftp.so.2 -&gt;
+libncftp.so.2
+?
+  ?
+/usr/X11R6/lib:
+?
+  ?
+ok
+?
+  ? Unmounting loopback
+device...ok
+?
+  ? Compressing /dev/loop0 into ramdisk...6148+0 records
+in                                                       ?
+  ? 6148+0 records
+out
+?
+  ?
+74.7%
+?
+  ?
+ok
+?
+  ? Free loopback device
+/dev/loop0...ok
+?
+  ? Determining space on target
+device...ok
+?
+  ? Partition traget device /dev/sda...Checking that no-one is using this
+disk right now ...
+
+OK
+?
+
+?
+?
+  ? Disk /dev/sda: 245 cylinders, 2 heads, 32
+sectors/track                                                       ?
+  ? Old
+situation:
+?
+  ? Units = cylinders of 32768 bytes, blocks of 1024 bytes, counting from
+0                                       ?
+
+?
+?
+  ?    Device Boot Start     End   #cyls   #blocks   Id
+System                                                   ?
+  ? /dev/sda1   *      0+    244     245-     7839+  83
+Linux                                                    ?
+  ? /dev/sda2          0       -       0         0    0
+Empty                                                    ?
+  ? /dev/sda3          0       -       0         0    0
+Empty                                                    ?
+  ? /dev/sda4          0       -       0         0    0
+Empty                                                    ?
+  ? New
+situation:
+?
+  ? Units = cylinders of 32768 bytes, blocks of 1024 bytes, counting from
+0                                       ?
+
+?
+?
+  ?    Device Boot Start     End   #cyls   #blocks   Id
+System                                                   ?
+  ? /dev/sda1   *      0+    244     245-     7839+  83
+Linux                                                    ?
+  ? /dev/sda2          0       -       0         0    0
+Empty                                                    ?
+  ? /dev/sda3          0       -       0         0    0
+Empty                                                    ?
+  ? /dev/sda4          0       -       0         0    0
+Empty                                                    ?
+  ? Successfully wrote the new partition
+table                                                                    ?
+
+?
+?
+  ? Re-reading the partition table
+....
+?
+
+?
+?
+  ? If you created or changed a DOS partition, /dev/foo7, say, then use
+dd(1)                                     ?
+  ? to zero the first 512 bytes:  dd if=/dev/zero of=/dev/foo7 bs=512
+count=1                                     ?
+  ? (See fdisk(8).)
+ok
+?
+  ? Creating ext2 filesystem...mke2fs 1.26
+(3-Feb-2002)                                                           ?
+  ? Filesystem
+label=
+?
+  ? OS type:
+Linux
+?
+  ? Block size=4096
+(log=2)
+?
+  ? Fragment size=4096
+(log=2)
+?
+  ? 992 inodes, 1959
+blocks
+?
+  ? 0 blocks (0.00%) reserved for the super
+user                                                                  ?
+  ? First data
+block=0
+?
+  ? 1 block
+group
+?
+  ? 32768 blocks per group, 32768 fragments per
+group                                                             ?
+  ? 992 inodes per
+group
+?
+
+?
+?
+  ? Writing inode tables:
+done
+?
+  ? Writing superblocks and filesystem accounting information:
+done                                               ?
+
+?
+?
+  ? This filesystem will be automatically checked every 37 mounts
+or                                              ?
+  ? 180 days, whichever comes first.  Use tune2fs -c or -i to
+override.                                           ?
+  ?
+ok
+?
+  ? Mount the target device
+/dev/sda1...ok
+?
+  ? Copying ramdisk, kernel and
+boot.b...ok
+?
+  ? Creating lilo.conf in a temporary
+location...ok
+?
+  ? Installing lilo bootloader...LILO version 21, Copyright 1992-1998 Werner
+Almesberger
+
+Reading boot sector from
+/dev/sda
+?
+  ? Merging with
+../mnt/boot.b
+?
+  ? Boot image:
+../mnt/bzImage
+?
+  ? Mapping RAM disk
+../mnt/ramdisk
+?
+  ? Added linux
+*
+?
+  ? /dev/null exists - no backup copy
+made.
+?
+  ? Writing boot
+sector.
+?
+  ?
+ok
+?
+  ? Unmounting target device /dev/sda1...ok
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000571.html">[Peeweelinux] Compact Flash newbie
+</A></li>
+	<LI> Next message: <A HREF="000573.html">[Peeweelinux] Compact Flash newbie
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#572">[ date ]</a>
+              <a href="thread.html#572">[ thread ]</a>
+              <a href="subject.html#572">[ subject ]</a>
+              <a href="author.html#572">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,74 @@
+From peeweelinux-devel@adis.on.ca  Sat Dec  1 14:41:58 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Sat, 1 Dec 2001 22:41:58 +0800 (CST)
+Subject: [Peeweelinux-devel] compile my custom kernel failed
+Message-ID: <20011201144158.42044.qmail@web9007.mail.yahoo.com>
+
+--0-1656318806-1007217718=:39759
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+hi,
+
+I'm using peeweelinux-0.61.0,its kernel is 2.2.17,but,I want to use kenel-2.2.5-15.when on the step of selecting "Configure the kernel(Menuconfig)",I opened other termination,I copied the source of 2.2.5-15 to the /Embedded_Build/usr/src/,then ln -fs linux-2.2.5 linux,then back up to the old termination of peewee.then do in order to the peewee.but, when it startup rightly,the kernel is set 2.2.5,not 2.2.5-15,can you can me why?how to do ?
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1656318806-1007217718=:39759
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>hi,</P>
+<P>I'm using peeweelinux-0.61.0,its kernel is 2.2.17,but,I want to use kenel-2.2.5-15.when on the step of selecting "Configure the kernel(Menuconfig)",I opened other termination,I copied the source of 2.2.5-15 to the /Embedded_Build/usr/src/,then ln -fs linux-2.2.5 linux,then back up to the old termination of peewee.then do in order to the peewee.but, when it startup rightly,the kernel is set 2.2.5,not 2.2.5-15,can you can me why?how to do ?</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1656318806-1007217718=:39759--
+
+From peeweelinux-devel@adis.on.ca  Thu Dec 13 12:05:23 2001
+From: peeweelinux-devel@adis.on.ca (Derek Cassidy)
+Date: Thu, 13 Dec 2001 12:05:23 +0000
+Subject: [Peeweelinux-devel] Mounting NFS
+Message-ID: <3C189983.3070505@haptica.com>
+
+Does anyone know does PeeWeeLinux system have nfs mounting support. I.e. 
+using
+PeeWee System as only client not server.
+If so has anyone mounted accross the network successfully and how??
+
+Derek
+
+
+From peeweelinux-devel@adis.on.ca  Fri Dec 14 02:46:23 2001
+From: peeweelinux-devel@adis.on.ca (rick philbrick)
+Date: Thu, 13 Dec 2001 18:46:23 -0800 (PST)
+Subject: [Peeweelinux-devel] Newer Sources
+Message-ID: <20011214024623.87714.qmail@web20401.mail.yahoo.com>
+
+ 
+Hi,
+
+Is there a CVS or ftp w/ newer sources?? Perhaps
+something in the kernel Version 2.4 era??
+
+Or perhaps there is a dev branch of the project.
+
+RIckp
+
+
+
+__________________________________________________
+Do You Yahoo!?
+Check out Yahoo! Shopping and Yahoo! Auctions for all of
+your unique holiday gifts! Buy at http://shopping.yahoo.com
+or bid at http://auctions.yahoo.com
+

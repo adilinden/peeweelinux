@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: Peewee on Rocky 328E
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000478.html">
+   <LINK REL="Next"  HREF="000479.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Peewee on Rocky 328E
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Peewee on Rocky 328E">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 22 Feb 2002 11:59:24 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000478.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+        <LI> Next message: <A HREF="000479.html">[Peeweelinux] Configuring the Ethernet port
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#483">[ date ]</a>
+              <a href="thread.html#483">[ thread ]</a>
+              <a href="subject.html#483">[ subject ]</a>
+              <a href="author.html#483">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Guillaume,
+
+&gt;<i> I did not realy anderstood why it works with /dev/fd0 instead of /mnt/floppy but
+</I>&gt;<i> it works ...
+</I>
+I'm glad that things are working better now.  Keep in mind that /mnt/floppy is simply an
+arbitrary &quot;mount point&quot;, but /dev/fd0 is actually the device entry for your floppy drive.
+
+&gt;<i> Editing inittab sed : can't read .mnt/etc/inittab : Aucun fichier ou répertoire de ce
+</I>type
+
+Check to make sure that you have selected &quot;etc/&quot; under Project File System --&gt; System
+Base --&gt; file system, and also &quot;etc/inittab&quot; under initscripts.  You may have selected
+another package (sysvinit, for example) that requires this file.
+
+I might be a good idea to use the default set of options for the &quot;minimal&quot; project
+initially, make sure everything works, and then add or delete packages as needed.
+
+&gt;<i> Does the process try to install peewee on my HD ? (my floppy driver is noisier than my
+</I>HD driver)
+
+If you're using &quot;/dev/fd0&quot; as the target, peewee is trying to install to the floppy.  The
+entire target filesystem is created on the HD prior to installation on the target.
+
+Regards,
+
+Mark
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000478.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+	<LI> Next message: <A HREF="000479.html">[Peeweelinux] Configuring the Ethernet port
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#483">[ date ]</a>
+              <a href="thread.html#483">[ thread ]</a>
+              <a href="subject.html#483">[ subject ]</a>
+              <a href="author.html#483">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

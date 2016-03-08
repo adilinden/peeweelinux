@@ -1,0 +1,4067 @@
+From adi@adis.on.ca  Tue Jan 11 18:48:56 2000
+From: adi@adis.on.ca (Adi Linden)
+Date: Tue, 11 Jan 2000 12:48:56 -0600 (CST)
+Subject: pwlconfig
+Message-ID: <Pine.LNX.4.10.10001111244580.1989-100000@direcpc.adis.on.ca>
+
+Hi,
+
+I am just thinking about adding descriptions to packages. There are a
+number of available kernel packages available. It would be nice to be able
+to access a <Help> screen or <Info> screen giving a description of the
+packages. Especially if theres a bunch of similar stuff to choose from...
+
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+Download PWL at http://projects.adis.on.ca/Embedded
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 17 06:33:52 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Mon, 17 Jan 2000 00:33:52 -0600 (CST)
+Subject: pwlconfig
+In-Reply-To: <20000117055922.26157.qmail@web1106.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001170008160.2623-100000@localhost.localdomain>
+
+Hi Ralph,
+
+Hey, you're subscribed to the wrong mailing list. I asked the fellas at
+source forge to remove the 2 lists but they haven't done that. I am
+hosting a couple of lists on my own server.
+
+So, the lists are:
+
+PeeWeeLinux@adis.on.ca
+PeeWeeLinux-devel@adis.on.ca
+
+I added your name to the list members so you should be getting content
+automatically. I know about the issue with the 'reply-to' field. However,
+I still chosse to use it. That insures all replies default to go back to
+the list. Also, otherwise most replies will be send in duplicate, ont to
+the list the other to the sender.
+
+I've been really busy this past week. We've had major server problems at
+work. I am suspecting the damage was done purposely and not accidental
+hardware or software failure. Two boxes died within a week with identical
+symptoms. Turns out when I upgraded the boxes to RedHat 6.0 from Redhat
+5.2 I missed to rewrite the firewall from ipfwadm to ipchains. At least my
+box might have been save then. Oh well...
+
+Sooo... I got the routers going and discovered a bug in Helius Network
+Edition for DirecPC. Spend a 5 hours trying to find out what I was doing
+wrong until I came to the conclusion that their version for RedHat 6.0 is
+slightly defective. It's a major stumbling block for some communities as
+it means sending their existing equipment in to have a router build. Which
+will mean no Internet for at least 3 days. The problem has to do with the
+initial configuration of the system. There are no runtime problems.  Other
+than that it's working perfectly!
+
+Still haven't had time to work on my par time project the was the original
+puch to create PeeWeeLinux. I have orders for my little LAN dialup
+embedded box but haven't begun to build it yet... Don't have name for it
+either. PeeWeeRouter maybe? Then build a PeeWeeKiosk and a PeeWeePlayer...
+:)
+
+Hey, you could have me play with a IPIX to build a kiosk and share my
+development work with you for use in your work, make it boot, run from a
+ramdisk, etc... :)
+
+> > I am just thinking about adding descriptions to packages. There are a
+> > number of available kernel packages available. It would be nice to be able
+> > to access a <Help> screen or <Info> screen giving a description of the
+> > packages. Especially if theres a bunch of similar stuff to choose from...
+> > 
+> 
+> The help button easily supports context sensitive help.  When help is 
+> selected, the menu item currently highlighted is returned also.  
+> Thus, the help file must contain this menu item somewhere/
+> 
+> I think that a common file in each package subdirectory should be used
+> to contain the help information about that package.  Just off the top...
+> 
+> README.<packagename>
+
+There could be 2 ways to do this:
+
+README.<packagename> - or -
+<packagename>.README
+
+The last solution would have the advantage that the file would be listed
+with the package when doing an ls rather than first all README's and then
+all packages.
+
+> or something like this, not sure if there is any "standard"....
+> I can use sed to parse whatever text is following a "key word" and 
+> display that in a dialog box (just like I'm parsing the README.pwlconfig
+> file now).  By keeping the help screen in the package directory, all 
+> information about that package is maintained within that directory.
+
+So what would be suitable keywords?
+
+Description:
+Dependencies:
+Compilation:
+
+> Sorry for the delay...I'll try to catch up with other e-mail now
+
+No problem... It gets pretty darn busy sometimes!
+
+I am working on adding a couple more packages. I need to add Minicom to
+the router. And there is a small login package available now. It could
+replace util-linux for very small applications requiring authentication.
+Also, I need a webserver for doing configuration of the router. I am
+thinking about adding boa. It seems quite stable and lean on memory
+requirements, etc. It does support cgi, though. A must for doing any
+configuration via a webserver, I think.
+
+I can do cgi on my sourceforge shell account. I am intending to write a
+little perl script to ease uploading file to source forge. Something
+that'll use wget to download to sourceforge with retry and then uses
+ncftput to place it in the incoming directory on sourceforge. If I ftp
+straight from here it usually times out. There are certain places where
+the connection from here isn't too hot....  
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+Download PWL at http://projects.adis.on.ca/Embedded
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 17 14:56:15 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Mon, 17 Jan 2000 08:56:15 -0600 (CST)
+Subject: pwlconfig
+In-Reply-To: <20000117073920.27210.qmail@web1103.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001170829450.777-100000@localhost.localdomain>
+
+Hi Ralph,
+
+> Ok, this is a bit of a mess :-(
+> There are 2 forums and 3 mailing list + 2 more mailing lists ? ...not to 
+> mention, I keep sending mail to myself about 3 times :-) As long as
+> I don't start replying to myself, I guess we're ok...
+
+My fault, I originally setup the mailing lists on sourceforge. I made some
+mistaks I couldn't fix and asked the sourceforge people to change it. So I
+went and installed majordomo and ran mailing lists on my own box. I
+intended to make the lists on sourcforge private, so noone can subscribe
+or post messages... Also, last night I attempted to remove any names that
+belong to the sourceforge lists. I hope it worked...
+
+> BTW, did you seen the message about someone looking for the root
+> password ? I send a response direct from my poor ailing memory, you 
+> might be able to clarify this...I guess this means we've been spotted :-)
+
+I entered a app record on freshmeat...
+
+
+> No problem receiving mail...at least to this yahoo account...they just
+> gave me a new computer at work, pre-installed with Windows and IE which
+> should bring my work account back up.  then I just put everything on
+> a floppy and move it where I need it..unless it >1.4MB...unless its on
+> my target...ahhhhhhhhhhhh
+
+Fun stuff!
+
+> Your work stuff getting in the way too ?? 
+
+Yup, the problem is all is work and play. I love my job! Just the
+priorities are screwed up. What I am supposed to do and what I'd like to
+do any given moment doesn't quite match all the time. Ohhh well...
+
+> > Hey, you could have me play with a IPIX to build a kiosk and share my
+> > development work with you for use in your work, make it boot, run from a
+> > ramdisk, etc... :)
+> > 
+> 
+> Not a problem...If you call Datalux and tell them what you're doing, they
+> should be able to send you an eval - tell them Ralph sent ya!  1-800-datalux
+> (free call !).
+
+I'll give that a shot!
+
+> Hmmm...not sure if we need to see them in this order, but it might be handy
+> for the user to move/add packages if all three files had same name:
+> 
+> _package.list
+> _package.tar
+> _package.README
+> 
+> Looks good to me...just need to know whats in a package but I can't help
+> you there..They're all just files to me!
+
+So we'll stick with that...
+
+> > So what would be suitable keywords?
+> > 
+> > Description:
+> > Dependencies:
+> > Compilation:
+> >
+> 
+> 
+> I think the keywords will have to be the package name, thats what I'm 
+> getting from the lxdialog when the help button is pressed. 
+> Just put it in the first column of the file...
+> 
+> #### _package.README 
+> 
+> file history
+> ....
+> script to build from RPM..hint...hint.
+> .....
+> _base_filesystem 
+> 
+>  "The best base file system package ever..described right here"
+>    ...text...all about the _base_filesystem
+>    shows up in the help screen until END is found...
+> 
+> END
+> 
+> compile notes,
+> other notes that don't appear on help screen.
+> #####
+
+#### minicom.README
+
+Initial release, untested.
+
+minicom
+
+Minicom is a simple text-based modem control and terminal emulation
+program somewhat similar to MSDOS Telix.  Minicom includes a dialing
+directory, full ANSI and VT100 emulation, an (external) scripting
+language, and other features.
+
+END
+####
+ 
+Would the above be suitable? So it wouldn't need any other keywords? I
+guess the package name shouldn't appear in the file history portion then.
+The mods to 'fix' a RPM for PeeWeeLinux require a patch. I wonder if the
+patch should be at the bottom of the README file? So put the compilation
+and the patch output after the END statement?
+
+> Or I can just dump the entire readme file to the help screen....
+
+Depending on the contents that might be a lot to output...
+
+> Cool, I couldn't get my V0.7 to load on source forge...hmmmm....maybe I can
+> mail it to myself on 3 or four mailing lists :-)))
+
+Upload to ftp://download.sourceforge.net/incoming then go to the admin
+function of PeeWeeLinux and add the file...
+
+I am having a very difficult time uploading to sourceforge. Basically it
+doesn't work. SO now I login to the shell account, run wget to grab the
+URL from my box... Once I think its done I login again and use ncftp to
+transfer the file to the incoming directory. Then I go to the admin page
+and finally add it.
+
+So I want to do a cgi script that I can call like:
+http://embedded.sourceforge.net/cgi-bin/release.pl?file=embedded-0.19-src.tar.gz
+
+It'll the do the above process and output a page saying it's all done once
+it's done or send an email. Then I simply go to the admin page and add it
+from there... Awkward process... 
+
+> Its late again,
+
+In the morning for me now :)
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+Download PWL at http://projects.adis.on.ca/Embedded
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 17 17:55:07 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Mon, 17 Jan 2000 09:55:07 -0800 (PST)
+Subject: pwlconfig
+Message-ID: <20000117175507.19771.qmail@web1103.mail.yahoo.com>
+
+
+Hey,
+
+I hope you can get one of the source forge lists going soon...
+I noticed that freshmeat recorded 687 hits to your home directory ;-)
+
+> > 
+> > Not a problem...If you call Datalux and tell them what you're doing, they
+> > should be able to send you an eval - tell them Ralph sent ya! 
+> 1-800-datalux
+> > (free call !).
+> 
+> I'll give that a shot!
+> 
+
+Don't forget to tell them you will want to buy about 100 units this 
+year!;-)
+
+> #### minicom.README
+> 
+> Initial release, untested.
+> 
+> minicom
+> 
+> Minicom is a simple text-based modem control and terminal emulation
+> program somewhat similar to MSDOS Telix.  Minicom includes a dialing
+> directory, full ANSI and VT100 emulation, an (external) scripting
+> language, and other features.
+> 
+> END
+> ####
+>  
+> Would the above be suitable? So it wouldn't need any other keywords? I
+> guess the package name shouldn't appear in the file history portion then.
+> The mods to 'fix' a RPM for PeeWeeLinux require a patch. I wonder if the
+> patch should be at the bottom of the README file? So put the compilation
+> and the patch output after the END statement?
+> 
+
+Looks good, now we just need about 100 more of these :-) I should be 
+able to parse anything from anywhere in the file, if it is properly 
+delimited with the <name>/END stuff...  
+
+I just noticed that if you put the script in the file, then everything
+about that package is contained in the _package.README - we could
+even parse the list file from it to help build the package...hmmmmm...
+sounds neat to me....
+
+>
+
+Grrr..fighting with IE ...no ftp upload !? ...Grrrrr
+
+
+Ooops, forgot to send this before lunch...
+Later,
+Ralph
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+Download PWL at http://projects.adis.on.ca/Embedded
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 17 18:40:24 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Mon, 17 Jan 2000 12:40:24 -0600 (CST)
+Subject: pwlconfig
+In-Reply-To: <20000117175507.19771.qmail@web1103.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001171236470.1154-100000@direcpc.adis.on.ca>
+
+Hi,
+
+> I hope you can get one of the source forge lists going soon...
+> I noticed that freshmeat recorded 687 hits to your home directory ;-)
+
+You think the sourceforge lists work better than my mailserver?
+
+> Looks good, now we just need about 100 more of these :-) I should be 
+> able to parse anything from anywhere in the file, if it is properly 
+> delimited with the <name>/END stuff...  
+
+Actually... I first I'll write a little script that will generate the
+README file by doing an rpm -qi and catching the output...
+
+I'll need to put a line in there indicating the original name and version,
+I think. Just for reference?
+
+> I just noticed that if you put the script in the file, then everything
+> about that package is contained in the _package.README - we could
+> even parse the list file from it to help build the package...hmmmmm...
+> sounds neat to me....
+
+Exactly, everything in one place... I just hope the file won't be too big.
+
+> Grrr..fighting with IE ...no ftp upload !? ...Grrrrr
+
+I hate the IE ftp. Especially the IE5.0 thing that opens a directory like
+a local folder. It just doesn't agree with me.
+
+Got to go do some work,
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+Download PWL at http://projects.adis.on.ca/Embedded
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 17 20:48:18 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Mon, 17 Jan 2000 12:48:18 -0800 (PST)
+Subject: pwlconfig
+Message-ID: <20000117204818.20202.qmail@web1101.mail.yahoo.com>
+
+Adi,
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> > I hope you can get one of the source forge lists going soon...
+> > I noticed that freshmeat recorded 687 hits to your home directory ;-)
+> 
+> You think the sourceforge lists work better than my mailserver?
+> 
+
+Not sure about that, it just seems nice to have everything in one 
+place...nice GUI interface and all for viewing...of course, if it
+doesn't work I guess its not so nice :-(
+
+> > Looks good, now we just need about 100 more of these :-) I should be 
+> > able to parse anything from anywhere in the file, if it is properly 
+> > delimited with the <name>/END stuff...  
+> 
+> Actually... I first I'll write a little script that will generate the
+> README file by doing an rpm -qi and catching the output...
+> 
+Cool...haven't played with rpm much, that should be handy once we
+get RPM stuff integrated..."upgrade from rpm" should generate the
+new package and upgrade the help screen too!
+
+> I'll need to put a line in there indicating the original name and version,
+> I think. Just for reference?
+>
+every little bit helps...maybe RPM dumps that out also ??
+ 
+> > I just noticed that if you put the script in the file, then everything
+> > about that package is contained in the _package.README - we could
+> > even parse the list file from it to help build the package...hmmmmm...
+> > sounds neat to me....
+> 
+> Exactly, everything in one place... I just hope the file won't be too big.
+>
+Hmmm...still smaller than downloading the source file :-)
+ 
+> > Grrr..fighting with IE ...no ftp upload !? ...Grrrrr
+> 
+> I hate the IE ftp. Especially the IE5.0 thing that opens a directory like
+> a local folder. It just doesn't agree with me.
+> 
+> Got to go do some work,
+> 
+Awww...what a way to ruin a good day !
+
+BTW, I started using the bug tracker to post some bugs and new
+features for pwlconfig...looks like a nice way to track everything...
+Any suggestions or bugs you find, just post them there - once the 
+list gets big enough, I'll try to get everything fixed for the next 
+release.
+
+Next is to get the CVS thing working too.
+
+Later,
+Ralph
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+Download PWL at http://projects.adis.on.ca/Embedded
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Jan 21 22:32:15 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Fri, 21 Jan 2000 16:32:15 -0600 (CST)
+Subject: pwlconfig
+In-Reply-To: <20000117204818.20202.qmail@web1101.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001211630590.1007-100000@direcpc.adis.on.ca>
+
+Hi,
+
+> > > I noticed that freshmeat recorded 687 hits to your home directory ;-)
+
+Hey, I do webpage stats... http://adis.on.ca/Webalizer This doesn't
+include hits on the sourceforge files of course...
+
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+Download PWL at http://projects.adis.on.ca/Embedded
+
+From PeeWeeLinux-devel@adis.on.ca  Sat Jan 22 18:31:47 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Sat, 22 Jan 2000 12:31:47 -0600 (CST)
+Subject: An 'early' morning thought about the future of PWL
+Message-ID: <Pine.LNX.4.10.10001221208360.1349-100000@localhost.localdomain>
+
+I thought about ways to automate the sources for PeeWeeLinux. Here's an
+idea I had while showering this morning. Right up front, to implement it
+it would require sophisticated knowledge of rpm. Something I don't have
+but nonetheless its an idea I'd like to share...
+
+First PeeWeeLinux would have to build from RedHat source rpms. Packages
+that do not exist as source rpm would have to be created specifically for
+PeeWeeLinux or for Redhat Linux in gerneral.
+
+First take the original source rpm and manually edit the spec file to
+build a rpm suitable for PWL. Also, edit the sources to compile as
+required for PWL. I.e. the libs to use, which files to install, etc. 
+Create a patch file to patch the necessary changes into the source rpm
+files.
+
+Build a PWL specific rpm from the patches source rpm.
+
+Use a defined mount point for the PeeWeeLinux filesystem being build
+independed of where PeeWeeLinux has been extracted to. I.e. /mnt/PWL.
+
+Use rpm in a similar mode as the RedHat install disks do. That is install
+the PWL specific rpms in /mnt/PWL rather than the current file system.
+
+This would eliminate the use of tar to manage files. The pwlconfig script
+would have to do the following steps to build a project:
+
+1. Menu to select which packages to build and install
+2. Submenu to select which files to install from the packages
+3. Configure the location of RH source rpms and source rpm that do not
+come with RH
+4. Patch the RH source rpms to turn them into PWL source rpms
+5. Build the PWL specific rpms from source rpms
+6. Condition the /mnt/PWL filesystem for the new system
+7. Install the selected files from PWL rpms in /mnt/PWL
+8. Install any custom config files into /mnt/PWL, overwriting any existing
+configuration
+8. Offer choice of what to do with the newly created system, i.e. build a
+ramdisk, load a DOC, make a bootable CD...
+
+The advantages I can see:
+- The PWL distribution would no longer require any sources but only patch
+files containing package description, help information (things that could
+be displayed by pwlconfig) and the actual patch to the RH source rpm.
+- Perhaps eases the migration to newer RH versions as they are released.
+
+The disadvantages:
+- Building an initial PWL development environment could be 'very' time
+consuming and diskspace consuming since everything has to be compiled
+first.
+- Defenitely RH specific!
+
+I guess an option would be to have a package of pre-compiled PWL rpms
+available. That would make PWL a 'real' full-fledged distro for embedded
+stuff :)
+
+Perhaps I should get and dig into 'Maxximum RPM' sometime. Maybe that
+would be a ToDo wishlist item for the next RedHat release, when a few
+package for PWL will have to be re-done...
+
+TTYL,
+Adi (dreaming... :)
+
+
+From PeeWeeLinux-devel@adis.on.ca  Sun Jan 23 05:15:47 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Sat, 22 Jan 2000 21:15:47 -0800 (PST)
+Subject: An 'early' morning thought about the future of PWL
+Message-ID: <20000123051547.29658.qmail@web1106.mail.yahoo.com>
+
+Hey, 
+Sounds like your on to something here...except for building the pwlconfig
+packages (either tar or RPMs) I think most of this is done with pwlconfig
+now...maybe I missed something...
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> I thought about ways to automate the sources for PeeWeeLinux. Here's an
+> idea I had while showering this morning. Right up front, to implement it
+> it would require sophisticated knowledge of rpm. Something I don't have
+> but nonetheless its an idea I'd like to share...
+> 
+> First PeeWeeLinux would have to build from RedHat source rpms. Packages
+> that do not exist as source rpm would have to be created specifically for
+> PeeWeeLinux or for Redhat Linux in gerneral.
+> 
+> First take the original source rpm and manually edit the spec file to
+> build a rpm suitable for PWL. Also, edit the sources to compile as
+> required for PWL. I.e. the libs to use, which files to install, etc. 
+> Create a patch file to patch the necessary changes into the source rpm
+> files.
+> 
+> Build a PWL specific rpm from the patches source rpm.
+> 
+Ok, let me see if I can figure this out...
+
+RH RPM 6.x--> manual process --> PWL-RPM.patch file --> PWL-RPM
+
+then
+
+RH RPM 6.x --> RPM process with PWL-RPM.patch file -> PWL-RPM
+
+the "PWL-RPM.patch_file" plus the RH source disk is all you need...
+sounds good.
+
+> Use a defined mount point for the PeeWeeLinux filesystem being build
+> independed of where PeeWeeLinux has been extracted to. I.e. /mnt/PWL.
+> 
+Hmmm...shouldn't keep this within the development environment ??
+...maybe Embedded-Build/projects/xxx/mnt...why would you use the same
+mount point for a project specific filesystem  ??
+
+Ohhh...wait...you want to basically extract all the tar files we have now
+into one pwl file system, then let the user pick from this file system???
+Seems like an added step, not sure of any advantages...
+Ok, I'm confussed...
+
+
+> Use rpm in a similar mode as the RedHat install disks do. That is install
+> the PWL specific rpms in /mnt/PWL rather than the current file system.
+> 
+
+Ok, not sure what RH does with the RPMS..I thought they just got extracted
+into the /usr/src/linux/ directory structure..again, I think I'd prefer to keep
+everything within the "Embedded-Build" structure, however, any good reason
+not to would sway me :-)
+
+> This would eliminate the use of tar to manage files. The pwlconfig script
+> would have to do the following steps to build a project:
+> 
+> 1. Menu to select which packages to build and install
+> 2. Submenu to select which files to install from the packages
+> 3. Configure the location of RH source rpms and source rpm that do not
+> come with RH
+> 4. Patch the RH source rpms to turn them into PWL source rpms
+> 5. Build the PWL specific rpms from source rpms
+
+...this creates the PWL-RPM.patch files for each rpm..ok..I envision these
+fitting into the project as follows:
+
+Embedded-Build/source/patches
+
+Scripts or patches or whatever, that are used to turn a lowly RH RPM into
+a PWL-RPM file
+
+Embedded-Build/packages
+Embedded-Build/packages/package A
+Embedded-Build/packages/package B     
+
+These are the "global" optimized binaries used for every
+project...these can be tar or RPM files, shouldn't be hard to switch...
+
+This is where the RPM files reside after being "processed" by the PWL-RPM.patch
+files. The pwlconfig menu item (yet to be added :-) "Build PWL-RPM" would
+let you pick a patch file and generate the PWL-RPM file.  This would
+be inserted into the packages directory.
+
+
+> 6. Condition the /mnt/PWL filesystem for the new system
+
+not sure what this is..
+
+> 7. Install the selected files from PWL rpms in /mnt/PWL
+> 8. Install any custom config files into /mnt/PWL, overwriting any existing
+> configuration
+
+I think these should be project specific...I could be building a router and
+a print server and a thin client..these are all in seperate directories.
+
+I think this is the process I'm doing now with the tar files, only each project
+
+keeps their file system seperate within the project directory:
+
+Embedded-Build/projects/router_486/mnt                    
+Embedded-Build/projects/thin_client/mnt                    
+
+This is a "mount point" where the project (ie. "router_486") gets built from
+the project specific configuration files. All files are extracted and allows
+the user to tweak the project before it is loaded on to some device. at this
+point, we are device independent.
+
+Embedded-Build/mnt
+
+When you load a device, it gets mounted in the "Embedded-Build/mnt" directory
+until you unmount it and go to another project.  This mount directory is
+bascially a temporary mount point used for every project, but can be used
+to mount any device.
+
+> 8. Offer choice of what to do with the newly created system, i.e. build a
+> ramdisk, load a DOC, make a bootable CD...
+> 
+Almost got this working...I have a new script that does DOC and flash disk...
+Adding the ramdisk and bootable CD should be easy, once I know what needs
+to be done.
+
+> The advantages I can see:
+> - The PWL distribution would no longer require any sources but only patch
+> files containing package description, help information (things that could
+> be displayed by pwlconfig) and the actual patch to the RH source rpm.
+
+Yes...I have the source, I shouldn't have to download it again...
+
+> - Perhaps eases the migration to newer RH versions as they are released.
+> 
+> The disadvantages:
+> - Building an initial PWL development environment could be 'very' time
+> consuming and diskspace consuming since everything has to be compiled
+> first.
+> - Defenitely RH specific!
+> 
+
+Only RH specific where the patches to the RPMS are concerned. After we
+have built our RPMS (or tar files), the configuration tool does not care 
+what order the files are in or what the directory structure is....
+
+> I guess an option would be to have a package of pre-compiled PWL rpms
+> available. That would make PWL a 'real' full-fledged distro for embedded
+> stuff :)
+> 
+> Perhaps I should get and dig into 'Maxximum RPM' sometime. Maybe that
+> would be a ToDo wishlist item for the next RedHat release, when a few
+> package for PWL will have to be re-done...
+> 
+> TTYL,
+> Adi (dreaming... :)
+> 
+> 
+
+I'm not sure how this differs from what you have done to build the
+existing tar files.  Now, (or planned real soon now) we do the RPM extract to
+our "Embedded-Build/source" file system, then apply the patches and build tar
+files ...But instead of building tar files, create new RPM files...
+
+Is there an advantage to building the RPM as opposed to the tar files? maybe
+processing them might be easier...
+
+Shouldn't matter if these are RPMs or TARS, but processing them into specific
+projects should be able to use the same pwlconfig as now, just change from
+tar file processing to RPM file processing ???
+Either way, each project is unique, and built from some "pwl" source
+repository,I guess I need to get up to speed on the RPM stuff too.
+
+---------------
+On a seperate note, I noticed that Transmetta is desiging their Linux to
+work for "Mobile" applications.  OK, that to me means embedded (what else is
+low power for :-)
+
+Anyhow, while they haven't released anything yet, they have "hinted" that
+they have spent time doing special programs like "touch screen keyboard"
+and "handwritting recognition" (ie.palm pilot work alike programs).
+
+Also, these are supposedly built from the Debian distribution.
+
+Soooooo....Assuming that Transmetta has not built any sort of development 
+environment (which true UNIX people *NEVER* do), I think it would be nice
+to be able to get these programs and add them to our embedded RH environment.
+
+Thus, get their RPM (or whatever Debian uses) and process them into 
+our tar (or RPM) format.  Now you can add these to your project and they
+should just work....
+
+pwlconfig should allow you to work with applications from any distribution.
+There is nothing specific in "pwlconfig" that would prevent this from 
+working.
+
+The PeeWee Distribution is useable when we can :
+
+1. Create several default projects 
+   (ie. Embedded-Build/projects/[router|thinclient|server|print server|...])
+
+2. Create project configurations for each of these projects 
+   (ie. use pwlconfig V1.0 for each of the default projects listed above)
+
+3. Process "source files" into optimized binaries 
+   (ie.fill up the Embedded-Build/patches with the PWL-patches_for_RPM_x)
+
+On going work is to:
+
+A. refine pwlconfig for more devices and features
+B. keep building patch files for each new version of RH
+C. build patch files for special applications
+
+If we can do this, it will be a very usable (and unique) environment for
+embedded Linux development ( and World Domination will be at hand :-)) !!!
+
+Hmmm...Let me know if we're on the same page here...I could be missing
+something
+
+Later,
+Ralph
+
+
+
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+
+From PeeWeeLinux-devel@adis.on.ca  Sun Jan 23 05:16:21 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Sat, 22 Jan 2000 21:16:21 -0800 (PST)
+Subject: An 'early' morning thought about the future of PWL
+Message-ID: <20000123051621.20684.qmail@web1102.mail.yahoo.com>
+
+Hey, 
+Sounds like your on to something here...except for building the pwlconfig
+packages (either tar or RPMs) I think most of this is done with pwlconfig
+now...maybe I missed something...
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> I thought about ways to automate the sources for PeeWeeLinux. Here's an
+> idea I had while showering this morning. Right up front, to implement it
+> it would require sophisticated knowledge of rpm. Something I don't have
+> but nonetheless its an idea I'd like to share...
+> 
+> First PeeWeeLinux would have to build from RedHat source rpms. Packages
+> that do not exist as source rpm would have to be created specifically for
+> PeeWeeLinux or for Redhat Linux in gerneral.
+> 
+> First take the original source rpm and manually edit the spec file to
+> build a rpm suitable for PWL. Also, edit the sources to compile as
+> required for PWL. I.e. the libs to use, which files to install, etc. 
+> Create a patch file to patch the necessary changes into the source rpm
+> files.
+> 
+> Build a PWL specific rpm from the patches source rpm.
+> 
+Ok, let me see if I can figure this out...
+
+RH RPM 6.x--> manual process --> PWL-RPM.patch file --> PWL-RPM
+
+then
+
+RH RPM 6.x --> RPM process with PWL-RPM.patch file -> PWL-RPM
+
+the "PWL-RPM.patch_file" plus the RH source disk is all you need...
+sounds good.
+
+> Use a defined mount point for the PeeWeeLinux filesystem being build
+> independed of where PeeWeeLinux has been extracted to. I.e. /mnt/PWL.
+> 
+Hmmm...shouldn't keep this within the development environment ??
+...maybe Embedded-Build/projects/xxx/mnt...why would you use the same
+mount point for a project specific filesystem  ??
+
+Ohhh...wait...you want to basically extract all the tar files we have now
+into one pwl file system, then let the user pick from this file system???
+Seems like an added step, not sure of any advantages...
+Ok, I'm confussed...
+
+
+> Use rpm in a similar mode as the RedHat install disks do. That is install
+> the PWL specific rpms in /mnt/PWL rather than the current file system.
+> 
+
+Ok, not sure what RH does with the RPMS..I thought they just got extracted
+into the /usr/src/linux/ directory structure..again, I think I'd prefer to keep
+everything within the "Embedded-Build" structure, however, any good reason
+not to would sway me :-)
+
+> This would eliminate the use of tar to manage files. The pwlconfig script
+> would have to do the following steps to build a project:
+> 
+> 1. Menu to select which packages to build and install
+> 2. Submenu to select which files to install from the packages
+> 3. Configure the location of RH source rpms and source rpm that do not
+> come with RH
+> 4. Patch the RH source rpms to turn them into PWL source rpms
+> 5. Build the PWL specific rpms from source rpms
+
+...this creates the PWL-RPM.patch files for each rpm..ok..I envision these
+fitting into the project as follows:
+
+Embedded-Build/source/patches
+
+Scripts or patches or whatever, that are used to turn a lowly RH RPM into
+a PWL-RPM file
+
+Embedded-Build/packages
+Embedded-Build/packages/package A
+Embedded-Build/packages/package B     
+
+These are the "global" optimized binaries used for every
+project...these can be tar or RPM files, shouldn't be hard to switch...
+
+This is where the RPM files reside after being "processed" by the PWL-RPM.patch
+files. The pwlconfig menu item (yet to be added :-) "Build PWL-RPM" would
+let you pick a patch file and generate the PWL-RPM file.  This would
+be inserted into the packages directory.
+
+
+> 6. Condition the /mnt/PWL filesystem for the new system
+
+not sure what this is..
+
+> 7. Install the selected files from PWL rpms in /mnt/PWL
+> 8. Install any custom config files into /mnt/PWL, overwriting any existing
+> configuration
+
+I think these should be project specific...I could be building a router and
+a print server and a thin client..these are all in seperate directories.
+
+I think this is the process I'm doing now with the tar files, only each project
+
+keeps their file system seperate within the project directory:
+
+Embedded-Build/projects/router_486/mnt                    
+Embedded-Build/projects/thin_client/mnt                    
+
+This is a "mount point" where the project (ie. "router_486") gets built from
+the project specific configuration files. All files are extracted and allows
+the user to tweak the project before it is loaded on to some device. at this
+point, we are device independent.
+
+Embedded-Build/mnt
+
+When you load a device, it gets mounted in the "Embedded-Build/mnt" directory
+until you unmount it and go to another project.  This mount directory is
+bascially a temporary mount point used for every project, but can be used
+to mount any device.
+
+> 8. Offer choice of what to do with the newly created system, i.e. build a
+> ramdisk, load a DOC, make a bootable CD...
+> 
+Almost got this working...I have a new script that does DOC and flash disk...
+Adding the ramdisk and bootable CD should be easy, once I know what needs
+to be done.
+
+> The advantages I can see:
+> - The PWL distribution would no longer require any sources but only patch
+> files containing package description, help information (things that could
+> be displayed by pwlconfig) and the actual patch to the RH source rpm.
+
+Yes...I have the source, I shouldn't have to download it again...
+
+> - Perhaps eases the migration to newer RH versions as they are released.
+> 
+> The disadvantages:
+> - Building an initial PWL development environment could be 'very' time
+> consuming and diskspace consuming since everything has to be compiled
+> first.
+> - Defenitely RH specific!
+> 
+
+Only RH specific where the patches to the RPMS are concerned. After we
+have built our RPMS (or tar files), the configuration tool does not care 
+what order the files are in or what the directory structure is....
+
+> I guess an option would be to have a package of pre-compiled PWL rpms
+> available. That would make PWL a 'real' full-fledged distro for embedded
+> stuff :)
+> 
+> Perhaps I should get and dig into 'Maxximum RPM' sometime. Maybe that
+> would be a ToDo wishlist item for the next RedHat release, when a few
+> package for PWL will have to be re-done...
+> 
+> TTYL,
+> Adi (dreaming... :)
+> 
+> 
+
+I'm not sure how this differs from what you have done to build the
+existing tar files.  Now, (or planned real soon now) we do the RPM extract to
+our "Embedded-Build/source" file system, then apply the patches and build tar
+files ...But instead of building tar files, create new RPM files...
+
+Is there an advantage to building the RPM as opposed to the tar files? maybe
+processing them might be easier...
+
+Shouldn't matter if these are RPMs or TARS, but processing them into specific
+projects should be able to use the same pwlconfig as now, just change from
+tar file processing to RPM file processing ???
+Either way, each project is unique, and built from some "pwl" source
+repository,I guess I need to get up to speed on the RPM stuff too.
+
+---------------
+On a seperate note, I noticed that Transmetta is desiging their Linux to
+work for "Mobile" applications.  OK, that to me means embedded (what else is
+low power for :-)
+
+Anyhow, while they haven't released anything yet, they have "hinted" that
+they have spent time doing special programs like "touch screen keyboard"
+and "handwritting recognition" (ie.palm pilot work alike programs).
+
+Also, these are supposedly built from the Debian distribution.
+
+Soooooo....Assuming that Transmetta has not built any sort of development 
+environment (which true UNIX people *NEVER* do), I think it would be nice
+to be able to get these programs and add them to our embedded RH environment.
+
+Thus, get their RPM (or whatever Debian uses) and process them into 
+our tar (or RPM) format.  Now you can add these to your project and they
+should just work....
+
+pwlconfig should allow you to work with applications from any distribution.
+There is nothing specific in "pwlconfig" that would prevent this from 
+working.
+
+The PeeWee Distribution is useable when we can :
+
+1. Create several default projects 
+   (ie. Embedded-Build/projects/[router|thinclient|server|print server|...])
+
+2. Create project configurations for each of these projects 
+   (ie. use pwlconfig V1.0 for each of the default projects listed above)
+
+3. Process "source files" into optimized binaries 
+   (ie.fill up the Embedded-Build/patches with the PWL-patches_for_RPM_x)
+
+On going work is to:
+
+A. refine pwlconfig for more devices and features
+B. keep building patch files for each new version of RH
+C. build patch files for special applications
+
+If we can do this, it will be a very usable (and unique) environment for
+embedded Linux development ( and World Domination will be at hand :-)) !!!
+
+Hmmm...Let me know if we're on the same page here...I could be missing
+something
+
+Later,
+Ralph
+
+
+
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+
+From PeeWeeLinux-devel@adis.on.ca  Sun Jan 23 05:20:18 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Sat, 22 Jan 2000 21:20:18 -0800 (PST)
+Subject: An 'early' morning thought about the future of PWL
+Message-ID: <20000123052018.21089.qmail@web1102.mail.yahoo.com>
+
+
+Hey, 
+Sounds like your on to something here...except for building the pwlconfig
+packages (either tar or RPMs) I think most of this is done with pwlconfig
+now...maybe I missed something...
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> I thought about ways to automate the sources for PeeWeeLinux. Here's an
+> idea I had while showering this morning. Right up front, to implement it
+> it would require sophisticated knowledge of rpm. Something I don't have
+> but nonetheless its an idea I'd like to share...
+> 
+> First PeeWeeLinux would have to build from RedHat source rpms. Packages
+> that do not exist as source rpm would have to be created specifically for
+> PeeWeeLinux or for Redhat Linux in gerneral.
+> 
+> First take the original source rpm and manually edit the spec file to
+> build a rpm suitable for PWL. Also, edit the sources to compile as
+> required for PWL. I.e. the libs to use, which files to install, etc. 
+> Create a patch file to patch the necessary changes into the source rpm
+> files.
+> 
+> Build a PWL specific rpm from the patches source rpm.
+> 
+Ok, let me see if I can figure this out...
+
+RH RPM 6.x--> manual process --> PWL-RPM.patch file --> PWL-RPM
+
+then
+
+RH RPM 6.x --> RPM process with PWL-RPM.patch file -> PWL-RPM
+
+the "PWL-RPM.patch_file" plus the RH source disk is all you need...
+sounds good.
+
+> Use a defined mount point for the PeeWeeLinux filesystem being build
+> independed of where PeeWeeLinux has been extracted to. I.e. /mnt/PWL.
+> 
+Hmmm...shouldn't keep this within the development environment ??
+...maybe Embedded-Build/projects/xxx/mnt...why would you use the same
+mount point for a project specific filesystem  ??
+
+Ohhh...wait...you want to basically extract all the tar files we have now
+into one pwl file system, then let the user pick from this file system???
+Seems like an added step, not sure of any advantages...
+Ok, I'm confussed...
+
+
+> Use rpm in a similar mode as the RedHat install disks do. That is install
+> the PWL specific rpms in /mnt/PWL rather than the current file system.
+> 
+
+Ok, not sure what RH does with the RPMS..I thought they just got extracted
+into the /usr/src/linux/ directory structure..again, I think I'd prefer to keep
+everything within the "Embedded-Build" structure, however, any good reason
+not to would sway me :-)
+
+> This would eliminate the use of tar to manage files. The pwlconfig script
+> would have to do the following steps to build a project:
+> 
+> 1. Menu to select which packages to build and install
+> 2. Submenu to select which files to install from the packages
+> 3. Configure the location of RH source rpms and source rpm that do not
+> come with RH
+> 4. Patch the RH source rpms to turn them into PWL source rpms
+> 5. Build the PWL specific rpms from source rpms
+
+...this creates the PWL-RPM.patch files for each rpm..ok..I envision these
+fitting into the project as follows:
+
+Embedded-Build/source/patches
+
+Scripts or patches or whatever, that are used to turn a lowly source file
+(RH RPM or whatever) into a PWL-RPM file.  After processing these are
+stored in the packages directory:
+
+Embedded-Build/packages
+Embedded-Build/packages/package A
+Embedded-Build/packages/package B     
+
+These are the "global" optimized binaries used for every
+project...these can be tar or RPM files, shouldn't be hard to switch...
+
+This is where the RPM files reside after being "processed" by the PWL-RPM.patch
+files. The pwlconfig menu item (yet to be added :-) "Build PWL-RPM" would
+let you pick a patch file and generate the PWL-RPM file.  This would
+be inserted into the packages directory.
+
+
+> 6. Condition the /mnt/PWL filesystem for the new system
+
+not sure what this is..
+
+> 7. Install the selected files from PWL rpms in /mnt/PWL
+> 8. Install any custom config files into /mnt/PWL, overwriting any existing
+> configuration
+
+I think these should be project specific...I could be building a router and
+a print server and a thin client..these are all in seperate directories.
+
+I think this is the process I'm doing now with the tar files, only each project
+
+keeps their file system seperate within the project directory:
+
+Embedded-Build/projects/router_486/mnt                    
+Embedded-Build/projects/thin_client/mnt                    
+
+This is a "mount point" where the project (ie. "router_486") gets built from
+the project specific configuration files. All files are extracted and allows
+the user to tweak the project before it is loaded on to some device. at this
+point, we are device independent.
+
+Embedded-Build/mnt
+
+When you load a device, it gets mounted in the "Embedded-Build/mnt" directory
+until you unmount it and go to another project.  This mount directory is
+bascially a temporary mount point used for every project, but can be used
+to mount any device.
+
+> 8. Offer choice of what to do with the newly created system, i.e. build a
+> ramdisk, load a DOC, make a bootable CD...
+> 
+Almost got this working...I have a new script that does DOC and flash disk...
+Adding the ramdisk and bootable CD should be easy, once I know what needs
+to be done.
+
+> The advantages I can see:
+> - The PWL distribution would no longer require any sources but only patch
+> files containing package description, help information (things that could
+> be displayed by pwlconfig) and the actual patch to the RH source rpm.
+
+Yes...I have the source, I shouldn't have to download it again...
+
+> - Perhaps eases the migration to newer RH versions as they are released.
+> 
+> The disadvantages:
+> - Building an initial PWL development environment could be 'very' time
+> consuming and diskspace consuming since everything has to be compiled
+> first.
+> - Defenitely RH specific!
+> 
+
+Only RH specific where the patches to the RPMS are concerned. After we
+have built our RPMS (or tar files), the configuration tool does not care 
+what order the files are in or what the directory structure is....
+
+> I guess an option would be to have a package of pre-compiled PWL rpms
+> available. That would make PWL a 'real' full-fledged distro for embedded
+> stuff :)
+> 
+> Perhaps I should get and dig into 'Maxximum RPM' sometime. Maybe that
+> would be a ToDo wishlist item for the next RedHat release, when a few
+> package for PWL will have to be re-done...
+> 
+> TTYL,
+> Adi (dreaming... :)
+> 
+> 
+
+I'm not sure how this differs from what you have done to build the
+existing tar files.  Now, (or planned real soon now) we do the RPM extract to
+our "Embedded-Build/source" file system, then apply the patches and build tar
+files ...But instead of building tar files, create new RPM files...
+
+Is there an advantage to building the RPM as opposed to the tar files? maybe
+processing them might be easier...
+
+Shouldn't matter if these are RPMs or TARS, but processing them into specific
+projects should be able to use the same pwlconfig as now, just change from
+tar file processing to RPM file processing ???
+Either way, each project is unique, and built from some "pwl" source
+repository,I guess I need to get up to speed on the RPM stuff too.
+
+---------------
+On a seperate note, I noticed that Transmeta is desiging their Linux to
+work for "Mobile" applications.  OK, that to me means embedded (what else is
+low power for :-)
+
+Anyhow, while they haven't released anything yet, they have "hinted" that
+they have spent time doing special programs like "touch screen keyboard"
+and "handwritting recognition" (ie.palm pilot work alike programs).
+
+Also, these are supposedly built from the Debian distribution.
+
+Soooooo....Assuming that Transmetta has not built any sort of development 
+environment (which true UNIX people *NEVER* do), I think it would be nice
+to be able to get these programs and add them to our embedded RH environment.
+
+Thus, get their RPM (or whatever Debian uses) and process them into 
+our tar (or RPM) format.  Now you can add these to your project and they
+should just work....
+
+pwlconfig should allow you to work with applications from any distribution.
+There is nothing specific in "pwlconfig" that would prevent this from 
+working.
+
+The PeeWee Distribution is useable when we can :
+
+1. Create several default projects 
+   (ie. Embedded-Build/projects/[router|thinclient|server|print server|...])
+
+2. Create project configurations for each of these projects 
+   (ie. use pwlconfig V1.0 for each of the default projects listed above)
+
+3. Process "source files" into optimized binaries 
+   (ie.fill up the Embedded-Build/patches with the PWL-patches_for_RPM_x)
+
+On going work is to:
+
+A. refine pwlconfig for more devices and features
+B. keep building patch files for each new version of RH
+C. build patch files for special applications
+
+If we can do this, it will be a very usable (and unique) environment for
+embedded Linux development ( and World Domination will be at hand :-)) !!!
+
+Hmmm...Let me know if we're on the same page here...I could be missing
+something
+
+Later,
+Ralph
+
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+
+From PeeWeeLinux-devel@adis.on.ca  Sun Jan 23 06:04:58 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Sun, 23 Jan 2000 00:04:58 -0600 (CST)
+Subject: An 'early' morning thought about the future of PWL
+In-Reply-To: <20000123052018.21089.qmail@web1102.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001222321230.1060-100000@localhost.localdomain>
+
+Hi,
+
+> Sounds like your on to something here...except for building the pwlconfig
+> packages (either tar or RPMs) I think most of this is done with pwlconfig
+> now...maybe I missed something...
+
+Yup, just use rpm instead of tar...
+
+> RH RPM 6.x--> manual process --> PWL-RPM.patch file --> PWL-RPM
+> 
+> then
+> 
+> RH RPM 6.x --> RPM process with PWL-RPM.patch file -> PWL-RPM
+> 
+> the "PWL-RPM.patch_file" plus the RH source disk is all you need...
+> sounds good.
+
+Right... So the initial build of a package is manual, then create a patch
+based on the changes made to the original rpm.
+
+pwlconfig would apply the patch to an original source rpm to create a pwl
+source rpm...
+
+Then pwlconfig would run rpm with compile options to create a pwl rpm (no
+longer a source but a binary rpm)
+
+The pwl extracts the selected binaries (or the whole rpm) into the build
+filesystem... 
+
+> > Use a defined mount point for the PeeWeeLinux filesystem being build
+> > independed of where PeeWeeLinux has been extracted to. I.e. /mnt/PWL.
+> > 
+> Hmmm...shouldn't keep this within the development environment ??
+> ...maybe Embedded-Build/projects/xxx/mnt...why would you use the same
+> mount point for a project specific filesystem  ??
+
+Don't know why I thought that. Too early in the morning, not enough coffee
+yet when I came up with it :)
+
+> Ohhh...wait...you want to basically extract all the tar files we have now
+> into one pwl file system, then let the user pick from this file system???
+> Seems like an added step, not sure of any advantages...
+> Ok, I'm confussed...
+
+Nope... The user would pick the files extracted from the rpm so the
+filesystem would only contain the selected binaries.
+
+> > Use rpm in a similar mode as the RedHat install disks do. That is install
+> > the PWL specific rpms in /mnt/PWL rather than the current file system.
+> 
+> Ok, not sure what RH does with the RPMS..I thought they just got extracted
+> into the /usr/src/linux/ directory structure..again, I think I'd prefer to keep
+> everything within the "Embedded-Build" structure, however, any good reason
+> not to would sway me :-)
+
+rpm usually uses an absolute path. We need to extract the binary rpm into
+/home/adi/Embedded_Build/projects/mnt as a root directory for example...
+
+> ...this creates the PWL-RPM.patch files for each rpm..ok..I envision these
+> fitting into the project as follows:
+> 
+> Embedded-Build/source/patches
+
+We wouldn't need sources any longer as the RedHat source rpms are our
+sources... For things that RedHat doesn't provide we would need to create
+our own source rpms.
+
+> Scripts or patches or whatever, that are used to turn a lowly source file
+> (RH RPM or whatever) into a PWL-RPM file.  After processing these are
+> stored in the packages directory:
+> 
+> Embedded-Build/packages
+> Embedded-Build/packages/package A
+> Embedded-Build/packages/package B     
+> 
+> These are the "global" optimized binaries used for every
+> project...these can be tar or RPM files, shouldn't be hard to switch...
+
+The use of rpm would make dependencies easier to follow... I think rpm
+uses some predetermined build environment (directory structure) under
+/usr/src/
+
+> This is where the RPM files reside after being "processed" by the PWL-RPM.patch
+> files. The pwlconfig menu item (yet to be added :-) "Build PWL-RPM" would
+> let you pick a patch file and generate the PWL-RPM file.  This would
+> be inserted into the packages directory.
+
+After the source rpm has been patched it still needs to be compiled by
+rpm...
+
+So we have to deal with the following files in the order of creation:
+
+RedHat source rpm  +  PWL patch  =  PWL source rpm
+PWL source rpm processed by rpm  =  PWL binary rpm
+
+PWL binary rpm is similar to the existing package.tar
+
+> > 6. Condition the /mnt/PWL filesystem for the new system
+> 
+> not sure what this is..
+
+Deleting old files from a previous build.
+
+> > 7. Install the selected files from PWL rpms in /mnt/PWL
+> > 8. Install any custom config files into /mnt/PWL, overwriting any existing
+> > configuration
+> 
+> I think these should be project specific...I could be building a router and
+> a print server and a thin client..these are all in seperate directories.
+> 
+> I think this is the process I'm doing now with the tar files, only each project
+> 
+> keeps their file system seperate within the project directory:
+> 
+> Embedded-Build/projects/router_486/mnt                    
+> Embedded-Build/projects/thin_client/mnt                    
+> 
+> This is a "mount point" where the project (ie. "router_486") gets built from
+> the project specific configuration files. All files are extracted and allows
+> the user to tweak the project before it is loaded on to some device. at this
+> point, we are device independent.
+
+Right!
+
+> Embedded-Build/mnt
+> 
+> When you load a device, it gets mounted in the "Embedded-Build/mnt" directory
+> until you unmount it and go to another project.  This mount directory is
+> bascially a temporary mount point used for every project, but can be used
+> to mount any device.
+
+Right!
+
+> > 8. Offer choice of what to do with the newly created system, i.e. build a
+> > ramdisk, load a DOC, make a bootable CD...
+> > 
+> Almost got this working...I have a new script that does DOC and flash disk...
+> Adding the ramdisk and bootable CD should be easy, once I know what needs
+> to be done.
+
+Yup... I still have to figure out the loopback device.
+
+> > The advantages I can see:
+> > - The PWL distribution would no longer require any sources but only patch
+> > files containing package description, help information (things that could
+> > be displayed by pwlconfig) and the actual patch to the RH source rpm.
+> 
+> Yes...I have the source, I shouldn't have to download it again...
+
+Actually the sources are only needed to build the PWL binary rpms once.
+After that the sources are no longer needed. In fact PWL could still be
+distributed in a binary realease with only binary rpm since they don't
+change between projects.
+
+> > - Perhaps eases the migration to newer RH versions as they are released.
+> > 
+> > The disadvantages:
+> > - Building an initial PWL development environment could be 'very' time
+> > consuming and diskspace consuming since everything has to be compiled
+> > first.
+> > - Defenitely RH specific!
+> > 
+> 
+> Only RH specific where the patches to the RPMS are concerned. After we
+> have built our RPMS (or tar files), the configuration tool does not care 
+> what order the files are in or what the directory structure is....
+
+The patches would be RedHat release specific. A RedHat environment would
+be needed to build the PWL binary rpms from RedHat source rpms.
+
+The PWL binary release would be distribution independent.
+
+> I'm not sure how this differs from what you have done to build the
+> existing tar files.  Now, (or planned real soon now) we do the RPM extract to
+> our "Embedded-Build/source" file system, then apply the patches and build tar
+> files ...But instead of building tar files, create new RPM files...
+
+Well, the rpms would be extracted to wherever rpms are extracted. Apply
+the patch and compile using rpm to build a PWL binary rpm. Coming to think
+of it, we would have a source distribution that doesn't have any sources
+:). That is, the Redhat RPMS would have to be provided by the user. 
+
+Hmmm... Perhaps only a single menu item would be required in pwlconfig:
+
+Create PWL binary RPMS from Redhat source RPMS
+
+On second thought, some config options like where the RedHat sources are
+wouls also be necessary.
+
+> Is there an advantage to building the RPM as opposed to the tar files? maybe
+> processing them might be easier...
+
+rpm files have provisins for showing file information and file listing of
+files being installed by an 'rpm -ivh <filename>'. I am not that familiar
+with rpm other than how to install, upgrade and uninstall binary rpms.
+
+But rpm also has build functions that compile a source rpm to a binary rpm
+based on the spec file.
+
+> Shouldn't matter if these are RPMs or TARS, but processing them into specific
+> projects should be able to use the same pwlconfig as now, just change from
+> tar file processing to RPM file processing ???
+
+That's correct.
+
+> Either way, each project is unique, and built from some "pwl" source
+> repository,I guess I need to get up to speed on the RPM stuff too.
+
+Build from the PWL binary rpms. The PWL source rpms are an immediate step.
+I don't see any reason for keeping them around. They'd just waste disk
+space...
+
+> On a seperate note, I noticed that Transmeta is desiging their Linux to
+> work for "Mobile" applications.  OK, that to me means embedded (what else is
+> low power for :-)
+
+Yup... 
+
+> Anyhow, while they haven't released anything yet, they have "hinted" that
+> they have spent time doing special programs like "touch screen keyboard"
+> and "handwritting recognition" (ie.palm pilot work alike programs).
+> 
+> Also, these are supposedly built from the Debian distribution.
+> 
+> Soooooo....Assuming that Transmetta has not built any sort of development 
+> environment (which true UNIX people *NEVER* do), I think it would be nice
+> to be able to get these programs and add them to our embedded RH environment.
+> 
+> Thus, get their RPM (or whatever Debian uses) and process them into 
+> our tar (or RPM) format.  Now you can add these to your project and they
+> should just work....
+
+Except Redhat and debian use different patches. So it's not possible to
+(in most cases) to use a Debian rpm in a Redhat system (or the other way
+around). That said... we manually patch the source rpm prior to building a
+PWL source rpm and from that the PWL binary rpm... That patching job would
+certainly fix any incompatibilities.
+
+> pwlconfig should allow you to work with applications from any distribution.
+> There is nothing specific in "pwlconfig" that would prevent this from 
+> working.
+> 
+> The PeeWee Distribution is useable when we can :
+> 
+> 1. Create several default projects 
+>    (ie. Embedded-Build/projects/[router|thinclient|server|print server|...])
+> 
+> 2. Create project configurations for each of these projects 
+>    (ie. use pwlconfig V1.0 for each of the default projects listed above)
+
+This is distribution independent.
+
+> 3. Process "source files" into optimized binaries 
+>    (ie.fill up the Embedded-Build/patches with the PWL-patches_for_RPM_x)
+
+This will most like require a specific Redhat distribution to work
+properly. 
+
+A PeeWeeLinux binary distribution would be distribution independent. In
+fact, it is now. I build a PeeWeeLinux system on a Redhat 5.2 development
+platform.
+
+> On going work is to:
+> 
+> A. refine pwlconfig for more devices and features
+> B. keep building patch files for each new version of RH
+> C. build patch files for special applications
+> 
+> If we can do this, it will be a very usable (and unique) environment for
+> embedded Linux development ( and World Domination will be at hand :-)) !!!
+
+:) I see the IPO... opening March 19, 2002 at $20 a share closing on March
+20, 2002 at $200 a share... Doing the old RedHat and VALinux stunt... :)
+
+> Hmmm...Let me know if we're on the same page here...I could be missing
+> something
+
+Yup... I think we have the same ideas. Like I said at the very beginning
+this is dreaming today. For now I think it's important to get what's there
+running solid. And I think we'll stick with the manual tar file build dor
+now.
+
+However, I found out the hard way (with the router project) that it's
+necessary to stay at the 'cutting edge' of development. As USB developes,
+etc it is essential to support the 2.4.x kernels, etc. Once a complete
+overhaul (recompile) of the PeeWeeLinux binaries is necessary it would be
+wise to implement a more streamlined approach. Soooo, this is where my
+dreaming comes in. Once that times arrives I want to have made a decision
+and a firm plan on how to proceed. Do the brainstorming while my brain is
+in creative storming mode. The day will come again soon when my mind is in
+the take instructions-do-it mode. No creativity then. 
+
+TTYL,
+Adi
+
+
+From PeeWeeLinux-devel@adis.on.ca  Sun Jan 23 07:39:54 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Sat, 22 Jan 2000 23:39:54 -0800 (PST)
+Subject: An 'early' morning thought about the future of PWL
+Message-ID: <20000123073954.4363.qmail@web1102.mail.yahoo.com>
+
+
+Hey,
+Still sounds like we're thinking about mostly the same program...whew... :-)
+
+I'll have to re-read this again tomorrwo when my eyes can focus ;-)  If we
+can do the RPM stuff up front, it might be easier than re-doing it after
+we get the tar stuff working...I'm a little worried about the absolute paths...
+
+(i.e. it might be harder to go back and rework it when we're trying to get
+2.6.xx packages up and going and the pressure is on to make the IPO deadline
+:-)...
+
+Its late 2:30am...so I'd better be gitt'n...
+
+More later,
+Ralph
+
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> > Sounds like your on to something here...except for building the pwlconfig
+> > packages (either tar or RPMs) I think most of this is done with pwlconfig
+> > now...maybe I missed something...
+> 
+> Yup, just use rpm instead of tar...
+> 
+> > RH RPM 6.x--> manual process --> PWL-RPM.patch file --> PWL-RPM
+> > 
+> > then
+> > 
+> > RH RPM 6.x --> RPM process with PWL-RPM.patch file -> PWL-RPM
+> > 
+> > the "PWL-RPM.patch_file" plus the RH source disk is all you need...
+> > sounds good.
+> 
+> Right... So the initial build of a package is manual, then create a patch
+> based on the changes made to the original rpm.
+> 
+> pwlconfig would apply the patch to an original source rpm to create a pwl
+> source rpm...
+> 
+> Then pwlconfig would run rpm with compile options to create a pwl rpm (no
+> longer a source but a binary rpm)
+> 
+> The pwl extracts the selected binaries (or the whole rpm) into the build
+> filesystem... 
+> 
+> > > Use a defined mount point for the PeeWeeLinux filesystem being build
+> > > independed of where PeeWeeLinux has been extracted to. I.e. /mnt/PWL.
+> > > 
+> > Hmmm...shouldn't keep this within the development environment ??
+> > ...maybe Embedded-Build/projects/xxx/mnt...why would you use the same
+> > mount point for a project specific filesystem  ??
+> 
+> Don't know why I thought that. Too early in the morning, not enough coffee
+> yet when I came up with it :)
+> 
+> > Ohhh...wait...you want to basically extract all the tar files we have now
+> > into one pwl file system, then let the user pick from this file system???
+> > Seems like an added step, not sure of any advantages...
+> > Ok, I'm confussed...
+> 
+> Nope... The user would pick the files extracted from the rpm so the
+> filesystem would only contain the selected binaries.
+> 
+> > > Use rpm in a similar mode as the RedHat install disks do. That is install
+> > > the PWL specific rpms in /mnt/PWL rather than the current file system.
+> > 
+> > Ok, not sure what RH does with the RPMS..I thought they just got extracted
+> > into the /usr/src/linux/ directory structure..again, I think I'd prefer to
+> keep
+> > everything within the "Embedded-Build" structure, however, any good reason
+> > not to would sway me :-)
+> 
+> rpm usually uses an absolute path. We need to extract the binary rpm into
+> /home/adi/Embedded_Build/projects/mnt as a root directory for example...
+> 
+> > ...this creates the PWL-RPM.patch files for each rpm..ok..I envision these
+> > fitting into the project as follows:
+> > 
+> > Embedded-Build/source/patches
+> 
+> We wouldn't need sources any longer as the RedHat source rpms are our
+> sources... For things that RedHat doesn't provide we would need to create
+> our own source rpms.
+> 
+> > Scripts or patches or whatever, that are used to turn a lowly source file
+> > (RH RPM or whatever) into a PWL-RPM file.  After processing these are
+> > stored in the packages directory:
+> > 
+> > Embedded-Build/packages
+> > Embedded-Build/packages/package A
+> > Embedded-Build/packages/package B     
+> > 
+> > These are the "global" optimized binaries used for every
+> > project...these can be tar or RPM files, shouldn't be hard to switch...
+> 
+> The use of rpm would make dependencies easier to follow... I think rpm
+> uses some predetermined build environment (directory structure) under
+> /usr/src/
+> 
+> > This is where the RPM files reside after being "processed" by the
+> PWL-RPM.patch
+> > files. The pwlconfig menu item (yet to be added :-) "Build PWL-RPM" would
+> > let you pick a patch file and generate the PWL-RPM file.  This would
+> > be inserted into the packages directory.
+> 
+> After the source rpm has been patched it still needs to be compiled by
+> rpm...
+> 
+> So we have to deal with the following files in the order of creation:
+> 
+> RedHat source rpm  +  PWL patch  =  PWL source rpm
+> PWL source rpm processed by rpm  =  PWL binary rpm
+> 
+> PWL binary rpm is similar to the existing package.tar
+> 
+> > > 6. Condition the /mnt/PWL filesystem for the new system
+> > 
+> > not sure what this is..
+> 
+> Deleting old files from a previous build.
+> 
+> > > 7. Install the selected files from PWL rpms in /mnt/PWL
+> > > 8. Install any custom config files into /mnt/PWL, overwriting any
+> existing
+> > > configuration
+> > 
+> > I think these should be project specific...I could be building a router and
+> > a print server and a thin client..these are all in seperate directories.
+> > 
+> > I think this is the process I'm doing now with the tar files, only each
+> project
+> > 
+> > keeps their file system seperate within the project directory:
+> > 
+> > Embedded-Build/projects/router_486/mnt                    
+> > Embedded-Build/projects/thin_client/mnt                    
+> > 
+> > This is a "mount point" where the project (ie. "router_486") gets built
+> from
+> > the project specific configuration files. All files are extracted and
+> allows
+> > the user to tweak the project before it is loaded on to some device. at
+> this
+> > point, we are device independent.
+> 
+> Right!
+> 
+> > Embedded-Build/mnt
+> > 
+> > When you load a device, it gets mounted in the "Embedded-Build/mnt"
+> directory
+> > until you unmount it and go to another project.  This mount directory is
+> > bascially a temporary mount point used for every project, but can be used
+> > to mount any device.
+> 
+> Right!
+> 
+> > > 8. Offer choice of what to do with the newly created system, i.e. build a
+> > > ramdisk, load a DOC, make a bootable CD...
+> > > 
+> > Almost got this working...I have a new script that does DOC and flash
+> disk...
+> > Adding the ramdisk and bootable CD should be easy, once I know what needs
+> > to be done.
+> 
+> Yup... I still have to figure out the loopback device.
+> 
+> > > The advantages I can see:
+> > > - The PWL distribution would no longer require any sources but only patch
+> > > files containing package description, help information (things that could
+> > > be displayed by pwlconfig) and the actual patch to the RH source rpm.
+> > 
+> > Yes...I have the source, I shouldn't have to download it again...
+> 
+> Actually the sources are only needed to build the PWL binary rpms once.
+> After that the sources are no longer needed. In fact PWL could still be
+> distributed in a binary realease with only binary rpm since they don't
+> change between projects.
+> 
+> > > - Perhaps eases the migration to newer RH versions as they are released.
+> > > 
+> > > The disadvantages:
+> > > - Building an initial PWL development environment could be 'very' time
+> > > consuming and diskspace consuming since everything has to be compiled
+> > > first.
+> > > - Defenitely RH specific!
+> > > 
+> > 
+> > Only RH specific where the patches to the RPMS are concerned. After we
+> > have built our RPMS (or tar files), the configuration tool does not care 
+> > what order the files are in or what the directory structure is....
+> 
+> The patches would be RedHat release specific. A RedHat environment would
+> be needed to build the PWL binary rpms from RedHat source rpms.
+> 
+> The PWL binary release would be distribution independent.
+> 
+> > I'm not sure how this differs from what you have done to build the
+> > existing tar files.  Now, (or planned real soon now) we do the RPM extract
+> to
+> > our "Embedded-Build/source" file system, then apply the patches and build
+> tar
+> > files ...But instead of building tar files, create new RPM files...
+> 
+> Well, the rpms would be extracted to wherever rpms are extracted. Apply
+> the patch and compile using rpm to build a PWL binary rpm. Coming to think
+> of it, we would have a source distribution that doesn't have any sources
+> :). That is, the Redhat RPMS would have to be provided by the user. 
+> 
+> Hmmm... Perhaps only a single menu item would be required in pwlconfig:
+> 
+> Create PWL binary RPMS from Redhat source RPMS
+> 
+> On second thought, some config options like where the RedHat sources are
+> wouls also be necessary.
+> 
+> > Is there an advantage to building the RPM as opposed to the tar files?
+> maybe
+> 
+=== message truncated ===
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+
+From PeeWeeLinux-devel@adis.on.ca  Sun Jan 23 16:05:24 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Sun, 23 Jan 2000 10:05:24 -0600 (CST)
+Subject: rpm vs. tar
+Message-ID: <Pine.LNX.4.10.10001230955540.1365-100000@localhost.localdomain>
+
+Hi, how did we come up with the idea of using rpm instead of tar? Why not
+use generic sources as it is done now? Just use those sources and create a
+patch which would include a script which compiles and strips the binaries
+and creates the package.tar file?
+
+The only disadvantage would be that PeeWeeLinux would be rather large as a
+source distribution. However, for normal operation of PeeWeeLinux the
+sources wouldn't be required since only the binaries are processed into an
+embedded sytem... This would eliminate the need to get totally involved
+with rpm.
+
+Here would be the process:
+
+source.tgz  +  patch 1  +  patch x  +  PWL patch  =  PWL source
+PWLsource processed by PWLbuild script (part of patch)  =  PWL binary.tgz
+
+Again, i am not familiar with rpm as far as the building of binaries
+from sources is concerned. But I would suspect the above would offer more
+flexibility, I think. And allow us to easily keep everything within the
+Embedded_Build directory tree... 
+
+I think I should be changing al the package neames to include the version
+numbers? What do you think?
+
+TTYL,
+Adi
+
+
+From PeeWeeLinux-devel@adis.on.ca  Sun Jan 23 18:45:49 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Sun, 23 Jan 2000 12:45:49 -0600 (CST)
+Subject: PeeWeeLinux Documentation
+Message-ID: <Pine.LNX.4.10.10001231241560.1365-100000@localhost.localdomain>
+
+Hi,
+
+I just posted the first draft of the PeeWeeLinux Documention. It's
+available at http://embedded.adis.on.ca/Documentation/PeeWeeLinux.html or
+within a few hours at 
+http://embedded.sourceforge.net/Documentation/PeeWeeLinux.html
+
+JFYI...
+
+Adi
+
+
+From PeeWeeLinux-devel@adis.on.ca  Sun Jan 23 22:20:10 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Sun, 23 Jan 2000 16:20:10 -0600 (CST)
+Subject: The package.list files are unnecessary!
+Message-ID: <Pine.LNX.4.10.10001231615090.1365-100000@localhost.localdomain>
+
+Hi,
+
+A silly question, do we need the <package>.list files at all? The files
+could be generated by a script that dumps the output of 'tar tf' to a
+<packae>.list file if needed.
+
+Does the pwlconfig script do that already or does it need the .list files?
+
+I looked at pwlcinfig and it looks like it's creating the .list files if
+they don't exist. So I will not be keeping list files unless I am tols
+otherwise... 
+
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 24 01:48:56 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Sun, 23 Jan 2000 17:48:56 -0800 (PST)
+Subject: The package.list files are unnecessary!
+Message-ID: <20000124014856.2775.qmail@web1105.mail.yahoo.com>
+
+We only need the list files if you want to be able to manually
+view the stuff...but, yes, I create them if they aren't there.  Save a 
+little download for just downloading the binaries (not much, but they
+add a some clutter)
+
+Yep, kill 'em dead!
+Ralph :-)
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> A silly question, do we need the <package>.list files at all? The files
+> could be generated by a script that dumps the output of 'tar tf' to a
+> <packae>.list file if needed.
+> 
+> Does the pwlconfig script do that already or does it need the .list files?
+> 
+> I looked at pwlcinfig and it looks like it's creating the .list files if
+> they don't exist. So I will not be keeping list files unless I am tols
+> otherwise... 
+> 
+> Adi
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 24 01:54:20 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Sun, 23 Jan 2000 17:54:20 -0800 (PST)
+Subject: PeeWeeLinux Documentation
+Message-ID: <20000124015420.25083.qmail@web1101.mail.yahoo.com>
+
+Cool..Good job on the HTML stuff, now if what I wrote just made sense :-)
+
+Did you get the latest file from the incomming directory...the pwlconfig 
+V07 ? I think I updated the REAME.pwlconfig....
+
+Can I just capture your HTML and start updating the document ? I think I 
+can do that with Netscape, but I've never done an HTML document...
+
+Have to go watch X-Files...the truth is ...well, err, somewhere ? 
+
+*I'll be back*
+
+Later,
+Ralph
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> I just posted the first draft of the PeeWeeLinux Documention. It's
+> available at http://embedded.adis.on.ca/Documentation/PeeWeeLinux.html or
+> within a few hours at 
+> http://embedded.sourceforge.net/Documentation/PeeWeeLinux.html
+> 
+> JFYI...
+> 
+> Adi
+> 
+> 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 24 02:06:00 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Sun, 23 Jan 2000 20:06:00 -0600 (CST)
+Subject: The package.list files are unnecessary!
+In-Reply-To: <20000124014856.2775.qmail@web1105.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001232005260.1365-100000@localhost.localdomain>
+
+Wonderful! I just wrote a script to create them if they're needed :)
+
+On Sun, 23 Jan 2000, Ralph Stickley wrote:
+
+> We only need the list files if you want to be able to manually
+> view the stuff...but, yes, I create them if they aren't there.  Save a 
+> little download for just downloading the binaries (not much, but they
+> add a some clutter)
+> 
+> Yep, kill 'em dead!
+> Ralph :-)
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 24 02:10:48 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Sun, 23 Jan 2000 20:10:48 -0600 (CST)
+Subject: PeeWeeLinux Documentation
+In-Reply-To: <20000124015420.25083.qmail@web1101.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001232006290.1365-100000@localhost.localdomain>
+
+Hi,
+
+> Cool..Good job on the HTML stuff, now if what I wrote just made sense :-)
+
+I didn't really read it, just paste it into lyx :)
+
+> Did you get the latest file from the incomming directory...the pwlconfig 
+> V07 ? I think I updated the REAME.pwlconfig....
+
+Yup, that's the one I copied and pasted.
+
+> Can I just capture your HTML and start updating the document ? I think I 
+> can do that with Netscape, but I've never done an HTML document...
+
+Nope... Yes... depends. I use lyx to do the docs. It's wonderful because I
+can create almost any format imaginable from it. Except for text. It
+stinks and I don't know why.
+
+Anyhow, I could create a text file (its not pretty as it still
+contains some lyx tags) of the docs. Edit it and mail it back and I cut
+and paste into my lyx source document.
+
+> Have to go watch X-Files...the truth is ...well, err, somewhere ? 
+
+Maybe... my wifeee is watching 'Touched by an Angel'...
+
+> *I'll be back*
+
+Ok, Arnold...
+
+So I'll be talking to you later :)
+
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 24 07:24:34 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Mon, 24 Jan 2000 01:24:34 -0600 (CST)
+Subject: Urgent question!
+In-Reply-To: <20000124064058.27257.qmail@web1103.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001240045370.1365-100000@localhost.localdomain>
+
+Hi,
+
+> >From the "Write the manual first" method (items in [] are for design 
+> information only...fix this if I screwed it up :-)
+> -------
+> 
+> "Main Menu->Manage Packages->Build Package"
+> 
+> Use this menu operation to create the packages used for your file system.
+> If the source file has already been analyized for Pee Wee Linx, you will
+> see a list of available packages.
+> 
+> Choose the package you wish to build from this list. (If you don't see
+> the one you want, you have to build your own patch file - see the 500
+> page Appendix X describing just how to do this).
+> 
+> [patch files are stored in Embedded_Build/patches directory]
+> 
+> If the source file required for this package is not found, you will be 
+> prompted for its location. (ie. insert your Red Hat or other distribution
+> Source disk and tell pwlconfig where to get the file).
+> 
+> [Original source files are stored in Embedded_Build/sources/package_name ]
+> 
+> Once the source file is found, it will be processed for optimized building
+> of the binaries.  This may take a while.
+> 
+> [Processing done by the Embedded_Build/build_pwl/package_name/build.sh ]
+> [Processed source files are found in Embedded_Build/mnt ]
+> 
+> You will now be given a list of all the files within the package. Pick
+> and choose the files you want to include in your package (or accept the
+> defaults).  All the files you've selected will be stored in your new
+> package.
+> 
+> Now, simply select the package category that best describes your package.
+> Or create a new category using "Add Package Category" operation.  Your 
+> package will be installed and available for including in your filesystem.
+> 
+> [packages are found in  Embedded_Build/package/category/package_name.tar]
+> 
+> If you choose "Add as a default package", the package will be automatically 
+> selected for every new project you build.
+> 
+> [default packages are found in Embedded_Build/package/package_name.tar]
+
+I think the package building process shouldn't be interactive. I.e the
+package is build to whatever is configured in the build_pwl.sh script. The
+process of picking which binaries to copy into an embedded design would be
+done when assembling packages for a particular project.
+
+Perhaps the only choice could be which packages to build from the list of
+PeeWeeLinux packages.
+
+> > Ok, here is what I did...
+> > 
+> > I renamed the extracted_src directory to build_pwl. I thought this might
+> > sound ok for a place to hold pwl specific compiled extracted sources.
+> > 
+> > I added a new directory Embedded_Build/patches to contain the patches that
+> > make pwl sources out of generic sources.
+> 
+> Where are you storing the generic sources ?? see below...
+
+Embedded_Build/sources/
+
+> > Patching the sources will create a script called build_pwl.sh which is in
+> > the top directory of the extracted patches sources, i.e:
+> > Embedded_Build/build_pwl/boa-0.94.0/build_pwl.sh 
+> > 
+> > This build_pwl script contains the instructions to actually compile the
+> > sources, strip the binaries and copy everything needed for the boa-0.94.0
+> > package into Embedded_Build/mnt.
+> > 
+> > Then the script will tar up the contents of Embedded_Build/mnt and create
+> > boa-0.94.0 in Embedded_Build/packages/network_servers
+> > 
+> Cool...fits right in with the other packages...
+
+Yup.
+
+> > I thought of keeping the Embedded_Build/sources directory dedicated to
+> > sources and patches unrelated to PWL.
+
+Sorry, difficult sentence. Got to clarify this. The Embedded_Build/sources
+directory contains source tarballs. The original downloaded source
+tarballs. It also contains patches supplied by others to make the tarball
+work with linux. Those paches are Linux specific (i.e. convert BSD sources
+to Linux) and don't have anything to do with PeeWeeLinux.
+
+> There should be room here for 
+> Embedded_Build/sources/boa...
+> to keep the generic sources and
+> Embedded_Build/sources/custom
+> for the user to keep their specific stuff..I can default pwlconfig
+> to start here when adding custom files to a project.  
+
+I don't think pwlconfig will be able to compile sources not prepared for
+PeeWeeLinux with a build_pwl.sh script and whatever patches might be
+required. I think if a user wanted to compile apache to run on PeeWeeLinux
+today, he'd be on his own extracting the sources wherever and compiling
+them and building his own package, a custom.tar package.
+
+> > I've been thinking more about the tar vs. rpm issue. Now I am actually
+> > more leaning towards using Redhat independent sources. Just accumulate all
+> > the different source packages and patches from who knows where and keep
+> > building PeeWeeLinux with it. This could make a Redhat independent
+> > system... I could post the source files individually on my site.
+> > Essentially an uncompressed Embedded_Build directory of the latest
+> > release...  
+> 
+> That will keep us distro independent...sounds nice. But, how do you get 
+> them to start with? copying from RH disk #2 is easy for me...FTP'em ??
+
+Well, PeeWeeLinux could come as a source distro with all the sources
+included in the Embedded_Build/sources directory or a user could ftp the
+original sources from the PeeWeeLinux ftp site. It's no problem generating
+a PeeWeeLinux CD either...
+
+Then again just like installing Redhat, the sources aren't really needed.
+They're just there for fun. Just the process of automating this all might
+make future upgrades easier. I.e compiling kernel dependent stuff, etc.
+
+> Hmmm...just off the top, I think you can do this:
+> 
+> loc=$PWD
+> cd build_pwl/$pkgSourceDir
+> . ./build_pwl.sh
+> cd $loc 
+
+That should work. But how do you know how a script was involed? Look at my
+distribute script. If you run it from within the script directory it works
+fine. Run it from the Embedded_Build directory... oooooops... won't work!
+
+> Seems simple enough, not sure if it will work...I can hack this out
+> once you get build_pwl.sh working.  I can integrate it into the pwlconfig
+> script and see what happens..
+
+The boa-0.94.0 is working. I didn't manage to get minicom to compile with
+termcap. Got to work on that. Here's the procedure to manually build boa.
+Take note that I am starting from the Embedded_Build directory:
+
+[adi@big Embedded_Build]$ cd build_pwl
+[adi@big build_pwl]$ tar xzvf ../sources/boa-0.94.0.tar.gz
+[adi@big build_pwl]$ patch -p0 < ../patches/boa-0.94.0.patch
+[adi@big build_pwl]$ cd boa-0.94.0
+[adi@big boa-0.94.0]$ chmod 755 build_pwl.sh
+[adi@big boa-0.94.0]$ ./build_pwl.sh
+
+Done! Now look into Embedded_Build/packages/network_servers/ and boa is
+there. It was there before but it's there again. Delete it before doing
+the above and you'll see :)
+
+To recap, here are the directories and what's in them:
+
+sources -------> Unprocessed original source tarballs
+patches -------> Patch files to create a PWL source from an
+                 extracted source from 'sources'
+build_pwl -----> The directory sources are extracted to
+                 Very much a temporary directory as the
+                 extracted sources aren't needed after
+                 a PWL package has been build  
+mnt -----------> A temporary directory utilized by the
+                 build_pwl.sh to install files and tar
+                 the <package>.tar file from. Everything
+                 here is deleted when build_pwl starts
+                 and when it stops. So make sure theres
+                 nothing valuable in here.
+build_pwl.sh --> The package dependent build script. It
+                 part of the patch file and gets saved
+                 when I create the patch and added to
+                 the sources when the patch is applied.
+                 It's simple list of commands, no error
+                 checking at all at this point. I guess
+                 it'll have to be cleaned up sometime. 
+
+I also added <package>.README files that contain descriptions of the
+packages. Perhaps other fields could be added in the future? The date the
+package was build, etc? It goes like this:
+
+    Description:
+    ============
+    Blah, blah, blah, blah
+
+    END
+
+Does that work ok to integrate as a package info or help screen into
+pwlconfig?
+
+And that's about it! PWL 0.19 is available for download at:
+
+http://projects.adis.on.ca/Embedded/
+ftp://projects.adis.on.ca/Embedded/
+
+I am uploading to sourceforge 4096 bytes per hour. It'll take a while
+until it's up there. I wonder why my connection there is sooooooo slow?
+There is 0 traffic on our 256k line except for my sourceforge upload...
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Tue Jan 25 18:53:33 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Tue, 25 Jan 2000 12:53:33 -0600 (CST)
+Subject: New ftp site at adis.on.ca
+Message-ID: <Pine.LNX.4.10.10001251250540.4816-100000@direcpc.adis.on.ca>
+
+Hi,
+
+Sorry for any confusion. The ftp server broke. Now I am running wu-ftpd.
+But the path has changed from what's been posted. So here are the new ftp
+paths for the latest PeeWeeLinux files...
+
+ftp://adis.on.ca/pub/Projects/Embedded/embedded-0.19-bin.tar.gz    3758 Kb
+ftp://adis.on.ca/pub/Projects/Embedded/embedded-0.19-src.tar.gz   18242 Kb
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Wed Jan 26 06:50:52 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Tue, 25 Jan 2000 22:50:52 -0800 (PST)
+Subject: V0.19 and pwlconfig design notes...
+Message-ID: <20000126065052.4819.qmail@web1103.mail.yahoo.com>
+
+Adi,
+I downloaded the 0.19 source file today (pretty good response for downloads
+from sourceforge...haven't tried your new ftp yet). Looks like a lot of stuff
+in there..not sure what it all is though...
+
+I started on the next release of pwlconfig.  I've integrated it so it can use
+my "mkBootDevice" shell script, now I just have to add a few parameters to the
+project.  So far I can only come up with a handfull of "project" specific
+parameters, but I'm planning on a menu that will let you enter these items into
+a "...projects/myproject/project.default" file. (you can manually edit it or
+use the menus).  Adding more parameters anytime should be a breeze...
+
+>From Main Menu->Manage project
+"Project Device Type: DOC"
+"Project Device Location: /dev/fla1"
+"Project Mount Point: ./mnt"
+"Boot Label: pwlboot"
+"File System Compressed: no"
+"Default source for custom files: /home/ralph/SRC"
+"<suggestions ???>"
+
+Cursor through these items and select them to change them.  Its a little
+overhead (script coding) to provide an interactive menu, but it keeps all the
+pwl stuff integrated in the pwlconfig script.  I think I'll keep these
+functions in a small script, like "pwl_default", that gets called by pwlconfig
+or from the command line.
+
+I split out some of the utility functions to shorten the pwlconfig script and
+also to share these between the scripts.  Small sharp tools and all that...
+
+Also, I plan on updating the help button to work for each package and fix the
+bugs I've listed on sourceforge.  If you notice any "unexpected features" (ok,
+bugs :-) list them there and I'll take a look at them.
+
+After this release, I'll start on integrating the "build package"
+scripts...then what ?? The compressed file system should be good challenge
+too...almost forgot about that one...
+
+Probably need to start building a couple of default projects..once users
+download the binaries, they should be able to download "router", "thin client"
+and so on - maybe 5-10K each - or the "Project of the Month".  Since I haven't
+gotten anything to work yet, I can't help here :-(  
+
+Best thing to do is see if you can build one of your working projects just
+using pwlconfig...that should be a good test :-)
+
+Later,
+Ralph
+
+BTW, I tried your generate_list script (after I noticed that my "include all"
+wasn't working since there were no list files to include).  It kept killing my
+xterm window...so, I played with it...(hacker mentality - not my code, it must
+be tweaked!;-) and add a "--remove" function...and set it up to work from
+either directory (Embedded_Build or Embedded_Build/scripts). I'll post it
+
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Wed Jan 26 07:00:15 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Tue, 25 Jan 2000 23:00:15 -0800 (PST)
+Subject: YASL - Yet Another Small Linux
+Message-ID: <20000126070015.17013.qmail@web1102.mail.yahoo.com>
+
+Check out:
+
+http://www.prosa.it/
+
+These guys support 8MB Disk-on-chip / Debian / 2.0.xx kernel...
+
+We should probably keep a list of these somewhere...seems like a lot of these
+projects have fallen off or have been forgotten and most are only dealing with
+floppies.  
+
+Is anybody else out there using 2.2 kernel on small Linuxes (Linuxies?) ?? What
+about file systems in the 3 MB - 32 MB range ?  This would be good to know for
+code sharing etc...I keep looking but nothing pops up just yet...
+
+Ralph
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Wed Jan 26 14:47:15 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Wed, 26 Jan 2000 08:47:15 -0600 (CST)
+Subject: V0.19 and pwlconfig design notes...
+In-Reply-To: <20000126065052.4819.qmail@web1103.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001260816390.2488-100000@localhost.localdomain>
+
+Hi,
+
+> I downloaded the 0.19 source file today (pretty good response for downloads
+> from sourceforge...haven't tried your new ftp yet). Looks like a lot of stuff
+> in there..not sure what it all is though...
+
+There are still duplicate sources in there. The originals and the
+extracted, modified, comiled ones for PWL. I only patched boa so far. I
+have to work throught the other ones too.
+
+Still need to decide wether to do the tar thing or use rpm.
+
+> I started on the next release of pwlconfig.  I've integrated it so it can use
+> my "mkBootDevice" shell script, now I just have to add a few parameters to the
+> project.  So far I can only come up with a handfull of "project" specific
+> parameters, but I'm planning on a menu that will let you enter these items into
+> a "...projects/myproject/project.default" file. (you can manually edit it or
+> use the menus).  Adding more parameters anytime should be a breeze...
+> 
+> >From Main Menu->Manage project
+> "Project Device Type: DOC"
+> "Project Device Location: /dev/fla1"
+> "Project Mount Point: ./mnt"
+> "Boot Label: pwlboot"
+> "File System Compressed: no"
+> "Default source for custom files: /home/ralph/SRC"
+> "<suggestions ???>"
+> 
+> Cursor through these items and select them to change them.  Its a little
+> overhead (script coding) to provide an interactive menu, but it keeps all the
+> pwl stuff integrated in the pwlconfig script.  I think I'll keep these
+> functions in a small script, like "pwl_default", that gets called by pwlconfig
+> or from the command line.
+
+So thi would allow for a configuration to be 'totally' configured with
+pwlconfig, where the projects files go, where the temp mount point is?
+
+> I split out some of the utility functions to shorten the pwlconfig script and
+> also to share these between the scripts.  Small sharp tools and all that...
+
+Good idea.
+
+> After this release, I'll start on integrating the "build package"
+> scripts...then what ?? The compressed file system should be good challenge
+> too...almost forgot about that one...
+
+Ok, of the main menu there should be a configuration section to set
+whatever parameter for the project. Another main section should be the
+package selection portion and extraction of these files to the configured
+mount point. The next major meu item should be about what to with the
+build filesystem, i.e. load a DOC or flash, create  a ramdisk, iso image,
+tar file, etc...   
+
+> Probably need to start building a couple of default projects..once users
+> download the binaries, they should be able to download "router", "thin client"
+> and so on - maybe 5-10K each - or the "Project of the Month".  Since I haven't
+> gotten anything to work yet, I can't help here :-(  
+
+Yup, I fried a DOC. Don't know how I did it, but if I boot my development
+system on the embedded box I get a kernel message 'cannot access
+/dev/fla...'. I tried using the dos tools to restore it to a DOS disk with
+the original boot sector. It tells me it is not a FFS device. I s there
+warranty on these???
+
+> Best thing to do is see if you can build one of your working projects just
+> using pwlconfig...that should be a good test :-)
+
+Yup, planning on doing that with the dialin box. Also, plan on doing this
+for the satellite router as part of doing the documentation of how to
+build it. It's sometimes a pain to do docs and decide what knowledge the
+reader should have (in how much detail to go).
+
+> BTW, I tried your generate_list script (after I noticed that my "include all"
+> wasn't working since there were no list files to include).  It kept killing my
+> xterm window...so, I played with it...(hacker mentality - not my code, it must
+> be tweaked!;-) and add a "--remove" function...and set it up to work from
+> either directory (Embedded_Build or Embedded_Build/scripts). I'll post it
+
+Good stuff, I am considering myself a beginner when it comes to perl and
+shell scripts. I think bacause I didn't formally learn it I missing some
+basics but at the same time know a lot of adavanced stuff because of all
+the other programming stuff I did. I am still having a bit of a hard time
+with having the script determine how it was invoked and where it live.
+
+The `pwd` command would give you the location from where the script was
+started. The '$0' variable includes the path and script name to get to the
+script from the 'pwd' location. Maybe using these 2 it would be possible
+to jump to predefined starting point?
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Wed Jan 26 15:13:03 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Wed, 26 Jan 2000 09:13:03 -0600 (CST)
+Subject: More pwlconfig stuff
+Message-ID: <Pine.LNX.4.10.10001260850240.2488-100000@localhost.localdomain>
+
+Hi Ralph,
+
+I am just going through running pwlconfig. It needs lxdialog. And the help
+message or error message is a bit inaccurate, at least for my system:
+
+[root@big Embedded_Build]# ./pwlconfig 
+Utility program "lxdialog" not found
+( do make Menuconfig and copy from /usr/src/linux/lxdialog )
+[root@big Embedded_Build]# cp /usr/src/linux/scripts/lxdialog/lxdialog
+scripts/
+ 
+The location is where lxdialog is located is a bit further into the source
+tree... Is lxdialog machine dependent? Couldn't we include a lxdialog for
+ease of use?
+
+This is the existing menu:
+
+      Configure Project File System --->
+      Extract File System for Project --->
+      ----
+      Erase Disk-On-Chip --->
+      Load File System onto Disk-On-Chip --->
+      Install LInux LOader (LILO) to Disk-On-Chip
+      ----
+      Save Project
+      Manage Projects --->                                     
+
+And some ideas of how to change things:
+
+The first 2 are fine, selecting what to use and extracting it into a spare
+directory.
+
+I think the next 3 could be submenued to facilitate dealing with different
+options like Disk-On-Chip, ramdisk, bootable iso... Like this:
+
+      ---
+      Uncompressed filesystem on Disk-On-Chip
+      Compressed filesystem
+      Bootable ramdisk system
+      Bootable iso image
+      ---
+
+The first item would contain all the DOC specific stuff. The second item
+would create a tar.gz file from the files located in the temporary mount
+directory.
+
+The ramdisk section could be something like this:
+
+      ---
+      Create ramdisk
+      Create bootable filesystem w/syslinux
+      ---      
+
+      The first step would create the ramdisk image. The second step would
+      create a filesystem including all files necessary to boot the
+      ramdisk using syslinux from a FAT12 or FAT 16 formatted disk
+      partition.
+
+And the fourth part would do just that. An iso image that can be processed
+by any burner...
+
+What exactly does the "save Projects" step do? Would it be possible to
+create a menu item that saves (tgz) all the files that make up a
+configured project to make it portable and drop into a furure release of
+pwlconfig and PWL?
+
+Coming to think of it, there aren't that many options, perhaps everything
+could stay on the main page just devided by the little '---' ?
+
+One last thought about the rpm vs tar issue...
+
+rpm uses a .rpmrc file. With it its supposed to be possible to totally
+configure rpm. Directories where to build and extract file systems, etc.
+I'll be playing with it for a bit, too.
+
+The patch I did for boa is an idea to play with. I don't think its
+necessarily the best solution. rpm has a lot for it, too.
+
+TTYL,
+Adi 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Wed Jan 26 16:13:59 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Wed, 26 Jan 2000 08:13:59 -0800 (PST)
+Subject: More pwlconfig stuff
+Message-ID: <20000126161359.15826.qmail@web1104.mail.yahoo.com>
+
+Hey,
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi Ralph,
+> 
+> I am just going through running pwlconfig. It needs lxdialog. And the help
+> message or error message is a bit inaccurate, at least for my system:
+> 
+> [root@big Embedded_Build]# ./pwlconfig 
+> Utility program "lxdialog" not found
+> ( do make Menuconfig and copy from /usr/src/linux/lxdialog )
+> [root@big Embedded_Build]# cp /usr/src/linux/scripts/lxdialog/lxdialog
+> scripts/
+>  
+> The location is where lxdialog is located is a bit further into the source
+> tree... Is lxdialog machine dependent? Couldn't we include a lxdialog for
+> ease of use?
+>
+
+I wondered about that...I suppose including it is no problem (have to include
+the source also ?)
+
+ 
+> This is the existing menu:
+> 
+>       Configure Project File System --->
+>       Extract File System for Project --->
+>       ----
+>       Erase Disk-On-Chip --->
+>       Load File System onto Disk-On-Chip --->
+>       Install LInux LOader (LILO) to Disk-On-Chip
+>       ----
+>       Save Project
+>       Manage Projects --->                                     
+> 
+> And some ideas of how to change things:
+> 
+> The first 2 are fine, selecting what to use and extracting it into a spare
+> directory.
+> 
+> I think the next 3 could be submenued to facilitate dealing with different
+> options like Disk-On-Chip, ramdisk, bootable iso... Like this:
+> 
+
+Where I'm headed now, the device is specified in the configuration file
+deviceType="DOC" 
+deviceName="Disk-On-Chip"
+-or-
+deviceTYPE="FLASH"
+deviceName="Sandisk Flash Disk (IDE)"
+
+where the Name is assigned by the user for their specific device.  So,
+I am building the menu items as follows:
+
+       Erase $deviceName --->
+       Load File System onto $deviceName --->
+       Install LInux LOader (LILO) to $deviceName
+
+Erase/load and LILO being the operations for embedding linux in any device.
+(not sure about cdrom thing below...does CDROM use LILO ?? hmmmm)
+
+>       ---
+>       Uncompressed filesystem on Disk-On-Chip
+>       Compressed filesystem
+>       Bootable ramdisk system
+>       Bootable iso image
+>       ---
+> 
+> The first item would contain all the DOC specific stuff. The second item
+> would create a tar.gz file from the files located in the temporary mount
+> directory.
+>
+> The ramdisk section could be something like this:
+> 
+>       ---
+>       Create ramdisk
+>       Create bootable filesystem w/syslinux
+>       ---      
+> 
+>       The first step would create the ramdisk image. The second step would
+>       create a filesystem including all files necessary to boot the
+>       ramdisk using syslinux from a FAT12 or FAT 16 formatted disk
+>       partition.
+> 
+> And the fourth part would do just that. An iso image that can be processed
+> by any burner...
+>
+
+For the ram disk, I was planning on including another line in the main menu
+(if the projectCompress parameter = "YES" )
+
+      Configure Project File System --->
+      Compress FIle System -->
+      Extract File System for Project --->
+      ----
+Selecting Compress File System will allow you to specify which files are
+included in the compressed image and which ones get copied without change.
+Then when you select "Extract the file system image gets built and 
+then the compressed image gets made.
+ 
+> What exactly does the "save Projects" step do? Would it be possible to
+> create a menu item that saves (tgz) all the files that make up a
+> configured project to make it portable and drop into a furure release of
+> pwlconfig and PWL?
+>
+
+Hey, that sounds neat...no problem, maybe that would be Archive Project 
+or something.  Save Project just saves your current "Temporary" changes,
+everything you do configuring a project is "temporary" until you 
+decide to make it "permanant"
+
+> Coming to think of it, there aren't that many options, perhaps everything
+> could stay on the main page just devided by the little '---' ?
+> 
+> One last thought about the rpm vs tar issue...
+> 
+> rpm uses a .rpmrc file. With it its supposed to be possible to totally
+> configure rpm. Directories where to build and extract file systems, etc.
+> I'll be playing with it for a bit, too.
+> 
+> The patch I did for boa is an idea to play with. I don't think its
+> necessarily the best solution. rpm has a lot for it, too.
+> 
+not there yet...your a few days ahead of me :-)
+
+> TTYL,
+> Adi 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+>
+Later,
+Ralph 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Wed Jan 26 19:04:08 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Wed, 26 Jan 2000 13:04:08 -0600 (CST)
+Subject: More pwlconfig stuff
+In-Reply-To: <20000126161359.15826.qmail@web1104.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001261235400.15045-100000@direcpc.adis.on.ca>
+
+Hi,
+
+> I wondered about that...I suppose including it is no problem (have to include
+> the source also ?)
+
+Under GPL the sources have to be available. I would imagine them being
+part of the kernel source would be sufficient. Perhaps just indicate in
+the README.pwlconfig where the sources for lxdialog can be found.
+
+> Where I'm headed now, the device is specified in the configuration file
+> deviceType="DOC" 
+> deviceName="Disk-On-Chip"
+> -or-
+> deviceTYPE="FLASH"
+> deviceName="Sandisk Flash Disk (IDE)"
+
+Ok, there are several different possibilities in loading stuff into the
+machine. You can simply use the flash like a HD. The disadvantage is that
+with limited write cycles to the flash it has a predefined lifespan.
+
+Then it's possible to create a ramdisk image. The ramdisk image on it's
+own doesn't do much. It needs a kernel (seperate) and a bootloader, lilo
+for an ext2 filesystem on flash, syslinux for a FAT filesystem on flash
+and loadlin if the DOS operating system is on flash, too. The last one
+wouldn't make sense but its on option (I don't care about supporting it
+though).
+
+If I am right, here are the steps required for each setup.
+
+'Live' filesystem on flash (no ramdisk)
+---------------------------------------
+1. Erase the flash (IDE or DOC)
+2. Make ext2 filesystem on flash
+3. Copy the filesystem to flash
+4. Run lilo (plilo for DOC, normal lilo for IDE FLASH)
+
+Ramdisk with LILO
+-----------------
+1. Create ramdisk from filesystem (w/o kernel)
+2. Make ext2 filesystem on FLASH or DOC
+3. Copy necessary files to FLASH or DOC
+    - Kernel
+    - Ramdisk image
+    - lilo & support files
+4. Run lilo (plilo for DOC)
+
+Ramdisk with SYSLINUX
+---------------------
+1. Create ramdisk from filesystem (w/o kernel)
+2. Make FAT12 or FAT16 filesystem on FLASH or DOC
+3. Install bootloader (syslinux)
+4. Copy necessary files to FLASH or DOC
+    - Kernel
+    - Ramdisk image
+    - syslinux.cfg
+
+The above covers an original install. If you change the ramdisk image or
+kernel the syslinux solution just shine. All you need to do is copy the
+new kernel and/or ramdisk to the FLASH or DOC. That's it. No running lilo
+or anything else!
+
+The bootable CD is fairly easy. Unfortunaltely the 'easy' solution
+requires a floppy image with MS-DOS 6.22 and CD-ROM drives. A tough
+solution for anything but personal use. Thinking about it in retrospect it
+might be an idea not to support it until we figure out how to do it
+without MS-DOS.
+
+The above solutions assume the FLASH or DOC is available on the running
+development platform. In my case this doesn't work. I boot the target
+system using a floppy and then ftp the files onto the target drive. 
+
+So I think there needs to be an immediate step that allows you to create a
+tar.gz archive, as an example, which contains everything to be transferred
+to the target drive.
+
+> where the Name is assigned by the user for their specific device.  So,
+> I am building the menu items as follows:
+> 
+>        Erase $deviceName --->
+>        Load File System onto $deviceName --->
+>        Install LInux LOader (LILO) to $deviceName
+
+If you're using a ramdisk system the above wouldn't work...
+
+> For the ram disk, I was planning on including another line in the main menu
+> (if the projectCompress parameter = "YES" )
+> 
+>       Configure Project File System --->
+>       Compress FIle System -->
+>       Extract File System for Project --->
+>       ----
+>
+> Selecting Compress File System will allow you to specify which files are
+> included in the compressed image and which ones get copied without change.
+> Then when you select "Extract the file system image gets built and 
+> then the compressed image gets made.
+
+The ramdisk isn't just a tar file type of thing. The boot loader needs to
+be configured to support a ramdisk of the desired size (My router does a
+12MB ramdisk but the kernel default is 4MB max). Then the process of
+creating the ramdisk determines the size of the ramdisk when it's loaded
+into memory.
+
+When I build the script for the router it was run like this:
+   build_router [site] [ramdisk size] [ live | ramdisk | cd ]
+This is a script for a very specific purpose, though and not what I am
+planning now.
+
+I just think doing the ramdisk business should be a choice of menus all on
+its own. It's a process requiring different configurations options then
+the 'live' filesystem approach.
+
+So what I'll do is build the script to create the ramdisk. I'll email it
+to you when it's done with usage instructions. I did want to use command
+line switches, though. Still got to figure out how to do that without
+requiring options to be passed in a specific order.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Thu Jan 27 05:16:34 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Wed, 26 Jan 2000 21:16:34 -0800 (PST)
+Subject: V0.19 and pwlconfig design notes...
+Message-ID: <20000127051634.12369.qmail@web1105.mail.yahoo.com>
+
+
+Hey,
+Couldn't get time to do the e-mail thing today...I wrote another 500 or so
+lines of script to get the pwl_default thing working.  Also split up the
+script files some more, things are getting pretty clean now...
+
+Now that I have started parameterizing the "default" stuff in pwlconfig, I've
+gotten about 10 parameters.  This should come in handy somewhere down the
+road...
+
+BTW, I added the items I'm working on as "new features" in the source forge bug
+tracking stuff.  I got some mail from source forge about the mail server not
+being enabled...might have a link that needs fixing here to get source forge to
+send bug announcements to your mail server.  Thats just a guess...
+
+more...
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> > I downloaded the 0.19 source file today (pretty good response for downloads
+> > from sourceforge...haven't tried your new ftp yet). Looks like a lot of
+> stuff
+> > in there..not sure what it all is though...
+> 
+> There are still duplicate sources in there. The originals and the
+> extracted, modified, comiled ones for PWL. I only patched boa so far. I
+> have to work throught the other ones too.
+> 
+> Still need to decide wether to do the tar thing or use rpm.
+>
+
+I like the tar thing for now. I maybe we could re-visit this after we figure
+out what to do with the packages and ram disk stuff.
+ 
+> > I started on the next release of pwlconfig.  I've integrated it so it can
+> use
+> > my "mkBootDevice" shell script, now I just have to add a few parameters to
+> the
+> > project.  So far I can only come up with a handfull of "project" specific
+> > parameters, but I'm planning on a menu that will let you enter these items
+> into
+> > a "...projects/myproject/project.default" file. (you can manually edit it
+> or
+> > use the menus).  Adding more parameters anytime should be a breeze...
+> > 
+> > >From Main Menu->Manage project
+> > "Project Device Type: DOC"
+> > "Project Device Location: /dev/fla1"
+> > "Project Mount Point: ./mnt"
+> > "Boot Label: pwlboot"
+> > "File System Compressed: no"
+> > "Default source for custom files: /home/ralph/SRC"
+> > "<suggestions ???>"
+> > 
+> > Cursor through these items and select them to change them.  Its a little
+> > overhead (script coding) to provide an interactive menu, but it keeps all
+> the
+> > pwl stuff integrated in the pwlconfig script.  I think I'll keep these
+> > functions in a small script, like "pwl_default", that gets called by
+> pwlconfig
+> > or from the command line.
+> 
+> So thi would allow for a configuration to be 'totally' configured with
+> pwlconfig, where the projects files go, where the temp mount point is?
+> 
+
+Yep, added that one too..thanks...
+
+> > I split out some of the utility functions to shorten the pwlconfig script
+> and
+> > also to share these between the scripts.  Small sharp tools and all that...
+> 
+> Good idea.
+> 
+> > After this release, I'll start on integrating the "build package"
+> > scripts...then what ?? The compressed file system should be good challenge
+> > too...almost forgot about that one...
+> 
+> Ok, of the main menu there should be a configuration section to set
+> whatever parameter for the project. Another main section should be the
+> package selection portion and extraction of these files to the configured
+> mount point. The next major meu item should be about what to with the
+> build filesystem, i.e. load a DOC or flash, create  a ramdisk, iso image,
+> tar file, etc...   
+> 
+
+I'll look at your next e-mail to try to figure more of this out...
+
+
+> > Probably need to start building a couple of default projects..once users
+> > download the binaries, they should be able to download "router", "thin
+> client"
+> > and so on - maybe 5-10K each - or the "Project of the Month".  Since I
+> haven't
+> > gotten anything to work yet, I can't help here :-(  
+> 
+> Yup, I fried a DOC. Don't know how I did it, but if I boot my development
+> system on the embedded box I get a kernel message 'cannot access
+> /dev/fla...'. I tried using the dos tools to restore it to a DOS disk with
+> the original boot sector. It tells me it is not a FFS device. I s there
+> warranty on these???
+>
+
+I sent you an extra chip incase you wanted to play with that on IPIX...
+ 
+> > Best thing to do is see if you can build one of your working projects just
+> > using pwlconfig...that should be a good test :-)
+> 
+> Yup, planning on doing that with the dialin box. Also, plan on doing this
+> for the satellite router as part of doing the documentation of how to
+> build it. It's sometimes a pain to do docs and decide what knowledge the
+> reader should have (in how much detail to go).
+> 
+> > BTW, I tried your generate_list script (after I noticed that my "include
+> all"
+> > wasn't working since there were no list files to include).  It kept killing
+> my
+> > xterm window...so, I played with it...(hacker mentality - not my code, it
+> must
+> > be tweaked!;-) and add a "--remove" function...and set it up to work from
+> > either directory (Embedded_Build or Embedded_Build/scripts). I'll post it
+> 
+> Good stuff, I am considering myself a beginner when it comes to perl and
+> shell scripts. I think bacause I didn't formally learn it I missing some
+> basics but at the same time know a lot of adavanced stuff because of all
+> the other programming stuff I did. I am still having a bit of a hard time
+> with having the script determine how it was invoked and where it live.
+> 
+> The `pwd` command would give you the location from where the script was
+> started. The '$0' variable includes the path and script name to get to the
+> script from the 'pwd' location. Maybe using these 2 it would be possible
+> to jump to predefined starting point?
+>
+or you can look in the current directory to see if the script is there or in
+another directory...depends on what you want to do.
+ 
+> TTYL,
+> Adi
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Thu Jan 27 05:33:02 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Wed, 26 Jan 2000 21:33:02 -0800 (PST)
+Subject: More pwlconfig stuff
+Message-ID: <20000127053302.14670.qmail@web1105.mail.yahoo.com>
+
+
+Hey,
+more thoughts...
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> > I wondered about that...I suppose including it is no problem (have to
+> include
+> > the source also ?)
+> 
+> Under GPL the sources have to be available. I would imagine them being
+> part of the kernel source would be sufficient. Perhaps just indicate in
+> the README.pwlconfig where the sources for lxdialog can be found.
+> 
+> > Where I'm headed now, the device is specified in the configuration file
+> > deviceType="DOC" 
+> > deviceName="Disk-On-Chip"
+> > -or-
+> > deviceTYPE="FLASH"
+> > deviceName="Sandisk Flash Disk (IDE)"
+> 
+> Ok, there are several different possibilities in loading stuff into the
+> machine. You can simply use the flash like a HD. The disadvantage is that
+> with limited write cycles to the flash it has a predefined lifespan.
+> 
+
+The limit is about 100,000 ...don't think loading the file system will be a
+problem, its not until you start using the flash for run-time file storage...
+DOC has wear leveling that helps too...
+
+> Then it's possible to create a ramdisk image. The ramdisk image on it's
+> own doesn't do much. It needs a kernel (seperate) and a bootloader, lilo
+> for an ext2 filesystem on flash, syslinux for a FAT filesystem on flash
+> and loadlin if the DOS operating system is on flash, too. The last one
+> wouldn't make sense but its on option (I don't care about supporting it
+> though).
+> 
+> If I am right, here are the steps required for each setup.
+> 
+> 'Live' filesystem on flash (no ramdisk)
+> ---------------------------------------
+> 1. Erase the flash (IDE or DOC)
+> 2. Make ext2 filesystem on flash
+> 3. Copy the filesystem to flash
+> 4. Run lilo (plilo for DOC, normal lilo for IDE FLASH)
+> 
+
+Ok..I think these are handled now with the "xxx Disk-On-Chip" main menu
+items...
+
+
+> Ramdisk with LILO
+> -----------------
+> 1. Create ramdisk from filesystem (w/o kernel)
+> 2. Make ext2 filesystem on FLASH or DOC
+> 3. Copy necessary files to FLASH or DOC
+>     - Kernel
+>     - Ramdisk image
+>     - lilo & support files
+> 4. Run lilo (plilo for DOC)
+> 
+
+
+What I was thinking for the compressed system:
+
+1. configure your project file system, independent of ram disk
+2. Configure the compressed file system...ie specify files that are not
+compressed, all others will be compressed
+3. Extract will extract the file system as it does now..THEN it will compress
+all the required files.  The compressed image and the uncompressed files will
+be  loaded into another location.  The compress will actually use the "dd"
+command stuff you have in one of your shell scripts already...
+
+After this step, files will be stored as follows:
+
+projects/ralph/mnt     <<--normal uncompressed files
+projects/ralph/cmpmnt  <<--final disk image with compressed file + others
+
+Now, when you load the Disk-On-Chip, the files will be copied from the "cmpmnt"
+point, not the "mnt" directory.
+
+4. run Lilo as before, but insert some ram disk parameters if required, in the
+"lilo.conf.doc" file
+
+> Ramdisk with SYSLINUX
+> ---------------------
+> 1. Create ramdisk from filesystem (w/o kernel)
+> 2. Make FAT12 or FAT16 filesystem on FLASH or DOC
+> 3. Install bootloader (syslinux)
+> 4. Copy necessary files to FLASH or DOC
+>     - Kernel
+>     - Ramdisk image
+>     - syslinux.cfg
+> 
+> The above covers an original install. If you change the ramdisk image or
+> kernel the syslinux solution just shine. All you need to do is copy the
+> new kernel and/or ramdisk to the FLASH or DOC. That's it. No running lilo
+> or anything else!
+> 
+
+Ok..haven't played with syslinux yet...
+
+> The bootable CD is fairly easy. Unfortunaltely the 'easy' solution
+> requires a floppy image with MS-DOS 6.22 and CD-ROM drives. A tough
+> solution for anything but personal use. Thinking about it in retrospect it
+> might be an idea not to support it until we figure out how to do it
+> without MS-DOS.
+> 
+
+There's a how-to on building CD-ROMS that boot, and I know someone who has done
+this...this is lowest on my priority list, something to shoot for though.
+
+> The above solutions assume the FLASH or DOC is available on the running
+> development platform. In my case this doesn't work. I boot the target
+> system using a floppy and then ftp the files onto the target drive. 
+> 
+
+Hmmmm....I hadn't thought of this...perhaps if the target is mounted with nfs,
+then the copy from "projects/ralph/mnt" (or "projects/ralph/cmpmnt") would just
+work..I guess this assumes that a working file system is already on the
+target...not sure if LILO works over this method either...hmmmmm
+
+> So I think there needs to be an immediate step that allows you to create a
+> tar.gz archive, as an example, which contains everything to be transferred
+> to the target drive.
+> 
+
+Ahhh...just archiving (tar/zipping) the entire file structure...hmmmm... this
+is a seperate issue from just archiving a project...more to do...
+
+> > where the Name is assigned by the user for their specific device.  So,
+> > I am building the menu items as follows:
+> > 
+> >        Erase $deviceName --->
+> >        Load File System onto $deviceName --->
+> >        Install LInux LOader (LILO) to $deviceName
+> 
+> If you're using a ramdisk system the above wouldn't work...
+> 
+> > For the ram disk, I was planning on including another line in the main menu
+> > (if the projectCompress parameter = "YES" )
+> > 
+> >       Configure Project File System --->
+> >       Compress FIle System -->
+> >       Extract File System for Project --->
+> >       ----
+> >
+> > Selecting Compress File System will allow you to specify which files are
+> > included in the compressed image and which ones get copied without change.
+> > Then when you select "Extract the file system image gets built and 
+> > then the compressed image gets made.
+> 
+> The ramdisk isn't just a tar file type of thing. The boot loader needs to
+> be configured to support a ramdisk of the desired size (My router does a
+> 12MB ramdisk but the kernel default is 4MB max). Then the process of
+> creating the ramdisk determines the size of the ramdisk when it's loaded
+> into memory.
+> 
+
+sounds like we might need more project parameters to define the ram disk
+stuff...
+
+> When I build the script for the router it was run like this:
+>    build_router [site] [ramdisk size] [ live | ramdisk | cd ]
+> This is a script for a very specific purpose, though and not what I am
+> planning now.
+> 
+> I just think doing the ramdisk business should be a choice of menus all on
+> its own. It's a process requiring different configurations options then
+> the 'live' filesystem approach.
+> 
+> So what I'll do is build the script to create the ramdisk. I'll email it
+> to you when it's done with usage instructions. I did want to use command
+> line switches, though. Still got to figure out how to do that without
+> requiring options to be passed in a specific order.
+> 
+The pwl_custom has some command line processing stuff for an example - I don't
+use getopts, but that is a little more "standard"..
+
+Anyhow, seeing something working is a lot better than just me gassing (and
+guessing) about what *I* think should happen :-)  
+
+
+> TTYL,
+> Adi
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+
+Later,
+Ralph
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Thu Jan 27 06:09:23 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Thu, 27 Jan 2000 00:09:23 -0600 (CST)
+Subject: V0.19 and pwlconfig design notes...
+In-Reply-To: <20000127051634.12369.qmail@web1105.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001262358030.3615-100000@localhost.localdomain>
+
+Hi Ralph,
+
+> Now that I have started parameterizing the "default" stuff in pwlconfig, I've
+> gotten about 10 parameters.  This should come in handy somewhere down the
+> road...
+
+Perhaps makes future changes easier! I am getting better at using lots of
+variables. Defining everything and define most things right at the
+beginning of the script. Like doing assembler...
+
+> BTW, I added the items I'm working on as "new features" in the source forge bug
+> tracking stuff.  I got some mail from source forge about the mail server not
+> being enabled...might have a link that needs fixing here to get source forge to
+> send bug announcements to your mail server.  Thats just a guess...
+
+Hmmm... got to look at that. My 'boss' likes my mailing list so much, he
+wants it too. So I ended up searching for a web frontend for majordomo. I
+found majorcool. Well, it's cool :) Just in case you're into this stuff,
+it's at http://adis.on.ca/cgi-bin/majorcool
+
+I don't think it's a good idea to have Windoze user administer mailing
+list config files as root on a linux system. Who knows what they get
+into...
+
+> I like the tar thing for now. I maybe we could re-visit this after we figure
+> out what to do with the packages and ram disk stuff.
+
+Good stuff. So we will stick with it. I think it has more potential for
+making it platform independent than rpm. Plus, PWL will likely include
+quite a few packages that are not part of the RedHat distribution.
+
+> > Yup, I fried a DOC. Don't know how I did it, but if I boot my development
+> > system on the embedded box I get a kernel message 'cannot access
+> > /dev/fla...'. I tried using the dos tools to restore it to a DOS disk with
+> > the original boot sector. It tells me it is not a FFS device. I s there
+> > warranty on these???
+> 
+> I sent you an extra chip incase you wanted to play with that on IPIX...
+
+Either flash or DOC should work fine...
+
+> or you can look in the current directory to see if the script is there or in
+> another directory...depends on what you want to do.
+
+Hey, that's a great way to do errorchecking and not run the script if the
+current directory is wrong... hmmmm...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Thu Jan 27 07:02:40 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Thu, 27 Jan 2000 01:02:40 -0600 (CST)
+Subject: More pwlconfig stuff
+In-Reply-To: <20000127053302.14670.qmail@web1105.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001270033470.3615-100000@localhost.localdomain>
+
+Hi again...
+
+> The limit is about 100,000 ...don't think loading the file system will be a
+> problem, its not until you start using the flash for run-time file storage...
+> DOC has wear leveling that helps too...
+
+So how long would a flash last if it's running a 'regular' read-write
+filesystem? I did a hybrid solution at one point where part of the
+filsystem was copied into a ramdisk at boot. It worked soso. I much prefer
+the all ramdisk solution, as long as it fits into ram...
+
+> > Then it's possible to create a ramdisk image. The ramdisk image on it's
+> > own doesn't do much. It needs a kernel (seperate) and a bootloader, lilo
+> > for an ext2 filesystem on flash, syslinux for a FAT filesystem on flash
+> > and loadlin if the DOS operating system is on flash, too. The last one
+> > wouldn't make sense but its on option (I don't care about supporting it
+> > though).
+> > 
+> > If I am right, here are the steps required for each setup.
+> > 
+> > 'Live' filesystem on flash (no ramdisk)
+> > ---------------------------------------
+> > 1. Erase the flash (IDE or DOC)
+> > 2. Make ext2 filesystem on flash
+> > 3. Copy the filesystem to flash
+> > 4. Run lilo (plilo for DOC, normal lilo for IDE FLASH)
+> > 
+> 
+> Ok..I think these are handled now with the "xxx Disk-On-Chip" main menu
+> items...
+
+Yup...
+
+> > Ramdisk with LILO
+> > -----------------
+> > 1. Create ramdisk from filesystem (w/o kernel)
+> > 2. Make ext2 filesystem on FLASH or DOC
+> > 3. Copy necessary files to FLASH or DOC
+> >     - Kernel
+> >     - Ramdisk image
+> >     - lilo & support files
+> > 4. Run lilo (plilo for DOC)
+> > 
+> 
+> 
+> What I was thinking for the compressed system:
+> 
+> 1. configure your project file system, independent of ram disk
+> 2. Configure the compressed file system...ie specify files that are not
+> compressed, all others will be compressed
+> 3. Extract will extract the file system as it does now..THEN it will compress
+> all the required files.  The compressed image and the uncompressed files will
+> be  loaded into another location.  The compress will actually use the "dd"
+> command stuff you have in one of your shell scripts already...
+> 
+> After this step, files will be stored as follows:
+> 
+> projects/ralph/mnt     <<--normal uncompressed files
+> projects/ralph/cmpmnt  <<--final disk image with compressed file + others
+> 
+> Now, when you load the Disk-On-Chip, the files will be copied from the "cmpmnt"
+> point, not the "mnt" directory.
+> 
+> 4. run Lilo as before, but insert some ram disk parameters if required, in the
+> "lilo.conf.doc" file
+
+Yup, that would do.
+
+> > Ramdisk with SYSLINUX
+> > ---------------------
+> > 1. Create ramdisk from filesystem (w/o kernel)
+> > 2. Make FAT12 or FAT16 filesystem on FLASH or DOC
+> > 3. Install bootloader (syslinux)
+> > 4. Copy necessary files to FLASH or DOC
+> >     - Kernel
+> >     - Ramdisk image
+> >     - syslinux.cfg
+> > 
+> > The above covers an original install. If you change the ramdisk image or
+> > kernel the syslinux solution just shine. All you need to do is copy the
+> > new kernel and/or ramdisk to the FLASH or DOC. That's it. No running lilo
+> > or anything else!
+> 
+> Ok..haven't played with syslinux yet...
+
+It's easier than the ext2 filesystem on flash with lilo...
+
+> > The bootable CD is fairly easy. Unfortunaltely the 'easy' solution
+> > requires a floppy image with MS-DOS 6.22 and CD-ROM drives. A tough
+> > solution for anything but personal use. Thinking about it in retrospect it
+> > might be an idea not to support it until we figure out how to do it
+> > without MS-DOS.
+> > 
+> 
+> There's a how-to on building CD-ROMS that boot, and I know someone who has done
+> this...this is lowest on my priority list, something to shoot for though.
+
+The problem is booting without dos. With booteable CD's the bios loads a
+floppy image from the CD and redirects system calls to the image instead
+of the physical floppy. Unfortunately the Linux kernel doesn't use the
+bios to access drives after it has booted. Soooo... the kernel boots and
+then it can't find the ramdisk because there is no real floppy drive
+there. Considering that syslinux loads the kernel and the ramdisk it
+should work with a bootable CD, too. But then there needs to be a way to
+probe for the place the CD is connected to.
+
+I think with the newer boxes and booteable ATAPI drives there is point in
+supporting it. But I don't have any need for it now. There isn't any time
+in my life to work on the syslinux bootable CD business right now.
+
+> > The above solutions assume the FLASH or DOC is available on the running
+> > development platform. In my case this doesn't work. I boot the target
+> > system using a floppy and then ftp the files onto the target drive. 
+> 
+> Hmmmm....I hadn't thought of this...perhaps if the target is mounted with nfs,
+> then the copy from "projects/ralph/mnt" (or "projects/ralph/cmpmnt") would just
+> work..I guess this assumes that a working file system is already on the
+> target...not sure if LILO works over this method either...hmmmmm
+
+Like I mentioned, I am bringing the target system up with a floppy that
+has networking and a ftp client. It uses dhcp for a network number and
+goes about downloading the image and installing it on flash. Depending on
+the RAM/flash configuration its possible to download a .tgz file with all
+the files into the ramdisk and then uncompress them onto flash.
+
+This works great with 8MB flash and 64MB RAM. It even squeezes into 32MB
+RAM. Booting from a floppy the filesystem expands to about 3MB. If the
+ramdisk was build to be 20MB in size that leaves 17MB to buffer the
+downloaded file(s) to be installed. 12MB to run a minimal networked Linux
+is plenty... 
+
+> > So I think there needs to be an immediate step that allows you to create a
+> > tar.gz archive, as an example, which contains everything to be transferred
+> > to the target drive.
+> 
+> Ahhh...just archiving (tar/zipping) the entire file structure...hmmmm... this
+> is a seperate issue from just archiving a project...more to do...
+
+See below:
+
+ > projects/ralph/mnt     <<--normal uncompressed files
+ > projects/ralph/cmpmnt  <<--final disk image with compressed file + others
+ > 
+ > Now, when you load the Disk-On-Chip, the files will be copied from the"cmpmnt"
+ > point, not the "mnt" directory.
+
+A step to compress the 'projects/ralph/cmpmnt' directory. So there is on
+file that contains everything that needs to go onto the target device.
+
+One more note about the syslinux - lilo thing. If you use a ramdisk the
+files required on the target are VERY different between lilo and syslinux.
+The only thing in common are the ramdisk image and the kernel image.
+
+> Anyhow, seeing something working is a lot better than just me gassing (and
+> guessing) about what *I* think should happen :-)  
+
+This is defenitely so. I am hoping to start this ramdisk script first
+thing in the morning. My original plan of doing it this evening just
+didn't fly.
+
+My little brother (14 year old) decided to format the drive on his
+computer and do some partitioning to do a dual boot Windows/Linux box.
+When he was visiting he thought the Gnome desktop was sooo cool. He just
+had to have. I burned him copies of all the important Linux stuff...
+
+It was a loooong phonecall walking him through a Win98 install first and
+then a Redhat 6.1 Gnome workstation. I guess the first time in his live
+he installed an operating system and had to use fdisk and format. Now he
+needs a new modem since his box has a Winmodem. Oh well...
+
+He lives out in BC so walking over there to show him isn't really an
+option...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Jan 28 05:46:53 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Thu, 27 Jan 2000 21:46:53 -0800 (PST)
+Subject: pwlconfig update *real soon now*
+Message-ID: <20000128054653.17026.qmail@web1103.mail.yahoo.com>
+
+
+I hope to post an update tomorrow (night?) for the pwlconfig stuff.  I think
+I've got most of the new features in, but It needs lots of testing since I
+touched just about everything.  This version will be seperated into several
+scripts that should not have to change for a while...just add new scripts and
+call them from the pwlconfig main menu stuff.
+
+Scripts pwlconfig uses:
+pwl_custom    - handles custom configuration files
+pwl_defaults  - handles default configuration file
+pwl_projects  - handles project stuff (should be done before v0.8)
+pwl_functions - utility functions used by all these scripts
+mkBootDevice  - handles all types of devices (DOC & flash for now) to do 
+                erase/format/load/lilo operations
+
+?? next scripts to write ??
+pwl_extract   - do the file system building here, seperate from pwlconfig
+pwl_package   - source code to package builder
+pwl_ramdisk   - build a ramdisk image
+
+The pain has been making each script work interactively and from the command
+line. But, this should make it fairly flexible if you need to automate any of
+the building stuff...it just takes a lot more code.
+
+Anymore suggestions on what to fix or add ? Once I get the help screens updated
+(oops, forgot about the context sensitive help...to do also) I think we'll have
+to beat on this to see if everything is working ok...
+
+Later,
+Ralph
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Jan 28 21:25:52 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Fri, 28 Jan 2000 15:25:52 -0600 (CST)
+Subject: Package selection in pwlconfig
+Message-ID: <Pine.LNX.4.10.10001281520500.13025-100000@direcpc.adis.on.ca>
+
+Hi,
+
+I am just using pwlconfig to build an install disk. When selecting base
+packages I have the following problem:
+
+    Include all packages
+    Exclude all packages
+    [*] base_filesystem  ~~ --->
+    [*] base_libs  ~~ --->
+
+If I select 'Include all packages' the packages won't show up as selected.
+Upon extraction they are extracted last. That causes several error
+messages.
+
+Putting the select marks in front of 'base_filesystem' and 'base_libs'
+will extract them first (since they're first in alphabetical order) and
+process everything as intended.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Jan 28 21:57:06 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Fri, 28 Jan 2000 13:57:06 -0800 (PST)
+Subject: Package selection in pwlconfig
+Message-ID: <20000128215706.4077.qmail@web1105.mail.yahoo.com>
+
+I'm not sure, you may not have the .list files in the package directory.
+This will cause them not to show up. 
+
+Workaround - Try picking them one at a time to create the list files.
+
+Yep, I think these were previously _base_xxx, which put them in alphabetical
+order first, and not such a big problem.
+
+Let me know how this goes...I'm taking this home to polish v0.8 tonight...
+
+Later, 
+Ralph
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> I am just using pwlconfig to build an install disk. When selecting base
+> packages I have the following problem:
+> 
+>     Include all packages
+>     Exclude all packages
+>     [*] base_filesystem  ~~ --->
+>     [*] base_libs  ~~ --->
+> 
+> If I select 'Include all packages' the packages won't show up as selected.
+> Upon extraction they are extracted last. That causes several error
+> messages.
+> 
+> Putting the select marks in front of 'base_filesystem' and 'base_libs'
+> will extract them first (since they're first in alphabetical order) and
+> process everything as intended.
+> 
+> TTYL,
+> Adi
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Fri Jan 28 22:31:32 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Fri, 28 Jan 2000 16:31:32 -0600 (CST)
+Subject: Package selection in pwlconfig
+In-Reply-To: <20000128215706.4077.qmail@web1105.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001281630400.13025-100000@direcpc.adis.on.ca>
+
+Hi,
+
+They do show up first if you pick the package as a whole, but if you
+select 'Include all packages' they are extracted last.
+
+Adi
+
+On Fri, 28 Jan 2000, Ralph Stickley wrote:
+
+> I'm not sure, you may not have the .list files in the package directory.
+> This will cause them not to show up. 
+> 
+> Workaround - Try picking them one at a time to create the list files.
+> 
+> Yep, I think these were previously _base_xxx, which put them in alphabetical
+> order first, and not such a big problem.
+> 
+> Let me know how this goes...I'm taking this home to polish v0.8 tonight...
+> 
+> Later, 
+> Ralph
+> 
+> --- Adi Linden <adi@adis.on.ca> wrote:
+> > Hi,
+> > 
+> > I am just using pwlconfig to build an install disk. When selecting base
+> > packages I have the following problem:
+> > 
+> >     Include all packages
+> >     Exclude all packages
+> >     [*] base_filesystem  ~~ --->
+> >     [*] base_libs  ~~ --->
+> > 
+> > If I select 'Include all packages' the packages won't show up as selected.
+> > Upon extraction they are extracted last. That causes several error
+> > messages.
+> > 
+> > Putting the select marks in front of 'base_filesystem' and 'base_libs'
+> > will extract them first (since they're first in alphabetical order) and
+> > process everything as intended.
+> > 
+> > TTYL,
+> > Adi
+> > 
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://embedded.adis.on.ca
+> > ---------------------------------------------------
+> > 
+> __________________________________________________
+> Do You Yahoo!?
+> Talk to your friends online with Yahoo! Messenger.
+> http://im.yahoo.com
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Sat Jan 29 20:35:57 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Sat, 29 Jan 2000 12:35:57 -0800 (PST)
+Subject: Package selection in pwlconfig
+Message-ID: <20000129203557.11403.qmail@web1105.mail.yahoo.com>
+
+Hmmm..I think I need to do a sort when the items are included, or before
+I extract them...
+
+I managed to get all the "little" scripts working together - about 3:30am 
+last night.  I need to go back and try a few more things to verify as much
+as possible, maybe I'll finish up tonight at a reasonable hour.  If you want to
+upgrade your pwlconfig and test this that would be a big help.
+
+>From here on I hope to be able to "patch" the scripts...hopefully things
+won't be changing as much.
+
+Later,
+Ralph
+
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi,
+> 
+> They do show up first if you pick the package as a whole, but if you
+> select 'Include all packages' they are extracted last.
+> 
+> Adi
+> 
+> On Fri, 28 Jan 2000, Ralph Stickley wrote:
+> 
+> > I'm not sure, you may not have the .list files in the package directory.
+> > This will cause them not to show up. 
+> > 
+> > Workaround - Try picking them one at a time to create the list files.
+> > 
+> > Yep, I think these were previously _base_xxx, which put them in
+> alphabetical
+> > order first, and not such a big problem.
+> > 
+> > Let me know how this goes...I'm taking this home to polish v0.8 tonight...
+> > 
+> > Later, 
+> > Ralph
+> > 
+> > --- Adi Linden <adi@adis.on.ca> wrote:
+> > > Hi,
+> > > 
+> > > I am just using pwlconfig to build an install disk. When selecting base
+> > > packages I have the following problem:
+> > > 
+> > >     Include all packages
+> > >     Exclude all packages
+> > >     [*] base_filesystem  ~~ --->
+> > >     [*] base_libs  ~~ --->
+> > > 
+> > > If I select 'Include all packages' the packages won't show up as
+> selected.
+> > > Upon extraction they are extracted last. That causes several error
+> > > messages.
+> > > 
+> > > Putting the select marks in front of 'base_filesystem' and 'base_libs'
+> > > will extract them first (since they're first in alphabetical order) and
+> > > process everything as intended.
+> > > 
+> > > TTYL,
+> > > Adi
+> > > 
+> > > ---------------------------------------------------
+> > > See the list archives at http://adis.on.ca/archives/
+> > > See the PWL homepage at  http://embedded.adis.on.ca
+> > > ---------------------------------------------------
+> > > 
+> > __________________________________________________
+> > Do You Yahoo!?
+> > Talk to your friends online with Yahoo! Messenger.
+> > http://im.yahoo.com
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://embedded.adis.on.ca
+> > ---------------------------------------------------
+> > 
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Sun Jan 30 00:25:26 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Sat, 29 Jan 2000 18:25:26 -0600 (CST)
+Subject: Package selection in pwlconfig
+In-Reply-To: <20000129203557.11403.qmail@web1105.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001291819260.1229-100000@localhost.localdomain>
+
+Hi,
+
+> Hmmm..I think I need to do a sort when the items are included, or before
+> I extract them...
+
+Then I could add the underscore to the base packgaes to ensure they're
+extracted first. BTW, I tried that and it didn't make a difference for the
+0.7 pwlconfig...
+
+> I managed to get all the "little" scripts working together - about 3:30am 
+> last night.  I need to go back and try a few more things to verify as much
+> as possible, maybe I'll finish up tonight at a reasonable hour.  If you want to
+> upgrade your pwlconfig and test this that would be a big help.
+
+Yup, I could do that. I am working on a dialup router. I can use it to do
+the configuration :)
+
+I hope to get some time to do the pwlmkram script soon. I've been playing
+with command line switches and it's neat. Also tried getopts for the
+first time. I am still learning a lot about syntax and available commands
+when it comes to doing script.
+
+I finally figured out what makes for poor cgi scripts... Not checking for
+certain characters. I wonder if I can do that within bash? Or I'll  have
+to start tackling perl in a serious way...
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 31 06:20:30 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Sun, 30 Jan 2000 22:20:30 -0800 (PST)
+Subject: ./pwlconfig problem
+Message-ID: <20000131062030.14365.qmail@web1103.mail.yahoo.com>
+
+Hello,
+You just have to put lxdialog in the scripts directory.
+
+This is now included in v0.8, download site is:
+
+http://adis.on.ca/pub/Projects/Embedded/Contributed/
+
+I left of the filename on the help message too...Adi noticed that
+but since we didn't file a bug report, I promptly forgot it..I'll add that
+tonight for V0.9 update...
+
+Let me know how this works for you.  This is still basically "untested" but
+its comming together fast. Any suggestions are welcome...
+
+Thanks,
+Ralph
+
+--- "ricky r.g. gonzalez" <rickyg@hypertech.com.ph> wrote:
+> I was impressed by the recommendation of the web site Dave Central.
+> 
+
+Hmmm..haven't seen this...I guess I'd better check this out :-)
+
+ 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 31 14:49:12 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Mon, 31 Jan 2000 06:49:12 -0800 (PST)
+Subject: ./pwlconfig problem
+Message-ID: <20000131144912.6479.qmail@web1101.mail.yahoo.com>
+
+
+Great!  Let me know what you think, we've only had about 2 systems to test
+this on so any testing you can do is apreciated!
+BTW, lots of new features in pwlconfig V0.8 :-)
+
+Later,
+Raplh
+ 
+--- "ricky r.g. gonzalez" <rickyg@hypertech.com.ph> wrote:
+> Ralph,
+> 
+> Ralph Stickley,r_stickley@yahoo.com,Internet writes:
+> >You just have to put lxdialog in the scripts directory.
+> 
+> Got it working. Thanks.
+> 
+> Regards,
+> 
+> 
+> 
+> ---
+> Ricky Gonzalez:Hypertech Corporation, Philippines
+> rickyg@hypertech.com.ph          | Voice    : (632)-8968986 to 87 
+> rickyg@info.com.ph                   | Fax      :  (632)-8968915
+> snail mail : 3971 Yague St. Bgy Sta Cruz 1205 Makati, Philippines
+> web page   : http://www.hypertech.com.ph
+> Attn : Mail Server has difficulty with 2000 so its 1900.
+> 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 31 19:08:06 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Mon, 31 Jan 2000 13:08:06 -0600 (CST)
+Subject: ./pwlconfig problem
+In-Reply-To: <20000131144912.6479.qmail@web1101.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001311305280.23482-100000@direcpc.adis.on.ca>
+
+Hi Ralph,
+
+> Great!  Let me know what you think, we've only had about 2 systems to test
+> this on so any testing you can do is apreciated!
+> BTW, lots of new features in pwlconfig V0.8 :-)
+
+I just fired up pwlconfig 0.8. It asked me to select a target after
+selecting the project name. Would it be possible to select the target when
+it comes to installing the system, i.e. after the packages were selected
+and extracted?
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 31 20:44:54 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Mon, 31 Jan 2000 12:44:54 -0800 (PST)
+Subject: ./pwlconfig problem
+Message-ID: <20000131204454.15414.qmail@web1101.mail.yahoo.com>
+
+Hmmmm...sounds like a good idea...
+
+Note: the target device is one of the default parameters that determines how 
+the main menu looks. If we choose a default "default device" like HDD (see
+below), then the user would only be prompted when they go to the "project 
+parameters" and decide to changed devices.
+
+I'm thinking of adding IDE disk, so you can experiment with 
+a regular hard disk drive partition or something, about the same as the flash
+only it would say IDE HDD instead of FLASH ...any thoughts ??
+
+BTW, I just got X-Windows server working!!! I used the Update command to copy
+the changes back to the custom files...now I'm trying to get the courage to
+erase it and build it again :-)  Then comes an X package (10 MB+ :-0)
+
+Later,
+Ralph
+
+The Update command needs more options...I'm comparing file dates now, and that
+makes for a Big list of changes (hold the 'Y' key down) to go through. It would
+be nice to just update "different files" , not files with different time
+stamps.
+hmmmm...just when I didn't have anything left to do too!:-P
+
+
+
+--- Adi Linden <adi@adis.on.ca> wrote:
+> Hi Ralph,
+> 
+> > Great!  Let me know what you think, we've only had about 2 systems to test
+> > this on so any testing you can do is apreciated!
+> > BTW, lots of new features in pwlconfig V0.8 :-)
+> 
+> I just fired up pwlconfig 0.8. It asked me to select a target after
+> selecting the project name. Would it be possible to select the target when
+> it comes to installing the system, i.e. after the packages were selected
+> and extracted?
+> 
+> TTYL,
+> Adi
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 31 21:49:34 2000
+From: PeeWeeLinux-devel@adis.on.ca (Ralph Stickley)
+Date: Mon, 31 Jan 2000 13:49:34 -0800 (PST)
+Subject: X startup stuff - questions
+Message-ID: <20000131214934.3367.qmail@web1101.mail.yahoo.com>
+
+Ok,
+The X windows server XF86_SVGA seems to come up and run...but to make
+this work from my FLASH disk I have to do the following:
+
+1. extract / erase /load / lilo all from pwlconfig
+2. boot to FLASH device
+3. mknod /dev/mouse c 10 1
+4. insmod unix.o 
+5. xfs -droppriv -daemon -port -1
+6. XF86_SVGA
+
+Where can I stick the above commands 3,4 and 5 in my etc/init.d files
+to get this done everytime it boots ?
+
+rc.local comes to mind, but there might be a more standard place to do this...
+
+Thanks,
+Ralph
+
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+http://im.yahoo.com
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux-devel@adis.on.ca  Mon Jan 31 23:10:41 2000
+From: PeeWeeLinux-devel@adis.on.ca (Adi Linden)
+Date: Mon, 31 Jan 2000 17:10:41 -0600 (CST)
+Subject: X startup stuff - questions
+In-Reply-To: <20000131214934.3367.qmail@web1101.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10001311707330.15686-100000@direcpc.adis.on.ca>
+
+Hi,
+
+> The X windows server XF86_SVGA seems to come up and run...but to make
+> this work from my FLASH disk I have to do the following:
+
+Good stuff!
+
+> 1. extract / erase /load / lilo all from pwlconfig
+> 2. boot to FLASH device
+> 3. mknod /dev/mouse c 10 1
+
+Wouldn't the above be part of the installation process of putting X onto
+the flash device/into the filesystem?
+
+> 4. insmod unix.o 
+> 5. xfs -droppriv -daemon -port -1
+> 6. XF86_SVGA
+
+I would do a startup script to run from the etc/rcS.d directory. All
+scripts in there are run automatically at startup in alphanumerical order.
+To have good control over what runs when they're numbered, like: 05modules
+20firewall, etc....
+
+> Where can I stick the above commands 3,4 and 5 in my etc/init.d files
+> to get this done everytime it boots ?
+
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+

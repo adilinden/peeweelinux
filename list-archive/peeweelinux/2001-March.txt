@@ -1,0 +1,359 @@
+From peeweelinux@adis.on.ca  Thu Mar  8 13:33:44 2001
+From: peeweelinux@adis.on.ca (Fabrice Gautier)
+Date: Thu, 08 Mar 2001 14:33:44 +0100
+Subject: pwlconfig 0.61 - won't work
+Message-ID: <20010308142140.A36C.GAUTIER@email.enst.fr>
+
+Hi,
+
+I'm trying the latest pwlconfig and it doesn't work.
+
+I just get two dots and then it is stucked.
+
+Thanks
+
+-- 
+Fabrice Gautier <gautier@email.enstfr>
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Mar  8 14:35:34 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 8 Mar 2001 08:35:34 -0600 (CST)
+Subject: pwlconfig 0.61 - won't work
+In-Reply-To: <20010308142140.A36C.GAUTIER@email.enst.fr>
+Message-ID: <Pine.LNX.4.10.10103080834460.4014-100000@develop.knet.on.ca>
+
+Hi,
+
+It works on my system (just tried it to make sure). 
+
+What box do you use? Would you have some details?
+
+TTYL,
+Adi
+
+On Thu, 8 Mar 2001, Fabrice Gautier wrote:
+
+> Hi,
+> 
+> I'm trying the latest pwlconfig and it doesn't work.
+> 
+> I just get two dots and then it is stucked.
+> 
+> Thanks
+> 
+> -- 
+> Fabrice Gautier <gautier@email.enstfr>
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Mar  8 15:21:03 2001
+From: peeweelinux@adis.on.ca (Mike Johnson)
+Date: Thu, 8 Mar 2001 08:21:03 -0700
+Subject: pwlconfig 0.61 - won't work
+In-Reply-To: <Pine.LNX.4.10.10103080834460.4014-100000@develop.knet.on.ca>
+Message-ID: <NEBBIHDFALBMFKOLHCHNIELACAAA.mike@embeddedx86.com>
+
+Hi,
+
+I had the same problem on my laptop. It turned out the laptop install of
+Redhat 7.0 didn't include ncurses. I installed ncurses and it worked fine.
+
+It's worth a look.
+
+Mike
+
+-----Original Message-----
+From: owner-peeweelinux@adis.on.ca
+[mailto:owner-peeweelinux@adis.on.ca]On Behalf Of Adi Linden
+Sent: Thursday, March 08, 2001 7:36 AM
+To: peeweelinux@adis.on.ca
+Subject: Re: pwlconfig 0.61 - won't work
+
+
+Hi,
+
+It works on my system (just tried it to make sure).
+
+What box do you use? Would you have some details?
+
+TTYL,
+Adi
+
+On Thu, 8 Mar 2001, Fabrice Gautier wrote:
+
+> Hi,
+>
+> I'm trying the latest pwlconfig and it doesn't work.
+>
+> I just get two dots and then it is stucked.
+>
+> Thanks
+>
+> --
+> Fabrice Gautier <gautier@email.enstfr>
+>
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+>
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Mar  8 17:17:02 2001
+From: peeweelinux@adis.on.ca (Fabrice Gautier)
+Date: Thu, 08 Mar 2001 18:17:02 +0100
+Subject: pwlconfig 0.61 - won't work
+In-Reply-To: <Pine.LNX.4.10.10103080834460.4014-100000@develop.knet.on.ca>
+References: <20010308142140.A36C.GAUTIER@email.enst.fr> <Pine.LNX.4.10.10103080834460.4014-100000@develop.knet.on.ca>
+Message-ID: <20010308180805.A371.GAUTIER@email.enst.fr>
+
+
+On Thu, 8 Mar 2001 08:35:34 -0600 (CST)
+Adi Linden <adi@adis.on.ca> wrote:
+
+> Hi,
+> 
+> It works on my system (just tried it to make sure). 
+> 
+> What box do you use? Would you have some details?
+
+Ok i figured it out...
+
+It's a debian box - unstable branch
+
+I have ncurses 5.2
+
+But your pwl_config ( ./bin/lxdialog in fact) needs ncurses 4
+
+Lucky me there's a libncurses4 debian package in the oldlibs section 
+
+Thx...
+-- 
+Fabrice Gautier <gautier@email.enstfr>
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Mar 10 22:29:34 2001
+From: peeweelinux@adis.on.ca (Fabrice Gautier)
+Date: Sat, 10 Mar 2001 23:29:34 +0100
+Subject: File sytem extraction path
+Message-ID: <20010310232730.AEC6.GAUTIER@email.enst.fr>
+
+Hi,
+
+For test purposes, i'm using a nfs mounted root fs.
+I configure my root fs with pwlconfig, but when i want to extract it I
+have to retype the full path of my nfs root each time.
+
+How can I do so that this is saved in the project?
+
+Thanks
+
+-- 
+Fabrice Gautier <gautier@email.enstfr>
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sat Mar 10 22:33:36 2001
+From: peeweelinux@adis.on.ca (Fabrice Gautier)
+Date: Sat, 10 Mar 2001 23:33:36 +0100
+Subject: Busybox package
+Message-ID: <20010310233207.AEC8.GAUTIER@email.enst.fr>
+
+Hi,
+
+When including the busybox pakage, I can't include bin/[, i get an error
+"grep: [ unmatched"
+
+I guess something should be escaped here
+
+Thanks
+-- 
+Fabrice Gautier <gautier@email.enstfr>
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Mar 11 01:08:32 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 10 Mar 2001 19:08:32 -0600 (CST)
+Subject: Busybox package
+In-Reply-To: <20010310233207.AEC8.GAUTIER@email.enst.fr>
+Message-ID: <Pine.LNX.4.10.10103101907420.24568-100000@big.adis.on.ca>
+
+Hi,
+
+Hi haven't done much with busybox yet. So I haven't come across this
+problem. I'll give it a try and see what I can find/fix.
+
+TTYL,
+Adi
+
+On Sat, 10 Mar 2001, Fabrice Gautier wrote:
+
+> Hi,
+> 
+> When including the busybox pakage, I can't include bin/[, i get an error
+> "grep: [ unmatched"
+> 
+> I guess something should be escaped here
+> 
+> Thanks
+> -- 
+> Fabrice Gautier <gautier@email.enstfr>
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Mar 11 01:09:43 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Sat, 10 Mar 2001 19:09:43 -0600 (CST)
+Subject: File sytem extraction path
+In-Reply-To: <20010310232730.AEC6.GAUTIER@email.enst.fr>
+Message-ID: <Pine.LNX.4.10.10103101909070.24568-100000@big.adis.on.ca>
+
+Hi,
+
+Where do you enter your path, at which prompt? If you set it in the
+configuration menu it should get saved with the project.
+
+TTYL,
+Adi
+
+On Sat, 10 Mar 2001, Fabrice Gautier wrote:
+
+> Hi,
+> 
+> For test purposes, i'm using a nfs mounted root fs.
+> I configure my root fs with pwlconfig, but when i want to extract it I
+> have to retype the full path of my nfs root each time.
+> 
+> How can I do so that this is saved in the project?
+> 
+> Thanks
+> 
+> -- 
+> Fabrice Gautier <gautier@email.enstfr>
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Mar 11 04:35:16 2001
+From: peeweelinux@adis.on.ca (Fabrice Gautier)
+Date: Sun, 11 Mar 2001 05:35:16 +0100
+Subject: File sytem extraction path
+In-Reply-To: <Pine.LNX.4.10.10103101909070.24568-100000@big.adis.on.ca>
+References: <20010310232730.AEC6.GAUTIER@email.enst.fr> <Pine.LNX.4.10.10103101909070.24568-100000@big.adis.on.ca>
+Message-ID: <20010311052806.F45C.GAUTIER@email.enst.fr>
+
+
+On Sat, 10 Mar 2001 19:09:43 -0600 (CST)
+Adi Linden <adi@adis.on.ca> wrote:
+
+> Hi,
+> 
+> Where do you enter your path, at which prompt? If you set it in the
+> configuration menu it should get saved with the project.
+
+In the main menu, when i select "Extract File System for Project", i
+fill a dialog box.
+
+I also modified Project Mount Point in the configuration menu ("Project
+efault Menu") but then in the dialog box i have somethink like:
+
+./projects/MyProjectName//the/path/for/project/mount/point/i/set
+
+wheras i would liek to have only /the/path/for/project/mount/point/i/set
+
+I tried to handle that with symlinks but the symlink is replaced with a
+real directory when i extract the fs
+
+
+-- 
+Fabrice Gautier <gautier@email.enstfr>
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Sun Mar 11 09:38:07 2001
+From: peeweelinux@adis.on.ca (Fabrice Gautier)
+Date: Sun, 11 Mar 2001 10:38:07 +0100
+Subject: Busybox package
+In-Reply-To: <Pine.LNX.4.10.10103101907420.24568-100000@big.adis.on.ca>
+References: <20010310233207.AEC8.GAUTIER@email.enst.fr> <Pine.LNX.4.10.10103101907420.24568-100000@big.adis.on.ca>
+Message-ID: <20010311103522.3A91.GAUTIER@email.enst.fr>
+
+> Hi,
+> 
+> Hi haven't done much with busybox yet. So I haven't come across this
+> problem. I'll give it a try and see what I can find/fix.
+> 
+> TTYL,
+> Adi
+> 
+
+Bye the way, I think your version of busybox is broken. Init at least.
+I think it make some error when caculating Memory size so it return a not
+enough memory message.
+
+I tried busybox 0.49 and it worked fine.
+
+Thanks.
+
+-- 
+Fabrice Gautier <gautier@email.enst.fr>
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

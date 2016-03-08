@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] glibc 2.2.x
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000906.html">
+   <LINK REL="Next"  HREF="000908.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] glibc 2.2.x
+   </H1>
+    <B>Ricardo Jorge Silva Trindade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] glibc 2.2.x">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 17 Jan 2003 13:01:36 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000906.html">[Peeweelinux] glibc 2.2.x
+</A></li>
+        <LI> Next message: <A HREF="000908.html">[Peeweelinux] my mistake, QT application statically, instead of compiling QT statically
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#907">[ date ]</a>
+              <a href="thread.html#907">[ thread ]</a>
+              <a href="subject.html#907">[ subject ]</a>
+              <a href="author.html#907">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>You don't need to compile QT. You just need to compile your app statically. This way it will include the qt libraries and work with any glibc.
+
+
+-----Original Message-----
+From: &quot;Rushi&quot; &lt;<A HREF="mailto:rushi_lala@hotmail.com">rushi_lala@hotmail.com</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Date: Fri, 17 Jan 2003 12:23:32 -0000 
+Subject: [Peeweelinux] glibc 2.2.x
+
+Hi , all
+thanks for your overall support.
+
+I have managed to get the X working with you ppls help, now my major task is
+here and if I solve that I am done.
+
+I am using QT/X11 for development on my mandrake 9 machine with glibc 2.2.5
+and 2.4.19 kernel. My QT application is working fine with all my dynamic
+libraries.
+
+I just want this application to run on my peewee, with or without Window
+manager ( I know I will be needing some window manager if I want to use my
+same application source which is QT issue).
+
+
+I tried to copy all the linked libraries of my application to peewee. and
+its not supported and giving errors when booting.
+
+most of them says lib.so. version GLIBC_.2.2 not found and bla bla
+............:(
+
+Now I have decided to update the version of glibc libraries by installing
+2.2.5 glibc rpms on my peewee. As peewee is with glibc 2.1.3.
+
+What do u ppl suggest.
+
+1)I don't think , If I change the glibc 2.1.3 RPM with 2.2.5 rpm in the
+Embedded Linux /rpm folder than  peewee will accept and install 2.2.5
+2)if not than I can do rpm -xvf  glibc 2.2.5 ............... or do i need to
+update it step by step with other older versions of glibc
+3)and the last solution can be, if I install older Linux , older  QT like
+1.4 or some thing and change some codes in my application as it is of QT
+3.X( that's too much work :) )
+
+4) unfortunately I am not able to compile QT statically even if I can I
+don't think it will work with older glibc
+
+
+
+need your suggestions and help.
+
+Also Adi I would be pleased if I can help you any how to improve peewee
+(else than financially ;) )
+
+thanks for your help , waiting for you suggestions
+
+
+Rushi
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000906.html">[Peeweelinux] glibc 2.2.x
+</A></li>
+	<LI> Next message: <A HREF="000908.html">[Peeweelinux] my mistake, QT application statically, instead of compiling QT statically
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#907">[ date ]</a>
+              <a href="thread.html#907">[ thread ]</a>
+              <a href="subject.html#907">[ subject ]</a>
+              <a href="author.html#907">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

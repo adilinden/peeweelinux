@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Uncompressed fail.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000726.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Uncompressed fail.
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Uncompressed fail.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 30 Jul 2002 16:29:51 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000726.html">[Peeweelinux] problems, show up in ldconfig
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#727">[ date ]</a>
+              <a href="thread.html#727">[ thread ]</a>
+              <a href="subject.html#727">[ subject ]</a>
+              <a href="author.html#727">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>Barry:
+</I>&gt;<i>         I only change the target 'style', the hole system is the same and 
+</I>&gt;<i>the machine is the same (video card, mouse, etc.). As it is only 
+</I>&gt;<i>uncompressed (or RO partition with multiple RAM) and the files fits without 
+</I>&gt;<i>problem in the drive, I cannot know anything because if I comment the line 
+</I>&gt;<i>with the Xserver in the rc file, all works fine, but if the Xserver is 
+</I>&gt;<i>enabled, it locks the target PC. I cannot acces any log file.
+</I>
+If you do have a console attached, you could boot up in 
+runlevel 3 [ change this line in  etc/inittab :
+
+id:5:initdefault
+
+ change the 5 to a 3 and recopy your system ]  then you'll get a 
+login prompt.  Once logged in you type startx.   Well, I hope it's
+startx, but embedded X may be stripped down to a simpler command.
+This might let you find out what's up with X.
+
+&gt;<i>         Is OK for me to use it compressed, but I think that can be faster 
+</I>&gt;<i>to load an uncompressed file system. 
+</I>
+With a slow hard drive and a fast processor, it's faster to load 
+less from the hard drive and let the CPU uncompress it.  But with 
+a flash disk and a not-so-fast processor, it may be the other way
+around  You would have to test it.
+
+&gt;<i>Better if I can save the memory for 
+</I>&gt;<i>the RAM disk using a RO root partition. Maybe I'm wrong in this, but the RO 
+</I>&gt;<i>filesystem with multiple RAM disks was faster and uses less memory than any 
+</I>&gt;<i>other configuration. (this two tips are very important to me now). Please 
+</I>&gt;<i>let me know if any of this asseverations is not right.
+</I>
+I don't know enough about this to help.
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000726.html">[Peeweelinux] problems, show up in ldconfig
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#727">[ date ]</a>
+              <a href="thread.html#727">[ thread ]</a>
+              <a href="subject.html#727">[ subject ]</a>
+              <a href="author.html#727">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

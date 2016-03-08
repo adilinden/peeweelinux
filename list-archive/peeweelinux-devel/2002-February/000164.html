@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000163.html">
+   <LINK REL="Next"  HREF="000165.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux-devel%40adis.on.ca"
+       TITLE="[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?">peeweelinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 20 Feb 2002 09:05:01 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000163.html">[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+</A></li>
+        <LI> Next message: <A HREF="000165.html">[Peeweelinux-devel] Creating packages for PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#164">[ date ]</a>
+              <a href="thread.html#164">[ thread ]</a>
+              <a href="subject.html#164">[ subject ]</a>
+              <a href="author.html#164">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Delaney,
+
+Thanks for your response.  Library (in)compatibilities were causing me some grief early
+on, and I'm still trying to sort out all the details.
+
+FWIW, the compatibility packages really helped.  I have a Redhat 7.2 system for
+development, and using these packages allowed me to compile and link my applications
+against the shared libraries used in the current release of Peewee Linux.  This, of
+course, made my applications *much* smaller (no longer statically linked).
+
+I'm not sure how it's done with Mandrake, but in Redhat 7.2 it was simply installing some
+.rpm packages:
+
+compat-glibc-6.2-2.1.3.2
+compat-egcs-6.2-1.1.2.16
+compat-libs-6.2-3
+compat-libstdc++-6.2-2.9
+
+After installing these packages, running a script called &quot;i386-glibc21-linux-env.sh&quot;
+allowed me to link all my applications against glibc 2.1.x libraries.
+
+Regards,
+
+Mark
+
+----- Original Message -----
+From: &lt;<A HREF="mailto:drowe@juptech.com">drowe@juptech.com</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux-devel@adis.on.ca">peeweelinux-devel@adis.on.ca</A>&gt;
+Sent: Tuesday, February 19, 2002 6:32 PM
+Subject: Re: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+
+
+&gt;<i> Hi Mark, sorry for the delay in getting back to you.
+</I>&gt;<i>
+</I>&gt;<i> To my knowledge, know that later versions do not offer any significant
+</I>&gt;<i> advantages over the newer libraries (except the obvious size savings).
+</I>&gt;<i>
+</I>&gt;<i> Currently our developer's are using Mandrake linux 8.1 - some initial
+</I>&gt;<i> reasons we were looking at later packages/libraries/kernels etc for peewee
+</I>&gt;<i> is that :
+</I>&gt;<i>
+</I>&gt;<i> 1) we wanted the live running environment to match the development
+</I>&gt;<i> environment, as closely as possible, rather than having to perform some
+</I>&gt;<i> weird configuration juggling to ensure all ~12 developers are working from
+</I>&gt;<i> the same base, and that that the base dev setup and live setup match
+</I>&gt;<i>
+</I>&gt;<i> As a note (I haven't looked into this yet ) some of the tools they use
+</I>&gt;<i> (e.g. GTK2) I would have thought would need the later libraries to run -
+</I>&gt;<i> if this is the case rather than mixing and matching libraries from
+</I>&gt;<i> different versions, we'd prefer to use the one set of libs.
+</I>&gt;<i>
+</I>&gt;<i> 2) The hardware guys want the USB support that the 2.4 kernel offers.
+</I>&gt;<i> While the 2.2 series can be patched to add USB support, that's (for
+</I>&gt;<i> reasons of their own) not the path the want to take.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I had not heard of the glibc compatibility packages - they sound like they
+</I>&gt;<i> may be worth a look - thanks for the tip.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> I hope you can extract some sense from the above ramblings,
+</I>&gt;<i> I really need a coke right about now :)
+</I>&gt;<i>
+</I>&gt;<i> Kind Regards,
+</I>&gt;<i> Delaney
+</I>&gt;<i>
+</I>
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000163.html">[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+</A></li>
+	<LI> Next message: <A HREF="000165.html">[Peeweelinux-devel] Creating packages for PeeWeeLinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#164">[ date ]</a>
+              <a href="thread.html#164">[ thread ]</a>
+              <a href="subject.html#164">[ subject ]</a>
+              <a href="author.html#164">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

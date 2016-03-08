@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Todo
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000099.html">
+   <LINK REL="Next"  HREF="000094.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Todo
+   </H1>
+    <B>Richard Jennings
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Todo">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 11 Oct 2000 21:38:38 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000099.html">Todo
+</A></li>
+        <LI> Next message: <A HREF="000094.html">Todo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#92">[ date ]</a>
+              <a href="thread.html#92">[ thread ]</a>
+              <a href="subject.html#92">[ subject ]</a>
+              <a href="author.html#92">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--============_-1240793377==_============
+Content-Type: text/plain; charset=&quot;us-ascii&quot; ; format=&quot;flowed&quot;
+
+Modular would certainly be better than making a different kernel for 
+every need. Sorry for adding to the noise, I was just thinking about 
+my own needs. ;-)
+
+As long as I have your attention though.... Have you thought about 
+putting Eric Anderson's &quot;silent&quot; patch into the kernel. Eric posted a 
+patch to the linux embedded list last month that works great. Just 
+give lilo the line &quot;debug=2&quot; and all the kernel messages go away. 
+I've enclosed it in case you want it.
+
+Richard
+
+
+&gt;<i>Hi,
+</I>&gt;<i>
+</I>&gt;<i>The kernel is certainly a thorn in my side so to speak. The idea of an
+</I>&gt;<i>embedded kernel is to have it as small as possible. Yet, every platform
+</I>&gt;<i>has different requirements and demands different kernel modules, etc.
+</I>&gt;<i>
+</I>&gt;<i>One option would be to allow one to build a custom kernel by giving an
+</I>&gt;<i>option in pwlconfig that extracts kernel sources, and drops into a kernel
+</I>&gt;<i>configuration screen that allows for building a custom kernel. Now this is
+</I>&gt;<i>the Cadillac that might not be feasable.
+</I>&gt;<i>
+</I>&gt;<i>Another option would be to reduce the number of special purpose kernels
+</I>&gt;<i>and insead build a highly modularized kernel with virtually all options.
+</I>&gt;<i>Very similar to the stock RedHat kernel. It would be up to the individual
+</I>&gt;<i>user to deselect unneeded modules to conserve space. I tend to lean
+</I>&gt;<i>towards this solution. Realizing that there are a number of people using
+</I>&gt;<i>PWL already I don't want to make drastic changes to the kernel between
+</I>&gt;<i>releases. So depending on my time availability I plan on either adding a
+</I>&gt;<i>full blown all options 2.214 kernel or skip any changes to 2.2.14 and go
+</I>&gt;<i>right to the latest 2.4 beta kernel.
+</I>&gt;<i>
+</I>&gt;<i>Comments would be quite welcome here :)
+</I>&gt;<i>
+</I>&gt;<i>Another feature still in the works is a dependency checking routine in
+</I>&gt;<i>pwlconfig. I had one figured out and added it to one of the pwl_target
+</I>&gt;<i>(rd_functions) but never completed it. I used to have depended libs as
+</I>&gt;<i>part of the packages but that changed when rpm came in. So now we need a
+</I>&gt;<i>routine that checks the installed system for missing or unneeded libs...
+</I>&gt;<i>
+</I>&gt;<i>TTYL,
+</I>&gt;<i>Adi
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>On Wed, 11 Oct 2000, Richard Jennings wrote:
+</I>&gt;<i>
+</I>&gt;&gt;<i>  Can you add nfs support to the kernel? I'm trying to mount a remote
+</I>&gt;&gt;<i>  filesystem but nfs is not supported by the kernel.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>  Richard
+</I>&gt;&gt;<i>  ---------------------------------------------------
+</I>&gt;&gt;<i>  See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;&gt;<i>  See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;&gt;<i>  ---------------------------------------------------
+</I>&gt;&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>---------------------------------------------------
+</I>&gt;<i>See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i>See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i>---------------------------------------------------
+</I>
+--============_-1240793377==_============
+Content-Id: &lt;a04310102b60afabc1a84@[24.14.159.102].0.0&gt;
+Content-Type: application/mac-binhex40; name=&quot;silent.patch&quot;
+Content-Disposition: attachment; filename=&quot;silent.patch&quot;
+ ; modification-date=&quot;Wed, 13 Sep 2000 17:46:56 -0800&quot;
+
+(This file must be converted with BinHex 4.0)
+
+:<i>$(0TE'9ZG#j`BA4MD!&quot;849K8G(4iG!%!!!!$hJ!!!!$<A HREF="mailto:Fj@4TCQBJ">Fj@4TCQBJ</A>,8jeFL&quot;<A HREF="mailto:XD@j">XD@j</A>
+</I>eH#j[FQPR,f&amp;bBfJ[D6-i0LpLEfpd,f0[EA&quot;<A HREF="mailto:bCA0cC@3">bCA0cC@3</A>[<A HREF="mailto:E@PcBbjM">E@PcBbjM</A>)'aTER9i,f&amp;
+bBfJ[D6-i0LpLEfpd,f0[EA&quot;<A HREF="mailto:bCA0cC@3">bCA0cC@3</A>[<A HREF="mailto:E@PcBbjM">E@PcBbjM</A>$5dY,5&quot;<A HREF="mailto:XD@jeH">XD@jeH</A>#j[FQPR,f&amp;
+bBfJ[D6-i0LpLEfpd,f0[EA&quot;<A HREF="mailto:bCA0cC@3">bCA0cC@3</A>[<A HREF="mailto:E@PcBbjM">E@PcBbjM</A>#9GPC#&quot;<A HREF="mailto:+G@iJ-M3J-M-k-c">+G@iJ-M3J-M-k-c</A>!
+k-$JJ-6Nj1!dV+bXJE'PZGAJ[BA*MD#pT-cJf,f*[Eh3[BfpYF(*PFh0PC#pYDA0
+M,Q-*4R*T)%CPBL!a15!a0$Sd0MS`0b!a16Nj$8&quot;!)#dc0$NX15!V-c3j,$NJ3%!
+0)!PPE(0P)(0PG(9`AfpeG(&quot;eG&amp;<A HREF="mailto:pLG@CQCA">pLG@CQCA</A>*<A HREF="mailto:ID@CIGf9IFR9ZAfKTCfJSEABT1">ID@CIGf9IFR9ZAfKTCfJSEABT1</A>`d
+J$5!*E@&amp;<A HREF="mailto:VC@0bBbJT1">VC@0bBbJT1</A>`dY#A&quot;eG(-S)P9ZBfpYF(*PFh0TEQFJ6'PZGAJZ,LiJ)LN
+l$5X*,bT`GA4c+#*9EQ0[EA&quot;<A HREF="mailto:bCA0cD@jR">bCA0cD@jR</A>)%aTER9i,LiZ)#)T1bS[$5!*Ch9ZHQP
+`+#Nl$5d*F(9dFbJL6fXX)'*[Eh4TEQFJG'KP)'YPFQjPE#jFEL)T1`dV#5mUF(9
+dFbJL6fXX)'*[Eh4TEQFJG'KP)'YPFQjPE#jFEL)T1bS[$5!*<A HREF="mailto:D@BJ+">D@BJ+</A>'KTCfKIE'p
+KC'9N+5&quot;ME'pcC9p[GA4`GA4IBR9QCQ9bAfPQAhGPAh*<A HREF="mailto:eEPpSD@GS+">eEPpSD@GS+</A>'ef+6X0)!P
+bCA4eFQiJD'PRD&amp;pXEf&amp;<A HREF="mailto:NC@3l">NC@3l</A>$5&quot;p$@4TCQBJ,8jeFL&quot;<A HREF="mailto:XD@jeH">XD@jeH</A>#j[FQPR,fPZDA3
+[E@&amp;TELjM)'aTER9i,fPZDA3[E@&amp;TELjM$5dY,5&quot;<A HREF="mailto:XD@jeH">XD@jeH</A>#j[FQPR,fPZDA3[E@&amp;
+TELjM#9GPC#&quot;<A HREF="mailto:+B@iJ-M">+B@iJ-M</A>!J-6Nk-6Jk06-J-6Nj13dV+bXJE'PZGAJ[<A HREF="mailto:D@jTG">D@jTG</A>#<A HREF="mailto:pYB@P">pYB@P</A>
+Z,Q-*4R*T)%CPBL!a15!a0$Sd0$Sd-L!a16Nj$8&quot;!)#da-$%h,$BJ+c%`-6FX-6%
+J3%!0)!N*#A*[<A HREF="mailto:Eh4IE@peER4QE">Eh4IE@peER4QE</A>'&amp;RFb!Q25&quot;q690I8N426NaC1`dJ#3N*BfpZG'P
+<A HREF="mailto:ZG@8l">ZG@8l</A>$5!*#Ad0+`N*<A HREF="mailto:D@BJ+">D@BJ+</A>#&amp;cG(*ZBfe`+'aTEQ8X)Q4PBR9R25)X0LNT)(X0+`N
+*#@aTEQ8J+cdJ0MX0+`N*#@0[ER0[E'9IE'pRE'9fC@`J25&quot;<A HREF="mailto:cD@e">cD@e</A>`E'9IFh4bG'p
+eE#<A HREF="mailto:KXD@jP">KXD@jP</A>,#!QE'PZC5`J-#Nl$5X*#<A HREF="mailto:3PMEfjdD@jeC6X0+">3PMEfjdD@jeC6X0+</A>`N*I3dJ#3PTCL!S)A0
+dFQ0YF#<A HREF="mailto:KXD@jP">KXD@jP</A>,#*NC@*eCb)T+5&quot;l$5!*#3PMEfjcEfaPAfa[CfaPGQ9X)$dJ-6!
+l$5!*#<A HREF="mailto:3PMEfjdD@jeC6X0">3PMEfjdD@jeC6X0</A>$ApZ!!!!:
+--============_-1240793377==_============--
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000099.html">Todo
+</A></li>
+	<LI> Next message: <A HREF="000094.html">Todo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#92">[ date ]</a>
+              <a href="thread.html#92">[ thread ]</a>
+              <a href="subject.html#92">[ subject ]</a>
+              <a href="author.html#92">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

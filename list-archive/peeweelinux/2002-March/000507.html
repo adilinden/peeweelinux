@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] =?iso-8859-1?Q?R=E9f._:_Re:_[Peeweelinux]_Re:_Peewee_on_Rocky_328?=
+ =?iso-8859-1?Q?E?=
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <META http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <LINK REL="Previous"  HREF="000509.html">
+   <LINK REL="Next"  HREF="000510.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Réf. : Re: [Peeweelinux] Re: Peewee on Rocky 328
+ E
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Réf. : Re: [Peeweelinux] Re: Peewee on Rocky 328
+ E">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 7 Mar 2002 15:50:04 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000509.html">[Peeweelinux] Linking against older glibc
+</A></li>
+        <LI> Next message: <A HREF="000510.html">[Peeweelinux] How is PWL loaded into Compact flash?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#507">[ date ]</a>
+              <a href="thread.html#507">[ thread ]</a>
+              <a href="subject.html#507">[ subject ]</a>
+              <a href="author.html#507">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--0__=vt2t3XDUdp1mP9nFx8Fj74SwK2U9W34yYuS0emPnbkb9Skk0k4H2pCJd
+Content-type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-transfer-encoding: quoted-printable
+
+
+
+
+Hi,
+
+Our embedded PC card is very close to its power supply (battery), with =
+only a
+very few components between them (12V-5V CC/CC converter and a relay). =
+Thus I
+think that risks of power supply failures are quite minor. But you are =
+right, I
+prefere work with a ramdisk. The trouble is I do not find memory for my=
+ PC Card.
+It seems to be obsolete : max 32 MB on a 72 pin SIMM (single in-line me=
+mory
+module). The chipset only support single side DRAM. And I only find dua=
+l side 72
+pin DRAM. I've tested with dual side, and it do not run.
+
+If somebody knows where I can find such memory (web site or something e=
+lse ...),
+he will makes me very happy...
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+&quot;Mark Meade&quot; &lt;<A HREF="mailto:mark@lakeshoremicro.com">mark@lakeshoremicro.com</A>&gt; on 07/03/2002 15:02:12
+
+Veuillez r=E9pondre =E0 <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+
+Pour :    <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] Re: Peewee on Rocky 328E
+
+
+=
+
+--0__=vt2t3XDUdp1mP9nFx8Fj74SwK2U9W34yYuS0emPnbkb9Skk0k4H2pCJd
+Content-type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+Guillaume,
+
+When you configure your target as a compressed (or uncompressed) ramdisk, the
+entire root
+file system is copied to RAM after booting the kernel.  In other words, the
+target device
+(floppy, flash, etc) is used only for booting.  All the files on your system
+exist in RAM,
+so if you make changes to any of the files, they won't survive a power fail.
+
+Having the file system entirely in RAM is a good thing for embedded systems.  It
+the
+system loses power, file system corruption is not an issue because everything
+will be
+restored from the target device on the next boot.
+
+Your system should not run noticeably slower, but be aware that power failures
+could cause
+the file system on your hard drive to have errors.
+
+Depending on what exactly you are trying to do, it might be best to try to find
+some more
+RAM for the PC.
+
+Mark
+
+Guillaume PREVOST wrote:
+
+&gt;<i>Then I've successfully tried with &quot;Read-write root on a single partition&quot;.
+</I>&gt;<i>
+</I>&gt;<i>What is the consequence of this &quot;Read-write root on a single partition&quot; option
+</I>?
+&gt;<i> My PC card will run slowly ?
+</I>
+
+
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+
+
+
+
+
+
+--0__=vt2t3XDUdp1mP9nFx8Fj74SwK2U9W34yYuS0emPnbkb9Skk0k4H2pCJd--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000509.html">[Peeweelinux] Linking against older glibc
+</A></li>
+	<LI> Next message: <A HREF="000510.html">[Peeweelinux] How is PWL loaded into Compact flash?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#507">[ date ]</a>
+              <a href="thread.html#507">[ thread ]</a>
+              <a href="subject.html#507">[ subject ]</a>
+              <a href="author.html#507">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

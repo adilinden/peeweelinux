@@ -1,0 +1,228 @@
+From peeweelinux-devel@adis.on.ca  Wed Nov 27 17:43:33 2002
+From: peeweelinux-devel@adis.on.ca (Rushi)
+Date: Wed, 27 Nov 2002 17:43:33 -0000
+Subject: [Peeweelinux-devel] Little starting boost,
+Message-ID: <001101c2963c$81de0310$4f196551@param>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_000E_01C2963C.81B656D0
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+
+
+=20
+
+=20
+
+Hi all, after searching for many other embedded distribution I have at =
+last I have decided to use Peewee Linux for my future projects.
+
+=20
+
+It some one can help me to give a start,
+
+=20
+
+I know the theory after embedded Linux, never tried it practically so I =
+have few question if you can please help.
+
+=20
+
+I got my application ready with QT on Mandrake 8, I want to at initial =
+stage port it to target, which is nothing but an old computer with p2 , =
+333Mhz and 1GB hdd, 64RAM. ( I can buy the Flash card and the IDE =
+adaptor later on , Hope the flash card is the same for digital camera ).
+
+=20
+
+1)     how do I exactly compile my application static, with   library =
+and all other support and test it with LLD, ( I am specifically looking =
+for how does the  commands on prompt and how I will get the output)
+
+2)     I want to make a Linux console which just run this application =
+and nothing else and this application should RUN automatically after the =
+system boot.
+
+3)     If I am using Peewee Linux where I am going to install it , or =
+the host or on the target ? (It will be great if I can have some howto =
+which explain how I can port my application with PeeWee to the target..
+
+=20
+
+I will not bother much if u just give me a start as I use Linux for long =
+time.
+
+Any help is appreciated
+
+=20
+
+=20
+
+Thanks=20
+
+=20
+
+Rushi
+
+=20
+
+=20
+
+=20
+
+------=_NextPart_000_000E_01C2963C.81B656D0
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.2800.1126" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+size=3D3></FONT></SPAN>&nbsp;</P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><?xml:namespace=20
+prefix =3D o ns =3D "urn:schemas-microsoft-com:office:office" =
+/><o:p><FONT=20
+size=3D3>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+size=3D3>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT size=3D3>Hi=20
+all, after searching for many other embedded distribution I have at last =
+I have=20
+decided to use </FONT></SPAN><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: bold">Peewee Linux for =
+my future=20
+projects.<o:p></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: =
+bold"><o:p>&nbsp;</o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: bold">It some one can =
+help me to=20
+give a start,<o:p></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: =
+bold"><o:p>&nbsp;</o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: bold">I know the =
+theory after=20
+embedded Linux, never tried it practically so I have few question if you =
+can=20
+please help.</SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+size=3D3>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT size=3D3>I=20
+got my application ready with QT on Mandrake 8, I want to at initial =
+stage port=20
+it to target, which is nothing but an old computer with p2 , 333Mhz and =
+1GB hdd,=20
+64RAM. ( I can buy the Flash card and the IDE adaptor later on , Hope =
+the flash=20
+card is the same for digital camera ).</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+size=3D3>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal=20
+style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+lang=3DEN-GB=20
+style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+style=3D"mso-list: Ignore"><FONT size=3D3>1)</FONT><SPAN=20
+style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+</SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT size=3D3>how do I exactly =
+compile my=20
+application static, with <SPAN style=3D"mso-spacerun: =
+yes">&nbsp;</SPAN><SPAN=20
+style=3D"mso-spacerun: yes">&nbsp;</SPAN>library and all other support =
+and test it=20
+with LLD, ( I am specifically looking for how does the <SPAN=20
+style=3D"mso-spacerun: yes">&nbsp;</SPAN>commands on prompt and how I =
+will get the=20
+output)</FONT></SPAN></P>
+<P class=3DMsoNormal=20
+style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+lang=3DEN-GB=20
+style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+style=3D"mso-list: Ignore"><FONT size=3D3>2)</FONT><SPAN=20
+style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+</SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT size=3D3>I want to make a =
+Linux=20
+console which just run this application and nothing else and this =
+application=20
+should RUN automatically after the system boot.</FONT></SPAN></P>
+<P class=3DMsoNormal=20
+style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+lang=3DEN-GB=20
+style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+style=3D"mso-list: Ignore"><FONT size=3D3>3)</FONT><SPAN=20
+style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+</SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT size=3D3>If I am using=20
+</FONT></SPAN><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: bold">Peewee Linux =
+where I am=20
+going to install it , or the host or on the target ? (It will be great =
+if I can=20
+have some howto which explain how I can port my application with PeeWee =
+to the=20
+target..</SPAN><SPAN lang=3DEN-GB><o:p></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: =
+bold"><o:p>&nbsp;</o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: bold">I will not =
+bother much if=20
+u just give me a start as I use Linux for long =
+time.<o:p></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: bold">Any help is=20
+appreciated<o:p></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: =
+bold"><o:p>&nbsp;</o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: =
+bold"><o:p>&nbsp;</o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: bold">Thanks=20
+<o:p></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: =
+bold"><o:p>&nbsp;</o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: =
+bold">Rushi<o:p></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: =
+bold"><o:p>&nbsp;</o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: =
+bold"><o:p>&nbsp;</o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN lang=3DEN-GB=20
+style=3D"FONT-SIZE: 13.5pt; mso-bidi-font-weight: bold"><SPAN=20
+style=3D"mso-spacerun: yes">&nbsp;</SPAN></SPAN><SPAN=20
+lang=3DEN-GB><o:p></o:p></SPAN></P></FONT></DIV></BODY></HTML>
+
+------=_NextPart_000_000E_01C2963C.81B656D0--
+
+
+

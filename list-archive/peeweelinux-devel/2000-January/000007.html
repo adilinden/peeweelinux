@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> An 'early' morning thought about the future of PWL
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000006.html">
+   <LINK REL="Next"  HREF="000008.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>An 'early' morning thought about the future of PWL
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="An 'early' morning thought about the future of PWL">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Sat, 22 Jan 2000 12:31:47 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000006.html">pwlconfig
+</A></li>
+        <LI> Next message: <A HREF="000008.html">An 'early' morning thought about the future of PWL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I thought about ways to automate the sources for PeeWeeLinux. Here's an
+idea I had while showering this morning. Right up front, to implement it
+it would require sophisticated knowledge of rpm. Something I don't have
+but nonetheless its an idea I'd like to share...
+
+First PeeWeeLinux would have to build from RedHat source rpms. Packages
+that do not exist as source rpm would have to be created specifically for
+PeeWeeLinux or for Redhat Linux in gerneral.
+
+First take the original source rpm and manually edit the spec file to
+build a rpm suitable for PWL. Also, edit the sources to compile as
+required for PWL. I.e. the libs to use, which files to install, etc. 
+Create a patch file to patch the necessary changes into the source rpm
+files.
+
+Build a PWL specific rpm from the patches source rpm.
+
+Use a defined mount point for the PeeWeeLinux filesystem being build
+independed of where PeeWeeLinux has been extracted to. I.e. /mnt/PWL.
+
+Use rpm in a similar mode as the RedHat install disks do. That is install
+the PWL specific rpms in /mnt/PWL rather than the current file system.
+
+This would eliminate the use of tar to manage files. The pwlconfig script
+would have to do the following steps to build a project:
+
+1. Menu to select which packages to build and install
+2. Submenu to select which files to install from the packages
+3. Configure the location of RH source rpms and source rpm that do not
+come with RH
+4. Patch the RH source rpms to turn them into PWL source rpms
+5. Build the PWL specific rpms from source rpms
+6. Condition the /mnt/PWL filesystem for the new system
+7. Install the selected files from PWL rpms in /mnt/PWL
+8. Install any custom config files into /mnt/PWL, overwriting any existing
+configuration
+8. Offer choice of what to do with the newly created system, i.e. build a
+ramdisk, load a DOC, make a bootable CD...
+
+The advantages I can see:
+- The PWL distribution would no longer require any sources but only patch
+files containing package description, help information (things that could
+be displayed by pwlconfig) and the actual patch to the RH source rpm.
+- Perhaps eases the migration to newer RH versions as they are released.
+
+The disadvantages:
+- Building an initial PWL development environment could be 'very' time
+consuming and diskspace consuming since everything has to be compiled
+first.
+- Defenitely RH specific!
+
+I guess an option would be to have a package of pre-compiled PWL rpms
+available. That would make PWL a 'real' full-fledged distro for embedded
+stuff :)
+
+Perhaps I should get and dig into 'Maxximum RPM' sometime. Maybe that
+would be a ToDo wishlist item for the next RedHat release, when a few
+package for PWL will have to be re-done...
+
+TTYL,
+Adi (dreaming... :)
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000006.html">pwlconfig
+</A></li>
+	<LI> Next message: <A HREF="000008.html">An 'early' morning thought about the future of PWL
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#7">[ date ]</a>
+              <a href="thread.html#7">[ thread ]</a>
+              <a href="subject.html#7">[ subject ]</a>
+              <a href="author.html#7">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

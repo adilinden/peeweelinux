@@ -1,0 +1,211 @@
+From PeeWeeLinux@adis.on.ca  Mon Aug  7 06:59:07 2000
+From: PeeWeeLinux@adis.on.ca (Oscar M. Siguenza)
+Date: Sun, 06 Aug 2000 22:59:07 -0700
+Subject: It looks like version 0.47 has the libutil.so.1 library missing from
+ the RPMS
+Message-ID: <398E502B.7616103@pacbell.net>
+
+Did anyone notice that the 0.47 distribution has the libutil.so.*
+missing?  I had to copy it from RedHat v6.0 and then force the
+package netkit-telnet* to install with the --nodeps option.
+
+Did this get fixed already?
+
+Oscar S.
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Mon Aug  7 15:39:59 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Mon, 7 Aug 2000 09:39:59 -0500 (CDT)
+Subject: It looks like version 0.47 has the libutil.so.1 library missing
+ from the RPMS
+In-Reply-To: <398E502B.7616103@pacbell.net>
+Message-ID: <Pine.LNX.4.10.10008070938210.7830-100000@big.adis.on.ca>
+
+Hi,
+
+You're right, libutil is missing! It was probably lost during the
+conversion of the sources to an rpm based build process.
+
+I am just building a new glibc package that will include libutil and will
+be part of the next (0.49) PeeWeeLinux release.
+
+Thanks for catching this!
+
+TTYL,
+Adi
+
+
+
+On Sun, 6 Aug 2000, Oscar M. Siguenza wrote:
+
+> Did anyone notice that the 0.47 distribution has the libutil.so.*
+> missing?  I had to copy it from RedHat v6.0 and then force the
+> package netkit-telnet* to install with the --nodeps option.
+> 
+> Did this get fixed already?
+> 
+> Oscar S.
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://embedded.adis.on.ca
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Sat Aug 12 16:52:39 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Sat, 12 Aug 2000 10:52:39 -0500 (CDT)
+Subject: 0.49
+Message-ID: <Pine.LNX.4.10.10008121049420.4683-100000@big.adis.on.ca>
+
+PeeWeeLinux 0.49 is out. It fixes the missing libutil library in glibc.
+Also, the ncurses library has been added as well as some applications that
+require ncurses.
+
+Find it here:
+    http://sourceforge.net/project/filelist.php?group_id=818 
+    ftp://metalab.unc.edu/pub/linux/distributions/peewee/ 
+
+I'll try to eliminate termcap and build all packages relying on termcap to
+use ncurses instead.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://embedded.adis.on.ca
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Aug 16 15:49:01 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Wed, 16 Aug 2000 09:49:01 -0500 (CDT)
+Subject: Using harddiscs
+In-Reply-To: <399AA95C.EE0A6A91@ertl.co.za>
+Message-ID: <Pine.LNX.4.10.10008160946360.14047-100000@develop.knet.on.ca>
+
+Hi,
+
+Sure, you just need to connect the harddrive to the development system.
+Then you can use pwlconfig to build the system and load onto the
+harddrive. It's a bit awkward if your target machine is not the same. But
+for development purposes it works great, if the HD to run PWL is actually
+/dev/hda and your development system dualboots from another drive.
+
+TTYL,
+Adi
+
+
+On Wed, 16 Aug 2000, Oliver Ertl wrote:
+
+> Hello,
+> 
+> can I install PeeWeeLinux on a harddrive too. Let's say /dev/hda .
+> When yes, how can it be done ?
+> 
+> Thanks.
+> 
+> 
+> Oliver
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Thu Aug 17 18:12:02 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Thu, 17 Aug 2000 12:12:02 -0500 (CDT)
+Subject: PeeWeeLinux 0.50 released
+In-Reply-To: <20000815211305.16741.qmail@web1101.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.10.10008171209440.15262-100000@develop.knet.on.ca>
+
+PeeWeeLinux 0.50 is now available. 
+
+I would say it's the first stable release available. It's up on
+Sourceforge and I hope the damgaged files on metalab will be fixed soon.
+
+TTYL,
+Adi
+
+
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From PeeWeeLinux@adis.on.ca  Wed Aug 30 18:05:15 2000
+From: PeeWeeLinux@adis.on.ca (Adi Linden)
+Date: Wed, 30 Aug 2000 12:05:15 -0500
+Subject: PeeWee Linux v.50
+In-Reply-To: <22A1F43A63F8D311BD4200508B8B666533A9B6@edmm21.bchydro.bc.ca>
+References: <22A1F43A63F8D311BD4200508B8B666533A9B6@edmm21.bchydro.bc.ca>
+Message-ID: <200008301705.MAA19845@gizmo.adis.on.ca>
+
+Unfortunately thes are the only docs available at this 
+time. There are a number of changes happening to the 
+configuration tool when it comes to loading a flash 
+system onto the target device. I.e: ramdisks from FAT 
+and ext2 will be supported as well as read-only root 
+filesystems on the target device.
+
+Some of the new stuff will hopefully be available next 
+week some time.
+
+For now I would suggest experimenting with pwlconfig to 
+get things going.
+
+TTYL,
+Adi
+
+Quoting "Hui, Kai" <Kai.Hui@BCHydro.bc.ca>:
+
+> Hi there, I trying to install PeeWee linux on a 
+single board computer with
+> a
+> DOC chip.  I'm using the system for my Bachelor of 
+Technology practicum
+> project.  I'm having trouble following the 
+documentation.  The online
+> version is dated Jan, 2000.  Do you have a more up to 
+date version?  I'm
+> trying to follow the example to create a boot floppy 
+but what is described
+> is not what I seen on the screen.  Thanks for making 
+this distribution and
+> the tools available!  Any help would be appreciated.  
+Thanks
+> ____________________________________
+> Kai Hui
+> Manager, IT Projects
+> Business Information Services
+> Marketing & Customer Services - BC Hydro
+> 6911 Southpoint Drive
+> Burnaby, BC Canada  V3N 4X8
+> phone: (604)528-8147     email: kai.hui@bchydro.bc.ca
+> ____________________________________
+> 
+
+
+
+              Adi Linden
+              Keewaytinook Okimakanak
+              Email: adi@adis.on.ca
+              Phone: (807) 737-1135
+              Fax:   (807) 737-1720
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

@@ -1,0 +1,701 @@
+From peeweelinux-devel@adis.on.ca  Thu Nov  1 05:23:16 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Thu, 1 Nov 2001 13:23:16 +0800 (CST)
+Subject: [Peeweelinux-devel] how to set my network
+Message-ID: <20011101052316.70106.qmail@web9007.mail.yahoo.com>
+
+I'm embedding linux with peewee in a 8mb dom.
+now I can entry into the linux,but I have 2 questions:
+
+1. no netconf command.There are no netconf in peewee's
+configure file system options.
+2.after I reboot it,all of contents that I wrote in
+dom are disappeared,I know this is because of ramdisk.
+so,how to resolve this question?
+can anyone tell me how to resolve these questions.
+thanks very much.
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+
+From peeweelinux-devel@adis.on.ca  Fri Nov  2 04:28:05 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Fri, 2 Nov 2001 12:28:05 +0800 (CST)
+Subject: [Peeweelinux-devel] how about read-write root on a single partition
+Message-ID: <20011102042805.52495.qmail@web9010.mail.yahoo.com>
+
+hello,
+   I select the
+"Target: Read-write root on a single partition-----"
+on the option of Configure Tartet Hardware.but,I
+reboot it ,is died when display:
+
+Partition check:
+request_module[ide-disk]:root fs not mounted
+hda:driver not present
+vfs:cannot open root device 03:01
+kernel panic:VFS:Unable to mount root fs on 03:01
+
+can someone tell me how to solve this problem??
+thanks.
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+
+From peeweelinux-devel@adis.on.ca  Fri Nov  2 10:13:53 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Fri, 2 Nov 2001 18:13:53 +0800 (CST)
+Subject: [Peeweelinux-devel] how to set several netcards ?
+Message-ID: <20011102101353.44937.qmail@web9009.mail.yahoo.com>
+
+my embedded linux is ok without ramdisk,so it can save
+all changes.But I have some problems:
+
+1.it only can detect one card.I modified the lilo.conf
+file,but it is rebooted,display many 04040404 all
+along.can someone tell me how to set several cards.
+
+2.I want to update busybox,my peewee's busybox is
+0.46,I want to update it with 0.60.1.I find busybox is
+rpm format in the directory of RPMS,so I couldn't know
+how to do ?
+3.when I perform the reboot or init,pc could't work
+right.when it display:init:no more process left in
+this runlevel,then it stop.
+
+how to solve these problems?
+
+thanks.
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+
+From peeweelinux-devel@adis.on.ca  Mon Nov  5 07:09:27 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Mon, 5 Nov 2001 15:09:27 +0800 (CST)
+Subject: [Peeweelinux-devel] how to set 4 pci ne2000 cards
+Message-ID: <20011105070927.26940.qmail@web9007.mail.yahoo.com>
+
+my 4 cards can be detected automatically.
+I can boot the cards using ifconfig eth0(1,2,3),but
+how to save the setting.when I reboot it,except the
+first card,the other cards's setting are invalid.can
+someone tell me how to set the cards.
+thanks .
+
+_________________________________________________________
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ! http://mail.yahoo.com.cn
+
+<font color=#6666FF>ÎÞÁÄ£¿ÓôÃÆ£¿¸ßÐË£¿Ã»ÀíÓÉ£¿¶¼À´ÁÄÌì°É£¡</font>¡ª¡ª 
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ! http://cn.chat.yahoo.com/c/roomlist.html
+
+From peeweelinux-devel@adis.on.ca  Mon Nov  5 11:02:45 2001
+From: peeweelinux-devel@adis.on.ca (Alper Atay)
+Date: Mon,  5 Nov 2001 05:02:45 -0600
+Subject: [Peeweelinux-devel] Printer in peewee
+Message-ID: <200111050502.AA3440575044@mail.powerhosts.net>
+
+Hi !
+I have some problems about getting postscript output from peewee. I have a serial printer (Tpt60 from Custom.it), the supplier Custom have a driver for Redhat 6.1 which contains their own version of gs (just the executable), printerdb (for rhs-printfilters) and Custom-printerdb.
+
+I accomplished to get the printer working in Redhat 6.2 by downgrading Ghostscript to version 5.10. Anyway under peewee i cannot get postscript output :( tried lots of things but i think i am missing a point...once i was able to get ascii output anyway :) also printtool is warning me about it cannot start lpd and does nothing if i manually start it again...Can someone help me about how can i install ghostscript and printertool (which also needs file, magic, sed, cat and some other files for to seem like working in my tries) ?
+
+If someone accomplished to get postscript print under peewee with gs and printtool please tell me how...
+
+Thanks,
+
+Alper
+
+From peeweelinux-devel@adis.on.ca  Wed Nov  7 05:08:42 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Wed, 7 Nov 2001 13:08:42 +0800 (CST)
+Subject: [Peeweelinux-devel] how to update busybox in peewee
+Message-ID: <20011107050842.74723.qmail@web9010.mail.yahoo.com>
+
+--0-1912413422-1005109722=:73504
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+hi,
+
+ everybody,I want to  update the busybox-0.46 in peeweelinux-0.61.0,I havd download a busybox-0.60.1,can someone tell me how to do?
+
+thanks.
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1912413422-1005109722=:73504
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>hi,</P>
+<P>&nbsp;everybody,I want to  update the busybox-0.46 in peeweelinux-0.61.0,I havd download a busybox-0.60.1,can someone tell me how to do?</P>
+<P>thanks.</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1912413422-1005109722=:73504--
+
+From peeweelinux-devel@adis.on.ca  Thu Nov  8 06:07:26 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Thu, 8 Nov 2001 14:07:26 +0800 (CST)
+Subject: [Peeweelinux-devel] I couldn't use reboot and init
+Message-ID: <20011108060726.79748.qmail@web9010.mail.yahoo.com>
+
+--0-1199938142-1005199646=:78966
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+when I use reboot or shutdown (),init 0,in a word I couldn't reboot and halt my pc,it stop at the messsage of "INIT:no more process left in this runlevel"
+
+can someone tell me how to do?
+
+thanks.
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1199938142-1005199646=:78966
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>when I use reboot or shutdown (),init 0,in a word I couldn't reboot and halt my pc,it stop at the messsage of "INIT:no more process left in this runlevel"</P>
+<P>can someone tell me how to do?</P>
+<P>thanks.</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1199938142-1005199646=:78966--
+
+From peeweelinux-devel@adis.on.ca  Tue Nov 13 06:39:34 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Tue, 13 Nov 2001 14:39:34 +0800 (CST)
+Subject: [Peeweelinux-devel] ftp problem
+Message-ID: <20011113063934.37536.qmail@web9003.mail.yahoo.com>
+
+--0-620173839-1005633574=:35865
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+I'm using peewee-0.61.0 to create an embedded linux in a dom,it's working well.Now I want to use ftp and telnet server.but,I couldn't find the configure files about ftp .And I can find telnetd in the directory of /us/sbin/, but I can't find ftpd.
+
+whether the ftp in peewee is distinguishing with others.how to do ftp and telnet ,can some tell me.
+
+thanks.
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-620173839-1005633574=:35865
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>I'm using peewee-0.61.0 to create an embedded linux in a dom,it's working well.Now I want to use ftp and telnet server.but,I couldn't find the configure files about ftp .And I can find&nbsp;telnetd in the directory of /us/sbin/, but I can't find ftpd.</P>
+<P>whether the ftp in peewee is distinguishing with others.how to do ftp and telnet ,can some tell me.</P>
+<P>thanks.</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-620173839-1005633574=:35865--
+
+From peeweelinux-devel@adis.on.ca  Thu Nov 15 03:14:31 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Thu, 15 Nov 2001 11:14:31 +0800 (CST)
+Subject: [Peeweelinux-devel] how to do with compiled netcard as a module
+Message-ID: <20011115031431.72355.qmail@web9003.mail.yahoo.com>
+
+--0-1927516620-1005794071=:71659
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+hi,
+
+  I compiled pci-ne2000 as a module when I compiled my kernel.but I couldn't find files similar to conf.modules,I couldn't find the file rc.modules yet.can someone tell me how to do .
+
+Good luck .
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1927516620-1005794071=:71659
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>hi,</P>
+<P>&nbsp; I compiled pci-ne2000 as a module when I compiled my kernel.but I couldn't find files similar to conf.modules,I couldn't find the file rc.modules yet.can&nbsp;someone tell me how to do .</P>
+<P>Good luck .</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1927516620-1005794071=:71659--
+
+From peeweelinux-devel@adis.on.ca  Thu Nov 15 05:30:58 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Thu, 15 Nov 2001 13:30:58 +0800 (CST)
+Subject: [Peeweelinux-devel] how to do multiple netcards compiled as a module
+Message-ID: <20011115053058.89072.qmail@web9006.mail.yahoo.com>
+
+--0-1460844140-1005802258=:86509
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+I'm using an embedded system with peewee,but how to do multiple netcards compiled as a module. such as pci-ne2000,rtl8139 and 3com.can some tell me how to do?
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1460844140-1005802258=:86509
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+I'm using an embedded system with peewee,but how to do multiple netcards compiled as a module. such as pci-ne2000,rtl8139 and 3com.can some tell me how to do?<BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1460844140-1005802258=:86509--
+
+From peeweelinux-devel@adis.on.ca  Thu Nov 15 06:54:45 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Thu, 15 Nov 2001 14:54:45 +0800 (CST)
+Subject: [Peeweelinux-devel] how to do with multiple netcards compiled as a module
+Message-ID: <20011115065445.84945.qmail@web9010.mail.yahoo.com>
+
+--0-1652075112-1005807285=:84730
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+I'm using an embedded system with peewee,I compiled pcine2000 as a module when I compiled the kernel.I have 4 cards.can someone tell me how to do ?
+
+good luck.
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1652075112-1005807285=:84730
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>I'm using an embedded system with peewee,I compiled pcine2000 as a module when I compiled the kernel.I have 4 cards.can someone tell me how to do ?</P>
+<P>good luck.</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1652075112-1005807285=:84730--
+
+From peeweelinux-devel@adis.on.ca  Thu Nov 15 07:03:14 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Thu, 15 Nov 2001 15:03:14 +0800 (CST)
+Subject: [Peeweelinux-devel] pcine2000 compiled as module couldn't work
+Message-ID: <20011115070314.81190.qmail@web9003.mail.yahoo.com>
+
+--0-272221881-1005807794=:81065
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+I compiled pci-ne2000 as a module ,I create  /etc/rc.modules ,it's content is :
+
+"/sbin/modprobe ne2k-pci io=0x800" .this is my first card,but it couldn't work.why not?
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-272221881-1005807794=:81065
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>I compiled pci-ne2000 as a module ,I create&nbsp; /etc/rc.modules ,it's content is :</P>
+<P>"/sbin/modprobe ne2k-pci io=0x800" .this is my first card,but it couldn't work.why not?</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-272221881-1005807794=:81065--
+
+From peeweelinux-devel@adis.on.ca  Thu Nov 15 15:17:00 2001
+From: peeweelinux-devel@adis.on.ca (Adi Linden)
+Date: Thu, 15 Nov 2001 09:17:00 -0600 (CST)
+Subject: [Peeweelinux-devel] how to do with compiled netcard as a module
+In-Reply-To: <20011115031431.72355.qmail@web9003.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.33.0111150914330.3083-100000@adibox.knet.ca>
+
+Hi,
+
+>   I compiled pci-ne2000 as a module when I compiled my kernel.but I 
+> couldn't find files similar to conf.modules,I couldn't find the file 
+> rc.modules yet.can someone tell me how to do .
+
+You should be able to create '/etc/rc.modules' and place 'insmod' lines in 
+it to load the desired modules.
+
+Adi
+
+
+From peeweelinux-devel@adis.on.ca  Thu Nov 15 15:21:09 2001
+From: peeweelinux-devel@adis.on.ca (Adi Linden)
+Date: Thu, 15 Nov 2001 09:21:09 -0600 (CST)
+Subject: [Peeweelinux-devel] pcine2000 compiled as module couldn't work
+In-Reply-To: <20011115070314.81190.qmail@web9003.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.33.0111150920331.3083-100000@adibox.knet.ca>
+
+> I compiled pci-ne2000 as a module ,I create  /etc/rc.modules ,it's 
+> content is :
+> 
+> "/sbin/modprobe ne2k-pci io=0x800" .this is my first card,but it 
+> couldn't work.why not?
+
+Try using insmod instead of modprobe. I am not sure modprobe is included 
+in PeeWeeLinux.
+
+Adi
+
+
+From peeweelinux-devel@adis.on.ca  Thu Nov 22 00:12:44 2001
+From: peeweelinux-devel@adis.on.ca (Steve Isaacs)
+Date: Wed, 21 Nov 2001 16:12:44 -0800
+Subject: [Peeweelinux-devel] Kernel panic: No init found.
+Message-ID: <000101c172ea$69516420$0900a8c0@STA00213>
+
+Help!
+
+When attempting to boot from compact flash connected via an IDE interface
+(dev/hda) on our target board I get the message "Kernel panic: No init
+found.". I've tried a number of init= kernel options with no success. Prior
+to this message the message "VFS: Mounted root (ext2 filesystem) readonly."
+was displayed. I find it odd that the file system was mounted readonly (not
+the intent -- I was expecting read/write). Could this have something to do
+with the panic message?
+
+I'm using PeeWee Linux version 0.61 to build on a SuSE 7.3 system. The
+compact flash was formatted using a SanDisk SDDR-31 reader/writer connected
+via a USB interface.
+
+Any suggestions to get me past this will be appreciated.
+
+Thanks,
+Steve
+
+============
+Steve Isaacs
+Itron Inc.
+============
+
+
+From peeweelinux-devel@adis.on.ca  Thu Nov 22 00:13:50 2001
+From: peeweelinux-devel@adis.on.ca (Adi Linden)
+Date: Wed, 21 Nov 2001 18:13:50 -0600 (CST)
+Subject: [Peeweelinux-devel] Kernel panic: No init found.
+In-Reply-To: <000101c172ea$69516420$0900a8c0@STA00213>
+Message-ID: <Pine.LNX.4.33.0111211811500.11743-100000@big.adis.on.ca>
+
+Hi,
+
+The kernel ill mount the root filesystem read-only. Init will run the
+system startup scripts which in turn will remount the root filesystem
+read-write (if this is the intend).
+
+The "VFS: Mounted root (ext2 filesystem) readonly." line indicates that a
+rootfs was indeed found. The question would be, does it contain
+"/sbin/init"?
+
+Adi
+
+On Wed, 21 Nov 2001, Steve Isaacs wrote:
+
+> Help!
+>
+> When attempting to boot from compact flash connected via an IDE interface
+> (dev/hda) on our target board I get the message "Kernel panic: No init
+> found.". I've tried a number of init= kernel options with no success. Prior
+> to this message the message "VFS: Mounted root (ext2 filesystem) readonly."
+> was displayed. I find it odd that the file system was mounted readonly (not
+> the intent -- I was expecting read/write). Could this have something to do
+> with the panic message?
+>
+> I'm using PeeWee Linux version 0.61 to build on a SuSE 7.3 system. The
+> compact flash was formatted using a SanDisk SDDR-31 reader/writer connected
+> via a USB interface.
+>
+> Any suggestions to get me past this will be appreciated.
+>
+> Thanks,
+> Steve
+>
+> ============
+> Steve Isaacs
+> Itron Inc.
+> ============
+>
+> _______________________________________________
+> Peeweelinux-devel mailing list
+> Peeweelinux-devel@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel
+>
+
+
+From peeweelinux-devel@adis.on.ca  Thu Nov 22 00:49:52 2001
+From: peeweelinux-devel@adis.on.ca (Steve Isaacs)
+Date: Wed, 21 Nov 2001 16:49:52 -0800
+Subject: [Peeweelinux-devel] Kernel panic: No init found.
+In-Reply-To: <Pine.LNX.4.33.0111211811500.11743-100000@big.adis.on.ca>
+Message-ID: <000201c172ef$996cd040$0900a8c0@STA00213>
+
+>
+> Hi,
+>
+> The kernel ill mount the root filesystem read-only. Init will run the
+> system startup scripts which in turn will remount the root filesystem
+> read-write (if this is the intend).
+>
+> The "VFS: Mounted root (ext2 filesystem) readonly." line
+> indicates that a
+> rootfs was indeed found. The question would be, does it contain
+> "/sbin/init"?
+>
+
+Thanks for the quick response.
+
+I verified that /sbin/init does exist. I even tried the kernel option
+init=/sbin/init to no avail.
+
+Steve
+
+
+From peeweelinux-devel@adis.on.ca  Sat Nov 24 08:26:57 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Sat, 24 Nov 2001 16:26:57 +0800 (CST)
+Subject: [Peeweelinux-devel] ftp problem
+Message-ID: <20011124082657.80573.qmail@web9003.mail.yahoo.com>
+
+--0-865448030-1006590417=:79775
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+I 'm using an embedded system with peewee-0.61.0,I want to
+
+ use ftpd.I copied files about ftp from my red linux.Now,it can connect ,but user couldn't login.this is information in my log file:
+
+auth.alert PAM_pwdb[78]:check pass;user unknown
+
+can someone tell me how to solve this problem.
+
+Good luck.
+
+ 
+
+ 
+
+ 
+
+ 
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-865448030-1006590417=:79775
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>I 'm using an embedded system with peewee-0.61.0,I want to</P>
+<P>&nbsp;use ftpd.I copied files about ftp from my red linux.Now,it can connect ,but user couldn't login.this is information in my log file:</P>
+<P>auth.alert PAM_pwdb[78]:check pass;user unknown</P>
+<P>can someone tell me how to solve this problem.</P>
+<P>Good luck.</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-865448030-1006590417=:79775--
+
+From peeweelinux-devel@adis.on.ca  Sat Nov 24 22:51:17 2001
+From: peeweelinux-devel@adis.on.ca (Adi Linden)
+Date: Sat, 24 Nov 2001 16:51:17 -0600 (CST)
+Subject: [Peeweelinux-devel] ftp problem
+In-Reply-To: <20011124082657.80573.qmail@web9003.mail.yahoo.com>
+Message-ID: <Pine.LNX.4.33.0111241649550.32037-100000@big.adis.on.ca>
+
+PeeWeeLinux does not support PAM. If you need to build binaries for
+a PeeWeeLinux system you need to make sure you're building on a RedHat 6.2
+system for glibc compatability and not link any libs which aren't part of
+PeeWeeLinux (such as PAM).
+
+Adi
+
+
+On Sat, 24 Nov 2001, [gb2312] helen wrote:
+
+>
+> I 'm using an embedded system with peewee-0.61.0,I want to
+>
+>  use ftpd.I copied files about ftp from my red linux.Now,it can connect ,but user couldn't login.this is information in my log file:
+>
+> auth.alert PAM_pwdb[78]:check pass;user unknown
+>
+> can someone tell me how to solve this problem.
+>
+> Good luck.
+
+
+From peeweelinux-devel@adis.on.ca  Sat Nov 24 23:19:51 2001
+From: peeweelinux-devel@adis.on.ca (gary thomas)
+Date: Sun, 25 Nov 2001 07:19:51 +0800
+Subject: [Peeweelinux-devel] Geode GX1 development board
+Message-ID: <F273vW0YJV12DpGf46c0000eb17@hotmail.com>
+
+Good news for linux embedded developers,
+As a part of this growing community we felt that we need to support the 
+developers. We redesigned a product for developers, based on the Geode GX1 
+processor. Details:
+
+NS GEODE GX1 32 BIT CPU MMX,200MHz(can overclock upto 266MHz)/4x10-100 LAN.
+It supports the following: RS232/2.5"IDE/Disk on chip/IRport/built in 
+flash/PCI expansion slot/mouse/keyboard/parallel port/line in-out,reset 
+button.
+
+Mail me for more details. Dont forget to mention number of units you need.
+
+- Gary
+
+_________________________________________________________________
+Get your FREE download of MSN Explorer at http://explorer.msn.com/intl.asp
+
+
+From peeweelinux-devel@adis.on.ca  Mon Nov 26 01:38:54 2001
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Mon, 26 Nov 2001 09:38:54 +0800 (CST)
+Subject: [Peeweelinux-devel] startup and shutdown information (hurry!!!!!!!)
+Message-ID: <20011126013854.50783.qmail@web9009.mail.yahoo.com>
+
+--0-1141694451-1006738734=:49110
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+when I startup or shutdown my pc,It always shows information about :
+
+information start------------------------------------
+
+Flags:
+
+         -a:            Mount all filessystems in fstab.
+
+         -o option    one of many filesystem  options ,
+
+      ...................
+
+     ...............
+
+ 
+
+Options for use with the "-o" flag:
+
+           async/sync:           write are asynchronous / synchronous.
+
+           atime/noatiome:      enable / disable updates to inode access times.
+
+           dev/nodev:               allow use of special device files /disallow them.
+
+             ....................
+
+   There are EVEN MORE flags that are specific to each filesystem.
+
+   Yor'll have to see the written documentation for those.
+
+information end----------------------------------
+
+can you tell me whe there will these information,can I delete them,if can ,where and how to delete or modified it?
+
+ 
+
+ 
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1141694451-1006738734=:49110
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>when I startup or shutdown my pc,It always shows information about :</P>
+<P>information start------------------------------------</P>
+<P>Flags:</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -a:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Mount all filessystems in fstab.</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; -o option&nbsp;&nbsp;&nbsp; one of many filesystem&nbsp; options ,</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ...................</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp; ...............</P>
+<P>&nbsp;</P>
+<P>Options for use with the "-o" flag:</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; async/sync:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; write are asynchronous / synchronous.</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; atime/noatiome:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;enable / disable updates to inode access times.</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; dev/nodev:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; allow use of special device files /disallow them.</P>
+<P>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ....................</P>
+<P>&nbsp;&nbsp;&nbsp;There are EVEN MORE flags that are specific to each filesystem.</P>
+<P>&nbsp;&nbsp; Yor'll have to see the written documentation for those.</P>
+<P>information end----------------------------------</P>
+<P>can you tell me whe there will these information,can I delete them,if can ,where and how to delete or modified it?</P>
+<P>&nbsp;</P>
+<P>&nbsp;</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1141694451-1006738734=:49110--
+

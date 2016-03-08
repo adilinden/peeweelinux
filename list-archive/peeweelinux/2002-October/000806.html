@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] embedded linux for robots... newbie questions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000804.html">
+   <LINK REL="Next"  HREF="000807.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] embedded linux for robots... newbie questions
+   </H1>
+    <B>vwbug19
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] embedded linux for robots... newbie questions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 18 Oct 2002 16:19:19 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000804.html">[Peeweelinux] embedded linux for robots... newbie questions
+</A></li>
+        <LI> Next message: <A HREF="000807.html">[Peeweelinux] embedded linux for robots... newbie
+ questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#806">[ date ]</a>
+              <a href="thread.html#806">[ thread ]</a>
+              <a href="subject.html#806">[ subject ]</a>
+              <a href="author.html#806">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>bonjour!
+my hint is never use the flash card for a ramdisk or swapfile as it will
+qiuckly wear it out to an useless card ,remember the flash card have finite
+life :)
+as for frame grabber and camera ,you didn't mentions what type and model?
+and you should stick to other like nano-x instead of xfree86 as xfree86 is a
+real disk space hog but you shouldnt need xwindow as the robot doesnt need
+it and there are framegrabber software that can be run from console
+mode,this will make the linux distro much smaller
+
+----- Original Message -----
+From: &lt;<A HREF="mailto:francois.seingier@club-internet.fr">francois.seingier@club-internet.fr</A>&gt;
+To: &lt;<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&gt;
+Sent: Friday, October 18, 2002 4:53 PM
+Subject: [Peeweelinux] embedded linux for robots... newbie questions
+
+
+&gt;<i> hello,
+</I>&gt;<i> I'm a french student in an engineering school and as in many of these,
+</I>there is a robot club (&quot;E=m6&quot; if there are some french people here!) to
+which I participate. I am in charge of a PC/104 on which I'd really like to
+install linux. I have some experience (I'm far from an expert though..) on
+linux itself but not on embedded linux. I've read many of the mails of this
+list and found some interesting points. But what I would really need is
+rather some piece of advice. Here's an overview of our devices:
+&gt;<i> PC/104 board from 'rtd usa' (media GX 233, 128MB Ram)
+</I>&gt;<i> sandisk 48 or 220 MB Flash card (PCMCIA card)
+</I>&gt;<i> ATA adapter for these PCMCIA cards
+</I>&gt;<i> Frame grabber and color camera for image recognition
+</I>&gt;<i> Now for the questions...
+</I>&gt;<i> 1) I've had a look to some articles about flash devices, but these were
+</I>generic. They talked about NOR and NAND flash memory types. Which is mine??
+&gt;<i>
+</I>&gt;<i> 2) I noticed on another article that it would be worth using a JFFS2 fs
+</I>for the root tree and ramfs for /tmp, is it true?
+&gt;<i>
+</I>&gt;<i> 3) Considering the quite large amount of RAM, would it be worth using
+</I>exclusively a Ramdisk?
+&gt;<i>
+</I>&gt;<i> 4) it appears that the common way of installing and using an embedded
+</I>linux is done thanks to a host. At least it seems to me it is necessary for
+building the fs. But as we will need to use the frame grabber would it
+better to develop our programs directly onto the PC/104? (by the way would
+it be possible to redirect information from the frame grabber to the host
+with somme parallel cable or so?)
+&gt;<i>
+</I>&gt;<i> 5) I've heard about nano-X, should I try it or use directly XFree?
+</I>&gt;<i>
+</I>&gt;<i> 6) I thought of using the busybox (the glibc is so big), is it a good
+</I>choice?
+&gt;<i>
+</I>&gt;<i> 7) ..... we'll see later ;)
+</I>&gt;<i> in fact it's not easy to define what optmisations I should do. Some guides
+</I>refer to old devices and I suppose what we luckely have shouldn't be that
+obselete...
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> thanks a lot in advance for any answer that could help.
+</I>&gt;<i>
+</I>&gt;<i> François
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000804.html">[Peeweelinux] embedded linux for robots... newbie questions
+</A></li>
+	<LI> Next message: <A HREF="000807.html">[Peeweelinux] embedded linux for robots... newbie
+ questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#806">[ date ]</a>
+              <a href="thread.html#806">[ thread ]</a>
+              <a href="subject.html#806">[ subject ]</a>
+              <a href="author.html#806">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

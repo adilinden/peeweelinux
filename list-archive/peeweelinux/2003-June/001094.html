@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] FTP server &amp; Web Server
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001093.html">
+   <LINK REL="Next"  HREF="001095.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] FTP server &amp; Web Server
+   </H1>
+    <B>Daniel Purcell
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] FTP server &amp; Web Server">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 19 Jun 2003 11:21:06 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001093.html">[Peeweelinux] FTP server &amp; Web Server
+</A></li>
+        <LI> Next message: <A HREF="001095.html">[Peeweelinux] small bug in pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1094">[ date ]</a>
+              <a href="thread.html#1094">[ thread ]</a>
+              <a href="subject.html#1094">[ subject ]</a>
+              <a href="author.html#1094">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Emmanuel,
+
+I'm running PeeWeeLinux 0.61.1 on my system, and if I load up pwlconfig, 
+and go to Configure Project File Syste-&gt;Network Servers, there is an 
+option for the thttpd server.  thttpd I think stands for Tiny HTTP 
+daemon.  That is probably the easiest way to install an HTTP server.
+
+Another man that works for us here had successfully put a scaled down 
+version of apache on an embedded linux system.  He also compiled in php 
+support, so that we can provide dynamic content from our tiny linux 
+machine.  If you're interested in that file, let me know and I'll see 
+what I can do about getting it to you.
+
+With the ftp server, this is what I'd do: download an rpm for an ftp 
+server you want to install (such as vsftpd), and unpack it using this 
+command:
+
+shell $ rpm -i --root /temporary/directory/to/install --nodeps 
+--noscripts --force --nodeps --notriggers --dbpath= ./rpm.db 
+--ignorearch --ignoreos myftppackage-i386.rpm
+
+That will put all the files associated to the FTP server into the 
+/temporary/directory/to/install .  Then, cd to that directory, and type:
+
+shell $ tar cvf ../ftpserver.tar * &gt;../ftpserver.list
+
+That will create the tar file of the directory structure for the ftp 
+server, and create the file list.  Note, the name of the .tar and the 
+.list file have to be the same, except one be named with the extension 
+.tar and the other .list.
+
+I would then make a directory in my PeeWeeLinux packages directory.  On 
+my system, I have my peeweelinux installed on the /root/Embedded_Build 
+subdirectory.  In that directory, I have a subdirectory called 
+packages.  cd to that directory, and make a directory called 
+FTP_Server.  Then, copy the ftpserver.tar and ftpserver.list files to 
+that directory.
+
+Now, load up pwlconfig, and go to Configure Project File System, and 
+select the FTP_Server packages.  You should then be able to select the 
+FTP server you created.
+
+Best of luck to you!
+
+-Daniel Purcell
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001093.html">[Peeweelinux] FTP server &amp; Web Server
+</A></li>
+	<LI> Next message: <A HREF="001095.html">[Peeweelinux] small bug in pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1094">[ date ]</a>
+              <a href="thread.html#1094">[ thread ]</a>
+              <a href="subject.html#1094">[ subject ]</a>
+              <a href="author.html#1094">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

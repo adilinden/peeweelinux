@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] boot scripts
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001009.html">
+   <LINK REL="Next"  HREF="001011.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] boot scripts
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] boot scripts">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 31 Mar 2003 16:12:10 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001009.html">[Peeweelinux] Re: 2.4 troubles
+</A></li>
+        <LI> Next message: <A HREF="001011.html">[Peeweelinux] boot scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1010">[ date ]</a>
+              <a href="thread.html#1010">[ thread ]</a>
+              <a href="subject.html#1010">[ subject ]</a>
+              <a href="author.html#1010">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I have been trying to track down why my nfs filesystem is not mounted by root at bootup. I am able to mount it manually as root no problem. 
+
+It seems that the rc.sysinit script which performs the &quot;mount -a&quot; command is executed before the rc scripts, so my network is not up at the point the mount command is processed, therefore my nfs is not mounted. 
+
+Is there a post sysinit script that can be used for this purpose?
+
+~Ken
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001009.html">[Peeweelinux] Re: 2.4 troubles
+</A></li>
+	<LI> Next message: <A HREF="001011.html">[Peeweelinux] boot scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1010">[ date ]</a>
+              <a href="thread.html#1010">[ thread ]</a>
+              <a href="subject.html#1010">[ subject ]</a>
+              <a href="author.html#1010">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

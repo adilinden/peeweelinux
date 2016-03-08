@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] CF Read Write Partition
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001150.html">
+   <LINK REL="Next"  HREF="001152.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] CF Read Write Partition
+   </H1>
+    <B>Adilson Oliveira
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] CF Read Write Partition">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 04 Aug 2003 12:44:17 -0300</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001150.html">[Peeweelinux] CF Read Write Partition
+</A></li>
+        <LI> Next message: <A HREF="001152.html">[Peeweelinux] CF Read Write Partition
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1151">[ date ]</a>
+              <a href="thread.html#1151">[ thread ]</a>
+              <a href="subject.html#1151">[ subject ]</a>
+              <a href="author.html#1151">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Joe A Cairns wrote:
+&gt;<i> Berry,
+</I>&gt;<i> 
+</I>&gt;<i> I have create a CF with 2 partitions I have the first partition setup
+</I>&gt;<i> with the compressed images and the second partition is where my
+</I>&gt;<i> application will go. I have verified that everything copied ok by
+</I>&gt;<i> mounting it on my host computer and doing a ls.
+</I>&gt;<i> 
+</I>&gt;<i> The system boots just fine but the second partition does not mount. You
+</I>&gt;<i> stated that you changed the fstab file, I have tried that but it still
+</I>&gt;<i> does not mount.
+</I>&gt;<i> 
+</I>&gt;<i> Both partitions are ext2 type filesystems.
+</I>&gt;<i> 
+</I>&gt;<i> Could you send me a sample of what the fstab needs to look like?
+</I>
+You said it does not mount but have you tried to mount by hand? What 
+happens?
+I did this lask week, unfortunatly I don't have the fstab with me right 
+now but all I had to do was to create an entry point (/config in my 
+case) and add something like this /dev/hda2 /config ext2 defaults 1 2 in 
+the fstab.
+
+[]s
+
+Adilson.
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001150.html">[Peeweelinux] CF Read Write Partition
+</A></li>
+	<LI> Next message: <A HREF="001152.html">[Peeweelinux] CF Read Write Partition
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1151">[ date ]</a>
+              <a href="thread.html#1151">[ thread ]</a>
+              <a href="subject.html#1151">[ subject ]</a>
+              <a href="author.html#1151">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

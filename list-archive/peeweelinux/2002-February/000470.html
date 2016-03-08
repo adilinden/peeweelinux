@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Peewee on Rocky 328E
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000473.html">
+   <LINK REL="Next"  HREF="000471.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Peewee on Rocky 328E
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Peewee on Rocky 328E">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 18 Feb 2002 17:11:53 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000473.html">[Peeweelinux] Kernel update
+</A></li>
+        <LI> Next message: <A HREF="000471.html">[Peeweelinux] Peewee on Rocky 328E
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#470">[ date ]</a>
+              <a href="thread.html#470">[ thread ]</a>
+              <a href="subject.html#470">[ subject ]</a>
+              <a href="author.html#470">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi,
+
+Does anyone's already tried to install peewee on a Rocky 328E ? It's a little
+386 embedded PC board.
+
+And I do not succed in my attempts. But it's the first time that I try to
+install Peewee...
+
+I've successfully configured my project with pwlconfig  (I hope so). And I would
+like to copy this project on the embedded PC board, equipped with a floppy and
+an IDE hard drive. How to do ? Copy the project on a floppy in order to load it
+on the HD? I've tried this solution with this configuration of &quot;Configure target
+Hardware&quot; :
+
+
+*******************************
+
+Target : compressed ramdisk on FAT 12 floppy disk w/syslinux
+Project Mount Point : &quot;mnt&quot;
+Project Custom Source file path : &quot;/root/custom&quot;
+Device Mount point : &quot;./mnt&quot;
+Boot image name : &quot;bzImage&quot;
+Ramdisk File Name : &quot;ramdisk&quot;
+Initrd File Name : &quot;initrd&quot;
+Modify system boot files : &quot;y&quot;
+----------
+.
+.
+.
+---floppy target configuration parameters-----
+Floppy Device : &quot;/mnt/floppy&quot;
+Free space on Ramdisk : &quot;500&quot;
+.
+.
+.
+
+********************
+
+But I only obtain this message :
+
+The target build script failed to load the filesystem onto the configured
+target. Do you wish to view the results ?
+
+And the result is : all OK except :
+
+Testing for target device /mnt/floppy ........ failed
+Testing that target /mnt/floppy is not mounted ....... failed
+
+Does anyone could help me, please ?
+
+Thank you.
+
+Guillaume PREVOST
+
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000473.html">[Peeweelinux] Kernel update
+</A></li>
+	<LI> Next message: <A HREF="000471.html">[Peeweelinux] Peewee on Rocky 328E
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#470">[ date ]</a>
+              <a href="thread.html#470">[ thread ]</a>
+              <a href="subject.html#470">[ subject ]</a>
+              <a href="author.html#470">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] swapper prob.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000517.html">
+   <LINK REL="Next"  HREF="000518.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] swapper prob.
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] swapper prob.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 18 Mar 2002 17:31:03 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000517.html">[Peeweelinux] swapper prob.
+</A></li>
+        <LI> Next message: <A HREF="000518.html">[Peeweelinux] Problem Extracting Kernel To Build Images
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#516">[ date ]</a>
+              <a href="thread.html#516">[ thread ]</a>
+              <a href="subject.html#516">[ subject ]</a>
+              <a href="author.html#516">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--0__=2VP3EXp7DSmjdOOhqd5xfJjHNS6yxQRXi00esAHmbUPE5JLqNG8utJTM
+Content-type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-transfer-encoding: quoted-printable
+
+
+
+
+Hi,
+
+I had the same probleme with 4MB RAM (even with 50kB free on Ramdisk
+configuration). I resolve this probleme (thank you Mark) by selecting t=
+he Target
+:<i> &quot;Read-write in a single partition&quot; (or something like that, I don't h=
+</I>ave
+pwlconfig here). But then, you don't use any Ramdisk ...
+
+Now, I can loggin peewee, but I have an azerty keyboard, and peewee run=
+s with a
+qwerty keyboard. I try to make this change (my project is a copy of &quot;mi=
+nimal&quot;).
+I try : Create Custom Kernel Package / Select a configuration / Configu=
+re the
+Kernel (menu config) / Filesystems / Native langage Support / Default N=
+LS option
+and I change with NLS ISO 8859-1 (latin 1). Then Extract file system fo=
+r
+project.
+
+But the keyboard is still configured as qwerty :-(
+
+Any idea ?
+
+Thank you.
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; on 18/03/2002 16:35:42
+
+Veuillez r=E9pondre =E0 <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+
+Pour :    <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] swapper prob.
+
+
+=
+
+--0__=2VP3EXp7DSmjdOOhqd5xfJjHNS6yxQRXi00esAHmbUPE5JLqNG8utJTM
+Content-type: text/plain; charset=us-ascii
+Content-Disposition: inline
+
+
+I don't think the ramdisk paramter actually allocates any memory. It just
+sets limits. I.e. I am running a box with 32MB of physical memory and the
+remdisk paramter set to 200000, which would allow me a largest ramdisk of
+200MB.
+
+Adi
+
+On Mon, 18 Mar 2002, Mark Meade wrote:
+
+&gt;<i> Hi Duane,
+</I>&gt;<i>
+</I>&gt;<i> It might have something to do with the amount of available RAM -- maybe
+</I>reducing the &quot;Free
+&gt;<i> space on ramdisk&quot; parameter might help.
+</I>&gt;<i>
+</I>&gt;<i> Mark
+</I>&gt;<i>
+</I>&gt;<i> Duane Cox wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt;Now when the kernel boots, it gets to the RAMDISK and then spits out...
+</I>&gt;<i> &gt; VM: do_try_to_free_pages failed for swapper...
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+
+
+
+
+
+
+--0__=2VP3EXp7DSmjdOOhqd5xfJjHNS6yxQRXi00esAHmbUPE5JLqNG8utJTM--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000517.html">[Peeweelinux] swapper prob.
+</A></li>
+	<LI> Next message: <A HREF="000518.html">[Peeweelinux] Problem Extracting Kernel To Build Images
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#516">[ date ]</a>
+              <a href="thread.html#516">[ thread ]</a>
+              <a href="subject.html#516">[ subject ]</a>
+              <a href="author.html#516">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

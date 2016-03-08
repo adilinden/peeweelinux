@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] newbie wants to target USB HDD
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000884.html">
+   <LINK REL="Next"  HREF="000888.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] newbie wants to target USB HDD
+   </H1>
+    <B>Leif Steinhour
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] newbie wants to target USB HDD">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 30 Dec 2002 14:41:14 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000884.html">[Peeweelinux] newbie wants to target USB HDD
+</A></li>
+        <LI> Next message: <A HREF="000888.html">[Peeweelinux] newbie wants to target USB HDD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#887">[ date ]</a>
+              <a href="thread.html#887">[ thread ]</a>
+              <a href="subject.html#887">[ subject ]</a>
+              <a href="author.html#887">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've gotten this one a bunch, usually when pwl can't write to the target 
+for some reason. A couple of checks to run before you try more:
+
+1). If you're running redhat 7 or 8, make sure you run the compatibility 
+script, and change your makefiles as described in the pee wee archives 
+(which you should know about anyways).
+2). You should check to make sure, just regularly, that the system can 
+read and write to the usb drive. I've used &quot;usbview&quot;, which you can get 
+from freshmeat.com, with good success for this sort of hardware scoping. 
+You can also look in /proc/bus/ for more info.
+
+Incidentally, could you tell us a little more about your system?
+
+On 2002.12.30 11:54 dan latham wrote:
+&gt;<i> Ok, I got a little farther. I just had to make sure that the disk was 
+</I>&gt;<i> not mounted before
+</I>&gt;<i> I did &quot;Load File System on Target&quot;. I specified /dev/sda for Target 
+</I>&gt;<i> Device and
+</I>&gt;<i> Boot Device on Target System options.
+</I>&gt;<i> 
+</I>&gt;<i> I get these errors whether I write the image to a floppy or usb drive:
+</I>&gt;<i> Building ld.so.cache...ldconfig: Can't stat /lib: No such file or 
+</I>&gt;<i> directory
+</I>&gt;<i> Can't open configuration file /etc/ld.so.conf: No such file or directory
+</I>&gt;<i> Can't open directory /usr/X11R6/lib: No such file or directory
+</I>&gt;<i> Can't create temporary cache file /etc/ld.so.cache: No such file or 
+</I>&gt;<i> directory
+</I>&gt;<i> 
+</I>&gt;<i> Any ideas what causes this?
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000884.html">[Peeweelinux] newbie wants to target USB HDD
+</A></li>
+	<LI> Next message: <A HREF="000888.html">[Peeweelinux] newbie wants to target USB HDD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#887">[ date ]</a>
+              <a href="thread.html#887">[ thread ]</a>
+              <a href="subject.html#887">[ subject ]</a>
+              <a href="author.html#887">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

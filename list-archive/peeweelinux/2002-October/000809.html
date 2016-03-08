@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Continued boot problems - Compactflash Corruption?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000808.html">
+   <LINK REL="Next"  HREF="000813.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Continued boot problems - Compactflash Corruption?
+   </H1>
+    <B>John Murphy
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Continued boot problems - Compactflash Corruption?">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 21 Oct 2002 13:06:33 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000808.html">[Peeweelinux] =?iso-8859-1?Q?Re:_Re:_[Peeweelinux]_embedded_linux_for_robots..._newbie=09?=
+ =?iso-8859-1?Q?questions?=
+</A></li>
+        <LI> Next message: <A HREF="000813.html">[Peeweelinux] Continued boot problems - Compactflash Corruption?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#809">[ date ]</a>
+              <a href="thread.html#809">[ thread ]</a>
+              <a href="subject.html#809">[ subject ]</a>
+              <a href="author.html#809">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm still having problems getting peewee to boot.  Let me 
+describe my host and targets and see if anyone can offer
+some advice.  I've tried loading my own project and
+the wireless-isa without luck.
+
+Host system: 586 w/ 128 MB, Running slackware 8.0,
+       PNY and Jumpshot compact flash reader/writers.
+       Running kernel 2.4.19
+
+(Note that I'm not building any source yet).
+
+Target #1: Transmeta 800Mhz, 256 MB, compact flash IDE adapter
+
+Target #2: ZF Micro 386, 8MB, Compact flash built in.  Has booted
+     linux many months ago.  (home made distribution).
+
+
+I've tried using both of the writers, a number of different
+flash cards, etc, to no avail.  Typically, the board
+loads the ramdisk, uncompresses linux, and then fails with
+a CRC error.
+
+I switched to using a dosFS and syslinux on the flash cards, with
+the same result.  I did an MD5sum on the kernel from the extracted
+filesystem under peewee, and and md5sum on the mounted 
+compactflash filesystem, and they differed.  (Should they?  I didn't
+know if a ramdisk word was set in there or something?) - Seeing the
+difference, I suspected that something about my system writing the
+kernel was not working quite right.  I copied the kernel from the
+extracted peewee filesystem to the mounted compact flash card, and
+things seemed to improve a bit.  This time, the
+system uncompressed the ramdisk, uncompressed the kernel,
+and got to &quot;Booting the Kernel&quot; at which point the 
+keyboard lights were blinking on and off...
+
+I get the same results using either my load or the wireless-isa
+example.
+
+I've tried swapping RAM on both of the targets.  No dice.
+
+Peewee looks great, and I'm sure things will work if I can
+get over this hump.  I suspect that parts of my compact flash
+image are corrupted during writing.  Any ideas on checks I can do?
+Can I push the system into a file and then do a md5sum comparison on
+that file and the output of a dd of the compactflash card?
+
+Any thoughts would be greatly appreciated.  I'm thinking I'm going to
+try building a new host system, and was wondering what distribution
+you folks would recommend for doing a lot of peewee work; I'm partial
+to slackware, but I'll try anythig at this point.
+
+Thanks,
+murph
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000808.html">[Peeweelinux] =?iso-8859-1?Q?Re:_Re:_[Peeweelinux]_embedded_linux_for_robots..._newbie=09?=
+ =?iso-8859-1?Q?questions?=
+</A></li>
+	<LI> Next message: <A HREF="000813.html">[Peeweelinux] Continued boot problems - Compactflash Corruption?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#809">[ date ]</a>
+              <a href="thread.html#809">[ thread ]</a>
+              <a href="subject.html#809">[ subject ]</a>
+              <a href="author.html#809">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

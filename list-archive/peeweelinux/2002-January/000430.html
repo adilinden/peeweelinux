@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] RE lilo compact flash prob
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000429.html">
+   <LINK REL="Next"  HREF="000431.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] RE lilo compact flash prob
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] RE lilo compact flash prob">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 10 Jan 2002 10:00:03 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000429.html">[Peeweelinux] RE lilo compact flash prob
+</A></li>
+        <LI> Next message: <A HREF="000431.html">[Peeweelinux] Freeswan
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#430">[ date ]</a>
+              <a href="thread.html#430">[ thread ]</a>
+              <a href="subject.html#430">[ subject ]</a>
+              <a href="author.html#430">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+The &quot;bios  = 0x80&quot; refers to the bios disk the boot loader is to be booted 
+from. Without it lilo would assume &quot;/dev/sda&quot; which is incorrect since it 
+is actually &quot;/dev/hda&quot; in the actual target system. The boot loader is 
+actually installed on &quot;/dev/sda&quot;.
+
+Adi
+
+
+On Thu, 10 Jan 2002, Daniel Hennessey wrote:
+
+&gt;<i> Adi,
+</I>&gt;<i> 
+</I>&gt;<i> the following is the contents of the file tmp/lilo.conf.
+</I>&gt;<i> 
+</I>&gt;<i> disk      = /dev/sda
+</I>&gt;<i>     bios  = 0x80
+</I>&gt;<i> boot      = /dev/sda
+</I>&gt;<i> linear
+</I>&gt;<i> backup    = /dev/null
+</I>&gt;<i> map       = ./mnt/map
+</I>&gt;<i> install   = ./mnt/boot.b
+</I>&gt;<i> prompt
+</I>&gt;<i> timeout   = 50
+</I>&gt;<i> initrd    = ./mnt/initrd
+</I>&gt;<i> 
+</I>&gt;<i> image     = ./mnt/bzImage
+</I>&gt;<i>     label     = linux
+</I>&gt;<i>     root      = /dev/ram2
+</I>&gt;<i>     vga       = normal
+</I>&gt;<i>     ramdisk   = 9312
+</I>&gt;<i>     read-only
+</I>&gt;<i> 
+</I>&gt;<i> I have tried changing the bios setting but I wasn't sure what context it is
+</I>&gt;<i> used in. Does it refer to the bios disk that the bootloader is going to be
+</I>&gt;<i> installed on (0x81) or the bios disk that is to be booted from (0x80).
+</I>&gt;<i> 
+</I>&gt;<i> Hope that makes sense.
+</I>&gt;<i> 
+</I>&gt;<i> Cheers again
+</I>&gt;<i> 
+</I>&gt;<i> Dan
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000429.html">[Peeweelinux] RE lilo compact flash prob
+</A></li>
+	<LI> Next message: <A HREF="000431.html">[Peeweelinux] Freeswan
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#430">[ date ]</a>
+              <a href="thread.html#430">[ thread ]</a>
+              <a href="subject.html#430">[ subject ]</a>
+              <a href="author.html#430">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

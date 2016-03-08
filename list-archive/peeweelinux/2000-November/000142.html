@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> signal catching during boot-up scripts
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000138.html">
+   <LINK REL="Next"  HREF="000139.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>signal catching during boot-up scripts
+   </H1>
+    <B>Pete Buechler
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="signal catching during boot-up scripts">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 7 Nov 2000 07:27:10 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000138.html">signal catching during boot-up scripts
+</A></li>
+        <LI> Next message: <A HREF="000139.html">Problems configuring packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#142">[ date ]</a>
+              <a href="thread.html#142">[ thread ]</a>
+              <a href="subject.html#142">[ subject ]</a>
+              <a href="author.html#142">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Monday 06 November 2000 08:12, Dr Jaime V. Miro wrote:
+
+&gt;<i> Now, in order to seemlessly (from the user point of view) boot up
+</I>&gt;<i> straight into the application, I launch the application from the
+</I>&gt;<i> rc.local script (PeeWeeLinux based on red hat, i.e. system V init
+</I>&gt;<i> scripts, I think). The application starts fine, but I can never catch
+</I>&gt;<i> Ctrl+C (SIGINT). It hangs up. I can, however,  ctrl+alt+del and the
+</I>&gt;<i> system is shutdown. From what I see, it looks as though signals are
+</I>&gt;<i> not passed (from /sbin/init) on to user programs during boot up, at
+</I>&gt;<i> least not until getting the mingetty, which I don't need (embedded,
+</I>&gt;<i> no user inputs or terminals, no log in ... nothing. The reason to
+</I>&gt;<i> catching the signals at this stage is purely for debugging)
+</I>
+If you are sending this signal by typing Ctrl-C then the problem coud 
+be that the keyboard is not the controlling tty for the process to 
+which you want to send the signal. I have forgotten the details, but 
+basically each process belongs to a group, and then the groups can be 
+in sessions, and each session has a controlling tty. Read the libc info 
+pages for excruciating detail.
+-- 
+Pete Buechler
+Developer, SuSE Labs
+<A HREF="mailto:peterb@suse.com">peterb@suse.com</A>
+<A HREF="http://www.suse.com/~peterb">http://www.suse.com/~peterb</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000138.html">signal catching during boot-up scripts
+</A></li>
+	<LI> Next message: <A HREF="000139.html">Problems configuring packages
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#142">[ date ]</a>
+              <a href="thread.html#142">[ thread ]</a>
+              <a href="subject.html#142">[ subject ]</a>
+              <a href="author.html#142">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

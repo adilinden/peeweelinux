@@ -1,0 +1,167 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux-devel] read-only system
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000120.html">
+   <LINK REL="Next"  HREF="000122.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux-devel] read-only system
+   </H1>
+    <B>Derek Cassidy
+    </B> 
+    <A HREF="mailto:peeweelinux-devel%40adis.on.ca"
+       TITLE="[Peeweelinux-devel] read-only system">peeweelinux-devel@adis.on.ca
+       </A><BR>
+    <I>Mon, 22 Oct 2001 15:47:00 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000120.html">[Peeweelinux-devel] read-only system
+</A></li>
+        <LI> Next message: <A HREF="000122.html">[Peeweelinux-devel] read-only system
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#121">[ date ]</a>
+              <a href="thread.html#121">[ thread ]</a>
+              <a href="subject.html#121">[ subject ]</a>
+              <a href="author.html#121">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>--------------000302010402040504080106
+Content-Type: text/plain; charset=us-ascii; format=flowed
+Content-Transfer-Encoding: 7bit
+
+I've just got it to work... after about 6 hours!!!
+
+I just tried changing the system to look like the cut down red hat version
+I done previously so I changed the inetd.conf telnet line to
+........ /usr/sbin/tcpd in.telnetd
+
+and then added the none /dev/pts ...... line to fstab and done a
+mount /dev/pts on boot up
+
+so when a telnet request comes in if you check inside the /dev/pts
+folder a new pseuso device is created (even with readonly filesystem)
+
+But I've been using readonly filesystems for a while now and never
+had any problem with write access to mounted ram disks or serial lines.
+
+Only sort of problem left which isnt really a problem for me is that
+when init runs the mingetty consoles.. it never works with the system
+readonly and I used to make the system read-write for that small time
+while mingetty created the login prompt but I dont need it now.
+So the init script only runs /bin/sh as I dont really use the system as a
+terminal only as a login box, which is why I needed telnet working on the
+device!
+
+
+Adi Linden wrote:
+
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> My experiance has been that the device directory has to be read-write for
+</I>&gt;<i> an write access to devices to succeed. Even though, writing to the devices
+</I>&gt;<i> won't result in anything being written to the underlying filesystem. I'd
+</I>&gt;<i> be very interested in hearing if it's possible to write to the devices on
+</I>&gt;<i> a read-only filesystem.
+</I>&gt;<i> 
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> On Mon, 22 Oct 2001, Derek Cassidy wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> Has anyone any experience with read-only filesystems..
+</I>&gt;&gt;<i> I created a small peeweelinux filesystem and put it on a
+</I>&gt;&gt;<i> compact flash disk and made it readonly and I can telnet in
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> I get this problem:
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> Escape character is '^]'.
+</I>&gt;&gt;<i> telnetd: All network ports in use.
+</I>&gt;&gt;<i> Connection closed by foreign host.
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> And telnet works ok if I have the /dev directory read-write??
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> I have created read-only filesystems before and never had this
+</I>&gt;&gt;<i> problem, anyone any ideas?
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> 
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Peeweelinux-devel mailing list
+</I>&gt;&gt;<i> <A HREF="mailto:Peeweelinux-devel@adis.on.ca">Peeweelinux-devel@adis.on.ca</A>
+</I>&gt;&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel">http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel</A>
+</I>&gt;&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux-devel mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux-devel@adis.on.ca">Peeweelinux-devel@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel">http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+
+--------------000302010402040504080106
+Content-Type: text/html; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+&lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;I've just got it to work... after about 6 hours!!!&lt;br&gt;
+&lt;br&gt;
+I just tried changing the system to look like the cut down red hat version&lt;br&gt;
+I done previously so I changed the inetd.conf telnet line to&lt;br&gt;
+........ /usr/sbin/tcpd in.telnetd&lt;br&gt;
+&lt;br&gt;
+and then added the none /dev/pts ...... line to fstab and done a&lt;br&gt;
+mount /dev/pts on boot up&lt;br&gt;
+&lt;br&gt;
+so when a telnet request comes in if you check inside the /dev/pts &lt;br&gt;
+folder a new pseuso device is created (even with readonly filesystem)&lt;br&gt;
+&lt;br&gt;
+But I've been using readonly filesystems for a while now and never&lt;br&gt;
+had any problem with write access to mounted ram disks or serial lines.&lt;br&gt;
+&lt;br&gt;
+Only sort of problem left which isnt really a problem for me is that&lt;br&gt;
+when init runs the mingetty consoles.. it never works with the system&lt;br&gt;
+readonly and I used to make the system read-write for that small time&lt;br&gt;
+while mingetty created the login prompt but I dont need it now. &lt;br&gt;
+So the init script only runs /bin/sh as I dont really use the system as a&lt;br&gt;
+ terminal only as a login box, which is why I needed telnet working on the&lt;br&gt;
+device!&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+Adi Linden wrote:&lt;br&gt;
+&lt;blockquote type=&quot;cite&quot; cite=&quot;mid:<A HREF="mailto:Pine.LNX.4.33.0110220907190.28370-100000@adibox.knet.ca">Pine.LNX.4.33.0110220907190.28370-100000@adibox.knet.ca</A>&quot;&gt;&lt;pre wrap=&quot;&quot;&gt;Hi,&lt;br&gt;&lt;br&gt;My experiance has been that the device directory has to be read-write for&lt;br&gt;an write access to devices to succeed. Even though, writing to the devices&lt;br&gt;won't result in anything being written to the underlying filesystem. I'd&lt;br&gt;be very interested in hearing if it's possible to write to the devices on&lt;br&gt;a read-only filesystem.&lt;br&gt;&lt;br&gt;Adi&lt;br&gt;&lt;br&gt;On Mon, 22 Oct 2001, Derek Cassidy wrote:&lt;br&gt;&lt;br&gt;&lt;/pre&gt;
+  &lt;blockquote type=&quot;cite&quot;&gt;&lt;pre wrap=&quot;&quot;&gt;Has anyone any experience with read-only filesystems..&lt;br&gt;I created a small peeweelinux filesystem and put it on a&lt;br&gt;compact flash disk and made it readonly and I can telnet in&lt;br&gt;&lt;br&gt;I get this problem:&lt;br&gt;&lt;br&gt;Escape character is '^]'.&lt;br&gt;telnetd: All network ports in use.&lt;br&gt;Connection closed by foreign host.&lt;br&gt;&lt;br&gt;And telnet works ok if I have the /dev directory read-write??&lt;br&gt;&lt;br&gt;I have created read-only filesystems before and never had this&lt;br&gt;problem, anyone any ideas?&lt;br&gt;&lt;br&gt;&lt;br&gt;_______________________________________________&lt;br&gt;Peeweelinux-devel mailing list&lt;br&gt;&lt;a class=&quot;moz-txt-link-abbreviated&quot; href=&quot;mailto:<A HREF="mailto:Peeweelinux-devel@adis.on.ca">Peeweelinux-devel@adis.on.ca</A>&quot;&gt;<A HREF="mailto:Peeweelinux-devel@adis.on.ca">Peeweelinux-devel@adis.on.ca</A>&lt;/a&gt;&lt;br&gt;&lt;a class=&quot;moz-txt-link-freetext&quot; href=&quot;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel"">http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel&quot;</A>&gt;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel</a">http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel&lt;/a</A>&gt;&lt;br&gt;&lt;br&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+    &lt;pre wrap=&quot;&quot;&gt;&lt;!----&gt;&lt;br&gt;_______________________________________________&lt;br&gt;Peeweelinux-devel mailing list&lt;br&gt;&lt;a class=&quot;moz-txt-link-abbreviated&quot; href=&quot;mailto:<A HREF="mailto:Peeweelinux-devel@adis.on.ca">Peeweelinux-devel@adis.on.ca</A>&quot;&gt;<A HREF="mailto:Peeweelinux-devel@adis.on.ca">Peeweelinux-devel@adis.on.ca</A>&lt;/a&gt;&lt;br&gt;&lt;a class=&quot;moz-txt-link-freetext&quot; href=&quot;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel"">http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel&quot;</A>&gt;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel</a">http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel&lt;/a</A>&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/pre&gt;
+    &lt;/blockquote&gt;
+    &lt;br&gt;
+    &lt;pre class=&quot;moz-signature&quot;&gt;&lt;/pre&gt;
+    &lt;br&gt;
+&lt;/body&gt;&lt;/html&gt;
+--------------000302010402040504080106--
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000120.html">[Peeweelinux-devel] read-only system
+</A></li>
+	<LI> Next message: <A HREF="000122.html">[Peeweelinux-devel] read-only system
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#121">[ date ]</a>
+              <a href="thread.html#121">[ thread ]</a>
+              <a href="subject.html#121">[ subject ]</a>
+              <a href="author.html#121">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

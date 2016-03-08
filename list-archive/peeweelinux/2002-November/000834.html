@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: Hello and a question
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000833.html">
+   <LINK REL="Next"  HREF="000835.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Hello and a question
+   </H1>
+    <B>Cem Eryasar
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Hello and a question">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>25 Nov 2002 19:13:49 +0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000833.html">[Peeweelinux] rc.init
+</A></li>
+        <LI> Next message: <A HREF="000835.html">[Peeweelinux] Re: Hello and a question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#834">[ date ]</a>
+              <a href="thread.html#834">[ thread ]</a>
+              <a href="subject.html#834">[ subject ]</a>
+              <a href="author.html#834">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks for the responses. The 2.4 kernel tip is really useful.
+I am also using a RH7.3 and thinking of upgrading to the
+RH7.3 kernel/apps/libs at some point in the future.
+
+My question was also about the kernel versions. I don't have any
+link to compare the different versions of kernels - except the diff ;)
+Why did you move to 2.4? Did it justify all the work?
+
+Cem
+
+
+
+&gt;<i> 
+</I>&gt;<i> Ed,
+</I>&gt;<i> I was able to run the 2.4 kernel with the existing packages, the only 
+</I>&gt;<i> thing I changed initially was the kernel, the kernel modules, and the 
+</I>&gt;<i> modutils package.  I then made sure I could boot the new kernel.  Then I 
+</I>&gt;<i> upgraded packages as necessary.  The way I upgraded the packages was to 
+</I>&gt;<i> manually create the tar and list file myself.
+</I>&gt;<i> For example:
+</I>&gt;<i> rpm2cpio xxx.rpm | cpio -dim  (extracts a redhat package to the current 
+</I>&gt;<i> directory)
+</I>&gt;<i> tar cf xxx.tar *  (tars up all the files in the package)
+</I>&gt;<i> tar tf xxx.tar &gt; xxx.list ( creates the necessary list file)
+</I>&gt;<i> copy xxx.tar and xxx.list to the packages directory in peewee linux and 
+</I>&gt;<i> you're all set.
+</I>&gt;<i> Tom
+</I>&gt;<i> 
+</I>&gt;<i> Ed Anuff wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt;Were you able to use the RH 7.3 packages as is, or did you need to rebuild
+</I>&gt;<i> &gt;them?  I got stalled when I tried using the 2.4 kernel because although
+</I>&gt;<i> &gt;building the kernel itself wasn't too bad, hunting down all the packages
+</I>&gt;<i> &gt;that needed to be upgraded seemed daunting.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;Ed
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;----- Original Message -----
+</I>&gt;<i> &gt;From: &quot;Tom Schneider&quot; &lt;<A HREF="mailto:tschneider@nvisia.com">tschneider@nvisia.com</A>&gt;
+</I>&gt;<i> &gt;To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+</I>&gt;<i> &gt;Sent: Saturday, November 23, 2002 8:11 AM
+</I>&gt;<i> &gt;Subject: Re: [Peeweelinux] Hello and a question
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;  
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt;I've had great luck with the latest 2.4 kernel. (2.4.18)  Plus I've
+</I>&gt;<i> &gt;&gt;upgraded most of the standard peewee linux packages to the latest Redhat
+</I>&gt;<i> &gt;&gt;7.3 packages.  I'm running on a PC/104 486 with 48 MB ram and 64 MB
+</I>&gt;<i> &gt;&gt;disk-on-chip.  If you follow the tutorial and know your way around the
+</I>&gt;<i> &gt;&gt;basics of kernel building, it's not too hard.  (If not, get the Kernel
+</I>&gt;<i> &gt;&gt;Howto can fix that)
+</I>&gt;<i> &gt;&gt;Tom
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;Ricardo Trindade wrote:
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;    
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;there is a guide to upgrading the kernel in the mailing list archives.
+</I>&gt;<i> &gt;&gt;&gt;however, if the one includede does what you need, I think you should keep
+</I>&gt;<i> &gt;&gt;&gt;it, it's stable.
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;-----Original Message-----
+</I>&gt;<i> &gt;&gt;&gt;From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;<i> &gt;&gt;&gt;[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Cem Eryasar
+</I>&gt;<i> &gt;&gt;&gt;Sent: sexta-feira, 22 de Novembro de 2002 23:05
+</I>&gt;<i> &gt;&gt;&gt;To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> &gt;&gt;&gt;Subject: [Peeweelinux] Hello and a question
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;Hello all!
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;It's nice to see people doing embedded linux stuff.
+</I>&gt;<i> &gt;&gt;&gt;I downloaded the Peewee and gave it a go. I tried it on an embedded
+</I>&gt;<i> &gt;&gt;&gt;486 board. Looks really good.
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;However, here is my first question:
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;Do I have to stay with the built in 2.2.17 kernel?
+</I>&gt;<i> &gt;&gt;&gt;If it's possible is it better to move on another one? Like 2.2.22?
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;How can I compare kernel versions? Is it always good to go for a
+</I>&gt;<i> &gt;&gt;&gt;recent one from kernel.org?
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;Thanks a lot!
+</I>&gt;<i> &gt;&gt;&gt;Cem Eryasar - Cemer
+</I>&gt;<i> &gt;&gt;&gt;
+</I>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000833.html">[Peeweelinux] rc.init
+</A></li>
+	<LI> Next message: <A HREF="000835.html">[Peeweelinux] Re: Hello and a question
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#834">[ date ]</a>
+              <a href="thread.html#834">[ thread ]</a>
+              <a href="subject.html#834">[ subject ]</a>
+              <a href="author.html#834">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

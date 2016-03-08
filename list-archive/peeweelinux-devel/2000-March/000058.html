@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> PeeWeeLinux Ideas
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000057.html">
+   <LINK REL="Next"  HREF="000059.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>PeeWeeLinux Ideas
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="PeeWeeLinux Ideas">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Sun, 5 Mar 2000 12:27:29 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000057.html">PeeWeeLinux v0.20
+</A></li>
+        <LI> Next message: <A HREF="000059.html">Greetings--may I be of service?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#58">[ date ]</a>
+              <a href="thread.html#58">[ thread ]</a>
+              <a href="subject.html#58">[ subject ]</a>
+              <a href="author.html#58">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+Just making notes of some random PeeWeeLinux ideas. Thought I'd email them
+to you to see what you think...
+
+I cc'd this to the PeeWeeLinux lists. Perhaps someone else using PWL has
+ideas or suggestions, too?
+
+Package Names
+-------------
+
+Currently packages are named like thttpd-1.2.3.tar indicating the name and
+version of the software. This naming applies to all packages build from
+original sources regardless of whether they came from the original author
+or were taken from a SRPM.
+
+Currently packages build from precompiled binaries (RedHat rpm or running
+system) are named thttpd-1.2.3-rh.tar to indicate the fact they were not
+compiled and taken from the system. Perhaps still stripped and dependency
+checked and associated scripts changed, but no other changes.
+
+Would it make sense to start adding a version numer similar to what RedHat
+does? Like creating thttpd-1.2.3-1.tar for the initial release. When a
+package is changed due to bugfixes, etc, the version number of the package
+could be incremented like thttpd-1.2.3-2.tar. Obviously this wouldn't
+happen with every PeeWeeLinux release but as bugs are reported and fixed
+or as other features are added.
+
+File List
+---------
+
+If you look at the Embedded_Build directory, there is a file called
+Filelist (I think) which contains the package names and files associated
+with it. Would it make sense to keep a file like it, indicating the
+included package name and the related files?
+
+As one of the todo tasks I want to eliminate duplicate files in packages.
+Since networking is an obvious feature of Linux I will change the
+arrangements of packages in a way that it assumed that networking is going
+to be installed. I want to remove all the configuration files from the
+base_filesystem and base_libs packages and create a base_script or
+base_configuration package that contains all those. Things to include
+there would be:
+
+/etc/services
+/etc/protocols
+/etc/nsswitch
+
+Subsequently I am removing those files from their duplicate places...
+
+Should the Filelist file include the descriptions entered in the
+package.README files? I tend to not to include them to not clutter up the
+filelist file.
+
+Maintaining the filelist file would make it easy to chack for duplicate
+files within the PWL distribution and to enable on to quickly find a
+particular binary, i.e. which package includes 'su'?
+
+Distributing PWL
+----------------
+
+I am thinking about creating a PWL packages directory on the server in
+which to keep all the packages for individual download. Perhaps gzip the
+packages, though. This would allow for individual packages to be
+downloaded rather than the complete archive if some packages are added.
+Also, it would allow for newly build packages to be made available
+immediately without having to wait for a new release.
+
+I am a bit torn between the idea of creating a new release too often or
+not often enough. Just adding a couple of packes doesn't necessarily
+justify creating a new release, especially if some known bugs haven't been
+addressed. On the other hand I don't want to not release new features and
+additions because I won't have time to address some issues immediately. I
+need some guidance here.
+
+Closing
+-------
+
+This all comes to mind because I will have a crude X package compiled from
+sources soon. This will add some 40MB to the source distribution. I think
+it's a bit of a waste to have to download a 50MB file for some minor
+changes... I guess there's always the binary distribution.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000057.html">PeeWeeLinux v0.20
+</A></li>
+	<LI> Next message: <A HREF="000059.html">Greetings--may I be of service?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#58">[ date ]</a>
+              <a href="thread.html#58">[ thread ]</a>
+              <a href="subject.html#58">[ subject ]</a>
+              <a href="author.html#58">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

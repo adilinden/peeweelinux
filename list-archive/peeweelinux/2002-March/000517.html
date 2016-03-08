@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] swapper prob.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000515.html">
+   <LINK REL="Next"  HREF="000516.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] swapper prob.
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] swapper prob.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 18 Mar 2002 10:45:23 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000515.html">[Peeweelinux] swapper prob.
+</A></li>
+        <LI> Next message: <A HREF="000516.html">[Peeweelinux] swapper prob.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#517">[ date ]</a>
+              <a href="thread.html#517">[ thread ]</a>
+              <a href="subject.html#517">[ subject ]</a>
+              <a href="author.html#517">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Mark,
+
+My apologies. You're right. I should read messages more thoroughly before 
+replying. I understood his development system was complaining, not the 
+target.
+
+The kernel parameter I was talking about is set by pwlconfig based on the 
+final ramdisk size. It is set for the target automatically.
+
+The &quot;ramdisk free&quot; in pwlconfig changes the overall ramdisk size of the 
+target system. Since the ramdisk uses up physical memory, any change in 
+this paramter will change memory consumption on the target.
+
+Adi
+
+
+
+On Mon, 18 Mar 2002, Mark Meade wrote:
+
+&gt;<i> Hi Adi,
+</I>&gt;<i> 
+</I>&gt;<i> I'm a bit confused.  I was under the impression that the &quot;ramdisk free&quot; parameter was used
+</I>&gt;<i> when Peewee determines the total ramdisk size.
+</I>&gt;<i> 
+</I>&gt;<i> In one of the scripts, the formula seems to be
+</I>&gt;<i>     total ram disk size = file system size + &quot;free&quot; size
+</I>&gt;<i> 
+</I>&gt;<i> I tried playing with this parameter a few months ago, and from my notes:
+</I>&gt;<i> 
+</I>&gt;<i> Filesystem  1k-blocks Used    Free
+</I>&gt;<i> /dev/ram0    6764        4494    2270        (Ramdisk Free = 2000)
+</I>&gt;<i> /dev/ram0    5311        4494     817         (Ramdisk Free = 500)
+</I>&gt;<i> 
+</I>&gt;<i> It seems like this parameter does affect the memory usage on the target.  Am I
+</I>&gt;<i> misunderstanding something here?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks,
+</I>&gt;<i> 
+</I>&gt;<i> Mark
+</I>&gt;<i> 
+</I>&gt;<i> Adi Linden wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I don't think the ramdisk paramter actually allocates any memory. It just
+</I>&gt;<i> &gt; sets limits. I.e. I am running a box with 32MB of physical memory and the
+</I>&gt;<i> &gt; remdisk paramter set to 200000, which would allow me a largest ramdisk of
+</I>&gt;<i> &gt; 200MB.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000515.html">[Peeweelinux] swapper prob.
+</A></li>
+	<LI> Next message: <A HREF="000516.html">[Peeweelinux] swapper prob.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#517">[ date ]</a>
+              <a href="thread.html#517">[ thread ]</a>
+              <a href="subject.html#517">[ subject ]</a>
+              <a href="author.html#517">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] boot scripts
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="001013.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] boot scripts
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] boot scripts">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 01 Apr 2003 09:19:26 -0500</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="001013.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1012">[ date ]</a>
+              <a href="thread.html#1012">[ thread ]</a>
+              <a href="subject.html#1012">[ subject ]</a>
+              <a href="author.html#1012">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Cool,
+
+Yep, this works nice. Thanks.
+
+~Ken
+
+&gt;&gt;&gt;<i> Troy Engel &lt;<A HREF="mailto:tengel@fluid.com">tengel@fluid.com</A>&gt; 03/31 6:51 PM &gt;&gt;&gt;
+</I>Create a file named something like &quot;30nfsmount&quot;, mode 0755, that is simply:
+
+#!/bin/sh
+/bin/mount -a -t nfs
+
+Obviously, make sure it's numbered at least one step higher than your 
+networking config. (I've completely rewritten the networking 
+initialization, so don't remember the defaults...)
+
+Then add this file as a custom file that gets put into /etc/rcS.d/ upon 
+build. Increase it's complexity as necessary...
+
+-te
+
+
+Ken Emmons, Jr. wrote:
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> I have been trying to track down why my nfs filesystem is not mounted by root at bootup. I am able to mount it manually as root no problem. 
+</I>&gt;<i> 
+</I>&gt;<i> It seems that the rc.sysinit script which performs the &quot;mount -a&quot; command is executed before the rc scripts, so my network is not up at the point the mount command is processed, therefore my nfs is not mounted. 
+</I>&gt;<i> 
+</I>&gt;<i> Is there a post sysinit script that can be used for this purpose?
+</I>&gt;<i> 
+</I>&gt;<i> ~Ken
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A> 
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A> 
+</I>
+-- 
+Troy Engel, Systems Engineer
+&quot;Now, Beakie, we'll just flip this switch and 60,000 refreshing
+  volts of electricity will surge through your body. Ready?&quot;
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A> 
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="001013.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1012">[ date ]</a>
+              <a href="thread.html#1012">[ thread ]</a>
+              <a href="subject.html#1012">[ subject ]</a>
+              <a href="author.html#1012">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

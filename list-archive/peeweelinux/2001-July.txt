@@ -1,0 +1,381 @@
+From peeweelinux@adis.on.ca  Mon Jul  9 06:19:08 2001
+From: peeweelinux@adis.on.ca (Matthew Schumacher)
+Date: Sun, 08 Jul 2001 21:19:08 -0800
+Subject: compact flash woes
+Message-ID: <3B493ECC.C32CD028@schu.net>
+
+Hello All,
+
+I am trying to put together a router that runs from a compact flash
+card.  Anyway, I could not get the card to boot to linux no matter what
+I tried, however I could sys the disk in dos and boot dos.  Anyway I
+fdisked the compact flash card trying to make it work and now I can't
+get anything to work.  I noticed that there is a warning on the site
+about fdisk, but unfortunately I didn't read it until it was to late.  I
+still think that the card works because I have a fat16 FS on it now and
+I can see it from a dos boot disk just fine, I just can't boot from it. 
+Is there anything I can do to fix the problem?  I wonder if a format
+command on a digital camera will fix my problem.
+
+thanks
+
+schu
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Jul  9 15:18:28 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 9 Jul 2001 09:18:28 -0500 (CDT)
+Subject: compact flash woes
+In-Reply-To: <3B493ECC.C32CD028@schu.net>
+Message-ID: <Pine.LNX.4.10.10107090917410.3408-100000@adibox.knet.on.ca>
+
+Hi,
+
+Try dos fdisk and dos 'fdisk /mbr' to restor the boot sector.
+
+TTYL,
+Adi
+
+On Sun, 8 Jul 2001, Matthew Schumacher wrote:
+
+> Hello All,
+> 
+> I am trying to put together a router that runs from a compact flash
+> card.  Anyway, I could not get the card to boot to linux no matter what
+> I tried, however I could sys the disk in dos and boot dos.  Anyway I
+> fdisked the compact flash card trying to make it work and now I can't
+> get anything to work.  I noticed that there is a warning on the site
+> about fdisk, but unfortunately I didn't read it until it was to late.  I
+> still think that the card works because I have a fat16 FS on it now and
+> I can see it from a dos boot disk just fine, I just can't boot from it. 
+> Is there anything I can do to fix the problem?  I wonder if a format
+> command on a digital camera will fix my problem.
+> 
+> thanks
+> 
+> schu
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Jul  9 18:04:26 2001
+From: peeweelinux@adis.on.ca (Matthew Schumacher)
+Date: Mon, 09 Jul 2001 09:04:26 -0800
+Subject: compact flash woes
+References: <Pine.LNX.4.10.10107090917410.3408-100000@adibox.knet.on.ca>
+Message-ID: <3B49E41A.847ED049@schu.net>
+
+Adi,
+
+I didn't know that you are the one that put together peeweelinux.  If I
+had known I would have bought the cf adapter from you because I like to
+support linux.  Anyway.....
+
+I did a fdisk /mbr using a windows 98 boot disk and that seems to work
+fine, but when I run fdisk I get error reading fixed disk.  I got this
+error before the boot problem but didn't worry about it because it
+booted fine.  I can read the disk with partition magic.  I can make a
+dos partition and format it.  I can also see the formated disk and copy
+data to and from it, but still can't boot.
+
+Any other ideas?  I am thinking about trying syslinux to make it boot.
+
+Also, what is the correct way to put linux on a compact flash anyway? 
+Syslinux, with a initrd?
+
+schu
+
+Adi Linden wrote:
+> 
+> Hi,
+> 
+> Try dos fdisk and dos 'fdisk /mbr' to restor the boot sector.
+> 
+> TTYL,
+> Adi
+> 
+> On Sun, 8 Jul 2001, Matthew Schumacher wrote:
+> 
+> > Hello All,
+> >
+> > I am trying to put together a router that runs from a compact flash
+> > card.  Anyway, I could not get the card to boot to linux no matter what
+> > I tried, however I could sys the disk in dos and boot dos.  Anyway I
+> > fdisked the compact flash card trying to make it work and now I can't
+> > get anything to work.  I noticed that there is a warning on the site
+> > about fdisk, but unfortunately I didn't read it until it was to late.  I
+> > still think that the card works because I have a fat16 FS on it now and
+> > I can see it from a dos boot disk just fine, I just can't boot from it.
+> > Is there anything I can do to fix the problem?  I wonder if a format
+> > command on a digital camera will fix my problem.
+> >
+> > thanks
+> >
+> > schu
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+> >
+> 
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Jul  9 18:48:02 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Mon, 9 Jul 2001 12:48:02 -0500 (CDT)
+Subject: compact flash woes
+In-Reply-To: <3B49E41A.847ED049@schu.net>
+Message-ID: <Pine.LNX.4.10.10107091240450.3408-100000@adibox.knet.on.ca>
+
+Hi,
+
+On a Linux box I use a USB flash reader to do all the CompactFlash card
+manipulations. This worls great whether it be a multi partition Linux
+system with ext2 partitions and lilo or a ramdisk based system using
+syslinux and a ramdisk image.
+
+I have used the CF-IDE adapter quite successfully for installing syslinux
+on a DOS formatted CF card. However, formatting a CF using the CF-IDE
+adapter using linux fdisk seems to have its problems.
+
+The trouble is very specific to using fdisk and the CF-IDE adapter. Once
+the partitions are done I have never had a problem with the CF-IDE
+adapter. I.e. running mke2fs, mkdosfs, lilo, syslinux, etc all works fine.
+
+I have not come across any CF-IDE adapters that are hotswap yet. This is a
+big disadvantage when developing. That's another reason I try to stick
+with the USB adapter (Sandisk SDDR-31 works well) for loading the CF on
+the development system.
+
+If the system is to be ramdisk based I think syslinux and an initrd are
+the way to go. 
+
+TTYL,
+Adi
+
+On Mon, 9 Jul 2001, Matthew Schumacher wrote:
+
+> Adi,
+> 
+> I didn't know that you are the one that put together peeweelinux.  If I
+> had known I would have bought the cf adapter from you because I like to
+> support linux.  Anyway.....
+> 
+> I did a fdisk /mbr using a windows 98 boot disk and that seems to work
+> fine, but when I run fdisk I get error reading fixed disk.  I got this
+> error before the boot problem but didn't worry about it because it
+> booted fine.  I can read the disk with partition magic.  I can make a
+> dos partition and format it.  I can also see the formated disk and copy
+> data to and from it, but still can't boot.
+> 
+> Any other ideas?  I am thinking about trying syslinux to make it boot.
+> 
+> Also, what is the correct way to put linux on a compact flash anyway? 
+> Syslinux, with a initrd?
+> 
+> schu
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Jul 10 05:54:38 2001
+From: peeweelinux@adis.on.ca (Bob Blick)
+Date: Mon, 09 Jul 2001 21:54:38 -0700
+Subject: compact flash woes
+Message-ID: <3.0.32.20010709215429.0079c380@saber.net>
+
+>I have used the CF-IDE adapter quite successfully for installing syslinux
+>on a DOS formatted CF card. However, formatting a CF using the CF-IDE
+>adapter using linux fdisk seems to have its problems.
+>
+>The trouble is very specific to using fdisk and the CF-IDE adapter. Once
+>the partitions are done I have never had a problem with the CF-IDE
+>adapter. I.e. running mke2fs, mkdosfs, lilo, syslinux, etc all works fine.
+
+Hi Adi,
+
+How about doing development on a laptop and using a PCMCIA-CF adapter, does
+fdisk work OK in that configuration?
+
+Cheers,
+
+Bob Blick
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Jul 10 14:47:53 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 10 Jul 2001 08:47:53 -0500 (CDT)
+Subject: compact flash woes
+In-Reply-To: <3.0.32.20010709215429.0079c380@saber.net>
+Message-ID: <Pine.LNX.4.10.10107100846470.4565-100000@adibox.knet.on.ca>
+
+Hi Bob,
+
+The PCMCIA-CF adapter seem to work just fine. I worked with one just
+briefly and never had any problems.
+
+TTYL,
+Adi
+
+On Mon, 9 Jul 2001, Bob Blick wrote:
+
+> >I have used the CF-IDE adapter quite successfully for installing syslinux
+> >on a DOS formatted CF card. However, formatting a CF using the CF-IDE
+> >adapter using linux fdisk seems to have its problems.
+> >
+> >The trouble is very specific to using fdisk and the CF-IDE adapter. Once
+> >the partitions are done I have never had a problem with the CF-IDE
+> >adapter. I.e. running mke2fs, mkdosfs, lilo, syslinux, etc all works fine.
+> 
+> Hi Adi,
+> 
+> How about doing development on a laptop and using a PCMCIA-CF adapter, does
+> fdisk work OK in that configuration?
+> 
+> Cheers,
+> 
+> Bob Blick
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+> 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Mon Jul 16 07:14:29 2001
+From: peeweelinux@adis.on.ca (Paul Russell)
+Date: Mon, 16 Jul 2001 15:14:29 +0900
+Subject: Log On problem
+Message-ID: <NFBBKEHGOLMKDOLKMPDBIECICAAA.paulr@solutionsplus.com.au>
+
+I am experimenting with PeeWee Linux but have encountered a problem.
+
+I attached a small HD to my development system.  Configured a test
+installation using pwlconf (basic kernel with limited network modules
+selected).  I loaded the configuration onto the HD (compressed RAM disk on
+ext2) and then transferred the HD to my test system.
+
+The system booted up to a login prompt.
+
+When I entered either the admin or root login the system flashed up a
+message (something to do with the file system) and then exited back to the
+login prompt.
+
+Does anyone have a suggestion as to the cause of this problem and how to get
+round it.
+
+Thanks,
+ Paul Russell
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Jul 24 09:34:48 2001
+From: peeweelinux@adis.on.ca (Oskar Olsson)
+Date: Tue, 24 Jul 2001 10:34:48 +0200
+Subject: XF86Config
+Message-ID: <9CCC8091E46ACA4CA9B4D5968EAA82B27450@probe.ojco.se>
+
+Hi,
+
+I have some trouble with my XF86Config file, can someone please help me with
+an configuration?
+This is what I got:
+
+S3 Virge video card
+Samtron 75E (standard 17" monitor)
+
+Thanks
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Jul 24 11:05:30 2001
+From: peeweelinux@adis.on.ca (Michael Kronk)
+Date: Tue, 24 Jul 2001 20:05:30 +1000
+Subject: Query abot ISO Images
+Message-ID: <001b01c11428$2c2b7f20$01010a0a@MSI2K.local>
+
+I would like to use an ISO image onto a CDR to create an ICA client for an
+IBM Laptop (390E).
+
+I am a bit concerned that the config program asks for a device to write the
+image to and the warning suggests that the existing filesystem on the
+selected device will be overwritten.  As I have no spare HD's on this
+system, can someone tell me wether this is just an old message as this
+option is still experimental and that a ISO image only will be added to the
+selected device or will it really clober the device and then produce an ISO
+image from the new filesystem
+
+
+
+
+Thanks
+
+Michael
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Jul 24 18:51:40 2001
+From: peeweelinux@adis.on.ca (Kevin P. Dankwardt)
+Date: Tue, 24 Jul 2001 10:51:40 -0700
+Subject: Talk at Embedded Linux Expo & Conference
+References: <Pine.LNX.4.10.10107100846470.4565-100000@adibox.knet.on.ca>
+Message-ID: <3B5DB5AC.5050200@kcomputing.com>
+
+Adi,
+
+I've been following pee-wee Linux for a while now. I think its valuable 
+stuff. Are you interested in talking about it at the Embedded Linux Expo 
+& Conference, in Boston, in October? Here's a link for the San Jose 
+conference from about a month ago. The Boston conference will be similar.
+
+http://www.rtcgroup.com/elinuxexpo/sanjose/
+
+thanks,
+kevin
+
+-- 
+Kevin P. Dankwardt, Ph.D.
+President, K Computing, Inc.  "Delivering Computing Knowledge Worldwide"
+(voice) 650-961-9226 
+k AT kcomputing.com   http://www.kcomputing.com
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

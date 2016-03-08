@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] problems getting rcS.d/10network to run dhcpcd
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000967.html">
+   <LINK REL="Next"  HREF="000969.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] problems getting rcS.d/10network to run dhcpcd
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] problems getting rcS.d/10network to run dhcpcd">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 19 Mar 2003 15:11:27 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000967.html">[Peeweelinux] Perl
+</A></li>
+        <LI> Next message: <A HREF="000969.html">[Peeweelinux] problems getting rcS.d/10network to run dhcpcd
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#968">[ date ]</a>
+              <a href="thread.html#968">[ thread ]</a>
+              <a href="subject.html#968">[ subject ]</a>
+              <a href="author.html#968">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I am trying to get dhcpcd to manage my interface at bootup. 
+
+The network script in rcS.d has a function like this:
+
+###start of snippet ###
+
+ifup ()
+{
+    if [ &quot;$BOOTPROTO&quot; = &quot;dhcp&quot; ]; then
+        if [ -f /sbin/pump ]; then
+            # If we have pump we prefer it to get an ip number
+            echo -n &quot;Determining IP information for $DEVICE....&quot;
+            if /sbin/pump -i $DEVICE ; then
+                echo &quot; done....&quot;
+            else
+                echo &quot; failed....&quot;
+            fi
+        elif [ -f /sbin/dhcpcd ]; then
+            # Try to use dhcpcd
+            echo -n &quot;Determining IP information for $DEVICE....&quot;
+            if /sbin/dhcpcd $DEVICE ; then
+                echo &quot; done....&quot;
+            else
+                echo &quot;failed....&quot;
+            fi
+        else
+
+###end of snippet
+
+I can't seem to find where BOOTPROTO is set or configured. I could edit this script, but why do it if I can remain vanilla? 
+
+~Ken
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000967.html">[Peeweelinux] Perl
+</A></li>
+	<LI> Next message: <A HREF="000969.html">[Peeweelinux] problems getting rcS.d/10network to run dhcpcd
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#968">[ date ]</a>
+              <a href="thread.html#968">[ thread ]</a>
+              <a href="subject.html#968">[ subject ]</a>
+              <a href="author.html#968">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

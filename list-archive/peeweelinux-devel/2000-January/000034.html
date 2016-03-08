@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Package selection in pwlconfig
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000033.html">
+   <LINK REL="Next"  HREF="000035.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Package selection in pwlconfig
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Package selection in pwlconfig">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Fri, 28 Jan 2000 13:57:06 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000033.html">Package selection in pwlconfig
+</A></li>
+        <LI> Next message: <A HREF="000035.html">Package selection in pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I'm not sure, you may not have the .list files in the package directory.
+This will cause them not to show up. 
+
+Workaround - Try picking them one at a time to create the list files.
+
+Yep, I think these were previously _base_xxx, which put them in alphabetical
+order first, and not such a big problem.
+
+Let me know how this goes...I'm taking this home to polish v0.8 tonight...
+
+Later, 
+Ralph
+
+--- Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> I am just using pwlconfig to build an install disk. When selecting base
+</I>&gt;<i> packages I have the following problem:
+</I>&gt;<i> 
+</I>&gt;<i>     Include all packages
+</I>&gt;<i>     Exclude all packages
+</I>&gt;<i>     [*] base_filesystem  ~~ ---&gt;
+</I>&gt;<i>     [*] base_libs  ~~ ---&gt;
+</I>&gt;<i> 
+</I>&gt;<i> If I select 'Include all packages' the packages won't show up as selected.
+</I>&gt;<i> Upon extraction they are extracted last. That causes several error
+</I>&gt;<i> messages.
+</I>&gt;<i> 
+</I>&gt;<i> Putting the select marks in front of 'base_filesystem' and 'base_libs'
+</I>&gt;<i> will extract them first (since they're first in alphabetical order) and
+</I>&gt;<i> process everything as intended.
+</I>&gt;<i> 
+</I>&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> 
+</I>__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000033.html">Package selection in pwlconfig
+</A></li>
+	<LI> Next message: <A HREF="000035.html">Package selection in pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

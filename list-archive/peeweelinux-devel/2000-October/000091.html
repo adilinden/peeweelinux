@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Todo
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000088.html">
+   <LINK REL="Next"  HREF="000093.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Todo
+   </H1>
+    <B>Dennis W. Tokarski
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Todo">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 11 Oct 2000 11:23:02 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000088.html">Todo
+</A></li>
+        <LI> Next message: <A HREF="000093.html">Todo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adi Linden wrote:
+&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> The kernel is certainly a thorn in my side so to speak. The idea of an
+</I>&gt;<i> embedded kernel is to have it as small as possible. Yet, every platform
+</I>&gt;<i> has different requirements and demands different kernel modules, etc.
+</I>
+That's certainly a problem, and one which grows out of the kernel's
+monolithic architecture. The best you can do is make everything that
+might be optional a module, as you suggest below.
+
+&gt;<i> 
+</I>&gt;<i> One option would be to allow one to build a custom kernel by giving an
+</I>&gt;<i> option in pwlconfig that extracts kernel sources, and drops into a kernel
+</I>&gt;<i> configuration screen that allows for building a custom kernel. Now this is
+</I>&gt;<i> the Cadillac that might not be feasable.
+</I>
+Nor even desirable, necessarily. 
+
+&gt;<i> 
+</I>&gt;<i> Another option would be to reduce the number of special purpose kernels
+</I>&gt;<i> and insead build a highly modularized kernel with virtually all options.
+</I>&gt;<i> Very similar to the stock RedHat kernel.
+</I>
+An embedded systems designer would have the same advantages that Red Hat
+has, too: by putting a selection of modules, not all of which are always
+needed, on a compressed initrd the final kernel RAM footprint might be
+a bit smaller.
+
+&gt;<i>                                          It would be up to the individual
+</I>&gt;<i> user to deselect unneeded modules to conserve space. I tend to lean
+</I>&gt;<i> towards this solution. Realizing that there are a number of people using
+</I>&gt;<i> PWL already I don't want to make drastic changes to the kernel between
+</I>&gt;<i> releases. So depending on my time availability I plan on either adding a
+</I>&gt;<i> full blown all options 2.214 kernel or skip any changes to 2.2.14 and go
+</I>&gt;<i> right to the latest 2.4 beta kernel.
+</I>
+Eeks! Anyone writing drivers, especially file system modules, could have
+some heartburn over this. The kernel guys make radical changes to the
+VFS
+layer more often than some people change socks, and of course don't 
+document them. Going from 2.2 to 2.4 is reportedly not so traumatic as
+2.0 to 2.2, but still...defer the pain if you can.
+
+&gt;<i> 
+</I>&gt;<i> Comments would be quite welcome here :)
+</I>&gt;<i> 
+</I>&gt;<i> Another feature still in the works is a dependency checking routine in
+</I>&gt;<i> pwlconfig. I had one figured out and added it to one of the pwl_target
+</I>&gt;<i> (rd_functions) but never completed it. I used to have depended libs as
+</I>&gt;<i> part of the packages but that changed when rpm came in. So now we need a
+</I>&gt;<i> routine that checks the installed system for missing or unneeded libs...
+</I>&gt;<i> 
+</I>-
+That reminds me of a feature that one of commercial embedded distros
+has.
+Embeddix, I think. They have a utility which can look at an executable
+--or maybe a set of executables--which you propose to put in your target
+system, then construct a custom library containing only the stuff you
+really need. I think that's how it works. For good reason they call it
+'lipo'. I've been trying to figure out how they do that. 'ldd' can tell
+you which libs an executable needs, but not which routines in the libs
+it links to.
+
+You guys have a nice piece of work here in pwl. I wish the time demands
+of
+my current project had let me lend a hand. Good show!
+
+  --Dennis
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000088.html">Todo
+</A></li>
+	<LI> Next message: <A HREF="000093.html">Todo
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#91">[ date ]</a>
+              <a href="thread.html#91">[ thread ]</a>
+              <a href="subject.html#91">[ subject ]</a>
+              <a href="author.html#91">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

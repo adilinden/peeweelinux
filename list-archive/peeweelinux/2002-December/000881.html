@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: Peeweelinux digest, Vol 1 #169 - 1 msg
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000880.html">
+   <LINK REL="Next"  HREF="000882.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Peeweelinux digest, Vol 1 #169 - 1 msg
+   </H1>
+    <B>Ricardo Trindade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Peeweelinux digest, Vol 1 #169 - 1 msg">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 24 Dec 2002 12:03:41 -0000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000880.html">[Peeweelinux] Re: Peeweelinux digest, Vol 1 #169 - 1 msg
+</A></li>
+        <LI> Next message: <A HREF="000882.html">[Peeweelinux] newbie wants to target USB HDD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#881">[ date ]</a>
+              <a href="thread.html#881">[ thread ]</a>
+              <a href="subject.html#881">[ subject ]</a>
+              <a href="author.html#881">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>to add your app you can use the &quot;custom files&quot; option, but that depends on
+your setup. on my case I just create the OS, and then manually copy the app
+to the card, since I have several apps, which are all diferent, and just the
+OS+java+X is the same.
+
+for X, if you have a geode, I can send you a config file, if not, generate a
+XF86Config file in your desktop and then copy it to the peewee.
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Rushi(temp)
+Sent: segunda-feira, 23 de Dezembro de 2002 17:53
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: [Peeweelinux] Re: Peeweelinux digest, Vol 1 #169 - 1 msg
+
+
+Hi all, I got it running now,
+on PQI 128MB flash card, I am using IDE to flash adopter :),
+
+Really peewee is good concept.
+
+What I have done is ,
+1) removed every partition from the disk
+2) so its just /dev/hdc device
+and I make sure every thing is unmounted from the system, as I am using
+mandrake 8 which mount every thing(even windows partition) automatically
+
+
+and just port the things to /dev/hdc
+
+and its working I can see Linux logo at boot , so fb is also on.
+
+now can any one tell me how I can run Xwindowns on it.
+
+I already have /usr/X11R6 in it and XFree86_SVGA server.
+
+I don't have /etc/X11/XFreeconfig :(
+
+as I need to use QT/X11 application with QT libraries on this system.
+
+
+
+Also I can not understand the options related to applications in the file
+system configuration in pwlconfig.
+
+my application is a binary file which is using some shared QT libraries.
+
+
+any suggestions .
+
+Thanks for every thing
+
+
+Regards'
+
+Rushi
+
+
+
+----- Original Message -----
+From: &lt;<A HREF="mailto:peeweelinux-request@adis.on.ca">peeweelinux-request@adis.on.ca</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&gt;
+Sent: Sunday, December 22, 2002 6:01 PM
+Subject: Peeweelinux digest, Vol 1 #169 - 1 msg
+
+
+&gt;<i> Send Peeweelinux mailing list submissions to
+</I>&gt;<i> <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i>
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i> <A HREF="mailto:peeweelinux-request@adis.on.ca">peeweelinux-request@adis.on.ca</A>
+</I>&gt;<i>
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i> <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;<i>
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Peeweelinux digest...&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i>
+</I>&gt;<i>    1. PQI reader was  Cannot stat /dev/hdc11, compact flash, (Marc Wiz)
+</I>&gt;<i>
+</I>&gt;<i> --__--__--
+</I>&gt;<i>
+</I>&gt;<i> Message: 1
+</I>&gt;<i> From: Marc Wiz &lt;<A HREF="mailto:marc@wiz.com">marc@wiz.com</A>&gt;
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Date: Sat, 21 Dec 2002 16:01:21 -0600 (CST)
+</I>&gt;<i> Subject: [Peeweelinux] PQI reader was  Cannot stat /dev/hdc11, compact
+</I>flash,
+&gt;<i> Reply-To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i>
+</I>&gt;<i> &gt;   Hi friends
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   I am using PQI 128MB compact flash, to install Peewee with X on it to
+</I>use
+&gt;<i> &gt; with QT/X11 application.
+</I>&gt;<i>
+</I>&gt;<i> Is there a particular incantation to use the PQI reader / writer?
+</I>&gt;<i> When I plug the device into my USB bus the kernel sees it but then
+</I>&gt;<i> complains about no media in the device despite the fact that there is.
+</I>&gt;<i>
+</I>&gt;<i> This is RH 7.2
+</I>&gt;<i>
+</I>&gt;<i> It is like the kernel is not looking at all the slots on the device for
+</I>&gt;<i> media.
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Marc
+</I>&gt;<i> --
+</I>&gt;<i> Marc Wiz
+</I>&gt;<i> <A HREF="mailto:marc@wiz.com">marc@wiz.com</A>
+</I>&gt;<i> Yes, that really is my last name.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --__--__--
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> End of Peeweelinux Digest
+</I>&gt;<i>
+</I>_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000880.html">[Peeweelinux] Re: Peeweelinux digest, Vol 1 #169 - 1 msg
+</A></li>
+	<LI> Next message: <A HREF="000882.html">[Peeweelinux] newbie wants to target USB HDD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#881">[ date ]</a>
+              <a href="thread.html#881">[ thread ]</a>
+              <a href="subject.html#881">[ subject ]</a>
+              <a href="author.html#881">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

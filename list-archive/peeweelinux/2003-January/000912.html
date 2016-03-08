@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] 16754 uart
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000911.html">
+   <LINK REL="Next"  HREF="000913.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] 16754 uart
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] 16754 uart">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 20 Jan 2003 11:51:52 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000911.html">[Peeweelinux] 16754 uart
+</A></li>
+        <LI> Next message: <A HREF="000913.html">[Peeweelinux] ssl/ssh
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#912">[ date ]</a>
+              <a href="thread.html#912">[ thread ]</a>
+              <a href="subject.html#912">[ subject ]</a>
+              <a href="author.html#912">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On the 16C554 uarts we use (4port Advantech PCM-3643) there are some dip 
+switches that caused problems. One of them was labeled &quot;98/NT Mode&quot; 
+which has to be *off*. The other problemo was getting all the dips for 
+the IRQ/base address right so as not to interfere with other serial 
+devices on the mainboard.
+
+Once I got those nailed, using setserial was my friend and everything 
+started to work, e.g.:
+
+/usr/bin/setserial -v /dev/ttyS4 uart 16550A port 0x240 irq 9
+/usr/bin/setserial -v /dev/ttyS5 uart 16550A port 0x248 irq 9
+...
+
+hth,
+-te
+
+Jim Graham wrote:
+&gt;<i> Hi
+</I>&gt;<i> 
+</I>&gt;<i>    I am trying to interface to a quad uart card which uses TI's
+</I>&gt;<i> TL16C754B 64 byte fifo uart.  I have verified that the card is set up
+</I>&gt;<i> correctly (after the open I manipulate the device registers for now) but
+</I>&gt;<i> still not able to communicate.   I created the device file using
+</I>&gt;<i> setserial with uart 16750.
+</I>&gt;<i> 
+</I>&gt;<i>    I can open the device but a write never seems to send data to the
+</I>&gt;<i> UART.  I enabled the debugging prints.  When I close the device I get
+</I>&gt;<i> transmission of data from the UART but it looks like random data.
+</I>&gt;<i> 
+</I>&gt;<i> Any suggestions?  Is this a path to an end?
+</I>&gt;<i> 
+</I>&gt;<i> thanks
+</I>&gt;<i> jim
+</I>
+-- 
+Troy Engel, Systems Engineer
+Not suitable for children.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000911.html">[Peeweelinux] 16754 uart
+</A></li>
+	<LI> Next message: <A HREF="000913.html">[Peeweelinux] ssl/ssh
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#912">[ date ]</a>
+              <a href="thread.html#912">[ thread ]</a>
+              <a href="subject.html#912">[ subject ]</a>
+              <a href="author.html#912">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

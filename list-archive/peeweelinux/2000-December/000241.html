@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Read only filesystem size issues.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000240.html">
+   <LINK REL="Next"  HREF="000244.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Read only filesystem size issues.
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Read only filesystem size issues.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 12 Dec 2000 19:29:43 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000240.html">Read only filesystem size issues.
+</A></li>
+        <LI> Next message: <A HREF="000244.html">Read only filesystem size issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#241">[ date ]</a>
+              <a href="thread.html#241">[ thread ]</a>
+              <a href="subject.html#241">[ subject ]</a>
+              <a href="author.html#241">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Dean,
+
+I am just looking at bugfixes for PeeWeeLinux.
+
+&gt;<i> &gt; &gt; 1) When calculating the size of the / filesystem, the /home and /root
+</I>&gt;<i> &gt; &gt; directories are included. These directories are then separated out and
+</I>&gt;<i> &gt; &gt; placed in the second partition. The size of the /home and /root
+</I>&gt;<i> &gt; &gt; directories are not subtracted from the / filesystem. This overestimates
+</I>&gt;<i> &gt; &gt; the size of the / filesystem by the size of the /home and /root
+</I>&gt;<i> &gt; &gt; directories.
+</I>
+I looked at the pwl_target_load script. The filesystem size calculated is
+compared to the total device space available. Since both /root and /home
+are placed on the target device both need to be considered when
+calculating if the extracted system will fit onto the target device.
+
+I did however miss to deduct the sizes of /etc, /var and /dev from the
+root partition. Those three directories are placed in a ramdisk and the
+size of the compressed ramdisk is already taken into consideration when
+calculating the root filesystem sizes.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000240.html">Read only filesystem size issues.
+</A></li>
+	<LI> Next message: <A HREF="000244.html">Read only filesystem size issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#241">[ date ]</a>
+              <a href="thread.html#241">[ thread ]</a>
+              <a href="subject.html#241">[ subject ]</a>
+              <a href="author.html#241">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

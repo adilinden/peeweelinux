@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] system initialization
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000757.html">
+   <LINK REL="Next"  HREF="000761.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] system initialization
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] system initialization">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 23 Aug 2002 15:20:49 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000757.html">[Peeweelinux] Transparent cursor
+</A></li>
+        <LI> Next message: <A HREF="000761.html">[Peeweelinux] packages?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#760">[ date ]</a>
+              <a href="thread.html#760">[ thread ]</a>
+              <a href="subject.html#760">[ subject ]</a>
+              <a href="author.html#760">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>you can use modules.rc to load the module automatically on startup. since
+</I>&gt;<i>it's probably only one module don't bother with modprobe.
+</I>&gt;<i>
+</I>
+I scanned my systems for a file &quot;modules.rc&quot; (And just now, the
+Web.)  There isn't any such file.   I think you meant &quot;rc.modules&quot;.
+And this is what I did, I made an rc.modules, and it works.   The 
+modprobe thing was to make sure I knew how to do that, in case I 
+ever build a system that has a lot of modules or has a changing 
+configuration.  And I have other Linux systems to mess with, too.
+
+&gt;<i>when the module is read automatically you no longer will have to run
+</I>&gt;<i>ifconfig
+</I>
+Yes, I saw this in the network script, and indeed, if the associated
+config file is present and the card is live it will bring it up.
+
+Thanks for the response.
+
+Barry
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000757.html">[Peeweelinux] Transparent cursor
+</A></li>
+	<LI> Next message: <A HREF="000761.html">[Peeweelinux] packages?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#760">[ date ]</a>
+              <a href="thread.html#760">[ thread ]</a>
+              <a href="subject.html#760">[ subject ]</a>
+              <a href="author.html#760">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

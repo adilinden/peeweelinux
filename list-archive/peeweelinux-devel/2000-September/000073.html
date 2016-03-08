@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Multiple Targets for PeeWee Linux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000072.html">
+   <LINK REL="Next"  HREF="000074.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Multiple Targets for PeeWee Linux
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Multiple Targets for PeeWee Linux">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Fri, 8 Sep 2000 08:32:56 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000072.html">Multiple Targets for PeeWee Linux
+</A></li>
+        <LI> Next message: <A HREF="000074.html">Multiple Targets for PeeWee Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adi,
+Dang..Just lost about an hour trying to reply to this when Netscape just died -
+kill the mouse, killed X windows everything. Netscape BITES!! where's IE when
+you need it (or maybe some other browser!!!)....
+
+Ok, I'll see what I can remember...
+
+--- Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Just some notes to what I see here...
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> There is no need to configure the actual device being used. The script
+</I>&gt;<i> will automatically determine the size of the target device and calculate
+</I>&gt;<i> the proper sizes.
+</I>&gt;<i> 
+</I>Good idea - too many variations was bothering me...
+
+&gt;<i> 
+</I>&gt;<i> Partition sizes are configured by specifying free space! I found it really
+</I>&gt;<i> annoying having to resize partitions as they grew or ram for a ramdisk
+</I>&gt;<i> shrunk. Since we need to calculate before doing anything anyways, I
+</I>&gt;<i> figured I calculate the needed space and make the additional free space
+</I>&gt;<i> configurable.
+</I>&gt;<i> 
+</I>Another good idea!
+
+&gt;<i> Bootlocation should not include the partition, just the device. The script
+</I>&gt;<i> picks the proper partition.
+</I>&gt;<i> 
+</I>Hmmmm....need to look into that - when do I use it now - mkBootDevice....
+
+&gt;<i> 
+</I>&gt;<i> Here is the list of variables that are sensibly selected to be
+</I>&gt;<i> configurable.
+</I>&gt;<i> 
+</I>&gt;<i> These first variables are customizable but shouldn't require change. They
+</I>&gt;<i> define system defaults. I added the above numbers to indicate which
+</I>&gt;<i> setting apply where.
+</I>&gt;<i>  
+</I>&gt;<i>     #####
+</I>&gt;<i>     #
+</I>&gt;<i>     # Only change these if you really know what you are doing!!!
+</I>&gt;<i>     #
+</I>&gt;<i>     #####
+</I>&gt;<i> 
+</I>&gt;<i>     # define the initrd size
+</I>&gt;<i>     rd_initrd_size=                {3,4,5,8,9}
+</I>&gt;<i> 
+</I>&gt;<i>     # define the safety margin for the boot partition
+</I>&gt;<i>     rd_size_boot_margin=           {3,4,5}
+</I>&gt;<i> 
+</I>&gt;<i>     # define the safety margin for fit in flash calculations
+</I>&gt;<i>     rd_size_margin=                {1,2,3,4,5,6,7,8,9,10}
+</I>&gt;<i> 
+</I>these in kb ?? or percent ??
+
+
+&gt;<i> The following settings apply to file locations, target devices, etc. They
+</I>&gt;<i> apply to literally all methods.
+</I>&gt;<i> 
+</I>&gt;<i>     #####
+</I>&gt;<i>     #
+</I>&gt;<i>     # Configurable paramters
+</I>&gt;<i>     #
+</I>&gt;<i>     #####
+</I>&gt;<i> 
+</I>&gt;<i>     # selected device layout
+</I>&gt;<i>     rd_scheme=                      {put a name to the numbers above}
+</I>&gt;<i> 
+</I>&gt;<i>     # define if we maintain fstab and rc.init
+</I>&gt;<i>     rd_initscripts=                 {needed if you have a custom rc.init
+</I>&gt;<i>                                      or fstab, prvents rd_function from
+</I>&gt;<i>                                      playing with it}
+</I>&gt;<i> 
+</I>&gt;<i>     # define default verbosity
+</I>&gt;<i>     rd_action_verbosity=             {how much we dump to the screen}
+</I>&gt;<i> 
+</I>&gt;<i>     # temporary files directory
+</I>&gt;<i>     rd_tmp=
+</I>&gt;<i> 
+</I>&gt;<i>     # the temporary mount point
+</I>&gt;<i>     rd_mount=
+</I>&gt;<i> 
+</I>&gt;<i>     # the kernel name
+</I>&gt;<i>     rd_kernel=                       {the kernel image (bzImage) w/o path}
+</I>&gt;<i> 
+</I>&gt;<i>     # the initrd name
+</I>&gt;<i>     rd_initrd=                       {the initrd name w/o path}
+</I>&gt;<i> 
+</I>&gt;<i>     # the ramdisk name
+</I>&gt;<i>     rd_ramdisk=                      {the ramdisk name w/o path}
+</I>&gt;<i> 
+</I>&gt;<i> The following variables are used by the raw floppy only.
+</I>&gt;<i> 
+</I>&gt;<i>     ####
+</I>&gt;<i>     # target specific options - floppy
+</I>&gt;<i> 
+</I>&gt;<i>     # the target device
+</I>&gt;<i>     rd_floppy=                        {just in case you're not using fd0}
+</I>&gt;<i> 
+</I>&gt;<i>     # the free space on the unompressed ramdisk
+</I>&gt;<i>     rd_ramdisk_fd_free=
+</I>&gt;<i> 
+</I>&gt;<i> The following applies to mostly all flash based systems {1,2,3,4,5}
+</I>&gt;<i> 
+</I>&gt;<i>     ####
+</I>&gt;<i>     # target device specific - hd or flash
+</I>&gt;<i> 
+</I>&gt;<i>     # the target device on the development system
+</I>&gt;<i>     rd_target=                         {device (/dev/sda) w/o partition #}
+</I>&gt;<i> 
+</I>&gt;<i>     # the final boot device
+</I>&gt;<i>     rd_boot=                           {device (/dev/hda) w/o partition #}
+</I>&gt;<i> 
+</I>&gt;<i> The following is needed for the systems with a single ramdisk or the
+</I>&gt;<i> uncompressed ramdisk.
+</I>&gt;<i> 
+</I>&gt;<i>     ####
+</I>&gt;<i>     # single ramdisk parameters
+</I>&gt;<i> 
+</I>&gt;<i>     # the free space on the uncompressed ramdisk in kB
+</I>&gt;<i>     rd_ramdisk_free=                    {1,2,3,4}
+</I>&gt;<i> 
+</I>&gt;<i> These variables are required by the read-only root system.
+</I>&gt;<i> 
+</I>&gt;<i>     ####
+</I>&gt;<i>     # multiple ramdisk parameters
+</I>&gt;<i>     # the free space on the /dev - /var partition in kB
+</I>&gt;<i>     # this partition also contains the /var tree!!!
+</I>&gt;<i>     rd_dev_free=                        {5}
+</I>&gt;<i> 
+</I>&gt;<i>     # the free space on the /etc partition in kb
+</I>&gt;<i>     rd_etc_free=                        {5}
+</I>&gt;<i> 
+</I>&gt;<i>     # the free space on the /home partition
+</I>&gt;<i>     # this partition also contains /root
+</I>&gt;<i>     rd_home_free=                       {5}
+</I>&gt;<i>  
+</I>&gt;<i> The next are bootloader options that are valid for any system using
+</I>&gt;<i> syslinux or lilo. Note, that I haven't fixed syslinux.cfg for all
+</I>&gt;<i> bootoptions yet. But that will happen sometime soon.
+</I>&gt;<i> 
+</I>&gt;<i>     ####
+</I>&gt;<i>     # bootloader options
+</I>&gt;<i> 
+</I>&gt;<i>     # prompt timeout
+</I>&gt;<i>     rd_bp_time=                         {1,2,3,4,5,7,8,9,10}
+</I>&gt;<i> 
+</I>&gt;<i>     # kernel label
+</I>&gt;<i>     rd_bp_label=                        {1,2,3,4,5,7,8,9,10}
+</I>&gt;<i> 
+</I>&gt;<i>     # vga options
+</I>&gt;<i>     rd_bp_vga=                          {1,2,3,4,5,7,8,9,10}
+</I>&gt;<i> 
+</I>&gt;<i> This about covers it.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; The next step is to activate the Erase/Foramt command to handle all the
+</I>&gt;<i> various
+</I>&gt;<i> &gt; partitions; and the Load command must build the ramdisk images etc..
+</I>&gt;<i> 
+</I>&gt;<i> The loading script does everything! Fdisk, partition and format the
+</I>&gt;<i> device. Install the bootloader, restore the DOS MBR for syslinux (if you
+</I>&gt;<i> switch from lilo to syslinux). Create intrd, ramdisk compressed or
+</I>&gt;<i> uncompressed, removes the kernel from the filesystem where it's not
+</I>&gt;<i> needed...
+</I>&gt;<i> 
+</I>&gt;<i> So the sequence to use rd_functions without rd_dialog should be as
+</I>&gt;<i> follows:
+</I>&gt;<i> 
+</I>&gt;<i>   1.  source rd_functions
+</I>&gt;<i>   2.  set rd_base to the devel root dir (i.e./root/PeeWee/Embedded_Build)
+</I>&gt;<i>   3.  call func_rd_env
+</I>&gt;<i>   4.  call func_rd_defaults &lt;project name&gt;
+</I>&gt;<i>   5.  load custom setting (redefininging some variables defined in prev step)
+</I>&gt;<i>   
+</I>&gt;<i>       Note: I wrote function that save whatever rd_dialog defines in a
+</I>&gt;<i>             config file. But that's irrelevant as long as pwlconfig has
+</I>&gt;<i>             all needed variables defined at this point. The build-in way
+</I>&gt;<i>             pwlconfig works should be fine.
+</I>&gt;<i>   6.  call function that installs filesystem
+</I>&gt;<i>          {1}  func_rd_build_comp_rd_fat
+</I>&gt;<i>          {2}  func_rd_build_comp_rd_ext2
+</I>&gt;<i>          {3}  func_rd_build_uncomp_rd_fat
+</I>&gt;<i>          {4}  func_rd_build_uncomp_rd_ext2
+</I>&gt;<i>          {5}  func_rd_build_ro_root_rd  
+</I>&gt;<i>          {6}  func_rd_build_fd_raw   
+</I>&gt;<i> 
+</I>&gt;<i>          Proposed: 
+</I>&gt;<i>          {7}  func_rd_build_fd_fat   
+</I>&gt;<i>          {8}  func_rd_build_rd_iso  
+</I>&gt;<i>          {9}  func_rd_build_ro_iso  
+</I>&gt;<i>          {10} func_rd_build_rw_root  
+</I>&gt;<i> 
+</I>&gt;<i> A last note, when the function in step 6 is called all required variables
+</I>&gt;<i> need to be configured properly. There are no exhausting checks when it
+</I>&gt;<i> comes to determining if the variables actually exist or have sane
+</I>&gt;<i> locations. They will simply be used...
+</I>&gt;<i> 
+</I>&gt;<i> Hope this makes sense. Hey, I think I did ok documenting the script. I
+</I>&gt;<i> look at it and I can still figure out what it does, even after a couple of
+</I>&gt;<i> weeks :)  Now if someone previously unexposed to the script can have the
+</I>&gt;<i> same satisfying experience I am happy :-)
+</I>&gt;<i> 
+</I>Yep...I went back and read it closer after this e-mail makes more sense now.
+
+So, what I'd propose is to do the following:
+
+1. write a &quot;main&quot; function that
+-- reads the project.defaults file and converts those parameters into rd_xxx
+variables (or rename some of your variables to match the defaults)
+-- activates the choosen scheme as outlined in 1-6 above
+
+2. Call pwl_ramdisk or mkbootDevice from pwlconfig 
+
+3. Add parameters to project.defaults file as required.
+
+Hmmm...not to hard...I'll try to send my latest pwlconfig and pwl_target and
+project.defaults file this afternoon. 
+
+You might think about the &quot;main&quot; function and the variable names (note read
+project.defaults file to see the names of the variables used in pwl_xxx files).
+
+Ok...didn't loose to much (except some wity coments :) and about an hour of
+time! ahhh...
+
+Later,
+Ralph
+
+&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+<A HREF="http://mail.yahoo.com/">http://mail.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000072.html">Multiple Targets for PeeWee Linux
+</A></li>
+	<LI> Next message: <A HREF="000074.html">Multiple Targets for PeeWee Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#73">[ date ]</a>
+              <a href="thread.html#73">[ thread ]</a>
+              <a href="subject.html#73">[ subject ]</a>
+              <a href="author.html#73">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

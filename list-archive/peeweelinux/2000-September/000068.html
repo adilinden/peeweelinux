@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Making a floppy system with PeeWeeLinux
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000067.html">
+   <LINK REL="Next"  HREF="000061.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Making a floppy system with PeeWeeLinux
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Making a floppy system with PeeWeeLinux">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 5 Sep 2000 19:27:50 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000067.html">Making a floppy system with PeeWeeLinux
+</A></li>
+        <LI> Next message: <A HREF="000061.html">making floppy systems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#68">[ date ]</a>
+              <a href="thread.html#68">[ thread ]</a>
+              <a href="subject.html#68">[ subject ]</a>
+              <a href="author.html#68">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> Had to go into the filesystem's dev directory and delete a whole mess of
+</I>&gt;<i> unecessary device file that were eating up inodes to get it to fit on the
+</I>&gt;<i> 3M ram disk, BTW...
+</I>
+When you create the filesystem make sure you do:
+
+mke2fs -m0 -b 1024 -i 1024 /dev/ram
+                   ^^^^^^^
+
+This makes sure you're building enough inodes for all those devices. I
+will be splitting the dev package into a basic one and one that adds the
+devices required for X and stick it into the X directory.
+
+&gt;<i> Here's mine - something's wrong cuz mine looks WAY too big...
+</I>&gt;<i> 
+</I>&gt;<i> [<A HREF="mailto:root@blowtorch">root@blowtorch</A> /]# ls -l \
+</I>&gt;<i> /home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage 
+</I>&gt;<i> -rw-r--r--    1 root     root       567580 Sep  2 07:22
+</I>
+A 567k kernel looks alright
+
+&gt;<i> [<A HREF="mailto:root@blowtorch">root@blowtorch</A> /]# dd \
+</I>&gt;<i> if=/home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage \
+</I>&gt;<i> of=/dev/fd0
+</I>
+When you do the above command line make sure you do a bs=1k otherwise dd
+defaults to 512 byte blocksize. This results in your 
+
+&gt;<i> 1108+1 records in
+</I>&gt;<i> 1108+1 records out
+</I>
+being way too big! So do:
+
+dd \
+if=/home/kml/peeweelinux/Embedded_Build/projects/booty/mnt/boot/bzImage \
+of=/dev/fd0 \
+bs=1k
+
+and you'll get the right numbers.
+
+&gt;<i> What am I doing wrong?  And how did you get your kernel smaller?  I'm
+</I>&gt;<i> using the latest binary distro (.51).  Should I be configuring my own
+</I>&gt;<i> kernel and rebuilding from the src distro?
+</I>
+If you require network support for something other than what's there or
+other kernel feature you need to compile your own. Instead of doing the
+rpm thing I'd suggest installing the source rpm and doing a manual compile
+of the kernel source that get put into the src/SOURCES directory.
+
+&gt;<i> Needless to say, the kernel and the compressed ramdisk image (1107131
+</I>&gt;<i> bytes) don't fit on the floppy...
+</I>
+Yup, the above is still too big. You need to trim your filesystem a bit
+more or use busybox instead of traditional binaries. Doing the scripts for
+0.51 I build a small floppy test system. You really need to agressively go
+into all the packages and unselect anything you don't need.
+
+Another hint, you need to make a symlink, have /bin/sh point to /bin/ash
+and edit /etc/passwd to use /bin/sh as login shell or you won't be able to
+log into the system once it's booted. I am assuming you're installing ash
+and not bash for a shell. This has been fixed in 0.51
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000067.html">Making a floppy system with PeeWeeLinux
+</A></li>
+	<LI> Next message: <A HREF="000061.html">making floppy systems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#68">[ date ]</a>
+              <a href="thread.html#68">[ thread ]</a>
+              <a href="subject.html#68">[ subject ]</a>
+              <a href="author.html#68">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

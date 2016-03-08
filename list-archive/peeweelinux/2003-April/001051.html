@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re[2]: Mouse PS2 problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001050.html">
+   <LINK REL="Next"  HREF="001055.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re[2]: Mouse PS2 problem
+   </H1>
+    <B>Hanoi Santos Hung
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re[2]: Mouse PS2 problem">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 23 Apr 2003 15:00:00 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001050.html">[Peeweelinux] Mouse PS2 problem
+</A></li>
+        <LI> Next message: <A HREF="001055.html">[Peeweelinux] Re[2]: Mouse PS2 problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1051">[ date ]</a>
+              <a href="thread.html#1051">[ thread ]</a>
+              <a href="subject.html#1051">[ subject ]</a>
+              <a href="author.html#1051">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i> Then I add gpm to my linux image , and when I run gpm I get the
+</I>&gt;<i> following message :
+</I>&gt;<i> 
+</I>&gt;<i> ---------
+</I>&gt;<i> gpm : oops() invoked from gpm.c(984)
+</I>&gt;<i> /dev/mouse : no such device
+</I>&gt;<i> ----------
+</I>&gt;<i>
+</I>&gt;<i> dev/mouse exists and it is a symlink to /dev/psaux.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>
+</I>
+&gt;<i>That error message suggests the kernel doesn't contain a
+</I>&gt;<i>ps/2 mouse driver, either built in or as a module. Can you
+</I>&gt;<i>check your kernel build configuration file and verify
+</I>&gt;<i>you have the right mouse features enables?
+</I>
+In my custom kernel I have enabled :
+Character Devices -&gt; [*] Mouse Support (not serial mouse)
+Character Devices -&gt; Mice -&gt; &lt;*&gt; Microsoft busmouse support
+Character Devices -&gt; Mice -&gt; [*] PS/2 mouse (aka &quot;auxiliary device&quot;) support
+
+Is this enough ? Or I have to add another module or change a
+configuration file ?
+
+
+Best Regards
+Hanoi Santos Hung
+email : <A HREF="mailto:hanoi@icid.edu.cu">hanoi@icid.edu.cu</A>
+Linux User 296804
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001050.html">[Peeweelinux] Mouse PS2 problem
+</A></li>
+	<LI> Next message: <A HREF="001055.html">[Peeweelinux] Re[2]: Mouse PS2 problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1051">[ date ]</a>
+              <a href="thread.html#1051">[ thread ]</a>
+              <a href="subject.html#1051">[ subject ]</a>
+              <a href="author.html#1051">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

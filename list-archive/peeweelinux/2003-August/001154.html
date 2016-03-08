@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] CF Read Write Partition
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001153.html">
+   <LINK REL="Next"  HREF="001155.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] CF Read Write Partition
+   </H1>
+    <B>Joe A Cairns
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] CF Read Write Partition">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 4 Aug 2003 12:36:02 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001153.html">[Peeweelinux] CF Read Write Partition
+</A></li>
+        <LI> Next message: <A HREF="001155.html">[Peeweelinux] CF Read Write Partition
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1154">[ date ]</a>
+              <a href="thread.html#1154">[ thread ]</a>
+              <a href="subject.html#1154">[ subject ]</a>
+              <a href="author.html#1154">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adilson,
+
+First thing thanks for you help.
+
+I am using a 128 mb CF card.
+
+What I did was modify the pwl_target_load scripts. Here is what mine
+looks like:
+
+func_rd_build_comp_rd_ext2 () {
+
+    # sanity check
+    func_rd_sanity || return 1
+
+    # determine filesystem size (w/o kernel)
+    rd_size_fs=`du -s -k --exclude=$rd_kernel $rd_projectroot | cut -f
+1`
+    # add free space
+    rd_size_fs=$((rd_size_fs + rd_ramdisk_free))
+
+    # create loopback and format
+    func_rd_make_loopback $rd_size_fs || return 1
+
+    # mount loopback
+    func_rd_action m &quot;Mounting loopback device...&quot;
+    mount -t ext2 $rd_loop_dev $rd_mount
+    func_rd_action test || return 1
+
+    # remove the lost+found directory
+    rm -rf $rd_mount/lost+found
+
+    # copy files using tar since tar makes it easy to exclude things
+    func_rd_action m &quot;Copying files to loopback device...&quot;
+    tar cp \
+        --exclude=$rd_kernel \
+        --directory=$rd_projectroot ./ | tar xp --directory=$rd_mount
+    if [ &quot;$?&quot; = &quot;0&quot; ]; then
+        func_rd_action s
+    else
+        func_rd_action w
+    fi
+
+    # add fstab and rc.init
+
+    # make some noise
+    func_rd_action m &quot;Creating fstab and rc.init...&quot;
+
+    # see if we're allowed to
+    if [ &quot;$rd_initscripts&quot; = &quot;y&quot; ]; then
+
+        # lets do it!
+        func_rd_fstab_comp_rd_ext2 &gt; $rd_mount/etc/fstab
+        func_rd_init_rd &gt; $rd_mount/rc.init
+
+        # make sure rc.init is executable
+        chmod 755 $rd_mount/rc.init
+
+        # send the ok
+        func_rd_action s
+    else
+
+        # duh we're not configured print a warning
+        func_rd_action w
+    fi
+
+    # fix inittab
+    func_rd_fix_inittab etc
+
+    # run library loader and include XFree86 lib directory
+    func_rd_action m &quot;Building ld.so.cache...&quot;
+    ldconfig -v -r $rd_mount /usr/X11R6/lib &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+
+    # unmount loopback
+    func_rd_action m &quot;Unmounting loopback device...&quot;
+    umount $rd_loop_dev
+    func_rd_action test
+
+    # compress the ramdisk
+    func_rd_action m &quot;Compressing $rd_loop_dev into $rd_ramdisk...&quot;
+    { dd if=$rd_loop_dev bs=1k count=$rd_size_fs | gzip -v9 &gt;
+$rd_tmp/$rd_ramdisk; } &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+
+    # free the loopback device
+    func_rd_break_loopback
+
+    # calculate size
+    func_rd_action m &quot;Determining space on target device...&quot;
+    # get flash size
+    rd_size_avail=`sfdisk -s $rd_target`
+    # get ramdisk size
+    rd_size_ramdisk=`du -s -k $rd_tmp/$rd_ramdisk | cut -f 1`
+    # get kernel size
+    rd_size_kernel=`du -s -k $rd_projectroot/boot/$rd_kernel | cut -f 1`
+
+    # Do we have enough room?
+    if [ $((rd_size_kernel + rd_size_ramdisk + rd_size_margin)) -ge
+$rd_size_avail ]; then
+        func_rd_action f
+        echo &quot;  +Available Space: $rd_size_avail&quot;
+        echo &quot;  +Required Space:  $((rd_size_kernel + rd_size_ramdisk +
+rd_size_margin))&quot;
+        echo &quot;  +Available Space: $rd_size_avail&quot; &gt;&gt;$rd_log
+        echo &quot;  +Required Space:  $((rd_size_kernel + rd_size_ramdisk +
+rd_size_margin))&quot; &gt;&gt;$rd_log
+        return 1
+    else
+        func_rd_action s
+    fi
+
+    # fdisk target device
+    func_rd_action m &quot;Partition traget device $rd_target...&quot;
+#    sfdisk $rd_target &gt;&gt;$rd_log 2&gt;&amp;1 &lt;&lt;-EOF
+#,,83,*
+    sfdisk -uM $rd_target &gt;&gt;$rd_log 2&gt;&amp;1 &lt;&lt;-EOF
+,100,83,*
+,,83
+;
+EOF
+    func_rd_action test
+
+    # create the ext2 filesystem
+    func_rd_action m &quot;Creating ext2 filesystem on ${rd_target}1...&quot;
+    mke2fs -b 4096 -m0 ${rd_target}1 &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+    func_rd_action m &quot;Creating ext2 filesystem on ${rd_target}2...&quot;
+    mke2fs -b 1024 -m0 ${rd_target}2 &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+#    func_rd_action m &quot;Creating ext2 filesystem...&quot;
+#    mke2fs -i 8192 -b 4096 -m0 ${rd_target}1 &gt;&gt;$rd_log 2&gt;&amp;1
+#    func_rd_action test
+    sleep 1
+
+    # mount target
+    func_rd_action m &quot;Mount the target device ${rd_target}1...&quot;
+    mount -t ext2 ${rd_target}1 $rd_mount
+    func_rd_action test
+
+    # remove the lost+found directory
+    rm -rf $rd_mount/lost+found
+
+    # copy files
+    func_rd_action m &quot;Copying ramdisk, kernel and boot.b...&quot;
+    cp -f $rd_tmp/$rd_ramdisk $rd_mount/$rd_ramdisk
+    cp -f $rd_projectroot/boot/$rd_kernel $rd_mount/$rd_kernel
+    cp -f $rd_bootb $rd_mount/boot.b
+    func_rd_action test
+
+    # create lilo.conf
+    func_rd_action m &quot;Creating lilo.conf in a temporary location...&quot;
+    # lets amend the ramdisk size and make sure the kernel
+    # will boot the ramdisk without complaining
+    rd_bp_initrd=$rd_mount/$rd_ramdisk
+    rd_bp_root=/dev/ram0
+    rd_bp_rd=$((rd_size_fs + rd_bp_rd_margin))
+    func_rd_boot_lilo &gt; $rd_tmp/lilo.conf
+    func_rd_action test
+
+    # run lilo
+    func_rd_action m &quot;Installing lilo bootloader...&quot;
+    lilo -v -C $rd_tmp/lilo.conf &gt;&gt;$rd_log 2&gt;&amp;1
+    func_rd_action test
+
+    # optionally we create the config.tgz file from config.lst
+
+    # unmount target
+    func_rd_action m &quot;Unmounting target device ${rd_target}1...&quot;
+    umount ${rd_target}1
+    func_rd_action test
+
+    # mount target
+    func_rd_action m &quot;Mount the target device ${rd_target}2...&quot;
+    mount -t ext2 ${rd_target}2 $rd_mount
+    func_rd_action test
+
+    # remove the lost+found directory
+    rm -rf $rd_mount/lost+found
+
+    # copy files
+    func_rd_action m &quot;Copying Application $rd_projectroot/MTAtm to
+$rd_mount...&quot;
+    cp -r $rd_projectroot/../MTAtm  $rd_mount
+#    tar cp \
+#        --directory=$rd_projectroot/MTAtm ./ | tar xp
+--directory=$rd_mount
+    func_rd_action test
+
+    # unmount target
+    func_rd_action m &quot;Unmounting target device ${rd_target}2...&quot;
+    umount ${rd_target}2
+    func_rd_action test
+
+    # clean up
+}
+
+
+Thanks,
+
+Joe
+
+&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A> 
+</I>&gt;<i> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>] On Behalf Of Adilson Oliveira
+</I>&gt;<i> Sent: Monday, August 04, 2003 12:16 PM
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: [Peeweelinux] CF Read Write Partition
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Joe A Cairns wrote:
+</I>&gt;<i> &gt; Adilson,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; When I try to mount it states that /dev/hda2 is not a valid block 
+</I>&gt;<i> &gt; device.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Did you create the partition manualy with fdisk or cfdisk I believe. 
+</I>&gt;<i> After that, did you formated it using mke2fs?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A> 
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweeli">http://mail.adis.on.ca/lists/listinfo/peeweeli</A>&gt; nux
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001153.html">[Peeweelinux] CF Read Write Partition
+</A></li>
+	<LI> Next message: <A HREF="001155.html">[Peeweelinux] CF Read Write Partition
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1154">[ date ]</a>
+              <a href="thread.html#1154">[ thread ]</a>
+              <a href="subject.html#1154">[ subject ]</a>
+              <a href="author.html#1154">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

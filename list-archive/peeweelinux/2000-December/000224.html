@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Read only filesystem size issues.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000223.html">
+   <LINK REL="Next"  HREF="000228.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Read only filesystem size issues.
+   </H1>
+    <B>Dean Brown
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Read only filesystem size issues.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Sat, 09 Dec 2000 12:02:35 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000223.html">compactFlash info
+</A></li>
+        <LI> Next message: <A HREF="000228.html">Read only filesystem size issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#224">[ date ]</a>
+              <a href="thread.html#224">[ thread ]</a>
+              <a href="subject.html#224">[ subject ]</a>
+              <a href="author.html#224">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adi,
+I've been hacking at the pwl_target scripts with the intent to target
+them for a specific application. In the process of doing so, I noticed a
+couple of potential problems with the partition sizing calculations for
+the read only fs with multiple ramdisks.
+
+1) When calculating the size of the / filesystem, the /home and /root
+directories are included. These directories are then separated out and
+placed in the second partition. The size of the /home and /root
+directories are not subtracted from the / filesystem. This overestimates
+the size of the / filesystem by the size of the /home and /root
+directories.
+
+2) Partition sizes are calculated by using du -s -k command. This bases
+file size on the cluster size of the development systems filesystem. In
+my case this cluster size is 4K, while the cluster size of the flash
+device is set to 1K. This also tends to overestimate the required size
+of the flash device.
+
+The result of these issues is that if your build is approaching the size
+of your flash device, chances are very good that the pwl_target_load
+functions will fail to load the device. In my case, an extracted 13
+MByte filesystem fails to load on a 16 MByte compact flash because there
+supposedly wasn't enough room.
+
+This is no longer an issue for me as I've eliminated the separate /home
+partition on the target device, but your other users may benefit from
+this information.
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000223.html">compactFlash info
+</A></li>
+	<LI> Next message: <A HREF="000228.html">Read only filesystem size issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#224">[ date ]</a>
+              <a href="thread.html#224">[ thread ]</a>
+              <a href="subject.html#224">[ subject ]</a>
+              <a href="author.html#224">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> PeeWee todo...was lilo failed
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000285.html">
+   <LINK REL="Next"  HREF="000289.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>PeeWee todo...was lilo failed
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="PeeWee todo...was lilo failed">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 11 Jan 2001 11:18:23 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000285.html">PeeWee todo...was lilo failed
+</A></li>
+        <LI> Next message: <A HREF="000289.html">Error Log viewing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#288">[ date ]</a>
+              <a href="thread.html#288">[ thread ]</a>
+              <a href="subject.html#288">[ subject ]</a>
+              <a href="author.html#288">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+&gt;<i> Looks like a good list...just keeps going and going and ...
+</I>
+Hehehehe... :)
+
+&gt;<i> How about:
+</I>&gt;<i>    - manual/scripts for building your own packages
+</I>&gt;<i>      (we need to constantly upgrade our files - you
+</I>&gt;<i>      shouldn't be the only one having fun making packages!:)
+</I>
+Actually, making packages is easy if you get into using rpm. That's really
+all ther is to it. I don't think there's much that could be done with
+pwlconfig.
+
+&gt;<i> rd.log - I'll take a look at this, I think I can popup a window 
+</I>&gt;<i> that displays the log file...didn't notice that you 
+</I>&gt;<i> had already created a log file, cool...
+</I>
+There is nothing send to /dev/null in the pwl_target* scripts. Whatever
+isn't send to the success/unsuccess screen is captured by rd.log.
+
+&gt;<i> To do the dual boot, I think you can globally replace the
+</I>&gt;<i> hardcoded partition number grep &quot;}1&quot; in pwl_target*
+</I>&gt;<i> with a variable rd_part or whatever (just add one for the
+</I>&gt;<i> multi-partition stuff ?) 
+</I>&gt;<i> 
+</I>&gt;<i> Now add another default variable for the base partition 
+</I>&gt;<i> number (default to 1 and you will have the same code
+</I>&gt;<i> you have now)...change to 6 and you can load/mount to /dev/xxx6.
+</I>
+It's not that easy because the pwl_target_load functions include embedded
+commands to fdisk your device. You don't want that on a dualboot :-O
+
+So it'll be another target option with some specific parameters (Target
+Partition) and it's own pwl_target_load function.
+
+&gt;<i> Now, you have to build the lilo thing for dual boot. Is there
+</I>&gt;<i> any way you can seperate lilo into seperate functions ? (I still
+</I>&gt;<i> like the menu option to lilo, but that may just be me:)
+</I>
+Lilo menu? 
+
+&gt;<i> I never got back to the kernel thing (our priorities shift with
+</I>&gt;<i> the weather :-o)...glad to hear it worked  for you, maybe I'll 
+</I>&gt;<i> try that with the next release.
+</I>
+I am pretty busy building the network. Lots happening all at once so there
+isn't much time left doing PeeWeeLinux development. It's also accounting
+time :-O  I am caught up with most, though.
+
+One thing the kernel build still needs is a means to integrate a build
+kernel into a project. Perhaps buy creating a custom package or a package
+that gets added to the Embedded_Build/package/Custom_Kernel (new)
+directory???
+
+If the build kernel is added to the custom files structure it might mean
+plenty of manual labour to remove files if a new kernel is compiled.
+Creating a kernel tar file to be placed into the packages structure might
+be the answer.
+
+Another thought that came up was the ability to move all the build
+directories outside of the Embedded_Build directory. So one can update to
+a new PeeWeeLinux release without loosing all the pre-existing content. It
+would also allow for PeeWeeLinux to run from CD without copying the whole
+structure to HD. This means changing most or all paths in pwl_functions to
+absolute paths... 
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000285.html">PeeWee todo...was lilo failed
+</A></li>
+	<LI> Next message: <A HREF="000289.html">Error Log viewing
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#288">[ date ]</a>
+              <a href="thread.html#288">[ thread ]</a>
+              <a href="subject.html#288">[ subject ]</a>
+              <a href="author.html#288">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

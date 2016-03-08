@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> pwlconfig and LILO error
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000104.html">
+   <LINK REL="Next"  HREF="000106.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>pwlconfig and LILO error
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="pwlconfig and LILO error">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 5 Oct 2000 11:50:27 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000104.html">pwlconfig and LILO error
+</A></li>
+        <LI> Next message: <A HREF="000106.html">pwlconfig and LILO error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#105">[ date ]</a>
+              <a href="thread.html#105">[ thread ]</a>
+              <a href="subject.html#105">[ subject ]</a>
+              <a href="author.html#105">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dr. Miro,
+Looks like the path thing is getting us here.  lilo doesn't show up
+on a standard path (which lilo says &quot;no lilo in...&quot;)
+
+The fix is to properly define the PLILO variable.
+
+Use the standard version (RH path):
+PLILO=&quot;/sbin/lilo&quot;
+
+-- or the copy provided in the bin directory --
+PLILO=&quot;$baseprj/bin/lilo&quot;
+
+-- but not ---
+PLILO=&quot;lilo&quot;  # oops doesn't work :(
+
+This was setup originally to use the patched lilo from M-Systems
+which I am personally no longer using.  To finish the job, a default
+assigning the variable PLILO to a user specified location should be
+added.
+
+Sorry for the confusion. Let me know if anything else doesn't quite
+work as expected.
+Thanks,
+Ralph
+
+
+--- &quot;Dr Jaime V. Miro&quot; &lt;<A HREF="mailto:j.v.miro@h2eye.com">j.v.miro@h2eye.com</A>&gt; wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> I've been playing aroung with PWL051 lately to get embedded linux into a CF.
+</I>&gt;<i> I got the grips of it now, and I can make a linux system. If I make a ram
+</I>&gt;<i> image of the fs, and flash it into the CF (an IDE on hdc1) with rd_dialog, it
+</I>&gt;<i> works fine. However, if I want to install the fully fledged file system (not
+</I>&gt;<i> ramdisk) into the flash with the help of the &quot;Insatall LInux LOader (LILO) to
+</I>&gt;<i> flash disk&quot; option in pwlconfig, it comes back with the error: &quot;Lilo not
+</I>&gt;<i> found : lilo&quot;. And consequently the flash
+</I>&gt;<i> does not boot since the images are not there. I know lilo, as a binary is
+</I>&gt;<i> there, along with the rest of the packages (in RPM and tar).
+</I>&gt;<i> 
+</I>&gt;<i> Any hints?
+</I>&gt;<i> 
+</I>&gt;<i> Ta.
+</I>&gt;<i> 
+</I>&gt;<i> Jaime
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Photos - 35mm Quality Prints, Now Get 15 Free!
+<A HREF="http://photos.yahoo.com/">http://photos.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000104.html">pwlconfig and LILO error
+</A></li>
+	<LI> Next message: <A HREF="000106.html">pwlconfig and LILO error
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#105">[ date ]</a>
+              <a href="thread.html#105">[ thread ]</a>
+              <a href="subject.html#105">[ subject ]</a>
+              <a href="author.html#105">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

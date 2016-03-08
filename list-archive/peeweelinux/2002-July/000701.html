@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Filesystem Issues
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000694.html">
+   <LINK REL="Next"  HREF="000703.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Filesystem Issues
+   </H1>
+    <B>Ricardo Trindade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Filesystem Issues">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 24 Jul 2002 01:03:00 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000694.html">[Peeweelinux] Filesystem Issues
+</A></li>
+        <LI> Next message: <A HREF="000703.html">[Peeweelinux] Filesystem Issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#701">[ date ]</a>
+              <a href="thread.html#701">[ thread ]</a>
+              <a href="subject.html#701">[ subject ]</a>
+              <a href="author.html#701">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>1) I have that setup. on the partition that peewee leaves empty I make a fs,
+include a custom fstab (don't forget to configure the option to modify
+system files), it gets mounted on boot. of course if you load the image to
+the CF again that partition is lost. I don't find that's a problem, once you
+have your distribution stable you probably won't mind that anymore.
+
+1a) the only solution (that I know of) that's good there is a journalling
+FS. One of this days I'm going to try ext3 on peewee, but I think you'll
+need to upgrade the kernel. I don't think the solution you mentioned
+(writing config on powerdown) is &quot;production quality&quot;, because it depends on
+your hardware, and linux is not a realtime OS... (I can be wrong of course).
+
+3) the custom feature of peewee is very nice, I think it's easy to use. play
+with it a little, I think you'll get the touch. check the directories under
+your project to understand what it does to files. When I want to change IP,
+I mount the CF on the /mnt/flash mountpoint supplied, change the IP or
+upgrade the app, unmount and reboot.
+
+regarding new versions, Adi is working on a new and improved peewee, so I
+think this version is the last of it's kind (correct me please Adi).
+
+It's a pitty, because a lot of people were getting used to it, but Adi says
+it was getting harder to maintain due to redhat dependencies.
+
+good luck
+bye
+
+
+
+-----Original Message-----
+From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+[mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Stefan Willmert
+Sent: terça-feira, 23 de Julho de 2002 20:45
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: [Peeweelinux] Filesystem Issues
+
+
+Hello everyone,
+Due to the lack of current documentation, I have a few questions. I'm a new
+PeeWeeLinux user, and so far, it has helped me tremendously. I have an
+embedded
+device using a compactflash as the harddrive. I have easily created a system
+on
+flash using a USB flash reader to setup the boot system, which successfully
+boots my
+device.
+
+Now, for my questions:
+1. I would like a read-only root filesystem on one partition, and a
+read-write
+filesystem on a second partition. The second partition will store config
+files, log
+files between power cycles of the embedded device. Since PeeWeeLinux seems
+to re-
+partition the device each time I load the system, what is the best way to
+maintain
+two partitions?
+
+1a. Does anyone have any suggestions on the best way to use a read-write
+partition?
+For example, the ramdisk is great because I can power down my embedded
+device
+without worrying about corrupting the root filesystem. I do need to maintain
+config
+files and log files which change during the operation of my device, so
+obviously, I
+need a method to store this information between power cycles. Hence, a
+read-write
+partition. It would be nice, however, to not have to worry about corrupting
+the read-
+write partition if a user just hits the power button. Any suggestions or
+best
+practices from anyone here?? Perhaps there is a way to write all config
+files as
+power loss is detected? I seem to recall reading something about some
+devices which
+maintain power just long enough to store config files. Does anyone have any
+knowledge in this area?
+
+2. Is there any documentation on how to use the custom features of
+PeeWeeLinux? I
+have custom applications which need to be included, plus I will obviously be
+modifying system scripts, etc. Ultimately, I want an image that I can easily
+load
+onto a new flash disk without any further configuration once my initial
+system is
+built.
+
+3. In the same regard, certain config files need to be updated during
+operation of
+my device. (ex. network ip address, etc). I would expect a user to have the
+ability
+to modify the ip address while the device is running. I would also like to
+maintain
+these changes after a power-cycle. With a ramdisk, this is not possible. Any
+suggestions? If i can get a read-write partition to work, I could probably
+modify
+the load scripts to mount the partition and read the network config files
+from
+there. Any thoughts?
+
+These are just initial questions as I dig into PeeWeeLinux. Any suggestions
+you have
+would be greatly appreciated. I will dig into the setup scripts and perhaps
+make
+some modifications to suit my purpose. However, I don't want to change too
+much as
+it will create problems as new versions of PeeWeeLinux are created.
+
+Thanks in advance for all your help.
+
+-stefan willmert
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000694.html">[Peeweelinux] Filesystem Issues
+</A></li>
+	<LI> Next message: <A HREF="000703.html">[Peeweelinux] Filesystem Issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#701">[ date ]</a>
+              <a href="thread.html#701">[ thread ]</a>
+              <a href="subject.html#701">[ subject ]</a>
+              <a href="author.html#701">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

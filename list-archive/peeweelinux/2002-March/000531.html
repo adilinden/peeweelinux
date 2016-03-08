@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Driver modules not loading...
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000530.html">
+   <LINK REL="Next"  HREF="000532.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Driver modules not loading...
+   </H1>
+    <B>Sudhanshu Tewari
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Driver modules not loading...">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 22 Mar 2002 09:18:48 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000530.html">[Peeweelinux] Driver modules not loading...
+</A></li>
+        <LI> Next message: <A HREF="000532.html">[Peeweelinux] app scenario with peeweelinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#531">[ date ]</a>
+              <a href="thread.html#531">[ thread ]</a>
+              <a href="subject.html#531">[ subject ]</a>
+              <a href="author.html#531">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This message is in MIME format. Since your mail reader does not understand
+this format, some or all of this message may not be legible.
+
+------_=_NextPart_001_01C1D1BD.3F8EC5B0
+Content-Type: text/plain;
+	charset=&quot;iso-8859-1&quot;
+
+Keep these insmod entries in /etc/rc.modules
+
+sudhanshu
+
+
+-----Original Message-----
+From: K West [mailto:<A HREF="mailto:k_west71@hotmail.com">k_west71@hotmail.com</A>]
+Sent: Friday, March 22, 2002 8:16 AM
+To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+Subject: [Peeweelinux] Driver modules not loading...
+
+
+
+I'm a PeeWee newbie.  Using the 0.61.1 version of PeeWeeLinux, I can produce
+
+a bootable CF card.
+
+The problem I'm having is with driver modules not loading.  For instance, I 
+have the eepro100 module included in the kernel but, to bring up networking,
+
+I have to manually load the module on my target machine and run ifconfig as 
+follows:
+
+insmod //lib/modules/2.2.17/net/eepro100.o
+ifconfig eth0 &lt;ip-addr&gt;
+
+Similarly, if I want to mount a DOS floppy, I have to manually enter:
+
+insmod //lib/modules/2.2.17/fs/fat.o
+insmod //lib/modules/2.2.17/fs/msdos.o
+
+What am I missing?  These modules are supposed to already be in the kernel.
+
+Why am i having to load them manually?
+
+Thanks in advance for any assistance.
+
+
+
+_________________________________________________________________
+Get your FREE download of MSN Explorer at <A HREF="http://explorer.msn.com/intl.asp.">http://explorer.msn.com/intl.asp.</A>
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+------_=_NextPart_001_01C1D1BD.3F8EC5B0
+Content-Type: text/html;
+	charset=&quot;iso-8859-1&quot;
+Content-Transfer-Encoding: quoted-printable
+
+&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;META HTTP-EQUIV=3D&quot;Content-Type&quot; CONTENT=3D&quot;text/html; =
+charset=3Diso-8859-1&quot;&gt;
+&lt;META NAME=3D&quot;Generator&quot; CONTENT=3D&quot;MS Exchange Server version =
+5.5.2653.12&quot;&gt;
+&lt;TITLE&gt;RE: [Peeweelinux] Driver modules not loading...&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;Keep these insmod entries in /etc/rc.modules&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;sudhanshu&lt;/FONT&gt;
+&lt;/P&gt;
+&lt;BR&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;-----Original Message-----&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;From: K West [&lt;A =
+HREF=3D&quot;mailto:<A HREF="mailto:k_west71@hotmail.com">k_west71@hotmail.com</A>&quot;&gt;mailto:<A HREF="mailto:k_west71@hotmail.com">k_west71@hotmail.com</A>&lt;/A&gt;]&lt;/F=
+ONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Sent: Friday, March 22, 2002 8:16 AM&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Subject: [Peeweelinux] Driver modules not =
+loading...&lt;/FONT&gt;
+&lt;/P&gt;
+&lt;BR&gt;
+&lt;BR&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;I'm a PeeWee newbie.&amp;nbsp; Using the 0.61.1 version =
+of PeeWeeLinux, I can produce &lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;a bootable CF card.&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;The problem I'm having is with driver modules not =
+loading.&amp;nbsp; For instance, I &lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;have the eepro100 module included in the kernel but, =
+to bring up networking, &lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;I have to manually load the module on my target =
+machine and run ifconfig as &lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;follows:&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;insmod //lib/modules/2.2.17/net/eepro100.o&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;ifconfig eth0 &amp;lt;ip-addr&amp;gt;&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;Similarly, if I want to mount a DOS floppy, I have to =
+manually enter:&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;insmod //lib/modules/2.2.17/fs/fat.o&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;insmod //lib/modules/2.2.17/fs/msdos.o&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;What am I missing?&amp;nbsp; These modules are supposed =
+to already be in the kernel.&amp;nbsp; &lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Why am i having to load them manually?&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;Thanks in advance for any assistance.&lt;/FONT&gt;
+&lt;/P&gt;
+&lt;BR&gt;
+&lt;BR&gt;
+
+&lt;P&gt;&lt;FONT =
+SIZE=3D2&gt;_______________________________________________________________=
+__&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Get your FREE download of MSN Explorer at &lt;A =
+HREF=3D&quot;<A HREF="http://explorer.msn.com/intl.asp"">http://explorer.msn.com/intl.asp&quot;</A> =
+TARGET=3D&quot;_blank&quot;&gt;<A HREF="http://explorer.msn.com/intl.asp</A">http://explorer.msn.com/intl.asp&lt;/A</A>&gt;.&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT =
+SIZE=3D2&gt;_______________________________________________&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Peeweelinux mailing list&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&lt;/FONT&gt;
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&lt;A =
+HREF=3D&quot;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux"">http://mail.adis.on.ca/lists/listinfo/peeweelinux&quot;</A> =
+TARGET=3D&quot;_blank&quot;&gt;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux</A">http://mail.adis.on.ca/lists/listinfo/peeweelinux&lt;/A</A>&gt;&lt;=
+/FONT&gt;
+&lt;/P&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+------_=_NextPart_001_01C1D1BD.3F8EC5B0--
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000530.html">[Peeweelinux] Driver modules not loading...
+</A></li>
+	<LI> Next message: <A HREF="000532.html">[Peeweelinux] app scenario with peeweelinux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#531">[ date ]</a>
+              <a href="thread.html#531">[ thread ]</a>
+              <a href="subject.html#531">[ subject ]</a>
+              <a href="author.html#531">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

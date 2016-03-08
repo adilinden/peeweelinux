@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Newbie question
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000092.html">
+   <LINK REL="Next"  HREF="000094.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Newbie question
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Newbie question">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 14 Sep 2000 12:54:50 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000092.html">Newbie question
+</A></li>
+        <LI> Next message: <A HREF="000094.html">booting into a ram disk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#93">[ date ]</a>
+              <a href="thread.html#93">[ thread ]</a>
+              <a href="subject.html#93">[ subject ]</a>
+              <a href="author.html#93">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+When you initially run pwlconfig no packages are selected. We hope that at
+somepoint there'll be some predefined projects included that can be used
+as starting point for your own development. Those predefined projects
+would consist of a basic bootable system with some added functionality
+like X oriented, router oriented, etc... But those are future plans...
+
+For now you need to do all that yourself.
+
+To give you a quick idea of packages required to boot:
+
+filesystem
+dev
+initscripts
+kernel of your choice
+
+either:
+-------
+util-linux (it contains login)
+mingetty (a small tty only getty)
+sysvinit (contains init among things)
+ash -or- ash-static -or- bash
+glibc
+
+or (still untested):
+--------------------
+busybox
+tiny-login
+
+This should get you to a login prompt. Beyond that there isn't much
+functionality unless you add more stuff.
+
+I did the list above of the top of my head and I hope I am not missing
+something.
+
+&gt;<i> boot-up drive), edited lilo.conf, and got a new entry. Rebooted, kernel
+</I>&gt;<i> loaded okay, but it then freezes after mounting the root fs read-only
+</I>&gt;<i> and enter INIT, displaying &quot;Starting system loggers ....&quot;. Am I doing
+</I>&gt;<i> somthing wrong ... again? (very likely this time, if you ask me ... ;-))
+</I>
+Since service start it looks like /sbin/init is there and working. I
+suspect you're missing mingetty or login...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000092.html">Newbie question
+</A></li>
+	<LI> Next message: <A HREF="000094.html">booting into a ram disk
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#93">[ date ]</a>
+              <a href="thread.html#93">[ thread ]</a>
+              <a href="subject.html#93">[ subject ]</a>
+              <a href="author.html#93">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

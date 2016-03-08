@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> PeeWeeLinux 0.51
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="000071.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>PeeWeeLinux 0.51
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="PeeWeeLinux 0.51">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Mon, 4 Sep 2000 22:30:26 -0500 (CDT)</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="000071.html">Multiple Targets for PeeWee Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I just finished uploading PeeWeeLinux 0.51 to sourceforge and metalab at
+the following URL's:
+
+<A HREF="http://sourceforge.net/project/filelist.php?group_id=818">http://sourceforge.net/project/filelist.php?group_id=818</A>
+<A HREF="ftp://metalab.unc.edu/pub/linux/distributions/peewee/">ftp://metalab.unc.edu/pub/linux/distributions/peewee/</A>
+
+Here's a quick overview of the changes:
+
+  v0.51 -- September 4, 2000
+  --------------------------
+   o Bugfixes in:
+     - filesystem
+     - mgetty+sendfax
+     - ncurses
+     - sysklogd
+     - fileutils
+     - crond
+   o Simplified rocketmodem initscript
+   o Changed initscripts to support rd_dialog and rd_functions
+   o Added telinit symlink to sysvinit
+   o Added sh symlink to ash
+   o Default login shell in passwd is sh now
+   o Added rd_dialog and rd_functions to build target devices
+
+The rd_dialog script has been added. It allows for easy loading of a
+extracted filesystem onto a target drive attached to the development
+system. The following schemes are supported:
+
+  Compressed Ramdisk from a FAT partition
+    - Target dirve is partitioned into a single FAT16 partition
+    - syslinux bootloader is installed
+    - Compressed ramdisk and kernel are loaded onto the device
+
+  Compressed Ramdisk from a ext2 partition
+    - Target dirve is partitioned into a single ext2 partition
+    - Compressed ramdisk and kernel are loaded onto the device
+    - Lilo is installed onto the target device
+
+  Uncompressed Partition is Loaded into Memory as Ramdisk
+    - Target drive is partitioned into 2 partitions
+      - a FAT16 or ext2 boot partition
+      - a ext2 root partition
+    - a initrd is build which dd's the root partition into memory
+    - the ramdisk is mounted as root
+    - the ext2 root partition from the target drive can be mounted
+      and changes can be made which take effect after a reboot
+
+  Read-Only Root Partition
+    - target drive is partition into multiple partitions
+    - the root partition is mounted r/o at all times
+    - ramdisks are loaded for /dev, /var, /etc and /home
+
+  Raw floppy disk
+    - the kernel is dd'd onto the floppy disk
+    - a ramdisk is dd'd onto the floppy disk
+
+To use the rd_dialog script configure a project using pwlconfig. Extract
+the filesystem using pwlconfig. Now quit pwlconfig and run the
+./misc/rd_dialog script. Select the type of target to create, answer the
+configuration question (the defaults should be fine) and let it go...
+
+Hopefully rd_dialog will be integrated into pwlconfig soon.
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="000071.html">Multiple Targets for PeeWee Linux
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#70">[ date ]</a>
+              <a href="thread.html#70">[ thread ]</a>
+              <a href="subject.html#70">[ subject ]</a>
+              <a href="author.html#70">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

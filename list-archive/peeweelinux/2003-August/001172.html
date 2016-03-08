@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] PeeweeLinux + Xwindows booting from Compact Flash
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001171.html">
+   <LINK REL="Next"  HREF="001174.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] PeeweeLinux + Xwindows booting from Compact Flash
+   </H1>
+    <B>Ashley Rolleston
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] PeeweeLinux + Xwindows booting from Compact Flash">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>19 Aug 2003 10:08:09 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001171.html">[Peeweelinux] PeeweeLinux + Xwindows booting from Compact
+ Flash
+</A></li>
+        <LI> Next message: <A HREF="001174.html">[Peeweelinux] Up to date Peewee?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1172">[ date ]</a>
+              <a href="thread.html#1172">[ thread ]</a>
+              <a href="subject.html#1172">[ subject ]</a>
+              <a href="author.html#1172">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ken,
+
+Thanks very much for your information, it has been a great help! Enough
+of a help infact for me to decide to switch development from building my
+own LFS system ( <A HREF="http://www.linuxfromscratch.org/">http://www.linuxfromscratch.org/</A> ) to using
+peeweeLinux. I am meeting with our client this morning to talk about
+possible changes to the design specification (IE not using mozilla/flash
+and using a custom built GUI).
+
+I would love to have a copy of your bootable peeweeLinux X Windows
+project, it would be very useful. I am about to leave for this meeting,
+but will get back to you later on today privately.
+
+For the lists information, the specification of the hardware that I will
+be developing for is here...
+
+<A HREF="http://www.dspdesign.com/products/product_detail?product_id=99">http://www.dspdesign.com/products/product_detail?product_id=99</A>
+
+Thanks again Ken, and I will keep the list posted on my progress.
+
+Ashley Rolleston
+aka Onyx^
+<A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>
+
+On Mon, 2003-08-18 at 20:39, Ken Emmons, Jr. wrote:
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> I've been able to boot to X in under 60 seconds and run a GUI application with Peewee. 
+</I>&gt;<i> 
+</I>&gt;<i> I recommend doing the following:
+</I>&gt;<i> 
+</I>&gt;<i> - Develop an application and user interface code using the fltk C++ libraries. Get it working on your development linux machine. Once you like how it runs you can compile it as static, which means it will run on peewee wihtout having to install the libraries on your peewee machine (which can be a pain). The reason I suggest FLTK ist hat it builds really small static executeables. 
+</I>&gt;<i> - Build a peeweeLinux compact flash card image that boots to X windows. (I have such a thing already I can send to you...)
+</I>&gt;<i> - So now you have peewee working and an application working (You can develop these in parallel to help with your deadline if you can get someone to help you out). All you should have to do is to copy your statically built FLTK executeable to peewee and it should work well. 
+</I><A HREF="http://www.dspdesign.com/products/product_detail?product_id=99">http://www.dspdesign.com/products/product_detail?product_id=99</A>
+&gt;<i> I have a project which should boot automatically to X windows and fire up an application automatically, so if you can get your GUI application running on a development system, you should be all set. Let me know if you wnat the Peewee X windows boot project to get started and I'll email it to you. 
+</I>&gt;<i> 
+</I>&gt;<i> - Depending on what you have installed on peewee, it will boot at different speeds. For a fairly large system, such as with X installed and normal unix utilities, it is probably quickest to boot with a Read only root filesystem with multiple ramdisk in the peewee options. Give it a try and see how it works for you. 
+</I>&gt;<i> 
+</I>&gt;<i> If you really need to use Flash for some reason (I don't recommend it) I am not sure what you will need to do. Mozilla will probably cripple a 486 computer. It'd probably take 60 seconds to run mozilla even after bootup. FLTK stands for &quot;Fast and Light Toolkit&quot; so it should be OK on 486. Your flash card will probably only need to be 16-32MB max.
+</I>&gt;<i> 
+</I>&gt;<i> ~Ken
+</I>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001171.html">[Peeweelinux] PeeweeLinux + Xwindows booting from Compact
+ Flash
+</A></li>
+	<LI> Next message: <A HREF="001174.html">[Peeweelinux] Up to date Peewee?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1172">[ date ]</a>
+              <a href="thread.html#1172">[ thread ]</a>
+              <a href="subject.html#1172">[ subject ]</a>
+              <a href="author.html#1172">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> peewee on floppy
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000219.html">
+   <LINK REL="Next"  HREF="000221.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>peewee on floppy
+   </H1>
+    <B>andu
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="peewee on floppy">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri,  8 Dec 2000 13:58:42 -0500 (EST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000219.html">kernel versions in PeeWeeLinux
+</A></li>
+        <LI> Next message: <A HREF="000221.html">peewee on floppy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>
+</I>&gt;<i>Hi,
+</I>&gt;<i>
+</I>&gt;&gt;<i> Couldn't get it to work :-(. It starts but right after &quot;SYSLINUX...&quot; I get &quot;boot failed&quot;.
+</I>&gt;&gt;<i> I'm pretty sure it's a geometry problem but that's something I have no idea how to fix.
+</I>&gt;&gt;<i> Maybe a more &quot;educated&quot; than me list member is willing to take a look at this
+</I>problem
+&gt;&gt;<i> and post a solution.
+</I>&gt;<i>
+</I>&gt;<i>Hmmm... the one I created booted fine. I found I had to run 'fdformat
+</I>&gt;<i>/dev/fd0u1722' several times before a verify didn't report any errors.
+</I>&gt;<i>
+</I>&gt;<i>I'll play some more with it. Perhaps including a fdformat step in the
+</I>&gt;<i>pwl_target_load script would fix things?
+</I>
+Actually the problem was with syslinux. I did syslinux -s /dev/fd0u1722 and set the kernel
+to LINUX and it worked so it's somewhere in there.
+&gt;<i>
+</I>&gt;<i>TTYL,
+</I>&gt;<i>Adi
+</I>&gt;<i>
+</I>&gt;<i>---------------------------------------------------
+</I>&gt;<i>See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i>See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i>---------------------------------------------------
+</I>&gt;<i>.
+</I>
+
+Regards, Andu 
+_______________________
+<A HREF="mailto:undo@cloud9.net">undo@cloud9.net</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000219.html">kernel versions in PeeWeeLinux
+</A></li>
+	<LI> Next message: <A HREF="000221.html">peewee on floppy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#220">[ date ]</a>
+              <a href="thread.html#220">[ thread ]</a>
+              <a href="subject.html#220">[ subject ]</a>
+              <a href="author.html#220">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

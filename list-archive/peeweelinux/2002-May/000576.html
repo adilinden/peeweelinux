@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] newbie questions
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000578.html">
+   <LINK REL="Next"  HREF="000579.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] newbie questions
+   </H1>
+    <B>Isao Yamashita
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] newbie questions">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 30 May 2002 14:04:30 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000578.html">[Peeweelinux] newbie questions
+</A></li>
+        <LI> Next message: <A HREF="000579.html">[Peeweelinux] bug in libstdc++ tarball
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#576">[ date ]</a>
+              <a href="thread.html#576">[ thread ]</a>
+              <a href="subject.html#576">[ subject ]</a>
+              <a href="author.html#576">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>3) java vm -- anyone gone through the pain and found a good one?
+(we're looking at Waba, I think)
+
+There are 2 versions of Waba for Linux.
+
+One is based on GTK, and the other one is based on PicoGUI
+(picogui.sourceforge.net).
+PicoGUI version is the one actively updated, like every 2 months or so.
+
+Me? I'm one of the developers (VM hacker ?) for Waba...
+
+I hope this helps.
+
+Sincerely,
+
+Isao F. Yamashita
+
+&gt;<i> -----Original Message-----
+</I>&gt;<i> From:	Troy Engel [SMTP:<A HREF="mailto:tengel@fluid.com">tengel@fluid.com</A>]
+</I>&gt;<i> Sent:	Thursday, May 30, 2002 2:02 PM
+</I>&gt;<i> To:	peeweelinux
+</I>&gt;<i> Subject:	[Peeweelinux] newbie questions
+</I>&gt;<i> 
+</I>&gt;<i> Hiya folks, I have a few minor questions re: PWL if someone has a few 
+</I>&gt;<i> minutes.  We're building the prototype hardware right now, and I've got 
+</I>&gt;<i> a custom kernel (need &gt;4 serial ports, shared IRQ) built and the PWL 
+</I>&gt;<i> filesystem onto my CF. yay!
+</I>&gt;<i> 
+</I>&gt;<i> I'm new to embedded/flash stuff, so sorry if this is basic.
+</I>&gt;<i> 
+</I>&gt;<i> 1) /dev/sda1 contains the boot files, sda2 contains the OS. there's a 
+</I>&gt;<i> sda3 partition on the rest of the CF card (128meg card), which I want to 
+</I>&gt;<i> utilize as my own personal scratch space (this device reads from serial 
+</I>&gt;<i> ports and stores logfiles for later upload).  Can i just make ext2 on 
+</I>&gt;<i> /dev/sda3, and mount it in sda3/etc/fstab as hda3?  is it that simple?
+</I>&gt;<i> 
+</I>&gt;<i> sda2/etc/fstab looks like:
+</I>&gt;<i> 
+</I>&gt;<i> /dev/ram0       /               ext2    defaults
+</I>&gt;<i> /dev/hda2       /mnt/flash      ext2    ro,noauto,defaults
+</I>&gt;<i> none            /proc           proc    defaults
+</I>&gt;<i> 
+</I>&gt;<i> 2) anyone have some quick primers on setting up the dhcpd/pump and ppp 
+</I>&gt;<i> with this distro?  I'm sure I could noodle around and figure out what to 
+</I>&gt;<i> put where, but it'd help if someone else had an example. ;)
+</I>&gt;<i> 
+</I>&gt;<i> 3) java vm -- anyone gone through the pain and found a good one?
+</I>&gt;<i> (we're looking at Waba, I think)
+</I>&gt;<i> 
+</I>&gt;<i> Any other wonderful words of advice would be great, so far I'm cruising 
+</I>&gt;<i> along with only a few hurdles.  I'm just beginning to get the hang of 
+</I>&gt;<i> how things work in the embedded space....
+</I>&gt;<i> 
+</I>&gt;<i> oh! with CF media, can I just use dd to dump the entire card to a file, 
+</I>&gt;<i> so I can duplicate it onto other cards? (ala a normal harddrive, block
+</I>&gt;<i> device, etc)
+</I>&gt;<i> 
+</I>&gt;<i> thanks!
+</I>&gt;<i> -te
+</I>&gt;<i> 
+</I>&gt;<i> --
+</I>&gt;<i> Troy Engel, Systems Engineer
+</I>&gt;<i> Hockey. Kinda like Figure Skating in a War Zone.
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000578.html">[Peeweelinux] newbie questions
+</A></li>
+	<LI> Next message: <A HREF="000579.html">[Peeweelinux] bug in libstdc++ tarball
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#576">[ date ]</a>
+              <a href="thread.html#576">[ thread ]</a>
+              <a href="subject.html#576">[ subject ]</a>
+              <a href="author.html#576">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

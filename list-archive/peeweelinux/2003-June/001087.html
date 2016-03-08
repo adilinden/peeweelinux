@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] loading sound modules
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="001088.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] loading sound modules
+   </H1>
+    <B>Correy Edmed
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] loading sound modules">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 11 Jun 2003 14:19:07 +1000</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="001088.html">[Peeweelinux] loading sound modules
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1087">[ date ]</a>
+              <a href="thread.html#1087">[ thread ]</a>
+              <a href="subject.html#1087">[ subject ]</a>
+              <a href="author.html#1087">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi There
+
+I have a soundblaster card with an ess1869 driver. I can configure it 
+using sndconfig and it works but upon reboot the drivers can not be 
+loaded up and I need to run sndconfig again to get the sound card to work.
+
+By typing &quot;modprobe sound&quot; I get
+/lib/modules/2.2.17/misc/sb.o: init_module: Device or resource busy
+/lib/modules/2.2.17/misc/sb.o: insmod /lib/modules/2.2.17/misc/sb.o failed
+/lib/modules/2.2.17/misc/sb.o: insmod sound failed
+
+If I type &quot;lsmod&quot; before I run sndconfig I get this
+Module        Size        Used        by
+nls_cp437    3872        1             (autoclean)
+msdos          5468        1             (autoclean)   
+fat                30688      1             (autoclean) [msdos]
+
+&quot;tail /var/log/messages&quot;
+kernel: Soundblaster audio driver Copyright (C) by Hannu Savolainen 
+1993-1996
+kernel: sb: dsp reset failed
+
+The file that should be loading up the sound drivers is
+****************************************
+/etc/conf.modules
+alias sound sb
+pre-install sound /sbin/insmod sound dmabuf=1
+alias midi opl3
+options opl3 io=0x388
+options sb io=0x220 irq=5 dma=1 mpu_io=0x330
+*****************************************
+
+I then try and run sndconfig and during it tells me
+1. PnP sound card was found Model ESS ES1869 Plug and Play AudioDrive
+2./etc/isapnp.conf exists and creates a backup then creates a new one
+3./etc/conf.modules esists and creates a backup then creates a new one.
+4.It then plays a file which I hear.
+5.It then plays a midi file which I hear.
+
+I then re-type &quot;lsmod&quot; and now these modules are loaded and now the 
+soundcard is working perfectly
+Module              Size      Used     by
+opl3                   11432    0          (unused)
+sb                       33876    0          (unused)
+uart401              6192      0          [sb]
+sound                 57496    0          [opl3 sb uart401]
+soundlow           416        0          [sound]
+soundcore          2596      6          [sb sound]
+nls_cp437          3872      1          (autoclean)
+msdos                5468      1          (autoclean)
+fat                      30688    1          (autoclean) [msdos]
+
+I now view the following proc files and find these lines are now added
+/proc/ioports
+0220=022f    :    soundblaster
+0388-038b    :    Yamaha OPL3
+/proc/dma
+1:    SoundBlaster8
+/proc/interrupts
+5:        12        XT-PIC    soundblaster
+
+*******************************************************
+/proc/sound (File wasn't there before)
+Load type: Driver loaded as a module
+Kernel: Linux PeeWee 2.2.17 #1 Fri May 9 04:12:13 EDT 2003 i586
+Config options: 0
+
+Installed drivers:
+
+Card config:
+
+Audio devices:
+0: ESS ES1869 AudioDrive (rev 11) (3.01)
+
+Synth devices:
+0: Yamaha OPL3
+
+Midi devices:
+0: ESS ES1688
+
+Timers:
+0: System clock
+
+Mixers:
+0: Sound Blaster
+********************************************************
+
+I can then rmmod all the sound modules so that it is the same as before 
+sndconfig and I am then able to insmod soundcore sound soundlow uart401 
+and sb.o and everything works again I no longer get the &quot;init_module: 
+Device or resource busy&quot; error when I try and &quot;insmod sb&quot;
+
+However when I reboot I can load these modules - soundcore, sound, 
+soundlow, uart401, opl3.
+But when I type this - insmod sb io=0x220 irq=5 dma=1 mpu_io=0x330 - I 
+get this error message
+Using /lib/modules/2.2.17/misc/sb.o
+/lib/modules/2.2.17/misc/sb.o: init_module: Device or resource busy.
+
+QUESTION: How do I free up dsp or init_module so that I can load my sb.o 
+module?
+
+I am really stuck here and I only have 1 week before my project is due 
+so any help is so valuable to me at this time. If it means anything I 
+will put you as part of my Acknowledgements in my thesis.
+
+Kind regards Correy
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="001088.html">[Peeweelinux] loading sound modules
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1087">[ date ]</a>
+              <a href="thread.html#1087">[ thread ]</a>
+              <a href="subject.html#1087">[ subject ]</a>
+              <a href="author.html#1087">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

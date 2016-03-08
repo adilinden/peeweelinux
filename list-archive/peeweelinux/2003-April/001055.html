@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re[2]: Mouse PS2 problem
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001051.html">
+   <LINK REL="Next"  HREF="001053.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re[2]: Mouse PS2 problem
+   </H1>
+    <B>Dennis W. Tokarski
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re[2]: Mouse PS2 problem">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 24 Apr 2003 20:19:08 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001051.html">[Peeweelinux] Re[2]: Mouse PS2 problem
+</A></li>
+        <LI> Next message: <A HREF="001053.html">[Peeweelinux] Redhat 6.2 ISO Burning corruption
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1055">[ date ]</a>
+              <a href="thread.html#1055">[ thread ]</a>
+              <a href="subject.html#1055">[ subject ]</a>
+              <a href="author.html#1055">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hanoi Santos Hung wrote:
+
+[snip]
+
+&gt;<i> 
+</I>&gt;<i> In my custom kernel I have enabled :
+</I>&gt;<i> Character Devices -&gt; [*] Mouse Support (not serial mouse)
+</I>&gt;<i> Character Devices -&gt; Mice -&gt; &lt;*&gt; Microsoft busmouse support
+</I>&gt;<i> Character Devices -&gt; Mice -&gt; [*] PS/2 mouse (aka &quot;auxiliary device&quot;) support
+</I>&gt;<i> 
+</I>&gt;<i> Is this enough ? Or I have to add another module or change a
+</I>&gt;<i> configuration file ?
+</I>&gt;<i> 
+</I>
+I would think that's OK. I don't have bus mouse support
+turned on, but otherwise my config's the same. Your
+selection of bus mouse shouldn't do anything since you
+don't seem to have selected any of the specific bus
+mouse options.
+
+How about /dev/psaux? You said it exists, but maybe
+it's got the wrong major or minor number. 'ls -l /dev/psaux'
+should show:
+
+crw-------    1 root     root      10,   1 Apr 24 20:16 /dev/psaux
+
+   --Dennis
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001051.html">[Peeweelinux] Re[2]: Mouse PS2 problem
+</A></li>
+	<LI> Next message: <A HREF="001053.html">[Peeweelinux] Redhat 6.2 ISO Burning corruption
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1055">[ date ]</a>
+              <a href="thread.html#1055">[ thread ]</a>
+              <a href="subject.html#1055">[ subject ]</a>
+              <a href="author.html#1055">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

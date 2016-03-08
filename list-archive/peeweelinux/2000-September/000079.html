@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Problem installing LILO
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000088.html">
+   <LINK REL="Next"  HREF="000080.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Problem installing LILO
+   </H1>
+    <B>fred anger
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="Problem installing LILO">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 8 Sep 2000 14:26:03 -0700 (MST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000088.html">Multiple Targets for PeeWee Linux
+</A></li>
+        <LI> Next message: <A HREF="000080.html">Problem installing LILO
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#79">[ date ]</a>
+              <a href="thread.html#79">[ thread ]</a>
+              <a href="subject.html#79">[ subject ]</a>
+              <a href="author.html#79">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi again.  I'm trying to build a system from PWL onto the hard drive of an
+&quot;embedded&quot; device.  The hard drive is a 2G Hitachi laptop hard drive,
+which I've removed from the embedded device and plugged into my
+development PC's IDE bus as /dev/hdd.  I built the filesystem and
+&quot;flashed&quot; it to the drive ok (the disk is split into 2 partitions, with
+the second partition being the one to be booted), but when I try to
+install LILO, I get an error from mkBootDevice saying: &quot;invalid Boot
+Directory /mnt/boot&quot;.  Here are my project.defaults:
+
+export prjMnt=&quot;mnt&quot;                    # Prompt: Project Mount Point
+export prjCustomSrc=&quot;/usr/local/src&quot;   # Prompt: Project Custom Source
+File pathexport bootLabel=&quot;pwlinuz&quot;             # Prompt: LILO Boot Label
+
+#   Initial defaults from flash disk (IDE type) parameters
+
+export deviceType=&quot;FLASH&quot;              # Prompt: Device Type (DOC FLOPPY
+CDROM FLASH)
+export deviceName=&quot;Flash Disk&quot;         # Prompt: Device Name
+export liloCustom=&quot;linear&quot;             # Prompt: LILO Custom Command
+export liloImageCustom=&quot;&quot;              # Prompt: LILO Image Custom Command
+
+export deviceMnt=&quot;/mnt&quot;   # Prompt: Device Mount Point
+export deviceLoc=&quot;/dev/hdd&quot;   # Prompt: Device Type Node (/dev/xxx)
+export devicePartition=&quot;2&quot;   # Prompt: Device Type Partition
+export bootKernel=&quot;/boot/bzImage&quot;   # Prompt: Boot Image Path/name
+export bootDevice=&quot;/dev/hda2&quot;   # Prompt: Boot Location
+
+What am I doing wrong?
+
+-fa
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000088.html">Multiple Targets for PeeWee Linux
+</A></li>
+	<LI> Next message: <A HREF="000080.html">Problem installing LILO
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#79">[ date ]</a>
+              <a href="thread.html#79">[ thread ]</a>
+              <a href="subject.html#79">[ subject ]</a>
+              <a href="author.html#79">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

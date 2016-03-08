@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Filesystem Issues
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000701.html">
+   <LINK REL="Next"  HREF="000709.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Filesystem Issues
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Filesystem Issues">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 24 Jul 2002 08:53:29 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000701.html">[Peeweelinux] Filesystem Issues
+</A></li>
+        <LI> Next message: <A HREF="000709.html">[Peeweelinux] Filesystem Issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#703">[ date ]</a>
+              <a href="thread.html#703">[ thread ]</a>
+              <a href="subject.html#703">[ subject ]</a>
+              <a href="author.html#703">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> regarding new versions, Adi is working on a new and improved peewee, so I
+</I>&gt;<i> think this version is the last of it's kind (correct me please Adi).
+</I>
+Actually, if you're only using the binary distribution nothing should 
+change at all.
+
+The source version will be different, though. You should only notice the 
+differece if you're compiling your own rpms. The PeeWeeLinux we have now, 
+required a host Linux system with libs that match PeeWeeLinux, essentially 
+RedHat 6.2. What I plan on doing is a dedicated build environment that you 
+chroot into to build PeeWeeLinux. This will ensure only the libs actually 
+included and distributed with PeeWeeLinux will be available. This will 
+also make rpm spec files easier to maintain since I no longer have to jump 
+through hops to exclude standard RedHat libs which are not part of 
+PeeWeeLinux (pam, etc).
+
+So most of the changes to the new and improved PeeWeeLinux will be behind 
+the scenes.
+
+Now that I have a pretty firm grasp (and many notes) on what and how I 
+like to do it I just have to get the time to actually make it happen...
+
+Adi
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000701.html">[Peeweelinux] Filesystem Issues
+</A></li>
+	<LI> Next message: <A HREF="000709.html">[Peeweelinux] Filesystem Issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#703">[ date ]</a>
+              <a href="thread.html#703">[ thread ]</a>
+              <a href="subject.html#703">[ subject ]</a>
+              <a href="author.html#703">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

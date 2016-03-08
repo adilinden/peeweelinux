@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Silent booting
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000154.html">
+   <LINK REL="Next"  HREF="000157.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Silent booting
+   </H1>
+    <B>Dean Brown
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Silent booting">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 09 Nov 2000 17:37:24 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000154.html">Silent booting
+</A></li>
+        <LI> Next message: <A HREF="000157.html">Silent booting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ok,
+
+Several problems here. First off, there is no pci-scan.o module anywhere
+in the pwl distribution that I've been able to find. Searching the
+available packages for pci-scan or pci-scan.o or pci-scan* returns a not
+found. 
+
+Searching the filesystem rooted at the Embedded_Builds directory found a
+pci-scan.{c|h|o} in the ./src/BUILDS/2.2.17/net path. Copying the .o
+file to the /lib/modules/2.2.17/net/ directory and modifying the
+/etc/rc.modules file to load the pci-scan module results in an error at
+boot time of &quot;/lib/modules/2.2.17/net/pci-scan.o: couldn't find the
+kernel version the module was compiled for&quot;.
+
+I am using the 2.2.17 kernel.
+
+On another note, entering linux debug=0 at the lilo prompt does indeed
+suppress all the kernel spew. Is there any way to add additional
+parameters to the lilo.conf created during the load process without
+requiring lilo to be manually installed?
+
+Thanks again for you help.
+
+Adi Linden wrote:
+&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Some of the network modules require a pci driver to be installed. The
+</I>&gt;<i> module to load prior to the rtl8139, tulip, natsemi or via-rhine driver is
+</I>&gt;<i> pci-scan. Now, that module was supposed to be loaded automatically when
+</I>&gt;<i> one of those network drivers is loaded.
+</I>&gt;<i> 
+</I>&gt;<i> Try doing
+</I>&gt;<i> 
+</I>&gt;<i> insmod pci-scan
+</I>&gt;<i> insmod rtl8139
+</I>&gt;<i> 
+</I>&gt;<i> I'll dig up the email with the silent.patch instructions and forward it to
+</I>&gt;<i> you.
+</I>&gt;<i> 
+</I>&gt;<i> This got me thinking about the kernel compile process... maybe I'll make
+</I>&gt;<i> the updated network drivers and option (independend package) rather than a
+</I>&gt;<i> kernel patch...
+</I>&gt;<i> 
+</I>&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> On Thu, 9 Nov 2000, Dean Brown wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I'm currently using 0.53-10 of pwl, and the 2.2.14 kernel. When I
+</I>&gt;<i> &gt; changed to the 2.2.17 kernel however, I started having problems with the
+</I>&gt;<i> &gt; rtl8139 network driver.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I'm getting an error when the rc.modules script is executed which simply
+</I>&gt;<i> &gt; does an insmod on the rtl8139.o module. The errors I am getting are:
+</I>&gt;<i> &gt; /lib/modules/2.2.17/net/rtl8139.o: unresolved symbol pci_drv_unregister
+</I>&gt;<i> &gt; /lib/modules/2.2.17/net/rtl8139.o: unresolved symbol pci_drv_register
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; This was using the precompiled binaries, so I downloaded the source
+</I>&gt;<i> &gt; files and recompiled the kernel RPM. I'm still getting the same error.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Assuming I can get this issue solved, do you have any instructions on
+</I>&gt;<i> &gt; the 'silent.patch'?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Thanks in advance!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Adi Linden wrote:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Hi,
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Which version of pwl and kernel are you using? The 2.2.17 kernel in
+</I>&gt;<i> &gt; &gt; 0.53 includes the silent.patch which allows for boot messages to be
+</I>&gt;<i> &gt; &gt; hidden.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; TTYL,
+</I>&gt;<i> &gt; &gt; Adi
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; On Wed, 8 Nov 2000, Dean Brown wrote:
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; I've got my application running completely automated right from power
+</I>&gt;<i> &gt; &gt; &gt; up. I would now like to hide the bootup spew so that the first thing the
+</I>&gt;<i> &gt; &gt; &gt; user sees is the application. Does anyone know how to configure Lilo and
+</I>&gt;<i> &gt; &gt; &gt; the kernel to do such a thing?
+</I>&gt;<i> &gt; &gt; &gt;
+</I>&gt;<i> &gt; &gt; &gt; Thanks in advance.
+</I>
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000154.html">Silent booting
+</A></li>
+	<LI> Next message: <A HREF="000157.html">Silent booting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#156">[ date ]</a>
+              <a href="thread.html#156">[ thread ]</a>
+              <a href="subject.html#156">[ subject ]</a>
+              <a href="author.html#156">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

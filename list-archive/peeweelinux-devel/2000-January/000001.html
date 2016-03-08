@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> pwlconfig
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000000.html">
+   <LINK REL="Next"  HREF="000002.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>pwlconfig
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="pwlconfig">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Mon, 17 Jan 2000 00:33:52 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000000.html">pwlconfig
+</A></li>
+        <LI> Next message: <A HREF="000002.html">pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+Hey, you're subscribed to the wrong mailing list. I asked the fellas at
+source forge to remove the 2 lists but they haven't done that. I am
+hosting a couple of lists on my own server.
+
+So, the lists are:
+
+<A HREF="mailto:PeeWeeLinux@adis.on.ca">PeeWeeLinux@adis.on.ca</A>
+<A HREF="mailto:PeeWeeLinux-devel@adis.on.ca">PeeWeeLinux-devel@adis.on.ca</A>
+
+I added your name to the list members so you should be getting content
+automatically. I know about the issue with the 'reply-to' field. However,
+I still chosse to use it. That insures all replies default to go back to
+the list. Also, otherwise most replies will be send in duplicate, ont to
+the list the other to the sender.
+
+I've been really busy this past week. We've had major server problems at
+work. I am suspecting the damage was done purposely and not accidental
+hardware or software failure. Two boxes died within a week with identical
+symptoms. Turns out when I upgraded the boxes to RedHat 6.0 from Redhat
+5.2 I missed to rewrite the firewall from ipfwadm to ipchains. At least my
+box might have been save then. Oh well...
+
+Sooo... I got the routers going and discovered a bug in Helius Network
+Edition for DirecPC. Spend a 5 hours trying to find out what I was doing
+wrong until I came to the conclusion that their version for RedHat 6.0 is
+slightly defective. It's a major stumbling block for some communities as
+it means sending their existing equipment in to have a router build. Which
+will mean no Internet for at least 3 days. The problem has to do with the
+initial configuration of the system. There are no runtime problems.  Other
+than that it's working perfectly!
+
+Still haven't had time to work on my par time project the was the original
+puch to create PeeWeeLinux. I have orders for my little LAN dialup
+embedded box but haven't begun to build it yet... Don't have name for it
+either. PeeWeeRouter maybe? Then build a PeeWeeKiosk and a PeeWeePlayer...
+:<i>)
+</I>
+Hey, you could have me play with a IPIX to build a kiosk and share my
+development work with you for use in your work, make it boot, run from a
+ramdisk, etc... :)
+
+&gt;<i> &gt; I am just thinking about adding descriptions to packages. There are a
+</I>&gt;<i> &gt; number of available kernel packages available. It would be nice to be able
+</I>&gt;<i> &gt; to access a &lt;Help&gt; screen or &lt;Info&gt; screen giving a description of the
+</I>&gt;<i> &gt; packages. Especially if theres a bunch of similar stuff to choose from...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> The help button easily supports context sensitive help.  When help is 
+</I>&gt;<i> selected, the menu item currently highlighted is returned also.  
+</I>&gt;<i> Thus, the help file must contain this menu item somewhere/
+</I>&gt;<i> 
+</I>&gt;<i> I think that a common file in each package subdirectory should be used
+</I>&gt;<i> to contain the help information about that package.  Just off the top...
+</I>&gt;<i> 
+</I>&gt;<i> README.&lt;packagename&gt;
+</I>
+There could be 2 ways to do this:
+
+README.&lt;packagename&gt; - or -
+&lt;packagename&gt;.README
+
+The last solution would have the advantage that the file would be listed
+with the package when doing an ls rather than first all README's and then
+all packages.
+
+&gt;<i> or something like this, not sure if there is any &quot;standard&quot;....
+</I>&gt;<i> I can use sed to parse whatever text is following a &quot;key word&quot; and 
+</I>&gt;<i> display that in a dialog box (just like I'm parsing the README.pwlconfig
+</I>&gt;<i> file now).  By keeping the help screen in the package directory, all 
+</I>&gt;<i> information about that package is maintained within that directory.
+</I>
+So what would be suitable keywords?
+
+Description:
+Dependencies:
+Compilation:
+
+&gt;<i> Sorry for the delay...I'll try to catch up with other e-mail now
+</I>
+No problem... It gets pretty darn busy sometimes!
+
+I am working on adding a couple more packages. I need to add Minicom to
+the router. And there is a small login package available now. It could
+replace util-linux for very small applications requiring authentication.
+Also, I need a webserver for doing configuration of the router. I am
+thinking about adding boa. It seems quite stable and lean on memory
+requirements, etc. It does support cgi, though. A must for doing any
+configuration via a webserver, I think.
+
+I can do cgi on my sourceforge shell account. I am intending to write a
+little perl script to ease uploading file to source forge. Something
+that'll use wget to download to sourceforge with retry and then uses
+ncftput to place it in the incoming directory on sourceforge. If I ftp
+straight from here it usually times out. There are certain places where
+the connection from here isn't too hot....  
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+Download PWL at <A HREF="http://projects.adis.on.ca/Embedded">http://projects.adis.on.ca/Embedded</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000000.html">pwlconfig
+</A></li>
+	<LI> Next message: <A HREF="000002.html">pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1">[ date ]</a>
+              <a href="thread.html#1">[ thread ]</a>
+              <a href="subject.html#1">[ subject ]</a>
+              <a href="author.html#1">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

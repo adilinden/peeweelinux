@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] how to creat a standalone image file on my HD
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001013.html">
+   <LINK REL="Next"  HREF="001015.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] how to creat a standalone image file on my HD
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] how to creat a standalone image file on my HD">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 02 Apr 2003 16:26:23 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001013.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+        <LI> Next message: <A HREF="001015.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1014">[ date ]</a>
+              <a href="thread.html#1014">[ thread ]</a>
+              <a href="subject.html#1014">[ subject ]</a>
+              <a href="author.html#1014">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Do it to an actual floppy, then use 'dd' to pull it off the floppy to a 
+file. Something like 'dd if=/dev/fd0 of=/var/tmp/floppy.img bs=2048' 
+should do the trick (check that for errors first).
+
+-te
+
+Yuval Yohai wrote:
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> I'm trying to create an floppy image file on my HD and then send it
+</I>&gt;<i> to a friend. But I am not able to it since the only options i see in
+</I>&gt;<i> the pwlconfig is doing it into a partition or a device. I tried to
+</I>&gt;<i> attach a loop device with no luck.
+</I>&gt;<i> 
+</I>&gt;<i> Any suggestions?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks,
+</I>&gt;<i> Yuval
+</I>&gt;<i> 
+</I>&gt;<i> __________________________________________________
+</I>&gt;<i> Do you Yahoo!?
+</I>&gt;<i> Yahoo! Tax Center - File online, calculators, forms, and more
+</I>&gt;<i> <A HREF="http://tax.yahoo.com">http://tax.yahoo.com</A>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+-- 
+Troy Engel, Systems Engineer
+&quot;Now, Beakie, we'll just flip this switch and 60,000 refreshing
+  volts of electricity will surge through your body. Ready?&quot;
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001013.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+	<LI> Next message: <A HREF="001015.html">[Peeweelinux] how to creat a standalone image file on my HD
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1014">[ date ]</a>
+              <a href="thread.html#1014">[ thread ]</a>
+              <a href="subject.html#1014">[ subject ]</a>
+              <a href="author.html#1014">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

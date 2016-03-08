@@ -1,0 +1,2403 @@
+From peeweelinux@adis.on.ca  Mon Dec  2 22:52:05 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 2 Dec 2002 14:52:05 -0800 (PST)
+Subject: [Peeweelinux] General Information for Project
+Message-ID: <2.2.16.20021202150622.27e79fe6@zmicro.com>
+
+>How fast is CF when booting up? Would it be quicker than a hard drive?
+
+CF is not as fast as a hard drive, from what I can find.  Especially
+on writes, which may not matter here.   One thing peewee does in
+this configuration (compressed ramdisk on memory card) on startup 
+is to copy the filesystem into RAM, which can take a few seconds.
+
+>When people are talking about small linux distribution of PeeWee how small can
+>I get it?  I need to have MySQL and Perl installed - is this realistic in a
+>128MB card for example?
+>Paul Nuzzo
+
+It ought to be enough.  Peewee is very small, so the question
+becomes, "how big is MySQL + perl ?"  I'd like to know
+that myself for future planning.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Tue Dec  3 13:03:12 2002
+From: peeweelinux@adis.on.ca (Tom Schneider)
+Date: Tue, 03 Dec 2002 07:03:12 -0600
+Subject: [Peeweelinux] General Information for Project
+In-Reply-To: <2.2.16.20021202150622.27e79fe6@zmicro.com>
+References: <2.2.16.20021202150622.27e79fe6@zmicro.com>
+Message-ID: <3DECAB90.7080008@nvisia.com>
+
+Barry Gershenfeld wrote:
+
+>>How fast is CF when booting up? Would it be quicker than a hard drive?
+>>    
+>>
+>
+>CF is not as fast as a hard drive, from what I can find.  Especially
+>on writes, which may not matter here.   One thing peewee does in
+>this configuration (compressed ramdisk on memory card) on startup 
+>is to copy the filesystem into RAM, which can take a few seconds.
+>  
+>
+We're using disk-on-chip which is significantly faster than a hard 
+driver for both reading and writing. (At least from what I've seen)  I 
+would think that CF would be just as fast, but I'm no expert on these 
+matters.
+
+>>When people are talking about small linux distribution of PeeWee how small can
+>>I get it?  I need to have MySQL and Perl installed - is this realistic in a
+>>128MB card for example?
+>>Paul Nuzzo
+>>    
+>>
+>
+>It ought to be enough.  Peewee is very small, so the question
+>becomes, "how big is MySQL + perl ?"  I'd like to know
+>that myself for future planning.
+>  
+>
+Our testing shows that MySQL is roughly 10 megs for a base install 
+(binary and empty database).  I'm not sure about perl. (we did java and 
+that was another 5 megs after we trimmed down the JVM)  Ultimately we 
+chose not do use MySQL because of licensing issues.  By the way, we're 
+running on a 64 meg disk-on-chip and had postgres, the JVM, ppp, the 
+latest kernel and a decent set of utilities running with room to spare.
+
+>Barry
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>  
+>
+
+
+
+From peeweelinux@adis.on.ca  Tue Dec  3 15:06:01 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Tue, 03 Dec 2002 10:06:01 -0500
+Subject: [Peeweelinux] General Information for Project
+Message-ID: <sdec821b.091@qatech.com>
+
+Disk on chip and CF are generally slower than hard disk. Disk on chip is probably slower because it uses a 8 bit data bus over ISA which is very slow. CF uses the generic ATA interface and is therefore 16 bit data I beleive. In my experience flash is slower than hard disk, especially writes, which is not relaly a problem with PeeWee since you are not interested in writing data to the drive at run time, typically (I.e.. you are using RAM Disk). If you find yourself using the disk for writes, you might want to use a hard drive. 
+
+~Ken
+
+>>> Tom Schneider <tschneider@nvisia.com> 12/03 8:03 AM >>>
+Barry Gershenfeld wrote:
+
+>>How fast is CF when booting up? Would it be quicker than a hard drive?
+>>    
+>>
+>
+>CF is not as fast as a hard drive, from what I can find.  Especially
+>on writes, which may not matter here.   One thing peewee does in
+>this configuration (compressed ramdisk on memory card) on startup 
+>is to copy the filesystem into RAM, which can take a few seconds.
+>  
+>
+We're using disk-on-chip which is significantly faster than a hard 
+driver for both reading and writing. (At least from what I've seen)  I 
+would think that CF would be just as fast, but I'm no expert on these 
+matters.
+
+>>When people are talking about small linux distribution of PeeWee how small can
+>>I get it?  I need to have MySQL and Perl installed - is this realistic in a
+>>128MB card for example?
+>>Paul Nuzzo
+>>    
+>>
+>
+>It ought to be enough.  Peewee is very small, so the question
+>becomes, "how big is MySQL + perl ?"  I'd like to know
+>that myself for future planning.
+>  
+>
+Our testing shows that MySQL is roughly 10 megs for a base install 
+(binary and empty database).  I'm not sure about perl. (we did java and 
+that was another 5 megs after we trimmed down the JVM)  Ultimately we 
+chose not do use MySQL because of licensing issues.  By the way, we're 
+running on a 64 meg disk-on-chip and had postgres, the JVM, ppp, the 
+latest kernel and a decent set of utilities running with room to spare.
+
+>Barry
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca 
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux 
+>  
+>
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca 
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Dec  3 16:37:31 2002
+From: peeweelinux@adis.on.ca (Ricardo Jorge Silva Trindade)
+Date: Tue, 03 Dec 2002 16:37:31 +0000
+Subject: [Peeweelinux] General Information for Project
+Message-ID: <1038933451.7e02d5a0Ricardo.Trindade@myrealbox.com>
+
+Hi,
+
+I'd be interested to know how you were able to trim the java vm. I once tried and the results weren't good
+
+-----Original Message-----
+From: Tom Schneider <tschneider@nvisia.com>
+To: peeweelinux@adis.on.ca
+Date: Tue, 03 Dec 2002 07:03:12 -0600 
+Subject: Re: [Peeweelinux] General Information for Project
+
+Barry Gershenfeld wrote:
+
+>>How fast is CF when booting up? Would it be quicker than a hard drive?
+>>    
+>>
+>
+>CF is not as fast as a hard drive, from what I can find.  Especially
+>on writes, which may not matter here.   One thing peewee does in
+>this configuration (compressed ramdisk on memory card) on startup 
+>is to copy the filesystem into RAM, which can take a few seconds.
+>  
+>
+We're using disk-on-chip which is significantly faster than a hard 
+driver for both reading and writing. (At least from what I've seen)  I 
+would think that CF would be just as fast, but I'm no expert on these 
+matters.
+
+>>When people are talking about small linux distribution of PeeWee how small can
+>>I get it?  I need to have MySQL and Perl installed - is this realistic in a
+>>128MB card for example?
+>>Paul Nuzzo
+>>    
+>>
+>
+>It ought to be enough.  Peewee is very small, so the question
+>becomes, "how big is MySQL + perl ?"  I'd like to know
+>that myself for future planning.
+>  
+>
+Our testing shows that MySQL is roughly 10 megs for a base install 
+(binary and empty database).  I'm not sure about perl. (we did java and 
+that was another 5 megs after we trimmed down the JVM)  Ultimately we 
+chose not do use MySQL because of licensing issues.  By the way, we're 
+running on a 64 meg disk-on-chip and had postgres, the JVM, ppp, the 
+latest kernel and a decent set of utilities running with room to spare.
+
+>Barry
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>  
+>
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+From peeweelinux@adis.on.ca  Tue Dec  3 18:24:23 2002
+From: peeweelinux@adis.on.ca (Tom Schneider)
+Date: Tue, 03 Dec 2002 12:24:23 -0600
+Subject: [Peeweelinux] General Information for Project
+In-Reply-To: <1038933451.7e02d5a0Ricardo.Trindade@myrealbox.com>
+References: <1038933451.7e02d5a0Ricardo.Trindade@myrealbox.com>
+Message-ID: <3DECF6D7.8080800@nvisia.com>
+
+We're using J9 from IBM. (Websphere Micro Environment)  The first thing 
+I did was remove all the source code.  Next, I removed all the class 
+files for the profiles we were not using.  (We are using the Foundation 
+profile, J9 also includes a CDC, CDLC and MIDP profile)  Then I went 
+into the bin directory and figured out what libraries I needed.  I only 
+included the libraries necessary for runtime, I removed all compile 
+libraries.  Using this method I was able to trim J9 from about 30 megs 
+down to about 5.
+Tom
+
+
+Ricardo Jorge Silva Trindade wrote:
+
+>Hi,
+>
+>I'd be interested to know how you were able to trim the java vm. I once tried and the results weren't good
+>
+>-----Original Message-----
+>From: Tom Schneider <tschneider@nvisia.com>
+>To: peeweelinux@adis.on.ca
+>Date: Tue, 03 Dec 2002 07:03:12 -0600 
+>Subject: Re: [Peeweelinux] General Information for Project
+>
+>Barry Gershenfeld wrote:
+>
+>  
+>
+>>>How fast is CF when booting up? Would it be quicker than a hard drive?
+>>>   
+>>>
+>>>      
+>>>
+>>CF is not as fast as a hard drive, from what I can find.  Especially
+>>on writes, which may not matter here.   One thing peewee does in
+>>this configuration (compressed ramdisk on memory card) on startup 
+>>is to copy the filesystem into RAM, which can take a few seconds.
+>> 
+>>
+>>    
+>>
+>We're using disk-on-chip which is significantly faster than a hard 
+>driver for both reading and writing. (At least from what I've seen)  I 
+>would think that CF would be just as fast, but I'm no expert on these 
+>matters.
+>
+>  
+>
+>>>When people are talking about small linux distribution of PeeWee how small can
+>>>I get it?  I need to have MySQL and Perl installed - is this realistic in a
+>>>128MB card for example?
+>>>Paul Nuzzo
+>>>   
+>>>
+>>>      
+>>>
+>>It ought to be enough.  Peewee is very small, so the question
+>>becomes, "how big is MySQL + perl ?"  I'd like to know
+>>that myself for future planning.
+>> 
+>>
+>>    
+>>
+>Our testing shows that MySQL is roughly 10 megs for a base install 
+>(binary and empty database).  I'm not sure about perl. (we did java and 
+>that was another 5 megs after we trimmed down the JVM)  Ultimately we 
+>chose not do use MySQL because of licensing issues.  By the way, we're 
+>running on a 64 meg disk-on-chip and had postgres, the JVM, ppp, the 
+>latest kernel and a decent set of utilities running with room to spare.
+>
+>  
+>
+>>Barry
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>> 
+>>
+>>    
+>>
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>  
+>
+
+
+
+From peeweelinux@adis.on.ca  Tue Dec  3 19:10:24 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Tue, 3 Dec 2002 12:10:24 -0700
+Subject: [Peeweelinux] General Information for Project
+In-Reply-To: <3DECF6D7.8080800@nvisia.com>
+Message-ID: <00f901c29aff$a7097cb0$bb7ba8c0@bach>
+
+J9 is J2ME based correct? We have been trying to find a small J2SE. J9
+is very fast and efficient; however, Sun will not recognize it as Java
+since IBM has not run the compatibility test kit.
+
+Regards,
+Bill Wimsatt
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]
+On Behalf Of Tom Schneider
+Sent: Tuesday, December 03, 2002 11:24 AM
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] General Information for Project
+
+We're using J9 from IBM. (Websphere Micro Environment)  The first thing 
+I did was remove all the source code.  Next, I removed all the class 
+files for the profiles we were not using.  (We are using the Foundation 
+profile, J9 also includes a CDC, CDLC and MIDP profile)  Then I went 
+into the bin directory and figured out what libraries I needed.  I only 
+included the libraries necessary for runtime, I removed all compile 
+libraries.  Using this method I was able to trim J9 from about 30 megs 
+down to about 5.
+Tom
+
+
+Ricardo Jorge Silva Trindade wrote:
+
+>Hi,
+>
+>I'd be interested to know how you were able to trim the java vm. I once
+tried and the results weren't good
+>
+>-----Original Message-----
+>From: Tom Schneider <tschneider@nvisia.com>
+>To: peeweelinux@adis.on.ca
+>Date: Tue, 03 Dec 2002 07:03:12 -0600 
+>Subject: Re: [Peeweelinux] General Information for Project
+>
+>Barry Gershenfeld wrote:
+>
+>  
+>
+>>>How fast is CF when booting up? Would it be quicker than a hard
+drive?
+>>>   
+>>>
+>>>      
+>>>
+>>CF is not as fast as a hard drive, from what I can find.  Especially
+>>on writes, which may not matter here.   One thing peewee does in
+>>this configuration (compressed ramdisk on memory card) on startup 
+>>is to copy the filesystem into RAM, which can take a few seconds.
+>> 
+>>
+>>    
+>>
+>We're using disk-on-chip which is significantly faster than a hard 
+>driver for both reading and writing. (At least from what I've seen)  I 
+>would think that CF would be just as fast, but I'm no expert on these 
+>matters.
+>
+>  
+>
+>>>When people are talking about small linux distribution of PeeWee how
+small can
+>>>I get it?  I need to have MySQL and Perl installed - is this
+realistic in a
+>>>128MB card for example?
+>>>Paul Nuzzo
+>>>   
+>>>
+>>>      
+>>>
+>>It ought to be enough.  Peewee is very small, so the question
+>>becomes, "how big is MySQL + perl ?"  I'd like to know
+>>that myself for future planning.
+>> 
+>>
+>>    
+>>
+>Our testing shows that MySQL is roughly 10 megs for a base install 
+>(binary and empty database).  I'm not sure about perl. (we did java and
+
+>that was another 5 megs after we trimmed down the JVM)  Ultimately we 
+>chose not do use MySQL because of licensing issues.  By the way, we're 
+>running on a 64 meg disk-on-chip and had postgres, the JVM, ppp, the 
+>latest kernel and a decent set of utilities running with room to spare.
+>
+>  
+>
+>>Barry
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>> 
+>>
+>>    
+>>
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>  
+>
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+
+From peeweelinux@adis.on.ca  Mon Dec  9 02:11:55 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Mon, 9 Dec 2002 02:11:55 -0000
+Subject: [Peeweelinux] General Information for Project
+In-Reply-To: <00f901c29aff$a7097cb0$bb7ba8c0@bach>
+Message-ID: <00bc01c29f28$5980d9c0$e1fd0dd5@ricardo>
+
+I thought you were talking about j2se.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of bwimsatt@1783.com
+Sent: terca-feira, 3 de Dezembro de 2002 19:10
+To: peeweelinux@adis.on.ca
+Subject: RE: [Peeweelinux] General Information for Project
+
+
+J9 is J2ME based correct? We have been trying to find a small J2SE. J9
+is very fast and efficient; however, Sun will not recognize it as Java
+since IBM has not run the compatibility test kit.
+
+Regards,
+Bill Wimsatt
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]
+On Behalf Of Tom Schneider
+Sent: Tuesday, December 03, 2002 11:24 AM
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] General Information for Project
+
+We're using J9 from IBM. (Websphere Micro Environment)  The first thing 
+I did was remove all the source code.  Next, I removed all the class 
+files for the profiles we were not using.  (We are using the Foundation 
+profile, J9 also includes a CDC, CDLC and MIDP profile)  Then I went 
+into the bin directory and figured out what libraries I needed.  I only 
+included the libraries necessary for runtime, I removed all compile 
+libraries.  Using this method I was able to trim J9 from about 30 megs 
+down to about 5.
+Tom
+
+
+Ricardo Jorge Silva Trindade wrote:
+
+>Hi,
+>
+>I'd be interested to know how you were able to trim the java vm. I once
+tried and the results weren't good
+>
+>-----Original Message-----
+>From: Tom Schneider <tschneider@nvisia.com>
+>To: peeweelinux@adis.on.ca
+>Date: Tue, 03 Dec 2002 07:03:12 -0600 
+>Subject: Re: [Peeweelinux] General Information for Project
+>
+>Barry Gershenfeld wrote:
+>
+>  
+>
+>>>How fast is CF when booting up? Would it be quicker than a hard
+drive?
+>>>   
+>>>
+>>>      
+>>>
+>>CF is not as fast as a hard drive, from what I can find.  Especially
+>>on writes, which may not matter here.   One thing peewee does in
+>>this configuration (compressed ramdisk on memory card) on startup 
+>>is to copy the filesystem into RAM, which can take a few seconds.
+>> 
+>>
+>>    
+>>
+>We're using disk-on-chip which is significantly faster than a hard 
+>driver for both reading and writing. (At least from what I've seen)  I 
+>would think that CF would be just as fast, but I'm no expert on these 
+>matters.
+>
+>  
+>
+>>>When people are talking about small linux distribution of PeeWee how
+small can
+>>>I get it?  I need to have MySQL and Perl installed - is this
+realistic in a
+>>>128MB card for example?
+>>>Paul Nuzzo
+>>>   
+>>>
+>>>      
+>>>
+>>It ought to be enough.  Peewee is very small, so the question
+>>becomes, "how big is MySQL + perl ?"  I'd like to know
+>>that myself for future planning.
+>> 
+>>
+>>    
+>>
+>Our testing shows that MySQL is roughly 10 megs for a base install 
+>(binary and empty database).  I'm not sure about perl. (we did java and
+
+>that was another 5 megs after we trimmed down the JVM)  Ultimately we 
+>chose not do use MySQL because of licensing issues.  By the way, we're 
+>running on a 64 meg disk-on-chip and had postgres, the JVM, ppp, the 
+>latest kernel and a decent set of utilities running with room to spare.
+>
+>  
+>
+>>Barry
+>>
+>>_______________________________________________
+>>Peeweelinux mailing list
+>>Peeweelinux@adis.on.ca
+>>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>> 
+>>
+>>    
+>>
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>  
+>
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Dec 11 17:47:41 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Wed, 11 Dec 2002 17:47:41 CET
+Subject: [Peeweelinux] rc.init
+Message-ID: <mnet1.1039625261.19245.francois.seingier@club-internet.fr>
+
+hello,
+it's the first time I give a try to peeweelinux and I hope I won't ask things that have already been answered...
+I downloaded the source package and ran the script pwlconfig. Worked fine until the Extract File System for project. I found out about an hour later I had to run the rpm2tar first. Maybe this will help some new comers like me...
+Now for my problem: 
+I'm trying to boot on a floppy. I get a "sh: PATH=/bin:/sbin:/usr/bin:/usr/sbin: No such file or directory"
+I extracted the ramdisk from the floppy mounted it and ran the script rc.init with a chroot. So I could conclude it comes from the rc.init (boy that's only the second line of the script :( ).
+and btw, I'm using busybox (<--- it's probably his fault!!)
+Has anybody gone through that?
+
+François
+
+
+From peeweelinux@adis.on.ca  Wed Dec 11 17:29:53 2002
+From: peeweelinux@adis.on.ca (Cem Eryasar)
+Date: Wed, 11 Dec 2002 17:29:53 +0000
+Subject: [Peeweelinux] help - static compiling
+Message-ID: <3DF77611.1090601@softhome.net>
+
+Hi,
+
+I am trying to comile my app with -static option.
+However the application size is still the same.
+
+Is there any other things to look at in order to
+use -static?
+
+Thanks vey much
+Cem
+
+
+
+From peeweelinux@adis.on.ca  Wed Dec 11 17:51:01 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Wed, 11 Dec 2002 12:51:01 -0500
+Subject: [Peeweelinux] help - static compiling
+Message-ID: <sdf734c2.093@qatech.com>
+
+I use the following for GTK+ static compiles and it appears to work.
+
+hmi:$(HMI_FILE).c $(MCON_SRC)/hmi/sys_hmi.o
+	$(CC) -static $(HMI_FLAGS)  -o $@ $(HMI_FILE).c  $(MCON_SRC)/hmi/sys_hmi.o `gtk-config --libs --cflags`
+
+Of course, yours might be a bit simpler (I am linking to a precompiled object file called sys_hmi.o), but you get the idea. My files end up being about 3MB or so. Perhaps the -static option must come first?? 
+
+~Ken
+
+
+>>> Cem Eryasar <cemer@softhome.net> 12/11 12:29 PM >>>
+Hi,
+
+I am trying to comile my app with -static option.
+However the application size is still the same.
+
+Is there any other things to look at in order to
+use -static?
+
+Thanks vey much
+Cem
+
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca 
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Wed Dec 11 20:41:02 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 11 Dec 2002 12:41:02 -0800 (PST)
+Subject: [Peeweelinux] rc.init
+Message-ID: <2.2.16.20021211125534.709fa324@zmicro.com>
+
+>I downloaded the source package and ran the script pwlconfig. Worked fine
+until the Extract File System for project. I found out about an hour later I
+had to run the rpm2tar first. Maybe this will help some new comers like me...
+
+I think I saw this complaint from someone else recently.  Normally
+this will happen automatically.  In my notes I see the following
+observation:
+
+The first time I ran pwlconfig I was taken to:
+
+"Create new project".  After choosing a name I got:
+
+	No tar packages were found. Do you wish to extraxt 
+	 all binary rpms and create tar packages now
+	 (recommended)?
+
+
+I can only guess that the pwlconfig script somehow "knows" if
+the packages are missing (by looking at some directory) and
+something you did fooled it.  The scripts are sometimes
+easy to confuse.   Fortunately you found the workaround
+and now it's on record.   (This is a long way of 
+saying, "it worked for me").
+
+
+>Now for my problem: 
+>I'm trying to boot on a floppy. I get a "sh:
+PATH=/bin:/sbin:/usr/bin:/usr/sbin: No such file or directory"
+>I extracted the ramdisk from the floppy mounted it and ran the script
+rc.init with a chroot. So I could conclude it comes from the rc.init (boy
+that's only the second line of the script :( ).
+>and btw, I'm using busybox (<--- it's probably his fault!!)
+>Has anybody gone through that?
+>
+>François
+
+My notes agree with yours (contents of rc.init and so on).  My 
+interpretation of your error is that "PATH" is not a program
+nor is it a shell command.  To which you say, "of course
+not, it's setting an environment variable!"   Yes, but the
+shell (?) does not know that, apparently.  Somehow the shell 
+is wrong, broken, or not a shell. 
+
+My experience has been that sometimes I start over making
+the project, so I can document it and get help, and that
+time it works.  It's worth a try.  There are some subtle
+things in pwl (and lots of choices to make on the menus)
+
+Barry
+
+
+
+
+
+From peeweelinux@adis.on.ca  Wed Dec 11 21:00:35 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 11 Dec 2002 13:00:35 -0800 (PST)
+Subject: [Peeweelinux] help - static compiling
+Message-ID: <2.2.16.20021211131508.6a874c52@zmicro.com>
+
+>I am trying to comile my app with -static option.
+>However the application size is still the same.
+>Is there any other things to look at in order to
+>use -static?
+>Cem
+
+1. Could it be that the application is already static?
+   (Compile without -static and check the size).
+
+2. There is also a -s switch that removes all symbol
+table information (strip?); though you can't debug it, 
+it gets even smaller.
+
+Barry
+
+
+From peeweelinux@adis.on.ca  Wed Dec 11 21:28:11 2002
+From: peeweelinux@adis.on.ca (Marc Wiz)
+Date: Wed, 11 Dec 2002 15:28:11 -0600 (CST)
+Subject: [Peeweelinux] help - static compiling
+In-Reply-To: <2.2.16.20021211131508.6a874c52@zmicro.com> from "Barry Gershenfeld" at Dec 11, 2002 01:00:35 PM
+Message-ID: <200212112128.gBBLSD425336@freshaire.wiz.com>
+
+> 
+> >I am trying to comile my app with -static option.
+> >However the application size is still the same.
+> >Is there any other things to look at in order to
+> >use -static?
+> >Cem
+> 
+> 1. Could it be that the application is already static?
+>    (Compile without -static and check the size).
+> 
+> 2. There is also a -s switch that removes all symbol
+> table information (strip?); though you can't debug it, 
+> it gets even smaller.
+
+How about using the "file" program to check? :-)
+
+Marc
+
+-- 
+Marc Wiz
+marc@wiz.com
+Yes, that really is my last name.
+
+From peeweelinux@adis.on.ca  Sun Dec 15 21:46:01 2002
+From: peeweelinux@adis.on.ca (Ed Anuff)
+Date: Sun, 15 Dec 2002 13:46:01 -0800
+Subject: [Peeweelinux] QPlus?
+Message-ID: <001801c2a483$73084cb0$0200a8c0@edhome>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0013_01C2A440.4DF02080
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+http://qplus.etri.re.kr/qplus-p/index.html
+
+Has anyone looked at this yet to see how it compares?  It seems to be =
+the only new free embedded distro builder to be released in a while.=20
+
+Ed
+
+------=_NextPart_000_0013_01C2A440.4DF02080
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.2722.900" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2><A=20
+href=3D"http://qplus.etri.re.kr/qplus-p/index.html">http://qplus.etri.re.=
+kr/qplus-p/index.html</A></FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Has anyone looked at this yet to see =
+how it=20
+compares?&nbsp; It seems to be the only new free embedded distro =
+builder&nbsp;to=20
+be released in a while.&nbsp;</FONT></DIV>
+<DIV><FONT face=3DArial size=3D2></FONT>&nbsp;</DIV>
+<DIV><FONT face=3DArial size=3D2>Ed</FONT></DIV></BODY></HTML>
+
+------=_NextPart_000_0013_01C2A440.4DF02080--
+
+
+From peeweelinux@adis.on.ca  Tue Dec 17 15:28:05 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Tue, 17 Dec 2002 15:28:05 -0000
+Subject: [Peeweelinux] compact flash
+Message-ID: <000001c2a5e0$e62ab0d0$bbfe0dd5@ricardo>
+
+hi,
+
+	I have 2 compact flash disks that are exactly the same.
+
+	With one of them, when I write a peeweelinux image, it boots fine. with the
+other, it doesn't. So I figured the disk was broken, but I tried to "diff"
+the contents of both disks, and they were not the same.
+
+	However, I tried to dd the contents of the good disk to a file, and then to
+the "broken" disk, and it started working fine.
+
+	I used to think that the peewee scripts wiped everything in the disk, but
+now I'm not so sure anymore. Do you have any idea of what could be going on
+?
+
+	I'm using peewee under rh8.0.
+
+Thanks
+Ricardo Trindade
+
+
+From peeweelinux@adis.on.ca  Tue Dec 17 15:39:06 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 17 Dec 2002 09:39:06 -0600 (CST)
+Subject: [Peeweelinux] compact flash
+In-Reply-To: <000001c2a5e0$e62ab0d0$bbfe0dd5@ricardo>
+Message-ID: <Pine.LNX.4.44.0212170937350.10199-100000@adibox.knet.ca>
+
+Yes, pwlconfig will fdisk and format the device. However, I have had cases 
+where devices didn't get fdisked properly. That is usually the case when 
+fdisk can't determine (or wrongly determines) the disk geometry.
+Run fdisk -l on both CF Cards and compare the output.
+
+Adi
+
+On Tue, 17 Dec 2002, Ricardo Trindade wrote:
+
+> hi,
+> 
+> 	I have 2 compact flash disks that are exactly the same.
+> 
+> 	With one of them, when I write a peeweelinux image, it boots fine. with the
+> other, it doesn't. So I figured the disk was broken, but I tried to "diff"
+> the contents of both disks, and they were not the same.
+> 
+> 	However, I tried to dd the contents of the good disk to a file, and then to
+> the "broken" disk, and it started working fine.
+> 
+> 	I used to think that the peewee scripts wiped everything in the disk, but
+> now I'm not so sure anymore. Do you have any idea of what could be going on
+> ?
+> 
+> 	I'm using peewee under rh8.0.
+> 
+> Thanks
+> Ricardo Trindade
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Tue Dec 17 15:43:30 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Tue, 17 Dec 2002 15:43:30 -0000
+Subject: [Peeweelinux] compact flash
+In-Reply-To: <Pine.LNX.4.44.0212170937350.10199-100000@adibox.knet.ca>
+Message-ID: <000b01c2a5e3$0d3f59d0$bbfe0dd5@ricardo>
+
+ok, I'll get back to you on this.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Adi Linden
+Sent: terca-feira, 17 de Dezembro de 2002 15:39
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] compact flash
+
+
+Yes, pwlconfig will fdisk and format the device. However, I have had cases
+where devices didn't get fdisked properly. That is usually the case when
+fdisk can't determine (or wrongly determines) the disk geometry.
+Run fdisk -l on both CF Cards and compare the output.
+
+Adi
+
+On Tue, 17 Dec 2002, Ricardo Trindade wrote:
+
+> hi,
+>
+> 	I have 2 compact flash disks that are exactly the same.
+>
+> 	With one of them, when I write a peeweelinux image, it boots fine. with
+the
+> other, it doesn't. So I figured the disk was broken, but I tried to "diff"
+> the contents of both disks, and they were not the same.
+>
+> 	However, I tried to dd the contents of the good disk to a file, and then
+to
+> the "broken" disk, and it started working fine.
+>
+> 	I used to think that the peewee scripts wiped everything in the disk, but
+> now I'm not so sure anymore. Do you have any idea of what could be going
+on
+> ?
+>
+> 	I'm using peewee under rh8.0.
+>
+> Thanks
+> Ricardo Trindade
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Dec 17 17:18:56 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Tue, 17 Dec 2002 17:18:56 -0000
+Subject: [Peeweelinux] compact flash
+In-Reply-To: <Pine.LNX.4.44.0212170937350.10199-100000@adibox.knet.ca>
+Message-ID: <000101c2a5f0$61ee5aa0$bbfe0dd5@ricardo>
+
+If that was the case shouldn't a error message appear ? it says it fdisks
+and formats the disk fine, it just doesn't boot afterwards, breaks on
+mounting the root filesystem.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Adi Linden
+Sent: terca-feira, 17 de Dezembro de 2002 15:39
+To: peeweelinux@adis.on.ca
+Subject: Re: [Peeweelinux] compact flash
+
+
+Yes, pwlconfig will fdisk and format the device. However, I have had cases
+where devices didn't get fdisked properly. That is usually the case when
+fdisk can't determine (or wrongly determines) the disk geometry.
+Run fdisk -l on both CF Cards and compare the output.
+
+Adi
+
+On Tue, 17 Dec 2002, Ricardo Trindade wrote:
+
+> hi,
+>
+> 	I have 2 compact flash disks that are exactly the same.
+>
+> 	With one of them, when I write a peeweelinux image, it boots fine. with
+the
+> other, it doesn't. So I figured the disk was broken, but I tried to "diff"
+> the contents of both disks, and they were not the same.
+>
+> 	However, I tried to dd the contents of the good disk to a file, and then
+to
+> the "broken" disk, and it started working fine.
+>
+> 	I used to think that the peewee scripts wiped everything in the disk, but
+> now I'm not so sure anymore. Do you have any idea of what could be going
+on
+> ?
+>
+> 	I'm using peewee under rh8.0.
+>
+> Thanks
+> Ricardo Trindade
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Dec 17 17:42:01 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Tue, 17 Dec 2002 11:42:01 -0600 (CST)
+Subject: [Peeweelinux] compact flash
+In-Reply-To: <000101c2a5f0$61ee5aa0$bbfe0dd5@ricardo>
+Message-ID: <Pine.LNX.4.44.0212171138460.10199-100000@adibox.knet.ca>
+
+If it gets the geometry wrong, it will fdisk, format and build the 
+filesystem just fine, the files are there but the thing won't boot.
+
+The thing is, everything appears normal until you look at the fdisk -l 
+output and it differs from what it should be. unfortunately there are no 
+errors generated that would indicate anything is wrong.
+
+I've ran into this problem with Kingston made cards. Sandisk doesn't seem 
+to have this problem, at least it never occured when I used Sandisk cards.
+
+Adi
+
+On Tue, 17 Dec 2002, Ricardo Trindade wrote:
+
+> If that was the case shouldn't a error message appear ? it says it fdisks
+> and formats the disk fine, it just doesn't boot afterwards, breaks on
+> mounting the root filesystem.
+
+
+From peeweelinux@adis.on.ca  Tue Dec 17 18:43:34 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Tue, 17 Dec 2002 13:43:34 -0500
+Subject: [Peeweelinux] compact flash
+Message-ID: <sdff2a2a.075@qatech.com>
+
+I have ahd problems with a Kingston card on a certain machine, but this was for FAT32 stuff (not related to PeeWee .. it was a CNC machine with win95..). The same card worked great with PeeWee on a different machine. It appeares almost as if some machines are more particular about the flash cards, possibly the BIOS?? 
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Tue Dec 17 18:55:31 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Tue, 17 Dec 2002 18:55:31 -0000
+Subject: [Peeweelinux] compact flash
+In-Reply-To: <sdff2a2a.075@qatech.com>
+Message-ID: <000001c2a5fd$dffc5480$bbfe0dd5@ricardo>
+
+I'm using advantech 5820.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Ken Emmons, Jr.
+Sent: terca-feira, 17 de Dezembro de 2002 18:44
+To: peeweelinux@adis.on.ca
+Subject: Re: RE: [Peeweelinux] compact flash
+
+
+I have ahd problems with a Kingston card on a certain machine, but this was
+for FAT32 stuff (not related to PeeWee .. it was a CNC machine with
+win95..). The same card worked great with PeeWee on a different machine. It
+appeares almost as if some machines are more particular about the flash
+cards, possibly the BIOS??
+
+~Ken
+
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Tue Dec 17 20:20:19 2002
+From: peeweelinux@adis.on.ca (Cinq - Marcelo Loyola Stival)
+Date: Tue, 17 Dec 2002 17:20:19 -0300
+Subject: [Peeweelinux] compact flash
+References: <sdff2a2a.075@qatech.com>
+Message-ID: <008201c2a609$b8dea270$b2e3a8c0@puma>
+
+Well, my bios does not recognize, correctly, the geometry of my compact
+flash card (hitachi)
+
+I need to pass the correct values to the kernel when run lilo.
+the configuration file:
+--
+disk=/dev/hd?
+bios=0x80
+sectors=32
+heads=6
+cylinders=306
+--
+This values are common to most 30MB compact flash.
+Just update the values of  CHS to the compact flash
+
+Marcelo
+
+----- Original Message -----
+From: "Ken Emmons, Jr." <KEN@qatech.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Tuesday, December 17, 2002 3:43 PM
+Subject: Re: RE: [Peeweelinux] compact flash
+
+
+> I have ahd problems with a Kingston card on a certain machine, but this
+was for FAT32 stuff (not related to PeeWee .. it was a CNC machine with
+win95..). The same card worked great with PeeWee on a different machine. It
+appeares almost as if some machines are more particular about the flash
+cards, possibly the BIOS??
+>
+> ~Ken
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+
+
+From peeweelinux@adis.on.ca  Thu Dec 19 14:22:30 2002
+From: peeweelinux@adis.on.ca (rushi lala)
+Date: Thu, 19 Dec 2002 14:22:30 +0000
+Subject: [Peeweelinux] howto for peeweelinux?
+Message-ID: <F150BYXQiO764l4ZRwc0001cf28@hotmail.com>
+
+
+Hi,
+every one !!!
+
+Is there any HOwtos for peeweelinux to start with ???
+
+
+Regards'
+
+Rushi
+
+
+
+_________________________________________________________________
+Help STOP SPAM with the new MSN 8 and get 2 months FREE*  
+http://join.msn.com/?page=features/junkmail
+
+
+From peeweelinux@adis.on.ca  Sat Dec 21 10:08:30 2002
+From: peeweelinux@adis.on.ca (Rushi(temp))
+Date: Sat, 21 Dec 2002 10:08:30 -0000
+Subject: [Peeweelinux] Cannot stat /dev/hdc11, compact flash, **urgent** pls help
+Message-ID: <OE32iS01qCcWNYgEj4v0000121a@hotmail.com>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_003F_01C2A8D8.E9B5E710
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+Hi friends
+
+I am using PQI 128MB compact flash, to install Peewee with X on it to =
+use with QT/X11 application.
+
+=20
+
+It seems to me very interesting, previously I have managed to put Linux =
+(montavista) with networking support on my CF .
+
+=20
+
+I want to try it with X now and also peewee Linux with it.
+
+=20
+
+=20
+
+1)     I connect the CF as a secondary master IDE
+
+2)     Do Cfdisk /dev/hdc  to make primary ex2 partition and make it =
+bootable which is /dev/hdc1
+
+3)     Reboot=20
+
+4)     Start ./pwlconfig
+
+5)     Configure kernel 2.4.17 and all other packages
+
+6)     When I try to write the thing on my target , which I spacidied as =
+/dev/hdc1 in target configuration, it come up with this error L
+
+=20
+
+I tried many times even to format CF again and again (which is not good =
+L )
+
+=20
+
+=20
+
+Warning: start=3D32 - this looks like a partition rather than the entire =
+disk. Using fdisk on it is probably meaning less [using the -force =
+option if you really want this]
+
+=20
+
+Failed
+
+=20
+
+Creating ext2 file system.. mke2fs 1.26
+
+=20
+
+=20
+
+Cannot stat /dev/hdc11 ...... and every thing after this is failed=20
+
+=20
+
+=20
+
+=20
+
+I appreciate any suggestions and help I am new to peewee.
+
+=20
+
+=20
+
+Please help
+
+=20
+
+=20
+
+Regards
+
+=20
+
+Rushi
+
+=20
+
+------=_NextPart_000_003F_01C2A8D8.E9B5E710
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META http-equiv=3DContent-Type content=3D"text/html; =
+charset=3Diso-8859-1">
+<META content=3D"MSHTML 6.00.2800.1126" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><FONT face=3DArial size=3D2>
+<DIV>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>Hi friends</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>I am using PQI 128MB compact flash, to install Peewee with =
+X on it to=20
+use with QT/X11 application.</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><?xml:namespace=20
+prefix =3D o ns =3D "urn:schemas-microsoft-com:office:office" =
+/><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>It seems to me very interesting, previously I have managed =
+to put=20
+Linux (montavista) with networking support on my CF .</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>I want to try it with X now and also peewee Linux with=20
+it.</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal=20
+style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+lang=3DEN-GB=20
+style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+style=3D"mso-list: Ignore"><FONT face=3DArial>1)</FONT><SPAN=20
+style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+</SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>I connect the =
+CF as a=20
+secondary master IDE</FONT></SPAN></P>
+<P class=3DMsoNormal=20
+style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+lang=3DEN-GB=20
+style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+style=3D"mso-list: Ignore"><FONT face=3DArial>2)</FONT><SPAN=20
+style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+</SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>Do Cfdisk =
+/dev/hdc <SPAN=20
+style=3D"mso-spacerun: yes">&nbsp;</SPAN>to make primary ex2 partition =
+and make it=20
+bootable which is /dev/hdc1</FONT></SPAN></P>
+<P class=3DMsoNormal=20
+style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+lang=3DEN-GB=20
+style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+style=3D"mso-list: Ignore"><FONT face=3DArial>3)</FONT><SPAN=20
+style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+</SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>Reboot =
+</FONT></SPAN></P>
+<P class=3DMsoNormal=20
+style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+lang=3DEN-GB=20
+style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+style=3D"mso-list: Ignore"><FONT face=3DArial>4)</FONT><SPAN=20
+style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+</SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>Start=20
+./pwlconfig</FONT></SPAN></P>
+<P class=3DMsoNormal=20
+style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+lang=3DEN-GB=20
+style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+style=3D"mso-list: Ignore"><FONT face=3DArial>5)</FONT><SPAN=20
+style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+</SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>Configure =
+kernel 2.4.17=20
+and all other packages</FONT></SPAN></P>
+<P class=3DMsoNormal=20
+style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+lang=3DEN-GB=20
+style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+style=3D"mso-list: Ignore"><FONT face=3DArial>6)</FONT><SPAN=20
+style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+</SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>When I try to =
+write the=20
+thing on my target , which I spacidied as /dev/hdc1 in target =
+configuration, it=20
+come up with this error </FONT></SPAN><SPAN lang=3DEN-GB=20
+style=3D"FONT-FAMILY: Wingdings; mso-ascii-font-family: Arial; =
+mso-hansi-font-family: Arial; mso-char-type: symbol; =
+mso-symbol-font-family: Wingdings"><SPAN=20
+style=3D"mso-char-type: symbol; mso-symbol-font-family: =
+Wingdings">L</SPAN></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>I tried many times even to format CF again and again (which =
+is not=20
+good </FONT></SPAN><SPAN lang=3DEN-GB=20
+style=3D"FONT-FAMILY: Wingdings; mso-ascii-font-family: Arial; =
+mso-hansi-font-family: Arial; mso-char-type: symbol; =
+mso-symbol-font-family: Wingdings"><SPAN=20
+style=3D"mso-char-type: symbol; mso-symbol-font-family: =
+Wingdings">L</SPAN></SPAN><SPAN=20
+lang=3DEN-GB><FONT face=3DArial> )</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>Warning: start=3D32 =96 this looks like a partition rather =
+than the=20
+entire disk. Using fdisk on it is probably meaning less [using the =
+=96force option=20
+if you really want this]</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>Failed</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>Creating ext2 file system.. mke2fs 1.26</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>Cannot stat /dev/hdc11 =85=85=85=85=85=85 and every thing =
+after this is failed=20
+</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>I appreciate any suggestions and help I am new to=20
+peewee.</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>Please help</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>Regards</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+face=3DArial>Rushi</FONT></SPAN></P>
+<P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P></DIV></FONT></DIV></BODY></HT=
+ML>
+
+------=_NextPart_000_003F_01C2A8D8.E9B5E710--
+
+From peeweelinux@adis.on.ca  Sat Dec 21 11:00:38 2002
+From: peeweelinux@adis.on.ca (Adilson Oliveira)
+Date: Sat, 21 Dec 2002 09:00:38 -0200
+Subject: [Peeweelinux] Cannot stat /dev/hdc11, compact flash, **urgent**
+ pls help
+References: <OE32iS01qCcWNYgEj4v0000121a@hotmail.com>
+Message-ID: <3E0449D6.7030901@tutopia.com.br>
+
+Rushi(temp) wrote:
+> Hi friends
+
+Hello!
+
+> 
+> 1)     I connect the CF as a secondary master IDE\
+
+Ok, hdc.
+
+> 2)     Do Cfdisk /dev/hdc  to make primary ex2 partition and make it 
+> bootable which is /dev/hdc1
+
+You don't have to. The pwconfig does it for you.
+
+> 
+> 3)     Reboot
+> 
+> 4)     Start ./pwlconfig
+> 
+> 5)     Configure kernel 2.4.17 and all other packages
+> 
+> 6)     When I try to write the thing on my target , which I spacidied as 
+> /dev/hdc1 in target configuration, it come up with this error L
+
+The target must be a device, not a partition. You have to poit to 
+/dev/hdc not hdc1
+That should do the trick.
+
+[]s and good luck from Brazil.
+
+Adilson.
+
+P.S. Today it's our first day of summer and it's rainning dogs ;)
+
+-- 
+Existem 10 tipos de pessoas no mundo: as que entendem numeração binária 
+e as que não.
+
+
+From peeweelinux@adis.on.ca  Sat Dec 21 15:18:43 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Sat, 21 Dec 2002 15:18:43 -0000
+Subject: [Peeweelinux] Cannot stat /dev/hdc11, compact flash, **urgent** pls help
+In-Reply-To: <OE32iS01qCcWNYgEj4v0000121a@hotmail.com>
+Message-ID: <000001c2a90f$530c3df0$5cf80dd5@ricardo>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0001_01C2A90F.531E8D70
+Content-Type: text/plain;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: 8bit
+
+peewee creates the partitions based on the size of your image. you can also
+specify how much space you want free.
+
+so you should define your target as the device, and not the partition.
+partiotions you have previously will be deleted. if you need to add extra
+software that is not part of the peewee image you can do that afterwards.
+  -----Original Message-----
+  From: peeweelinux-admin@adis.on.ca [mailto:peeweelinux-admin@adis.on.ca]On
+Behalf Of Rushi(temp)
+  Sent: sábado, 21 de Dezembro de 2002 10:09
+  To: peeweelinux@adis.on.ca
+  Subject: [Peeweelinux] Cannot stat /dev/hdc11, compact flash, **urgent**
+pls help
+
+
+  Hi friends
+
+  I am using PQI 128MB compact flash, to install Peewee with X on it to use
+with QT/X11 application.
+
+
+
+  It seems to me very interesting, previously I have managed to put Linux
+(montavista) with networking support on my CF .
+
+
+
+  I want to try it with X now and also peewee Linux with it.
+
+
+
+
+
+  1)     I connect the CF as a secondary master IDE
+
+  2)     Do Cfdisk /dev/hdc  to make primary ex2 partition and make it
+bootable which is /dev/hdc1
+
+  3)     Reboot
+
+  4)     Start ./pwlconfig
+
+  5)     Configure kernel 2.4.17 and all other packages
+
+  6)     When I try to write the thing on my target , which I spacidied as
+/dev/hdc1 in target configuration, it come up with this error L
+
+
+
+  I tried many times even to format CF again and again (which is not good
+L )
+
+
+
+
+
+  Warning: start=32 - this looks like a partition rather than the entire
+disk. Using fdisk on it is probably meaning less [using the -force option if
+you really want this]
+
+
+
+  Failed
+
+
+
+  Creating ext2 file system.. mke2fs 1.26
+
+
+
+
+
+  Cannot stat /dev/hdc11 .................. and every thing after this is
+failed
+
+
+
+
+
+
+
+  I appreciate any suggestions and help I am new to peewee.
+
+
+
+
+
+  Please help
+
+
+
+
+
+  Regards
+
+
+
+  Rushi
+
+
+
+------=_NextPart_000_0001_01C2A90F.531E8D70
+Content-Type: text/html;
+	charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML xmlns:o =3D "urn:schemas-microsoft-com:office:office"><HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Diso-8859-1">
+
+
+<META content=3D"MSHTML 6.00.2800.1126" name=3DGENERATOR>
+<STYLE></STYLE>
+</HEAD>
+<BODY bgColor=3D#ffffff>
+<DIV><SPAN class=3D522201715-21122002><FONT face=3DArial color=3D#0000ff =
+size=3D2>peewee=20
+creates the partitions based on the size of your image. you can also =
+specify how=20
+much space you want free.</FONT></SPAN></DIV>
+<DIV><SPAN class=3D522201715-21122002><FONT face=3DArial color=3D#0000ff =
+
+size=3D2></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=3D522201715-21122002><FONT face=3DArial color=3D#0000ff =
+size=3D2>so you=20
+should define your target as the device, and not the partition. =
+partiotions you=20
+have previously will be deleted. if you need to add extra software that =
+is not=20
+part of the peewee image you can do that afterwards.</FONT></SPAN></DIV>
+<BLOCKQUOTE dir=3Dltr style=3D"MARGIN-RIGHT: 0px">
+  <DIV class=3DOutlookMessageHeader dir=3Dltr align=3Dleft><FONT =
+face=3DTahoma=20
+  size=3D2>-----Original Message-----<BR><B>From:</B> =
+peeweelinux-admin@adis.on.ca=20
+  [mailto:peeweelinux-admin@adis.on.ca]<B>On Behalf Of=20
+  </B>Rushi(temp)<BR><B>Sent:</B> s=E1bado, 21 de Dezembro de 2002=20
+  10:09<BR><B>To:</B> peeweelinux@adis.on.ca<BR><B>Subject:</B> =
+[Peeweelinux]=20
+  Cannot stat /dev/hdc11, compact flash, **urgent** pls=20
+help<BR><BR></FONT></DIV>
+  <DIV><FONT face=3DArial size=3D2>
+  <DIV>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>Hi friends</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>I am using PQI 128MB compact flash, to install Peewee =
+with X on it=20
+  to use with QT/X11 application.</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>It seems to me very interesting, previously I have =
+managed to put=20
+  Linux (montavista) with networking support on my CF =
+.</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>I want to try it with X now and also peewee Linux with=20
+  it.</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal=20
+  style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+  lang=3DEN-GB=20
+  style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+  style=3D"mso-list: Ignore"><FONT face=3DArial>1)</FONT><SPAN=20
+  style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+  </SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>I connect =
+the CF as a=20
+  secondary master IDE</FONT></SPAN></P>
+  <P class=3DMsoNormal=20
+  style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+  lang=3DEN-GB=20
+  style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+  style=3D"mso-list: Ignore"><FONT face=3DArial>2)</FONT><SPAN=20
+  style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+  </SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>Do Cfdisk =
+/dev/hdc=20
+  <SPAN style=3D"mso-spacerun: yes">&nbsp;</SPAN>to make primary ex2 =
+partition and=20
+  make it bootable which is /dev/hdc1</FONT></SPAN></P>
+  <P class=3DMsoNormal=20
+  style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+  lang=3DEN-GB=20
+  style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+  style=3D"mso-list: Ignore"><FONT face=3DArial>3)</FONT><SPAN=20
+  style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+  </SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>Reboot=20
+  </FONT></SPAN></P>
+  <P class=3DMsoNormal=20
+  style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+  lang=3DEN-GB=20
+  style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+  style=3D"mso-list: Ignore"><FONT face=3DArial>4)</FONT><SPAN=20
+  style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+  </SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>Start=20
+  ./pwlconfig</FONT></SPAN></P>
+  <P class=3DMsoNormal=20
+  style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+  lang=3DEN-GB=20
+  style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+  style=3D"mso-list: Ignore"><FONT face=3DArial>5)</FONT><SPAN=20
+  style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+  </SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>Configure =
+kernel 2.4.17=20
+  and all other packages</FONT></SPAN></P>
+  <P class=3DMsoNormal=20
+  style=3D"MARGIN: 0cm 0cm 0pt 36pt; TEXT-INDENT: -18pt; mso-list: l0 =
+level1 lfo1; tab-stops: list 36.0pt"><SPAN=20
+  lang=3DEN-GB=20
+  style=3D"mso-fareast-font-family: Arial; mso-bidi-font-family: =
+Arial"><SPAN=20
+  style=3D"mso-list: Ignore"><FONT face=3DArial>6)</FONT><SPAN=20
+  style=3D"FONT: 7pt 'Times New Roman'">&nbsp;&nbsp;&nbsp;&nbsp;=20
+  </SPAN></SPAN></SPAN><SPAN lang=3DEN-GB><FONT face=3DArial>When I try =
+to write the=20
+  thing on my target , which I spacidied as /dev/hdc1 in target =
+configuration,=20
+  it come up with this error </FONT></SPAN><SPAN lang=3DEN-GB=20
+  style=3D"FONT-FAMILY: Wingdings; mso-ascii-font-family: Arial; =
+mso-hansi-font-family: Arial; mso-char-type: symbol; =
+mso-symbol-font-family: Wingdings"><SPAN=20
+  style=3D"mso-char-type: symbol; mso-symbol-font-family: =
+Wingdings">L</SPAN></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>I tried many times even to format CF again and again =
+(which is not=20
+  good </FONT></SPAN><SPAN lang=3DEN-GB=20
+  style=3D"FONT-FAMILY: Wingdings; mso-ascii-font-family: Arial; =
+mso-hansi-font-family: Arial; mso-char-type: symbol; =
+mso-symbol-font-family: Wingdings"><SPAN=20
+  style=3D"mso-char-type: symbol; mso-symbol-font-family: =
+Wingdings">L</SPAN></SPAN><SPAN=20
+  lang=3DEN-GB><FONT face=3DArial> )</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>Warning: start=3D32 - this looks like a partition rather =
+than the=20
+  entire disk. Using fdisk on it is probably meaning less [using the =
+-force=20
+  option if you really want this]</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>Failed</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>Creating ext2 file system.. mke2fs 1.26</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>Cannot stat /dev/hdc11 .................. and every thing =
+after=20
+  this is failed </FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>I appreciate any suggestions and help I am new to=20
+  peewee.</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>Please help</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>Regards</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  face=3DArial>&nbsp;</FONT></o:p></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><FONT=20
+  face=3DArial>Rushi</FONT></SPAN></P>
+  <P class=3DMsoNormal style=3D"MARGIN: 0cm 0cm 0pt"><SPAN =
+lang=3DEN-GB><o:p><FONT=20
+  =
+face=3DArial>&nbsp;</FONT></o:p></SPAN></P></DIV></FONT></DIV></BLOCKQUOT=
+E></BODY></HTML>
+
+------=_NextPart_000_0001_01C2A90F.531E8D70--
+
+
+From peeweelinux@adis.on.ca  Sat Dec 21 22:01:21 2002
+From: peeweelinux@adis.on.ca (Marc Wiz)
+Date: Sat, 21 Dec 2002 16:01:21 -0600 (CST)
+Subject: [Peeweelinux] PQI reader was  Cannot stat /dev/hdc11, compact flash,
+In-Reply-To: <000001c2a90f$530c3df0$5cf80dd5@ricardo> from "Ricardo Trindade" at Dec 21, 2002 03:18:43 PM
+Message-ID: <200212212201.gBLM1Me23617@freshaire.wiz.com>
+
+>   Hi friends
+> 
+>   I am using PQI 128MB compact flash, to install Peewee with X on it to use
+> with QT/X11 application.
+
+Is there a particular incantation to use the PQI reader / writer?
+When I plug the device into my USB bus the kernel sees it but then
+complains about no media in the device despite the fact that there is.
+
+This is RH 7.2
+
+It is like the kernel is not looking at all the slots on the device for
+media.
+
+Thanks,
+Marc
+-- 
+Marc Wiz
+marc@wiz.com
+Yes, that really is my last name.
+
+From peeweelinux@adis.on.ca  Mon Dec 23 17:52:46 2002
+From: peeweelinux@adis.on.ca (Rushi(temp))
+Date: Mon, 23 Dec 2002 17:52:46 -0000
+Subject: [Peeweelinux] Re: Peeweelinux digest, Vol 1 #169 - 1 msg
+References: <200212221801.gBMI12O23972@yoda.adis.on.ca>
+Message-ID: <OE4446lsEGR4RVYKWXG00002e99@hotmail.com>
+
+Hi all, I got it running now,
+on PQI 128MB flash card, I am using IDE to flash adopter :),
+
+Really peewee is good concept.
+
+What I have done is ,
+1) removed every partition from the disk
+2) so its just /dev/hdc device
+and I make sure every thing is unmounted from the system, as I am using
+mandrake 8 which mount every thing(even windows partition) automatically
+
+
+and just port the things to /dev/hdc
+
+and its working I can see Linux logo at boot , so fb is also on.
+
+now can any one tell me how I can run Xwindowns on it.
+
+I already have /usr/X11R6 in it and XFree86_SVGA server.
+
+I don't have /etc/X11/XFreeconfig :(
+
+as I need to use QT/X11 application with QT libraries on this system.
+
+
+
+Also I can not understand the options related to applications in the file
+system configuration in pwlconfig.
+
+my application is a binary file which is using some shared QT libraries.
+
+
+any suggestions .
+
+Thanks for every thing
+
+
+Regards'
+
+Rushi
+
+
+
+----- Original Message -----
+From: <peeweelinux-request@adis.on.ca>
+To: <peeweelinux@adis.on.ca>
+Sent: Sunday, December 22, 2002 6:01 PM
+Subject: Peeweelinux digest, Vol 1 #169 - 1 msg
+
+
+> Send Peeweelinux mailing list submissions to
+> peeweelinux@adis.on.ca
+>
+> To subscribe or unsubscribe via the World Wide Web, visit
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> or, via email, send a message with subject or body 'help' to
+> peeweelinux-request@adis.on.ca
+>
+> You can reach the person managing the list at
+> peeweelinux-admin@adis.on.ca
+>
+> When replying, please edit your Subject line so it is more specific
+> than "Re: Contents of Peeweelinux digest..."
+>
+>
+> Today's Topics:
+>
+>    1. PQI reader was  Cannot stat /dev/hdc11, compact flash, (Marc Wiz)
+>
+> --__--__--
+>
+> Message: 1
+> From: Marc Wiz <marc@wiz.com>
+> To: peeweelinux@adis.on.ca
+> Date: Sat, 21 Dec 2002 16:01:21 -0600 (CST)
+> Subject: [Peeweelinux] PQI reader was  Cannot stat /dev/hdc11, compact
+flash,
+> Reply-To: peeweelinux@adis.on.ca
+>
+> >   Hi friends
+> >
+> >   I am using PQI 128MB compact flash, to install Peewee with X on it to
+use
+> > with QT/X11 application.
+>
+> Is there a particular incantation to use the PQI reader / writer?
+> When I plug the device into my USB bus the kernel sees it but then
+> complains about no media in the device despite the fact that there is.
+>
+> This is RH 7.2
+>
+> It is like the kernel is not looking at all the slots on the device for
+> media.
+>
+> Thanks,
+> Marc
+> --
+> Marc Wiz
+> marc@wiz.com
+> Yes, that really is my last name.
+>
+>
+> --__--__--
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+> End of Peeweelinux Digest
+>
+
+From peeweelinux@adis.on.ca  Tue Dec 24 12:03:41 2002
+From: peeweelinux@adis.on.ca (Ricardo Trindade)
+Date: Tue, 24 Dec 2002 12:03:41 -0000
+Subject: [Peeweelinux] Re: Peeweelinux digest, Vol 1 #169 - 1 msg
+In-Reply-To: <OE4446lsEGR4RVYKWXG00002e99@hotmail.com>
+Message-ID: <002201c2ab44$8083c3c0$48fb0dd5@ricardo>
+
+to add your app you can use the "custom files" option, but that depends on
+your setup. on my case I just create the OS, and then manually copy the app
+to the card, since I have several apps, which are all diferent, and just the
+OS+java+X is the same.
+
+for X, if you have a geode, I can send you a config file, if not, generate a
+XF86Config file in your desktop and then copy it to the peewee.
+
+-----Original Message-----
+From: peeweelinux-admin@adis.on.ca
+[mailto:peeweelinux-admin@adis.on.ca]On Behalf Of Rushi(temp)
+Sent: segunda-feira, 23 de Dezembro de 2002 17:53
+To: peeweelinux@adis.on.ca
+Subject: [Peeweelinux] Re: Peeweelinux digest, Vol 1 #169 - 1 msg
+
+
+Hi all, I got it running now,
+on PQI 128MB flash card, I am using IDE to flash adopter :),
+
+Really peewee is good concept.
+
+What I have done is ,
+1) removed every partition from the disk
+2) so its just /dev/hdc device
+and I make sure every thing is unmounted from the system, as I am using
+mandrake 8 which mount every thing(even windows partition) automatically
+
+
+and just port the things to /dev/hdc
+
+and its working I can see Linux logo at boot , so fb is also on.
+
+now can any one tell me how I can run Xwindowns on it.
+
+I already have /usr/X11R6 in it and XFree86_SVGA server.
+
+I don't have /etc/X11/XFreeconfig :(
+
+as I need to use QT/X11 application with QT libraries on this system.
+
+
+
+Also I can not understand the options related to applications in the file
+system configuration in pwlconfig.
+
+my application is a binary file which is using some shared QT libraries.
+
+
+any suggestions .
+
+Thanks for every thing
+
+
+Regards'
+
+Rushi
+
+
+
+----- Original Message -----
+From: <peeweelinux-request@adis.on.ca>
+To: <peeweelinux@adis.on.ca>
+Sent: Sunday, December 22, 2002 6:01 PM
+Subject: Peeweelinux digest, Vol 1 #169 - 1 msg
+
+
+> Send Peeweelinux mailing list submissions to
+> peeweelinux@adis.on.ca
+>
+> To subscribe or unsubscribe via the World Wide Web, visit
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> or, via email, send a message with subject or body 'help' to
+> peeweelinux-request@adis.on.ca
+>
+> You can reach the person managing the list at
+> peeweelinux-admin@adis.on.ca
+>
+> When replying, please edit your Subject line so it is more specific
+> than "Re: Contents of Peeweelinux digest..."
+>
+>
+> Today's Topics:
+>
+>    1. PQI reader was  Cannot stat /dev/hdc11, compact flash, (Marc Wiz)
+>
+> --__--__--
+>
+> Message: 1
+> From: Marc Wiz <marc@wiz.com>
+> To: peeweelinux@adis.on.ca
+> Date: Sat, 21 Dec 2002 16:01:21 -0600 (CST)
+> Subject: [Peeweelinux] PQI reader was  Cannot stat /dev/hdc11, compact
+flash,
+> Reply-To: peeweelinux@adis.on.ca
+>
+> >   Hi friends
+> >
+> >   I am using PQI 128MB compact flash, to install Peewee with X on it to
+use
+> > with QT/X11 application.
+>
+> Is there a particular incantation to use the PQI reader / writer?
+> When I plug the device into my USB bus the kernel sees it but then
+> complains about no media in the device despite the fact that there is.
+>
+> This is RH 7.2
+>
+> It is like the kernel is not looking at all the slots on the device for
+> media.
+>
+> Thanks,
+> Marc
+> --
+> Marc Wiz
+> marc@wiz.com
+> Yes, that really is my last name.
+>
+>
+> --__--__--
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+> End of Peeweelinux Digest
+>
+_______________________________________________
+Peeweelinux mailing list
+Peeweelinux@adis.on.ca
+http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Mon Dec 30 17:31:18 2002
+From: peeweelinux@adis.on.ca (dan latham)
+Date: Mon, 30 Dec 2002 12:31:18 -0500
+Subject: [Peeweelinux] newbie wants to target USB HDD
+Message-ID: <5.1.1.6.2.20021230122847.00b72f48@mail.earthlink.net>
+
+I'm working through the example to create an image to a boot floppy. Instead,
+I'd like to write it to my USB disk, so I can move it to my test machine and
+see if it boots. Is this possible?
+
+thanks,
+dan
+
+
+From peeweelinux@adis.on.ca  Mon Dec 30 18:33:46 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 30 Dec 2002 10:33:46 -0800 (PST)
+Subject: [Peeweelinux] newbie wants to target USB HDD
+Message-ID: <2.2.16.20021230104722.2aafa506@zmicro.com>
+
+>I'm working through the example to create an image to a boot floppy. Instead,
+>I'd like to write it to my USB disk, so I can move it to my test machine and
+>see if it boots. Is this possible?
+>
+>thanks,
+>dan
+
+It's possible if the test machine will boot a USB drive.
+
+Basically you have to choose a creating method and then 
+specify the USB drive in place of the floppy or hard
+drive.  The floppy setup has "/dev/fd0" as the device
+to write to, while hard drive options specify "/dev/hdc"
+or equivalent.  Your USB drive is likely mapped to a 
+scsi device so it would be something like "/dev/sda"
+instead.  Be very sure what you specify since the 
+script will erase/partition/makefs whatever you
+specify.
+
+If the USB drive boots like a floppy then use the
+floppy setup; otherwise use one of the hard drive
+options to program it.
+
+I don't understand all the options in that disk-creation
+script, but I have messed with some of them so give it
+a try and let us know what the result is.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Mon Dec 30 19:54:56 2002
+From: peeweelinux@adis.on.ca (dan latham)
+Date: Mon, 30 Dec 2002 14:54:56 -0500
+Subject: [Peeweelinux] newbie wants to target USB HDD
+In-Reply-To: <2.2.16.20021230104722.2aafa506@zmicro.com>
+Message-ID: <5.1.1.6.2.20021230143058.00b24e60@mail.earthlink.net>
+
+Ok, I got a little farther. I just had to make sure that the disk was not 
+mounted before
+I did "Load File System on Target". I specified /dev/sda for Target Device and
+Boot Device on Target System options.
+
+I get these errors whether I write the image to a floppy or usb drive:
+Building ld.so.cache...ldconfig: Can't stat /lib: No such file or directory
+Can't open configuration file /etc/ld.so.conf: No such file or directory
+Can't open directory /usr/X11R6/lib: No such file or directory
+Can't create temporary cache file /etc/ld.so.cache: No such file or directory
+
+Any ideas what causes this?
+
+
+From peeweelinux@adis.on.ca  Mon Dec 30 20:34:50 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 30 Dec 2002 12:34:50 -0800 (PST)
+Subject: [Peeweelinux] newbie wants to target USB HDD
+Message-ID: <2.2.16.20021230124827.bb5faec8@zmicro.com>
+
+>I get these errors whether I write the image to a floppy or usb drive:
+ (snip)
+>Can't create temporary cache file /etc/ld.so.cache: No such file or directory
+>
+>Any ideas what causes this?
+
+I don't have my system running right now to verify this, but I think
+that I see this message a lot when I generate a system.  That file
+assists the kernel in finding the library file when a program 
+is run.  I don't think it is necessary, it just takes more
+time to load a program.  And all the statically linked 
+programs don't use libraries at all.
+
+In other words, give it a try and see if it works anyway.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Mon Dec 30 20:58:07 2002
+From: peeweelinux@adis.on.ca (dan latham)
+Date: Mon, 30 Dec 2002 15:58:07 -0500
+Subject: [Peeweelinux] newbie wants to target USB HDD
+In-Reply-To: <2.2.16.20021230124827.bb5faec8@zmicro.com>
+Message-ID: <5.1.1.6.2.20021230155635.00b54828@mail.earthlink.net>
+
+ok, tried booting from the floppy, but it said:
+Could not find kernel image: bzimage
+
+
+From peeweelinux@adis.on.ca  Mon Dec 30 22:41:14 2002
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Mon, 30 Dec 2002 14:41:14 -0800
+Subject: [Peeweelinux] newbie wants to target USB HDD
+In-Reply-To: <5.1.1.6.2.20021230143058.00b24e60@mail.earthlink.net>; from danlatham@earthlink.net on Mon, Dec 30, 2002 at 11:54:56 -0800
+References: <2.2.16.20021230104722.2aafa506@zmicro.com> <5.1.1.6.2.20021230143058.00b24e60@mail.earthlink.net>
+Message-ID: <20021230144114.C9300@leif.attbi.com>
+
+I've gotten this one a bunch, usually when pwl can't write to the target 
+for some reason. A couple of checks to run before you try more:
+
+1). If you're running redhat 7 or 8, make sure you run the compatibility 
+script, and change your makefiles as described in the pee wee archives 
+(which you should know about anyways).
+2). You should check to make sure, just regularly, that the system can 
+read and write to the usb drive. I've used "usbview", which you can get 
+from freshmeat.com, with good success for this sort of hardware scoping. 
+You can also look in /proc/bus/ for more info.
+
+Incidentally, could you tell us a little more about your system?
+
+On 2002.12.30 11:54 dan latham wrote:
+> Ok, I got a little farther. I just had to make sure that the disk was 
+> not mounted before
+> I did "Load File System on Target". I specified /dev/sda for Target 
+> Device and
+> Boot Device on Target System options.
+> 
+> I get these errors whether I write the image to a floppy or usb drive:
+> Building ld.so.cache...ldconfig: Can't stat /lib: No such file or 
+> directory
+> Can't open configuration file /etc/ld.so.conf: No such file or directory
+> Can't open directory /usr/X11R6/lib: No such file or directory
+> Can't create temporary cache file /etc/ld.so.cache: No such file or 
+> directory
+> 
+> Any ideas what causes this?
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+From peeweelinux@adis.on.ca  Mon Dec 30 23:22:30 2002
+From: peeweelinux@adis.on.ca (dan latham)
+Date: Mon, 30 Dec 2002 18:22:30 -0500
+Subject: [Peeweelinux] newbie wants to target USB HDD
+In-Reply-To: <20021230144114.C9300@leif.attbi.com>
+References: <5.1.1.6.2.20021230143058.00b24e60@mail.earthlink.net>
+ <2.2.16.20021230104722.2aafa506@zmicro.com>
+ <5.1.1.6.2.20021230143058.00b24e60@mail.earthlink.net>
+Message-ID: <5.1.1.6.2.20021230180808.00b83490@mail.earthlink.net>
+
+I'm running RH 7.3, so I'll look into the compatibility script you 
+mentioned. I've not
+done anything in that regard.
+
+As background to what I'm doing, I'm playing with building a dedicated 
+Linux-based
+MP3 player. I'm developing on an HP laptop with RH 7.3. The box I'm 
+developing for
+is a EPIA Mini-ITX. It seemed like an easy way to build images and try them out
+would be to write to a USB device and then boot from USB.  So my first attempt
+was just getting the OS on a USB HDD from the laptop. That seems like it 
+will be
+no problem. But the Mini-ITX only supports booting off a USB FDD. So I've 
+ordered a
+Netac Dual-Bootable OnlyDisk that can switch to appear as a FDD. So my plan
+is to build the image on the laptop to the USB drive and then plug it into 
+the Mini-ITX
+and test. Seems like it should work :)
+
+In the meantime, I'm getting acquainted with PeeWee Linux. It's a
+great tool for someone who knows next to nothing about developing embedded
+Linux.
+
+dan 
+
+
+From peeweelinux@adis.on.ca  Mon Dec 30 23:52:51 2002
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Mon, 30 Dec 2002 15:52:51 -0800
+Subject: [Peeweelinux] newbie wants to target USB HDD
+In-Reply-To: <5.1.1.6.2.20021230180808.00b83490@mail.earthlink.net>; from danlatham@earthlink.net on Mon, Dec 30, 2002 at 15:22:30 -0800
+References: <5.1.1.6.2.20021230143058.00b24e60@mail.earthlink.net> <2.2.16.20021230104722.2aafa506@zmicro.com> <5.1.1.6.2.20021230143058.00b24e60@mail.earthlink.net> <20021230144114.C9300@leif.attbi.com> <5.1.1.6.2.20021230180808.00b83490@mail.earthlink.net>
+Message-ID: <20021230155251.E9300@leif.attbi.com>
+
+It looks like the compatibility issues with RH 7+ are the problem. I would 
+also go ahead and build your own 2.2 kernel using pwlconfig and try that 
+out. If you still find you're having problems, there's a HOWTO in the 
+archives for the 2.4 kernels, but it's a bit more work.
+
+On 2002.12.30 15:22 dan latham wrote:
+> I'm running RH 7.3, so I'll look into the compatibility script you 
+> mentioned. I've not
+> done anything in that regard.
+> 
+> As background to what I'm doing, I'm playing with building a dedicated 
+> Linux-based
+> MP3 player. I'm developing on an HP laptop with RH 7.3. The box I'm 
+> developing for
+> is a EPIA Mini-ITX. It seemed like an easy way to build images and try 
+> them out
+> would be to write to a USB device and then boot from USB.  So my first 
+> attempt
+> was just getting the OS on a USB HDD from the laptop. That seems like it 
+> will be
+> no problem. But the Mini-ITX only supports booting off a USB FDD. So 
+> I've ordered a
+> Netac Dual-Bootable OnlyDisk that can switch to appear as a FDD. So my 
+> plan
+> is to build the image on the laptop to the USB drive and then plug it 
+> into the Mini-ITX
+> and test. Seems like it should work :)
+> 
+> In the meantime, I'm getting acquainted with PeeWee Linux. It's a
+> great tool for someone who knows next to nothing about developing 
+> embedded
+> Linux.
+> 
+> dan _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+

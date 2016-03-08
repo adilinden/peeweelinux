@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> making floppy systems
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000068.html">
+   <LINK REL="Next"  HREF="000063.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>making floppy systems
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="making floppy systems">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 1 Sep 2000 13:37:48 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000068.html">Making a floppy system with PeeWeeLinux
+</A></li>
+        <LI> Next message: <A HREF="000063.html">making floppy systems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Fred,
+
+--- fred anger &lt;<A HREF="mailto:anger@rightarm.org">anger@rightarm.org</A>&gt; wrote:
+&gt;<i> On Fri, 1 Sep 2000, Ralph Stickley wrote:
+</I>&gt;<i> &gt; Yes...So far, all my development has been on DOC flash (M-Systems
+</I>&gt;<i> Disk-On-Chip
+</I>&gt;<i> &gt; which was quickly abanonded for cost reasons) and Compact Flash (PCMCIA
+</I>&gt;<i> Adaptor
+</I>&gt;<i> &gt; and USB/CF adaptor).  These are all &quot;integrated&quot; hard drives available
+</I>&gt;<i> directly
+</I>&gt;<i> &gt; to pwlconfig.  
+</I>&gt;<i> 
+</I>&gt;<i> Those devices still require you to detach them from the &quot;embedded&quot; system,
+</I>&gt;<i> and to the machine running pwlconfig though.  That's what I was hoping to
+</I>&gt;<i> get around.  I don't think it's possible with PWL.
+</I>&gt;<i> 
+</I>Hmmmm...I see your point. I my systems, the actual device that is embedded is
+physically mounted on my development box then transfered to the embedded
+system.
+
+If you exract the file system then compress that to one file. Put that one file
+on your boot floppy and then extract it to the embedded hard drive. (you may
+have to boot off a floppy that loads the &quot;boot&quot; filesystem into ramdisk - then
+insert the new file system from a floppy created by pwlconfig.  
+1. build a boot floppy include tar/gzip/cp/lilo/mkfs/..etc.. utilities
+2. create a working file system using pwlconfig
+3. Boot the embedded target with the boot floppy - run system out of a ramdisk
+4. Isert the pwlconfig filesystem and copy the files to the embedded hard disk.
+
+Is there a way to automate this ? If your only interface to the embedded system
+is a floppies I don't know what else could be done.
+
+However,
+
+Is there any way you can have the Embedded system boot and access a network ?
+Then you could ftp files from your pwl development system. (Or better yet,
+mount the embedded system as a disk - NFS or something like that).  
+I'm guessing here, but something like this:
+
+Embedded box 
+- partition 1 - boot and allow access via network
+- partition 2 - system application - erased/replaced as requested remotely
+ 
+&gt;<i> &gt; Hope this help. Also, Adi is approaching the boot/ramdisk file system
+</I>&gt;<i> support.
+</I>&gt;<i> 
+</I>&gt;<i> That would be incredibly useful :)
+</I>&gt;<i>
+</I>I think this is mostly working but not integrated into pwlconfig.  Maybe next
+week will see a flurry of activity on this...let me know if anything else would
+be helpful here...
+
+Enjoy the weekend,
+Ralph
+
+ 
+&gt;<i> Thanks for your help.
+</I>&gt;<i> 
+</I>&gt;<i> -fa
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>
+
+__________________________________________________
+Do You Yahoo!?
+Yahoo! Mail - Free email you can access from anywhere!
+<A HREF="http://mail.yahoo.com/">http://mail.yahoo.com/</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000068.html">Making a floppy system with PeeWeeLinux
+</A></li>
+	<LI> Next message: <A HREF="000063.html">making floppy systems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#61">[ date ]</a>
+              <a href="thread.html#61">[ thread ]</a>
+              <a href="subject.html#61">[ subject ]</a>
+              <a href="author.html#61">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

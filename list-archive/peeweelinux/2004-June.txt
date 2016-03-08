@@ -1,0 +1,66 @@
+From peeweelinux@adis.on.ca  Sun Jun  6 17:48:00 2004
+From: peeweelinux@adis.on.ca (Andrew Messier)
+Date: Sun, 6 Jun 2004 09:48:00 -0700 (PDT)
+Subject: [Peeweelinux] Custom Kernel Configurations
+Message-ID: <20040606164800.90741.qmail@web14003.mail.yahoo.com>
+
+Hello, I'm new to peewee so forgive this basic
+question:
+
+I'm having trouble getting a custom compiled kernel to
+appear in my project file-system. I compiled a new
+kernel from the pwlconfig interface and saved it as a
+new packege. After doing so the screen says to "select
+the custom kernel in the package selection to include
+it in your project". In the "configure project file
+sytem" menu I see a category for "kernel" as well as
+"custom kernel". I see my custom kernal available, but
+when I select it and extract the file system my
+/mnt/boot directory is empty (I'm expecting to see
+bzImage). I only get bzImage in the /boot directory
+when I choose one of the existing kernels like
+"kernel-basic-2.2.17".
+
+Again, sorry if this is a stupid newbie question.
+
+- Andrew Messier
+-
+
+
+
+	
+		
+__________________________________
+Do you Yahoo!?
+Friends.  Fun.  Try the all-new Yahoo! Messenger.
+http://messenger.yahoo.com/ 
+
+From peeweelinux@adis.on.ca  Mon Jun 21 21:59:04 2004
+From: peeweelinux@adis.on.ca (CRISTIAN MEJIA)
+Date: Mon, 21 Jun 2004 16:59:04 -0400
+Subject: [Peeweelinux] Changing Video Hardware
+Message-ID: <40D74C18.3040301@ecofor.cl>
+
+I need to change some of my old Geode boards with some new VIA chipset 
+Panel PC's and I was completely unable to make the video card work with 
+my original development.
+
+I only needs a generic 640x480 at 8 bits, but I'm using the 2.2.17 
+kernel in original PeeWee 6.1 (which I use long time ago), so I didn't 
+have framebuffer support.
+
+I have tried to make work the RedHat 6.2 in this machine and it won't 
+work neither.
+
+I will appreciate some ideas to reduce the changes needed for this 
+system. Is a generic Taiwanese machine.
+
+I only get a 320x200 resolution.
+
+Thanks in advance,
+
+Best regards,
+                Cristián.
+
+
+

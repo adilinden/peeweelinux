@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Boot/CRC Problems
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000796.html">
+   <LINK REL="Next"  HREF="000799.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Boot/CRC Problems
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Boot/CRC Problems">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 17 Oct 2002 11:58:09 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000796.html">[Peeweelinux] Sucess!!!
+</A></li>
+        <LI> Next message: <A HREF="000799.html">[Peeweelinux] Boot/CRC Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#798">[ date ]</a>
+              <a href="thread.html#798">[ thread ]</a>
+              <a href="subject.html#798">[ subject ]</a>
+              <a href="author.html#798">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I can't say for sure what is going on, but it seems that the kernel booting off of a PCMCIA would need kernel support for that PCMCIA adapter at boot time so that It can mount the root filessytem and all that stuff. PCMCIA stuff is usually done in the rc files on bootup, which is after the root file system is mounted. 
+
+The reason that you can get to the card initially is that the boot rom is loading the BIOS software for it that DOS can access. Linux knows nothing of this and will not use it without a kernel driver. 
+
+I would recommend using a PC104 board that has a traditional (software transparent) IDE-CompactFlash adapter on it to boot the system. 
+
+~Ken
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000796.html">[Peeweelinux] Sucess!!!
+</A></li>
+	<LI> Next message: <A HREF="000799.html">[Peeweelinux] Boot/CRC Problems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#798">[ date ]</a>
+              <a href="thread.html#798">[ thread ]</a>
+              <a href="subject.html#798">[ subject ]</a>
+              <a href="author.html#798">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

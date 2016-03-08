@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Error loading file system to target compact flash card
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001180.html">
+   <LINK REL="Next"  HREF="001182.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Error loading file system to target compact flash card
+   </H1>
+    <B>Ashley Rolleston
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Error loading file system to target compact flash card">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>21 Aug 2003 15:44:47 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001180.html">[Peeweelinux] PeeweeLinux + Xwindows booting from Compact
+ Flash
+</A></li>
+        <LI> Next message: <A HREF="001182.html">[Peeweelinux] Error loading file system to target compact
+ flash card
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1181">[ date ]</a>
+              <a href="thread.html#1181">[ thread ]</a>
+              <a href="subject.html#1181">[ subject ]</a>
+              <a href="author.html#1181">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+My flash card hardware arrived today but I'm having a problem. I'm using
+the bootx project kindly supplied to me by Ken Emmons, Jr. 
+
+Results of the failure are as shown after trying to write to target
+device as shown in pwlconfig. All goes ok until ...
+
+************
+
+Editing inittab...ok                                                   
+Building ld.so.cache...ldconfig: Can't stat /lib: No such file or direc 
+ldconfig: Can't stat /usr/lib: No such file or directory                
+ldconfig: Can't open configuration file /etc/ld.so.conf: No such file o 
+/usr/X11R6/lib:                                                           ldconfig: Can't open directory /usr/X11R6/lib: No such file or director
+ok                                                                        Unmounting loopback device...ok  
+
+************
+
+then it carries on fine and creates the partitions on /dev/sda without
+any other problem
+
+the terminal output during creation is all ok until ...
+
+************
+
+Determining space on target device...  du:
+`./projects/bootx/mnt/boot/bzImage-full': No such file or directory
+                                                           [  ok  ]
+Partition traget device /dev/sda...                        [  ok  ]
+Creating ext2 filesystem...                                [  ok  ]
+Mount the target device /dev/sda1...                       [  ok  ]
+Copying ramdisk, kernel and boot.b...  cp: cannot stat
+`./projects/bootx/mnt/boot/bzImage-full': No such file or directory
+                                                           [  ok  ]
+Creating lilo.conf in a temporary location...              [  ok  ]
+Installing lilo bootloader...                              [failed]
+Unmounting target device /dev/sda1...                      [  ok  ]
+
+************
+
+I searched the archives and found the following mail describing what
+appears to be the same problem
+
+<A HREF="http://mail.adis.on.ca/pipermail/peeweelinux/2002-February/000478.html">http://mail.adis.on.ca/pipermail/peeweelinux/2002-February/000478.html</A>
+
+QUOTE FROM REPLY TO ABOVE MAIL
+&quot; Check to make sure that you have selected &quot;etc/&quot; under Project File
+System --&gt; System
+Base --&gt; file system, and also &quot;etc/inittab&quot; under initscripts.  You may 
+have selected another package (sysvinit, for example) that requires this 
+file. &quot;
+
+I have checked this, under these options it just says 'estimated total 
+from selected files 0' even when I choose 'select all files from 
+package'. I also tried just using minimal project (to /dev/sda/) , but 
+the same errors occur.
+
+When I try and 'Extract File System for Project' it just gives me lots
+of 'Not found in Archive' messages for all of the files.
+
+Can anyone see what I am doing wrong here ? Is there any other
+information I can provide to aid the problem diagnosis ? Any help would
+be appreciated :)
+
+Thanks           
+-- 
+Ashley Rolleston
+aka Onyx^
+<A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001180.html">[Peeweelinux] PeeweeLinux + Xwindows booting from Compact
+ Flash
+</A></li>
+	<LI> Next message: <A HREF="001182.html">[Peeweelinux] Error loading file system to target compact
+ flash card
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1181">[ date ]</a>
+              <a href="thread.html#1181">[ thread ]</a>
+              <a href="subject.html#1181">[ subject ]</a>
+              <a href="author.html#1181">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

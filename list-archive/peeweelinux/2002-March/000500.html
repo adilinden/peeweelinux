@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: Peewee on Rocky 328E
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="000501.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Peewee on Rocky 328E
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Peewee on Rocky 328E">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 5 Mar 2002 10:09:47 +0100</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="000501.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#500">[ date ]</a>
+              <a href="thread.html#500">[ thread ]</a>
+              <a href="subject.html#500">[ subject ]</a>
+              <a href="author.html#500">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi everybody,
+
+Thank you Mark for your last e-mail.
+
+Here is the result of my recent peewee installation test on my embedded PC board
+Rocky 328E.
+
+I install the IDE HD (as slave) of the embedded PC on my desk PC (Pentium II 350
+Mhz, 384 MB RAM), with Red Hat and pwlconfig .
+
+With pwlconfig : copy/paste of the &quot;minimal&quot; project to my project : minitest
+
+I only change those parameters :
+
+Target : uncompressed ramdisk, boot from ext2 partition
+Target device : &quot;/dev/hdb&quot;
+boot device on target system : &quot;/dev/hda&quot;
+
+Then, I try to install peewee on my DESK PC : I remove the master HD of my desk
+PC, and I replace it with the HD of my embedded PC as primary master. And ... it
+works ! Great ! Peewee ask me for a loggin and a password. But I do not know
+what to enter :-( Thus, I can not log on... (What is the default logon and pwd
+?)
+
+Then I move the embedded PC HD (still as primary master) from my desk PC to my
+embedded PC (386, 3712 kB RAM). And it does not come up :-(
+
+The embedded PC seems to boot normally :
+
+Lilo boot
+Loading Linux ..........
+.
+.
+until
+.
+.
+Ramdisk compressed image found at block 0
+VFS mounted root (ext2 filesystem)
+Copying system file from /dev/hda2 to /dev/ram2 ...
+
+And then starts the nightmare : an endless loop of :
+
+VM : do_try_to_free_pages failed for linuxrc
+
+that flows up with sometimes a different line :
+
+VM : do_try_to_free_pages failed for kswapd
+
+What is the problem with my embedded PC ? A lack of RAM ?
+
+Is there any parameter to change in pwlconfig ? Maybe &quot;Free space on ramdisk :
+2000&quot;. Do I have to try with less than 2000 ? Anybody have any idea ?
+
+Thank you
+
+Guillaume PREVOST
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="000501.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#500">[ date ]</a>
+              <a href="thread.html#500">[ thread ]</a>
+              <a href="subject.html#500">[ subject ]</a>
+              <a href="author.html#500">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> upx, tinylogin
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000013.html">
+   <LINK REL="Next"  HREF="000015.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>upx, tinylogin
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="upx, tinylogin">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Sun, 6 Feb 2000 09:41:42 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000013.html">upx, tinylogin
+</A></li>
+        <LI> Next message: <A HREF="000015.html">Pee wee Linux - pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#14">[ date ]</a>
+              <a href="thread.html#14">[ thread ]</a>
+              <a href="subject.html#14">[ subject ]</a>
+              <a href="author.html#14">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> I've continued some of my tests.  The results:
+</I>&gt;<i> - upx compressed executables don't seem to work on a 386, on a 
+</I>&gt;<i> Pentium, K6 and P-II they work correctly.  This may be a problem 
+</I>&gt;<i> for real embedded systems as the 386sx is still quite popular there.
+</I>
+I am booting the systems from a ramdisk which is compressed. A 2.7meg
+filesystem compresses to about 970k on the boot media. Since I usually
+have plenty of RAM I just load everything in a ramdisk. 
+
+This works great for router type applications where there is no data that
+changes over time that would have to be saved. 
+
+&gt;<i> - I've started to experiment with tinylogin, a multicall binary like 
+</I>&gt;<i> busybox that replaces login, su, passwd, getty and some other 
+</I>&gt;<i> utilities.  It's really nice, but I have some problems with su and with 
+</I>&gt;<i> remote login as root.  I'll keep you posted.
+</I>
+I've build one system with it successful. But I haven't build a
+PeeWeeLinux package yet. I am planning on building patchfiles for all
+existing PeeWeeLinux packages. So there will be a script that compiles and
+builds all the PeeWeeLinux packages from the `stock' sources and generic
+patches.
+
+&gt;<i> - I'm having a couple of problems with elvis : it seems to loose 
+</I>&gt;<i> track of the operations on a line (successions of a, i, x for 
+</I>&gt;<i> example), resulting in unwanted results.  Am I the only one having 
+</I>&gt;<i> this problem?  
+</I>
+I've noticed that elvis does not properly deal with the screen. I find
+that if you memorize what you do it'll work ok. But certain operations
+`loose' thew status line.
+
+In a raouter project I used a static vi instead. It's big but more
+reliable than elvis. I used to use ee. It uses a very different syntax but
+worked great with termcap. 
+
+&gt;<i> In the mean time : most of my tests were done on a K6-200 and a 
+</I>&gt;<i> 386dx25 (yesyes ;-)) with 8MB RAM.  Even the latter &quot;feels&quot; quite 
+</I>&gt;<i> OK and should be a usable platform for simple tasks or for tasks 
+</I>&gt;<i> were high performance is not an issue.
+</I>
+I've looked at 386's. But booting a ramdisk into 8MB ram doesn't leave
+much for `real' memory!
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000013.html">upx, tinylogin
+</A></li>
+	<LI> Next message: <A HREF="000015.html">Pee wee Linux - pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#14">[ date ]</a>
+              <a href="thread.html#14">[ thread ]</a>
+              <a href="subject.html#14">[ subject ]</a>
+              <a href="author.html#14">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

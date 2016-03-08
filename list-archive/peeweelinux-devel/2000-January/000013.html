@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> rpm vs. tar
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000012.html">
+   <LINK REL="Next"  HREF="000014.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>rpm vs. tar
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="rpm vs. tar">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Sun, 23 Jan 2000 10:05:24 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000012.html">An 'early' morning thought about the future of PWL
+</A></li>
+        <LI> Next message: <A HREF="000014.html">PeeWeeLinux Documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, how did we come up with the idea of using rpm instead of tar? Why not
+use generic sources as it is done now? Just use those sources and create a
+patch which would include a script which compiles and strips the binaries
+and creates the package.tar file?
+
+The only disadvantage would be that PeeWeeLinux would be rather large as a
+source distribution. However, for normal operation of PeeWeeLinux the
+sources wouldn't be required since only the binaries are processed into an
+embedded sytem... This would eliminate the need to get totally involved
+with rpm.
+
+Here would be the process:
+
+source.tgz  +  patch 1  +  patch x  +  PWL patch  =  PWL source
+PWLsource processed by PWLbuild script (part of patch)  =  PWL binary.tgz
+
+Again, i am not familiar with rpm as far as the building of binaries
+from sources is concerned. But I would suspect the above would offer more
+flexibility, I think. And allow us to easily keep everything within the
+Embedded_Build directory tree... 
+
+I think I should be changing al the package neames to include the version
+numbers? What do you think?
+
+TTYL,
+Adi
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000012.html">An 'early' morning thought about the future of PWL
+</A></li>
+	<LI> Next message: <A HREF="000014.html">PeeWeeLinux Documentation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#13">[ date ]</a>
+              <a href="thread.html#13">[ thread ]</a>
+              <a href="subject.html#13">[ subject ]</a>
+              <a href="author.html#13">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

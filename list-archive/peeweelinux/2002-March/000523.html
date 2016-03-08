@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] network
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000521.html">
+   <LINK REL="Next"  HREF="000524.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] network
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] network">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 21 Mar 2002 10:24:05 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000521.html">[Peeweelinux] network
+</A></li>
+        <LI> Next message: <A HREF="000524.html">[Peeweelinux] network
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#523">[ date ]</a>
+              <a href="thread.html#523">[ thread ]</a>
+              <a href="subject.html#523">[ subject ]</a>
+              <a href="author.html#523">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Ricardo Trindade wrote:
+
+&gt;<i> I have to setup several embedded computers. The only difference between
+</I>&gt;<i> them is the IP address. How would one go about doing this in peewee ?
+</I>
+Hi Ricardo,
+
+Since Peewee is based on Redhat 6.2, I believe the IP address is set in a file called
+&quot;/etc/config/ifcfg-eth0&quot;.  A typical file might look like this:
+
+DEVICE=eth0
+IPADDR=192.168.1.1
+NETMASK=255.255.255.0
+NETWORK=192.168.1.0
+BROADCAST=192.168.1.255
+GATEWAY=192.168.1.254
+
+This file may be selected under the &quot;networkscripts&quot; package.  If the default settings
+aren't exactly what you need, you could create and include a custom file.
+
+Hope this helps,
+
+Mark
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000521.html">[Peeweelinux] network
+</A></li>
+	<LI> Next message: <A HREF="000524.html">[Peeweelinux] network
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#523">[ date ]</a>
+              <a href="thread.html#523">[ thread ]</a>
+              <a href="subject.html#523">[ subject ]</a>
+              <a href="author.html#523">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

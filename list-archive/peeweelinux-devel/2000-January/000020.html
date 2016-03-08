@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Urgent question!
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000019.html">
+   <LINK REL="Next"  HREF="000021.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Urgent question!
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="Urgent question!">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Mon, 24 Jan 2000 01:24:34 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000019.html">PeeWeeLinux Documentation
+</A></li>
+        <LI> Next message: <A HREF="000021.html">New ftp site at adis.on.ca
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> &gt;From the &quot;Write the manual first&quot; method (items in [] are for design 
+</I>&gt;<i> information only...fix this if I screwed it up :-)
+</I>&gt;<i> -------
+</I>&gt;<i> 
+</I>&gt;<i> &quot;Main Menu-&gt;Manage Packages-&gt;Build Package&quot;
+</I>&gt;<i> 
+</I>&gt;<i> Use this menu operation to create the packages used for your file system.
+</I>&gt;<i> If the source file has already been analyized for Pee Wee Linx, you will
+</I>&gt;<i> see a list of available packages.
+</I>&gt;<i> 
+</I>&gt;<i> Choose the package you wish to build from this list. (If you don't see
+</I>&gt;<i> the one you want, you have to build your own patch file - see the 500
+</I>&gt;<i> page Appendix X describing just how to do this).
+</I>&gt;<i> 
+</I>&gt;<i> [patch files are stored in Embedded_Build/patches directory]
+</I>&gt;<i> 
+</I>&gt;<i> If the source file required for this package is not found, you will be 
+</I>&gt;<i> prompted for its location. (ie. insert your Red Hat or other distribution
+</I>&gt;<i> Source disk and tell pwlconfig where to get the file).
+</I>&gt;<i> 
+</I>&gt;<i> [Original source files are stored in Embedded_Build/sources/package_name ]
+</I>&gt;<i> 
+</I>&gt;<i> Once the source file is found, it will be processed for optimized building
+</I>&gt;<i> of the binaries.  This may take a while.
+</I>&gt;<i> 
+</I>&gt;<i> [Processing done by the Embedded_Build/build_pwl/package_name/build.sh ]
+</I>&gt;<i> [Processed source files are found in Embedded_Build/mnt ]
+</I>&gt;<i> 
+</I>&gt;<i> You will now be given a list of all the files within the package. Pick
+</I>&gt;<i> and choose the files you want to include in your package (or accept the
+</I>&gt;<i> defaults).  All the files you've selected will be stored in your new
+</I>&gt;<i> package.
+</I>&gt;<i> 
+</I>&gt;<i> Now, simply select the package category that best describes your package.
+</I>&gt;<i> Or create a new category using &quot;Add Package Category&quot; operation.  Your 
+</I>&gt;<i> package will be installed and available for including in your filesystem.
+</I>&gt;<i> 
+</I>&gt;<i> [packages are found in  Embedded_Build/package/category/package_name.tar]
+</I>&gt;<i> 
+</I>&gt;<i> If you choose &quot;Add as a default package&quot;, the package will be automatically 
+</I>&gt;<i> selected for every new project you build.
+</I>&gt;<i> 
+</I>&gt;<i> [default packages are found in Embedded_Build/package/package_name.tar]
+</I>
+I think the package building process shouldn't be interactive. I.e the
+package is build to whatever is configured in the build_pwl.sh script. The
+process of picking which binaries to copy into an embedded design would be
+done when assembling packages for a particular project.
+
+Perhaps the only choice could be which packages to build from the list of
+PeeWeeLinux packages.
+
+&gt;<i> &gt; Ok, here is what I did...
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I renamed the extracted_src directory to build_pwl. I thought this might
+</I>&gt;<i> &gt; sound ok for a place to hold pwl specific compiled extracted sources.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I added a new directory Embedded_Build/patches to contain the patches that
+</I>&gt;<i> &gt; make pwl sources out of generic sources.
+</I>&gt;<i> 
+</I>&gt;<i> Where are you storing the generic sources ?? see below...
+</I>
+Embedded_Build/sources/
+
+&gt;<i> &gt; Patching the sources will create a script called build_pwl.sh which is in
+</I>&gt;<i> &gt; the top directory of the extracted patches sources, i.e:
+</I>&gt;<i> &gt; Embedded_Build/build_pwl/boa-0.94.0/build_pwl.sh 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; This build_pwl script contains the instructions to actually compile the
+</I>&gt;<i> &gt; sources, strip the binaries and copy everything needed for the boa-0.94.0
+</I>&gt;<i> &gt; package into Embedded_Build/mnt.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Then the script will tar up the contents of Embedded_Build/mnt and create
+</I>&gt;<i> &gt; boa-0.94.0 in Embedded_Build/packages/network_servers
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Cool...fits right in with the other packages...
+</I>
+Yup.
+
+&gt;<i> &gt; I thought of keeping the Embedded_Build/sources directory dedicated to
+</I>&gt;<i> &gt; sources and patches unrelated to PWL.
+</I>
+Sorry, difficult sentence. Got to clarify this. The Embedded_Build/sources
+directory contains source tarballs. The original downloaded source
+tarballs. It also contains patches supplied by others to make the tarball
+work with linux. Those paches are Linux specific (i.e. convert BSD sources
+to Linux) and don't have anything to do with PeeWeeLinux.
+
+&gt;<i> There should be room here for 
+</I>&gt;<i> Embedded_Build/sources/boa...
+</I>&gt;<i> to keep the generic sources and
+</I>&gt;<i> Embedded_Build/sources/custom
+</I>&gt;<i> for the user to keep their specific stuff..I can default pwlconfig
+</I>&gt;<i> to start here when adding custom files to a project.  
+</I>
+I don't think pwlconfig will be able to compile sources not prepared for
+PeeWeeLinux with a build_pwl.sh script and whatever patches might be
+required. I think if a user wanted to compile apache to run on PeeWeeLinux
+today, he'd be on his own extracting the sources wherever and compiling
+them and building his own package, a custom.tar package.
+
+&gt;<i> &gt; I've been thinking more about the tar vs. rpm issue. Now I am actually
+</I>&gt;<i> &gt; more leaning towards using Redhat independent sources. Just accumulate all
+</I>&gt;<i> &gt; the different source packages and patches from who knows where and keep
+</I>&gt;<i> &gt; building PeeWeeLinux with it. This could make a Redhat independent
+</I>&gt;<i> &gt; system... I could post the source files individually on my site.
+</I>&gt;<i> &gt; Essentially an uncompressed Embedded_Build directory of the latest
+</I>&gt;<i> &gt; release...  
+</I>&gt;<i> 
+</I>&gt;<i> That will keep us distro independent...sounds nice. But, how do you get 
+</I>&gt;<i> them to start with? copying from RH disk #2 is easy for me...FTP'em ??
+</I>
+Well, PeeWeeLinux could come as a source distro with all the sources
+included in the Embedded_Build/sources directory or a user could ftp the
+original sources from the PeeWeeLinux ftp site. It's no problem generating
+a PeeWeeLinux CD either...
+
+Then again just like installing Redhat, the sources aren't really needed.
+They're just there for fun. Just the process of automating this all might
+make future upgrades easier. I.e compiling kernel dependent stuff, etc.
+
+&gt;<i> Hmmm...just off the top, I think you can do this:
+</I>&gt;<i> 
+</I>&gt;<i> loc=$PWD
+</I>&gt;<i> cd build_pwl/$pkgSourceDir
+</I>&gt;<i> . ./build_pwl.sh
+</I>&gt;<i> cd $loc 
+</I>
+That should work. But how do you know how a script was involed? Look at my
+distribute script. If you run it from within the script directory it works
+fine. Run it from the Embedded_Build directory... oooooops... won't work!
+
+&gt;<i> Seems simple enough, not sure if it will work...I can hack this out
+</I>&gt;<i> once you get build_pwl.sh working.  I can integrate it into the pwlconfig
+</I>&gt;<i> script and see what happens..
+</I>
+The boa-0.94.0 is working. I didn't manage to get minicom to compile with
+termcap. Got to work on that. Here's the procedure to manually build boa.
+Take note that I am starting from the Embedded_Build directory:
+
+[<A HREF="mailto:adi@big">adi@big</A> Embedded_Build]$ cd build_pwl
+[<A HREF="mailto:adi@big">adi@big</A> build_pwl]$ tar xzvf ../sources/boa-0.94.0.tar.gz
+[<A HREF="mailto:adi@big">adi@big</A> build_pwl]$ patch -p0 &lt; ../patches/boa-0.94.0.patch
+[<A HREF="mailto:adi@big">adi@big</A> build_pwl]$ cd boa-0.94.0
+[<A HREF="mailto:adi@big">adi@big</A> boa-0.94.0]$ chmod 755 build_pwl.sh
+[<A HREF="mailto:adi@big">adi@big</A> boa-0.94.0]$ ./build_pwl.sh
+
+Done! Now look into Embedded_Build/packages/network_servers/ and boa is
+there. It was there before but it's there again. Delete it before doing
+the above and you'll see :)
+
+To recap, here are the directories and what's in them:
+
+sources -------&gt; Unprocessed original source tarballs
+patches -------&gt; Patch files to create a PWL source from an
+                 extracted source from 'sources'
+build_pwl -----&gt; The directory sources are extracted to
+                 Very much a temporary directory as the
+                 extracted sources aren't needed after
+                 a PWL package has been build  
+mnt -----------&gt; A temporary directory utilized by the
+                 build_pwl.sh to install files and tar
+                 the &lt;package&gt;.tar file from. Everything
+                 here is deleted when build_pwl starts
+                 and when it stops. So make sure theres
+                 nothing valuable in here.
+build_pwl.sh --&gt; The package dependent build script. It
+                 part of the patch file and gets saved
+                 when I create the patch and added to
+                 the sources when the patch is applied.
+                 It's simple list of commands, no error
+                 checking at all at this point. I guess
+                 it'll have to be cleaned up sometime. 
+
+I also added &lt;package&gt;.README files that contain descriptions of the
+packages. Perhaps other fields could be added in the future? The date the
+package was build, etc? It goes like this:
+
+    Description:
+    ============
+    Blah, blah, blah, blah
+
+    END
+
+Does that work ok to integrate as a package info or help screen into
+pwlconfig?
+
+And that's about it! PWL 0.19 is available for download at:
+
+<A HREF="http://projects.adis.on.ca/Embedded/">http://projects.adis.on.ca/Embedded/</A>
+<A HREF="ftp://projects.adis.on.ca/Embedded/">ftp://projects.adis.on.ca/Embedded/</A>
+
+I am uploading to sourceforge 4096 bytes per hour. It'll take a while
+until it's up there. I wonder why my connection there is sooooooo slow?
+There is 0 traffic on our 256k line except for my sourceforge upload...
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000019.html">PeeWeeLinux Documentation
+</A></li>
+	<LI> Next message: <A HREF="000021.html">New ftp site at adis.on.ca
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#20">[ date ]</a>
+              <a href="thread.html#20">[ thread ]</a>
+              <a href="subject.html#20">[ subject ]</a>
+              <a href="author.html#20">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

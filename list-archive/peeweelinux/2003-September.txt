@@ -1,0 +1,455 @@
+From peeweelinux@adis.on.ca  Tue Sep  2 12:13:21 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 02 Sep 2003 12:13:21 +0100
+Subject: [Peeweelinux] 486 Touchscreen Project Update : Peewee + Netscape + Flashplayer
+Message-ID: <1062501201.10970.21.camel@localhost.localdomain>
+
+Hi,
+
+Here is an update on how my project is going (see previous posts for
+more details of project specification).
+
+Well after much messing about, the project is finally getting to a
+reasonable state. After a major problem with the ps/2 mouse and a
+bios/kernel incompatibility (ps/2 mouse was detected ok in bios, but not
+assigned IRQ as far as the kernel was concerned...) I finally managed to
+get the system to autoboot into xwindows. This was achieved by giving up
+on ps/2 and using an old serial mouse on /dev/ttyS0. Although I have
+updated the Xserver to SVGA, I am having a problem getting it to display
+in above 320x200. After much playing with the xf86config file, the
+driver still boots to this default built-in resolution...?
+
+Netscape navigator was installed easily using the pwlconfig, and it was
+a simple matter of tracking down linux flash player 5 plugin and placing
+the files in the correct directory.
+
+The network drivers needed changing for the National Semiconductor
+DP83815 chip that my hardware uses. This involved changing the pwlconfig
+to include natsemi.o and pci-scan.o and then modifying rc.modules.
+However the drivers throw an error and need to be updated (the error is
+known and fixable). To update the drivers I need to compile the relevant
+.c (natsemi.c and pci-scan.c) files I have downloaded into suitable
+modules to load into my peewee file system. How do I go about doing this
+as I cannot compile on my target hardware (no gcc with peewee), and my
+development machine does not have the 2.2.17-full kernel source headers
+that are needed... ? (Am i making the right assumptions about
+compilation here?)
+
+The only other bit of tidying up on the project involves the
+/home/autologin directory. Netscape by default attempts to create
+personal settings folders in each users home directory. Autologin does
+not have premissions in its home directory to do this so Netscape throws
+errors on start-up. How can I automatically set chown for autologin, or
+the correct settings so that autologin can create new folders / files
+within its home?
+
+Cheers,
+-- 
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+
+From peeweelinux@adis.on.ca  Tue Sep  2 21:32:59 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Tue, 2 Sep 2003 13:32:59 -0700 (PDT)
+Subject: [Peeweelinux] 486 Touchscreen Project Update : Peewee +
+ Netscape + Flashplayer
+Message-ID: <2.2.16.20030902133310.48ef098a@zmicro.com>
+
+>
+>Here is an update on how my project is going ...
+> Although I have
+>updated the Xserver to SVGA, I am having a problem getting it to display
+>in above 320x200. After much playing with the xf86config file, the
+>driver still boots to this default built-in resolution...?
+
+I am not an expert on this.  But there are one or two resolutions
+built into the hardware's video BIOS that X can use if nothing
+else works.  I used to see this a lot. On most Linux distributions
+you get an X config program you can use to try all the different
+settings.  Not so easy on an embedded system.
+
+Perhaps your best bet (aside from someone who's been there stepping
+in) is to read the what X logs when it tries to start and see what
+it complains about.  Basically it starts with a long list of 
+resolutions and depths and tosses out the ones your server doesn't
+have, tosses out the ones your monitor doesn't support, tosses
+out the ones your video chip doesn't support...and that's
+what you're left with.
+
+>The network drivers ...
+>  To update the drivers I need to compile the relevant
+>  files I have downloaded into suitable
+>modules to load into my peewee file system. How do I go about doing this
+>as I cannot compile on my target hardware (no gcc with peewee), and my
+>development machine does not have the 2.2.17-full kernel source headers
+>that are needed... ? 
+
+All that stuff should be supplied with PeeWee.  If you go to the
+        Create Custom Kernel Package -->
+area you can 
+        Extract all kernel sources ...
+and then your problem is to make sure your compiler uses that 
+set of headers and not the usual ones on your system.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Wed Sep 10 21:32:17 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Wed, 10 Sep 2003 13:32:17 -0700 (PDT)
+Subject: [Peeweelinux] resolve a domain name
+Message-ID: <2.2.16.20030910133241.5cc7a798@zmicro.com>
+
+What is the simplest way to resolve a domain name to an IP address?
+Seems you can get someone else's dns server to do the work for
+you so there should be little for the embedded system to do.  I 
+didn't really want to install bind or similar especially
+if it's big.  But I didn't even find anything called bind
+or 'named' in a package search.
+
+Seems to me you guys building web browser kiosks would know
+something about this.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Wed Sep 10 21:45:52 2003
+From: peeweelinux@adis.on.ca (Christopher Bergeron)
+Date: Wed, 10 Sep 2003 16:45:52 -0400
+Subject: [Peeweelinux] resolve a domain name
+In-Reply-To: <2.2.16.20030910133241.5cc7a798@zmicro.com>
+References: <2.2.16.20030910133241.5cc7a798@zmicro.com>
+Message-ID: <3F5F8D80.4060906@bergeron.com>
+
+There's a binary package called "dig" or "nslookup" that you can use:
+
+"dig domain.name" will return the ip address in the ANSWER line
+"dig -x ip.add.res.ss" will return the domain name
+
+You can also use nslookup, but it's deprecated.
+
+
+-CB
+
+
+
+
+Barry Gershenfeld wrote:
+
+>What is the simplest way to resolve a domain name to an IP address?
+>Seems you can get someone else's dns server to do the work for
+>you so there should be little for the embedded system to do.  I 
+>didn't really want to install bind or similar especially
+>if it's big.  But I didn't even find anything called bind
+>or 'named' in a package search.
+>
+>Seems to me you guys building web browser kiosks would know
+>something about this.
+>
+>Barry
+>
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+>  
+>
+
+
+
+From peeweelinux@adis.on.ca  Thu Sep 11 17:24:16 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Thu, 11 Sep 2003 09:24:16 -0700
+Subject: [Peeweelinux] resolve a domain name
+In-Reply-To: <3F5F8D80.4060906@bergeron.com>
+References: <2.2.16.20030910133241.5cc7a798@zmicro.com> <3F5F8D80.4060906@bergeron.com>
+Message-ID: <3F60A1B0.4060405@fluid.com>
+
+Additionally, in case the obvious has been overlooked, you need a file 
+/etc/resolv.conf with the desired nameservers, eg:
+
+search foo.com
+search bar.com
+nameserver 192.168.0.1
+nameserver 192.168.0.37
+
+When apps using libnss_dns fire up, the libs use this file as it's 
+config of which nameservers to talk to...
+
+-te
+
+Christopher Bergeron wrote:
+> There's a binary package called "dig" or "nslookup" that you can use:
+> 
+> "dig domain.name" will return the ip address in the ANSWER line
+> "dig -x ip.add.res.ss" will return the domain name
+> 
+> You can also use nslookup, but it's deprecated.
+> 
+> 
+> -CB
+> 
+> 
+> 
+> 
+> Barry Gershenfeld wrote:
+> 
+>> What is the simplest way to resolve a domain name to an IP address?
+>> Seems you can get someone else's dns server to do the work for
+>> you so there should be little for the embedded system to do.  I didn't 
+>> really want to install bind or similar especially
+>> if it's big.  But I didn't even find anything called bind
+>> or 'named' in a package search.
+>>
+>> Seems to me you guys building web browser kiosks would know
+>> something about this.
+>>
+>> Barry
+>>
+>>
+>> _______________________________________________
+>> Peeweelinux mailing list
+>> Peeweelinux@adis.on.ca
+>> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>>
+>>
+>>  
+>>
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+-- 
+Troy Engel, Systems Engineer
+...his bash-fu is great.
+
+
+From peeweelinux@adis.on.ca  Fri Sep 12 02:12:53 2003
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Thu, 11 Sep 2003 18:12:53 -0700 (PDT)
+Subject: [Peeweelinux] resolve a domain name
+Message-ID: <2.2.16.20030911181304.6317560a@zmicro.com>
+
+>Additionally, in case the obvious has been overlooked, you need a file 
+>/etc/resolv.conf with the desired nameservers, eg:
+
+>search foo.com
+>search bar.com
+>nameserver 192.168.0.1
+>nameserver 192.168.0.37
+
+What is the purpose of the "search" lines, especially if
+it needs to resolve foo.com or bar.com to even be able
+to use them?  Or are they assumed to be in hosts?
+
+>When apps using libnss_dns fire up, the libs use this file as it's 
+>config of which nameservers to talk to...
+
+I read that libresolv does the name lookups.  I don't have
+libnss_dns installed.   I installed nslookup.  When I
+run it, it does not complain about any libraries missing.
+The result of nslookup is:
+
+Server:     default
+Address:    default
+
+*** Unknown host
+
+Finally I want so clarify my intent which is to be able to
+use a domain name, for instance, if I want to fetch a package
+off a site somewhere.  So it's not a manual operation, 
+rather some other program would be thinking it could use
+a URL.  Although, if it's possible to run the output of 
+nslookup through a shell script to get this done instead of 
+having to install some other program, that would be 
+interesting.
+
+It's not all that obvious. I'm trying to piece it together
+so I understand which parts do which.  For example I could
+not ping anything until I added a default route.  I can
+download stuff if I use the IP address instead of a name.
+
+Information like "libnss-dns is what looks in /etc/resolv.conf"
+is very valuable.  We often think a particular program is
+responsible.
+
+Barry
+
+
+
+From peeweelinux@adis.on.ca  Sun Sep 14 18:36:56 2003
+From: peeweelinux@adis.on.ca (Brian Andrus)
+Date: Sun, 14 Sep 2003 10:36:56 -0700
+Subject: [Peeweelinux] Getting Started
+Message-ID: <000101c37ae6$cd102540$0c01a8c0@daddy>
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_000_0002_01C37AAC.20B14D40
+Content-Type: text/plain;
+	charset="us-ascii"
+Content-Transfer-Encoding: 7bit
+
+Ok, I want to get a minimal linux installed on a CF card. I want IPTABLES to
+be on there too. I think IPTABLES is part of RH 8.0 dist, but not 6.2 or
+earlier.
+ 
+Can PWL be used under RH8.0 or preferably RH9.0?
+ 
+I haven't had any luck under 9.0. It gives me errors when I try to load the
+CF card. Something about the ld.cache and ld.so.config files not there. I
+will post particulars if there is a possibility it can run under RH9.0
+ 
+ 
+Brian Andrus
+ 
+
+------=_NextPart_000_0002_01C37AAC.20B14D40
+Content-Type: text/html;
+	charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD>
+<META HTTP-EQUIV=3D"Content-Type" CONTENT=3D"text/html; =
+charset=3Dus-ascii">
+<TITLE>Message</TITLE>
+
+<META content=3D"MSHTML 6.00.2800.1226" name=3DGENERATOR></HEAD>
+<BODY>
+<DIV><SPAN class=3D484163417-14092003><FONT face=3DArial size=3D2>Ok, I =
+want to get a=20
+minimal linux installed on a CF card. I want IPTABLES to be on there =
+too. I=20
+think IPTABLES is part of RH 8.0 dist, but not 6.2 or=20
+earlier.</FONT></SPAN></DIV>
+<DIV><SPAN class=3D484163417-14092003><FONT face=3DArial=20
+size=3D2></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=3D484163417-14092003><FONT face=3DArial size=3D2>Can =
+PWL be used=20
+under RH8.0 or preferably RH9.0?</FONT></SPAN></DIV>
+<DIV><SPAN class=3D484163417-14092003><FONT face=3DArial=20
+size=3D2></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=3D484163417-14092003><FONT face=3DArial size=3D2>I =
+haven't had any=20
+luck under 9.0. It gives me errors when I try to load the CF card. =
+Something=20
+about the ld.cache and ld.so.config files not there. I will post =
+particulars if=20
+there is a possibility it can run under RH9.0</FONT></SPAN></DIV>
+<DIV><SPAN class=3D484163417-14092003><FONT face=3DArial=20
+size=3D2></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=3D484163417-14092003><FONT face=3DArial=20
+size=3D2></FONT></SPAN>&nbsp;</DIV>
+<DIV><SPAN class=3D484163417-14092003><FONT face=3DArial size=3D2>Brian=20
+Andrus</FONT></SPAN></DIV>
+<DIV><SPAN class=3D484163417-14092003></SPAN>&nbsp;</DIV></BODY></HTML>
+
+------=_NextPart_000_0002_01C37AAC.20B14D40--
+
+
+From peeweelinux@adis.on.ca  Mon Sep 15 23:09:16 2003
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Mon, 15 Sep 2003 15:09:16 -0700
+Subject: [Peeweelinux] resolve a domain name
+In-Reply-To: <2.2.16.20030911181304.6317560a@zmicro.com>
+References: <2.2.16.20030911181304.6317560a@zmicro.com>
+Message-ID: <3F66388C.4090000@fluid.com>
+
+Barry Gershenfeld wrote:
+> 
+>>search foo.com
+> 
+> What is the purpose of the "search" lines, especially if
+> it needs to resolve foo.com or bar.com to even be able
+> to use them?  Or are they assumed to be in hosts?
+
+This is for when you want to use short notation for a machine -- ie, 
+with "search fluid.com" I can then say "ping www" and it knows to search 
+the fluid.com domain for the rest, resulting in www.fluid.com.
+
+> I read that libresolv does the name lookups.  I don't have
+> libnss_dns installed.   I installed nslookup.  When I
+> run it, it does not complain about any libraries missing.
+> The result of nslookup is:
+
+Well, I can't sepak for nslookup but it sounds about right -- when in 
+doubt, use "ldd <foo>" to query a binary to see all it's dynamically 
+linked libs (and handy if you have multiple versions of a lib, it'll 
+tell you exactly which one the program is using).
+
+On my PeeWee instance, nslookup is just a symlink over to busybox. On a 
+real RH62 system (which PeeWee is based on):
+
+# ldd `which nslookup`
+   libdns.so.5 => /usr/lib/libdns.so.5 (0x4001c000)
+   libcrypto.so.0 => /usr/lib/libcrypto.so.0 (0x40105000)
+   libisc.so.4 => /usr/lib/libisc.so.4 (0x401be000)
+   libnsl.so.1 => /lib/libnsl.so.1 (0x401f0000)
+   libpthread.so.0 => /lib/libpthread.so.0 (0x40207000)
+   libc.so.6 => /lib/libc.so.6 (0x4021a000)
+   /lib/ld-linux.so.2 => /lib/ld-linux.so.2 (0x40000000)
+
+So, obviously your mileage may vary. ;) I don't use nslookup in the PWL 
+systems, the apps themselves know how to use the C api and call 
+gethostbyname(), etc normally. Even the java stuff.
+
+> Finally I want so clarify my intent which is to be able to
+> use a domain name, for instance, if I want to fetch a package
+> off a site somewhere.  So it's not a manual operation, 
+> rather some other program would be thinking it could use
+> a URL.  Although, if it's possible to run the output of 
+> nslookup through a shell script to get this done instead of 
+> having to install some other program, that would be 
+> interesting.
+
+On my PWL boxes, it works just fine -- they are stationed throught the 
+USA, and talk to a home server based on it's name, not IP. Never had a 
+problem. They all have the same nameservers in /etc/resolv.conf - some 
+use PPP, some DHCP, etc.
+
+Methinks something's not quite right on your PWL instance...?
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+...his bash-fu is great.
+
+
+From peeweelinux@adis.on.ca  Tue Sep 16 10:21:00 2003
+From: peeweelinux@adis.on.ca (Ashley Rolleston)
+Date: 16 Sep 2003 10:21:00 +0100
+Subject: [Peeweelinux] Getting Started
+In-Reply-To: <000101c37ae6$cd102540$0c01a8c0@daddy>
+References: <000101c37ae6$cd102540$0c01a8c0@daddy>
+Message-ID: <1063704060.2156.3.camel@localhost.localdomain>
+
+On Sun, 2003-09-14 at 18:36, Brian Andrus wrote:
+> Can PWL be used under RH8.0 or preferably RH9.0?
+>  
+> I haven't had any luck under 9.0. It gives me errors when I try to
+> load the CF card. Something about the ld.cache and ld.so.config files
+> not there. I will post particulars if there is a possibility it can
+> run under RH9.0 
+
+I had the same problems with RH9. It is caused by the fact that the
+packages do not extract correctly when ./pwlconfig is run for the first
+time. Running ./pwlconfig on other distributions worked just fine (i am
+now using RH7.3 for development and things are going a lot smoother)
+-- 
+Ashley Rolleston
+aka Onyx^
+ashley@smartsw.co.uk
+
+

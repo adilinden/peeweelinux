@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000162.html">
+   <LINK REL="Next"  HREF="000164.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+   </H1>
+    <B>peeweelinux-devel@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux-devel%40adis.on.ca"
+       TITLE="[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?">peeweelinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 20 Feb 2002 09:32:54 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000162.html">[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+</A></li>
+        <LI> Next message: <A HREF="000164.html">[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#163">[ date ]</a>
+              <a href="thread.html#163">[ thread ]</a>
+              <a href="subject.html#163">[ subject ]</a>
+              <a href="author.html#163">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Mark, sorry for the delay in getting back to you.
+
+To my knowledge, know that later versions do not offer any significant 
+advantages over the newer libraries (except the obvious size savings).
+
+Currently our developer's are using Mandrake linux 8.1 - some initial 
+reasons we were looking at later packages/libraries/kernels etc for peewee
+is that :
+
+1) we wanted the live running environment to match the development 
+environment, as closely as possible, rather than having to perform some 
+weird configuration juggling to ensure all ~12 developers are working from 
+the same base, and that that the base dev setup and live setup match
+
+As a note (I haven't looked into this yet ) some of the tools they use 
+(e.g. GTK2) I would have thought would need the later libraries to run - 
+if this is the case rather than mixing and matching libraries from 
+different versions, we'd prefer to use the one set of libs.
+
+2) The hardware guys want the USB support that the 2.4 kernel offers. 
+While the 2.2 series can be patched to add USB support, that's (for 
+reasons of their own) not the path the want to take.
+
+
+I had not heard of the glibc compatibility packages - they sound like they 
+may be worth a look - thanks for the tip.
+
+
+I hope you can extract some sense from the above ramblings, 
+I really need a coke right about now :)
+
+Kind Regards, 
+Delaney
+
+
+
+
+
+&quot;Mark Meade&quot; &lt;<A HREF="mailto:mark@lakeshoremicro.com">mark@lakeshoremicro.com</A>&gt;
+Sent by: <A HREF="mailto:peeweelinux-devel-admin@adis.on.ca">peeweelinux-devel-admin@adis.on.ca</A>
+19/02/2002 09:11
+Please respond to peeweelinux-devel
+
+ 
+        To:     &lt;<A HREF="mailto:peeweelinux-devel@adis.on.ca">peeweelinux-devel@adis.on.ca</A>&gt;
+        cc: 
+          Subject:      Re: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions 
+?
+      Project: 
+
+
+Delaney,
+
+My apologies for misunderstanding your question.  I wasn't sure if you 
+meant
+just the kernel, or all of the packages, libraries, etc.
+
+I certainly understand the need to update to 2.4 kernels, but it's not
+completely obvious to me why the latest revisions of gcc/glibc are
+important.  I've been using the glibc 2.1.x compatibility packages (under
+Redhat 7.2) for development, and I haven't come across any problems so 
+far.
+
+Am I missing something?  Do the latest versions offer any major advantages
+for embedded systems development?
+
+Regards,
+
+Mark
+
+----- Original Message -----
+From: &lt;<A HREF="mailto:drowe@juptech.com">drowe@juptech.com</A>&gt;
+To: &lt;<A HREF="mailto:peeweelinux-devel@adis.on.ca">peeweelinux-devel@adis.on.ca</A>&gt;
+Sent: Monday, February 18, 2002 5:18 PM
+Subject: Re: [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series -
+suggestions ?
+
+
+&gt;<i> Hi Mark, thanks for your response,
+</I>&gt;<i>
+</I>&gt;<i> This is exactly the approach that we have used to date.
+</I>&gt;<i> I friend of mine has contacted Adi (love your work) - who has said he is
+</I>&gt;<i> not planning to move peewee to the 2.4 series at the moment - mainly
+</I>&gt;<i> because the
+</I>&gt;<i> 2.2-17 kernel is rock solid and the 2.4.* kernels aren't, yet :)
+</I>&gt;<i>
+</I>&gt;<i> What I should have said is, we are looking to move  the entire peewee
+</I>&gt;<i> package, libraries, packages etc to 2.4 and glibc 2.2(?)
+</I>&gt;<i> I agree that the power of peewee is in it's &quot;automation&quot; of selection 
+</I>and
+&gt;<i> preparation - it's just that we are looking to move it along from the
+</I>&gt;<i> 2.2 series and older version of glibc (and all associated goods and
+</I>&gt;<i> shattles)
+</I>&gt;<i>
+</I>&gt;<i> Kind Regards,
+</I>&gt;<i> Delaney
+</I>&gt;<i>
+</I>
+
+
+
+
+_______________________________________________
+Peeweelinux-devel mailing list
+<A HREF="mailto:Peeweelinux-devel@adis.on.ca">Peeweelinux-devel@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel">http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel</A>
+
+
+
+
+*********************************************************************
+This email message (and attachments) may contain information 
+that is confidential to Jupiters Technology. If you are not the 
+intended recipient you cannot use, distribute or copy the message 
+or attachments. In such a case, please notify the sender by return 
+email immediately and erase all copies of the message and 
+attachments. Opinions, conclusions and other information in this 
+message and attachments that do not relate to the official business 
+of Jupiters Technology are neither given nor endorsed by it.
+*********************************************************************
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000162.html">[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+</A></li>
+	<LI> Next message: <A HREF="000164.html">[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#163">[ date ]</a>
+              <a href="thread.html#163">[ thread ]</a>
+              <a href="subject.html#163">[ subject ]</a>
+              <a href="author.html#163">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

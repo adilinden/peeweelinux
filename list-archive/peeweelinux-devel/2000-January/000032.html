@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> pwlconfig update *real soon now*
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000031.html">
+   <LINK REL="Next"  HREF="000033.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>pwlconfig update *real soon now*
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="pwlconfig update *real soon now*">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Thu, 27 Jan 2000 21:46:53 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000031.html">More pwlconfig stuff
+</A></li>
+        <LI> Next message: <A HREF="000033.html">Package selection in pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+I hope to post an update tomorrow (night?) for the pwlconfig stuff.  I think
+I've got most of the new features in, but It needs lots of testing since I
+touched just about everything.  This version will be seperated into several
+scripts that should not have to change for a while...just add new scripts and
+call them from the pwlconfig main menu stuff.
+
+Scripts pwlconfig uses:
+pwl_custom    - handles custom configuration files
+pwl_defaults  - handles default configuration file
+pwl_projects  - handles project stuff (should be done before v0.8)
+pwl_functions - utility functions used by all these scripts
+mkBootDevice  - handles all types of devices (DOC &amp; flash for now) to do 
+                erase/format/load/lilo operations
+
+?? next scripts to write ??
+pwl_extract   - do the file system building here, seperate from pwlconfig
+pwl_package   - source code to package builder
+pwl_ramdisk   - build a ramdisk image
+
+The pain has been making each script work interactively and from the command
+line. But, this should make it fairly flexible if you need to automate any of
+the building stuff...it just takes a lot more code.
+
+Anymore suggestions on what to fix or add ? Once I get the help screens updated
+(oops, forgot about the context sensitive help...to do also) I think we'll have
+to beat on this to see if everything is working ok...
+
+Later,
+Ralph
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000031.html">More pwlconfig stuff
+</A></li>
+	<LI> Next message: <A HREF="000033.html">Package selection in pwlconfig
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

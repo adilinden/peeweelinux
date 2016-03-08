@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Error loading file system to target
+ compactflash card
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001184.html">
+   <LINK REL="Next"  HREF="001186.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Error loading file system to target
+ compactflash card
+   </H1>
+    <B>Barry Gershenfeld
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Error loading file system to target
+ compactflash card">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 22 Aug 2003 12:51:58 -0700 (PDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001184.html">[Peeweelinux] Error loading file system to target compact
+ flash card
+</A></li>
+        <LI> Next message: <A HREF="001186.html">[Peeweelinux] Error loading file system to target compactflash
+ card
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1185">[ date ]</a>
+              <a href="thread.html#1185">[ thread ]</a>
+              <a href="subject.html#1185">[ subject ]</a>
+              <a href="author.html#1185">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i>I am using Red Hat 9.0, and possibly the reason it will not extract is
+</I>&gt;<i>due to factors such as incorrect permissions etc. 
+</I>
+Good idea but I wouldn't expect root to have any problems with
+permissions.  You do have to run it as root.  I tried getting
+around that requirment and guess what it got me--no packages! :-)
+
+
+&gt;<i>All the extracted .rpm files that are created in the
+</I>&gt;<i>Embedded_Build/packages directory when I first run pwlconfig are 10 k
+</I>&gt;<i>(and empty...), and all the .list files are 0 k. 
+</I>
+
+You gave me an idea, and I tried it, and it worked.  Wipe out
+the packages directory.  (Or rename it if you are shy).  Make
+sure the packages directory does not exist.  When you run
+pwlconfig, you will get the &quot;extract packages&quot; prompt again.
+
+Hopefully RH9 rpm isn't broken (but it's only a hope)
+
+The rpm's that are to be extracted are in 
+Embedded_Build/src/RPMS/i386
+and they should have come straight from the PeeWeeLinux install.
+
+Barry
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001184.html">[Peeweelinux] Error loading file system to target compact
+ flash card
+</A></li>
+	<LI> Next message: <A HREF="001186.html">[Peeweelinux] Error loading file system to target compactflash
+ card
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1185">[ date ]</a>
+              <a href="thread.html#1185">[ thread ]</a>
+              <a href="subject.html#1185">[ subject ]</a>
+              <a href="author.html#1185">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

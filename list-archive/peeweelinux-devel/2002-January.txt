@@ -1,0 +1,150 @@
+From peeweelinux-devel@adis.on.ca  Thu Jan 17 11:46:20 2002
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Thu, 17 Jan 2002 19:46:20 +0800 (CST)
+Subject: [Peeweelinux-devel] support disks bigger than 15G ?
+Message-ID: <20020117114620.38352.qmail@web9010.mail.yahoo.com>
+
+--0-587291090-1011267980=:37421
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+hi,
+
+   peeweelinux can support a big disk? I used a disk of 15G,it runs rightly. it can support a disk of 20G?  or bigger than 15G ? 
+
+ thanks.
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-587291090-1011267980=:37421
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>hi,</P>
+<P>&nbsp;&nbsp; peeweelinux can support a big disk? I used a disk of 15G,it runs rightly. it can support a disk of 20G?&nbsp; or bigger than 15G ? </P>
+<P>&nbsp;thanks.</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-587291090-1011267980=:37421--
+
+From peeweelinux-devel@adis.on.ca  Fri Jan 18 08:56:29 2002
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Fri, 18 Jan 2002 16:56:29 +0800 (CST)
+Subject: [Peeweelinux-devel] error:L00 00 00 (hurry!!!!!)
+Message-ID: <20020118085629.26301.qmail@web9007.mail.yahoo.com>
+
+--0-1447889976-1011344189=:25909
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+After loaded the system into my object disk,then boot the disk. when it should show the information : LILO,but it show error informations :L 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+
+ this phenomena appeared many times.it maybe because the disk has errors.can you tell me other possibe problems.
+
+thanks.
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1447889976-1011344189=:25909
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>After loaded the system into my object disk,then boot the disk. when it should show the information : LILO,but it show error informations :L 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 </P>
+<P>&nbsp;this phenomena appeared many times.it maybe because the disk has errors.can you tell me other possibe problems.</P>
+<P>thanks.</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1447889976-1011344189=:25909--
+
+From peeweelinux-devel@adis.on.ca  Fri Jan 18 09:45:11 2002
+From: peeweelinux-devel@adis.on.ca (=?gb2312?q?helen?=)
+Date: Fri, 18 Jan 2002 17:45:11 +0800 (CST)
+Subject: [Peeweelinux-devel] boot error(hurry hurry)
+Message-ID: <20020118094511.65463.qmail@web9006.mail.yahoo.com>
+
+--0-1007808186-1011347111=:62496
+Content-Type: text/plain; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+
+After loaded the system into my object disk,then boot the disk. when it should show the information : LILO,but it show error informations :L 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 
+
+ this phenomena appeared many times.it maybe because the disk has errors.can you tell me other possibe problems.
+
+I add my custom files: bzImage and map,they works well in redhat 6.0 system.
+
+ 
+
+thanks.
+
+
+
+Thanks & Regards
+
+Helen Zheng
+
+
+---------------------------------
+Do You Yahoo!? µÇÂ¼Ãâ·ÑÑÅ»¢µçÓÊ!
+ÑÅ»¢È«ÐÂÁÄÌìÊÒ£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1007808186-1011347111=:62496
+Content-Type: text/html; charset=gb2312
+Content-Transfer-Encoding: 8bit
+
+<P>After loaded the system into my object disk,then boot the disk. when it should show the information : <STRONG>LILO</STRONG>,but it show error informations :<STRONG>L 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 </STRONG></P>
+<P>&nbsp;this phenomena appeared many times.it maybe because the disk has errors.can you tell me other possibe problems.</P>
+<P><STRONG>I add my custom files: bzImage and map,they works well in redhat 6.0 system.</STRONG></P>
+<P>&nbsp;</P>
+<P>thanks.</P><BR><BR><P>Thanks &amp; Regards</P>
+<P>Helen Zheng</P><p><hr size=1><b>Do You Yahoo!?</b> µÇÂ¼Ãâ·Ñ<a href="http://mail.yahoo.com.cn/">ÑÅ»¢µçÓÊ!</a><br>
+
+<a href="http://cn.chat.yahoo.com/c/roomlist.html">ÑÅ»¢È«ÐÂÁÄÌìÊÒ</a>£¬ÈÃÄãÁÄ°¡¡¢ÁÄ°¡µÄ£¬»¹ÊÇÁÄ²»¹»£¡
+--0-1007808186-1011347111=:62496--
+
+From peeweelinux-devel@adis.on.ca  Fri Jan 18 11:29:47 2002
+From: peeweelinux-devel@adis.on.ca (Adilson Oliveira)
+Date: Fri, 18 Jan 2002 09:29:47 -0200
+Subject: [Peeweelinux-devel] error:L00 00 00 (hurry!!!!!)
+References: <20020118085629.26301.qmail@web9007.mail.yahoo.com>
+Message-ID: <3C480728.5080601@tutopia.com.br>
+
+helen wrote:
+
+> After loaded the system into my object disk,then boot the disk. when
+> it should show the information : LILO,but it show error
+> informations :L 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00
+> 00 00 00 00 00 00
+>
+> this phenomena appeared many times.it maybe because the disk has
+> errors.can you tell me other possibe problems.
+
+If you're using something like o Disk-On-Chip or CF maybe because the
+boot loader did not find the descriptor or the geometry is wrong (much
+common). Try to force the geometry on lilo.conf. Try to use fdisk to see
+what is the geometry found them use those parameters into lilo.onf.
+
+[]s
+
+Adilson.
+
+

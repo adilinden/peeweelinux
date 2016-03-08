@@ -1,0 +1,232 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Read only filesystem size issues.
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000245.html">
+   <LINK REL="Next"  HREF="000251.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Read only filesystem size issues.
+   </H1>
+    <B>Dean Brown
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Read only filesystem size issues.">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Thu, 14 Dec 2000 11:24:53 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000245.html">Read only filesystem size issues.
+</A></li>
+        <LI> Next message: <A HREF="000251.html">Read only filesystem size issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#247">[ date ]</a>
+              <a href="thread.html#247">[ thread ]</a>
+              <a href="subject.html#247">[ subject ]</a>
+              <a href="author.html#247">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Adi,
+I've snipped most of the scripts except where I have additional
+comments.
+
+Adi Linden wrote:
+&gt;<i> 
+</I>&gt;<i> Hi Dean,
+</I>&gt;<i> 
+</I>&gt;<i> Here are some notes to your comments... I am cutting away all the
+</I>&gt;<i> irrelevant parts of the script...
+</I>&gt;<i> 
+</I>
+&gt;<i>     # check if things will fit
+</I>&gt;<i>     # also take our /home partition into consideration
+</I>&gt;<i> # Here is where your calculation double includes the /home and /root directories.
+</I>&gt;<i>     if [ $((rd_size_fs + rd_size_home)) -gt $rd_size_avail ]
+</I>&gt;<i> 
+</I>&gt;<i> -&gt; Yup, I missed the fact that $rd_size_fs already includes the file
+</I>&gt;<i> system size included in $rd_size_home. So essentially I could rewrite the
+</I>&gt;<i> above to simply state:
+</I>&gt;<i> 
+</I>&gt;<i>     if [ $rd_size_fs -gt $rd_size_avail ]
+</I>&gt;<i> 
+</I>&gt;<i> -&gt; This should eliminate this error.
+</I>
+Well, yes. That would be better, though not yet quite correct. What you
+need to do is to subtract rd_size_home from rd_size_fs before adding the
+margins in and before rounding to the next highest MByte. Then you can
+leave the original calculation from above. At issue here is that this is
+actually implemented as two partitions, each with it's own upward
+rounding. The way your modified calculation works is to only account for
+one round up.
+
+I've re-included the pertinent portion of the script here with what I
+would do the correct the issue.
+
+    # calculate the required root fs space
+    rd_size_fs=`du -s -k $rd_projectroot | cut -f 1`
+    # add the ramdisk sizes
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.dev | cut -f
+1`))
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_tmp/ramdisk.etc | cut -f
+1`))
+    # add the bootloader
+    rd_size_fs=$((rd_size_fs + `du -s -k $rd_bootb | cut -f 1`))
+    # add a few kB for a margin
+    rd_size_fs=$((rd_size_fs + rd_size_boot_margin))
+
+    # calculate the home partition size
+    rd_size_home=`du -s -k $rd_projectroot/home | cut -f 1`
+    # add /root
+    rd_size_home=$((rd_size_home + `du -s -k $rd_projectroot/root | cut
+-f 1`))
+    # add the desired free space
+    rd_size_home=$((rd_size_home + rd_home_free))
+
+*** My changes start here ***
+    # remove home and root from main fs
+    rd_size_fs=$((rd_size_fs -  rd_size_home)
+    # remove dev from main fs
+    rd_size_fs-$((rd_size_fs - 'du -s -k $rd_projectroot/dev | cut -f
+1'))
+    # remove etc from main fs
+    rd_size_fs-$((rd_size_fs - 'du -s -k $rd_projectroot/etc | cut -f
+1'))
+*** Now rd_size_fs contains an accurate number (based on the development
+system's block size) of the real contents of the first partition
+*** including the boot margin.
+
+The rest of the script can remain as is.
+
+
+&gt;<i> 
+</I>&gt;<i> # you are not copying /root here, but you are copying /home, but by mounting /home
+</I>&gt;<i> # the space taken by this copy is wasted.
+</I>&gt;<i> 
+</I>&gt;<i> -&gt; Not quite true. At this point /home is mounted. The subsequent copy
+</I>&gt;<i> command will copy the contents of /home into the mounted partition instead
+</I>&gt;<i> of the root partition. The intend was to have the /home directory
+</I>&gt;<i> uncompressed so one could save the contents of /home or even eliminate the
+</I>&gt;<i> building and mounting of a /home ramdisk and mount the filesystem
+</I>&gt;<i> directly. Perhaps adding reiserfs would allow for that with little risk of
+</I>&gt;<i> corruption?
+</I>
+Yep, you are correct. I didn't notice the mount above. 
+Reiserfs looks interesting for the entire filesystem as there are many
+small files in my application that each eat up 1K worth of storage. If
+ext2fs supported fragments, I'd probably be able to reduce storage
+requirements by about 30%. It appears that reiserfs may be able to make
+a similar savings. Have you any experience with reiserfs?
+
+&gt;<i> # can this be modified to only copy the devices actually in rd_projectroot/dev?
+</I>&gt;<i> 
+</I>&gt;<i> -&gt; This is a poor way of doing this. At least by using the ${rd_boot}
+</I>&gt;<i> variable only the devices relevant to the boot device are created.
+</I>
+My comment was actually referring to the code below. My application
+doesn't require all the hda's or tty's so I remove them from the
+configuration. Doing so causes errors to display during the target load
+function. I realize that they can be safely ignored, but others may not
+know this.
+
+&gt;<i>     for i in 1 2 3 4 5 6 7 8 9; do
+</I>&gt;<i>         cp -a $rd_projectroot${rd_boot}${i} ${rd_mount}${rd_boot}${i}
+</I>&gt;<i>         cp -a $rd_projectroot/dev/ram$i ${rd_mount}/dev/ram$i
+</I>&gt;<i>     done
+</I>&gt;<i>     for i in 0 1 2 3 4; do
+</I>&gt;<i>         cp -a $rd_projectroot/dev/tty$i $rd_mount/dev/tty$i
+</I>&gt;<i>     done
+</I>&gt;<i> 
+</I>&gt;<i> # There is no way that I can see to modify this flag in pwl
+</I>&gt;<i> 
+</I>&gt;<i> -&gt; I missed to add this flag to the projects.defaults file. This could be
+</I>&gt;<i> important for instance where you want to include your own fstab and
+</I>&gt;<i> rc.init file.
+</I>&gt;<i> 
+</I>
+Being able to override the creation of the init scripts would allow me
+to return much closer to the standard pwl package. Most of the recent
+changes to my build have been accomplished by modifying the pwl_target*
+scripts.
+
+&gt;<i> # in the XFree86 package there is a ld.so.conf file that accomplishes the
+</I>&gt;<i> # the linking of /usr/X11R6/lib. Is there a reason you have it hard coded here as well?
+</I>&gt;<i> 
+</I>&gt;<i> -&gt; Yes. My idea is that an embedded system shouldn't change. so you
+</I>&gt;<i> wouldn't need the ldconfig binary. On a small system this is quite
+</I>&gt;<i> significant. I don't expect any ld.so.conf to be on the target filesystem.
+</I>&gt;<i> So just in case X is included it will be linked. Perhaps the list of
+</I>&gt;<i> library paths at this stage could be configurable in a projects.default
+</I>&gt;<i> variable, too?
+</I>
+Your default init scripts run ldconfig, if it exists, on every target
+boot. That is what prompted my comment. You are correct that the
+ldconfig binary should not be included in the target fs for most
+embedded systems. You can leave it as is and it certainly wouldn't
+bother me. Making it configurable would cover a lot of possible
+applications though.
+
+&gt;<i> -&gt; Thank you for your suggestions! The above was created for a particular
+</I>&gt;<i> project but never really tested thoroughly. It does work, though. If you
+</I>&gt;<i> have ideas for a different partitioning method I'd be quite happy to
+</I>&gt;<i> either modify this target or even create a new one.
+</I>
+ 
+&gt;<i> With the 2.4.x kernels we should have a devfs which should allow for the
+</I>&gt;<i> /dev ramdisk to disappear. It is defenitely something with a lot of waste.
+</I>&gt;<i> Especially with fairly little devices it still is rather large since each
+</I>&gt;<i> device entry requires an inode. devfs works similar to the /proc
+</I>&gt;<i> filesystem where it's a kernel generated filesystem.
+</I>
+This would be wonderful!! I'm attempting every trick I can think of to
+conserve system resources. RAM is where I am currently focusing on.
+ 
+&gt;<i> having the /etc files in  compressed ramdisk makes them rather difficult
+</I>&gt;<i> to change. So a different solution might be an idea. Perhaps keep it in a
+</I>&gt;<i> partition just as /home but copy the partition into a ramdisk on boot?
+</I>
+ 
+&gt;<i> Note that I added the following in 0.53.23 to correct some calcualtions:
+</I>&gt;<i> 
+</I>&gt;<i>     # deduct the /dev and /etc filesystems
+</I>&gt;<i>     # reverse addition of free space to ramdisks!
+</I>&gt;<i>     rd_size_fs=$((rd_size_fs - (rd_size_fs_dev - rd_dev_free)))
+</I>&gt;<i>     rd_size_fs=$((rd_size_fs - (rd_size_fs_etc - rd_etc_free)))
+</I>&gt;<i> 
+</I>&gt;<i> It works and I think it makes sense...
+</I>
+Yes it does. I provide something similar in my example above. Choose the
+one that makes the most sense to you.
+
+-- 
+Dean Brown
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000245.html">Read only filesystem size issues.
+</A></li>
+	<LI> Next message: <A HREF="000251.html">Read only filesystem size issues.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#247">[ date ]</a>
+              <a href="thread.html#247">[ thread ]</a>
+              <a href="subject.html#247">[ subject ]</a>
+              <a href="author.html#247">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

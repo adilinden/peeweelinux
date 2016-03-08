@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Error loading file system to target
+ compactflashcard
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001186.html">
+   <LINK REL="Next"  HREF="001188.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Error loading file system to target
+ compactflashcard
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Error loading file system to target
+ compactflashcard">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 25 Aug 2003 13:01:51 -0400</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001186.html">[Peeweelinux] Error loading file system to target compactflash
+ card
+</A></li>
+        <LI> Next message: <A HREF="001188.html">[Peeweelinux] Error loading file system to target
+ compactflashcard
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1187">[ date ]</a>
+              <a href="thread.html#1187">[ thread ]</a>
+              <a href="subject.html#1187">[ subject ]</a>
+              <a href="author.html#1187">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>HEllo,
+
+Edit the XF86Config file in the project directory. ITs under the &quot;custom&quot; directory in your project. 
+
+Edit etc/X11/XF86Config  for your particular mouse options. By default, the mouse is set up for PS/2 protocol on the /dev/psaux  device. Make sure these things are OK. 
+
+Try doing the following at your prompt:
+
+dmesg | grep Detected
+
+You should see a line saying &quot;Detected PS/2 Mouse&quot; or similar. 
+
+Do a &quot;Alt-F2&quot; or &quot;CTRL-ALT-F2&quot; to get to a terminal if you are stuck in some error state when X fails.
+
+~Ken
+
+&gt;<i> -----Original Message-----
+</I>&gt;<i> From: Ashley Rolleston &lt;<A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>&gt; 
+</I>&gt;<i> Sent: Monday, August 25, 2003 12:27 PM
+</I>&gt;<i> To: <A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>; <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: [Peeweelinux] Error loading file system to target
+</I>&gt;<i> compactflashcard
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> &gt; &gt;All the extracted .rpm files that are created in the
+</I>&gt;<i> &gt; &gt;Embedded_Build/packages directory when I first run 
+</I>&gt;<i> pwlconfig are 10 k
+</I>&gt;<i> &gt; &gt;(and empty...), and all the .list files are 0 k. 
+</I>&gt;<i> 
+</I>&gt;<i> Thanks Barry,
+</I>&gt;<i> 
+</I>&gt;<i> Well I ran the ./pwlconfig on a colleagues machine and it created the
+</I>&gt;<i> packages directory with correctly sized files. I copied that packages
+</I>&gt;<i> back to my development machine, and VOILA, now its all working :)
+</I>&gt;<i> 
+</I>&gt;<i> Who knows what caused the auto-extraction to fail on my machine (maybe
+</I>&gt;<i> something RH9 related?), but at least I am over this stumbling block.
+</I>&gt;<i> 
+</I>&gt;<i> The compact flash I have is now bootable on my target hardware despite
+</I>&gt;<i> one small error message I did get during extracting the files 
+</I>&gt;<i> described
+</I>&gt;<i> as follows...
+</I>&gt;<i> 
+</I>&gt;<i> *************
+</I>&gt;<i> 
+</I>&gt;<i> ncurses.tar            bootx/ncurses.list                     
+</I>&gt;<i>          
+</I>&gt;<i> tar: usr/bin/clear: Could not create file: File exists
+</I>&gt;<i> 
+</I>&gt;<i> *************
+</I>&gt;<i> 
+</I>&gt;<i> QUOTE : Ncurses (new curses) ... It is a library of functions that
+</I>&gt;<i> manage an application's display on character-cell terminals.
+</I>&gt;<i> 
+</I>&gt;<i> My system boots fine as mentioned before, but I am having a little
+</I>&gt;<i> problem getting into X windows (is it related to the ncurses problem?)
+</I>&gt;<i> 
+</I>&gt;<i> It tries and fails to get into X windows 'Cannot Open Mouse (no such
+</I>&gt;<i> device)' despite XF86Config showing protocol ps/2 and 
+</I>&gt;<i> /dev/psaux. There
+</I>&gt;<i> are no interrupt conflicts and mouse is detected fine in the 
+</I>&gt;<i> bios so it
+</I>&gt;<i> has me a little stuck. Any ideas ?
+</I>&gt;<i> 
+</I>&gt;<i> Getting there, deadline is approaching *gulp*!
+</I>&gt;<i> -- 
+</I>&gt;<i> Ashley Rolleston
+</I>&gt;<i> aka Onyx^
+</I>&gt;<i> <A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001186.html">[Peeweelinux] Error loading file system to target compactflash
+ card
+</A></li>
+	<LI> Next message: <A HREF="001188.html">[Peeweelinux] Error loading file system to target
+ compactflashcard
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1187">[ date ]</a>
+              <a href="thread.html#1187">[ thread ]</a>
+              <a href="subject.html#1187">[ subject ]</a>
+              <a href="author.html#1187">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

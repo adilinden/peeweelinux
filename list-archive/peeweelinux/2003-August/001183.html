@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Error loading file system to target compact
+ flash card
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001182.html">
+   <LINK REL="Next"  HREF="001184.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Error loading file system to target compact
+ flash card
+   </H1>
+    <B>Ashley Rolleston
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Error loading file system to target compact
+ flash card">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>22 Aug 2003 15:50:43 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001182.html">[Peeweelinux] Error loading file system to target compact
+ flash card
+</A></li>
+        <LI> Next message: <A HREF="001184.html">[Peeweelinux] Error loading file system to target compact
+ flash card
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1183">[ date ]</a>
+              <a href="thread.html#1183">[ thread ]</a>
+              <a href="subject.html#1183">[ subject ]</a>
+              <a href="author.html#1183">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> &gt;When I try and 'Extract File System for Project' it just gives me lots
+</I>&gt;<i> &gt;of 'Not found in Archive' messages for all of the files.
+</I>&gt;<i> 
+</I>&gt;<i> This looks like the first error.  Meaning that you need to get this
+</I>&gt;<i> fixed first.  This is the step that creates your target's file
+</I>&gt;<i> tree on project/bootx/mnt
+</I>&gt;<i> 
+</I>&gt;<i> I wonder if you managed to be missing the packages?  I did this once.
+</I>&gt;<i> Extracting them is supposed to happen automatically the first
+</I>&gt;<i> time it PWL is run.  I think a few others have managed this stunt
+</I>&gt;<i> as well.  Have a look in the Embedded_Build/packages directory
+</I>&gt;<i> and see if you see directories corresponding to PWL choices (I
+</I>&gt;<i> have about 24 of them).  In each of those directories you 
+</I>&gt;<i> should see pairs of files named .tar and .list
+</I>&gt;<i> If you don't, that's the first step.
+</I>
+Thanks Barry,
+
+Well, all the .tar and .list files are there. I agree that the fact that
+the file system wont extract is the problem, but can't understand why.
+I'm thinking more and more that it is my host development system setup.
+I am using Red Hat 9.0, and possibly the reason it will not extract is
+due to factors such as incorrect permissions etc. I am currently logging
+on as a user, then 'su root' and unpacking in my '/home/user/' directory
+before running ./pwlconfig . 
+
+The bootx project has been tested out and works fine on other systems
+(Ken, the gentleman who sent me the file bootx.tgz extracted and put to
+target flash card with the exact same file to check for me).
+
+/me keeps plugging away :)
+
+-- 
+Ashley Rolleston
+aka Onyx^
+<A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001182.html">[Peeweelinux] Error loading file system to target compact
+ flash card
+</A></li>
+	<LI> Next message: <A HREF="001184.html">[Peeweelinux] Error loading file system to target compact
+ flash card
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1183">[ date ]</a>
+              <a href="thread.html#1183">[ thread ]</a>
+              <a href="subject.html#1183">[ subject ]</a>
+              <a href="author.html#1183">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

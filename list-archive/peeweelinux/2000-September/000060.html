@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> making floppy systems
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000059.html">
+   <LINK REL="Next"  HREF="000062.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>making floppy systems
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="making floppy systems">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 1 Sep 2000 15:35:55 -0500 (CDT)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000059.html">making floppy systems
+</A></li>
+        <LI> Next message: <A HREF="000062.html">making floppy systems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#60">[ date ]</a>
+              <a href="thread.html#60">[ thread ]</a>
+              <a href="subject.html#60">[ subject ]</a>
+              <a href="author.html#60">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Building a compressed ramdisk to fit on a floppy is no problem especially
+if you use the tinylogin/busybox combination.
+
+So far I've been doing the task of building the ramdisk and loading the
+kernel and ramdisk onto the floppy by hand.
+
+I am working on a bunch of scripts that will build systems on a attached
+harddrive (primarly meant for CompactFlash or DOC accessed like an IDE
+drive). Since the HD loading involves partitioning the target device this
+isn't really feasable for a floppy disk.
+
+Reading this note I will add floppy to another type of target to build
+using those script which will eventually driven by pwlconfig as a user
+interface.
+
+I have some scanned pages of my notebook (pen and pencil notebook) from
+the early beginnings of my embedded systems building experience. Have a
+look at it and see if it makes sense.
+ 
+<A HREF="http://adis.on.ca/BlackBook/bootdisk1.jpeg">http://adis.on.ca/BlackBook/bootdisk1.jpeg</A>
+<A HREF="http://adis.on.ca/BlackBook/bootdisk2.jpeg">http://adis.on.ca/BlackBook/bootdisk2.jpeg</A>
+<A HREF="http://adis.on.ca/BlackBook/bootdisk3.jpeg">http://adis.on.ca/BlackBook/bootdisk3.jpeg</A>
+
+I can take the relevant portions out of it and write some quick
+instructions of how to load a filesystem build using pwlconfig and located
+in Embedded_Build/projects/&lt;your project name&gt;/mnt onto a floppy disk.
+
+Hope this helps!
+
+TTYL,
+Adi
+
+&gt;<i> --- fred anger &lt;<A HREF="mailto:anger@rightarm.org">anger@rightarm.org</A>&gt; wrote:
+</I>&gt;<i> &gt; Hello all.  I'm new to PWL, and haven't seen any specific docs on creating
+</I>&gt;<i> &gt; bootable floppy systems.  Please point me to docs if there are any.  
+</I>&gt;<i> &gt; pwlconfig seems to want to flash to /dev/hda1, and unlike some docs I've
+</I>&gt;<i> &gt; read, I'm not given the opportunity to specify that I want a floppy
+</I>&gt;<i> &gt; system.  Perhaps it's buried in the menus?
+</I>&gt;<i> &gt;  
+</I>&gt;<i> The floppy support is not provided as originally envisioned (and documented).
+</I>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000059.html">making floppy systems
+</A></li>
+	<LI> Next message: <A HREF="000062.html">making floppy systems
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#60">[ date ]</a>
+              <a href="thread.html#60">[ thread ]</a>
+              <a href="subject.html#60">[ subject ]</a>
+              <a href="author.html#60">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

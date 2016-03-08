@@ -1,0 +1,196 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] X_Free
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001000.html">
+   <LINK REL="Next"  HREF="001002.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] X_Free
+   </H1>
+    <B>Mateo Garcia, Carlos
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] X_Free">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 28 Mar 2003 12:19:36 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001000.html">[Peeweelinux] X_Free
+</A></li>
+        <LI> Next message: <A HREF="001002.html">[Peeweelinux] XFree86 : Resolution and everything is done.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1001">[ date ]</a>
+              <a href="thread.html#1001">[ thread ]</a>
+              <a href="subject.html#1001">[ subject ]</a>
+              <a href="author.html#1001">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 3.2//EN&quot;&gt;
+&lt;HTML&gt;
+&lt;HEAD&gt;
+&lt;META HTTP-EQUIV=3D&quot;Content-Type&quot; CONTENT=3D&quot;text/html; =
+charset=3Diso-8859-1&quot;&gt;
+&lt;META NAME=3D&quot;Generator&quot; CONTENT=3D&quot;MS Exchange Server version =
+6.0.6249.1&quot;&gt;
+&lt;TITLE&gt;RE: [Peeweelinux] X_Free&lt;/TITLE&gt;
+&lt;/HEAD&gt;
+&lt;BODY&gt;
+&lt;!-- Converted from text/plain format --&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;X Clients and server communicate through sockets, so =
+you must add networking support to your kernel.&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;You must select:&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;nbsp;&amp;nbsp; General Setup-&amp;gt;Networking =
+support.&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;nbsp;&amp;nbsp; Networking options-&amp;gt;Unix domain =
+sockets&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;and also probably:&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;nbsp;&amp;nbsp; Networking options-&amp;gt;TCP/IP&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;--&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Carlos Mateo&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;-----Mensaje original-----&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;De: lfabada fffd [&lt;A =
+HREF=3D&quot;mailto:<A HREF="mailto:un_secret9@yahoo.com">un_secret9@yahoo.com</A>&quot;&gt;mailto:<A HREF="mailto:un_secret9@yahoo.com">un_secret9@yahoo.com</A>&lt;/A&gt;]&lt;/FO=
+NT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Enviado el: viernes, 28 de marzo de 2003 12:02&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Para: peewee newsgroup&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Asunto: [Peeweelinux] X_Free&lt;/FONT&gt;
+&lt;/P&gt;
+&lt;BR&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;To resume where I am now with my XFree86 =
+configuration&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;WITHOUT A MOUSE and with a custom kernel :&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;--&amp;gt; I made XF86config from XF86Config.FBdev&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;--&amp;gt; I moved the libraries in =
+&amp;quot;/usr/X11R6/lib&amp;quot; to&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;/lib/. What do I have to change to had&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;quot;/usr/X11R6/lib&amp;quot; to the path of the =
+libraries?&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;--&amp;gt; I added AllowMouseOpenFail in =
+&amp;quot;ServerFlag&amp;quot; section&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;because I have no mouse. &lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;--&amp;gt; startx does't work : &lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;nbsp;execve failed for /usr/X11R6/bin/X (errno =
+2)&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;nbsp;_XTransSocketUNIXConnect : Can't connect: errno =
+=3D 111&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;nbsp;xinit: Conection refused (errno 111) : unable =
+to&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;connect to X server&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&amp;nbsp;xinit : No such process (errno 3): server =
+error.&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;--&amp;gt; If I do &amp;quot;XF86_SVGA &amp;gt;&amp;amp; =
+logfile&amp;quot;, I have a screen of&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;black and white squares with a big X in the =
+middle.&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;I'm unable to leave that screen even if I =
+press&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Ctrl+Atl+backspace.&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;--&amp;gt; After I reboot, I can't see logfile, the file =
+is&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;empty.&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;--&amp;gt; xfs is running after I boot the =
+computer.&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;Any suggestions?&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT SIZE=3D2&gt;Thanks&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;P&gt;&lt;FONT =
+SIZE=3D2&gt;__________________________________________________&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Do you Yahoo!?&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Yahoo! Platinum - Watch CBS' NCAA March Madness, live =
+on your desktop!&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&lt;A =
+HREF=3D&quot;<A HREF="http://platinum.yahoo.com"">http://platinum.yahoo.com&quot;</A>&gt;<A HREF="http://platinum.yahoo.com</A">http://platinum.yahoo.com&lt;/A</A>&gt;&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT =
+SIZE=3D2&gt;_______________________________________________&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;Peeweelinux mailing list&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>&lt;/FONT&gt;
+
+&lt;BR&gt;&lt;FONT SIZE=3D2&gt;&lt;A =
+HREF=3D&quot;<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux"">http://mail.adis.on.ca/lists/listinfo/peeweelinux&quot;</A>&gt;<A HREF="http://mail.ad=">http://mail.ad=</A>
+is.on.ca/lists/listinfo/peeweelinux&lt;/A&gt;&lt;/FONT&gt;
+&lt;/P&gt;
+
+&lt;/BODY&gt;
+&lt;/HTML&gt;
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001000.html">[Peeweelinux] X_Free
+</A></li>
+	<LI> Next message: <A HREF="001002.html">[Peeweelinux] XFree86 : Resolution and everything is done.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1001">[ date ]</a>
+              <a href="thread.html#1001">[ thread ]</a>
+              <a href="subject.html#1001">[ subject ]</a>
+              <a href="author.html#1001">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

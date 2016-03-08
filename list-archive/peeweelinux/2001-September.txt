@@ -1,0 +1,377 @@
+From peeweelinux@adis.on.ca  Mon Sep  3 05:49:54 2001
+From: peeweelinux@adis.on.ca (Kevin Fonner)
+Date: Mon, 03 Sep 2001 00:49:54 -0400
+Subject: getting started question
+References: <Pine.LNX.4.33.0108311342220.2363-100000@adibox.knet.ca>
+Message-ID: <3B930BF2.5090909@greenfern.com>
+
+Curses!! I should have known that!  ;)
+
+Kevin
+
+
+Adi Linden wrote:
+
+>Hi,
+>
+>You need to have ncurses installed on the RedHat 7.1 box...
+>
+>TTYL,
+>Adi
+>
+>On Wed, 29 Aug 2001, Kevin Fonner wrote:
+>
+>>Hello, I am a little new to the world of embedded linux so go easy on
+>>me.  Anyways I am having some trouble getting started.  I extracted the
+>>files as root under /root/Embedded_Build.  I go into this directory and
+>>type ./pwlconfig
+>>and all it shows is
+>>..
+>>and then it just sits there.  Any idea what going on?  I tried
+>>downloading it twice.  The first time I downloaded the whole thing..
+>>peeweelinux-0.61.0-src.tar.gz
+>>Second time I downloaded..  peeweelinux-0.61.0-bin.tar.gz
+>>Same result both times.
+>>FYI...This is on a fresh installation of Redhat 7.1
+>>
+>>Thanks,
+>>Kevin
+>>
+>>---------------------------------------------------
+>>See the list archives at http://adis.on.ca/archives/
+>>See the PWL homepage at  http://peeweelinux.com
+>>---------------------------------------------------
+>>
+>
+
+
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Sep  6 19:50:06 2001
+From: peeweelinux@adis.on.ca (SISTERON Guillaume)
+Date: Thu, 6 Sep 2001 17:50:06 -0100
+Subject: Telnetd and Read-Only root partition
+Message-ID: <01090617500603.01042@gsisteron.local.com1.fr>
+
+Hi,
+
+I've just tried to mount my root partition in read-only mode.
+I resolve all the problems it envolves except the telnetd problem:
+
+When the root partition is in Read/Write Mode, everything works fine.
+But when it is in Read-Only Mode, the telnetd daemon does'nt work at all.
+It hangs up.
+
+Did someone had the same problem and found the solution ?
+(Maybe a /dev/ttyp to link, or something like that)
+
+Thanks very much
+
+---
+Guillaume Sisteron
+COM One
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Sep  6 16:56:23 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 6 Sep 2001 10:56:23 -0500 (CDT)
+Subject: Telnetd and Read-Only root partition
+In-Reply-To: <01090617500603.01042@gsisteron.local.com1.fr>
+Message-ID: <Pine.LNX.4.33.0109061055110.2052-100000@adibox.knet.ca>
+
+Hi,
+
+When mounting root read-only you still need some things writable. Like tty
+devices amongst things. Do you have a partition or ramdisk mounted which
+is read-write? The devices should go there...
+
+TTYL,
+Adi
+
+On Thu, 6 Sep 2001, SISTERON Guillaume wrote:
+
+> Hi,
+>
+> I've just tried to mount my root partition in read-only mode.
+> I resolve all the problems it envolves except the telnetd problem:
+>
+> When the root partition is in Read/Write Mode, everything works fine.
+> But when it is in Read-Only Mode, the telnetd daemon does'nt work at all.
+> It hangs up.
+>
+> Did someone had the same problem and found the solution ?
+> (Maybe a /dev/ttyp to link, or something like that)
+>
+> Thanks very much
+>
+> ---
+> Guillaume Sisteron
+> COM One
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+>
+
+-- 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Sep  6 17:23:52 2001
+From: peeweelinux@adis.on.ca (Guillaume Sisteron)
+Date: Thu, 6 Sep 2001 18:23:52 +0200
+Subject: Telnetd and Read-Only root partition
+References: <Pine.LNX.4.33.0109061055110.2052-100000@adibox.knet.ca>
+Message-ID: <000801c136f0$51a4f2a0$143133c2@gsisteron>
+
+Yes i've got a partition that is read-write.
+But i'd like to know exactly which device to put on the read-write partition
+in order to have exactly the things needed on the read-write partition.
+
+Do you know what tty is it ?
+ttyp ?
+
+Thanks
+
+Guillaume
+
+----- Original Message -----
+From: "Adi Linden" <adi@adis.on.ca>
+To: "SISTERON Guillaume" <gsistero@com1.fr>
+Cc: <peeweelinux@adis.on.ca>
+Sent: Thursday, September 06, 2001 5:56 PM
+Subject: Re: Telnetd and Read-Only root partition
+
+
+> Hi,
+>
+> When mounting root read-only you still need some things writable. Like tty
+> devices amongst things. Do you have a partition or ramdisk mounted which
+> is read-write? The devices should go there...
+>
+> TTYL,
+> Adi
+>
+> On Thu, 6 Sep 2001, SISTERON Guillaume wrote:
+>
+> > Hi,
+> >
+> > I've just tried to mount my root partition in read-only mode.
+> > I resolve all the problems it envolves except the telnetd problem:
+> >
+> > When the root partition is in Read/Write Mode, everything works fine.
+> > But when it is in Read-Only Mode, the telnetd daemon does'nt work at
+all.
+> > It hangs up.
+> >
+> > Did someone had the same problem and found the solution ?
+> > (Maybe a /dev/ttyp to link, or something like that)
+> >
+> > Thanks very much
+> >
+> > ---
+> > Guillaume Sisteron
+> > COM One
+> > ---------------------------------------------------
+> > See the list archives at http://adis.on.ca/archives/
+> > See the PWL homepage at  http://peeweelinux.com
+> > ---------------------------------------------------
+> >
+>
+> --
+>
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Thu Sep  6 20:42:30 2001
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 6 Sep 2001 14:42:30 -0500 (CDT)
+Subject: Telnetd and Read-Only root partition
+In-Reply-To: <000801c136f0$51a4f2a0$143133c2@gsisteron>
+Message-ID: <Pine.LNX.4.33.0109061441480.2052-100000@adibox.knet.ca>
+
+Hi,
+
+> Yes i've got a partition that is read-write.
+> But i'd like to know exactly which device to put on the read-write partition
+> in order to have exactly the things needed on the read-write partition.
+>
+> Do you know what tty is it ?
+> ttyp ?
+
+I haven't done that in a while. I am not sure.
+
+Regards,
+Adi
+
+-- 
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Fri Sep  7 01:23:48 2001
+From: peeweelinux@adis.on.ca (Mark Meade)
+Date: Thu, 6 Sep 2001 20:23:48 -0400
+Subject: Telnetd and Read-Only root partition
+References: <Pine.LNX.4.33.0109061441480.2052-100000@adibox.knet.ca>
+Message-ID: <002601c13733$9074fb90$0301a8c0@dellc800>
+
+On kernels that aren't using "Unix98 PTYS", I believe it's /dev/ttyp0,
+ttyp1, ... etc.
+
+----- Original Message -----
+From: "Adi Linden" <adi@adis.on.ca>
+To: "Guillaume Sisteron" <gsistero@com1.fr>
+Cc: <peeweelinux@adis.on.ca>
+Sent: Thursday, September 06, 2001 3:42 PM
+Subject: Re: Telnetd and Read-Only root partition
+
+
+> Hi,
+>
+> > Yes i've got a partition that is read-write.
+> > But i'd like to know exactly which device to put on the read-write
+partition
+> > in order to have exactly the things needed on the read-write partition.
+> >
+> > Do you know what tty is it ?
+> > ttyp ?
+>
+> I haven't done that in a while. I am not sure.
+>
+> Regards,
+> Adi
+>
+> --
+>
+> ---------------------------------------------------
+> See the list archives at http://adis.on.ca/archives/
+> See the PWL homepage at  http://peeweelinux.com
+> ---------------------------------------------------
+>
+>
+
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Tue Sep 11 12:50:24 2001
+From: peeweelinux@adis.on.ca (SISTERON Guillaume)
+Date: Tue, 11 Sep 2001 10:50:24 -0100
+Subject: 2 DiskOnChip on the same card
+Message-ID: <01091110502400.01004@gsistero.local.com1.fr>
+
+Hi,
+
+I'm trying to use two DiskOnChip on my card with Linux system.
+
+If there is only one, everything is ok and PeeWeeLinux works fine.
+
+But if I put 2 DOC, the system doesn't want to boot:
+In fact, it seems that it doesn't manage to mount the root partition:
+
+"Unable to mount root partition on device 03:02"
+
+Is there anyone that managed to boot with 2 DOC on the same card.
+
+Thanks
+
+---
+Guillaume Sisteron
+COM One
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+
+From peeweelinux@adis.on.ca  Wed Sep 12 17:12:43 2001
+From: peeweelinux@adis.on.ca (SISTERON Guillaume)
+Date: Wed, 12 Sep 2001 15:12:43 -0100
+Subject: Telnetd and Read-Only root partition
+Message-ID: <01091215124400.01036@gsistero.local.com1.fr>
+
+Yes, it is /dev/ttyp0.
+
+But I've got another problem: once a telnet session is began, I can't do a su 
+command:
+There are two error messages in /var/log/messages:
+
+login: unable to determine TTY name, got /dev/UNKNOWN
+
+and
+
+login: initgroups failed for user `admin`
+
+
+Any suggestion ?
+
+Thanks
+
+Guillaume
+
+
+----- Original Message ---------
+
+>On kernels that aren't using "Unix98 PTYS", I believe it's /dev/ttyp0, 
+>ttyp1, ... etc. 
+>
+>
+>----- Original Message ----- 
+>From: "Adi Linden" <adi@adis.on.ca> 
+>To: "Guillaume Sisteron" <gsistero@com1.fr> 
+>Cc: <peeweelinux@adis.on.ca> 
+>Sent: Thursday, September 06, 2001 3:42 PM 
+>Subject: Re: Telnetd and Read-Only root partition 
+>
+>
+>
+>> Hi,
+>>
+>> > Yes i've got a partition that is read-write.
+>> > But i'd like to know exactly which device to put on the read-write
+>partition 
+>> > in order to have exactly the things needed on the read-write partition.
+>> >
+>> > Do you know what tty is it ?
+>> > ttyp ?
+>>
+>> I haven't done that in a while. I am not sure.
+>>
+>> Regards,
+>> Adi
+>>
+>> --
+>>
+>> ---------------------------------------------------
+>> See the list archives at http://adis.on.ca/archives/
+>> See the PWL homepage at http://peeweelinux.com
+>> ---------------------------------------------------
+>>
+>>
+
+
+--------------------------------------------------- 
+See the list archives at http://adis.on.ca/archives/ 
+See the PWL homepage at http://peeweelinux.com 
+--------------------------------------------------- 
+---------------------------------------------------
+See the list archives at http://adis.on.ca/archives/
+See the PWL homepage at  http://peeweelinux.com
+---------------------------------------------------
+

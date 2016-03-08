@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> signal catching during boot-up scripts
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000135.html">
+   <LINK REL="Next"  HREF="000142.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>signal catching during boot-up scripts
+   </H1>
+    <B>John Markham
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="signal catching during boot-up scripts">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 6 Nov 2000 09:18:33 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000135.html">signal catching during boot-up scripts
+</A></li>
+        <LI> Next message: <A HREF="000142.html">signal catching during boot-up scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#138">[ date ]</a>
+              <a href="thread.html#138">[ thread ]</a>
+              <a href="subject.html#138">[ subject ]</a>
+              <a href="author.html#138">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>This probably has to do with the controlling tty and default behavior of
+ctrl-C in Linux.  The ctrl-alt-del function is set up in your inittab.
+While I don't think it is a wise thing to do you should be able to map that
+key sequence using the kbrequest in inittab to a function that kills your
+program.
+
+John Markham
+EnFlex Corp.
+
+-----Original Message-----
+From: <A HREF="mailto:owner-linux-embedded@waste.org">owner-linux-embedded@waste.org</A>
+[mailto:<A HREF="mailto:owner-linux-embedded@waste.org">owner-linux-embedded@waste.org</A>]On Behalf Of Dr Jaime V. Miro
+Sent: Monday, November 06, 2000 8:13 AM
+To: <A HREF="mailto:PeeWeeLinux@adis.on.ca">PeeWeeLinux@adis.on.ca</A>; <A HREF="mailto:linux-embedded@waste.org">linux-embedded@waste.org</A>
+Subject: signal catching during boot-up scripts
+
+
+Hi
+
+I am not sure whether this question should be addressed to the PeeWeeLinux
+community, or to embedded linux in general, so I guess I'll send it to both.
+
+Thanks
+
+
+******************
+
+I've written a (GNU C++) program whose main(), after creating some threads,
+sigwaits for Ctrl+C
+to terminate &quot;nicely&quot;. It works fine and does what it is supposed to do.
+Now, that application is
+gonna control an embedded device, for which I've put together an embedded
+flavour of Linux (based
+on PeeWeeLinux v0.52).  It works fine in that environment too. No probs so
+far.
+
+Now, in order to seemlessly (from the user point of view) boot up straight
+into the application,
+I launch the application from the rc.local script (PeeWeeLinux based on red
+hat, i.e. system V
+init scripts, I think). The application starts fine, but I can never catch
+Ctrl+C (SIGINT). It
+hangs up. I can, however,  ctrl+alt+del and the system is shutdown. From
+what I see, it looks as
+though signals are not passed (from /sbin/init) on to user programs during
+boot up, at least not until getting the
+mingetty, which I don't need (embedded, no user inputs or terminals, no log
+in ... nothing. The
+reason to catching the signals at this stage is purely for debugging)
+
+Am I right? or maybe I am barking at the wrong tree and that is not the best
+approach to go
+anyway? any pointers greatly appreciated.
+
+Thanks in advance,
+
+Jaime
+
+
+--
+To unsubscribe from this list, send a message to <A HREF="mailto:majordomo@waste.org">majordomo@waste.org</A>
+with the command &quot;unsubscribe linux-embedded&quot; in the message body.
+For more information, see &lt;<A HREF="http://waste.org/mail/linux-embedded">http://waste.org/mail/linux-embedded</A>&gt;.
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000135.html">signal catching during boot-up scripts
+</A></li>
+	<LI> Next message: <A HREF="000142.html">signal catching during boot-up scripts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#138">[ date ]</a>
+              <a href="thread.html#138">[ thread ]</a>
+              <a href="subject.html#138">[ subject ]</a>
+              <a href="author.html#138">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

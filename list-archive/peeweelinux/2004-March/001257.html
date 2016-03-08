@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] success! thanks all
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001256.html">
+   <LINK REL="Next"  HREF="001258.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] success! thanks all
+   </H1>
+    <B>Ken Emmons, Jr.
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] success! thanks all">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 16 Mar 2004 09:31:30 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001256.html">[Peeweelinux] success! thanks all
+</A></li>
+        <LI> Next message: <A HREF="001258.html">[Peeweelinux] success! thanks all
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1257">[ date ]</a>
+              <a href="thread.html#1257">[ thread ]</a>
+              <a href="subject.html#1257">[ subject ]</a>
+              <a href="author.html#1257">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+Use the rc.init scripts, they get run as root before running the login stuff. I'm using this to create some devices and load some driver modules, and it works great. I don't know why the scripts you tried didn't work, but in my &quot;custom/etc/rcS.d&quot; folder, I have a script called &quot;99init_sys&quot; that gets run fine. Make sure to have #!/bin/sh at the top of your script and all that fun stuff, and it should work out nicely. 
+
+~Ken
+
+
+
+&gt;<i> -----Original Message-----
+</I>&gt;<i> From: Ashley Rolleston [mailto:<A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>]
+</I>&gt;<i> Sent: Tuesday, March 16, 2004 8:01 AM
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: [Peeweelinux] success! thanks all
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Well my peeweelinux project is now all but finished. It's 
+</I>&gt;<i> looking great,
+</I>&gt;<i> using peeweelinux with bootx and an updated kernel, an 800x600 TFT +
+</I>&gt;<i> touchscreen on a SBC. All my net drivers and touchscreen drivers are
+</I>&gt;<i> working, although I had to revert to standard vesa framebuffer drivers
+</I>&gt;<i> together with the XF86_FBDev X server because of a problem 
+</I>&gt;<i> with my hardware
+</I>&gt;<i> configuration and the SiS drivers for my particular 
+</I>&gt;<i> graphics/lcd setup.
+</I>&gt;<i> 
+</I>&gt;<i> Together with Netscape and the Flash 5 plug-in this will be 
+</I>&gt;<i> used as an easy
+</I>&gt;<i> to use interface for other hardware (flash still leaves a bad 
+</I>&gt;<i> taste in my
+</I>&gt;<i> mouth though...)
+</I>&gt;<i> 
+</I>&gt;<i> I have one last question on my configuration. I need a driver 
+</I>&gt;<i> program in
+</I>&gt;<i> /usr/bin to run automatically on startup before startx is called. This
+</I>&gt;<i> driver creates some custom devices in /dev and it appears to 
+</I>&gt;<i> need to be ran
+</I>&gt;<i> as root. I have tried adding the program to .bashrc in 
+</I>&gt;<i> /home/autologin but
+</I>&gt;<i> this doesn't work. I have also tried creating /etc/rc.local , 
+</I>&gt;<i> and trying
+</I>&gt;<i> rc.sysinit.
+</I>&gt;<i> 
+</I>&gt;<i> At the moment the only way is to stop autologin running 
+</I>&gt;<i> startx, and manually
+</I>&gt;<i> 'su root' then run the driver program and then exit the root 
+</I>&gt;<i> shell and run
+</I>&gt;<i> startx manually...
+</I>&gt;<i> 
+</I>&gt;<i> Where can I specify in the startup scripts to run this process ?
+</I>&gt;<i> 
+</I>&gt;<i> Thanks for all your help, I will remain subscribed to this 
+</I>&gt;<i> list in case I
+</I>&gt;<i> can help anyone else with the experience I have had.
+</I>&gt;<i> 
+</I>&gt;<i> Ashley Rolleston
+</I>&gt;<i> Software Engineer
+</I>&gt;<i> ashley AT smartsw DOT co DOT uk
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001256.html">[Peeweelinux] success! thanks all
+</A></li>
+	<LI> Next message: <A HREF="001258.html">[Peeweelinux] success! thanks all
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1257">[ date ]</a>
+              <a href="thread.html#1257">[ thread ]</a>
+              <a href="subject.html#1257">[ subject ]</a>
+              <a href="author.html#1257">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

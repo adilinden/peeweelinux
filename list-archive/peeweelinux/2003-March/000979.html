@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000974.html">
+   <LINK REL="Next"  HREF="000980.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+   </H1>
+    <B>Stephen Lee
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>24 Mar 2003 12:49:54 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000974.html">[Peeweelinux] initrd problem
+</A></li>
+        <LI> Next message: <A HREF="000980.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#979">[ date ]</a>
+              <a href="thread.html#979">[ thread ]</a>
+              <a href="subject.html#979">[ subject ]</a>
+              <a href="author.html#979">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Sun, 2003-03-23 at 22:01, Stephen Lee wrote:
+&gt;<i> I think I did. I created a /initrd under
+</I>&gt;<i> ./Embedded_Build/projects/DOC-Test/mnt and added initrd/ to
+</I>&gt;<i> filesystem.list and reloaded onto the DOC. It didn't seem to make a
+</I>&gt;<i> difference. I then disconnected the harddrive and rebooted with just the
+</I>&gt;<i> DOC. This was more revealing. Here is the last of the kernel messages:
+</I>&gt;<i> 
+</I>&gt;<i> VFS: Mounted root (ext2 filesystem)
+</I>&gt;<i> Kmod: failed to exec /sbin/modprobe -s -k block-major-3, errno = 2
+</I>&gt;<i> VFS: Cannot open root device or 03:06
+</I>&gt;<i> Please append a correct &quot;root=&quot; boot option.
+</I>&gt;<i> Kernel panic: VFS: Unable to mount root fs on 03:06
+</I>&gt;<i> 
+</I>&gt;<i> The kernel (2.4.20) was compiled with ide support having the following
+</I>&gt;<i> kernel config bits:
+</I>&gt;<i> 
+</I>&gt;<i> CONFIG_IDE=y
+</I>&gt;<i> CONFIG_BLK_DEV_IDE=y
+</I>&gt;<i> CONFIG_BLK_DEV_IDEDISK=y
+</I>&gt;<i> CONFIG_BLK_DEV_IDECD=y
+</I>&gt;<i> CONFIG_BLK_DEV_IDESCSI=y
+</I>&gt;<i> CONFIG_BLK_DEV_IDEPCI=y
+</I>&gt;<i> CONFIG_IDEPCI_SHARE_IRQ=y
+</I>&gt;<i> CONFIG_BLK_DEV_IDEDMA_PCI=y
+</I>&gt;<i> CONFIG_IDEDMA_PCI_AUTO=y
+</I>&gt;<i> CONFIG_BLK_DEV_IDEDMA=y
+</I>&gt;<i> CONFIG_IDEDMA_AUTO=y
+</I>&gt;<i> 
+</I>&gt;<i> It looks like the kernel cannot read the root fs even though IDE support
+</I>&gt;<i> is part of the kernel. Is this a lilo, kernel or DOC (2000) problem?
+</I>
+I've compiled a 2.4.20 kernel with no modules and still have the same
+problem. Does anyone have a DOC2000-ready kernel (2.4.2x) with no
+dependent modules for PWL I could try? I want to eliminate the kernel as
+a source of my bootup problem.
+
+Thanks,
+Stephen
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000974.html">[Peeweelinux] initrd problem
+</A></li>
+	<LI> Next message: <A HREF="000980.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#979">[ date ]</a>
+              <a href="thread.html#979">[ thread ]</a>
+              <a href="subject.html#979">[ subject ]</a>
+              <a href="author.html#979">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

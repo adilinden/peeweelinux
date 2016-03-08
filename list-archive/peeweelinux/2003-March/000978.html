@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] nfs with peewee, kernel 2.4.20
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000977.html">
+   <LINK REL="Next"  HREF="000981.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] nfs with peewee, kernel 2.4.20
+   </H1>
+    <B>Marc Wiz
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] nfs with peewee, kernel 2.4.20">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Mon, 24 Mar 2003 12:29:38 -0600</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000977.html">[Peeweelinux] nfs with peewee, kernel 2.4.20
+</A></li>
+        <LI> Next message: <A HREF="000981.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#978">[ date ]</a>
+              <a href="thread.html#978">[ thread ]</a>
+              <a href="subject.html#978">[ subject ]</a>
+              <a href="author.html#978">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, Mar 24, 2003 at 09:59:58AM -0800, Troy Engel wrote:
+&gt;<i> Ken Emmons, Jr. wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;portmap: server localhost not responding, timed out.
+</I>&gt;<i> 
+</I>&gt;<i> I'm not an NFS master or anything, but don't you have to run &quot;rpc.lockd&quot; 
+</I>&gt;<i> as a daemon on any NFS client before trying to mount a remote server?  I 
+</I>&gt;<i> think portmap is for servers only, so that shouldn't be needed.
+</I>&gt;<i> 
+</I>&gt;<i> On all my redhat NFS clients here, rpc.lockd/rpc.statd is part of 
+</I>&gt;<i> nfs-utils, and has to be started before I can mount any remote NFS 
+</I>&gt;<i> shares. I would expect PWL to be the same...?
+</I>&gt;<i> 
+</I>
+rpc.lockd is for providing file locking on files in file systems
+mounted via NFS.  It's been a while but I do not think you have
+to have rpc.lockd running to use NFS.  Of course things could
+have changed.
+
+Marc who in a former life worked on NFS
+
+-- 
+Marc Wiz
+<A HREF="mailto:marc@wiz.com">marc@wiz.com</A>
+Yes, that really is my last name.
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000977.html">[Peeweelinux] nfs with peewee, kernel 2.4.20
+</A></li>
+	<LI> Next message: <A HREF="000981.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd problem)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#978">[ date ]</a>
+              <a href="thread.html#978">[ thread ]</a>
+              <a href="subject.html#978">[ subject ]</a>
+              <a href="author.html#978">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

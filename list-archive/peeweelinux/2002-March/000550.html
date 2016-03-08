@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] edit fstab doesn't 'stick'
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000548.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] edit fstab doesn't 'stick'
+   </H1>
+    <B>Mark Meade
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] edit fstab doesn't 'stick'">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 29 Mar 2002 11:03:34 -0500</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000548.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#550">[ date ]</a>
+              <a href="thread.html#550">[ thread ]</a>
+              <a href="subject.html#550">[ subject ]</a>
+              <a href="author.html#550">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Jim,
+
+Peewee creates /etc/fstab dynamically, based on your particular target options.  As you
+have already seen, any custom fstab file you create will be replaced.
+
+I have been using 2.4 era kernels with Peewee, and I needed to add &quot;Unix PTY support&quot;.
+This required a slightly modified /etc/fstab file, to mount /dev/pts.
+
+One way that worked was to add a custom /etc/rc.modules file, containing the following:
+
+    echo &quot;none /dev/pts devpts gid=5,mode=620 0 0&quot; &gt;&gt;/etc/fstab
+    mount -a
+
+Not exactly pretty, but it worked.
+
+Mark
+
+jim barchuk wrote:
+
+&gt;<i> I've edited /etc/ hosts, inetd.conf, issue, resolv.conf, services, and
+</I>&gt;<i> ifcfg-eth0 and network in ~/config. They all 'stick' *except* fstab.
+</I>
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000548.html">[Peeweelinux] edit fstab doesn't 'stick'
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#550">[ date ]</a>
+              <a href="thread.html#550">[ thread ]</a>
+              <a href="subject.html#550">[ subject ]</a>
+              <a href="author.html#550">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

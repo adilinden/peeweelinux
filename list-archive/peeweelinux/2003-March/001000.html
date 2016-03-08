@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] X_Free
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000999.html">
+   <LINK REL="Next"  HREF="001001.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] X_Free
+   </H1>
+    <B>lfabada fffd
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] X_Free">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 28 Mar 2003 03:02:01 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000999.html">[Peeweelinux] black and with squares with an X in the middle
+</A></li>
+        <LI> Next message: <A HREF="001001.html">[Peeweelinux] X_Free
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1000">[ date ]</a>
+              <a href="thread.html#1000">[ thread ]</a>
+              <a href="subject.html#1000">[ subject ]</a>
+              <a href="author.html#1000">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>To resume where I am now with my XFree86 configuration
+WITHOUT A MOUSE and with a custom kernel :
+
+--&gt; I made XF86config from XF86Config.FBdev
+
+--&gt; I moved the libraries in &quot;/usr/X11R6/lib&quot; to
+/lib/. What do I have to change to had
+&quot;/usr/X11R6/lib&quot; to the path of the libraries?
+
+--&gt; I added AllowMouseOpenFail in &quot;ServerFlag&quot; section
+because I have no mouse. 
+
+--&gt; startx does't work : 
+ execve failed for /usr/X11R6/bin/X (errno 2)
+ _XTransSocketUNIXConnect : Can't connect: errno = 111
+ xinit: Conection refused (errno 111) : unable to
+connect to X server
+ xinit : No such process (errno 3): server error.
+
+--&gt; If I do &quot;XF86_SVGA &gt;&amp; logfile&quot;, I have a screen of
+black and white squares with a big X in the middle.
+I'm unable to leave that screen even if I press
+Ctrl+Atl+backspace.
+
+--&gt; After I reboot, I can't see logfile, the file is
+empty.
+
+--&gt; xfs is running after I boot the computer.
+
+Any suggestions?
+
+Thanks
+
+__________________________________________________
+Do you Yahoo!?
+Yahoo! Platinum - Watch CBS' NCAA March Madness, live on your desktop!
+<A HREF="http://platinum.yahoo.com">http://platinum.yahoo.com</A>
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000999.html">[Peeweelinux] black and with squares with an X in the middle
+</A></li>
+	<LI> Next message: <A HREF="001001.html">[Peeweelinux] X_Free
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1000">[ date ]</a>
+              <a href="thread.html#1000">[ thread ]</a>
+              <a href="subject.html#1000">[ subject ]</a>
+              <a href="author.html#1000">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

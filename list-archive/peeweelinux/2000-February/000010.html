@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> termcap
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000008.html">
+   <LINK REL="Next"  HREF="000011.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>termcap
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="termcap">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 2 Feb 2000 23:54:27 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000008.html">termcap
+</A></li>
+        <LI> Next message: <A HREF="000011.html">termcap
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> I've just managed to get 0.19 running off a harddisk ;-)  
+</I>
+Good stuff!
+
+&gt;<i> A couple of observations I'd like to discuss:
+</I>&gt;<i> - the /etc/termcap is really huge, I think that most people only need 
+</I>&gt;<i> some basic terminal support (eg vt100 and the Linux console - this 
+</I>&gt;<i> is an embedded system).  That reduces the file to hardly some kB, 
+</I>&gt;<i> and shrinks the image by some 400kB.
+</I>
+There is a small termcap included in the minimal.tar package. However, I
+found that the terminal descriptions in it are too minimal for a system
+administered via telnet from a variety of systems.
+
+&gt;<i> - have you considered using upx on the executables?  It shrinks 
+</I>&gt;<i> e.g. the busybox in the distribution file to 43566 bytes, and the 
+</I>&gt;<i> elvis to 43278
+</I>
+What is upx???
+
+&gt;<i> All this space could be used to either make the system's footprint 
+</I>&gt;<i> even smaller than it is right now, or to accomodate ncurses ;-)
+</I>
+I tried ncurses but found it much harder to shrink in size then termcap.
+One of the future plans for PeeWeeLinux is to include means to create all
+the packages from the sources by using patch files. Perhaps at that point
+it might be an idea to give a choice of compiling with termcap or ncurses?
+Still got to checkout this upx thing, though...
+
+Great to hear from someone who's successful in running a PeeWeeLinux
+system :)
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000008.html">termcap
+</A></li>
+	<LI> Next message: <A HREF="000011.html">termcap
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#10">[ date ]</a>
+              <a href="thread.html#10">[ thread ]</a>
+              <a href="subject.html#10">[ subject ]</a>
+              <a href="author.html#10">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

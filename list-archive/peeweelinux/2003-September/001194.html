@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] 486 Touchscreen Project Update : Peewee + Netscape + Flashplayer
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   
+   <LINK REL="Next"  HREF="001195.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] 486 Touchscreen Project Update : Peewee + Netscape + Flashplayer
+   </H1>
+    <B>Ashley Rolleston
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] 486 Touchscreen Project Update : Peewee + Netscape + Flashplayer">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>02 Sep 2003 12:13:21 +0100</I>
+    <P><UL>
+        
+        <LI> Next message: <A HREF="001195.html">[Peeweelinux] 486 Touchscreen Project Update : Peewee +
+ Netscape + Flashplayer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1194">[ date ]</a>
+              <a href="thread.html#1194">[ thread ]</a>
+              <a href="subject.html#1194">[ subject ]</a>
+              <a href="author.html#1194">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Here is an update on how my project is going (see previous posts for
+more details of project specification).
+
+Well after much messing about, the project is finally getting to a
+reasonable state. After a major problem with the ps/2 mouse and a
+bios/kernel incompatibility (ps/2 mouse was detected ok in bios, but not
+assigned IRQ as far as the kernel was concerned...) I finally managed to
+get the system to autoboot into xwindows. This was achieved by giving up
+on ps/2 and using an old serial mouse on /dev/ttyS0. Although I have
+updated the Xserver to SVGA, I am having a problem getting it to display
+in above 320x200. After much playing with the xf86config file, the
+driver still boots to this default built-in resolution...?
+
+Netscape navigator was installed easily using the pwlconfig, and it was
+a simple matter of tracking down linux flash player 5 plugin and placing
+the files in the correct directory.
+
+The network drivers needed changing for the National Semiconductor
+DP83815 chip that my hardware uses. This involved changing the pwlconfig
+to include natsemi.o and pci-scan.o and then modifying rc.modules.
+However the drivers throw an error and need to be updated (the error is
+known and fixable). To update the drivers I need to compile the relevant
+.c (natsemi.c and pci-scan.c) files I have downloaded into suitable
+modules to load into my peewee file system. How do I go about doing this
+as I cannot compile on my target hardware (no gcc with peewee), and my
+development machine does not have the 2.2.17-full kernel source headers
+that are needed... ? (Am i making the right assumptions about
+compilation here?)
+
+The only other bit of tidying up on the project involves the
+/home/autologin directory. Netscape by default attempts to create
+personal settings folders in each users home directory. Autologin does
+not have premissions in its home directory to do this so Netscape throws
+errors on start-up. How can I automatically set chown for autologin, or
+the correct settings so that autologin can create new folders / files
+within its home?
+
+Cheers,
+-- 
+Ashley Rolleston
+aka Onyx^
+<A HREF="mailto:ashley@smartsw.co.uk">ashley@smartsw.co.uk</A>
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI> Next message: <A HREF="001195.html">[Peeweelinux] 486 Touchscreen Project Update : Peewee +
+ Netscape + Flashplayer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1194">[ date ]</a>
+              <a href="thread.html#1194">[ thread ]</a>
+              <a href="subject.html#1194">[ subject ]</a>
+              <a href="author.html#1194">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

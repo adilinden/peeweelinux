@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: Peeweelinux digest, Vol 1 #91 - 2 msgs
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000644.html">
+   
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Peeweelinux digest, Vol 1 #91 - 2 msgs
+   </H1>
+    <B>Justin Fretwell
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Peeweelinux digest, Vol 1 #91 - 2 msgs">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 28 Jun 2002 09:22:04 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000644.html">[Peeweelinux] perl program on peewee.
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#645">[ date ]</a>
+              <a href="thread.html#645">[ thread ]</a>
+              <a href="subject.html#645">[ subject ]</a>
+              <a href="author.html#645">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>glibc is backward compatable but only as far as when it started before it 
+used to be libc5.  libc6 is what glibc is called afaik.  so any programs you 
+have that only like libc5 probably wont run on glibc.
+
+On Thursday 27 Jun 2002 6:02 pm, <A HREF="mailto:peeweelinux-request@adis.on.ca">peeweelinux-request@adis.on.ca</A> wrote:
+&gt;<i> Send Peeweelinux mailing list submissions to
+</I>&gt;<i> 	<A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i>
+</I>&gt;<i> To subscribe or unsubscribe via the World Wide Web, visit
+</I>&gt;<i> 	<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> or, via email, send a message with subject or body 'help' to
+</I>&gt;<i> 	<A HREF="mailto:peeweelinux-request@adis.on.ca">peeweelinux-request@adis.on.ca</A>
+</I>&gt;<i>
+</I>&gt;<i> You can reach the person managing the list at
+</I>&gt;<i> 	<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;<i>
+</I>&gt;<i> When replying, please edit your Subject line so it is more specific
+</I>&gt;<i> than &quot;Re: Contents of Peeweelinux digest...&quot;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Today's Topics:
+</I>&gt;<i>
+</I>&gt;<i>    1. perl program on peewee. (Justin Fretwell)
+</I>&gt;<i>    2. Re: perl program on peewee. (Ken Emmons, Jr.)
+</I>&gt;<i>
+</I>&gt;<i> --__--__--
+</I>&gt;<i>
+</I>&gt;<i> Message: 1
+</I>&gt;<i> From: Justin Fretwell &lt;<A HREF="mailto:justinf@akhter.co.uk">justinf@akhter.co.uk</A>&gt;
+</I>&gt;<i> Organization: Akhter Computers Ltd
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Date: Thu, 27 Jun 2002 09:52:43 +0100
+</I>&gt;<i> Subject: [Peeweelinux] perl program on peewee.
+</I>&gt;<i> Reply-To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i>
+</I>&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> I am trying to get a perl script program (that uses Tk and a widget)
+</I>&gt;<i> working using peewee.  The problem that I am having is this:
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> a:  there is no perl libraries on peewee, so can i just use the content of
+</I>&gt;<i> /usr/lib/perl5/5.6.1/i386-linux and hope that works? is there a small perl
+</I>&gt;<i> distribution?
+</I>&gt;<i>
+</I>&gt;<i> b: will i have to do the same for Tk and the widget?
+</I>&gt;<i>
+</I>&gt;<i> c: i want to update the libs that peewee uses (i dont want to use the
+</I>&gt;<i> 2.1.3's that come with peewee, i want to use 2.2.4's that come with redhat
+</I>&gt;<i> 7.2) and addes to /lib and /lib/i686, where can i do this?
+</I>&gt;<i>
+</I>&gt;<i> any help appreciated.
+</I>&gt;<i>
+</I>&gt;<i> thanks
+</I>&gt;<i> Justin
+</I>&gt;<i>
+</I>&gt;<i> --__--__--
+</I>&gt;<i>
+</I>&gt;<i> Message: 2
+</I>&gt;<i> Date: Thu, 27 Jun 2002 09:35:50 -0400
+</I>&gt;<i> From: &quot;Ken Emmons, Jr.&quot; &lt;<A HREF="mailto:KEN@qatech.com">KEN@qatech.com</A>&gt;
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: [Peeweelinux] perl program on peewee.
+</I>&gt;<i> Reply-To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i>
+</I>&gt;<i> HEllo
+</I>&gt;<i>
+</I>&gt;<i> I would also like to upgrade my glibc and also add GTK libs to my custom
+</I>&gt;<i> peewee. If I do this, will I have to rebuild all the packages in peewee by
+</I>&gt;<i> hand, or is glibc backwards compatable??
+</I>&gt;<i>
+</I>&gt;<i> ~Ken
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> --__--__--
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> End of Peeweelinux Digest
+</I>
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000644.html">[Peeweelinux] perl program on peewee.
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#645">[ date ]</a>
+              <a href="thread.html#645">[ thread ]</a>
+              <a href="subject.html#645">[ subject ]</a>
+              <a href="author.html#645">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

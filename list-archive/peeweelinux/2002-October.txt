@@ -1,0 +1,1102 @@
+From peeweelinux@adis.on.ca  Wed Oct  9 16:45:30 2002
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Wed, 9 Oct 2002 08:45:30 -0700
+Subject: [Peeweelinux] Sucess!!!
+In-Reply-To: <Pine.LNX.4.33.0209181242310.3242-100000@adibox.knet.ca>; from adi@adis.on.ca on Wed, Sep 18, 2002 at 10:45:16 -0700
+References: <000a01c25f39$218f9df0$6fb812d4@ricardo> <Pine.LNX.4.33.0209181242310.3242-100000@adibox.knet.ca>
+Message-ID: <20021009084530.J2781@leif.attbi.com>
+
+I'll be adding to the documentation the (tiny) headaches I discovered.
+
+Just one little question: what's the password?
+
+From peeweelinux@adis.on.ca  Wed Oct  9 16:45:57 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Wed, 9 Oct 2002 10:45:57 -0500 (CDT)
+Subject: [Peeweelinux] Sucess!!!
+In-Reply-To: <20021009084530.J2781@leif.attbi.com>
+Message-ID: <Pine.LNX.4.33.0210091045240.20320-100000@adibox.knet.ca>
+
+Default root password is 'redhat'.
+
+Adi
+
+On Wed, 9 Oct 2002, Leif Steinhour wrote:
+
+> 
+> I'll be adding to the documentation the (tiny) headaches I discovered.
+> 
+> Just one little question: what's the password?
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+
+From peeweelinux@adis.on.ca  Thu Oct 17 17:23:15 2002
+From: peeweelinux@adis.on.ca (John Murphy)
+Date: Thu, 17 Oct 2002 11:23:15 -0500
+Subject: [Peeweelinux] Boot/CRC Problems
+Message-ID: <1034868195.smmsdV1.1.2@localhost>
+
+I've got a couple of problems I'm hoping the sharp
+folks here can help me with.  I'm pretty experienced
+with linux and embedded systems, but new to peewee
+and not done a ton of bootdisk stuff.
+
+My system is a transmeta crusoe PC104 with an
+aaeon 3115B PCMCIA adapter.  I also have an IDE->
+Compact Flash Adapter.
+
+I've tried the wireless-isa example with similar results
+as my own custom kernel.  Here's what happens:
+
+1) Build system on development system and write to
+16MB CompactFlash card using USB Reader/Writer.
+
+2) Install card in compact flash adapter on IDE
+string.
+
+3) Power on.  I get the following error
+
+loading ramdisk...................................
+loading bzImage........
+
+  - crc error -
+
+system halted
+
+
+Any thoughts?  Do I somehow need to modify the kernel
+building to use zImage?  What script would I need to
+modify?
+
+
+
+A second problem I have is when I'm trying to boot from
+PCMCIA with the compact flash card in a PCMCIA->CF
+Adapter.  The PCMCIA PC104 card I have has a special
+boot EEPROM on it.  After fiddling with the jumpers, I
+am able to boot from a compact flash card with a
+bootable DOS filesystem on it.  When I try to boot the
+above linux filesystem, the system indicates that
+I need to insert a system disk - It's not seeing the bootable
+filesystem.  
+
+Any Ideas?
+
+I suppose that it is possible that the boot eeprom firmware
+only recognizes the dos filesystem.  If I wanted to create a 
+bootable partition with a minimal dos and syslinux to boot
+the system (a hack, but in this operation, it wouldn't be
+too bad as long as I can modify the PWL scripts to generate
+the system...)
+
+Any thoughts about how I would best go about modifying or adding
+scripts to do this?
+
+Thanks,
+murph
+
+
+
+From peeweelinux@adis.on.ca  Thu Oct 17 16:58:09 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Thu, 17 Oct 2002 11:58:09 -0400
+Subject: [Peeweelinux] Boot/CRC Problems
+Message-ID: <sdaea5e3.048@qatech.com>
+
+Hello,
+
+I can't say for sure what is going on, but it seems that the kernel booting off of a PCMCIA would need kernel support for that PCMCIA adapter at boot time so that It can mount the root filessytem and all that stuff. PCMCIA stuff is usually done in the rc files on bootup, which is after the root file system is mounted. 
+
+The reason that you can get to the card initially is that the boot rom is loading the BIOS software for it that DOS can access. Linux knows nothing of this and will not use it without a kernel driver. 
+
+I would recommend using a PC104 board that has a traditional (software transparent) IDE-CompactFlash adapter on it to boot the system. 
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Thu Oct 17 18:00:38 2002
+From: peeweelinux@adis.on.ca (Marc Wiz)
+Date: Thu, 17 Oct 2002 12:00:38 -0500 (CDT)
+Subject: [Peeweelinux] Boot/CRC Problems
+In-Reply-To: <sdaea5e3.048@qatech.com> from "Ken Emmons, Jr." at Oct 17, 2002 11:58:09 AM
+Message-ID: <200210171700.g9HH0eG04517@freshaire.wiz.com>
+
+> I would recommend using a PC104 board that has a traditional (software transparent) IDE-CompactFlash adapter on it to boot the system. 
+> 
+
+For those of us who do not have a PC104 board where can you get such an
+adapter?
+
+I have a system that has one IDE "port" and room for a 2.5" laptop
+drive which I would like to replace which compact flash.
+
+Thanks,
+Marc
+
+-- 
+Marc Wiz
+marc@wiz.com
+Yes, that really is my last name.
+
+From peeweelinux@adis.on.ca  Thu Oct 17 18:06:08 2002
+From: peeweelinux@adis.on.ca (Adi Linden)
+Date: Thu, 17 Oct 2002 12:06:08 -0500 (CDT)
+Subject: [Peeweelinux] Boot/CRC Problems
+In-Reply-To: <200210171700.g9HH0eG04517@freshaire.wiz.com>
+Message-ID: <Pine.LNX.4.33.0210171204290.4470-100000@adibox.knet.ca>
+
+> > I would recommend using a PC104 board that has a traditional (software 
+> > transparent) IDE-CompactFlash adapter on it to boot the system. 
+> > 
+> 
+> For those of us who do not have a PC104 board where can you get such an
+> adapter?
+> 
+> I have a system that has one IDE "port" and room for a 2.5" laptop
+> drive which I would like to replace which compact flash.
+
+Here are CompactFlash IDE adapters...
+http://peeweelinux.org/products.html
+
+Adi
+
+
+From peeweelinux@adis.on.ca  Thu Oct 17 19:37:20 2002
+From: peeweelinux@adis.on.ca (John Murphy)
+Date: Thu, 17 Oct 2002 13:37:20 -0500
+Subject: [Peeweelinux] Boot/CRC Problems
+Message-ID: <1034876240.smmsdV1.1.2@localhost>
+
+Marc,
+
+You can use the IDE-> Compact flash adapters that
+are sold on compactflash.com to hook up a compact
+flash card to your 2.5" IDE connector.  These work
+well.  I'm going to make a little bracket to
+mount the 2.5" IDE-> CF Adapter on my PC104 stack.
+(some PC104 vendors have dual CF sockets connected
+to an IDE controller on a PC104 card, but I don't want
+to spend the money and add another layer to my stack).
+
+In my case, I'm trying to first get the system
+booted off of one of these adapters (when I get the
+bzImage crc error).  I'd like to use the PCMCIA, since
+it makes the system more compact (no extra cables or
+brackets) but if I have to, I'll use an IDE adapter.
+
+Thanks for your help and quick responses.  I'm going to
+keep trying to get past the loading bzImage crc error
+during boot from a CF on a CF-> IDE adapter.  I'm thinking
+of trying to get zImage to load instead...
+
+murph
+
+
+
+From peeweelinux@adis.on.ca  Thu Oct 17 23:43:33 2002
+From: peeweelinux@adis.on.ca (John Murphy)
+Date: Thu, 17 Oct 2002 17:43:33 -0500
+Subject: [Peeweelinux] Package format / Sharing packages
+Message-ID: <1034891013.smmsdV1.1.2@localhost>
+
+A big thanks to Troy for posting his howto
+for the 2.4 kernel on this list.  The directions are
+great.
+
+Can I add any odd packages I need by simply creating a
+"sparse tree" skeleton filesystem with respect to
+/ and adding the files, tarring it up, and
+adding a matching xxxx.list file?  I really don't want to
+learn the finer points of .rpms.
+
+Second, I was wondering if the group passed around or
+shared some of the new packages they have built (as
+I've built a new 2.4 kernel)...  Obviously, for professional
+applications there is a need to build it from scratch, but
+for my wee little home toys, it would save a lot of time ;)
+
+Thanks again for the support.  This seems to be one of the 
+better supported and more sensable embedded linux
+distributions that does not require a big monetary investment.
+Hopefully I can contribute something at some point.
+
+Thanks,
+murph
+
+
+
+From peeweelinux@adis.on.ca  Fri Oct 18 18:49:14 2002
+From: peeweelinux@adis.on.ca (Troy Engel)
+Date: Fri, 18 Oct 2002 10:49:14 -0700
+Subject: [Peeweelinux] Package format / Sharing packages
+References: <1034891013.smmsdV1.1.2@localhost>
+Message-ID: <3DB0499A.9040005@fluid.com>
+
+John Murphy wrote:
+> A big thanks to Troy for posting his howto
+> for the 2.4 kernel on this list.  The directions are
+> great.
+
+Yay!  Glad it was of help to you. ;)
+
+> Can I add any odd packages I need by simply creating a
+> "sparse tree" skeleton filesystem with respect to
+> / and adding the files, tarring it up, and
+> adding a matching xxxx.list file?  I really don't want to
+> learn the finer points of .rpms.
+
+Yes, in my experiece it works just fine (I mean, shoot that's what I did 
+for the 2.4 kernel packages utils, and it works 100%). Again, the only 
+gotcha I've found is making sure directories are specified with a 
+trailing "/" to make stuff work right.
+
+My problem these days is that I've customized so many peewee packages 
+for my needs, that upgrading to any new version will be just impossible 
+without tearing my hair out. Egads. (e.g. I ripped out the entire 
+networking subsystem and replaced it with custom configs that run out of 
+/opt/etc/ read/write ext3 partition).
+
+For anyone that's interested, the RedWing CDPD modems from 
+http://www.airlink.com rock; if you're looking for remote IP 
+connectivity in the field with your embedded system, I've deployed three 
+of these (beta situations, middle of nowhere USA) and they're sweet. 
+Shows up as a simple modem to linux, stock pppd works great.
+
+-te
+
+-- 
+Troy Engel, Systems Engineer
+Cool as the other side of the pillow
+
+
+From peeweelinux@adis.on.ca  Fri Oct 18 21:53:09 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Fri, 18 Oct 2002 20:53:09 CEST
+Subject: [Peeweelinux] embedded linux for robots... newbie questions
+Message-ID: <mnet2.1034967189.22591.francois.seingier@club-internet.fr>
+
+hello,
+I'm a french student in an engineering school and as in many of these, there is a robot club ("E=m6" if there are some french people here!) to which I participate. I am in charge of a PC/104 on which I'd really like to install linux. I have some experience (I'm far from an expert though..) on linux itself but not on embedded linux. I've read many of the mails of this list and found some interesting points. But what I would really need is rather some piece of advice. Here's an overview of our devices:
+PC/104 board from 'rtd usa' (media GX 233, 128MB Ram)
+sandisk 48 or 220 MB Flash card (PCMCIA card)
+ATA adapter for these PCMCIA cards
+Frame grabber and color camera for image recognition
+Now for the questions...
+1) I've had a look to some articles about flash devices, but these were generic. They talked about NOR and NAND flash memory types. Which is mine??
+
+2) I noticed on another article that it would be worth using a JFFS2 fs for the root tree and ramfs for /tmp, is it true?
+
+3) Considering the quite large amount of RAM, would it be worth using exclusively a Ramdisk? 
+
+4) it appears that the common way of installing and using an embedded linux is done thanks to a host. At least it seems to me it is necessary for building the fs. But as we will need to use the frame grabber would it better to develop our programs directly onto the PC/104? (by the way would it be possible to redirect information from the frame grabber to the host with somme parallel cable or so?)
+
+5) I've heard about nano-X, should I try it or use directly XFree?
+
+6) I thought of using the busybox (the glibc is so big), is it a good choice?
+
+7) ..... we'll see later ;)
+in fact it's not easy to define what optmisations I should do. Some guides refer to old devices and I suppose what we luckely have shouldn't be that obselete...
+
+
+thanks a lot in advance for any answer that could help.
+
+François
+
+
+From peeweelinux@adis.on.ca  Fri Oct 18 21:17:45 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Fri, 18 Oct 2002 16:17:45 -0400
+Subject: [Peeweelinux] embedded linux for robots... newbie
+ questions
+Message-ID: <sdb03448.012@qatech.com>
+
+Salut,
+
+I would be careful witht he PCMCIA adapter for the flash disk, see previous posts. 
+
+Multiple Ramdisks like in peewee are pretty nice since you can just shut the power off and everythign will execute and load faster out of RAM instead of loading form a slow falsh device. The compressed RAm images are even faster booting because they read less information form the slow flash drive.
+
+Don't sweat the NAND and NOR stuff, jsut use a good SanDisk Compact Flash card with a good ATA to Compact Flash adapter (I don't recommend PCMCIA at all....). You can find adapters on the peeweelinux page and other sources.
+
+You don't seem to care about the disk size,s o use XFree86 and regular glibc that comes with peewee, you;ll be surprised at how much you can fit on a 32mb card ;-)
+
+If you are to run your host for development you may want to consider setting up a mainstream distro with a hard disk and get that working first before trying to embed it. You can always take your application and compile it as static if there are some funky incompatabilities with what peewee installs (for instance, I compile a GTK+ program as static, and it si 3MB in size but I don't have to install GTK+ on the embedded system..)
+
+Hope this helps,
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Fri Oct 18 21:19:19 2002
+From: peeweelinux@adis.on.ca (vwbug19)
+Date: Fri, 18 Oct 2002 16:19:19 -0400
+Subject: [Peeweelinux] embedded linux for robots... newbie questions
+References: <mnet2.1034967189.22591.francois.seingier@club-internet.fr>
+Message-ID: <004601c276e3$fc17b0e0$bd00a8c0@VW4>
+
+bonjour!
+my hint is never use the flash card for a ramdisk or swapfile as it will
+qiuckly wear it out to an useless card ,remember the flash card have finite
+life :)
+as for frame grabber and camera ,you didn't mentions what type and model?
+and you should stick to other like nano-x instead of xfree86 as xfree86 is a
+real disk space hog but you shouldnt need xwindow as the robot doesnt need
+it and there are framegrabber software that can be run from console
+mode,this will make the linux distro much smaller
+
+----- Original Message -----
+From: <francois.seingier@club-internet.fr>
+To: <Peeweelinux@adis.on.ca>
+Sent: Friday, October 18, 2002 4:53 PM
+Subject: [Peeweelinux] embedded linux for robots... newbie questions
+
+
+> hello,
+> I'm a french student in an engineering school and as in many of these,
+there is a robot club ("E=m6" if there are some french people here!) to
+which I participate. I am in charge of a PC/104 on which I'd really like to
+install linux. I have some experience (I'm far from an expert though..) on
+linux itself but not on embedded linux. I've read many of the mails of this
+list and found some interesting points. But what I would really need is
+rather some piece of advice. Here's an overview of our devices:
+> PC/104 board from 'rtd usa' (media GX 233, 128MB Ram)
+> sandisk 48 or 220 MB Flash card (PCMCIA card)
+> ATA adapter for these PCMCIA cards
+> Frame grabber and color camera for image recognition
+> Now for the questions...
+> 1) I've had a look to some articles about flash devices, but these were
+generic. They talked about NOR and NAND flash memory types. Which is mine??
+>
+> 2) I noticed on another article that it would be worth using a JFFS2 fs
+for the root tree and ramfs for /tmp, is it true?
+>
+> 3) Considering the quite large amount of RAM, would it be worth using
+exclusively a Ramdisk?
+>
+> 4) it appears that the common way of installing and using an embedded
+linux is done thanks to a host. At least it seems to me it is necessary for
+building the fs. But as we will need to use the frame grabber would it
+better to develop our programs directly onto the PC/104? (by the way would
+it be possible to redirect information from the frame grabber to the host
+with somme parallel cable or so?)
+>
+> 5) I've heard about nano-X, should I try it or use directly XFree?
+>
+> 6) I thought of using the busybox (the glibc is so big), is it a good
+choice?
+>
+> 7) ..... we'll see later ;)
+> in fact it's not easy to define what optmisations I should do. Some guides
+refer to old devices and I suppose what we luckely have shouldn't be that
+obselete...
+>
+>
+> thanks a lot in advance for any answer that could help.
+>
+> François
+>
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+
+
+From peeweelinux@adis.on.ca  Fri Oct 18 22:01:24 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Fri, 18 Oct 2002 17:01:24 -0400
+Subject: [Peeweelinux] embedded linux for robots... newbie
+ questions
+Message-ID: <sdb03e7a.026@qatech.com>
+
+Actually, the ramdisk solution doens't do any writes at all, so there is zero wear. You are confusing this with a swap partition. I got a system working with XFree86 on peewee on an 8MB CF card.
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Sat Oct 19 01:20:23 2002
+From: peeweelinux@adis.on.ca (peeweelinux@adis.on.ca)
+Date: Sat, 19 Oct 2002 00:20:23 CEST
+Subject: [Peeweelinux] =?iso-8859-1?Q?Re:_Re:_[Peeweelinux]_embedded_linux_for_robots..._newbie=09?=
+ =?iso-8859-1?Q?questions?=
+Message-ID: <mnet1.1034979623.19972.francois.seingier@club-internet.fr>
+
+thanks for this help. I'll first try the PCMCIA and if I can't have it work (or boot...) then I'll try to convince my teachers to change the adapter for a more 'standard' one like for the flash cards as you said. So the ramdisk seems a good idea, great, I'll try this too. But I'll probably have to set a writeable fs on the flash too, to store some data like pictures or data concerning the average speed, the track that the robot followed, etc. But let's don't hurry too much! I must admit I didn't really
+meant to install peeweelinux, but rather build the system from scratch, but after all I'll give it a try in the next few days to get confident about the embedded world!
+thanks again guys!
+François
+
+----Message d'origine----
+>De: "Ken Emmons, Jr." <KEN@qatech.com>
+>A: peeweelinux@adis.on.ca
+>Sujet: Re: [Peeweelinux] embedded linux for robots... newbie
+>Date: Fri, 18 Oct 2002 16:17:45 -0400
+>
+>Salut,
+>
+>I would be careful witht he PCMCIA adapter for the flash disk, see previous posts. 
+>
+>Multiple Ramdisks like in peewee are pretty nice since you can just shut the power off and everythign will execute and load faster out of RAM instead of loading form a slow falsh device. The compressed RAm images are even faster booting because they read less information form the slow flash drive.
+>
+>Don't sweat the NAND and NOR stuff, jsut use a good SanDisk Compact Flash card with a good ATA to Compact Flash adapter (I don't recommend PCMCIA at all....). You can find adapters on the peeweelinux page and other sources.
+>
+>You don't seem to care about the disk size,s o use XFree86 and regular glibc that comes with peewee, you;ll be surprised at how much you can fit on a 32mb card ;-)
+>
+>If you are to run your host for development you may want to consider setting up a mainstream distro with a hard disk and get that working first before trying to embed it. You can always take your application and compile it as static if there are some funky incompatabilities with what peewee installs (for instance, I compile a GTK+ program as static, and it si 3MB in size but I don't have to install GTK+ on the embedded system..)
+>
+>Hope this helps,
+>
+>~Ken
+>
+>_______________________________________________
+>Peeweelinux mailing list
+>Peeweelinux@adis.on.ca
+>http://mail.adis.on.ca/lists/listinfo/peeweelinux
+>
+>
+
+
+From peeweelinux@adis.on.ca  Mon Oct 21 19:06:33 2002
+From: peeweelinux@adis.on.ca (John Murphy)
+Date: Mon, 21 Oct 2002 13:06:33 -0500
+Subject: [Peeweelinux] Continued boot problems - Compactflash Corruption?
+Message-ID: <1035219993.smmsdV1.1.2@localhost>
+
+I'm still having problems getting peewee to boot.  Let me 
+describe my host and targets and see if anyone can offer
+some advice.  I've tried loading my own project and
+the wireless-isa without luck.
+
+Host system: 586 w/ 128 MB, Running slackware 8.0,
+       PNY and Jumpshot compact flash reader/writers.
+       Running kernel 2.4.19
+
+(Note that I'm not building any source yet).
+
+Target #1: Transmeta 800Mhz, 256 MB, compact flash IDE adapter
+
+Target #2: ZF Micro 386, 8MB, Compact flash built in.  Has booted
+     linux many months ago.  (home made distribution).
+
+
+I've tried using both of the writers, a number of different
+flash cards, etc, to no avail.  Typically, the board
+loads the ramdisk, uncompresses linux, and then fails with
+a CRC error.
+
+I switched to using a dosFS and syslinux on the flash cards, with
+the same result.  I did an MD5sum on the kernel from the extracted
+filesystem under peewee, and and md5sum on the mounted 
+compactflash filesystem, and they differed.  (Should they?  I didn't
+know if a ramdisk word was set in there or something?) - Seeing the
+difference, I suspected that something about my system writing the
+kernel was not working quite right.  I copied the kernel from the
+extracted peewee filesystem to the mounted compact flash card, and
+things seemed to improve a bit.  This time, the
+system uncompressed the ramdisk, uncompressed the kernel,
+and got to "Booting the Kernel" at which point the 
+keyboard lights were blinking on and off...
+
+I get the same results using either my load or the wireless-isa
+example.
+
+I've tried swapping RAM on both of the targets.  No dice.
+
+Peewee looks great, and I'm sure things will work if I can
+get over this hump.  I suspect that parts of my compact flash
+image are corrupted during writing.  Any ideas on checks I can do?
+Can I push the system into a file and then do a md5sum comparison on
+that file and the output of a dd of the compactflash card?
+
+Any thoughts would be greatly appreciated.  I'm thinking I'm going to
+try building a new host system, and was wondering what distribution
+you folks would recommend for doing a lot of peewee work; I'm partial
+to slackware, but I'll try anythig at this point.
+
+Thanks,
+murph
+
+
+
+From peeweelinux@adis.on.ca  Mon Oct 21 18:58:31 2002
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Mon, 21 Oct 2002 10:58:31 -0700
+Subject: [Peeweelinux] Continued boot problems - Compactflash Corruption?
+In-Reply-To: <1035219993.smmsdV1.1.2@localhost>; from wyosip3@wyosip.com on Mon, Oct 21, 2002 at 11:06:33 -0700
+References: <1035219993.smmsdV1.1.2@localhost>
+Message-ID: <20021021105831.I6800@leif.attbi.com>
+
+My 2¢, starting backwards:
+
+	For starters, running Red Hat 7.2, I had a lot of trouble getting 
+things to build properly, but once I got the right system libraries 
+installed I was able to get things working. I should add that I had a lot 
+of partial builds that looked right but weren't. I don't know whether that 
+translates to slackware, but for long term development my advice is to get 
+a small hard drive or extra partition set up on your host and put Red Hat 
+6.2 (what Adi used to develop Pee Wee) on it: telling Lilo about the extra 
+image should be no big deal. You probably already know this, but you can 
+download an image from Red Hat if you can't find a disk on ebay.
+	The other thing that I should add is that I think you should use 
+one of the 2.4 kernels: there have been a lot of posts in the archive 
+about how to do that, I'll refer you to those. I say that because I 
+suspect that more of the peculularities of the new architecture you're 
+interested in may mapped out. You might consider setting up a small 
+partition on your host disk as the target and trying to boot that and get 
+that booting before you move on to the Transmeta.
+	As far as the CRC errors go, I can tell you that I've had pretty 
+good luck with a PCMCIA writer, but that it took me a long time to get it 
+working properly. I don't have any experience with the IDE readers, so 
+won't comment on them, but was wondering if you were able to read and 
+write files properly outside of pee wee to them? By which I mean: putting 
+a filesystem on a flash disk, mounting the drive on your host, copying 
+something and typing "ls -l" to see how big it is. My understanding of dd 
+is that because it copies everything all of the filesystem placeholders 
+are copied as well, so it's not an accurate picture of the size of a 
+partition (supposedly you can defrag a disk and that will change it's size 
+for this reason).
+	My bet is that things are getting copied fine and that there's 
+something funky about what pee wee is doing. I would do that filesystem 
+test first and then go to work on your system libraries.
+
+On 2002.10.21 11:06 John Murphy wrote:
+> 
+> I'm still having problems getting peewee to boot.  Let me
+> describe my host and targets and see if anyone can offer
+> some advice.  I've tried loading my own project and
+> the wireless-isa without luck.
+> 
+> Host system: 586 w/ 128 MB, Running slackware 8.0,
+>        PNY and Jumpshot compact flash reader/writers.
+>        Running kernel 2.4.19
+> 
+> (Note that I'm not building any source yet).
+> 
+> Target #1: Transmeta 800Mhz, 256 MB, compact flash IDE adapter
+> 
+> Target #2: ZF Micro 386, 8MB, Compact flash built in.  Has booted
+>      linux many months ago.  (home made distribution).
+> 
+> 
+> I've tried using both of the writers, a number of different
+> flash cards, etc, to no avail.  Typically, the board
+> loads the ramdisk, uncompresses linux, and then fails with
+> a CRC error.
+> 
+> I switched to using a dosFS and syslinux on the flash cards, with
+> the same result.  I did an MD5sum on the kernel from the extracted
+> filesystem under peewee, and and md5sum on the mounted
+> compactflash filesystem, and they differed.  (Should they?  I didn't
+> know if a ramdisk word was set in there or something?) - Seeing the
+> difference, I suspected that something about my system writing the
+> kernel was not working quite right.  I copied the kernel from the
+> extracted peewee filesystem to the mounted compact flash card, and
+> things seemed to improve a bit.  This time, the
+> system uncompressed the ramdisk, uncompressed the kernel,
+> and got to "Booting the Kernel" at which point the
+> keyboard lights were blinking on and off...
+> 
+> I get the same results using either my load or the wireless-isa
+> example.
+> 
+> I've tried swapping RAM on both of the targets.  No dice.
+> 
+> Peewee looks great, and I'm sure things will work if I can
+> get over this hump.  I suspect that parts of my compact flash
+> image are corrupted during writing.  Any ideas on checks I can do?
+> Can I push the system into a file and then do a md5sum comparison on
+> that file and the output of a dd of the compactflash card?
+> 
+> Any thoughts would be greatly appreciated.  I'm thinking I'm going to
+> try building a new host system, and was wondering what distribution
+> you folks would recommend for doing a lot of peewee work; I'm partial
+> to slackware, but I'll try anythig at this point.
+> 
+> Thanks,
+> murph
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Mon Oct 21 19:06:44 2002
+From: peeweelinux@adis.on.ca (Barry Gershenfeld)
+Date: Mon, 21 Oct 2002 11:06:44 -0700 (PDT)
+Subject: [Peeweelinux] Continued boot problems - Compactflash
+ Corruption?
+Message-ID: <2.2.16.20021021111931.3407f176@zmicro.com>
+
+Try eliminating parts of the puzzle, and also find out what WILL
+work.
+
+Try putting ordinary DOS on CF card and boot that on the targets?
+
+Connect CF and IDE adapter to your HOST (remove the real drives)
+and try booting your peewee image.
+
+I did a lot of playing with floppies, and LOADLIN under DOS
+just to be able to separate the startup things from the Linux-
+loading and init-script things.
+
+I have a PC104 card with a ZF chip on it, and it does work.  But
+I cheated.  It's got a flash board that emulates IDE directly.
+
+I built it all using a RH 7.3 system.  Now I'm setting up a 6.2
+because I will want to compile some programs and there are already
+too many things to think about.
+
+Barry
+
+
+
+
+From peeweelinux@adis.on.ca  Mon Oct 21 21:47:13 2002
+From: peeweelinux@adis.on.ca (John Murphy)
+Date: Mon, 21 Oct 2002 15:47:13 -0500
+Subject: [Peeweelinux] Continued boot problems - CompactflashCorruption?
+Message-ID: <1035229633.smmsdV1.1.2@localhost>
+
+I have some new information:
+
+I tried building the CF filesystem using peewee
+on another slackware 8.0 system, same USB reader, 
+same kernel, different HW.  It WORKS!  (Keep in mind
+here that I'm not building packages, just generating the
+filesystem using the scripts).
+
+I'm not sure where the problem is being introduced, but
+with all of the software the same, but different MB/CPU/USB
+hardware, it's working.
+
+It looks good too!  Thanks everybody.  
+
+murph
+
+
+
+From peeweelinux@adis.on.ca  Mon Oct 21 18:58:31 2002
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Mon, 21 Oct 2002 10:58:31 -0700
+Subject: [Peeweelinux] Continued boot problems - Compactflash Corruption?
+In-Reply-To: <1035219993.smmsdV1.1.2@localhost>; from wyosip3@wyosip.com on Mon, Oct 21, 2002 at 11:06:33 -0700
+References: <1035219993.smmsdV1.1.2@localhost>
+Message-ID: <20021021105831.I6800@leif.attbi.com>
+
+My 2¢, starting backwards:
+
+	For starters, running Red Hat 7.2, I had a lot of trouble getting 
+things to build properly, but once I got the right system libraries 
+installed I was able to get things working. I should add that I had a lot 
+of partial builds that looked right but weren't. I don't know whether that 
+translates to slackware, but for long term development my advice is to get 
+a small hard drive or extra partition set up on your host and put Red Hat 
+6.2 (what Adi used to develop Pee Wee) on it: telling Lilo about the extra 
+image should be no big deal. You probably already know this, but you can 
+download an image from Red Hat if you can't find a disk on ebay.
+	The other thing that I should add is that I think you should use 
+one of the 2.4 kernels: there have been a lot of posts in the archive 
+about how to do that, I'll refer you to those. I say that because I 
+suspect that more of the peculularities of the new architecture you're 
+interested in may mapped out. You might consider setting up a small 
+partition on your host disk as the target and trying to boot that and get 
+that booting before you move on to the Transmeta.
+	As far as the CRC errors go, I can tell you that I've had pretty 
+good luck with a PCMCIA writer, but that it took me a long time to get it 
+working properly. I don't have any experience with the IDE readers, so 
+won't comment on them, but was wondering if you were able to read and 
+write files properly outside of pee wee to them? By which I mean: putting 
+a filesystem on a flash disk, mounting the drive on your host, copying 
+something and typing "ls -l" to see how big it is. My understanding of dd 
+is that because it copies everything all of the filesystem placeholders 
+are copied as well, so it's not an accurate picture of the size of a 
+partition (supposedly you can defrag a disk and that will change it's size 
+for this reason).
+	My bet is that things are getting copied fine and that there's 
+something funky about what pee wee is doing. I would do that filesystem 
+test first and then go to work on your system libraries.
+
+On 2002.10.21 11:06 John Murphy wrote:
+> 
+> I'm still having problems getting peewee to boot.  Let me
+> describe my host and targets and see if anyone can offer
+> some advice.  I've tried loading my own project and
+> the wireless-isa without luck.
+> 
+> Host system: 586 w/ 128 MB, Running slackware 8.0,
+>        PNY and Jumpshot compact flash reader/writers.
+>        Running kernel 2.4.19
+> 
+> (Note that I'm not building any source yet).
+> 
+> Target #1: Transmeta 800Mhz, 256 MB, compact flash IDE adapter
+> 
+> Target #2: ZF Micro 386, 8MB, Compact flash built in.  Has booted
+>      linux many months ago.  (home made distribution).
+> 
+> 
+> I've tried using both of the writers, a number of different
+> flash cards, etc, to no avail.  Typically, the board
+> loads the ramdisk, uncompresses linux, and then fails with
+> a CRC error.
+> 
+> I switched to using a dosFS and syslinux on the flash cards, with
+> the same result.  I did an MD5sum on the kernel from the extracted
+> filesystem under peewee, and and md5sum on the mounted
+> compactflash filesystem, and they differed.  (Should they?  I didn't
+> know if a ramdisk word was set in there or something?) - Seeing the
+> difference, I suspected that something about my system writing the
+> kernel was not working quite right.  I copied the kernel from the
+> extracted peewee filesystem to the mounted compact flash card, and
+> things seemed to improve a bit.  This time, the
+> system uncompressed the ramdisk, uncompressed the kernel,
+> and got to "Booting the Kernel" at which point the
+> keyboard lights were blinking on and off...
+> 
+> I get the same results using either my load or the wireless-isa
+> example.
+> 
+> I've tried swapping RAM on both of the targets.  No dice.
+> 
+> Peewee looks great, and I'm sure things will work if I can
+> get over this hump.  I suspect that parts of my compact flash
+> image are corrupted during writing.  Any ideas on checks I can do?
+> Can I push the system into a file and then do a md5sum comparison on
+> that file and the output of a dd of the compactflash card?
+> 
+> Any thoughts would be greatly appreciated.  I'm thinking I'm going to
+> try building a new host system, and was wondering what distribution
+> you folks would recommend for doing a lot of peewee work; I'm partial
+> to slackware, but I'll try anythig at this point.
+> 
+> Thanks,
+> murph
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Tue Oct 22 18:43:05 2002
+From: peeweelinux@adis.on.ca (Jim Graham)
+Date: Tue, 22 Oct 2002 13:43:05 -0400
+Subject: [Peeweelinux] time stamp
+Message-ID: <3DB58E29.853A0583@sensors.com>
+
+This is a multi-part message in MIME format.
+--------------412C148B072C3C28FB076AF5
+Content-Type: text/plain; charset=us-ascii
+Content-Transfer-Encoding: 7bit
+
+Hi
+
+   This question is more general than PeeWee Linux but I would
+appreciate any suggestions.  We are running PeeWee Linux on a Cyrix 686
+processor (Geode) in a PC-104 stack.  The processor monitors several
+sensors @ 20 Hz. and feeds the data to a filter.  The measurements need
+to be tagged with a time stamp that has a resolution < 0.1 msec.  Any
+suggestions on how to get that time resolution without the use of
+external counters?
+
+-- thanks
+    jim
+
+--------------412C148B072C3C28FB076AF5
+Content-Type: text/x-vcard; charset=us-ascii;
+ name="graham.vcf"
+Content-Transfer-Encoding: 7bit
+Content-Description: Card for Jim Graham
+Content-Disposition: attachment;
+ filename="graham.vcf"
+
+begin:vcard 
+n:Graham;Jim
+tel;fax:(315) 798-8950
+tel;work:(315) 798-1377
+x-mozilla-html:FALSE
+url:www.sensors.com
+org:Integrated Sensors Inc.
+adr:;;502 Court Street;Utica;NY;13502;
+version:2.1
+email;internet:graham@sensors.com
+title:Senior Software Engineer
+end:vcard
+
+--------------412C148B072C3C28FB076AF5--
+
+
+From peeweelinux@adis.on.ca  Tue Oct 22 19:32:10 2002
+From: peeweelinux@adis.on.ca (Cinq - Marcelo Loyola Stival)
+Date: Tue, 22 Oct 2002 15:32:10 -0300
+Subject: [Peeweelinux] zImage instead of bzImage
+References: <3DB58E29.853A0583@sensors.com>
+Message-ID: <017301c279f9$55518a60$afe3a8c0@puma>
+
+how to tell pwlconfig to produce a zImage instead of bzImage?
+I can't boot a bzImage on my system...
+(I am using a Geode Media GX processor)
+
+thanks
+Marcelo
+
+----- Original Message ----- 
+From: "Jim Graham" <graham@sensors.com>
+To: <peeweelinux@adis.on.ca>
+Sent: Tuesday, October 22, 2002 2:43 PM
+Subject: [Peeweelinux] time stamp
+
+
+> Hi
+> 
+>    This question is more general than PeeWee Linux but I would
+> appreciate any suggestions.  We are running PeeWee Linux on a Cyrix 686
+> processor (Geode) in a PC-104 stack.  The processor monitors several
+> sensors @ 20 Hz. and feeds the data to a filter.  The measurements need
+> to be tagged with a time stamp that has a resolution < 0.1 msec.  Any
+> suggestions on how to get that time resolution without the use of
+> external counters?
+> 
+> -- thanks
+>     jim
+> 
+> 
+
+
+From peeweelinux@adis.on.ca  Wed Oct 23 00:22:51 2002
+From: peeweelinux@adis.on.ca (John Maddox)
+Date: Tue, 22 Oct 2002 19:22:51 -0400
+Subject: [Peeweelinux] run pwlconfig from my own script
+Message-ID: <08F9C91BD42DD411A48900C04F109FD45C04A3@atlaspdc.atlas-tech.com>
+
+To all:
+
+I was wondering if there was a way to run the pwlconfig utility
+from my own personal script.  I have already selected the 
+configuration I want from inside the utility and have set up my
+custom folder.  I have already extracted the files to the mnt
+folder and copied the file structure to my DOC 2000 and it 
+works fine.  My question is how can I automate this process.
+The only thing that will be changing now is files under my
+custom folder.  I was wondering if I can write a script 
+using the pwlconfig command with parameters that calls
+the same programs that I would have called anyway from 
+the GUI.  
+
+I guess it would basically call the extract portion to combine
+the configuration I have selected already from my past configuration
+and my custom files from the same location I specified also in my 
+last copy.  Then I guess it would call the Load File system to target
+and it would copy to the target that I had specified in the last copy.
+
+If anyone has any input I would appreciate it.
+
+Thanks
+John Maddox
+Programmer Analyst II
+
+
+From peeweelinux@adis.on.ca  Wed Oct 23 07:42:11 2002
+From: peeweelinux@adis.on.ca (Jan De Geeter)
+Date: Wed, 23 Oct 2002 08:42:11 +0200
+Subject: [Peeweelinux] time stamp
+Message-ID: <1179FFD5B43CD4118D220050042A54142C5A08@www.krypton.be>
+
+Jim,
+
+gettimeofday gives you microsecond timing (from the processor clock).
+See the man pages.
+
+Jan
+
+> -----Original Message-----
+> From: Jim Graham [mailto:graham@sensors.com]
+> Sent: dinsdag 22 oktober 2002 19:43
+> To: peeweelinux@adis.on.ca
+> Subject: [Peeweelinux] time stamp
+> 
+> 
+> Hi
+> 
+>    This question is more general than PeeWee Linux but I would
+> appreciate any suggestions.  We are running PeeWee Linux on a 
+> Cyrix 686
+> processor (Geode) in a PC-104 stack.  The processor monitors several
+> sensors @ 20 Hz. and feeds the data to a filter.  The 
+> measurements need
+> to be tagged with a time stamp that has a resolution < 0.1 msec.  Any
+> suggestions on how to get that time resolution without the use of
+> external counters?
+> 
+> -- thanks
+>     jim
+> 
+
+From peeweelinux@adis.on.ca  Wed Oct 23 14:51:28 2002
+From: peeweelinux@adis.on.ca (Barratt, Daniel (CAP, GCF))
+Date: Wed, 23 Oct 2002 15:51:28 +0200
+Subject: [Peeweelinux] Peewee on CD.
+Message-ID: <C0BB8002E86AD611A1FD0010E360FDBE051929@sxckmc01cgcfge.gcf-uk.gcf.capital.ge.com>
+
+Hi All,
+
+I was hoping that one of you clever people may be able to help me get an
+embedded linux distribution onto a bootable CD.
+Currently I am attempting to produce a CD that when loaded into a PC will
+boot into a linux environment, and then load a Citrix client that will 
+connect to a Citrix Farm and download our users desktop. The problem I have,
+is getting my file system into a place where I can burn it onto CD.
+Is it possible for Peewee Linux to create a ISO file? I have read through
+the various sources available on the website, and some people have touched
+opun this,
+but there does not appear to be a definitive answer.
+
+Your help is greatly appreciated.
+
+Many thanks - Dan.
+
+
+
+From peeweelinux@adis.on.ca  Wed Oct 23 18:05:15 2002
+From: peeweelinux@adis.on.ca (Leif Steinhour)
+Date: Wed, 23 Oct 2002 10:05:15 -0700
+Subject: [Peeweelinux] Peewee on CD.
+In-Reply-To: <C0BB8002E86AD611A1FD0010E360FDBE051929@sxckmc01cgcfge.gcf-uk.gcf.capital.ge.com>; from Daniel.Barratt@gecapital.com on Wed, Oct 23, 2002 at 06:51:28 -0700
+References: <C0BB8002E86AD611A1FD0010E360FDBE051929@sxckmc01cgcfge.gcf-uk.gcf.capital.ge.com>
+Message-ID: <20021023100515.O1663@leif.attbi.com>
+
+It's not all the way there, but I was going to tell you that there is a 
+copy of your filesystem under the ??/Embedded_Build/projects/{Whatever 
+your project is named}/mnt point. I have sucessfully copied that to a 
+partition, mucked with it, and had it work, and there's no reason why you 
+can't make use of these files using some appropriate burner software. The 
+bad news is that this doesn't solve the problem of the bootloader, and I 
+don't know how to get either lilo or grub to take care of this for you, 
+but you might be able to set up an autorun file using loadlin to do your 
+dirty work. The one other thing to check would then be that the level 
+structure of your directories does not exceed eight or so, because the ISO 
+filesystem can't handle more than that.
+
+
+On 2002.10.23 06:51 "Barratt, Daniel (CAP, GCF)" wrote:
+> Hi All,
+> 
+> I was hoping that one of you clever people may be able to help me get an
+> embedded linux distribution onto a bootable CD.
+> Currently I am attempting to produce a CD that when loaded into a PC will
+> boot into a linux environment, and then load a Citrix client that will
+> connect to a Citrix Farm and download our users desktop. The problem I
+> have,
+> is getting my file system into a place where I can burn it onto CD.
+> Is it possible for Peewee Linux to create a ISO file? I have read through
+> the various sources available on the website, and some people have
+> touched
+> opun this,
+> but there does not appear to be a definitive answer.
+> 
+> Your help is greatly appreciated.
+> 
+> Many thanks - Dan.
+> 
+> 
+> _______________________________________________
+> Peeweelinux mailing list
+> Peeweelinux@adis.on.ca
+> http://mail.adis.on.ca/lists/listinfo/peeweelinux
+> 
+
+From peeweelinux@adis.on.ca  Tue Oct 29 21:19:18 2002
+From: peeweelinux@adis.on.ca (Michael V. Schaefer)
+Date: Tue, 29 Oct 2002 13:19:18 -0800
+Subject: [Peeweelinux] single user / custom kernel
+Message-ID: <3DBEFB56.7010603@alumni.cwru.edu>
+
+ive managed to build a peeweelinux project (based on minimal).
+it was very easy to get the initial stages done, esp. as im using the
+r/w hard disk (testing) right now.
+
+im stumbling on a few thing now however.
+
+first, is im attempting to get it to boot straight into single-user
+mode and launch an application (i.e. no login).  ive edited the
+inittab file and set the run-level to (1). is there more i need to
+do?
+
+also, im trying to build a custom kernel but its failing.  my development
+system is redhat7.2, and im fairly certain ive seen some emails
+regarding this.  im looking through the archives currently, but i
+keep getting distracted w/other useful tid-bits of information.
+if anyone has notes on what they did to use redhat7.2 to build
+a custom kernel i would definitely appreciate a look at them.
+
+thanks!
+
+mvs
+--------------------------------------------------
+"That it will never come again,
+   Is what makes life so sweet." - Emily Dickinson
+
+
+
+
+From peeweelinux@adis.on.ca  Tue Oct 29 23:19:54 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Tue, 29 Oct 2002 18:19:54 -0500
+Subject: [Peeweelinux] single user / custom kernel
+Message-ID: <sdbed160.006@qatech.com>
+
+Hello,
+
+I have an example project that does autologin and launches XFree at startup. It works in generic VGA16 mode, so it should owrk on virtually any VGA system. I think to supress X startup you simply can edit the autologin user's .bashrc file if you don't need it. You can try and start with that as for some ideas of how to autoboot, or adapt that project. Adi posted it to the contrib section of the web site if you want to download it. 
+
+As for Redhat kernel compilation, Make sure you use a compiler compatable with the linux kernel. See the docs in the latest kernel tree (Make sure you download a fresh vanilla kernel from kernel.org, not the redhat kernel source! ) A lot of people install the kgcc package with redhat and compile with that. Simply use rpm to install kgcc and then when compiling linux kernel, check that the command is calling kgcc and not gcc. I think the linux kernel makefile is smart enough to do this. 
+
+Hope this helps,
+
+~Ken
+
+
+From peeweelinux@adis.on.ca  Wed Oct 30 16:30:00 2002
+From: peeweelinux@adis.on.ca (Michael V. Schaefer)
+Date: Wed, 30 Oct 2002 08:30:00 -0800
+Subject: [Peeweelinux] single user / custom kernel
+Message-ID: <3DC00908.3080700@alumni.cwru.edu>
+
+o.k. got the single user thing to work by simpling adding "single" as a
+boot argument, but im interested in checking out your "autologin".  so
+where exactly does one find the "contrib" area...  i have a feeling
+examining one of the projects from here may answer quite a few of
+my questions that i havent asked yet.
+
+also,  got the RH7.2 host compiling the pwl kernel by installing all
+of the "compat-" rpms (thanks to Barrys email in the archives for
+that one!), and changing "cc" to "kgcc" in the makefile.
+
+thanks for the response!
+
+-- 
+mvs
+--------------------------------------------------
+"That it will never come again,
+   Is what makes life so sweet." - Emily Dickinson
+
+
+
+
+From peeweelinux@adis.on.ca  Wed Oct 30 21:30:18 2002
+From: peeweelinux@adis.on.ca (Ken Emmons, Jr.)
+Date: Wed, 30 Oct 2002 16:30:18 -0500
+Subject: [Peeweelinux] single user / custom kernel
+Message-ID: <sdc00920.002@qatech.com>
+
+I poked around and couldn't find the project on the web site. Check back int he archives to see if Adi posted where it is located. IF nobody can find it I couldemail it to you also.
+
+~Ken
+
+

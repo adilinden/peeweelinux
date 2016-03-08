@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> V0.19 and pwlconfig design notes...
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000028.html">
+   <LINK REL="Next"  HREF="000029.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>V0.19 and pwlconfig design notes...
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="V0.19 and pwlconfig design notes...">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Thu, 27 Jan 2000 00:09:23 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000028.html">V0.19 and pwlconfig design notes...
+</A></li>
+        <LI> Next message: <A HREF="000029.html">More pwlconfig stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#30">[ date ]</a>
+              <a href="thread.html#30">[ thread ]</a>
+              <a href="subject.html#30">[ subject ]</a>
+              <a href="author.html#30">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+&gt;<i> Now that I have started parameterizing the &quot;default&quot; stuff in pwlconfig, I've
+</I>&gt;<i> gotten about 10 parameters.  This should come in handy somewhere down the
+</I>&gt;<i> road...
+</I>
+Perhaps makes future changes easier! I am getting better at using lots of
+variables. Defining everything and define most things right at the
+beginning of the script. Like doing assembler...
+
+&gt;<i> BTW, I added the items I'm working on as &quot;new features&quot; in the source forge bug
+</I>&gt;<i> tracking stuff.  I got some mail from source forge about the mail server not
+</I>&gt;<i> being enabled...might have a link that needs fixing here to get source forge to
+</I>&gt;<i> send bug announcements to your mail server.  Thats just a guess...
+</I>
+Hmmm... got to look at that. My 'boss' likes my mailing list so much, he
+wants it too. So I ended up searching for a web frontend for majordomo. I
+found majorcool. Well, it's cool :) Just in case you're into this stuff,
+it's at <A HREF="http://adis.on.ca/cgi-bin/majorcool">http://adis.on.ca/cgi-bin/majorcool</A>
+
+I don't think it's a good idea to have Windoze user administer mailing
+list config files as root on a linux system. Who knows what they get
+into...
+
+&gt;<i> I like the tar thing for now. I maybe we could re-visit this after we figure
+</I>&gt;<i> out what to do with the packages and ram disk stuff.
+</I>
+Good stuff. So we will stick with it. I think it has more potential for
+making it platform independent than rpm. Plus, PWL will likely include
+quite a few packages that are not part of the RedHat distribution.
+
+&gt;<i> &gt; Yup, I fried a DOC. Don't know how I did it, but if I boot my development
+</I>&gt;<i> &gt; system on the embedded box I get a kernel message 'cannot access
+</I>&gt;<i> &gt; /dev/fla...'. I tried using the dos tools to restore it to a DOS disk with
+</I>&gt;<i> &gt; the original boot sector. It tells me it is not a FFS device. I s there
+</I>&gt;<i> &gt; warranty on these???
+</I>&gt;<i> 
+</I>&gt;<i> I sent you an extra chip incase you wanted to play with that on IPIX...
+</I>
+Either flash or DOC should work fine...
+
+&gt;<i> or you can look in the current directory to see if the script is there or in
+</I>&gt;<i> another directory...depends on what you want to do.
+</I>
+Hey, that's a great way to do errorchecking and not run the script if the
+current directory is wrong... hmmmm...
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000028.html">V0.19 and pwlconfig design notes...
+</A></li>
+	<LI> Next message: <A HREF="000029.html">More pwlconfig stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#30">[ date ]</a>
+              <a href="thread.html#30">[ thread ]</a>
+              <a href="subject.html#30">[ subject ]</a>
+              <a href="author.html#30">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

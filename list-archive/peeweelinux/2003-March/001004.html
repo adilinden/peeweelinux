@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] 2.4 troubles
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="001003.html">
+   <LINK REL="Next"  HREF="001005.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] 2.4 troubles
+   </H1>
+    <B>Stephen Lee
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] 2.4 troubles">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>31 Mar 2003 07:18:37 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="001003.html">[Peeweelinux] 2.4 troubles
+</A></li>
+        <LI> Next message: <A HREF="001005.html">[Peeweelinux] Re: 2.4 troubles
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1004">[ date ]</a>
+              <a href="thread.html#1004">[ thread ]</a>
+              <a href="subject.html#1004">[ subject ]</a>
+              <a href="author.html#1004">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Mon, 2003-03-31 at 06:39, Al Whorley wrote:
+&gt;<i>   I am trying to move my Peewee install to 2.4.  I have gotten the compat* 
+</I>&gt;<i> packages, and installed them.  I made the necessary changes to the kernel 
+</I>&gt;<i> Makefile (changed gcc to kgcc and added the -D__KERNEL__ -I$(HPATH) to the 
+</I>&gt;<i> CC variable). I sourced the i386-glibc21-linux-env.sh script.  everything 
+</I>&gt;<i> compiles just fine, and then I created a custom kernel package, with the 
+</I>&gt;<i> /dev nodes I need.  Then I deploy to the compact flash, which also goes 
+</I>&gt;<i> well.  The problem is that my kernel appears to load and then immediately 
+</I>&gt;<i> after load, it prints a short message and reboots.  I can't read the 
+</I>&gt;<i> message, it flashes by very quickly.  I can pick out that it is printing 
+</I>&gt;<i> the normal 'Decompressing Linux'  message.  If I use a 2.2 kernel, 
+</I>&gt;<i> everything goes just fine.
+</I>&gt;<i> 
+</I>&gt;<i>    Any help that anyone could offer would be greatly appreciated.
+</I>
+Have you tried compiling your custom 2.4 kernel on a distribution
+already capable of running 2.4? I did most of my Peewee development on a
+Redhat7.1 box as I didn't need to build any new packages other than the
+kernel itself and there was no obvious compatibility problems.
+
+Stephen
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="001003.html">[Peeweelinux] 2.4 troubles
+</A></li>
+	<LI> Next message: <A HREF="001005.html">[Peeweelinux] Re: 2.4 troubles
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#1004">[ date ]</a>
+              <a href="thread.html#1004">[ thread ]</a>
+              <a href="subject.html#1004">[ subject ]</a>
+              <a href="author.html#1004">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

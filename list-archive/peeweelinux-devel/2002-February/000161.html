@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000160.html">
+   <LINK REL="Next"  HREF="000162.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+   </H1>
+    <B>peeweelinux-devel@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux-devel%40adis.on.ca"
+       TITLE="[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?">peeweelinux-devel@adis.on.ca
+       </A><BR>
+    <I>Tue, 19 Feb 2002 08:18:24 +1000</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000160.html">[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+</A></li>
+        <LI> Next message: <A HREF="000162.html">[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#161">[ date ]</a>
+              <a href="thread.html#161">[ thread ]</a>
+              <a href="subject.html#161">[ subject ]</a>
+              <a href="author.html#161">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Mark, thanks for your response, 
+
+This is exactly the approach that we have used to date.
+I friend of mine has contacted Adi (love your work) - who has said he is 
+not planning to move peewee to the 2.4 series at the moment - mainly 
+because the
+2.2-17 kernel is rock solid and the 2.4.* kernels aren't, yet :) 
+
+What I should have said is, we are looking to move  the entire peewee 
+package, libraries, packages etc to 2.4 and glibc 2.2(?)
+I agree that the power of peewee is in it's &quot;automation&quot; of selection and 
+preparation - it's just that we are looking to move it along from the
+2.2 series and older version of glibc (and all associated goods and 
+shattles)
+
+Kind Regards, 
+Delaney
+
+
+
+
+
+
+
+&quot;Mark Meade&quot; &lt;<A HREF="mailto:mark@lakeshoremicro.com">mark@lakeshoremicro.com</A>&gt;
+Sent by: <A HREF="mailto:peeweelinux-devel-admin@adis.on.ca">peeweelinux-devel-admin@adis.on.ca</A>
+19/02/2002 01:04
+Please respond to peeweelinux-devel
+
+ 
+        To:     &lt;<A HREF="mailto:peeweelinux-devel@adis.on.ca">peeweelinux-devel@adis.on.ca</A>&gt;
+        cc: 
+          Subject:      [Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+      Project: 
+
+
+Delaney,
+
+I have been using Peewee Linux with the 2.4.17 kernel (DiskOnChip with 
+open
+source MTD drivers), installing the kernel using the &quot;Custom Files&quot; 
+options
+available under the &quot;Configure File System&quot; menu.
+
+I just posted a message to the other (general discussion) Peewee mailing
+list detailing how this was done.  As I said in that message, this may not
+be the &quot;best way&quot; to do this, but it has worked well thus far.
+
+I'm not sure what Adi's long term plans are for handling &quot;custom&quot; kernels,
+but I've found that creating my own custom image (completely separate from
+Peewee), and then adding it to the custom files directory has worked
+extremely well.  The real power (IMHO) of Peewee is the package selection,
+automatic partitioning/formatting of the target, and flexible target
+options.
+
+Regards,
+
+Mark
+
+----- Original Message -----
+
+&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> We currently use Peewee to create auto-installing CDs for client 
+</I>Servers,
+&gt;<i> works a charm - love the way peewee is put together.
+</I>&gt;<i>
+</I>&gt;<i> Our next project invlolves creating a very (very) trim linux install for
+</I>&gt;<i> use in a terminal, However, we need to use the 2.4 series kernel
+</I>&gt;<i> for this particular project.
+</I>&gt;<i>
+</I>&gt;<i> We are looking at rebuilding peewee for a 2.4.8 kernel, and my 
+</I>question(s)
+&gt;<i> is/are -
+</I>&gt;<i>
+</I>&gt;<i> 1. Has anyone begun this already ?
+</I>&gt;<i> 2. Does anyone have any tips that they would like to share ? :)
+</I>&gt;<i>
+</I>&gt;<i> I have spent a fair amount of time, googling, and reading the peewee 
+</I>mail
+&gt;<i> list archives, but unfortunately, to date I have not found any 
+</I>indication
+&gt;<i> that any is starting (has started/completed) this.
+</I>&gt;<i>
+</I>&gt;<i> Kind Regards,
+</I>&gt;<i>
+</I>&gt;<i> Delaney
+</I>
+
+
+
+_______________________________________________
+Peeweelinux-devel mailing list
+<A HREF="mailto:Peeweelinux-devel@adis.on.ca">Peeweelinux-devel@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel">http://mail.adis.on.ca/lists/listinfo/peeweelinux-devel</A>
+
+
+
+
+*********************************************************************
+This email message (and attachments) may contain information 
+that is confidential to Jupiters Technology. If you are not the 
+intended recipient you cannot use, distribute or copy the message 
+or attachments. In such a case, please notify the sender by return 
+email immediately and erase all copies of the message and 
+attachments. Opinions, conclusions and other information in this 
+message and attachments that do not relate to the official business 
+of Jupiters Technology are neither given nor endorsed by it.
+*********************************************************************
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000160.html">[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+</A></li>
+	<LI> Next message: <A HREF="000162.html">[Peeweelinux-devel] Re: Moving Peewee to the 2.4 series - suggestions ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#161">[ date ]</a>
+              <a href="thread.html#161">[ thread ]</a>
+              <a href="subject.html#161">[ subject ]</a>
+              <a href="author.html#161">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

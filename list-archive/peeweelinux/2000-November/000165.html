@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Silent booting
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000164.html">
+   <LINK REL="Next"  HREF="000167.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>Silent booting
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="Silent booting">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Fri, 10 Nov 2000 16:32:31 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000164.html">Silent booting
+</A></li>
+        <LI> Next message: <A HREF="000167.html">Silent booting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#165">[ date ]</a>
+              <a href="thread.html#165">[ thread ]</a>
+              <a href="subject.html#165">[ subject ]</a>
+              <a href="author.html#165">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;<i> I notice that the framebuffer support is no longer enabled in the
+</I>&gt;<i> 2.2.17-basic kernel, but is in the 2.2.17-full. Is this intentional?
+</I>
+An ommission when I build the new kernel. The kernel will change a bit
+with the next release. I will make sure that the basic kernel has frame
+buffer support again. 
+
+&gt;<i> This would work, but it would be nice to be able to include an external
+</I>&gt;<i> file in the lilo.conf file. This might be difficult to do cleanly
+</I>&gt;<i> however. On that note, where is the lilo.conf file stored at that is
+</I>&gt;<i> actually used to install lilo onto the CF device? I'm using the read
+</I>&gt;<i> only root filesystem as a target.
+</I>
+The target load scripts create a Embedded_Build/tmp/lilo.conf file. This
+is used to lilo the target device. The tmp directory contains other
+goodies as well. There is a rd.log file that contains the output of all
+the commands run during the target load process. It's a good place to look
+for hints if a load failed. In a future release I intend to make rd.log
+accessible ofter a failed installation attempt to aid in troubleshooting.
+The tmp directory is used to store syslinux.cfg, ramdisk images, initrd
+images, etc... Anything temporary created by the target build scripts. I
+don't think I am cleaning up so those files should stay around until
+they're overwritten by a subsequent run.
+
+I looked at the custom lilo option deal I proposed earlier. I ran into a
+'little' problem. The proper lilo command for debug (and other options)
+is:
+
+    append = &quot;debug=0&quot;
+
+The quotes are a problem. Most other lilo options do not require quotes.
+Since all the options are stored in shell variables the quotes get lost.
+So I could add an option like:
+
+    Additional Boot Parms:
+
+Except how can it be made clear these appear after a pwlconfig generated
+'append = ' statement?
+
+Since the siletn boot is a desired option and an intended feature of PWL
+it should be possible to enable it in pwlconfig... I guess another option
+would be a mere:
+
+    Show Boot Messages:
+
+parameter that requires a yes/no answer...
+
+Ideas...???
+
+TTYL,
+Adi
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://peeweelinux.com">http://peeweelinux.com</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000164.html">Silent booting
+</A></li>
+	<LI> Next message: <A HREF="000167.html">Silent booting
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#165">[ date ]</a>
+              <a href="thread.html#165">[ thread ]</a>
+              <a href="subject.html#165">[ subject ]</a>
+              <a href="author.html#165">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

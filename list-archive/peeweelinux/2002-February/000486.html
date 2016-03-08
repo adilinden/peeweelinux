@@ -1,0 +1,155 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] Re: Peewee on Rocky 328E
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000485.html">
+   <LINK REL="Next"  HREF="000487.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] Re: Peewee on Rocky 328E
+   </H1>
+    <B>peeweelinux@adis.on.ca
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] Re: Peewee on Rocky 328E">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Tue, 26 Feb 2002 09:39:56 +0100</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000485.html">[Peeweelinux] HELP
+</A></li>
+        <LI> Next message: <A HREF="000487.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#486">[ date ]</a>
+              <a href="thread.html#486">[ thread ]</a>
+              <a href="subject.html#486">[ subject ]</a>
+              <a href="author.html#486">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hi all,
+
+I don't check yet parameters you give to me in your last mail, Mark. I think I
+will have time to do this evening.
+
+But  there is a detail that I don't understand in documentations I have seen :
+
+You write :
+
+If you're using &quot;/dev/fd0&quot; as the target, peewee is trying to install to the
+floppy. The
+entire target filesystem is created on the HD prior to installation on the
+target.
+
+But my aim is to install Peewee on the HD of my embedded PC. I have created the
+target filesystem on the HD of my Desk PC with Red Hat (or I think so). And I
+only use a floppy as a link between my desk PC HD and my embedded PC HD. Is
+there any other way to do ? I could also try to temporarily install my embedded
+PC HD on my desk PC as primary slave disk ...
+
+By using a floppy to transfer data, when I choose a target in pwlconfig, this
+target is not directly accessible from pwlconfig. Is it possible ? I think that
+it is, because I imagine that you may have to use this way to install peewee on
+a diskonchip. But this does not appear clearly to me in documentations.
+
+Thank you.
+
+
+
+Guillaume PREVOST
+
+
+
+
+
+
+&quot;Mark Meade&quot; &lt;<A HREF="mailto:mark@lakeshoremicro.com">mark@lakeshoremicro.com</A>&gt; on 22/02/2002 17:59:24
+
+Veuillez répondre à <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+
+Pour :    <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+cc :   (ccc : Guillaume Prevost/ALCATEL-SPACE)
+Objet :   Re: [Peeweelinux] Re: Peewee on Rocky 328E
+
+
+
+Hi Guillaume,
+
+&gt;<i> I did not realy anderstood why it works with /dev/fd0 instead of /mnt/floppy
+</I>but
+&gt;<i> it works ...
+</I>
+I'm glad that things are working better now.  Keep in mind that /mnt/floppy is
+simply an
+arbitrary &quot;mount point&quot;, but /dev/fd0 is actually the device entry for your
+floppy drive.
+
+&gt;<i> Editing inittab sed : can't read .mnt/etc/inittab : Aucun fichier ou
+</I>répertoire de ce
+type
+
+Check to make sure that you have selected &quot;etc/&quot; under Project File System --&gt;
+System
+Base --&gt; file system, and also &quot;etc/inittab&quot; under initscripts.  You may have
+selected
+another package (sysvinit, for example) that requires this file.
+
+I might be a good idea to use the default set of options for the &quot;minimal&quot;
+project
+initially, make sure everything works, and then add or delete packages as
+needed.
+
+&gt;<i> Does the process try to install peewee on my HD ? (my floppy driver is noisier
+</I>than my
+HD driver)
+
+If you're using &quot;/dev/fd0&quot; as the target, peewee is trying to install to the
+floppy.  The
+entire target filesystem is created on the HD prior to installation on the
+target.
+
+Regards,
+
+Mark
+
+
+_______________________________________________
+Peeweelinux mailing list
+<A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+<A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+
+
+
+
+
+
+
+
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000485.html">[Peeweelinux] HELP
+</A></li>
+	<LI> Next message: <A HREF="000487.html">[Peeweelinux] Re: Peewee on Rocky 328E
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#486">[ date ]</a>
+              <a href="thread.html#486">[ thread ]</a>
+              <a href="subject.html#486">[ subject ]</a>
+              <a href="author.html#486">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

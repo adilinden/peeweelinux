@@ -1,0 +1,140 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] kernel 2.4, panic on boot
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000594.html">
+   <LINK REL="Next"  HREF="000605.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] kernel 2.4, panic on boot
+   </H1>
+    <B>Troy Engel
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] kernel 2.4, panic on boot">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>Wed, 05 Jun 2002 11:39:57 -0700</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000594.html">[Peeweelinux] kernel 2.4, panic on boot
+</A></li>
+        <LI> Next message: <A HREF="000605.html">[Peeweelinux] kernel 2.4, panic on boot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#595">[ date ]</a>
+              <a href="thread.html#595">[ thread ]</a>
+              <a href="subject.html#595">[ subject ]</a>
+              <a href="author.html#595">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Well, I looked here:
+
+   <A HREF="ftp://ftp.kernel.org/pub/linux/kernel/people/sct/ext3/">ftp://ftp.kernel.org/pub/linux/kernel/people/sct/ext3/</A>
+
+and saw how low the version number was on it, and the date, so I didn't 
+even bother.  It's more important for me to have a known good 
+implementation of a stable kernel - I need that data on that partition 
+to be as reliable as possible...
+
+-te
+
+Ricardo Trindade wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> 	Is it possible to use ext3 with the 2.2.x series ?
+</I>&gt;<i> 
+</I>&gt;<i> thanks
+</I>&gt;<i> 
+</I>&gt;<i> -----Original Message-----
+</I>&gt;<i> From: <A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>
+</I>&gt;<i> [mailto:<A HREF="mailto:peeweelinux-admin@adis.on.ca">peeweelinux-admin@adis.on.ca</A>]On Behalf Of Troy Engel
+</I>&gt;<i> Sent: quarta-feira, 5 de Junho de 2002 19:22
+</I>&gt;<i> To: <A HREF="mailto:peeweelinux@adis.on.ca">peeweelinux@adis.on.ca</A>
+</I>&gt;<i> Subject: Re: [Peeweelinux] kernel 2.4, panic on boot
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> FYI only -- building the 2.4 kernel with no modules (all internal) did
+</I>&gt;<i> the trick, my ext3 partition mounts, emlog loads, ppp/eth0 still work
+</I>&gt;<i> and everything.
+</I>&gt;<i> 
+</I>&gt;<i> I had to build a whole bunch of stuff in a neato way for a 2.4 kernel
+</I>&gt;<i> that was uber easy to integrate -- if anyone is interested, gimme a
+</I>&gt;<i> holler and I'll cobble together a basic HowTo.
+</I>&gt;<i> 
+</I>&gt;<i> -te
+</I>&gt;<i> 
+</I>&gt;<i> Mark Meade wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i>Hi Troy,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Thanks for the embedded Java (Wonka) link.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>I've had 2.4.18 working with Peewee and a DiskOnChip Millennium, although
+</I>&gt;<i> 
+</I>&gt;<i> I
+</I>&gt;<i> 
+</I>&gt;&gt;<i>didn't use modprobe.  I found it much easier to build everything I needed
+</I>&gt;&gt;<i>into the kernel, instead of using modules and/or initrd.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Mark
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>On Tuesday 04 June 2002 07:24 pm, Troy Engel wrote:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>Has anyone gotten a 2.4 kernel to boot with peewee?  I've built all
+</I>&gt;&gt;&gt;<i>sorts of custom packages with the new kernel (modutils, etc), but on
+</I>&gt;&gt;&gt;<i>boot I am getting an inability to mount the root partition:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Peeweelinux mailing list
+</I>&gt;&gt;<i><A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;&gt;<i><A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> --
+</I>&gt;<i> Troy Engel, Systems Engineer
+</I>&gt;<i> Hockey. Kinda like Figure Skating in a War Zone.
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Peeweelinux mailing list
+</I>&gt;<i> <A HREF="mailto:Peeweelinux@adis.on.ca">Peeweelinux@adis.on.ca</A>
+</I>&gt;<i> <A HREF="http://mail.adis.on.ca/lists/listinfo/peeweelinux">http://mail.adis.on.ca/lists/listinfo/peeweelinux</A>
+</I>
+
+-- 
+Troy Engel, Systems Engineer
+Hockey. Kinda like Figure Skating in a War Zone.
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000594.html">[Peeweelinux] kernel 2.4, panic on boot
+</A></li>
+	<LI> Next message: <A HREF="000605.html">[Peeweelinux] kernel 2.4, panic on boot
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#595">[ date ]</a>
+              <a href="thread.html#595">[ thread ]</a>
+              <a href="subject.html#595">[ subject ]</a>
+              <a href="author.html#595">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

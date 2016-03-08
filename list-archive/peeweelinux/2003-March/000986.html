@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Peeweelinux] DOC2000-ready kernel? SOLVED!
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:peeweelinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000985.html">
+   <LINK REL="Next"  HREF="000987.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>[Peeweelinux] DOC2000-ready kernel? SOLVED!
+   </H1>
+    <B>Stephen Lee
+    </B> 
+    <A HREF="mailto:peeweelinux%40adis.on.ca"
+       TITLE="[Peeweelinux] DOC2000-ready kernel? SOLVED!">peeweelinux@adis.on.ca
+       </A><BR>
+    <I>25 Mar 2003 07:26:32 -0800</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000985.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd
+ problem)
+</A></li>
+        <LI> Next message: <A HREF="000987.html">[Peeweelinux] Saving ramdisk changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#986">[ date ]</a>
+              <a href="thread.html#986">[ thread ]</a>
+              <a href="subject.html#986">[ subject ]</a>
+              <a href="author.html#986">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>On Tue, 2003-03-25 at 06:25, Ken Emmons, Jr. wrote:
+&gt;<i> It sounds like you didn't build your kernel with all the required FS support. Try to enable anything that is questionably needed, and recompile. Also, make sure to build the FS support statically (NOT as modules...). 
+</I>&gt;<i> 
+</I>&gt;<i> I havne't done a DOC linux app, so I apologize if this is not relevant. Usually when you can't mount root, it is a FS issue though. 
+</I>&gt;<i> 
+</I>&gt;<i> ~Ken
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> &gt;&gt;&gt; Stephen Lee &lt;<A HREF="mailto:splee@plexio.com">splee@plexio.com</A>&gt; 03/24 11:23 PM &gt;&gt;&gt;
+</I>&gt;<i> On Mon, 2003-03-24 at 13:19, Stephen Lee wrote:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Yes I do (CONFIG_FAT_FS=y). Actually, I ended up following your
+</I>&gt;<i> &gt; suggestion and used the 4.2 DFORMAT and in the end it worked and 5.12
+</I>&gt;<i> &gt; did not. Here again is the kernel error after lilo starts the kernel:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; VFS: Mounted root (ext2 filesystem)
+</I>&gt;<i> &gt; Kmod: failed to exec /sbin/modprobe -s -k block-major-3, errno = 2
+</I>&gt;<i> &gt; VFS: Cannot open root device or 03:06
+</I>&gt;<i> &gt; Please append a correct &quot;root=&quot; boot option.
+</I>&gt;<i> &gt; Kernel panic: VFS: Unable to mount root fs on 03:06
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Is this a sign of missing FS support or a more fundamental problem of
+</I>&gt;<i> &gt; the IDE driver not working? I wonder if I should try 2.4.19 instead?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> I thought of another potential problem. Was I suppose to compile the
+</I>&gt;<i> kernel under Redhat 6.2?
+</I>&gt;<i> 
+</I>
+Sorry for all the traffic folks. It turns out that I shouldn't have
+copied over boot.b along with lilo-mtd from the mtd cvs directory. Once
+the original pwl boot.b was restored, the very welcoming Peewee login
+prompt appeared. 
+
+Thanks for all the support.
+Stephen
+
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000985.html">[Peeweelinux] DOC2000-ready kernel? (Was RE:initrd
+ problem)
+</A></li>
+	<LI> Next message: <A HREF="000987.html">[Peeweelinux] Saving ramdisk changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#986">[ date ]</a>
+              <a href="thread.html#986">[ thread ]</a>
+              <a href="subject.html#986">[ subject ]</a>
+              <a href="author.html#986">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

@@ -1,0 +1,259 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> More pwlconfig stuff
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux-devel%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000030.html">
+   <LINK REL="Next"  HREF="000031.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>More pwlconfig stuff
+   </H1>
+    <B>Ralph Stickley
+    </B> 
+    <A HREF="mailto:PeeWeeLinux-devel%40adis.on.ca"
+       TITLE="More pwlconfig stuff">PeeWeeLinux-devel@adis.on.ca
+       </A><BR>
+    <I>Wed, 26 Jan 2000 21:33:02 -0800 (PST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000030.html">V0.19 and pwlconfig design notes...
+</A></li>
+        <LI> Next message: <A HREF="000031.html">More pwlconfig stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+Hey,
+more thoughts...
+
+--- Adi Linden &lt;<A HREF="mailto:adi@adis.on.ca">adi@adis.on.ca</A>&gt; wrote:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I wondered about that...I suppose including it is no problem (have to
+</I>&gt;<i> include
+</I>&gt;<i> &gt; the source also ?)
+</I>&gt;<i> 
+</I>&gt;<i> Under GPL the sources have to be available. I would imagine them being
+</I>&gt;<i> part of the kernel source would be sufficient. Perhaps just indicate in
+</I>&gt;<i> the README.pwlconfig where the sources for lxdialog can be found.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Where I'm headed now, the device is specified in the configuration file
+</I>&gt;<i> &gt; deviceType=&quot;DOC&quot; 
+</I>&gt;<i> &gt; deviceName=&quot;Disk-On-Chip&quot;
+</I>&gt;<i> &gt; -or-
+</I>&gt;<i> &gt; deviceTYPE=&quot;FLASH&quot;
+</I>&gt;<i> &gt; deviceName=&quot;Sandisk Flash Disk (IDE)&quot;
+</I>&gt;<i> 
+</I>&gt;<i> Ok, there are several different possibilities in loading stuff into the
+</I>&gt;<i> machine. You can simply use the flash like a HD. The disadvantage is that
+</I>&gt;<i> with limited write cycles to the flash it has a predefined lifespan.
+</I>&gt;<i> 
+</I>
+The limit is about 100,000 ...don't think loading the file system will be a
+problem, its not until you start using the flash for run-time file storage...
+DOC has wear leveling that helps too...
+
+&gt;<i> Then it's possible to create a ramdisk image. The ramdisk image on it's
+</I>&gt;<i> own doesn't do much. It needs a kernel (seperate) and a bootloader, lilo
+</I>&gt;<i> for an ext2 filesystem on flash, syslinux for a FAT filesystem on flash
+</I>&gt;<i> and loadlin if the DOS operating system is on flash, too. The last one
+</I>&gt;<i> wouldn't make sense but its on option (I don't care about supporting it
+</I>&gt;<i> though).
+</I>&gt;<i> 
+</I>&gt;<i> If I am right, here are the steps required for each setup.
+</I>&gt;<i> 
+</I>&gt;<i> 'Live' filesystem on flash (no ramdisk)
+</I>&gt;<i> ---------------------------------------
+</I>&gt;<i> 1. Erase the flash (IDE or DOC)
+</I>&gt;<i> 2. Make ext2 filesystem on flash
+</I>&gt;<i> 3. Copy the filesystem to flash
+</I>&gt;<i> 4. Run lilo (plilo for DOC, normal lilo for IDE FLASH)
+</I>&gt;<i> 
+</I>
+Ok..I think these are handled now with the &quot;xxx Disk-On-Chip&quot; main menu
+items...
+
+
+&gt;<i> Ramdisk with LILO
+</I>&gt;<i> -----------------
+</I>&gt;<i> 1. Create ramdisk from filesystem (w/o kernel)
+</I>&gt;<i> 2. Make ext2 filesystem on FLASH or DOC
+</I>&gt;<i> 3. Copy necessary files to FLASH or DOC
+</I>&gt;<i>     - Kernel
+</I>&gt;<i>     - Ramdisk image
+</I>&gt;<i>     - lilo &amp; support files
+</I>&gt;<i> 4. Run lilo (plilo for DOC)
+</I>&gt;<i> 
+</I>
+
+What I was thinking for the compressed system:
+
+1. configure your project file system, independent of ram disk
+2. Configure the compressed file system...ie specify files that are not
+compressed, all others will be compressed
+3. Extract will extract the file system as it does now..THEN it will compress
+all the required files.  The compressed image and the uncompressed files will
+be  loaded into another location.  The compress will actually use the &quot;dd&quot;
+command stuff you have in one of your shell scripts already...
+
+After this step, files will be stored as follows:
+
+projects/ralph/mnt     &lt;&lt;--normal uncompressed files
+projects/ralph/cmpmnt  &lt;&lt;--final disk image with compressed file + others
+
+Now, when you load the Disk-On-Chip, the files will be copied from the &quot;cmpmnt&quot;
+point, not the &quot;mnt&quot; directory.
+
+4. run Lilo as before, but insert some ram disk parameters if required, in the
+&quot;lilo.conf.doc&quot; file
+
+&gt;<i> Ramdisk with SYSLINUX
+</I>&gt;<i> ---------------------
+</I>&gt;<i> 1. Create ramdisk from filesystem (w/o kernel)
+</I>&gt;<i> 2. Make FAT12 or FAT16 filesystem on FLASH or DOC
+</I>&gt;<i> 3. Install bootloader (syslinux)
+</I>&gt;<i> 4. Copy necessary files to FLASH or DOC
+</I>&gt;<i>     - Kernel
+</I>&gt;<i>     - Ramdisk image
+</I>&gt;<i>     - syslinux.cfg
+</I>&gt;<i> 
+</I>&gt;<i> The above covers an original install. If you change the ramdisk image or
+</I>&gt;<i> kernel the syslinux solution just shine. All you need to do is copy the
+</I>&gt;<i> new kernel and/or ramdisk to the FLASH or DOC. That's it. No running lilo
+</I>&gt;<i> or anything else!
+</I>&gt;<i> 
+</I>
+Ok..haven't played with syslinux yet...
+
+&gt;<i> The bootable CD is fairly easy. Unfortunaltely the 'easy' solution
+</I>&gt;<i> requires a floppy image with MS-DOS 6.22 and CD-ROM drives. A tough
+</I>&gt;<i> solution for anything but personal use. Thinking about it in retrospect it
+</I>&gt;<i> might be an idea not to support it until we figure out how to do it
+</I>&gt;<i> without MS-DOS.
+</I>&gt;<i> 
+</I>
+There's a how-to on building CD-ROMS that boot, and I know someone who has done
+this...this is lowest on my priority list, something to shoot for though.
+
+&gt;<i> The above solutions assume the FLASH or DOC is available on the running
+</I>&gt;<i> development platform. In my case this doesn't work. I boot the target
+</I>&gt;<i> system using a floppy and then ftp the files onto the target drive. 
+</I>&gt;<i> 
+</I>
+Hmmmm....I hadn't thought of this...perhaps if the target is mounted with nfs,
+then the copy from &quot;projects/ralph/mnt&quot; (or &quot;projects/ralph/cmpmnt&quot;) would just
+work..I guess this assumes that a working file system is already on the
+target...not sure if LILO works over this method either...hmmmmm
+
+&gt;<i> So I think there needs to be an immediate step that allows you to create a
+</I>&gt;<i> tar.gz archive, as an example, which contains everything to be transferred
+</I>&gt;<i> to the target drive.
+</I>&gt;<i> 
+</I>
+Ahhh...just archiving (tar/zipping) the entire file structure...hmmmm... this
+is a seperate issue from just archiving a project...more to do...
+
+&gt;<i> &gt; where the Name is assigned by the user for their specific device.  So,
+</I>&gt;<i> &gt; I am building the menu items as follows:
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;        Erase $deviceName ---&gt;
+</I>&gt;<i> &gt;        Load File System onto $deviceName ---&gt;
+</I>&gt;<i> &gt;        Install LInux LOader (LILO) to $deviceName
+</I>&gt;<i> 
+</I>&gt;<i> If you're using a ramdisk system the above wouldn't work...
+</I>&gt;<i> 
+</I>&gt;<i> &gt; For the ram disk, I was planning on including another line in the main menu
+</I>&gt;<i> &gt; (if the projectCompress parameter = &quot;YES&quot; )
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;       Configure Project File System ---&gt;
+</I>&gt;<i> &gt;       Compress FIle System --&gt;
+</I>&gt;<i> &gt;       Extract File System for Project ---&gt;
+</I>&gt;<i> &gt;       ----
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Selecting Compress File System will allow you to specify which files are
+</I>&gt;<i> &gt; included in the compressed image and which ones get copied without change.
+</I>&gt;<i> &gt; Then when you select &quot;Extract the file system image gets built and 
+</I>&gt;<i> &gt; then the compressed image gets made.
+</I>&gt;<i> 
+</I>&gt;<i> The ramdisk isn't just a tar file type of thing. The boot loader needs to
+</I>&gt;<i> be configured to support a ramdisk of the desired size (My router does a
+</I>&gt;<i> 12MB ramdisk but the kernel default is 4MB max). Then the process of
+</I>&gt;<i> creating the ramdisk determines the size of the ramdisk when it's loaded
+</I>&gt;<i> into memory.
+</I>&gt;<i> 
+</I>
+sounds like we might need more project parameters to define the ram disk
+stuff...
+
+&gt;<i> When I build the script for the router it was run like this:
+</I>&gt;<i>    build_router [site] [ramdisk size] [ live | ramdisk | cd ]
+</I>&gt;<i> This is a script for a very specific purpose, though and not what I am
+</I>&gt;<i> planning now.
+</I>&gt;<i> 
+</I>&gt;<i> I just think doing the ramdisk business should be a choice of menus all on
+</I>&gt;<i> its own. It's a process requiring different configurations options then
+</I>&gt;<i> the 'live' filesystem approach.
+</I>&gt;<i> 
+</I>&gt;<i> So what I'll do is build the script to create the ramdisk. I'll email it
+</I>&gt;<i> to you when it's done with usage instructions. I did want to use command
+</I>&gt;<i> line switches, though. Still got to figure out how to do that without
+</I>&gt;<i> requiring options to be passed in a specific order.
+</I>&gt;<i> 
+</I>The pwl_custom has some command line processing stuff for an example - I don't
+use getopts, but that is a little more &quot;standard&quot;..
+
+Anyhow, seeing something working is a lot better than just me gassing (and
+guessing) about what *I* think should happen :-)  
+
+
+&gt;<i> TTYL,
+</I>&gt;<i> Adi
+</I>&gt;<i> 
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+</I>&gt;<i> See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+</I>&gt;<i> ---------------------------------------------------
+</I>&gt;<i> 
+</I>
+Later,
+Ralph
+
+__________________________________________________
+Do You Yahoo!?
+Talk to your friends online with Yahoo! Messenger.
+<A HREF="http://im.yahoo.com">http://im.yahoo.com</A>
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000030.html">V0.19 and pwlconfig design notes...
+</A></li>
+	<LI> Next message: <A HREF="000031.html">More pwlconfig stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#29">[ date ]</a>
+              <a href="thread.html#29">[ thread ]</a>
+              <a href="subject.html#29">[ subject ]</a>
+              <a href="author.html#29">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>

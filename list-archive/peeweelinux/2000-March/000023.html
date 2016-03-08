@@ -1,0 +1,201 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<HTML>
+ <HEAD>
+   <TITLE> PeeWeeLinux Ideas
+   </TITLE>
+   <LINK REL="Index" HREF="index.html" >
+   <LINK REL="made" HREF="mailto:PeeWeeLinux%40adis.on.ca">
+   <META NAME="robots" CONTENT="index,nofollow">
+   
+   <LINK REL="Previous"  HREF="000022.html">
+   <LINK REL="Next"  HREF="000024.html">
+<!-- Google_Analytics -->
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+<!-- AdSense_Archive_Slot -->
+   <H1>PeeWeeLinux Ideas
+   </H1>
+    <B>Adi Linden
+    </B> 
+    <A HREF="mailto:PeeWeeLinux%40adis.on.ca"
+       TITLE="PeeWeeLinux Ideas">PeeWeeLinux@adis.on.ca
+       </A><BR>
+    <I>Sun, 5 Mar 2000 23:41:07 -0600 (CST)</I>
+    <P><UL>
+        <LI> Previous message: <A HREF="000022.html">PeeWeeLinux Ideas
+</A></li>
+        <LI> Next message: <A HREF="000024.html">embedded-0.32 is now available
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Ralph,
+
+&gt;<i> &gt; Package Names
+</I>&gt;<i> &gt; -------------
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; Would it make sense to start adding a version numer similar to what RedHat
+</I>&gt;<i> &gt; does? Like creating thttpd-1.2.3-1.tar for the initial release. 
+</I>&gt;<i> 
+</I>&gt;<i> Sounds great, then maybe you could also just download a patch file to 
+</I>&gt;<i> go from xxx-1.2.3-1 to xxx-1.2.3-2 (but these are binaries hmmm...not
+</I>&gt;<i> sure about that)
+</I>
+Nope, won't work with binary files...
+
+&gt;<i> &gt; File List
+</I>&gt;<i> &gt; ---------
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; If you look at the Embedded_Build directory, there is a file called
+</I>&gt;<i> &gt; Filelist (I think) which contains the package names and files associated
+</I>&gt;<i> &gt; with it. Would it make sense to keep a file like it, indicating the
+</I>&gt;<i> &gt; included package name and the related files?
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Hey, I did this as part of my pwl_update script. I go through the entire
+</I>&gt;<i> packages directory and list every file into one file .root.list or 
+</I>&gt;<i> something like that.  Very handy to help speed up the searching for 
+</I>&gt;<i> a specific file...
+</I>
+So I wasn't the first to think of it :) Good stuff.
+
+&gt;<i> &gt; As one of the todo tasks I want to eliminate duplicate files in packages.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> Great! Thats one problem I'm having...trying to find a package for a file
+</I>&gt;<i> and finding it in multiple places.  Also, the extraction continues to 
+</I>&gt;<i> give errors when a file is duplicated...
+</I>
+And it's confusing to extract thesame file multiple times.
+
+&gt;<i> Since pwl_config builds and maintains a list for &quot;internal&quot; use, you 
+</I>&gt;<i> could put most anything here that would make it easy for people to use.
+</I>&gt;<i> This could be rather time consuming to maintain, but any information
+</I>&gt;<i> like this would be unique to Pee Wee Linux (I can't find docs for most 
+</I>&gt;<i> of the other small Linux file systems :-(
+</I>
+I just don't want to 'overkill'. Since the README files are already there
+there might not be a need to duplicate the info, especially if the package
+info is there while using pwlconfig.
+
+I was thinking of creating the filelist using a script.
+
+&gt;<i> &gt; Distributing PWL
+</I>&gt;<i> &gt; ----------------
+</I>&gt;<i>
+</I>&gt;<i> I think this problem is now being solved on some lists with CVS.  You
+</I>&gt;<i> can check any one latest file or just give an update command to get
+</I>&gt;<i> all the changes since your last update.  Or you can checkout all files
+</I>&gt;<i> up to some version number.  Haven't been able to try this yet myself...
+</I>
+I am not sure if CVS is really necessary. What about having an
+uncompressed PeeWeeLinux tree (contents of Embedded_Build) on the server
+and using rsync to synchronize the local copy with the remote copy. That
+should be pretty painless and easy. I could even do a script that does
+that :) So to upgrade your Embedded_Build directory just run an rsync
+job...
+
+&gt;<i> &gt; Closing
+</I>&gt;<i> &gt; -------
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; This all comes to mind because I will have a crude X package compiled from
+</I>&gt;<i> &gt; sources soon. This will add some 40MB to the source distribution. I think
+</I>&gt;<i> &gt; it's a bit of a waste to have to download a 50MB file for some minor
+</I>&gt;<i> &gt; changes... I guess there's always the binary distribution.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> 
+</I>&gt;<i> Ouch!  I think if the patch files aren't too hard to create, I'd love to 
+</I>&gt;<i> just load the source from my Red Hat disk and do the patch.  Now my source
+</I>&gt;<i> matches yours and I didn't need a big download.  Of course, you could
+</I>&gt;<i> just order the Pee Wee Linux distro CD which has it all :-)
+</I>
+Burning a PeeWeeLinux distro CD is no problem. Get to put my CD burner to
+good use ;-)  Actually, maybe I could send the sourceforge people a CD
+everytime...?
+
+I had a difficult time getting X to run on the ipix. So I choose to
+download the latest and compile from scratch. I did the download prior to
+thinking about the tar.gz files from the RedHat SRPMS.
+
+Still need to find a way to extract the tar.gz file only from a source
+rpm. Then we could add a step to the package build process...
+
+- Extract blah.tar.gz frpm blah.src.rpm
+- Extract blah.tar.gz
+- Apply blah.patch
+- Run ./build_pwl/blah/build_pwl.sh
+- Voila, we have a new package
+
+Without the first step I need to include the sources for everything
+deviating from the precompiled RedHat binaries.
+
+&gt;<i> More thoughts...
+</I>&gt;<i> 
+</I>&gt;<i> I've been thinking about all the dozens of little linux's out there and
+</I>&gt;<i> how we could take advantage of all the work done for them. (Granted, most
+</I>&gt;<i> are for different kernels, but that may be only a temporary problem).
+</I>&gt;<i> 
+</I>&gt;<i> What if:
+</I>&gt;<i> 
+</I>&gt;<i> Embedded_Build\packages        contains directories:
+</I>&gt;<i>    PeeWeeLinux
+</I>&gt;<i>    LinuxRouterProject
+</I>&gt;<i>    LEM
+</I>&gt;<i>    Toms_linux
+</I>&gt;<i>    tiny_linux
+</I>&gt;<i>    embedded_linux
+</I>&gt;<i>    mobile_linux
+</I>&gt;<i>    ...
+</I>&gt;<i> 
+</I>&gt;<i> One of the configuration options for a project would be to select the
+</I>&gt;<i> distribution you preferr.  pwl_config could only work within that
+</I>&gt;<i> distribution directory and you could try out different distributions.
+</I>&gt;<i> Or you could pick and choose some files from various distros...
+</I>&gt;<i> 
+</I>&gt;<i> Of course, now the sources directory just went deeper too.
+</I>&gt;<i> Maybe something to thinkabout down the road...
+</I>
+Every little distro is different. The LinuxRouterProject is very different
+in how the packages work. So that's why I started PWL. There wasn't
+anything to fit my need. The other big complained. Barely any docs with
+any of the other little distros. Someone ought to slap me though. I am not
+any better. So far docs aren't much further than your pwlconfig info and
+my promises....
+
+Sooo... thinking about the rsync... I think that would be neat... Saved a
+lot of bandwith!
+
+So the next release of PWL could be an iso image, a cd... Anything you can
+think of :)
+
+TTYL,
+Adi
+
+
+---------------------------------------------------
+See the list archives at <A HREF="http://adis.on.ca/archives/">http://adis.on.ca/archives/</A>
+See the PWL homepage at  <A HREF="http://embedded.adis.on.ca">http://embedded.adis.on.ca</A>
+---------------------------------------------------
+
+</PRE>
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI> Previous message: <A HREF="000022.html">PeeWeeLinux Ideas
+</A></li>
+	<LI> Next message: <A HREF="000024.html">embedded-0.32 is now available
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#23">[ date ]</a>
+              <a href="thread.html#23">[ thread ]</a>
+              <a href="subject.html#23">[ subject ]</a>
+              <a href="author.html#23">[ author ]</a>
+         </LI>
+       </UL>
+</body></html>
